@@ -1,0 +1,20 @@
+# ignore results
+results/oyente/*
+results/mythril/*
+results/securify/*
+results/smartcheck/*
+results/logs/*
+
+# keep folders
+!results/securify/.keep
+!results/oyente/.keep
+!results/mythril/.keep
+!results/smartcheck/.keep
+!results/logs/.keep
+
+#Ignore DS_Store
+.DS_Store
+
+#Ignore pycache
+*.pyc
+__pycache__

@@ -1,0 +1,4 @@
+docker_image:
+  default: qspprotocol/oyente-0.4.25
+cmd: -s
+info: Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness.
