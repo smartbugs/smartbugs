@@ -3,6 +3,9 @@
  * @author: Suhabe Bugrara
  */
 
+//added pragma version
+pragma solidity ^0.4.0;
+
 contract EtherStore {
 
     uint256 public withdrawalLimit = 1 ether;

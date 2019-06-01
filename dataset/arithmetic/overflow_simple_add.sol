@@ -3,7 +3,7 @@
  * @author: -
  */
 
-pragma solidity 0.4.24;
+pragma solidity 0.4.25;
 
 contract Overflow_Add {
     uint public balance = 1;

@@ -19,6 +19,9 @@
 // TODO - add bitcoin bridge so agents can pay in bitcoin?
 // TODO - maybe allow different return payment address?
 
+//added pragma version
+pragma solidity ^0.4.0;
+
 contract KingOfTheEtherThrone {
 
     struct Monarch {
@@ -38,7 +41,7 @@ contract KingOfTheEtherThrone {
     address wizardAddress;
 
     // Used to ensure only the wizard can do some things.
-    modifier onlywizard { if (msg.sender == wizardAddress) _ }
+    modifier onlywizard { if (msg.sender == wizardAddress) _; }
 
     // How much must the first monarch pay?
     uint constant startingClaimPrice = 100 finney;

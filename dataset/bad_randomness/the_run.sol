@@ -3,6 +3,9 @@
  * @author: -
  */
 
+//added pragma version
+pragma solidity ^0.4.0;
+
 contract theRun {
         uint private Balance = 0;
         uint private Payout_id = 0;
@@ -25,7 +28,7 @@ contract theRun {
             admin = msg.sender;
         }
 
-        modifier onlyowner {if (msg.sender == admin) _  }
+        modifier onlyowner {if (msg.sender == admin) _;  }
 
         struct Player {
             address addr;

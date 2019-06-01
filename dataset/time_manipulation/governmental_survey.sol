@@ -3,6 +3,8 @@
  * @author: -
  */
 
+//added pragma version
+pragma solidity ^0.4.0;
 
 contract Governmental {
   address public owner;
