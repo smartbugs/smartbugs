@@ -1,5 +1,5 @@
 /*
- * @source: https://capturetheether.com/challenges/math/token-sale/
+ * @source: https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-101 // https://capturetheether.com/challenges/math/token-sale/
  * @author: Steve Marx
  */
 
