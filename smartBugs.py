@@ -6,8 +6,7 @@ import logging
 import argparse
 import os
 import sys
-import time
-from time import gmtime, strftime
+from time import time, gmtime, strftime
 from src.interface.cli import create_parser, DATASET_CHOICES, TOOLS_CHOICES
 from src.docker_api.docker_api import analyse_files
 
@@ -92,9 +91,15 @@ def exec_cmd(args: argparse.Namespace):
 
 
 if __name__ == '__main__':
-    start_time = time.time()
+    start_time = time()
     args = create_parser()
     logs = exec_cmd(args)
-    elapsed_time = round(time.time() - start_time, 2)
-    print('Analysis completed. It took %s seconds to analyse all files.' % elapsed_time)
-    logs.write('Analysis completed. It took %s seconds to analyse all files.' % elapsed_time + '\n')
+    elapsed_time = round(time() - start_time)
+    if elapsed_time > 60:
+        elapsed_time_sec = round(elapsed_time % 60)
+        elapsed_time = round(elapsed_time // 60)
+        print('Analysis completed. \nIt took %sm %ss to analyse all files.' % (elapsed_time, elapsed_time_sec))
+        logs.write('Analysis completed. \nIt took %sm %ss to analyse all files.' % (elapsed_time, elapsed_time_sec))
+    else:
+        print('Analysis completed. \nIt took %ss to analyse all files.' % elapsed_time)
+        logs.write('Analysis completed. \nIt took %ss to analyse all files.' % elapsed_time)
