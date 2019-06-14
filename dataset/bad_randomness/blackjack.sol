@@ -119,7 +119,7 @@ contract BlackJack {
 			houseCards: houseCards,
 			playerCards: playerCards,
 			state: GameState.Ongoing,
-			cardsDealt: 3,
+			cardsDealt: 3
 		});
 
 		checkGameResult(games[msg.sender], false);

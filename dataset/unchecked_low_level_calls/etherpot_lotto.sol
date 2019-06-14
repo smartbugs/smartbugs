@@ -3,6 +3,9 @@
  * @author: -
  */
 
+//added pragma version
+pragma solidity ^0.4.0;
+
  contract Lotto {
 
      uint constant public blocksPerRound = 6800;

@@ -6,7 +6,7 @@ import argparse
 import os
 import sys
 
-TYPES_CHOICES = ['all']
+DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
 CONFIG_TOOLS_PATH = os.path.abspath('config/tools')
 CONFIG_DATASET_PATH= os.path.abspath('config/dataset/dataset.yaml')
@@ -41,10 +41,10 @@ class ListAction(argparse.Action):
                 for tool in TOOLS_CHOICES:
                     print(tool)
                 sys.stdout.write('\n')
-            elif value == 'types':
-                print('Here are the vulnerabilities types choices:')
-                for type in TYPES_CHOICES:
-                    print(type + ' ')
+            elif value == 'datasets':
+                print('Here are the vulnerabilities datasets choices:')
+                for dataset in DATASET_CHOICES:
+                    print(dataset + ' ')
                 sys.stdout.write('\n')
         parser.exit()
 
@@ -63,7 +63,7 @@ def create_parser():
     list = parser.add_argument_group('list')
 
     for name in cfg_dataset.items():
-        TYPES_CHOICES.append(name[0])
+        DATASET_CHOICES.append(name[0])
 
     #get tools available by parsing the name of the config files
     tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
@@ -75,9 +75,9 @@ def create_parser():
                         nargs='*',
                         help='select solidity file(s) or directories to be analised')
 
-    group_source_files.add_argument('--type',
-                        choices=TYPES_CHOICES,
-                        help='pre made datasets by type',
+    group_source_files.add_argument('--dataset',
+                        choices=DATASET_CHOICES,
+                        help='pre made datasets',
                         nargs='+')
 
     group_tools.add_argument('-t',
@@ -89,10 +89,10 @@ def create_parser():
 
     list.add_argument('-l',
                         '--list',
-                        choices=['tools', 'types'],
+                        choices=['tools', 'datasets'],
                         nargs='+',
                         action='list',
-                        help='list tools or types')
+                        help='list tools or datasets')
 
     info.add_argument('-i',
                         '--info',

@@ -4,6 +4,9 @@
  * @author: -
  */
 
+ //added pragma version
+pragma solidity ^0.4.0;
+
  contract LuckyDoubler {
 //##########################################################
 //#### LuckyDoubler: A doubler with random payout order ####
@@ -30,7 +33,7 @@
         owner = msg.sender;
     }
 
-    modifier onlyowner { if (msg.sender == owner) _ }
+    modifier onlyowner { if (msg.sender == owner) _; }
 
     struct User {
         address id;

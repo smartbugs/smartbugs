@@ -3,7 +3,10 @@
  * @author: -
  */
 
- contract Government {
+//added pragma version
+pragma solidity ^0.4.0;
+
+contract Government {
 
      // Global Variables
      uint32 public lastCreditorPayedOut;
