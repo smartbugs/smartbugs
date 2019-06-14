@@ -97,4 +97,4 @@ SmartBugs provides a collection of vulnerable Solidity smart contracts organized
 ## Contributing to SmartBugs
 ♺ We welcome contributions to the development of SmartBugs. 
 
-The easiest way is to create a pull request. We suggest you follow this guide: [Commit Message Guidelines](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53).
+The easiest way is to create a pull request. In your commit messages, please describe your changes in imperative mood. For example, write "Add support for tool XYZ" instead of "I added support for tool XYZ".
