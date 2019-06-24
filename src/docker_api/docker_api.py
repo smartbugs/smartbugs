@@ -44,9 +44,9 @@ def pull_image(image, logs):
 """
 mount volumes
 """
-def mount_volumes(file, logs):
+def mount_volumes(dir_path, logs):
     try:
-        volume_bindings = {os.path.abspath(file): {'bind': '/' + file, 'mode': 'ro'}}
+        volume_bindings = {os.path.abspath(dir_path): {'bind': '/' + dir_path, 'mode': 'ro'}}
         return volume_bindings
     except os.error as err:
         print(err)
@@ -125,8 +125,8 @@ def analyse_files(tool, file, logs, now):
             logs.write(tool + ': commands not provided. please check you config file.\n')
             sys.exit(tool + ': commands not provided. please check you config file.')
 
-
-        volume_bindings = mount_volumes(file, logs)
+        #bind directory path instead of file path to allow imports in the same directory
+        volume_bindings = mount_volumes(os.path.dirname(file), logs)
 
         file_name = os.path.basename(file)
         file_name = os.path.splitext(file_name)[0]
