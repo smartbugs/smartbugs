@@ -6,7 +6,7 @@ import logging
 import argparse
 import os
 import sys
-from time import time, gmtime, strftime
+from time import time, localtime, strftime
 from src.interface.cli import create_parser, DATASET_CHOICES, TOOLS_CHOICES
 from src.docker_api.docker_api import analyse_files
 
@@ -20,7 +20,7 @@ with open(cfg_dataset_path , 'r') as ymlfile:
 
 def exec_cmd(args: argparse.Namespace):
 
-    now = strftime("%Y%d%m_%H%M", gmtime())
+    now = strftime("%Y%d%m_%H%M", localtime())
     logs = open('results/logs/SmartBugs_'+ now +'.log', 'w')
     logs.write('Arguments passed: ' + str(sys.argv) + '\n')
 
