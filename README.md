@@ -24,6 +24,14 @@ SmartBugs requires [Python3](https://www.python.org). To install all the require
 pip3 install -r requirements.txt
 ```
 
+To avoid dependency issues in your system, we do suggest you to create a virtual environment
+before installing all requirements:
+
+```
+python3 -m venv smartbugs-env
+source smartbugs-env/bin/activate
+pip3 install -r requirements.txt
+```
 
 ## Usage
 SmartBugs provides a command-line interface that can be used as follows:
@@ -38,7 +46,7 @@ smartBugs.py [-h, --help]
 For example, we can analyse all contracts labelled with type `reentrancy` with the tool oyente by executing:
 
 ```
-python3 smartBugs.py --tool oyente --type reentrancy
+python3 smartBugs.py --tool oyente --dataset reentrancy
 ```
 
 By default, results will be placed in the directory `results`. 
