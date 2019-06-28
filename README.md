@@ -37,7 +37,7 @@ pip3 install -r requirements.txt
 SmartBugs provides a command-line interface that can be used as follows:
 ```
 smartBugs.py [-h, --help]
-             (--file FILES | --type TYPE) 
+             (--file FILES | --dataset DATASET) 
               --tool TOOLS 
               --info TOOLS 
               --list tools types
