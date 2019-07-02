@@ -66,7 +66,7 @@ def create_parser():
         DATASET_CHOICES.append(name[0])
 
     #get tools available by parsing the name of the config files
-    tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
+    tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f)) and f.endswith('.yaml')]
     for tool in tools:
         TOOLS_CHOICES.append(tool)
 
