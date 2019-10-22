@@ -1,6 +1,7 @@
 /*
  * @source: https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-105#wallet-03-wrong-constructorsol
  * @author: -
+ * @vulnerable_at_lines: 19,20
  */
 
  pragma solidity ^0.4.24;
@@ -13,7 +14,8 @@
      address creator;
 
      mapping(address => uint256) balances;
-
+     
+     // <yes> <report> ACCESS_CONTROL
      function initWallet() public {
          creator = msg.sender;
      }

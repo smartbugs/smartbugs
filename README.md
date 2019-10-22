@@ -1,15 +1,25 @@
-# SmartBugs: A Dataset of Vulnerable Solidity Smart Contracts
-SmartBugs is a dataset for research in automated reasoning and testing of smart contracts written in Solidity, the primary language used in Ethereum. The key new idea that SmartBugs proposes is that a reproducible dataset for automated analysis of smart contracts should also provide the possibility to integrate tools easily, so that they can be automatically compared (and their results reproduced). To the best of our knowledge, SmartBugs is the first dataset to provide this facility.
+# SmartBugs: A Framework to Analyze Solidity Smart Contracts
 
-SmartBugs is publicly available as a [GitHub repository](https://github.com/smartbugs/smartbugs).
+SmartBugs is an execution framework aiming at simplifying the execution of analysis tools on datasets of smart contracts.
 
 ## Features
 
- - Organized collection of vulnerable Solidity smart contracts (organized according to the [DASP taxonomy](https://dasp.co))
- - Users can create _named sets_, which are intended to represent subsets of contracts that share a common property. For example, a named dataset already provided by SmartBugs is `reentrancy`: it corresponds to contracts that are vulnerable to reentrancy attacks
- - Users can easily integrate new analysis tools and use SmartBugs' interface to run them. Tools available include [oyente](https://github.com/melonproject/oyente), [mythril](https://github.com/ConsenSys/mythril), [securify](https://github.com/eth-sri/securify), and [smartcheck](https://github.com/smartdec/smartcheck)
- - SmartBugs provides an interface that allows users to query the dataset and run different analysis tools on sets of contracts. 
+- A plugin system to easily add new analysis tools, based on Docker images;
+- Parallel execution of the tools to speed up the execution time;
+- An Output mechanism that normalizes the way the tools are outputting the results, and simplify the process of the output across tools.
 
+## Supported Tools
+
+1. HoneyBadger
+2. Maian
+3. Manticore
+4. Mythril
+5. Osiris
+6. Oyente
+7. Securify
+8. Slither
+9. Smartcheck
+10. Solhint
 
 ## Requirements
 The first step is to clone [SmartBugs's repository](https://github.com/smartbugs/smartbugs):
@@ -24,70 +34,39 @@ SmartBugs requires [Python3](https://www.python.org). To install all the require
 pip3 install -r requirements.txt
 ```
 
-To avoid dependency issues in your system, we do suggest you to create a virtual environment
-before installing all requirements:
-
-```
-python3 -m venv smartbugs-env
-source smartbugs-env/bin/activate
-pip3 install -r requirements.txt
-```
-
 ## Usage
+
 SmartBugs provides a command-line interface that can be used as follows:
-```
+```bash
 smartBugs.py [-h, --help]
-             (--file FILES | --dataset DATASET) 
-              --tool TOOLS 
-              --info TOOLS 
-              --list tools types
-````
+              --file FILES          # the paths to the folder or the Solidity contract to analyze
+              --tool TOOLS          # the list of tools to use for the analysis (all to use all of them) 
+              --skip-existing       # skip the execution that already has results
+              --processes PROCESSES # the number of process to use during the analysis (by default 1)
+```
 
 For example, we can analyse all contracts labelled with type `reentrancy` with the tool oyente by executing:
 
+```bash
+python3 smartBugs.py --tool oyente --file dataset/reentrancy
 ```
-python3 smartBugs.py --tool oyente --dataset reentrancy
-```
 
-By default, results will be placed in the directory `results`. 
+By default, results will be placed in the directory results. 
+The results of the analysis on 47,587 contracts is available here: https://github.com/smartbugs/smartbugs-wild
 
-
-### Adding your tool or any third-party tool to SmartBugs
-
-You will need to add a configuration file in `config/tools` and define the docker image to use and command to run. The config file should follow a structure similar to the following:
-  ```
-  docker_image:
-    default: primary docker image [REQUIRED]
-    solc<5: [OPTIONAL]
-  cmd: command to run analysis [REQUIRED]
-  info: info about the tool [OPTIONAL]
-
-  output_in_files:
-    folder: if the tool does not log results in console, you should provide the path file inside the docker image to get the results [OPTIONAL]
-  ```
-Please check the provided config files for more concrete examples.
-
-
-### Adding new named sets 
-
-To add a new named set, edit the configuration file `dataset.yml` (in the folder `config/dataset`) and add the named path you want (can be files or dirs):
-
-The config file should follow a structure similar to:
-  ```
-  type_1: PATH
-  type_2:
-        - PATH
-        - PATH
-  ```
-Please check the provided config files for more concrete examples.
-
-## Known limitations
+## Known Limitations
 
 When running a tool the user must be aware of the solc compatibility. Due to the major changes introduced in solidity v0.5.0, we provide the option to pass another docker image to run contracts with solidity version below v0.5.0. However, please note that there may still be problems with the solidity compiler when compiling older versions of solidity code. 
 
-## Vulnerabilities
+## Smart Contracts dataset
 
-SmartBugs provides a collection of vulnerable Solidity smart contracts organized according to the [DASP taxonomy](https://dasp.co):
+We propose two dataset a smart contract dataset with SmartBugs.
+The first dataset contains 69 annotated contracts to evaluate the accuracy of analysis tools.
+The second dataset contains 47,518 unique contract from the Ethereum network.
+
+### SB Curated
+
+SB Curated provides a collection of vulnerable Solidity smart contracts organized according to the [DASP taxonomy](https://dasp.co). It is available in the `dataset` repository.
 
 | Vulnerability | Description | Level |
 | --- | --- | -- |
@@ -100,9 +79,9 @@ SmartBugs provides a collection of vulnerable Solidity smart contracts organized
 | [Front Running](https://github.com/smartbugs/smartbugs/blob/master/dataset/front_running) | Two dependent transactions that invoke the same contract are included in one block | Blockchain |
 | [Time Manipulation](https://github.com/smartbugs/smartbugs/blob/master/dataset/time_manipulation) | The timestamp of the block is manipulated by the miner | Blockchain |
 | [Short Addresses](https://github.com/smartbugs/smartbugs/blob/master/dataset/short_addresses) | EVM itself accepts incorrectly padded arguments | EVM |
+| [Unknown Unknowns](https://github.com/smartbugs/smartbugs/blob/master/dataset/other) | Vulnerabilities not identified in DASP 10 | N.A |
 
 
-## Contributing to SmartBugs
-♺ We welcome contributions to the development of SmartBugs. 
+### SB Wild
 
-The easiest way is to create a pull request. In your commit messages, please describe your changes in imperative mood. For example, write "Add support for tool XYZ" instead of "I added support for tool XYZ".
+SB Wild is available in a separated repository due to its size: https://github.com/smartbugs/smartbugs-wild

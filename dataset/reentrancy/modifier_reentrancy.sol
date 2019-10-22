@@ -1,6 +1,7 @@
 /*
  * @source: https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/reentracy/modifier_reentrancy.sol
- * @author: -
+ * @author: - 
+ * @vulnerable_at_lines: 15
  */
 
 pragma solidity ^0.4.24;
@@ -10,6 +11,7 @@ contract ModifierEntrancy {
   string constant name = "Nu Token";
 
   //If a contract has a zero balance and supports the token give them some token
+  // <yes> <report> REENTRANCY
   function airDrop() hasNoBalance supportsToken  public{
     tokenBalance[msg.sender] += 20;
   }

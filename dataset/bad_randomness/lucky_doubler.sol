@@ -1,6 +1,7 @@
 /*
  * @article: https://blog.positive.com/predicting-random-numbers-in-ethereum-smart-contracts-e5358c6b8620
  * @source: https://etherscan.io/address/0xF767fCA8e65d03fE16D4e38810f5E5376c3372A8#code
+ * @vulnerable_at_lines: 127,128,129,130,132
  * @author: -
  */
 
@@ -122,6 +123,7 @@ pragma solidity ^0.4.0;
 
     //Generate random number between 0 & max
     uint256 constant private FACTOR =  1157920892373161954235709850086879078532699846656405640394575840079131296399;
+    // <yes> <report> BAD_RANDOMNESS
     function rand(uint max) constant private returns (uint256 result){
         uint256 factor = FACTOR * 100 / max;
         uint256 lastBlockNumber = block.number - 1;

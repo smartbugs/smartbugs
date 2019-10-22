@@ -1,0 +1,1188 @@
+[
+    {
+        "name": "arbitrary_location_write_simple.sol",
+        "path": "dataset/access_control/arbitrary_location_write_simple.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-124#arbitrary-location-write-simplesol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    27
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "incorrect_constructor_name1.sol",
+        "path": "dataset/access_control/incorrect_constructor_name1.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/wrong_constructor_name/incorrect_constructor.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    20
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "incorrect_constructor_name2.sol",
+        "path": "dataset/access_control/incorrect_constructor_name2.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-118#incorrect-constructor-name1sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "incorrect_constructor_name3.sol",
+        "path": "dataset/access_control/incorrect_constructor_name3.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-118#incorrect-constructor-name2sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "mapping_write.sol",
+        "path": "dataset/access_control/mapping_write.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-124#mapping-writesol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    20
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "multiowned_vulnerable.sol",
+        "path": "dataset/access_control/multiowned_vulnerable.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/solidity/unprotected_critical_functions/multiowned_vulnerable/multiowned_vulnerable.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    38
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "mycontract.sol",
+        "path": "dataset/access_control/mycontract.sol",
+        "source": "https://consensys.github.io/smart-contract-best-practices/recommendations/#avoid-using-txorigin",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    20
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "parity_wallet_bug_1.sol",
+        "path": "dataset/access_control/parity_wallet_bug_1.sol",
+        "source": "https://github.com/paritytech/parity-ethereum/blob/4d08e7b0aec46443bf26547b17d10cb302672835/js/src/contracts/snippets/enhanced-wallet.sol#L216",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    223
+                ],
+                "category": "access_control"
+            },
+            {
+                "lines": [
+                    437
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "parity_wallet_bug_2.sol",
+        "path": "dataset/access_control/parity_wallet_bug_2.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-106#walletlibrarysol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    226
+                ],
+                "category": "access_control"
+            },
+            {
+                "lines": [
+                    233
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "phishable.sol",
+        "path": "dataset/access_control/phishable.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    20
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "proxy.sol",
+        "path": "dataset/access_control/proxy.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-112#proxysol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    19
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "rubixi.sol",
+        "path": "dataset/access_control/rubixi.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/wrong_constructor_name/Rubixi_source_code/Rubixi.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    23,
+                    24
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "simple_suicide.sol",
+        "path": "dataset/access_control/simple_suicide.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/unprotected_critical_functions/simple_suicide.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    12,
+                    13
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "unprotected0.sol",
+        "path": "dataset/access_control/unprotected0.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/unprotected_function/Unprotected.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    25
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "wallet_02_refund_nosub.sol",
+        "path": "dataset/access_control/wallet_02_refund_nosub.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-105#wallet-02-refund-nosubsol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    36
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "wallet_03_wrong_constructor.sol",
+        "path": "dataset/access_control/wallet_03_wrong_constructor.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-105#wallet-03-wrong-constructorsol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    19,
+                    20
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "wallet_04_confused_sign.sol",
+        "path": "dataset/access_control/wallet_04_confused_sign.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-105#wallet-04-confused-signsol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    30
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
+        "name": "BECToken.sol",
+        "path": "dataset/arithmetic/BECToken.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-101#bectokensol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    264
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_1.sol",
+        "path": "dataset/arithmetic/integer_overflow_1.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/integer_overflow/integer_overflow_1.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_add.sol",
+        "path": "dataset/arithmetic/integer_overflow_add.sol",
+        "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite/blob/master/benchmarks/integer_overflow_add.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_benign_1.sol",
+        "path": "dataset/arithmetic/integer_overflow_benign_1.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/integer_overflow_and_underflow/integer_overflow_benign_1.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_mapping_sym_1.sol",
+        "path": "dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/integer_overflow_and_underflow/integer_overflow_mapping_sym_1.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    16
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_minimal.sol",
+        "path": "dataset/arithmetic/integer_overflow_minimal.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/integer_overflow_and_underflow/integer_overflow_minimal.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_mul.sol",
+        "path": "dataset/arithmetic/integer_overflow_mul.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/integer_overflow_and_underflow/integer_overflow_mul.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_multitx_multifunc_feasible.sol",
+        "path": "dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+        "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    25
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "integer_overflow_multitx_onefunc_feasible.sol",
+        "path": "dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol",
+        "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    22
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "overflow_simple_add.sol",
+        "path": "dataset/arithmetic/overflow_simple_add.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-101#overflow-simple-addsol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "overflow_single_tx.sol",
+        "path": "dataset/arithmetic/overflow_single_tx.sol",
+        "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    24
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    30
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    36
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    42
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    48
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "timelock.sol",
+        "path": "dataset/arithmetic/timelock.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    22
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "token.sol",
+        "path": "dataset/arithmetic/token.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    20
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    22
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "tokensalechallenge.sol",
+        "path": "dataset/arithmetic/tokensalechallenge.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-101 // https://capturetheether.com/challenges/math/token-sale/",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    23
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    25
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    33
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
+        "name": "blackjack.sol",
+        "path": "dataset/bad_randomness/blackjack.sol",
+        "source": "https://etherscan.io/address/0xa65d59708838581520511d98fb8b5d1f76a96cad#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    19
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    21
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "etheraffle.sol",
+        "path": "dataset/bad_randomness/etheraffle.sol",
+        "source": "https://etherscan.io/address/0xcC88937F325d1C6B97da0AFDbb4cA542EFA70870#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    49
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    99
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    101
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    103
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    114
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    158
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "guess_the_random_number.sol",
+        "path": "dataset/bad_randomness/guess_the_random_number.sol",
+        "source": "https://capturetheether.com/challenges/lotteries/guess-the-random-number/",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    15
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "lottery.sol",
+        "path": "dataset/bad_randomness/lottery.sol",
+        "source": "https://etherscan.io/address/0x80ddae5251047d6ceb29765f38fed1c0013004b7#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    38
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    42
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "lucky_doubler.sol",
+        "path": "dataset/bad_randomness/lucky_doubler.sol",
+        "source": "https://etherscan.io/address/0xF767fCA8e65d03fE16D4e38810f5E5376c3372A8#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    127,
+                    128,
+                    129,
+                    130
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    132
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "old_blockhash.sol",
+        "path": "dataset/bad_randomness/old_blockhash.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/weak_randomness/old_blockhash.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    35
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "random_number_generator.sol",
+        "path": "dataset/bad_randomness/random_number_generator.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/weak_randomness/random_number_generator.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    12
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    18
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    20
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    22
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "smart_billions.sol",
+        "path": "dataset/bad_randomness/smart_billions.sol",
+        "source": "https://etherscan.io/address/0x5ace17f87c7391e5792a7683069a8025b83bbd85#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    523
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    560
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    700
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    702
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    704
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    706
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    708
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    710
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    712
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    714
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    716
+                ],
+                "category": "bad_randomness"
+            },
+            {
+                "lines": [
+                    718
+                ],
+                "category": "bad_randomness"
+            }
+        ]
+    },
+    {
+        "name": "auction.sol",
+        "path": "dataset/denial_of_service/auction.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/denial_of_service/auction.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    23
+                ],
+                "category": "denial_of_service"
+            }
+        ]
+    },
+    {
+        "name": "dos_address.sol",
+        "path": "dataset/denial_of_service/dos_address.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/dos_gas_limit/dos_address.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    16,
+                    17,
+                    18
+                ],
+                "category": "denial_of_service"
+            }
+        ]
+    },
+    {
+        "name": "dos_number.sol",
+        "path": "dataset/denial_of_service/dos_number.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/dos_gas_limit/dos_number.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18,
+                    19,
+                    20,
+                    21,
+                    22
+                ],
+                "category": "denial_of_service"
+            }
+        ]
+    },
+    {
+        "name": "dos_simple.sol",
+        "path": "dataset/denial_of_service/dos_simple.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/dos_gas_limit/dos_simple.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17,
+                    18
+                ],
+                "category": "denial_of_service"
+            }
+        ]
+    },
+    {
+        "name": "list_dos.sol",
+        "path": "dataset/denial_of_service/list_dos.sol",
+        "source": "https://etherscan.io/address/0xf45717552f12ef7cb65e95476f217ea008167ae3#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    46
+                ],
+                "category": "denial_of_service"
+            },
+            {
+                "lines": [
+                    48
+                ],
+                "category": "denial_of_service"
+            }
+        ]
+    },
+    {
+        "name": "send_loop.sol",
+        "path": "dataset/denial_of_service/send_loop.sol",
+        "source": "https://consensys.github.io/smart-contract-best-practices/known_attacks/#dos-with-unexpected-revert",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    24
+                ],
+                "category": "denial_of_service"
+            }
+        ]
+    },
+    {
+        "name": "ERC20.sol",
+        "path": "dataset/front_running/ERC20.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/transaction_order_dependence/ERC20.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    110
+                ],
+                "category": "front_running"
+            },
+            {
+                "lines": [
+                    113
+                ],
+                "category": "front_running"
+            }
+        ]
+    },
+    {
+        "name": "FindThisHash.sol",
+        "path": "dataset/front_running/FindThisHash.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "front_running"
+            }
+        ]
+    },
+    {
+        "name": "eth_tx_order_dependence_minimal.sol",
+        "path": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+        "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    23
+                ],
+                "category": "front_running"
+            },
+            {
+                "lines": [
+                    31
+                ],
+                "category": "front_running"
+            }
+        ]
+    },
+    {
+        "name": "odds_and_evens.sol",
+        "path": "dataset/front_running/odds_and_evens.sol",
+        "source": "http://blockchain.unica.it/projects/ethereum-survey/attacks.html#oddsandevens",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    25
+                ],
+                "category": "front_running"
+            },
+            {
+                "lines": [
+                    28
+                ],
+                "category": "front_running"
+            }
+        ]
+    },
+    {
+        "name": "crypto_roulette.sol",
+        "path": "dataset/other/crypto_roulette.sol",
+        "source": "https://github.com/thec00n/smart-contract-honeypots/blob/master/CryptoRoulette.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    40,41,42
+                ],
+                "category": "other"
+            }
+        ]
+    },
+    {
+        "name": "name_registrar.sol",
+        "path": "dataset/other/name_registrar.sol",
+        "source": "https://github.com/sigp/solidity-security-blog#storage-example",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    21,22,23
+                ],
+                "category": "other"
+            }
+        ]
+    },
+    {
+        "name": "open_address_lottery.sol",
+        "path": "dataset/other/open_address_lottery.sol",
+        "source": "https://etherscan.io/address/0x741f1923974464efd0aa70e77800ba5d9ed18902#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    91,92,93,94,95
+                ],
+                "category": "other"
+            }
+        ]
+    },
+    {
+        "name": "etherstore.sol",
+        "path": "dataset/reentrancy/etherstore.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    27
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "modifier_reentrancy.sol",
+        "path": "dataset/reentrancy/modifier_reentrancy.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/reentracy/modifier_reentrancy.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    15
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "reentrance.sol",
+        "path": "dataset/reentrancy/reentrance.sol",
+        "source": "https://ethernaut.zeppelin.solutions/level/0xf70706db003e94cfe4b5e27ffd891d5c81b39488",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    24
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "reentrancy_dao.sol",
+        "path": "dataset/reentrancy/reentrancy_dao.sol",
+        "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "reentrancy_simple.sol",
+        "path": "dataset/reentrancy/reentrancy_simple.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/reentrancy/Reentrancy.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    24
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "simple_dao.sol",
+        "path": "dataset/reentrancy/simple_dao.sol",
+        "source": "http://blockchain.unica.it/projects/ethereum-survey/attacks.html#simpledao",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    19
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "spank_chain_payment.sol",
+        "path": "dataset/reentrancy/spank_chain_payment.sol",
+        "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/reentrancy/SpankChain_source_code/SpankChain_Payment.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    426
+                ],
+                "category": "reentrancy"
+            },
+            {
+                "lines": [
+                    430
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "short_address_example.sol",
+        "path": "dataset/short_addresses/short_address_example.sol",
+        "source": "https://ericrafaloff.com/analyzing-the-erc20-short-address-attack/",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18
+                ],
+                "category": "short_addresses"
+            }
+        ]
+    },
+    {
+        "name": "ether_lotto.sol",
+        "path": "dataset/time_manipulation/ether_lotto.sol",
+        "source": "https://etherscan.io/address/0xa11e4ed59dc94e69612f3111942626ed513cb172#code",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    43
+                ],
+                "category": "time_manipulation"
+            }
+        ]
+    },
+    {
+        "name": "governmental_survey.sol",
+        "path": "dataset/time_manipulation/governmental_survey.sol",
+        "source": "http://blockchain.unica.it/projects/ethereum-survey/attacks.html#governmental",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    27
+                ],
+                "category": "time_manipulation"
+            }
+        ]
+    },
+    {
+        "name": "roulette.sol",
+        "path": "dataset/time_manipulation/roulette.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18
+                ],
+                "category": "time_manipulation"
+            },
+            {
+                "lines": [
+                    20
+                ],
+                "category": "time_manipulation"
+            }
+        ]
+    },
+    {
+        "name": "timed_crowdsale.sol",
+        "path": "dataset/time_manipulation/timed_crowdsale.sol",
+        "source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/timestamp_dependence/timed_crowdsale.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    13
+                ],
+                "category": "time_manipulation"
+            }
+        ]
+    },
+    {
+        "name": "FibonacciBalance.sol",
+        "path": "dataset/unchecked_low_level_calls/FibonacciBalance.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    31
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    38
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "etherpot_lotto.sol",
+        "path": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "source": "https://github.com/etherpot/contract/blob/master/app/contracts/lotto.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    109
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    141
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "king_of_the_ether_throne.sol",
+        "path": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+        "source": "https://github.com/kieranelby/KingOfTheEtherThrone/blob/v0.4.0/contracts/KingOfTheEtherThrone.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    110
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    117
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    130
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    172
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "lotto.sol",
+        "path": "dataset/unchecked_low_level_calls/lotto.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    20
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    27
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "unchecked_return_value.sol",
+        "path": "dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+        "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-104#unchecked-return-valuesol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    13
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    18
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    }
+]

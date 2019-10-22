@@ -73,7 +73,8 @@ def create_parser():
     group_source_files.add_argument('-f',
                         '--file',
                         nargs='*',
-                        help='select solidity file(s) or directories to be analised')
+                        default=[],
+                        help='select solidity file(s) or directories to be analysed')
 
     group_source_files.add_argument('--dataset',
                         choices=DATASET_CHOICES,
@@ -100,6 +101,15 @@ def create_parser():
                         nargs='+',
                         action='info',
                         help='information about tool')
+    
+    info.add_argument('--skip-existing',
+                        action='store_true',
+                        help='skip the analsis that already have results')
+
+    info.add_argument('--processes',
+                        type=int,
+                        default=1,
+                        help='The number of parallel execution')
 
     args = parser.parse_args()
     return(args)

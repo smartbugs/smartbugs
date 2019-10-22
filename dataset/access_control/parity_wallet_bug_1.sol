@@ -1,9 +1,9 @@
 /*
- * @source: https://github.com/trailofbits/not-so-smart-contracts/blob/master/unprotected_function/WalletLibrary_source_code/WalletLibrary.sol
- * @author: -
+ * @source: https://github.com/paritytech/parity-ethereum/blob/4d08e7b0aec46443bf26547b17d10cb302672835/js/src/contracts/snippets/enhanced-wallet.sol#L216
+ * @author: parity
+ * @vulnerable_at_lines: 223,437
  */
 
- // 0xa657491c1e7f16adb39b9b60e87bbb8d93988bc3#code
 //sol Wallet
 // Multi-sig, daily-limited account proxy/wallet.
 // @authors:
@@ -219,6 +219,7 @@ contract WalletLibrary is WalletEvents {
 
   // constructor - just pass on the owner array to the multiowned and
   // the limit to daylimit
+  // <yes> <report> ACCESS_CONTROL
   function initWallet(address[] _owners, uint _required, uint _daylimit) {
     initDaylimit(_daylimit);
     initMultiowned(_owners, _required);
@@ -432,7 +433,8 @@ contract Wallet is WalletEvents {
     if (msg.value > 0)
       Deposit(msg.sender, msg.value);
     else if (msg.data.length > 0)
-      _walletLibrary.delegatecall(msg.data);
+     // <yes> <report> ACCESS_CONTROL
+      _walletLibrary.delegatecall(msg.data); //it should have whitelisted specific methods that the user is allowed to call
   }
 
   // Gets an owner by 0-indexed position (using numOwners as the count)

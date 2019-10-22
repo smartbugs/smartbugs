@@ -1,7 +1,7 @@
 /*
  * @source: https://github.com/trailofbits/not-so-smart-contracts/blob/master/wrong_constructor_name/incorrect_constructor.sol
  * @author: Ben Perez
- * Modified by Gerhard Wagner
+ * @vulnerable_at_lines: 20
  */
 
 pragma solidity ^0.4.24;
@@ -16,6 +16,7 @@ contract Missing{
 
     // The name of the constructor should be Missing
     // Anyone can call the IamMissing once the contract is deployed
+    // <yes> <report> ACCESS_CONTROL
     function IamMissing()
         public
     {

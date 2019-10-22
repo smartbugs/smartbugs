@@ -1,0 +1,5 @@
+docker_image:
+  default: smartbugs/maian:solc5.10
+  solc<5: smartbugs/maian:solc4.25
+cmd: /runMAIANall.sh
+info: Maian is a tool for automatic detection of buggy Ethereum smart contracts of three different types prodigal, suicidal and greedy.

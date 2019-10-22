@@ -1,6 +1,7 @@
 /*
  * @source: https://github.com/trailofbits/not-so-smart-contracts/blob/master/denial_of_service/auction.sol
  * @author: -
+ * @vulnerable_at_lines: 23
  */
 
 pragma solidity ^0.4.15;
@@ -18,6 +19,7 @@ contract DosAuction {
     //Therefore a frontrunner who always fails will win
     if (currentFrontrunner != 0) {
       //E.g. if recipients fallback function is just revert()
+      // <yes> <report> DENIAL_OF_SERVICE
       require(currentFrontrunner.send(currentBid));
     }
 

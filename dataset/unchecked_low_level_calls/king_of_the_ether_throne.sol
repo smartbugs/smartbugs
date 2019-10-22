@@ -1,6 +1,7 @@
 /*
  * @source: https://github.com/kieranelby/KingOfTheEtherThrone/blob/v0.4.0/contracts/KingOfTheEtherThrone.sol
  * @author: -
+ * @vulnerable_at_lines: 110,117,130,172
  */
 
 // A chain-game contract that maintains a 'throne' which agents may pay to rule.
@@ -105,6 +106,7 @@ contract KingOfTheEtherThrone {
 
         // If they paid too little, reject claim and refund their money.
         if (valuePaid < currentClaimPrice) {
+            // <yes> <report> UNCHECKED_LL_CALLS
             msg.sender.send(valuePaid);
             return;
         }
@@ -112,6 +114,7 @@ contract KingOfTheEtherThrone {
         // If they paid too much, continue with claim but refund the excess.
         if (valuePaid > currentClaimPrice) {
             uint excessPaid = valuePaid - currentClaimPrice;
+            // <yes> <report> UNCHECKED_LL_CALLS
             msg.sender.send(excessPaid);
             valuePaid = valuePaid - excessPaid;
         }
@@ -125,6 +128,7 @@ contract KingOfTheEtherThrone {
         uint compensation = valuePaid - wizardCommission;
 
         if (currentMonarch.etherAddress != wizardAddress) {
+            // <yes> <report> UNCHECKED_LL_CALLS
             currentMonarch.etherAddress.send(compensation);
         } else {
             // When the throne is vacant, the fee accumulates for the wizard.
@@ -166,6 +170,7 @@ contract KingOfTheEtherThrone {
 
     // Used only by the wizard to collect his commission.
     function sweepCommission(uint amount) onlywizard {
+        // <yes> <report> UNCHECKED_LL_CALLS
         wizardAddress.send(amount);
     }
 

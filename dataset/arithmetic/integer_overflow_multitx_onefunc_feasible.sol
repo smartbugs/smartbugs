@@ -1,6 +1,7 @@
 /*
  * @source: https://github.com/ConsenSys/evm-analyzer-benchmark-suite
  * @author: Suhabe Bugrara
+ * @vulnerable_at_lines: 22
  */
 
 //Multi-transactional, single function
@@ -17,7 +18,7 @@ contract IntegerOverflowMultiTxOneFuncFeasible {
             initialized = 1;
             return;
         }
-
+        // <yes> <report> ARITHMETIC
         count -= input;
     }
 }
