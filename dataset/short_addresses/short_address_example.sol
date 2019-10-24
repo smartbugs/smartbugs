@@ -1,6 +1,7 @@
 /*
  * @source: https://ericrafaloff.com/analyzing-the-erc20-short-address-attack/
  * @author: -
+ * @vulnerable_at_lines: 18
  */
 
  pragma solidity ^0.4.11;
@@ -13,7 +14,7 @@
      function MyToken() {
          balances[tx.origin] = 10000;
      }
-
+     // <yes> <report> SHORT_ADDRESSES
      function sendCoin(address to, uint amount) returns(bool sufficient) {
          if (balances[msg.sender] < amount) return false;
          balances[msg.sender] -= amount;

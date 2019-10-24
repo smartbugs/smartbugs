@@ -1,6 +1,7 @@
 /*
  * @source: https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-124#arbitrary-location-write-simplesol
  * @author: Suhabe Bugrara
+ * @vulnerable_at_lines: 27
  */
 
  pragma solidity ^0.4.25;
@@ -22,13 +23,14 @@
      }
 
      function PopBonusCode() public {
-         require(0 <= bonusCodes.length);
-         bonusCodes.length--;
+         // <yes> <report> ACCESS_CONTROL
+         require(0 <= bonusCodes.length); // this condition is always true since array lengths are unsigned
+         bonusCodes.length--; // an underflow can be caused here
      }
 
      function UpdateBonusCodeAt(uint idx, uint c) public {
          require(idx < bonusCodes.length);
-         bonusCodes[idx] = c;
+         bonusCodes[idx] = c; // write to any index less than bonusCodes.length
      }
 
      function Destroy() public {

@@ -1,0 +1,6 @@
+docker_image:
+  default: trailofbits/slither
+cmd: slither {contract} --json /output.json
+output_in_files:
+  folder: /output.json
+info: Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses.

@@ -1,6 +1,7 @@
 /*
  * @article: https://blog.positive.com/predicting-random-numbers-in-ethereum-smart-contracts-e5358c6b8620
  * @source: https://etherscan.io/address/0xcC88937F325d1C6B97da0AFDbb4cA542EFA70870#code
+ * @vulnerable_at_lines: 49,99,101,103,114,158
  * @author: -
  */
 
@@ -44,6 +45,7 @@ contract Ethraffle_v4b {
     // Other internal variables
     bool public paused = false;
     uint public raffleId = 1;
+    // <yes> <report> BAD_RANDOMNESS
     uint public blockNumber = block.number;
     uint nextTicket = 0;
     mapping (uint => Contestant) contestants;
@@ -93,8 +95,11 @@ contract Ethraffle_v4b {
     }
 
     function chooseWinner() private {
+        // <yes> <report> BAD_RANDOMNESS
         address seed1 = contestants[uint(block.coinbase) % totalTickets].addr;
+        // <yes> <report> BAD_RANDOMNESS
         address seed2 = contestants[uint(msg.sender) % totalTickets].addr;
+        // <yes> <report> BAD_RANDOMNESS
         uint seed3 = block.difficulty;
         bytes32 randHash = keccak256(seed1, seed2, seed3);
 
@@ -105,6 +110,7 @@ contract Ethraffle_v4b {
         // Start next raffle
         raffleId++;
         nextTicket = 0;
+        // <yes> <report> BAD_RANDOMNESS
         blockNumber = block.number;
 
         // gaps.length = 0 isn't necessary here,
@@ -148,6 +154,7 @@ contract Ethraffle_v4b {
             RaffleResult(raffleId, totalTickets, address(0), address(0), address(0), 0, 0);
             raffleId++;
             nextTicket = 0;
+            // <yes> <report> BAD_RANDOMNESS
             blockNumber = block.number;
             gaps.length = 0;
         }

@@ -1,6 +1,7 @@
 /*
  * @source: https://etherscan.io/address/0x5ace17f87c7391e5792a7683069a8025b83bbd85#code
  * @author: -
+ * @vulnerable_at_lines: 523,560,700,702,704,706,708,710,712,714,716,718
  */
 
 pragma solidity ^0.4.13;
@@ -518,6 +519,7 @@ contract SmartBillions is StandardToken {
             return(0);
         }
         if(block.number<player.blockNum+256){
+            // <yes> <report> BAD_RANDOMNESS
             return(betPrize(player,uint24(block.blockhash(player.blockNum))));
         }
         if(hashFirst>0){
@@ -554,6 +556,7 @@ contract SmartBillions is StandardToken {
         uint prize = 0;
         uint32 hash = 0;
         if(block.number<player.blockNum+256){
+            // <yes> <report> BAD_RANDOMNESS
             hash = uint24(block.blockhash(player.blockNum));
             prize = betPrize(player,uint24(hash));
         }
@@ -693,15 +696,25 @@ contract SmartBillions is StandardToken {
     }
 
     function calcHashes(uint32 _lastb, uint32 _delta) constant private returns (uint) {
+        // <yes> <report> BAD_RANDOMNESS
         return( ( uint(block.blockhash(_lastb  )) & 0xFFFFFF )
+        // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+1)) & 0xFFFFFF ) << 24 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+2)) & 0xFFFFFF ) << 48 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+3)) & 0xFFFFFF ) << 72 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+4)) & 0xFFFFFF ) << 96 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+5)) & 0xFFFFFF ) << 120 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+6)) & 0xFFFFFF ) << 144 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+7)) & 0xFFFFFF ) << 168 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+8)) & 0xFFFFFF ) << 192 )
+            // <yes> <report> BAD_RANDOMNESS
             | ( ( uint(block.blockhash(_lastb+9)) & 0xFFFFFF ) << 216 )
             | ( ( uint(_delta) / hashesSize) << 240));
     }

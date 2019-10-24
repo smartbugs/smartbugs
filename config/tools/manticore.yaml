@@ -1,0 +1,6 @@
+docker_image:
+  default: smartbugs/manticore
+cmd: /runManticore.sh
+output_in_files:
+  folder: /results
+info: Manticore is a symbolic execution tool for analysis of smart contracts and binaries.

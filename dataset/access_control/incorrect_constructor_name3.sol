@@ -1,7 +1,7 @@
 /*
- * @source: https://github.com/trailofbits/not-so-smart-contracts/blob/master/wrong_constructor_name/incorrect_constructor.sol
+ * @source: https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-118#incorrect-constructor-name2sol
  * @author: Ben Perez
- * Modified by Gerhard Wagner
+ * @vulnerable_at_lines: 17
  */
 
 pragma solidity ^0.4.24;
@@ -13,7 +13,7 @@ contract Missing{
         require(msg.sender==owner);
         _;
     }
-
+    // <yes> <report> ACCESS_CONTROL
     function Constructor()
         public
     {

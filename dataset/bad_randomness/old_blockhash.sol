@@ -1,6 +1,7 @@
 /*
  * @source: https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/weak_randomness/old_blockhash.sol
  * @author: -
+ * @vulnerable_at_lines: 35
  */
 
 pragma solidity ^0.4.24;
@@ -30,7 +31,7 @@ contract PredictTheBlockHashChallenge {
 
     function settle() public {
         require(block.number > guesses[msg.sender].block);
-
+        // <yes> <report> BAD_RANDOMNESS
         bytes32 answer = blockhash(guesses[msg.sender].block);
 
         guesses[msg.sender].block = 0;

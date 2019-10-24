@@ -1,5 +1,6 @@
 /*
  * @source: https://github.com/thec00n/smart-contract-honeypots/blob/master/CryptoRoulette.sol
+ * @vulnerable_at_lines: 40,41,42
  */
 pragma solidity ^0.4.19;
 
@@ -7,7 +8,7 @@ pragma solidity ^0.4.19;
 //
 // Guess the number secretly stored in the blockchain and win the whole contract balance!
 // A new number is randomly chosen after each try.
-//
+// https://www.reddit.com/r/ethdev/comments/7wp363/how_does_this_honeypot_work_it_seems_like_a/
 // To play, call the play() method with the guessed number (1-20).  Bet price: 0.1 ether
 
 contract CryptoRoulette {
@@ -35,8 +36,8 @@ contract CryptoRoulette {
 
     function play(uint256 number) payable public {
         require(msg.value >= betPrice && number <= 10);
-
-        Game game;
+        // <yes> <report> OTHER - uninitialized storage
+        Game game; //Uninitialized storage pointer
         game.player = msg.sender;
         game.number = number;
         gamesPlayed.push(game);
