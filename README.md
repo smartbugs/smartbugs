@@ -6,7 +6,7 @@ SmartBugs is an execution framework aiming at simplifying the execution of analy
 
 - A plugin system to easily add new analysis tools, based on Docker images;
 - Parallel execution of the tools to speed up the execution time;
-- An Output mechanism that normalizes the way the tools are outputting the results, and simplifies the process of the output across tools.
+- An output mechanism that normalizes the way the tools are outputting the results, and simplifies the process of the output across tools.
 
 ## Supported Tools
 
