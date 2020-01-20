@@ -249,6 +249,25 @@
         ]
     },
     {
+        "name": "insecure_transfer.sol",
+        "path": "dataset/arithmetic/insecure_transfer.sol",
+        "source": "https://consensys.github.io/smart-contract-best-practices/known_attacks/#front-running-aka-transaction-ordering-dependence",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "arithmetic"
+            },
+            {
+                "lines": [
+                    19
+                ],
+                "category": "arithmetic"
+            }
+        ]
+    },
+    {
         "name": "integer_overflow_1.sol",
         "path": "dataset/arithmetic/integer_overflow_1.sol",
         "source": "https://github.com/trailofbits/not-so-smart-contracts/blob/master/integer_overflow/integer_overflow_1.sol",
@@ -878,7 +897,9 @@
         "vulnerabilities": [
             {
                 "lines": [
-                    40,41,42
+                    40,
+                    41,
+                    42
                 ],
                 "category": "other"
             }
@@ -891,7 +912,7 @@
         "vulnerabilities": [
             {
                 "lines": [
-                    21,22,23
+                    21
                 ],
                 "category": "other"
             }
@@ -904,9 +925,282 @@
         "vulnerabilities": [
             {
                 "lines": [
-                    91,92,93,94,95
+                    91
                 ],
                 "category": "other"
+            }
+        ]
+    },
+    {
+        "name": "0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+        "path": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    54
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+        "path": "dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    38
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+        "path": "dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    55
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+        "path": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    54
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+        "path": "dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    54
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+        "path": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    94
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+        "path": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+        "path": "dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    52
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+        "path": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+        "path": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    41
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+        "path": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+        "path": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+        "path": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    63
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+        "path": "dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    54
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+        "path": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    40
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+        "path": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    38
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+        "path": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    41
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+        "path": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    63
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+        "path": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+        "path": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "etherbank.sol",
+        "path": "dataset/reentrancy/etherbank.sol",
+        "source": "https://github.com/seresistvanandras/EthBench/blob/master/Benchmark/Simple/reentrant.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    21
+                ],
+                "category": "reentrancy"
             }
         ]
     },
@@ -950,6 +1244,32 @@
         ]
     },
     {
+        "name": "reentrancy_bonus.sol",
+        "path": "dataset/reentrancy/reentrancy_bonus.sol",
+        "source": "https://consensys.github.io/smart-contract-best-practices/known_attacks/",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    28
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "reentrancy_cross_function.sol",
+        "path": "dataset/reentrancy/reentrancy_cross_function.sol",
+        "source": "https://consensys.github.io/smart-contract-best-practices/known_attacks/",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    24
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
         "name": "reentrancy_dao.sol",
         "path": "dataset/reentrancy/reentrancy_dao.sol",
         "source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
@@ -957,6 +1277,19 @@
             {
                 "lines": [
                     18
+                ],
+                "category": "reentrancy"
+            }
+        ]
+    },
+    {
+        "name": "reentrancy_insecure.sol",
+        "path": "dataset/reentrancy/reentrancy_insecure.sol",
+        "source": "https://consensys.github.io/smart-contract-best-practices/known_attacks/",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
                 ],
                 "category": "reentrancy"
             }
@@ -1047,6 +1380,25 @@
         ]
     },
     {
+        "name": "lottopollo.sol",
+        "path": "dataset/time_manipulation/lottopollo.sol",
+        "source": "https://github.com/seresistvanandras/EthBench/blob/master/Benchmark/Simple/timestampdependent.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    13
+                ],
+                "category": "time_manipulation"
+            },
+            {
+                "lines": [
+                    27
+                ],
+                "category": "time_manipulation"
+            }
+        ]
+    },
+    {
         "name": "roulette.sol",
         "path": "dataset/time_manipulation/roulette.sol",
         "source": "https://github.com/sigp/solidity-security-blog",
@@ -1075,6 +1427,725 @@
                     13
                 ],
                 "category": "time_manipulation"
+            }
+        ]
+    },
+    {
+        "name": "0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol",
+        "path": "dataset/unchecked_low_level_calls/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    201
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    213
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9.sol",
+        "path": "dataset/unchecked_low_level_calls/0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    12
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+        "path": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    439
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    465
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x2972d548497286d18e92b5fa1f8f9139e5653fd2.sol",
+        "path": "dataset/unchecked_low_level_calls/0x2972d548497286d18e92b5fa1f8f9139e5653fd2.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+        "path": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    97
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol",
+        "path": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    97
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x3e013fc32a54c4c5b6991ba539dcd0ec4355c859.sol",
+        "path": "dataset/unchecked_low_level_calls/0x3e013fc32a54c4c5b6991ba539dcd0ec4355c859.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+        "path": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    45
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x4051334adc52057aca763453820cb0e045076ef3.sol",
+        "path": "dataset/unchecked_low_level_calls/0x4051334adc52057aca763453820cb0e045076ef3.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    16
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol",
+        "path": "dataset/unchecked_low_level_calls/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    19
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol",
+        "path": "dataset/unchecked_low_level_calls/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+        "path": "dataset/unchecked_low_level_calls/0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    21
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x52d2e0f9b01101a59b38a3d05c80b7618aeed984.sol",
+        "path": "dataset/unchecked_low_level_calls/0x52d2e0f9b01101a59b38a3d05c80b7618aeed984.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    27
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+        "path": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol",
+        "path": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    33
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+        "path": "dataset/unchecked_low_level_calls/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+        "path": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    1152
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    2466
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    1495
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol",
+        "path": "dataset/unchecked_low_level_calls/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    29
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x78c2a1e91b52bca4130b6ed9edd9fbcfd4671c37.sol",
+        "path": "dataset/unchecked_low_level_calls/0x78c2a1e91b52bca4130b6ed9edd9fbcfd4671c37.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    45
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+        "path": "dataset/unchecked_low_level_calls/0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+        "path": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    198
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    210
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x806a6bd219f162442d992bdc4ee6eba1f2c5a707.sol",
+        "path": "dataset/unchecked_low_level_calls/0x806a6bd219f162442d992bdc4ee6eba1f2c5a707.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+        "path": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    56
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+        "path": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    162
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    175
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    180
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    191
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+        "path": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    97
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+        "path": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    55
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+        "path": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    54
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    65
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+        "path": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    31
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+        "path": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    16
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+        "path": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    69
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    71
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    73
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    75
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    102
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol",
+        "path": "dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xb37f18af15bafb869a065b61fc83cfc44ed9cc27.sol",
+        "path": "dataset/unchecked_low_level_calls/0xb37f18af15bafb869a065b61fc83cfc44ed9cc27.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    33
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xb620cee6b52f96f3c6b253e6eea556aa2d214a99.sol",
+        "path": "dataset/unchecked_low_level_calls/0xb620cee6b52f96f3c6b253e6eea556aa2d214a99.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    100
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    106
+                ],
+                "category": "unchecked_low_level_calls"
+            },
+            {
+                "lines": [
+                    133
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xb7c5c5aa4d42967efe906e1b66cb8df9cebf04f7.sol",
+        "path": "dataset/unchecked_low_level_calls/0xb7c5c5aa4d42967efe906e1b66cb8df9cebf04f7.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    25
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+        "path": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+        "path": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xd2018bfaa266a9ec0a1a84b061640faa009def76.sol",
+        "path": "dataset/unchecked_low_level_calls/0xd2018bfaa266a9ec0a1a84b061640faa009def76.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xd5967fed03e85d1cce44cab284695b41bc675b5c.sol",
+        "path": "dataset/unchecked_low_level_calls/0xd5967fed03e85d1cce44cab284695b41bc675b5c.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    16
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xdb1c55f6926e7d847ddf8678905ad871a68199d2.sol",
+        "path": "dataset/unchecked_low_level_calls/0xdb1c55f6926e7d847ddf8678905ad871a68199d2.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    39
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+        "path": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    150
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol",
+        "path": "dataset/unchecked_low_level_calls/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    44
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+        "path": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    39
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xe894d54dca59cb53fe9cbc5155093605c7068220.sol",
+        "path": "dataset/unchecked_low_level_calls/0xe894d54dca59cb53fe9cbc5155093605c7068220.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    17
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xec329ffc97d75fe03428ae155fc7793431487f63.sol",
+        "path": "dataset/unchecked_low_level_calls/0xec329ffc97d75fe03428ae155fc7793431487f63.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    30
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+        "path": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    18
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xf29ebe930a539a60279ace72c707cba851a57707.sol",
+        "path": "dataset/unchecked_low_level_calls/0xf29ebe930a539a60279ace72c707cba851a57707.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    16
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "0xf70d589d76eebdd7c12cc5eec99f8f6fa4233b9e.sol",
+        "path": "dataset/unchecked_low_level_calls/0xf70d589d76eebdd7c12cc5eec99f8f6fa4233b9e.sol",
+        "source": "etherscan.io",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    45
+                ],
+                "category": "unchecked_low_level_calls"
             }
         ]
     },
@@ -1161,6 +2232,19 @@
             {
                 "lines": [
                     27
+                ],
+                "category": "unchecked_low_level_calls"
+            }
+        ]
+    },
+    {
+        "name": "mishandled.sol",
+        "path": "dataset/unchecked_low_level_calls/mishandled.sol",
+        "source": "https://github.com/seresistvanandras/EthBench/blob/master/Benchmark/Simple/mishandled.sol",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    14
                 ],
                 "category": "unchecked_low_level_calls"
             }
