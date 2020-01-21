@@ -45,7 +45,7 @@ pip3 install -r requirements.txt
 
 ## Alternative Installation Methods
 
-- We provide a [Vagrant box that you can use to experiment with SmartBugs](utils/vagrant)
+- We provide a [Vagrant box that you can use to experiment with SmartBugs](https://github.com/smartbugs/smartbugs/tree/master/utils/vagrant)
 
 ## Usage
 
