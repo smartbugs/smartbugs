@@ -83,8 +83,9 @@ When running a tool the user must be aware of the solc compatibility. Due to the
 ## Smart Contracts dataset
 
 We make available two smart contract datasets with SmartBugs:
+
 - **SB Curated**: a curated dataset with 143 annotated contracts that can be used to evaluate the accuracy of analysis tools    .
-- **SB Wild**: a dataset with 47,518 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601)).
+- **SB Wild**: a dataset with 47,518 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601))
 
 
 ### SB Curated

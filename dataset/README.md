@@ -1,5 +1,5 @@
-# SmartBugs: A Dataset of Vulnerable Solidity Smart Contracts
-SmartBugs is a dataset for research in automated reasoning and testing of smart contracts written in Solidity, the primary language used in Ethereum. The key new idea that SmartBugs proposes is that a reproducible dataset for automated analysis of smart contracts should also provide the possibility to integrate tools easily, so that they can be automatically compared (and their results reproduced). To the best of our knowledge, SmartBugs is the first dataset to provide this facility.
+# SB Curated: A Curated Dataset of Vulnerable Solidity Smart Contracts
+SB Curated is a dataset for research in automated reasoning and testing of smart contracts written in Solidity, the primary language used in Ethereum. It is part of the executional framework SmartBugs, which allows the possibility to integrate tools easily, so that they can be automatically compared (and their results reproduced). To the best of our knowledge, SmartBugs is the largest dataset of its kind.
 
 ## Description
 
