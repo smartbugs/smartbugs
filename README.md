@@ -114,3 +114,11 @@ SB Wild is available in a separated repository due to its size: [https://github.
 ## Work that uses SmartBugs
 - [SmartBugs was used to analyze 47,587 smart contracts](https://arxiv.org/abs/1910.10601). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
 - ... you are more than welcome to add your own work here!
+
+
+## License
+The license in the file `LICENSE` applies to all the files in this repository,
+except for all the smart contracts in the `dataset` folder. 
+The smart contracts in this folder are
+publicly available, were obtained using the Etherscan APIs, and retain their
+original licenses. Please contact us for any additional questions.
