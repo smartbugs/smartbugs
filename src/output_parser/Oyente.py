@@ -32,7 +32,7 @@ class Oyente(Parser):
             elif "INFO:symExec:	  " in line:
                 (key, value) = self.extract_result_line(line)
                 current_contract[key] = value
-            elif current_contract is not None and current_contract['file'] in line:
+            elif current_contract and current_contract['file'] in line:
                 if "INFO:symExec:" not in line:
                     line = "INFO:symExec:" + line
                 (line, column, level, message) = line.replace("INFO:symExec:%s:" % (current_contract['file']), '').split(':')
