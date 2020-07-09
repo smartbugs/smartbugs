@@ -1,5 +1,24 @@
 [
     {
+        "name": "FibonacciBalance.sol",
+        "path": "dataset/access_control/FibonacciBalance.sol",
+        "source": "https://github.com/sigp/solidity-security-blog",
+        "vulnerabilities": [
+            {
+                "lines": [
+                    31
+                ],
+                "category": "access_control"
+            },
+            {
+                "lines": [
+                    38
+                ],
+                "category": "access_control"
+            }
+        ]
+    },
+    {
         "name": "arbitrary_location_write_simple.sol",
         "path": "dataset/access_control/arbitrary_location_write_simple.sol",
         "source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-124#arbitrary-location-write-simplesol",
@@ -2150,25 +2169,6 @@
         ]
     },
     {
-        "name": "FibonacciBalance.sol",
-        "path": "dataset/unchecked_low_level_calls/FibonacciBalance.sol",
-        "source": "https://github.com/sigp/solidity-security-blog",
-        "vulnerabilities": [
-            {
-                "lines": [
-                    31
-                ],
-                "category": "unchecked_low_level_calls"
-            },
-            {
-                "lines": [
-                    38
-                ],
-                "category": "unchecked_low_level_calls"
-            }
-        ]
-    },
-    {
         "name": "etherpot_lotto.sol",
         "path": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
         "source": "https://github.com/etherpot/contract/blob/master/app/contracts/lotto.sol",
@@ -2257,13 +2257,7 @@
         "vulnerabilities": [
             {
                 "lines": [
-                    13
-                ],
-                "category": "unchecked_low_level_calls"
-            },
-            {
-                "lines": [
-                    18
+                    17
                 ],
                 "category": "unchecked_low_level_calls"
             }
