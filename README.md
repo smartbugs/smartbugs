@@ -80,13 +80,14 @@ By default, results will be placed in the directory `results`.
 
 When running a tool the user must be aware of the solc compatibility. Due to the major changes introduced in solidity v0.5.0, we provide the option to pass another docker image to run contracts with solidity version below v0.5.0. However, please note that there may still be problems with the solidity compiler when compiling older versions of solidity code. 
 
-## Smart Contracts dataset
+## Smart Contracts Datasets
 
 We make available two smart contract datasets with SmartBugs:
 
 - **SB Curated**: a curated dataset with 143 annotated contracts that can be used to evaluate the accuracy of analysis tools    .
 - **SB Wild**: a dataset with 47,518 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601))
 
+We also support **remote datasets** (as git repositories). Smartbugs is distributed with Ghaleb and Pattabiraman's [SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark), a dataset of buggy contracts injected with 9369 bugs of 7 different types: reentrancy, timestamp dependency, unhandled exceptions, unchecked send, TOD, integer overflow/underflow, and use of tx.origin. To add new remote datasets, update the configuration file [dataset.yaml](config/dataset/dataset.yaml).
 
 ### SB Curated
 
@@ -112,7 +113,8 @@ SB Wild is available in a separated repository due to its size: [https://github.
 
 
 ## Work that uses SmartBugs
-- [SmartBugs was used to analyze 47,587 smart contracts](https://arxiv.org/abs/1910.10601). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
+- [SmartBugs was used to analyze 47,587 smart contracts](https://joaoff.com/publication/2020/icse) (work published at ICSE 2020). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
+- [SmartBugs was used to evaluate a simple extension of Smartcheck](https://joaoff.com/publication/2020/ase) (work published at ASE 2020, _Tool Demo Track_)
 - ... you are more than welcome to add your own work here!
 
 
