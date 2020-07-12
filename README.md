@@ -87,7 +87,7 @@ We make available two smart contract datasets with SmartBugs:
 - **SB Curated**: a curated dataset with 143 annotated contracts that can be used to evaluate the accuracy of analysis tools    .
 - **SB Wild**: a dataset with 47,518 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601))
 
-We also support **remote datasets** (as git repositories). Smartbugs is distributed with Ghaleb and Pattabiraman's [SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark), a dataset of buggy contracts injected with 9369 bugs of 7 different types: reentrancy, timestamp dependency, unhandled exceptions, unchecked send, TOD, integer overflow/underflow, and use of tx.origin. To add new remote datasets, update the configuration file [dataset.yaml](config/dataset/dataset.yaml).
+We also support **remote datasets** (as git repositories). Smartbugs is distributed with Ghaleb and Pattabiraman's [SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark), a dataset of buggy contracts injected with 9369 bugs of 7 different types.
 
 ### SB Curated
 
@@ -111,6 +111,37 @@ We also support **remote datasets** (as git repositories). Smartbugs is distribu
 
 SB Wild is available in a separated repository due to its size: [https://github.com/smartbugs/smartbugs-wild](https://github.com/smartbugs/smartbugs-wild)
 
+### Remote Datasets
+You can set any git repository as a _remote dataset_. Smartbugs is distributed with Ghaleb and Pattabiraman's [SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark), a dataset of buggy contracts injected with 9369 bugs of 7 different types: reentrancy, timestamp dependency, unhandled exceptions, unchecked send, TOD, integer overflow/underflow, and use of tx.origin. 
+
+To add new remote datasets, update the configuration file [dataset.yaml](config/dataset/dataset.yaml) with
+the location of the dataset (`url`), the local directory where the dataset will be located (`local_dir`),
+and any relevant `subsets` (if any). As an example, here's the configuration for SolidiFI:
+
+```
+solidiFI: 
+    - url: git@github.com:smartbugs/SolidiFI-benchmark.git
+    - local_dir: dataset/solidiFI
+    - subsets: # Accessed as solidiFI/name 
+        - overflow_underflow: buggy_contracts/Overflow-Underflow
+        - reentrancy: buggy_contracts/Re-entrancy
+        - tod: buggy_contracts/TOD
+        - timestamp_dependency: buggy_contracts/Timestamp-Dependency
+        - unchecked_send: buggy_contracts/Unchecked-Send
+        - unhandled_exceptions: buggy_contracts/Unhandled-Exceptions
+        - tx_origin: buggy_contracts/tx.origin
+```
+
+With this configuration, if we want to run slither in the remote sub-directory `buggy_contracts/tx.origin`,
+we can run:
+
+```bash
+python3 smartBugs.py --tool slither --dataset solidiFI/tx_origin
+```
+
+To run it in the entire dataset, use `solidiFI` instead of `solidiFI/tx_origin`.
+
+When we use a remote dataset for the first time, we are asked to confirm the creation of the local copy.
 
 ## Work that uses SmartBugs
 - [SmartBugs was used to analyze 47,587 smart contracts](https://joaoff.com/publication/2020/icse) (work published at ICSE 2020). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
