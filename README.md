@@ -82,12 +82,12 @@ When running a tool the user must be aware of the solc compatibility. Due to the
 
 ## Smart Contracts Datasets
 
-We make available two smart contract datasets with SmartBugs:
+We make available three smart contract datasets with SmartBugs:
 
-- **SB Curated**: a curated dataset with 143 annotated contracts that can be used to evaluate the accuracy of analysis tools    .
+- **SB Curated**: a curated dataset that contains 143 annotated contracts with 208
+  tagged vulnerabilities that can be used to evaluate the accuracy of analysis tools.
 - **SB Wild**: a dataset with 47,518 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601))
-
-We also support **remote datasets** (as git repositories). Smartbugs is distributed with Ghaleb and Pattabiraman's [SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark), a dataset of buggy contracts injected with 9369 bugs of 7 different types.
+- **[SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark)**: a _remote dataset_ of contracts injected with 9369 bugs of 7 different types.
 
 ### SB Curated
 
@@ -110,6 +110,7 @@ We also support **remote datasets** (as git repositories). Smartbugs is distribu
 ### SB Wild
 
 SB Wild is available in a separated repository due to its size: [https://github.com/smartbugs/smartbugs-wild](https://github.com/smartbugs/smartbugs-wild)
+
 
 ### Remote Datasets
 You can set any git repository as a _remote dataset_. Smartbugs is distributed with Ghaleb and Pattabiraman's [SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark), a dataset of buggy contracts injected with 9369 bugs of 7 different types: reentrancy, timestamp dependency, unhandled exceptions, unchecked send, TOD, integer overflow/underflow, and use of tx.origin. 
