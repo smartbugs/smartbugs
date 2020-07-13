@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import yaml
-# import logging
 import argparse
 import os
 import sys
@@ -52,11 +51,27 @@ class ListAction(argparse.Action):
 
 # Parser stuff
 def isRemoteDataset(cfg_dataset, name):
+    """Given a dataset file configuration and a dataset name, return True
+       if the dataset is remote and False otherwise.
+    """
     remote_info = cfg_dataset[name]
     if isinstance(remote_info, list):
-        for prop in (e['url'] for e in remote_info if isinstance(e, dict) and 'url' in e):
+        merged = {}
+        for d in remote_info:
+            if isinstance(d, dict):
+                merged = merge_two_dicts(merged, d)
+
+        # A remote dataset needs to define an url and a local dir
+        if 'url' in merged and 'local_dir' in merged:
             return True
     return False
+
+
+def merge_two_dicts(x, y):
+    """Given two dictionaries, merge them into a new dict as a shallow copy."""
+    z = x.copy()
+    z.update(y)
+    return z
 
 
 # transform remote dataset info in dictionary
@@ -72,8 +87,11 @@ def getRemoteDataset(cfg_dataset, name):
 
     # at this point, subsets is a list of dicts
     # we want it to be a dictionary
-    remote_dataset['subsets'] = \
-        reduce(lambda a, b: dict(a, **b), remote_dataset['subsets'])
+    if 'subsets' in remote_dataset:
+        remote_dataset['subsets'] = \
+            reduce(lambda a, b: dict(a, **b), remote_dataset['subsets'])
+    else:
+        remote_dataset['subsets'] = {}
 
     return remote_dataset
 
