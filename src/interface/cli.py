@@ -62,8 +62,7 @@ def isRemoteDataset(cfg_dataset, name):
                 merged = merge_two_dicts(merged, d)
 
         # A remote dataset needs to define an url and a local dir
-        if 'url' in merged and 'local_dir' in merged:
-            return True
+        return 'url' in merged and 'local_dir' in merged
     return False
 
 
