@@ -83,7 +83,7 @@ def exec_cmd(args: argparse.Namespace):
                     # local copy does not exist; we need to clone it
                     print('\x1b[1;37m' + "%s is a remote dataset. Do you want to create a local copy? [Y/n] " % base_name + '\x1b[0m')
                     answer = input()
-                    if answer in ['y', 'Y', 'yes', 'Yes', 'YES', '']:
+                    if answer.lower() in ['yes', 'y', '']:
                         sys.stdout.write('\x1b[1;37m' + 'Cloning remote dataset [%s <- %s]... ' % (base_path, remote_info['url']) + '\x1b[0m')
                         sys.stdout.flush()
                         git.Repo.clone_from(remote_info['url'], base_path)
