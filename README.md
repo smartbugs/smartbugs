@@ -1,5 +1,23 @@
 # SmartBugs: A Framework to Analyze Solidity Smart Contracts
 
+![Smartbugs build](https://github.com/smartbugs/smartbugs/workflows/build/badge.svg)
+ <a href="https://github.com/smartbugs/smartbugs/releases">
+        <img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg">
+</a>
+<a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE">
+        <img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue">
+</a>
+<br />
+<a href="#Supported-Tools">
+        <img alt="Analysis tools" src="https://img.shields.io/badge/Analysis tools-10-blue">
+</a>
+<a href="https://github.com/smartbugs/smartbugs/blob/master/dataset">
+        <img alt="SB Curated Smart Contracts" src="https://img.shields.io/badge/SB Curated Smart Contracts-143-blue">
+</a>
+<a href="https://github.com/smartbugs/smartbugs/blob/master/dataset">
+        <img alt="SB Wild Smart Contracts" src="https://img.shields.io/badge/SB Wild Smart Contracts-47,398-blue">
+</a>
+
 SmartBugs is an execution framework aiming at simplifying the execution of analysis tools on datasets of smart contracts.
 
 ## Features
@@ -86,7 +104,7 @@ We make available three smart contract datasets with SmartBugs:
 
 - **SB Curated**: a curated dataset that contains 143 annotated contracts with 208
   tagged vulnerabilities that can be used to evaluate the accuracy of analysis tools.
-- **SB Wild**: a dataset with 47,518 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601))
+- **SB Wild**: a dataset with 47,398 unique contract from the Ethereum network (for details on 3 how they were collected, see [the ICSE 2020 paper](https://arxiv.org/abs/1910.10601))
 - **[SolidiFI Benchmark](https://github.com/smartbugs/SolidiFI-benchmark)**: a _remote dataset_ of contracts injected with 9369 bugs of 7 different types.
 
 ### SB Curated
