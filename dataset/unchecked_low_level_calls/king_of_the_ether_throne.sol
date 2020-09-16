@@ -1,7 +1,7 @@
 /*
  * @source: https://github.com/kieranelby/KingOfTheEtherThrone/blob/v0.4.0/contracts/KingOfTheEtherThrone.sol
  * @author: -
- * @vulnerable_at_lines: 110,117,130,172
+ * @vulnerable_at_lines: 110,118,132,174
  */
 
 // A chain-game contract that maintains a 'throne' which agents may pay to rule.

@@ -1,7 +1,7 @@
 /*
  * @source: etherscan.io 
  * @author: -
- * @vulnerable_at_lines: 162,175,180,191
+ * @vulnerable_at_lines: 162,175,180,192
  */
 
 pragma solidity ^0.4.9;
