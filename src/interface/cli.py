@@ -154,12 +154,20 @@ def create_parser():
 
     info.add_argument('--skip-existing',
                         action='store_true',
-                        help='skip the analsis that already have results')
+                        help='skip the analysis that already have results')
 
     info.add_argument('--processes',
                         type=int,
                         default=1,
                         help='The number of parallel execution')
+
+    info.add_argument('--v1-output',
+                        action='store_true',
+                        help='print smartbugs\' v1 output')
+
+    info.add_argument('--aggregate-sarif',
+                        action='store_true',
+                        help='aggregate sarif outputs for different tools in the same file')
 
     args = parser.parse_args()
     return(args)

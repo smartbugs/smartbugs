@@ -5,12 +5,14 @@ import argparse
 import os
 import sys
 from datetime import timedelta
-from multiprocessing import Pool, Value
+from multiprocessing import Pool, Value, Manager
 from time import time, localtime, strftime
 from src.interface.cli import create_parser, getRemoteDataset, \
-                              isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
+    isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
 from src.docker_api.docker_api import analyse_files
 import git
+from src.output_parser.SarifHolder import SarifHolder
+import json
 
 cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
 with open(cfg_dataset_path, 'r') as ymlfile:
@@ -29,7 +31,8 @@ nb_task = 0
 
 def analyse(args):
     global logs, output_folder, nb_task, nb_task_done, total_execution
-    (tool, file) = args
+
+    (tool, file, sarif_outputs, v1_output) = args
 
     try:
         start = time()
@@ -38,7 +41,7 @@ def analyse(args):
         sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' + tool + ']' + '\x1b[0m' + '\n')
 
-        analyse_files(tool, file, logs, output_folder)
+        analyse_files(tool, file, logs, output_folder, sarif_outputs, v1_output)
 
         with nb_task_done.get_lock():
             nb_task_done.value += 1
@@ -48,10 +51,11 @@ def analyse(args):
 
         duration = str(timedelta(seconds=round(time() - start)))
 
-        task_sec = nb_task_done.value/(time() - start_time)
+        task_sec = nb_task_done.value / (time() - start_time)
         remaining_time = str(timedelta(seconds=round((nb_task - nb_task_done.value) / task_sec)))
 
-        sys.stdout.write('\x1b[1;37m' + 'Done [%d/%d, %s]: ' % (nb_task_done.value, nb_task, remaining_time) + '\x1b[0m')
+        sys.stdout.write(
+            '\x1b[1;37m' + 'Done [%d/%d, %s]: ' % (nb_task_done.value, nb_task, remaining_time) + '\x1b[0m')
         sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' + tool + '] in ' + duration + ' ' + '\x1b[0m' + '\n')
         logs.write('[%d/%d] ' % (nb_task_done.value, nb_task) + file + ' [' + tool + '] in ' + duration + ' \n')
@@ -81,18 +85,22 @@ def exec_cmd(args: argparse.Namespace):
 
                 if not os.path.isdir(base_path):
                     # local copy does not exist; we need to clone it
-                    print('\x1b[1;37m' + "%s is a remote dataset. Do you want to create a local copy? [Y/n] " % base_name + '\x1b[0m')
+                    print(
+                        '\x1b[1;37m' + "%s is a remote dataset. Do you want to create a local copy? [Y/n] " % base_name + '\x1b[0m')
                     answer = input()
                     if answer.lower() in ['yes', 'y', '']:
-                        sys.stdout.write('\x1b[1;37m' + 'Cloning remote dataset [%s <- %s]... ' % (base_path, remote_info['url']) + '\x1b[0m')
+                        sys.stdout.write('\x1b[1;37m' + 'Cloning remote dataset [%s <- %s]... ' % (
+                        base_path, remote_info['url']) + '\x1b[0m')
                         sys.stdout.flush()
                         git.Repo.clone_from(remote_info['url'], base_path)
                         sys.stdout.write('\x1b[1;37m\n' + 'Done.' + '\x1b[0m\n')
                     else:
-                        print('\x1b[1;33m' + 'ABORTING: cannot proceed without local copy of remote dataset %s' % base_name + '\x1b[0m')
+                        print(
+                            '\x1b[1;33m' + 'ABORTING: cannot proceed without local copy of remote dataset %s' % base_name + '\x1b[0m')
                         quit()
                 else:
-                    sys.stdout.write('\x1b[1;37m' + 'Using remote dataset [%s <- %s] ' % (base_path, remote_info['url']) + '\x1b[0m\n')
+                    sys.stdout.write('\x1b[1;37m' + 'Using remote dataset [%s <- %s] ' % (
+                    base_path, remote_info['url']) + '\x1b[0m\n')
 
                 if dataset == base_name:  # basename included
                     dataset_path = base_path
@@ -114,7 +122,11 @@ def exec_cmd(args: argparse.Namespace):
             for root, dirs, files in os.walk(file):
                 for name in files:
                     if name.endswith('.sol'):
-                        files_to_analyze.append(os.path.join(root, name))
+                        # if its running on a windows machine
+                        if os.name == 'nt':
+                            files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
+                        else:
+                            files_to_analyze.append(os.path.join(root, name))
         else:
             print('%s is not a directory or a solidity file' % file)
 
@@ -122,7 +134,9 @@ def exec_cmd(args: argparse.Namespace):
         TOOLS_CHOICES.remove('all')
         args.tool = TOOLS_CHOICES
 
+    sarif_outputs = Manager().dict()
     tasks = []
+    file_names = []
     for file in files_to_analyze:
         for tool in args.tool:
             results_folder = 'results/' + tool + '/' + output_folder
@@ -134,12 +148,25 @@ def exec_cmd(args: argparse.Namespace):
                 folder = os.path.join(results_folder, file_name, 'result.json')
                 if os.path.exists(folder):
                     continue
-            tasks.append((tool, file))
+
+            tasks.append((tool, file, sarif_outputs, args.v1_output))
+        file_names.append(os.path.splitext(os.path.basename(file))[0])
 
     nb_task = len(tasks)
 
+    # initialize all sarif outputs
+    for file_name in file_names:
+        sarif_outputs[file_name] = SarifHolder()
+
     with Pool(processes=args.processes) as pool:
         pool.map(analyse, tasks)
+
+    if args.aggregate_sarif:
+        for file_name in file_names:
+            sarif_file_path = 'results/' + file_name + output_folder + '.sarif'
+            print(sarif_outputs[file_name].print())
+            with open(sarif_file_path, 'w') as sarif_file:
+                json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2)
 
     return logs
 

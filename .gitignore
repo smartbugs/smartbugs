@@ -1,5 +1,7 @@
 #Ignore results
 results/oyente/*
+results/honeybadger/*
+results/osiris/*
 results/maian/*
 results/manticore/*
 results/mythril/*
@@ -32,3 +34,8 @@ __pycache__
 
 #Ignore default remote datasets
 dataset/solidiFI
+
+#Ignore PyCharm files
+venv/
+.idea/
+results/*.*
