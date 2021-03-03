@@ -27,10 +27,13 @@ class SarifHolder:
         return self.serializeSarif(self.sarif)
 
     def serialize(self, inst, field, value):
-        self.translationDict[field.name] = field.metadata['schema_property_name']
+        if field is not None:
+            self.translationDict[field.name] = field.metadata['schema_property_name']
         return value
 
     def filter(self, field, value):
+        if value is None:
+            return False
         if (field.default == value and field.name != "level") or (
                 isinstance(field.default, attr.Factory) and field.default.factory() == value):
             return False
@@ -61,13 +64,17 @@ def parseRuleIdFromMessage(message):
 
 
 def parseLevel(level):
+    if isinstance(level, int):
+        return "warning"
     if level.lower() == "warning":
         return "warning"
     if level.lower() == "error":
         return "error"
     if level.lower() == "note":
         return "note"
-    return "none"
+    if level.lower == "none":
+        return "none"
+    return "warning"
 
 
 def parseMessage(message):
@@ -78,6 +85,3 @@ def parseUri(uri):
     if len(uri) == 0: return uri
     if uri[0] == '/': return parseUri(uri[1:])
     return uri
-
-
-translationDict = dict()

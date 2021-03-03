@@ -91,7 +91,9 @@ class Oyente(Parser):
             if logicalLocation != None: logicalLocationsList.append(logicalLocation)
 
         tool = Tool(driver=ToolComponent(name="Oyente", version="0.4.25", rules=rulesList,
-                                         information_uri="https://oyente.tech/"))
+                                         information_uri="https://oyente.tech/",
+                                         full_description=MultiformatMessageString(
+                                             text="Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness.")))
 
         run = Run(tool=tool, artifacts=artifactsList, logical_locations=logicalLocationsList, results=resultsList)
 

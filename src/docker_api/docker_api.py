@@ -143,12 +143,28 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             sarif_outputs[file_name] = sarif_output
         elif tool == 'osiris':
             results['analysis'] = Osiris().parse(output)
+            # Sarif Conversion
+            sarif_output = sarif_outputs[file_name]
+            sarif_output.addRun(Osiris().parseSarif(results))
+            sarif_outputs[file_name] = sarif_output
         elif tool == 'honeybadger':
             results['analysis'] = HoneyBadger().parse(output)
+            # Sarif Conversion
+            sarif_output = sarif_outputs[file_name]
+            sarif_output.addRun(HoneyBadger().parseSarif(results))
+            sarif_outputs[file_name] = sarif_output
         elif tool == 'smartcheck':
             results['analysis'] = Smartcheck().parse(output)
+            # Sarif Conversion
+            sarif_output = sarif_outputs[file_name]
+            sarif_output.addRun(Smartcheck().parseSarif(results))
+            sarif_outputs[file_name] = sarif_output
         elif tool == 'solhint':
             results['analysis'] = Solhint().parse(output)
+            # Sarif Conversion
+            sarif_output = sarif_outputs[file_name]
+            sarif_output.addRun(Solhint().parseSarif(results))
+            sarif_outputs[file_name] = sarif_output
         elif tool == 'maian':
             results['analysis'] = Maian().parse(output)
         elif tool == 'mythril':
