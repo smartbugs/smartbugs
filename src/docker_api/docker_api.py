@@ -14,6 +14,8 @@ from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
 from src.output_parser.Maian import Maian
 from src.output_parser.HoneyBadger import HoneyBadger
+from src.output_parser.Securify import Securify
+from src.output_parser.Mythril import Mythril
 from solidity_parser import parser
 from time import time
 
@@ -135,40 +137,29 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
 
 
     try:
+        sarif_output = sarif_outputs[file_name]
         if tool == 'oyente':
             results['analysis'] = Oyente().parse(output)
             # Sarif Conversion
-            sarif_output = sarif_outputs[file_name]
             sarif_output.addRun(Oyente().parseSarif(results))
-            sarif_outputs[file_name] = sarif_output
         elif tool == 'osiris':
             results['analysis'] = Osiris().parse(output)
-            # Sarif Conversion
-            sarif_output = sarif_outputs[file_name]
             sarif_output.addRun(Osiris().parseSarif(results))
-            sarif_outputs[file_name] = sarif_output
         elif tool == 'honeybadger':
             results['analysis'] = HoneyBadger().parse(output)
-            # Sarif Conversion
-            sarif_output = sarif_outputs[file_name]
             sarif_output.addRun(HoneyBadger().parseSarif(results))
-            sarif_outputs[file_name] = sarif_output
         elif tool == 'smartcheck':
             results['analysis'] = Smartcheck().parse(output)
-            # Sarif Conversion
-            sarif_output = sarif_outputs[file_name]
             sarif_output.addRun(Smartcheck().parseSarif(results))
-            sarif_outputs[file_name] = sarif_output
         elif tool == 'solhint':
             results['analysis'] = Solhint().parse(output)
-            # Sarif Conversion
-            sarif_output = sarif_outputs[file_name]
             sarif_output.addRun(Solhint().parseSarif(results))
-            sarif_outputs[file_name] = sarif_output
         elif tool == 'maian':
             results['analysis'] = Maian().parse(output)
+            sarif_output.addRun(Maian().parseSarif(results))
         elif tool == 'mythril':
             results['analysis'] = json.loads(output)
+            sarif_output.addRun(Mythril().parseSarif(results))
         elif tool == 'securify':
             if len(output) > 0 and output[0] == '{':
                 results['analysis'] = json.loads(output)
@@ -177,6 +168,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 try:
                     output_file = tar.extractfile('results/results.json')
                     results['analysis'] = json.loads(output_file.read())
+                    sarif_output.addRun(Securify().parseSarif(results))
                 except Exception as e:
                     print('pas terrible')
                     output_file = tar.extractfile('results/live.json')
@@ -185,6 +177,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                             'results': json.loads(output_file.read())["patternResults"]
                         }
                     }
+                    sarif_output.addRun(Securify().parseSarifFromLiveJson(results))
         elif tool == 'slither':
             if os.path.exists(os.path.join(output_folder, 'result.tar')):
                 tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
@@ -198,6 +191,8 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 for fout in m:
                     output_file = tar.extractfile('results/' + fout + '/global.findings')
                     results['analysis'].append(Manticore().parse(output_file.read().decode('utf8')))
+
+        sarif_outputs[file_name] = sarif_output
 
     except Exception as e:
         print(output)
