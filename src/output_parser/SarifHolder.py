@@ -66,9 +66,9 @@ def parseRuleIdFromMessage(message):
 def parseLevel(level):
     if isinstance(level, int):
         return "warning"
-    if level.lower() == "warning" or level.lower() == "warnings":
+    if level.lower() == "warning" or level.lower() == "warnings" or level.lower() == "medium":
         return "warning"
-    if level.lower() == "error" or level.lower() == "violations":
+    if level.lower() == "error" or level.lower() == "violations" or level.lower() == "high":
         return "error"
     if level.lower() == "note" or level.lower() == "conflicts" or level.lower() == "informational":
         return "note"

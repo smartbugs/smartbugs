@@ -10,6 +10,7 @@ import re
 from src.output_parser.Manticore import Manticore
 from src.output_parser.Oyente import Oyente
 from src.output_parser.Osiris import Osiris
+from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
 from src.output_parser.Maian import Maian
@@ -183,6 +184,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
                 output_file = tar.extractfile('output.json')
                 results['analysis'] = json.loads(output_file.read())
+                sarif_output.addRun(Slither().parseSarif(results))
         elif tool == 'manticore':
             if os.path.exists(os.path.join(output_folder, 'result.tar')):
                 tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
