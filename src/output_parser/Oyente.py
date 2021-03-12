@@ -1,7 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri
+from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, \
+    isNotDuplicateRule, isNotDuplicateArtifact
 
 
 class Oyente(Parser):
@@ -82,12 +83,13 @@ class Oyente(Parser):
                                            short_description=MultiformatMessageString(
                                                result["message"]))
 
-                rulesList.append(rule)
+                if isNotDuplicateRule(rule, rulesList):
+                    rulesList.append(rule)
 
                 artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
                 logicalLocation = LogicalLocation(name=analysis["name"], kind="contract")
 
-            if artifact != None: artifactsList.append(artifact)
+            if artifact != None and isNotDuplicateArtifact(artifact, artifactsList): artifactsList.append(artifact)
             if logicalLocation != None: logicalLocationsList.append(logicalLocation)
 
         tool = Tool(driver=ToolComponent(name="Oyente", version="0.4.25", rules=rulesList,

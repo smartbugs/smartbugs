@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 
-import yaml
 import argparse
+import json
 import os
 import sys
 from datetime import timedelta
 from multiprocessing import Pool, Value, Manager
 from time import time, localtime, strftime
+
+import git
+import yaml
+
+from src.docker_api.docker_api import analyse_files
 from src.interface.cli import create_parser, getRemoteDataset, \
     isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
-from src.docker_api.docker_api import analyse_files
-import git
 from src.output_parser.SarifHolder import SarifHolder
-import json
 
 cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
 with open(cfg_dataset_path, 'r') as ymlfile:
@@ -90,7 +92,7 @@ def exec_cmd(args: argparse.Namespace):
                     answer = input()
                     if answer.lower() in ['yes', 'y', '']:
                         sys.stdout.write('\x1b[1;37m' + 'Cloning remote dataset [%s <- %s]... ' % (
-                        base_path, remote_info['url']) + '\x1b[0m')
+                            base_path, remote_info['url']) + '\x1b[0m')
                         sys.stdout.flush()
                         git.Repo.clone_from(remote_info['url'], base_path)
                         sys.stdout.write('\x1b[1;37m\n' + 'Done.' + '\x1b[0m\n')
@@ -100,7 +102,7 @@ def exec_cmd(args: argparse.Namespace):
                         quit()
                 else:
                     sys.stdout.write('\x1b[1;37m' + 'Using remote dataset [%s <- %s] ' % (
-                    base_path, remote_info['url']) + '\x1b[0m\n')
+                        base_path, remote_info['url']) + '\x1b[0m\n')
 
                 if dataset == base_name:  # basename included
                     dataset_path = base_path
@@ -164,7 +166,6 @@ def exec_cmd(args: argparse.Namespace):
     if args.aggregate_sarif:
         for file_name in file_names:
             sarif_file_path = 'results/' + file_name + output_folder + '.sarif'
-            print(sarif_outputs[file_name].print())
             with open(sarif_file_path, 'w') as sarif_file:
                 json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2)
 

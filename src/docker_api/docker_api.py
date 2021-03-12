@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 
+import json
+import os
+import re
+import sys
+import tarfile
+from time import time
+
 import docker
 import yaml
-import os
-import sys
-import json
-import tarfile
-import re
+from solidity_parser import parser
+
+from src.output_parser.HoneyBadger import HoneyBadger
+from src.output_parser.Maian import Maian
 from src.output_parser.Manticore import Manticore
-from src.output_parser.Oyente import Oyente
+from src.output_parser.Mythril import Mythril
 from src.output_parser.Osiris import Osiris
+from src.output_parser.Oyente import Oyente
+from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
-from src.output_parser.Maian import Maian
-from src.output_parser.HoneyBadger import HoneyBadger
-from src.output_parser.Securify import Securify
-from src.output_parser.Mythril import Mythril
-from solidity_parser import parser
-from time import time
 
 client = docker.from_env()
 
@@ -136,7 +138,6 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             print('\x1b[1;31m' + 'ERROR: could not get file from container. file not analysed.' + '\x1b[0m')
             logs.write('ERROR: could not get file from container. file not analysed.\n')
 
-
     try:
         sarif_output = sarif_outputs[file_name]
         if tool == 'oyente':
@@ -193,6 +194,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 for fout in m:
                     output_file = tar.extractfile('results/' + fout + '/global.findings')
                     results['analysis'].append(Manticore().parse(output_file.read().decode('utf8')))
+                sarif_output.addRun(Manticore().parseSarif(results))
 
         sarif_outputs[file_name] = sarif_output
 

@@ -85,3 +85,19 @@ def parseUri(uri):
     if len(uri) == 0: return uri
     if uri[0] == '/': return parseUri(uri[1:])
     return uri
+
+
+# Returns True when rule is unique
+def isNotDuplicateRule(newRule, rulesList):
+    for rule in rulesList:
+        if rule.id == newRule.id:
+            return False
+    return True
+
+
+# Returns True when artifact is unique
+def isNotDuplicateArtifact(newArtifact, artifactsList):
+    for artifact in artifactsList:
+        if artifact.location.uri == newArtifact.location.uri:
+            return False
+    return True

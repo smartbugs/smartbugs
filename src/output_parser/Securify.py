@@ -1,7 +1,8 @@
 import numpy
 from sarif_om import *
 
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel
+from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel, \
+    isNotDuplicateArtifact
 
 
 class Securify:
@@ -16,7 +17,9 @@ class Securify:
             fileLocation = parseUri(name.split(':')[0])
             contractName = name.split(':')[1]
             logicalLocationsList.append(LogicalLocation(name=contractName, kind="contract"))
-            artifactsList.append(Artifact(location=ArtifactLocation(uri=fileLocation), source_language="Solidity"))
+            artifact = Artifact(location=ArtifactLocation(uri=fileLocation), source_language="Solidity")
+            if isNotDuplicateArtifact(artifact, artifactsList):
+                artifactsList.append(artifact)
             for vuln, analysisResult in analysis["results"].items():
                 ruleId = parseRuleIdFromMessage(vuln)
                 # Extra loop to add unique rule to tool in sarif

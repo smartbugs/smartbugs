@@ -1,7 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri
+from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, \
+    isNotDuplicateRule, isNotDuplicateArtifact
 
 
 class Solhint(Parser):
@@ -38,10 +39,9 @@ class Solhint(Parser):
         artifactsList = []
         rulesList = []
 
-
         for analysis in solhint_output_results["analysis"]:
-            ruleId = parseRuleIdFromMessage(analysis["message"])
-            message = Message(text=parseMessage(analysis["message"]), arguments=[analysis["type"]])
+            ruleId = parseRuleIdFromMessage(analysis["type"])
+            message = Message(text=parseMessage(analysis["message"]))
             level = parseLevel(analysis["level"])
             uri = parseUri(analysis["file"])
             locations = [
@@ -58,13 +58,13 @@ class Solhint(Parser):
             rule = ReportingDescriptor(id=ruleId,
                                        short_description=MultiformatMessageString(
                                            analysis["message"]))
-
-            rulesList.append(rule)
+            if isNotDuplicateRule(rule, rulesList):
+                rulesList.append(rule)
 
             artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
 
-
-            artifactsList.append(artifact)
+            if isNotDuplicateArtifact(artifact, artifactsList):
+                artifactsList.append(artifact)
 
         logicalLocation = LogicalLocation(name=solhint_output_results["contract"], kind="contract")
 

@@ -1,7 +1,7 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri
+from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, isNotDuplicateRule
 
 
 class Smartcheck(Parser):
@@ -44,13 +44,14 @@ class Smartcheck(Parser):
 
         for analysis in smartcheck_output_results["analysis"]:
             ruleId = parseRuleIdFromMessage(analysis["name"])
-            message = Message(id=str(analysis["patternId"]), text=parseMessage(analysis["name"]),
-                              arguments=[analysis["content"]])
+            message = Message(id=str(analysis["patternId"]), text=parseMessage(analysis["name"]))
             level = parseLevel(analysis["severity"])
             locations = [
                 Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri),
                                                             region=Region(start_line=analysis["line"],
-                                                                          start_column=analysis["column"])))
+                                                                          start_column=analysis["column"],
+                                                                          snippet=ArtifactContent(
+                                                                              text=analysis["content"]))))
                 # Location(logical_locations=LogicalLocation(name=analysis["name"],kind="contract"))
             ]
 
@@ -63,7 +64,8 @@ class Smartcheck(Parser):
                                        short_description=MultiformatMessageString(
                                            analysis["name"]))
 
-            rulesList.append(rule)
+            if isNotDuplicateRule(rule, rulesList):
+                rulesList.append(rule)
 
         logicalLocation = LogicalLocation(name=smartcheck_output_results["contract"], kind="contract")
 

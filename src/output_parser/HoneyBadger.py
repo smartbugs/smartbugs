@@ -1,7 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri
+from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, \
+    isNotDuplicateRule, isNotDuplicateArtifact
 
 
 class HoneyBadger(Parser):
@@ -81,17 +82,19 @@ class HoneyBadger(Parser):
                                            short_description=MultiformatMessageString(
                                                result["message"]))
 
-                rulesList.append(rule)
+                if isNotDuplicateRule(rule, rulesList):
+                    rulesList.append(rule)
 
                 artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
                 logicalLocation = LogicalLocation(name=analysis["name"], kind="contract")
 
-            if artifact != None: artifactsList.append(artifact)
+            if artifact != None and isNotDuplicateArtifact(artifact, artifactsList): artifactsList.append(artifact)
             if logicalLocation != None: logicalLocationsList.append(logicalLocation)
 
         tool = Tool(driver=ToolComponent(name="HoneyBadger", version="1.8.16", rules=rulesList,
                                          information_uri="https://honeybadger.uni.lu/",
-                                         full_description=MultiformatMessageString(text="An analysis tool to detect honeypots in Ethereum smart contracts")))
+                                         full_description=MultiformatMessageString(
+                                             text="An analysis tool to detect honeypots in Ethereum smart contracts")))
 
         run = Run(tool=tool, artifacts=artifactsList, logical_locations=logicalLocationsList, results=resultsList)
 

@@ -1,6 +1,7 @@
 from sarif_om import *
 
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel
+from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel, \
+    isNotDuplicateRule, isNotDuplicateArtifact
 
 
 class Mythril:
@@ -36,9 +37,16 @@ class Mythril:
                                       level=level,
                                       locations=locations))
 
-            rulesList.append(ReportingDescriptor(id=ruleId,
-                                                 short_description=MultiformatMessageString(text=issue["title"]),
-                                                 full_description=MultiformatMessageString(text=message)))
+            rule = ReportingDescriptor(id=ruleId, short_description=MultiformatMessageString(text=issue["title"]),
+                                       full_description=MultiformatMessageString(text=message))
+
+            artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
+
+            if isNotDuplicateRule(rule, rulesList):
+                rulesList.append(rule)
+
+            if isNotDuplicateArtifact(artifact, artifactsList):
+                artifactsList.append(artifact)
 
         tool = Tool(driver=ToolComponent(name="Mythril", version="0.4.25", rules=rulesList,
                                          information_uri="https://mythx.io/",
