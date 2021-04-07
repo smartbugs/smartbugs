@@ -1,7 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, isNotDuplicateRule
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult, \
+    parseLogicalLocation
 
 
 class Smartcheck(Parser):
@@ -39,35 +40,20 @@ class Smartcheck(Parser):
         resultsList = []
         rulesList = []
 
-        uri = parseUri(smartcheck_output_results["contract"])
-        artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
+        uri = smartcheck_output_results["contract"] + ".sol"
+        artifact = parseArtifact(uri=uri)
 
         for analysis in smartcheck_output_results["analysis"]:
-            ruleId = parseRuleIdFromMessage(analysis["name"])
-            message = Message(id=str(analysis["patternId"]), text=parseMessage(analysis["name"]))
-            level = parseLevel(analysis["severity"])
-            locations = [
-                Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri),
-                                                            region=Region(start_line=analysis["line"],
-                                                                          start_column=analysis["column"],
-                                                                          snippet=ArtifactContent(
-                                                                              text=analysis["content"]))))
-                # Location(logical_locations=LogicalLocation(name=analysis["name"],kind="contract"))
-            ]
+            rule = parseRule(tool="smartcheck", vulnerability=analysis["name"])
+            result = parseResult(tool="smartcheck", vulnerability=analysis["name"], level=analysis["severity"], uri=uri,
+                                 line=analysis["line"], column=analysis["column"], snippet=analysis["content"])
 
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=message,
-                                      level=level,
-                                      locations=locations))
-
-            rule = ReportingDescriptor(id=ruleId,
-                                       short_description=MultiformatMessageString(
-                                           analysis["name"]))
+            resultsList.append(result)
 
             if isNotDuplicateRule(rule, rulesList):
                 rulesList.append(rule)
 
-        logicalLocation = LogicalLocation(name=smartcheck_output_results["contract"], kind="contract")
+        logicalLocation = parseLogicalLocation(name=smartcheck_output_results["contract"])
 
         tool = Tool(driver=ToolComponent(name="SmartCheck", version="0.0.12", rules=rulesList,
                                          information_uri="https://tool.smartdec.net/",

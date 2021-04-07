@@ -1,8 +1,8 @@
 import numpy
 from sarif_om import *
 
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel, \
-    isNotDuplicateArtifact
+from src.output_parser.SarifHolder import parseUri, isNotDuplicateArtifact, parseLogicalLocation, parseArtifact, \
+    parseRule, parseResult
 
 
 class Securify:
@@ -16,28 +16,22 @@ class Securify:
         for name, analysis in securify_output_results["analysis"].items():
             fileLocation = parseUri(name.split(':')[0])
             contractName = name.split(':')[1]
-            logicalLocationsList.append(LogicalLocation(name=contractName, kind="contract"))
-            artifact = Artifact(location=ArtifactLocation(uri=fileLocation), source_language="Solidity")
+            logicalLocationsList.append(parseLogicalLocation(name=contractName))
+            artifact = parseArtifact(uri=fileLocation)
             if isNotDuplicateArtifact(artifact, artifactsList):
                 artifactsList.append(artifact)
             for vuln, analysisResult in analysis["results"].items():
-                ruleId = parseRuleIdFromMessage(vuln)
+                rule = parseRule(tool="securify", vulnerability=vuln)
                 # Extra loop to add unique rule to tool in sarif
                 for level, lines in analysisResult.items():
                     if len(lines) > 0:
-                        rulesList.append(
-                            ReportingDescriptor(id=ruleId,
-                                                short_description=MultiformatMessageString(parseMessage(vuln))))
+                        rulesList.append(rule)
                         break
                 for level, lines in analysisResult.items():
                     for lineNumber in lines:
-                        locations = [Location(
-                            physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=fileLocation),
-                                                               region=Region(start_line=lineNumber)))]
-                        resultsList.append(Result(rule_id=ruleId,
-                                                  message=Message(text=parseMessage(vuln)),
-                                                  level=parseLevel(level),
-                                                  locations=locations))
+                        result = parseResult(tool="securify", vulnerability=vuln, level=level, uri=fileLocation, line=lineNumber)
+
+                        resultsList.append(result)
 
         tool = Tool(driver=ToolComponent(name="Securify", version="0.4.25", rules=rulesList,
                                          information_uri="https://github.com/eth-sri/securify2",
@@ -54,30 +48,24 @@ class Securify:
         rulesList = []
 
         for name, analysis in securify_output_results["analysis"].items():
-            artifactsList.append(Artifact(location=ArtifactLocation(uri=name), source_language="Solidity"))
+            artifactsList.append(parseArtifact(uri=name))
             for vuln, analysisResult in analysis["results"].items():
-                ruleId = parseRuleIdFromMessage(vuln)
+                rule = parseRule(tool="securify", vulnerability=vuln)
                 # Extra loop to add unique rule to tool in sarif
                 for level, lines in analysisResult.items():
                     if not isinstance(lines, list):
                         continue
                     if len(lines) > 0:
-                        rulesList.append(
-                            ReportingDescriptor(id=ruleId,
-                                                short_description=MultiformatMessageString(parseMessage(vuln))))
+                        rulesList.append(rule)
                         break
                 for level, lines in analysisResult.items():
                     if not isinstance(lines, list):
                         continue
                     for lineNumber in list(numpy.unique(lines)):
-                        locations = [Location(
-                            physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=name),
-                                                               region=Region(start_line=int(
-                                                                   lineNumber))))]  # wtf? without int() lineNumber returns null??!
-                        resultsList.append(Result(rule_id=ruleId,
-                                                  message=Message(text=parseMessage(vuln)),
-                                                  level=parseLevel(level),
-                                                  locations=locations))
+                        result = parseResult(tool="securify", vulnerability=vuln, level=level, uri=name,
+                                             line=int(lineNumber))  # without int() lineNumber returns null??!
+
+                        resultsList.append(result)
 
         tool = Tool(driver=ToolComponent(name="Securify", version="0.4.25", rules=rulesList,
                                          information_uri="https://github.com/eth-sri/securify2",

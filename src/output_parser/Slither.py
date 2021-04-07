@@ -1,7 +1,7 @@
 from sarif_om import *
 
-from src.output_parser.SarifHolder import parseLevel, parseUri, parseMessage, parseRuleIdFromMessage, \
-    isNotDuplicateRule, isNotDuplicateArtifact
+from src.output_parser.SarifHolder import parseUri, isNotDuplicateRule, isNotDuplicateArtifact, parseRule, \
+    parseArtifact, parseResult
 
 
 class Slither:
@@ -12,18 +12,18 @@ class Slither:
         artifactsList = []
 
         for analysis in slither_output_results["analysis"]:
-            ruleId = parseRuleIdFromMessage(analysis["check"])
-            level = parseLevel(analysis["impact"])
-            message = parseMessage(analysis["description"])
+
+            level = analysis["impact"]
+            message = analysis["description"]
             locations = []
 
             for element in analysis["elements"]:
-                uri = parseUri(element["source_mapping"]["filename"])
+                uri = element["source_mapping"]["filename"]
                 location = Location(physical_location=PhysicalLocation(
-                    artifact_location=ArtifactLocation(uri=uri),
+                    artifact_location=ArtifactLocation(uri=parseUri(uri)),
                     region=Region(start_line=element["source_mapping"]["lines"][0],
                                   end_line=element["source_mapping"]["lines"][-1])), logical_locations=[])
-                artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
+                artifact = parseArtifact(uri=uri)
                 if isNotDuplicateArtifact(artifact, artifactsList):
                     artifactsList.append(artifact)
 
@@ -39,15 +39,16 @@ class Slither:
                         LogicalLocation(name=element["contract"]["name"], kind=element["contract"]["type"]))
                 locations.append(location)
 
-            rule = ReportingDescriptor(id=ruleId, full_description=MultiformatMessageString(text=message))
+            result = parseResult(tool="slither", vulnerability=analysis["check"], level=level)
+
+            result.locations = locations
+
+            rule = parseRule(tool="slither", vulnerability=analysis["check"], full_description=message)
 
             if isNotDuplicateRule(rule, rulesList):
                 rulesList.append(rule)
 
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=Message(text=message),
-                                      level=level,
-                                      locations=locations))
+            resultsList.append(result)
 
         tool = Tool(driver=ToolComponent(name="Slither", version="0.7.0", rules=rulesList,
                                          information_uri="https://github.com/crytic/slither",

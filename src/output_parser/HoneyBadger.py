@@ -1,8 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, \
-    isNotDuplicateRule, isNotDuplicateArtifact
+from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseRule, parseResult, \
+    parseArtifact, parseLogicalLocation
 
 
 class HoneyBadger(Parser):
@@ -62,31 +62,17 @@ class HoneyBadger(Parser):
             logicalLocation = None
 
             for result in analysis["errors"]:
-                ruleId = parseRuleIdFromMessage(result["message"])
-                message = Message(text=parseMessage(result["message"]))
-                level = parseLevel("warning")
-                uri = parseUri(analysis["file"])
-                locations = [
-                    Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri),
-                                                                region=Region(start_line=result["line"],
-                                                                              start_column=result["column"])))
-                    # Location(logical_locations=LogicalLocation(name=analysis["name"],kind="contract"))
-                ]
+                rule = parseRule(tool="honeybadger", vulnerability=result["message"])
+                result = parseResult(tool="honeybadger", vulnerability=result["message"], level="warning",
+                                     uri=analysis["file"], line=result["line"], column=result["column"])
 
-                resultsList.append(Result(rule_id=ruleId,
-                                          message=message,
-                                          level=level,
-                                          locations=locations))
-
-                rule = ReportingDescriptor(id=ruleId,
-                                           short_description=MultiformatMessageString(
-                                               result["message"]))
+                resultsList.append(result)
 
                 if isNotDuplicateRule(rule, rulesList):
                     rulesList.append(rule)
 
-                artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
-                logicalLocation = LogicalLocation(name=analysis["name"], kind="contract")
+                artifact = parseArtifact(uri=analysis["file"])
+                logicalLocation = parseLogicalLocation(analysis["name"])
 
             if artifact != None and isNotDuplicateArtifact(artifact, artifactsList): artifactsList.append(artifact)
             if logicalLocation != None: logicalLocationsList.append(logicalLocation)

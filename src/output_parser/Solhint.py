@@ -1,8 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseLevel, parseMessage, parseUri, \
-    isNotDuplicateRule, isNotDuplicateArtifact
+from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseRule, parseResult, \
+    parseArtifact, parseLogicalLocation
 
 
 class Solhint(Parser):
@@ -40,33 +40,21 @@ class Solhint(Parser):
         rulesList = []
 
         for analysis in solhint_output_results["analysis"]:
-            ruleId = parseRuleIdFromMessage(analysis["type"])
-            message = Message(text=parseMessage(analysis["message"]))
-            level = parseLevel(analysis["level"])
-            uri = parseUri(analysis["file"])
-            locations = [
-                Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri),
-                                                            region=Region(start_line=int(analysis["line"]),
-                                                                          start_column=int(analysis["column"]))))
-            ]
+            rule = parseRule(tool="solhint", vulnerability=analysis["type"], full_description=analysis["message"])
+            result = parseResult(tool="solhint", vulnerability=analysis["type"], level=analysis["level"],
+                                 uri=analysis["file"], line=int(analysis["line"]), column=int(analysis["column"]))
 
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=message,
-                                      level=level,
-                                      locations=locations))
+            resultsList.append(result)
 
-            rule = ReportingDescriptor(id=ruleId,
-                                       short_description=MultiformatMessageString(
-                                           analysis["message"]))
             if isNotDuplicateRule(rule, rulesList):
                 rulesList.append(rule)
 
-            artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
+            artifact = parseArtifact(uri=analysis["file"])
 
             if isNotDuplicateArtifact(artifact, artifactsList):
                 artifactsList.append(artifact)
 
-        logicalLocation = LogicalLocation(name=solhint_output_results["contract"], kind="contract")
+        logicalLocation = parseLogicalLocation(name=solhint_output_results["contract"], kind="contract")
 
         tool = Tool(driver=ToolComponent(name="Solhint", version="3.3.2", rules=rulesList,
                                          information_uri="https://protofire.github.io/solhint/",

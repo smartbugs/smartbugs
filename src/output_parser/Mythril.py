@@ -1,7 +1,7 @@
 from sarif_om import *
 
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel, \
-    isNotDuplicateRule, isNotDuplicateArtifact
+from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseLogicalLocation, parseRule, \
+    parseResult, parseArtifact
 
 
 class Mythril:
@@ -13,34 +13,23 @@ class Mythril:
         rulesList = []
 
         for issue in mythril_output_results["analysis"]["issues"]:
-            uri = parseUri(issue["filename"])
-            ruleId = parseRuleIdFromMessage(issue["title"])
-            message = parseMessage(issue["description"])
-            level = parseLevel(issue["type"])
+            uri = issue["filename"]
+            rule = parseRule(tool="mythril", vulnerability=issue["title"], full_description=issue["description"])
+            result = parseResult(tool="mythril", vulnerability=issue["title"], level=issue["type"], uri=uri,
+                                 line=issue["lineno"], snippet=issue["code"],
+                                 logicalLocation=parseLogicalLocation(issue["function"],
+                                                                      kind="function"))
 
-            locations = [
-                Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri),
-                                                            region=Region(start_line=issue["lineno"],
-                                                                          snippet=ArtifactContent(
-                                                                              text=issue["code"])))),
-                Location(logical_locations=[LogicalLocation(name=issue["function"], kind="function")])
-            ]
             # checking duplicates
             unique = True
             for value in logicalLocationsList:
                 if value.name == issue["function"]:
                     unique = False
             if unique:
-                logicalLocationsList.append(LogicalLocation(name=issue["function"], kind="function"))
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=Message(text=message),
-                                      level=level,
-                                      locations=locations))
+                logicalLocationsList.append(parseLogicalLocation(name=issue["function"], kind="function"))
+            resultsList.append(result)
 
-            rule = ReportingDescriptor(id=ruleId, short_description=MultiformatMessageString(text=issue["title"]),
-                                       full_description=MultiformatMessageString(text=message))
-
-            artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
+            artifact = parseArtifact(uri=uri)
 
             if isNotDuplicateRule(rule, rulesList):
                 rulesList.append(rule)

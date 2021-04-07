@@ -1,7 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRuleIdFromMessage, parseUri, parseMessage, parseLevel
+from src.output_parser.SarifHolder import parseRule, \
+    parseResult, parseArtifact
 
 
 class Maian(Parser):
@@ -28,36 +29,16 @@ class Maian(Parser):
         resultsList = []
         rulesList = []
 
-        uri = parseUri(maian_output_results["contract"])
+        for vulnerability in maian_output_results["analysis"].keys():
+            if maian_output_results["analysis"][vulnerability]:
+                rule = parseRule(tool="maian", vulnerability=vulnerability)
+                result = parseResult(tool="maian", vulnerability=vulnerability, level="error",
+                                     uri=maian_output_results["contract"])
 
-        locations = [Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri)))]
+                rulesList.append(rule)
+                resultsList.append(result)
 
-        if maian_output_results["analysis"]["is_lock_vulnerable"]:
-            ruleId = parseRuleIdFromMessage("LockVulnerable")
-            message = parseMessage("Lock Vulnerability Found!")
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=Message(text=message),
-                                      level=parseLevel("error"),
-                                      locations=locations))
-            rulesList.append(ReportingDescriptor(id=ruleId, short_description=MultiformatMessageString(message)))
-        if maian_output_results["analysis"]["is_prodigal_vulnerable"]:
-            ruleId = parseRuleIdFromMessage("ProdigalVulnerable")
-            message = parseMessage("Prodigal Vulnerability Found!")
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=Message(text=message),
-                                      level=parseLevel("error"),
-                                      locations=locations))
-            rulesList.append(ReportingDescriptor(id=ruleId, short_description=MultiformatMessageString(message)))
-        if maian_output_results["analysis"]["is_suicidal_vulnerable"]:
-            ruleId = parseRuleIdFromMessage("SuicidalVulnerable")
-            message = parseMessage("Suicidal Vulnerability Found!")
-            resultsList.append(Result(rule_id=ruleId,
-                                      message=Message(text=message),
-                                      level=parseLevel("error"),
-                                      locations=locations))
-            rulesList.append(ReportingDescriptor(id=ruleId, short_description=MultiformatMessageString(message)))
-
-        artifact = Artifact(location=ArtifactLocation(uri=uri), source_language="Solidity")
+        artifact = parseArtifact(uri=maian_output_results["contract"])
 
         tool = Tool(driver=ToolComponent(name="Maian", version="5.10", rules=rulesList,
                                          information_uri="https://github.com/ivicanikolicsg/MAIAN",
