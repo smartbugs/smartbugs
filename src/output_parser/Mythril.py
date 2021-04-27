@@ -16,7 +16,7 @@ class Mythril:
             uri = issue["filename"]
             rule = parseRule(tool="mythril", vulnerability=issue["title"], full_description=issue["description"])
             result = parseResult(tool="mythril", vulnerability=issue["title"], level=issue["type"], uri=uri,
-                                 line=issue["lineno"], snippet=issue["code"],
+                                 line=issue["lineno"], snippet=issue["code"] if "code" in issue.keys() else None,
                                  logicalLocation=parseLogicalLocation(issue["function"],
                                                                       kind="function"))
 

@@ -5,5 +5,5 @@ class Parser:
     def parse(self, str):
         pass
 
-    def parseSarif(self, output_results):
+    def parseSarif(self, str):
         pass
