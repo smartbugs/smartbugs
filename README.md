@@ -78,6 +78,8 @@ smartBugs.py [-h, --help]
               --info TOOL           # show information about tool
               --skip-existing       # skip the execution that already has results
               --processes PROCESSES # the number of process to use during the analysis (by default 1)
+              --v1-output           # outputs SmartBugs' version 1 json output
+              --aggregate-sarif     # aggregates SARIF output in a single file
 ```
 
 For example, we can analyse all contracts labelled with type `reentrancy` with the tool oyente by executing:
