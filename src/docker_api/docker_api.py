@@ -8,6 +8,7 @@ import sys
 import json
 import tarfile
 import re
+from src.output_parser.Conkas import Conkas
 from src.output_parser.Manticore import Manticore
 from src.output_parser.Oyente import Oyente
 from src.output_parser.Osiris import Osiris
@@ -170,7 +171,9 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                     for fout in m:
                         output_file = tar.extractfile('results/' + fout + '/global.findings')
                         results['analysis'].append(Manticore().parse(output_file.read().decode('utf8')))
-                        
+            elif tool == 'conkas':
+                results['analysis'] = Conkas().parse(output)
+
         except Exception as e:
             print(output)
             print(e)

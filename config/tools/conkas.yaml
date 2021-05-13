@@ -1,0 +1,4 @@
+docker_image:
+  default: nveloso/conkas
+cmd: -fav -s
+info: Conkas is based on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Conkas uses rattle to lift bytecode to a high level representation.
