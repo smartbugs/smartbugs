@@ -38,6 +38,7 @@ SmartBugs is an execution framework aiming at simplifying the execution of analy
 8. Slither
 9. Smartcheck
 10. Solhint
+11. Conkas
 
 ## Requirements
 
