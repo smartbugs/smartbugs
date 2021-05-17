@@ -165,7 +165,7 @@ def exec_cmd(args: argparse.Namespace):
 
     if args.aggregate_sarif:
         for file_name in file_names:
-            sarif_file_path = 'results/' + file_name + output_folder + '.sarif'
+            sarif_file_path = 'results/' + output_folder + file_name + '.sarif'
             with open(sarif_file_path, 'w') as sarif_file:
                 json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2)
 
