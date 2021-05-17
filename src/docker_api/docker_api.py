@@ -21,6 +21,7 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
+from src.output_parser.Conkas import Conkas
 
 client = docker.from_env()
 
@@ -195,6 +196,8 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                     output_file = tar.extractfile('results/' + fout + '/global.findings')
                     results['analysis'].append(Manticore().parse(output_file.read().decode('utf8')))
                 sarif_output.addRun(Manticore().parseSarif(results))
+        elif tool == 'conkas':
+            results['analysis'] = Conkas().parse(output)
 
         sarif_outputs[file_name] = sarif_output
 
