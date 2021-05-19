@@ -45,7 +45,7 @@ class Conkas(Parser):
             rule = parseRule(tool="conkas", vulnerability=analysis_result["vuln_type"])
             result = parseResult(tool="conkas", vulnerability=analysis_result["vuln_type"], uri=conkas_output_results["contract"] + ".sol",
                                  line=int(analysis_result["line_number"]),
-                                 logicalLocation=parseLogicalLocation(analysis_result["maybe_in_function"]))
+                                 logicalLocation=parseLogicalLocation(analysis_result["maybe_in_function"], kind="function"))
 
             resultsList.append(result)
 
