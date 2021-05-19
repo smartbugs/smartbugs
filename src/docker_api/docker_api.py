@@ -198,6 +198,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 sarif_output.addRun(Manticore().parseSarif(results))
         elif tool == 'conkas':
             results['analysis'] = Conkas().parse(output)
+            sarif_output.addRun(Conkas().parseSarif(results))
 
         sarif_outputs[file_name] = sarif_output
 
