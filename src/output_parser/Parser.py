@@ -5,5 +5,5 @@ class Parser:
     def parse(self, str):
         pass
 
-    def parseSarif(self, str):
+    def parseSarif(self, str, file_path_in_repo):
         pass

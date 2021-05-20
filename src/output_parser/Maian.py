@@ -25,7 +25,7 @@ class Maian(Parser):
                 output['is_suicidal_vulnerable'] = True
         return output
 
-    def parseSarif(self, maian_output_results):
+    def parseSarif(self, maian_output_results, file_path_in_repo):
         resultsList = []
         rulesList = []
 
@@ -33,12 +33,12 @@ class Maian(Parser):
             if maian_output_results["analysis"][vulnerability]:
                 rule = parseRule(tool="maian", vulnerability=vulnerability)
                 result = parseResult(tool="maian", vulnerability=vulnerability, level="error",
-                                     uri=maian_output_results["contract"])
+                                     uri=file_path_in_repo)
 
                 rulesList.append(rule)
                 resultsList.append(result)
 
-        artifact = parseArtifact(uri=maian_output_results["contract"])
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         tool = Tool(driver=ToolComponent(name="Maian", version="5.10", rules=rulesList,
                                          information_uri="https://github.com/ivicanikolicsg/MAIAN",

@@ -1,8 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseRule, parseResult, \
-    parseArtifact, parseLogicalLocation
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
+    parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
 class Oyente(Parser):
@@ -52,37 +52,34 @@ class Oyente(Parser):
             output.append(current_contract)
         return output
 
-    def parseSarif(self, oyente_output_results):
+    def parseSarif(self, oyente_output_results, file_path_in_repo):
         resultsList = []
-        artifactsList = []
         logicalLocationsList = []
         rulesList = []
 
         for analysis in oyente_output_results["analysis"]:
-            artifact = None
-            logicalLocation = None
-
             for result in analysis["errors"]:
                 rule = parseRule(tool="oyente", vulnerability=result["message"])
                 result = parseResult(tool="oyente", vulnerability=result["message"], level=result["level"],
-                                     uri=analysis["file"], line=result["line"], column=result["column"])
+                                     uri=file_path_in_repo, line=result["line"], column=result["column"])
 
                 resultsList.append(result)
 
                 if isNotDuplicateRule(rule, rulesList):
                     rulesList.append(rule)
 
-                artifact = parseArtifact(uri=analysis["file"])
-                logicalLocation = parseLogicalLocation(name=analysis["name"])
+            logicalLocation = parseLogicalLocation(name=analysis["name"])
 
-            if artifact != None and isNotDuplicateArtifact(artifact, artifactsList): artifactsList.append(artifact)
-            if logicalLocation != None: logicalLocationsList.append(logicalLocation)
+            if isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
+                logicalLocationsList.append(logicalLocation)
+
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         tool = Tool(driver=ToolComponent(name="Oyente", version="0.4.25", rules=rulesList,
                                          information_uri="https://oyente.tech/",
                                          full_description=MultiformatMessageString(
                                              text="Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness.")))
 
-        run = Run(tool=tool, artifacts=artifactsList, logical_locations=logicalLocationsList, results=resultsList)
+        run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run

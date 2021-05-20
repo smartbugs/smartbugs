@@ -2,6 +2,7 @@ import attr
 import pandas
 from sarif_om import *
 
+from src.exception.VulnerabilityNotFoundException import VulnerabilityNotFoundException
 VERSION = "2.1.0"
 SCHEMA = "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
 
@@ -12,8 +13,29 @@ class SarifHolder:
         self.translationDict = dict()
 
     # each analysis is defined by a Run
-    def addRun(self, run):
-        self.sarif.runs.append(run)
+    def addRun(self, newRun):
+        # Check if already exists an analysis performed by the same tool
+        for run in self.sarif.runs:
+            if run.tool.driver.name == newRun.tool.driver.name:
+                # Append Unique Rules
+                for rule in newRun.tool.driver.rules:
+                    if isNotDuplicateRule(rule, run.tool.driver.rules):
+                        run.tool.driver.rules.append(rule)
+                # Append Unique Artifacts
+                for artifact in newRun.artifacts:
+                    if isNotDuplicateArtifact(artifact, run.artifacts):
+                        run.artifacts.append(artifact)
+                # Append Unique Logical Locations
+                if newRun.logical_locations is not None:
+                    for logicalLocation in newRun.logical_locations:
+                        if isNotDuplicateLogicalLocation(logicalLocation, run.logical_locations):
+                            run.logical_locations.append(logicalLocation)
+                # Append Results
+                for result in newRun.results:
+                    run.results.append(result)
+                return
+
+        self.sarif.runs.append(newRun)
 
     # to print the analysis from a given tool
     def printToolRun(self, tool):
@@ -84,8 +106,6 @@ def parseResult(tool, vulnerability, level="warning", uri=None, line=None, end_l
 
     level = parseLevel(level)
 
-    uri = parseUri(uri)
-
     locations = [
         Location(physical_location=PhysicalLocation(artifact_location=ArtifactLocation(uri=uri),
                                                     region=Region(start_line=line,
@@ -104,8 +124,6 @@ def parseResult(tool, vulnerability, level="warning", uri=None, line=None, end_l
 
 
 def parseArtifact(uri, source_language="Solidity"):
-    uri = parseUri(uri)
-
     return Artifact(location=ArtifactLocation(uri=uri), source_language=source_language)
 
 
@@ -124,9 +142,8 @@ def findVulnerabilityOnTable(tool, vulnerability_found):
     for index, row in tool_table.iterrows():
         if row["Vulnerability"] in vulnerability_found or vulnerability_found in row["Vulnerability"]:
             return row
-    raise BaseException(
-        'Vulnerability not found on sarif_vulnerability_mapping.csv table. Tool: {}, Vulnerability: {}'.format(tool,
-                                                                                                               vulnerability_found))
+    raise VulnerabilityNotFoundException(tool=tool, vulnerability=vulnerability_found)
+
 
 # given a level produced by a tool, returns the level in SARIF format
 def parseLevel(level):
@@ -143,14 +160,6 @@ def parseLevel(level):
     return "warning"
 
 
-# removes "/" on the begging of the URI for compatibility issues
-def parseUri(uri):
-    if uri is None: return None
-    if len(uri) == 0: return ""
-    if uri[0] == '/': return parseUri(uri[1:])
-    return uri
-
-
 # Returns True when rule is unique
 def isNotDuplicateRule(newRule, rulesList):
     for rule in rulesList:
@@ -163,5 +172,13 @@ def isNotDuplicateRule(newRule, rulesList):
 def isNotDuplicateArtifact(newArtifact, artifactsList):
     for artifact in artifactsList:
         if artifact.location.uri == newArtifact.location.uri:
+            return False
+    return True
+
+
+# Returns True when LogicalLocation is unique
+def isNotDuplicateLogicalLocation(newLogicalLocation, logicalLocationList):
+    for logicalLocation in logicalLocationList:
+        if logicalLocation.name == newLogicalLocation.name:
             return False
     return True

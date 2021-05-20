@@ -167,7 +167,16 @@ def create_parser():
 
     info.add_argument('--aggregate-sarif',
                         action='store_true',
-                        help='aggregate sarif outputs for different tools in the same file')
+                        help='Aggregate sarif outputs for different tools run on the same file')
+
+    info.add_argument('--import-path',
+                        type=str,
+                        default="FILE",     # different directory solidity imports will not work
+                        help="Project's root directory")
+
+    info.add_argument('--unique-sarif-output',
+                      action='store_true',
+                      help='Aggregates all sarif analysis outputs in a single file')
 
     args = parser.parse_args()
     return(args)

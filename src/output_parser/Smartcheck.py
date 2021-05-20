@@ -1,8 +1,7 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult, \
-    parseLogicalLocation
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult, parseLogicalLocation
 
 
 class Smartcheck(Parser):
@@ -36,16 +35,16 @@ class Smartcheck(Parser):
             output.append(current_error)
         return output
 
-    def parseSarif(self, smartcheck_output_results):
+    def parseSarif(self, smartcheck_output_results, file_path_in_repo):
         resultsList = []
         rulesList = []
 
-        uri = smartcheck_output_results["contract"] + ".sol"
-        artifact = parseArtifact(uri=uri)
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         for analysis in smartcheck_output_results["analysis"]:
             rule = parseRule(tool="smartcheck", vulnerability=analysis["name"])
-            result = parseResult(tool="smartcheck", vulnerability=analysis["name"], level=analysis["severity"], uri=uri,
+            result = parseResult(tool="smartcheck", vulnerability=analysis["name"], level=analysis["severity"],
+                                 uri=file_path_in_repo,
                                  line=analysis["line"], column=analysis["column"], snippet=analysis["content"])
 
             resultsList.append(result)

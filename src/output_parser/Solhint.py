@@ -1,8 +1,7 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseRule, parseResult, \
-    parseArtifact, parseLogicalLocation
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, parseArtifact, parseLogicalLocation
 
 
 class Solhint(Parser):
@@ -34,25 +33,21 @@ class Solhint(Parser):
 
         return output
 
-    def parseSarif(self, solhint_output_results):
+    def parseSarif(self, solhint_output_results, file_path_in_repo):
         resultsList = []
-        artifactsList = []
         rulesList = []
 
         for analysis in solhint_output_results["analysis"]:
             rule = parseRule(tool="solhint", vulnerability=analysis["type"], full_description=analysis["message"])
             result = parseResult(tool="solhint", vulnerability=analysis["type"], level=analysis["level"],
-                                 uri=analysis["file"], line=int(analysis["line"]), column=int(analysis["column"]))
+                                 uri=file_path_in_repo, line=int(analysis["line"]), column=int(analysis["column"]))
 
             resultsList.append(result)
 
             if isNotDuplicateRule(rule, rulesList):
                 rulesList.append(rule)
 
-            artifact = parseArtifact(uri=analysis["file"])
-
-            if isNotDuplicateArtifact(artifact, artifactsList):
-                artifactsList.append(artifact)
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         logicalLocation = parseLogicalLocation(name=solhint_output_results["contract"], kind="contract")
 
@@ -61,6 +56,6 @@ class Solhint(Parser):
                                          full_description=MultiformatMessageString(
                                              text="Open source project for linting solidity code. This project provide both security and style guide validations.")))
 
-        run = Run(tool=tool, artifacts=artifactsList, logical_locations=[logicalLocation], results=resultsList)
+        run = Run(tool=tool, artifacts=[artifact], logical_locations=[logicalLocation], results=resultsList)
 
         return run

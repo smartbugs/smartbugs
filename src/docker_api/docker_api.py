@@ -11,6 +11,7 @@ import docker
 import yaml
 from solidity_parser import parser
 
+from src.output_parser.Conkas import Conkas
 from src.output_parser.HoneyBadger import HoneyBadger
 from src.output_parser.Maian import Maian
 from src.output_parser.Manticore import Manticore
@@ -21,7 +22,6 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
-from src.output_parser.Conkas import Conkas
 
 client = docker.from_env()
 
@@ -109,7 +109,8 @@ write output
 """
 
 
-def parse_results(output, tool, file_name, container, cfg, logs, results_folder, start, end, sarif_outputs, v1_output):
+def parse_results(output, tool, file_name, container, cfg, logs, results_folder, start, end, sarif_outputs,
+                  file_path_in_repo, v1_output):
     output_folder = os.path.join(results_folder, file_name)
 
     results = {
@@ -140,29 +141,29 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             logs.write('ERROR: could not get file from container. file not analysed.\n')
 
     try:
-        sarif_output = sarif_outputs[file_name]
+        sarif_holder = sarif_outputs[file_name]
         if tool == 'oyente':
             results['analysis'] = Oyente().parse(output)
             # Sarif Conversion
-            sarif_output.addRun(Oyente().parseSarif(results))
+            sarif_holder.addRun(Oyente().parseSarif(results, file_path_in_repo))
         elif tool == 'osiris':
             results['analysis'] = Osiris().parse(output)
-            sarif_output.addRun(Osiris().parseSarif(results))
+            sarif_holder.addRun(Osiris().parseSarif(results, file_path_in_repo))
         elif tool == 'honeybadger':
             results['analysis'] = HoneyBadger().parse(output)
-            sarif_output.addRun(HoneyBadger().parseSarif(results))
+            sarif_holder.addRun(HoneyBadger().parseSarif(results, file_path_in_repo))
         elif tool == 'smartcheck':
             results['analysis'] = Smartcheck().parse(output)
-            sarif_output.addRun(Smartcheck().parseSarif(results))
+            sarif_holder.addRun(Smartcheck().parseSarif(results, file_path_in_repo))
         elif tool == 'solhint':
             results['analysis'] = Solhint().parse(output)
-            sarif_output.addRun(Solhint().parseSarif(results))
+            sarif_holder.addRun(Solhint().parseSarif(results, file_path_in_repo))
         elif tool == 'maian':
             results['analysis'] = Maian().parse(output)
-            sarif_output.addRun(Maian().parseSarif(results))
+            sarif_holder.addRun(Maian().parseSarif(results, file_path_in_repo))
         elif tool == 'mythril':
             results['analysis'] = json.loads(output)
-            sarif_output.addRun(Mythril().parseSarif(results))
+            sarif_holder.addRun(Mythril().parseSarif(results, file_path_in_repo))
         elif tool == 'securify':
             if len(output) > 0 and output[0] == '{':
                 results['analysis'] = json.loads(output)
@@ -171,7 +172,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 try:
                     output_file = tar.extractfile('results/results.json')
                     results['analysis'] = json.loads(output_file.read())
-                    sarif_output.addRun(Securify().parseSarif(results))
+                    sarif_holder.addRun(Securify().parseSarif(results, file_path_in_repo))
                 except Exception as e:
                     print('pas terrible')
                     output_file = tar.extractfile('results/live.json')
@@ -180,13 +181,13 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                             'results': json.loads(output_file.read())["patternResults"]
                         }
                     }
-                    sarif_output.addRun(Securify().parseSarifFromLiveJson(results))
+                    sarif_holder.addRun(Securify().parseSarifFromLiveJson(results, file_path_in_repo))
         elif tool == 'slither':
             if os.path.exists(os.path.join(output_folder, 'result.tar')):
                 tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
                 output_file = tar.extractfile('output.json')
                 results['analysis'] = json.loads(output_file.read())
-                sarif_output.addRun(Slither().parseSarif(results))
+                sarif_holder.addRun(Slither().parseSarif(results, file_path_in_repo))
         elif tool == 'manticore':
             if os.path.exists(os.path.join(output_folder, 'result.tar')):
                 tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
@@ -195,12 +196,12 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 for fout in m:
                     output_file = tar.extractfile('results/' + fout + '/global.findings')
                     results['analysis'].append(Manticore().parse(output_file.read().decode('utf8')))
-                sarif_output.addRun(Manticore().parseSarif(results))
+                sarif_holder.addRun(Manticore().parseSarif(results, file_path_in_repo))
         elif tool == 'conkas':
             results['analysis'] = Conkas().parse(output)
-            sarif_output.addRun(Conkas().parseSarif(results))
+            sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
 
-        sarif_outputs[file_name] = sarif_output
+        sarif_outputs[file_name] = sarif_holder
 
     except Exception as e:
         print(output)
@@ -221,7 +222,7 @@ analyse solidity files
 """
 
 
-def analyse_files(tool, file, logs, now, sarif_outputs, v1_output):
+def analyse_files(tool, file, logs, now, sarif_outputs, v1_output, import_path):
     try:
         cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
@@ -245,8 +246,14 @@ def analyse_files(tool, file, logs, now, sarif_outputs, v1_output):
             logs.write(tool + ': commands not provided. please check you config file.\n')
             sys.exit(tool + ': commands not provided. please check you config file.')
 
+        if import_path == "FILE":
+            import_path = file
+            file_path_in_repo = file
+        else:
+            file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
+
         # bind directory path instead of file path to allow imports in the same directory
-        volume_bindings = mount_volumes(os.path.dirname(file), logs)
+        volume_bindings = mount_volumes(os.path.dirname(import_path), logs)
 
         file_name = os.path.basename(file)
         file_name = os.path.splitext(file_name)[0]
@@ -288,7 +295,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, v1_output):
             end = time()
 
             parse_results(output, tool, file_name, container, cfg, logs, results_folder, start, end, sarif_outputs,
-                          v1_output)
+                          file_path_in_repo, v1_output)
         finally:
             stop_container(container, logs)
             remove_container(container, logs)

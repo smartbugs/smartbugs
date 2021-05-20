@@ -3,9 +3,10 @@
 import argparse
 import json
 import os
+import pathlib
 import sys
 from datetime import timedelta
-from multiprocessing import Pool, Value, Manager
+from multiprocessing import Pool, Manager
 from time import time, localtime, strftime
 
 import git
@@ -24,17 +25,14 @@ with open(cfg_dataset_path, 'r') as ymlfile:
         print(exc)
 
 output_folder = strftime("%Y%d%m_%H%M", localtime())
+pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
 logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
-start_time = time()
-nb_task_done = Value('i', 0)
-total_execution = Value('f', 0)
-nb_task = 0
 
 
 def analyse(args):
-    global logs, output_folder, nb_task, nb_task_done, total_execution
+    global logs, output_folder
 
-    (tool, file, sarif_outputs, v1_output) = args
+    (tool, file, sarif_outputs, import_path, v1_output, nb_task, nb_task_done, total_execution, start_time) = args
 
     try:
         start = time()
@@ -43,13 +41,11 @@ def analyse(args):
         sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' + tool + ']' + '\x1b[0m' + '\n')
 
-        analyse_files(tool, file, logs, output_folder, sarif_outputs, v1_output)
+        analyse_files(tool, file, logs, output_folder, sarif_outputs, v1_output, import_path)
 
-        with nb_task_done.get_lock():
-            nb_task_done.value += 1
+        nb_task_done.value += 1
 
-        with total_execution.get_lock():
-            total_execution.value += time() - start
+        total_execution.value += time() - start
 
         duration = str(timedelta(seconds=round(time() - start)))
 
@@ -67,7 +63,7 @@ def analyse(args):
 
 
 def exec_cmd(args: argparse.Namespace):
-    global logs, output_folder, nb_task
+    global logs, output_folder
     logs.write('Arguments passed: ' + str(sys.argv) + '\n')
 
     files_to_analyze = []
@@ -121,6 +117,8 @@ def exec_cmd(args: argparse.Namespace):
             files_to_analyze.append(file)
         # analyse dirs recursively
         elif os.path.isdir(file):
+            if args.import_path == "FILE":
+                args.import_path = file
             for root, dirs, files in os.walk(file):
                 for name in files:
                     if name.endswith('.sol'):
@@ -136,7 +134,15 @@ def exec_cmd(args: argparse.Namespace):
         TOOLS_CHOICES.remove('all')
         args.tool = TOOLS_CHOICES
 
-    sarif_outputs = Manager().dict()
+    # Setting up analysis variables
+    start_time = time()
+    manager = Manager()
+
+    nb_task_done = manager.Value('i', 0)
+    total_execution = manager.Value('f', 0)
+    nb_task = len(files_to_analyze) * len(args.tool)
+
+    sarif_outputs = manager.dict()
     tasks = []
     file_names = []
     for file in files_to_analyze:
@@ -151,10 +157,9 @@ def exec_cmd(args: argparse.Namespace):
                 if os.path.exists(folder):
                     continue
 
-            tasks.append((tool, file, sarif_outputs, args.v1_output))
+            tasks.append((tool, file, sarif_outputs, args.import_path, args.v1_output, nb_task, nb_task_done,
+                          total_execution, start_time))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
-
-    nb_task = len(tasks)
 
     # initialize all sarif outputs
     for file_name in file_names:
@@ -165,14 +170,24 @@ def exec_cmd(args: argparse.Namespace):
 
     if args.aggregate_sarif:
         for file_name in file_names:
-            sarif_file_path = 'results/' + output_folder + file_name + '.sarif'
+            sarif_file_path = 'results/' + output_folder + '/' + file_name + '.sarif'
             with open(sarif_file_path, 'w') as sarif_file:
                 json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2)
+
+    if args.unique_sarif_output:
+        sarif_holder = SarifHolder()
+        for sarif_output in sarif_outputs.values():
+            for run in sarif_output.sarif.runs:
+                sarif_holder.addRun(run)
+        sarif_file_path = 'results/' + output_folder + '.sarif'
+        with open(sarif_file_path, 'w') as sarif_file:
+            json.dump(sarif_holder.print(), sarif_file, indent=2)
 
     return logs
 
 
 if __name__ == '__main__':
+    start_time = time()
     args = create_parser()
     logs = exec_cmd(args)
     elapsed_time = round(time() - start_time)

@@ -1,8 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseRule, parseResult, \
-    parseArtifact, parseLogicalLocation
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
+    parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
 class HoneyBadger(Parser):
@@ -51,37 +51,34 @@ class HoneyBadger(Parser):
             output.append(current_contract)
         return output
 
-    def parseSarif(self, honeybadger_output_results):
+    def parseSarif(self, honeybadger_output_results, file_path_in_repo):
         resultsList = []
-        artifactsList = []
         logicalLocationsList = []
         rulesList = []
 
         for analysis in honeybadger_output_results["analysis"]:
-            artifact = None
-            logicalLocation = None
-
             for result in analysis["errors"]:
                 rule = parseRule(tool="honeybadger", vulnerability=result["message"])
                 result = parseResult(tool="honeybadger", vulnerability=result["message"], level="warning",
-                                     uri=analysis["file"], line=result["line"], column=result["column"])
+                                     uri=file_path_in_repo, line=result["line"], column=result["column"])
 
                 resultsList.append(result)
 
                 if isNotDuplicateRule(rule, rulesList):
                     rulesList.append(rule)
 
-                artifact = parseArtifact(uri=analysis["file"])
-                logicalLocation = parseLogicalLocation(analysis["name"])
+            logicalLocation = parseLogicalLocation(analysis["name"])
 
-            if artifact != None and isNotDuplicateArtifact(artifact, artifactsList): artifactsList.append(artifact)
-            if logicalLocation != None: logicalLocationsList.append(logicalLocation)
+            if logicalLocation is not None and isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
+                logicalLocationsList.append(logicalLocation)
+
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         tool = Tool(driver=ToolComponent(name="HoneyBadger", version="1.8.16", rules=rulesList,
                                          information_uri="https://honeybadger.uni.lu/",
                                          full_description=MultiformatMessageString(
                                              text="An analysis tool to detect honeypots in Ethereum smart contracts")))
 
-        run = Run(tool=tool, artifacts=artifactsList, logical_locations=logicalLocationsList, results=resultsList)
+        run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run

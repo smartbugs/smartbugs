@@ -1,8 +1,8 @@
 from sarif_om import *
 
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import isNotDuplicateRule, isNotDuplicateArtifact, parseRule, parseResult, \
-    parseArtifact, parseLogicalLocation
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
+    parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
 class Osiris(Parser):
@@ -52,37 +52,35 @@ class Osiris(Parser):
             output.append(current_contract)
         return output
 
-    def parseSarif(self, osiris_output_results):
+    def parseSarif(self, osiris_output_results, file_path_in_repo):
         resultsList = []
-        artifactsList = []
         logicalLocationsList = []
         rulesList = []
 
         for analysis in osiris_output_results["analysis"]:
-            artifact = None
-            logicalLocation = None
 
             for result in analysis["errors"]:
                 rule = parseRule(tool="osiris", vulnerability=result["message"])
                 result = parseResult(tool="osiris", vulnerability=result["message"], level="warning",
-                                     uri=analysis["file"], line=result["line"], column=result["column"])
+                                     uri=file_path_in_repo, line=result["line"], column=result["column"])
 
                 resultsList.append(result)
 
                 if isNotDuplicateRule(rule, rulesList):
                     rulesList.append(rule)
 
-                artifact = parseArtifact(uri=analysis["file"])
-                logicalLocation = parseLogicalLocation(name=analysis["name"])
+            logicalLocation = parseLogicalLocation(name=analysis["name"])
 
-            if artifact != None and isNotDuplicateArtifact(artifact, artifactsList): artifactsList.append(artifact)
-            if logicalLocation != None: logicalLocationsList.append(logicalLocation)
+            if isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
+                logicalLocationsList.append(logicalLocation)
+
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         tool = Tool(driver=ToolComponent(name="Osiris", version="1.0", rules=rulesList,
                                          information_uri="https://github.com/christoftorres/Osiris",
                                          full_description=MultiformatMessageString(
                                              text="Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente.")))
 
-        run = Run(tool=tool, artifacts=artifactsList, logical_locations=logicalLocationsList, results=resultsList)
+        run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run

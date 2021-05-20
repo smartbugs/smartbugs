@@ -33,17 +33,17 @@ class Manticore(Parser):
             output.append(current_vul)
         return output
 
-    def parseSarif(self, manticore_output_results):
+    def parseSarif(self, manticore_output_results, file_path_in_repo):
         rulesList = []
         resultsList = []
 
-        uri = manticore_output_results["contract"] + ".sol"
-        artifact = parseArtifact(uri=uri)
+        artifact = parseArtifact(uri=file_path_in_repo)
 
         for multipleAnalysis in manticore_output_results["analysis"]:
             for analysis in multipleAnalysis:
                 rule = parseRule(tool="manticore", vulnerability=analysis["name"])
-                result = parseResult(tool="manticore", vulnerability=analysis["name"], level="warning", uri=uri,
+                result = parseResult(tool="manticore", vulnerability=analysis["name"], level="warning",
+                                     uri=file_path_in_repo,
                                      line=analysis["line"], snippet=analysis["code"])
 
                 resultsList.append(result)
