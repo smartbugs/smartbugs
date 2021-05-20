@@ -97,7 +97,7 @@ def parseRule(tool, vulnerability, full_description=None):
                                short_description=MultiformatMessageString(
                                    vuln_info["Vulnerability"]),
                                full_description=MultiformatMessageString(full_description),
-                               name=vuln_info["Type"])
+                               name=vuln_info["Type"] + "Vulnerability")
 
 
 def parseResult(tool, vulnerability, level="warning", uri=None, line=None, end_line=None, column=None, snippet=None,
