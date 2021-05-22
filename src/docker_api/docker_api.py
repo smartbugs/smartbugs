@@ -86,8 +86,6 @@ def stop_container(container, logs):
 """
 remove container
 """
-
-
 def remove_container(container, logs):
     try:
         if container is not None:
