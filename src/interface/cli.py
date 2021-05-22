@@ -7,6 +7,7 @@ from functools import reduce
 
 DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
+VERSION_CHOICES = ['v1', 'v2', 'all']
 CONFIG_TOOLS_PATH = os.path.abspath('config/tools')
 CONFIG_DATASET_PATH = os.path.abspath('config/dataset/dataset.yaml')
 
@@ -161,9 +162,10 @@ def create_parser():
                         default=1,
                         help='The number of parallel execution')
 
-    info.add_argument('--v1-output',
-                        action='store_true',
-                        help='print smartbugs\' v1 output')
+    info.add_argument('--output-version',
+                        choices=VERSION_CHOICES,
+                        default='all',
+                        help='Smartbugs\' version output - v1: Json - v2:SARIF')
 
     info.add_argument('--aggregate-sarif',
                         action='store_true',
