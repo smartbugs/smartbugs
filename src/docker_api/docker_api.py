@@ -8,8 +8,6 @@ import sys
 import tarfile
 import yaml
 
-from time import time
-
 from solidity_parser import parser
 
 from src.output_parser.Conkas import Conkas
@@ -23,6 +21,9 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
+
+from time import time
+
 
 client = docker.from_env()
 
