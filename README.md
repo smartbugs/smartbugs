@@ -79,6 +79,10 @@ smartBugs.py [-h, --help]
               --info TOOL           # show information about tool
               --skip-existing       # skip the execution that already has results
               --processes PROCESSES # the number of process to use during the analysis (by default 1)
+              --output-version      # specifies SmartBugs' output version {v1 (Json), v2 (SARIF), all}
+              --aggregate-sarif     # aggregates SARIF output per analysed file
+              --unique-sarif-output # aggregates all analysis in a single file
+              --import-path PATH    # defines project's root directory so that analysis tools are able to import from other files
 ```
 
 For example, we can analyse all contracts labelled with type `reentrancy` with the tool oyente by executing:

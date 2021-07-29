@@ -1,5 +1,8 @@
 #Ignore results
+results/conkas/*
 results/oyente/*
+results/honeybadger/*
+results/osiris/*
 results/maian/*
 results/manticore/*
 results/mythril/*
@@ -10,6 +13,7 @@ results/solhint/*
 results/logs/*
 
 #Keep folders
+!results/conkas/.keep
 !results/securify/.keep
 !results/oyente/.keep
 !results/maian/.keep
@@ -32,3 +36,8 @@ __pycache__
 
 #Ignore default remote datasets
 dataset/solidiFI
+
+#Ignore PyCharm files
+venv/
+.idea/
+results/*.*
