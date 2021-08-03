@@ -30,7 +30,7 @@ client = docker.from_env()
 """
 get solidity compiler version
 """
-def get_solc_verion(file, logs):
+def get_solc_version(file, logs):
     try:
         with open(file, 'r', encoding='utf-8') as fd:
             sourceUnit = parser.parse(fd.read())
@@ -249,7 +249,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         file_name = os.path.splitext(file_name)[0]
         start = time()
 
-        (solc_version, solc_version_minor) = get_solc_verion(file, logs)
+        (solc_version, solc_version_minor) = get_solc_version(file, logs)
 
         if isinstance(solc_version, int) and solc_version < 5 and 'solc<5' in cfg['docker_image']:
             image = cfg['docker_image']['solc<5']
