@@ -147,8 +147,10 @@ def exec_cmd(args: argparse.Namespace):
     file_paths_in_repo = []
     for file in files_to_analyze:
         if args.import_path == "FILE":
+            import_path = os.path.dirname(file)
             file_path_in_repo = file
         else:
+            import_path = args.import_path
             file_path_in_repo = file.replace(args.import_path, '')  # file path relative to project's root directory
         file_paths_in_repo.append(file_path_in_repo)
         for tool in args.tool:
@@ -162,7 +164,7 @@ def exec_cmd(args: argparse.Namespace):
                 if os.path.exists(folder):
                     continue
 
-            tasks.append((tool, file, file_path_in_repo, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
+            tasks.append((tool, file, file_path_in_repo, sarif_outputs, import_path, args.output_version, nb_task, nb_task_done,
                           total_execution, start_time))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 

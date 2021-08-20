@@ -9,7 +9,7 @@ from src.exception.VulnerabilityNotFoundException import VulnerabilityNotFoundEx
 VERSION = "2.1.0"
 SCHEMA = "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
 
-VULNERABILITY_TABLE_PATH = os.path.dirname(__file__) + "sarif_vulnerability_mapping.csv"
+VULNERABILITY_TABLE_PATH = os.path.dirname(__file__) + "/sarif_vulnerability_mapping.csv"
 
 class SarifHolder:
     def __init__(self):
