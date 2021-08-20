@@ -1,11 +1,15 @@
+import os
+
 import attr
 import pandas
 from sarif_om import *
 
 from src.exception.VulnerabilityNotFoundException import VulnerabilityNotFoundException
+
 VERSION = "2.1.0"
 SCHEMA = "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
 
+VULNERABILITY_TABLE_PATH = os.path.dirname(__file__) + "sarif_vulnerability_mapping.csv"
 
 class SarifHolder:
     def __init__(self):
@@ -133,7 +137,7 @@ def parseLogicalLocation(name, kind="contract"):
 
 # returns the row from the table for a given vulnerability and tool
 def findVulnerabilityOnTable(tool, vulnerability_found):
-    table = pandas.read_csv("src/output_parser/sarif_vulnerability_mapping.csv")
+    table = pandas.read_csv(VULNERABILITY_TABLE_PATH)
 
     tool_table = table.loc[table["Tool"] == tool]
 

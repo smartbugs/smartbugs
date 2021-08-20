@@ -8,8 +8,8 @@ from functools import reduce
 DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
 VERSION_CHOICES = ['v1', 'v2', 'all']
-CONFIG_TOOLS_PATH = os.path.abspath('config/tools')
-CONFIG_DATASET_PATH = os.path.abspath('config/dataset/dataset.yaml')
+CONFIG_TOOLS_PATH = os.path.abspath(os.path.dirname(__file__) + '/../../config/tools')
+CONFIG_DATASET_PATH = os.path.abspath(os.path.dirname(__file__) + '/../../config/dataset/dataset.yaml')
 
 with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
     try:
