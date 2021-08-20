@@ -16,7 +16,7 @@ from src.output_parser.SarifHolder import SarifHolder
 from time import time, localtime, strftime
 
 
-cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
+cfg_dataset_path = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/config/dataset/dataset.yaml')
 with open(cfg_dataset_path, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
@@ -24,14 +24,14 @@ with open(cfg_dataset_path, 'r') as ymlfile:
         print(exc)
 
 output_folder = strftime("%Y%d%m_%H%M", localtime())
-pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
-logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
+pathlib.Path(os.path.dirname(os.path.realpath(__file__)) + '/results/logs/').mkdir(parents=True, exist_ok=True)
+logs = open(os.path.dirname(os.path.realpath(__file__)) + '/results/logs/SmartBugs_' + output_folder + '.log', 'w')
 
 
 def analyse(args):
     global logs, output_folder
 
-    (tool, file, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time) = args
+    (tool, file, file_path_in_repo, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time) = args
 
     try:
         start = time()
@@ -40,7 +40,7 @@ def analyse(args):
         sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' + tool + ']' + '\x1b[0m' + '\n')
 
-        analyse_files(tool, file, logs, output_folder, sarif_outputs, output_version, import_path)
+        analyse_files(tool, file, file_path_in_repo, logs, output_folder, sarif_outputs, output_version, import_path)
 
         nb_task_done.value += 1
 
@@ -144,7 +144,13 @@ def exec_cmd(args: argparse.Namespace):
     sarif_outputs = manager.dict()
     tasks = []
     file_names = []
+    file_paths_in_repo = []
     for file in files_to_analyze:
+        if args.import_path == "FILE":
+            file_path_in_repo = file
+        else:
+            file_path_in_repo = file.replace(args.import_path, '')  # file path relative to project's root directory
+        file_paths_in_repo.append(file_path_in_repo)
         for tool in args.tool:
             results_folder = 'results/' + tool + '/' + output_folder
             if not os.path.exists(results_folder):
@@ -156,12 +162,12 @@ def exec_cmd(args: argparse.Namespace):
                 if os.path.exists(folder):
                     continue
 
-            tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
+            tasks.append((tool, file, file_path_in_repo, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
                           total_execution, start_time))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 
     # initialize all sarif outputs
-    for file_name in file_names:
+    for file_name in file_paths_in_repo:
         sarif_outputs[file_name] = SarifHolder()
 
     with Pool(processes=args.processes) as pool:
@@ -169,8 +175,9 @@ def exec_cmd(args: argparse.Namespace):
 
     if args.aggregate_sarif:
         for file_name in file_names:
-            sarif_file_path = 'results/' + output_folder + '/' + file_name + '.sarif'
-            with open(sarif_file_path, 'w') as sarif_file:
+            sarif_file_path = 'results/' + output_folder + '/'
+            pathlib.Path(sarif_file_path).mkdir(parents=True, exist_ok=True)
+            with open(sarif_file_path + file_name + '.sarif', 'w') as sarif_file:
                 json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2)
 
     if args.unique_sarif_output:

@@ -131,7 +131,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             logs.write('ERROR: could not get file from container. file not analysed.\n')
 
     try:
-        sarif_holder = sarif_outputs[file_name]
+        sarif_holder = sarif_outputs[file_path_in_repo]
         if tool == 'oyente':
             results['analysis'] = Oyente().parse(output)
             # Sarif Conversion
@@ -191,7 +191,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             results['analysis'] = Conkas().parse(output)
             sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
 
-        sarif_outputs[file_name] = sarif_holder
+        sarif_outputs[file_path_in_repo] = sarif_holder
 
     except Exception as e:
         print(output)
@@ -205,16 +205,16 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
 
     if output_version == 'v2' or output_version == 'all':
         with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarifFile:
-            json.dump(sarif_outputs[file_name].printToolRun(tool=tool), sarifFile, indent=2)
+            json.dump(sarif_outputs[file_path_in_repo].printToolRun(tool=tool), sarifFile, indent=2)
 
 
 
 """
 analyse solidity files
 """
-def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path):
+def analyse_files(tool, file, file_path_in_repo, logs, now, sarif_outputs, output_version, import_path):
     try:
-        cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
+        cfg_path = os.path.abspath(os.path.dirname(__file__) + '/../../config/tools/' + tool + '.yaml')
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
             try:
                 cfg = yaml.safe_load(ymlfile)
@@ -223,7 +223,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
                 logs.write(exc)
 
         # create result folder with time
-        results_folder = 'results/' + tool + '/' + now
+        results_folder = os.path.dirname(__file__) + '/../../results/' + tool + '/' + now
         if not os.path.exists(results_folder):
             os.makedirs(results_folder)
         # os.makedirs(os.path.dirname(results_folder), exist_ok=True)
@@ -236,11 +236,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
             logs.write(tool + ': commands not provided. please check you config file.\n')
             sys.exit(tool + ': commands not provided. please check you config file.')
 
-        if import_path == "FILE":
-            import_path = file
-            file_path_in_repo = file
-        else:
-            file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
+
 
         # bind directory path instead of file path to allow imports in the same directory
         volume_bindings = mount_volumes(os.path.dirname(import_path), logs)
