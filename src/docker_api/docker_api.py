@@ -258,7 +258,7 @@ def analyse_files(tool, file, file_path_in_repo, logs, now, sarif_outputs, outpu
 
         cmd = cfg['cmd']
         if '{contract}' in cmd:
-            cmd = cmd.replace('{contract}', '/' + file)
+            cmd = cmd.replace('{contract}', '/mnt/' + file)
         else:
             cmd += ' /mnt/' + file
         container = None
