@@ -154,7 +154,7 @@ def exec_cmd(args: argparse.Namespace):
             file_path_in_repo = file.replace(args.import_path, '')  # file path relative to project's root directory
         file_paths_in_repo.append(file_path_in_repo)
         for tool in args.tool:
-            results_folder = 'results/' + tool + '/' + output_folder
+            results_folder = os.path.dirname(os.path.realpath(__file__)) + '/results/' + tool + '/' + output_folder
             if not os.path.exists(results_folder):
                 os.makedirs(results_folder)
 
