@@ -187,9 +187,9 @@ def exec_cmd(args: argparse.Namespace):
         for sarif_output in sarif_outputs.values():
             for run in sarif_output.sarif.runs:
                 sarif_holder.addRun(run)
-        sarif_file_path = os.path.dirname(os.path.realpath(__file__)) + '/results/' + output_folder + '.sarif'
+        sarif_file_path = os.path.dirname(os.path.realpath(__file__)) + '/results/'
         pathlib.Path(sarif_file_path).mkdir(parents=True, exist_ok=True)
-        with open(sarif_file_path, 'w') as sarif_file:
+        with open(sarif_file_path + output_folder + '.sarif', 'w') as sarif_file:
             json.dump(sarif_holder.print(), sarif_file, indent=2)
 
     return logs
