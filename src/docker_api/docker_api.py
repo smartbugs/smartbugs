@@ -24,6 +24,7 @@ from src.output_parser.Solhint import Solhint
 
 from time import time
 
+DOCKER_API_FILE_PATH = os.path.dirname(__file__)
 
 client = docker.from_env()
 
@@ -214,7 +215,7 @@ analyse solidity files
 """
 def analyse_files(tool, file, file_path_in_repo, logs, now, sarif_outputs, output_version, import_path):
     try:
-        cfg_path = os.path.abspath(os.path.dirname(__file__) + '/../../config/tools/' + tool + '.yaml')
+        cfg_path = os.path.abspath(DOCKER_API_FILE_PATH + '/../../config/tools/' + tool + '.yaml')
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
             try:
                 cfg = yaml.safe_load(ymlfile)
@@ -223,7 +224,7 @@ def analyse_files(tool, file, file_path_in_repo, logs, now, sarif_outputs, outpu
                 logs.write(exc)
 
         # create result folder with time
-        results_folder = os.path.dirname(__file__) + '/../../results/' + tool + '/' + now
+        results_folder = DOCKER_API_FILE_PATH + '/../../results/' + tool + '/' + now
         if not os.path.exists(results_folder):
             os.makedirs(results_folder)
         # os.makedirs(os.path.dirname(results_folder), exist_ok=True)

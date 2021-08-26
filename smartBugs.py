@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse
+from collections import namedtuple
+
 import git
 import json
 import os
@@ -15,47 +17,51 @@ from src.interface.cli import create_parser, getRemoteDataset, isRemoteDataset, 
 from src.output_parser.SarifHolder import SarifHolder
 from time import time, localtime, strftime
 
+SMARTBUGS_FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+DATASET_CONFIG_FILE_PATH = SMARTBUGS_FILE_PATH + '/config/dataset/dataset.yaml'
 
-cfg_dataset_path = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/config/dataset/dataset.yaml')
+cfg_dataset_path = os.path.abspath(DATASET_CONFIG_FILE_PATH)
 with open(cfg_dataset_path, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
     except yaml.YAMLError as exc:
-        print(exc)
+        raise Exception('Dataset YAML not found.'
+                        ' Please check that the following file is correct at smartbugs/config/dataset/dataset.yaml')
 
 output_folder = strftime("%Y%d%m_%H%M", localtime())
-pathlib.Path(os.path.dirname(os.path.realpath(__file__)) + '/results/logs/').mkdir(parents=True, exist_ok=True)
-logs = open(os.path.dirname(os.path.realpath(__file__)) + '/results/logs/SmartBugs_' + output_folder + '.log', 'w')
+pathlib.Path(SMARTBUGS_FILE_PATH + '/results/logs/').mkdir(parents=True, exist_ok=True)
+logs = open(SMARTBUGS_FILE_PATH + '/results/logs/SmartBugs_' + output_folder + '.log', 'w')
+
+Task = namedtuple('Task', ['tool', 'file', 'file_path_in_repo', 'sarif_outputs', 'import_path', 'output_version',
+                               'nb_task', 'nb_task_done', 'total_execution', 'start_time'])
 
 
-def analyse(args):
+def analyse(task):
     global logs, output_folder
-
-    (tool, file, file_path_in_repo, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time) = args
 
     try:
         start = time()
 
-        sys.stdout.write('\x1b[1;37m' + 'Analysing file [%d/%d]: ' % (nb_task_done.value, nb_task) + '\x1b[0m')
-        sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
-        sys.stdout.write('\x1b[1;37m' + ' [' + tool + ']' + '\x1b[0m' + '\n')
+        sys.stdout.write('\x1b[1;37m' + 'Analysing file [%d/%d]: ' % (task.nb_task_done.value, task.nb_task) + '\x1b[0m')
+        sys.stdout.write('\x1b[1;34m' + task.file + '\x1b[0m')
+        sys.stdout.write('\x1b[1;37m' + ' [' + task.tool + ']' + '\x1b[0m' + '\n')
 
-        analyse_files(tool, file, file_path_in_repo, logs, output_folder, sarif_outputs, output_version, import_path)
+        analyse_files(task.tool, task.file, task.file_path_in_repo, logs, output_folder, task.sarif_outputs, task.output_version, task.import_path)
 
-        nb_task_done.value += 1
+        task.nb_task_done.value += 1
 
-        total_execution.value += time() - start
+        task.total_execution.value += time() - start
 
         duration = str(timedelta(seconds=round(time() - start)))
 
-        task_sec = nb_task_done.value / (time() - start_time)
-        remaining_time = str(timedelta(seconds=round((nb_task - nb_task_done.value) / task_sec)))
+        task_sec = task.nb_task_done.value / (time() - task.start_time)
+        remaining_time = str(timedelta(seconds=round((task.nb_task - task.nb_task_done.value) / task_sec)))
 
         sys.stdout.write(
-            '\x1b[1;37m' + 'Done [%d/%d, %s]: ' % (nb_task_done.value, nb_task, remaining_time) + '\x1b[0m')
-        sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
-        sys.stdout.write('\x1b[1;37m' + ' [' + tool + '] in ' + duration + ' ' + '\x1b[0m' + '\n')
-        logs.write('[%d/%d] ' % (nb_task_done.value, nb_task) + file + ' [' + tool + '] in ' + duration + ' \n')
+            '\x1b[1;37m' + 'Done [%d/%d, %s]: ' % (task.nb_task_done.value, task.nb_task, remaining_time) + '\x1b[0m')
+        sys.stdout.write('\x1b[1;34m' + task.file + '\x1b[0m')
+        sys.stdout.write('\x1b[1;37m' + ' [' + task.tool + '] in ' + duration + ' ' + '\x1b[0m' + '\n')
+        logs.write('[%d/%d] ' % (task.nb_task_done.value, task.nb_task) + task.file + ' [' + task.tool + '] in ' + duration + ' \n')
     except Exception as e:
         print(e)
         raise e
@@ -164,7 +170,7 @@ def exec_cmd(args: argparse.Namespace):
                 if os.path.exists(folder):
                     continue
 
-            tasks.append((tool, file, file_path_in_repo, sarif_outputs, import_path, args.output_version, nb_task, nb_task_done,
+            tasks.append(Task(tool, file, file_path_in_repo, sarif_outputs, import_path, args.output_version, nb_task, nb_task_done,
                           total_execution, start_time))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 
