@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-from collections import namedtuple
 
 import git
 import json
@@ -10,9 +9,11 @@ import pathlib
 import sys
 import yaml
 
+from collections import namedtuple
 from datetime import timedelta
 from multiprocessing import Manager, Pool
 from src.docker_api.docker_api import analyse_files
+from src.exception.SmartBugsException import SmartBugsException
 from src.interface.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
 from src.output_parser.SarifHolder import SarifHolder
 from time import time, localtime, strftime
@@ -25,8 +26,7 @@ with open(cfg_dataset_path, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
     except yaml.YAMLError as exc:
-        raise Exception('Dataset YAML not found.'
-                        ' Please check that the following file is correct at smartbugs/config/dataset/dataset.yaml')
+        raise SmartBugsException('File not found or invalid syntax: smartbugs/config/dataset/dataset.yaml')
 
 output_folder = strftime("%Y%d%m_%H%M", localtime())
 pathlib.Path(SMARTBUGS_FILE_PATH + '/results/logs/').mkdir(parents=True, exist_ok=True)
@@ -63,8 +63,7 @@ def analyse(task):
         sys.stdout.write('\x1b[1;37m' + ' [' + task.tool + '] in ' + duration + ' ' + '\x1b[0m' + '\n')
         logs.write('[%d/%d] ' % (task.nb_task_done.value, task.nb_task) + task.file + ' [' + task.tool + '] in ' + duration + ' \n')
     except Exception as e:
-        print(e)
-        raise e
+        raise SmartBugsException(str(e))
 
 
 def exec_cmd(args: argparse.Namespace):
