@@ -31,7 +31,7 @@ logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
 def analyse(args):
     global logs, output_folder
 
-    (tool, file, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time) = args
+    (tool, file, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time, bytecode) = args
 
     try:
         start = time()
@@ -40,7 +40,7 @@ def analyse(args):
         sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' + tool + ']' + '\x1b[0m' + '\n')
 
-        analyse_files(tool, file, logs, output_folder, sarif_outputs, output_version, import_path)
+        analyse_files(tool, file, logs, output_folder, sarif_outputs, output_version, import_path, bytecode)
 
         nb_task_done.value += 1
 
@@ -112,22 +112,25 @@ def exec_cmd(args: argparse.Namespace):
 
     for file in args.file:
         # analyse files
-        if os.path.basename(file).endswith('.sol'):
-            files_to_analyze.append(file)
+        #if os.path.basename(file).endswith('.sol'):
+        # We allow solidity and bytecode, so we shouldn't restrict file extensions?
+        #files_to_analyze.append(file)
         # analyse dirs recursively
-        elif os.path.isdir(file):
+        #elif os.path.isdir(file):
+        if os.path.isdir(file):
             if args.import_path == "FILE":
                 args.import_path = file
             for root, dirs, files in os.walk(file):
                 for name in files:
-                    if name.endswith('.sol'):
-                        # if its running on a windows machine
-                        if os.name == 'nt':
-                            files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
-                        else:
-                            files_to_analyze.append(os.path.join(root, name))
-        else:
-            print('%s is not a directory or a solidity file' % file)
+                    #if name.endswith('.sol'):
+                    # if its running on a windows machine
+                    if os.name == 'nt':
+                        files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
+                    else:
+                        files_to_analyze.append(os.path.join(root, name))
+        else:  # it's not a directory
+            files_to_analyze.append(file)
+        #    print('%s is not a directory or a solidity file' % file)
 
     if args.tool == ['all']:
         TOOLS_CHOICES.remove('all')
@@ -157,7 +160,7 @@ def exec_cmd(args: argparse.Namespace):
                     continue
 
             tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
-                          total_execution, start_time))
+                          total_execution, start_time, args.bytecode))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 
     # initialize all sarif outputs

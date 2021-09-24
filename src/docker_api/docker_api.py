@@ -212,7 +212,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
 """
 analyse solidity files
 """
-def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path):
+def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path, bytecode):
     try:
         cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
@@ -249,22 +249,30 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         file_name = os.path.splitext(file_name)[0]
         start = time()
 
-        (solc_version, solc_version_minor) = get_solc_version(file, logs)
+        if not bytecode:
+            (solc_version, solc_version_minor) = get_solc_version(file, logs)
 
-        if isinstance(solc_version, int) and solc_version < 5 and 'solc<5' in cfg['docker_image']:
-            image = cfg['docker_image']['solc<5']
-        # if there's no version or version >5, choose default
+            if isinstance(solc_version, int) and solc_version < 5 and 'solc<5' in cfg['docker_image']:
+                image = cfg['docker_image']['solc<5']
+            # if there's no version or version >5, choose default
+            else:
+                image = cfg['docker_image']['default']
         else:
             image = cfg['docker_image']['default']
 
         if not client.images.list(image):
             pull_image(image, logs)
 
-        cmd = cfg['cmd']
+        if bytecode:
+            cmd = cfg['cmd_bytecode']
+        else:
+            cmd = cfg['cmd']
+
         if '{contract}' in cmd:
             cmd = cmd.replace('{contract}', '/' + file)
         else:
             cmd += ' /' + file
+        print("*********", cmd, volume_bindings)
         container = None
         try:
             container = client.containers.run(image,

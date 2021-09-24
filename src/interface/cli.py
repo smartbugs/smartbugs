@@ -153,6 +153,10 @@ def create_parser():
                         action='info',
                         help='information about tool')
 
+    info.add_argument('--bytecode',
+                        action='store_true',
+                        help='analyze bytecode')
+
     info.add_argument('--skip-existing',
                         action='store_true',
                         help='skip the analysis that already have results')
