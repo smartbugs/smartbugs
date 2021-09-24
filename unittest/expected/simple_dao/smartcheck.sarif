@@ -1,0 +1,202 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SmartCheck",
+          "fullDescription": {
+            "text": "Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code."
+          },
+          "informationUri": "https://tool.smartdec.net/",
+          "rules": [
+            {
+              "id": "Reentrancy_12",
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_CALL_WITHOUT_DATA"
+              }
+            },
+            {
+              "id": "Ignore_28",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_PRAGMAS_VERSION"
+              }
+            },
+            {
+              "id": "Ignore_36",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_UPGRADE_TO_050"
+              }
+            },
+            {
+              "id": "Ignore_38",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_VISIBILITY"
+              }
+            }
+          ],
+          "version": "0.0.12"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "dataset/reentrancy/simple_dao.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "simple_dao"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "SOLIDITY_CALL_WITHOUT_DATA"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "call.value(amount)()"
+                  },
+                  "startColumn": 28,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_12"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRAGMAS_VERSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "^"
+                  },
+                  "startColumn": 16,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_28"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_UPGRADE_TO_050"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "call.value(amount)()"
+                  },
+                  "startColumn": 28,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_36"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functiondonate(addressto)payable{credit[to]+=msg.value;}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functionwithdraw(uintamount){if(credit[msg.sender]>=amount){boolres=msg.sender.call.value(amount)();credit[msg.sender]-=amount;}}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functionqueryCredit(addressto)returns(uint){returncredit[to];}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 24
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

@@ -1,0 +1,285 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Securify",
+          "fullDescription": {
+            "text": "Securify uses formal verification, also relying on static analysis checks. Securify\u2019s analysis consists of two steps. First, it symbolically analyzes the contract\u2019s dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not."
+          },
+          "informationUri": "https://github.com/eth-sri/securify2",
+          "rules": [
+            {
+              "id": "FrontRunning_3",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "TODReceiver"
+              }
+            },
+            {
+              "id": "UncheckedLowCalls_4",
+              "name": "UncheckedLowCallsVulnerability",
+              "shortDescription": {
+                "text": "UnhandledException"
+              }
+            },
+            {
+              "id": "FrontRunning_4",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "TODTransfer"
+              }
+            },
+            {
+              "id": "Reentrancy_7",
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "DAO"
+              }
+            },
+            {
+              "id": "FrontRunning_2",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "TODAmount"
+              }
+            },
+            {
+              "id": "Ignore_3",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "MissingInputValidation"
+              }
+            },
+            {
+              "id": "AccessControl_17",
+              "name": "AccessControlVulnerability",
+              "shortDescription": {
+                "text": "UnrestrictedEtherFlow"
+              }
+            }
+          ],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "dataset/reentrancy/simple_dao.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "SimpleDAO"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "DAO"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

@@ -1,0 +1,148 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Osiris",
+          "fullDescription": {
+            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
+          },
+          "informationUri": "https://github.com/christoftorres/Osiris",
+          "rules": [
+            {
+              "id": "Arithmetic_7",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "overflow_bugs"
+              }
+            },
+            {
+              "id": "Arithmetic_10",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "underflow_bugs"
+              }
+            },
+            {
+              "id": "DenialService_1",
+              "name": "DenialServiceVulnerability",
+              "shortDescription": {
+                "text": "callstack_bug"
+              }
+            },
+            {
+              "id": "Reentrancy_5",
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "reentrancy_bug"
+              }
+            }
+          ],
+          "version": "1.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "dataset/reentrancy/simple_dao.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "SimpleDAO"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "overflow_bugs"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_7"
+        },
+        {
+          "message": {
+            "text": "underflow_bugs"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 7,
+                  "startLine": 20
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_10"
+        },
+        {
+          "message": {
+            "text": "callstack_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 18,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "DenialService_1"
+        },
+        {
+          "message": {
+            "text": "reentrancy_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 18,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_5"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

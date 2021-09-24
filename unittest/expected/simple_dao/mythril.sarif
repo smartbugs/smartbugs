@@ -1,0 +1,192 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Mythril",
+          "fullDescription": {
+            "text": "Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities."
+          },
+          "informationUri": "https://mythx.io/",
+          "rules": [
+            {
+              "id": "Arithmetic_4",
+              "fullDescription": {
+                "text": "A possible integer overflow exists in the function `fallback`.\nThe addition or multiplication may result in a value higher than the maximum representable integer."
+              },
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "Integer Overflow"
+              }
+            },
+            {
+              "id": "Reentrancy_3",
+              "fullDescription": {
+                "text": "This contract executes a message call to the address of the transaction sender. Generally, it is not recommended to call user-supplied addresses using Solidity's call() construct. Note that attackers might leverage reentrancy attacks to exploit race conditions or manipulate this contract's state."
+              },
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "Message call to external contract"
+              }
+            },
+            {
+              "id": "UncheckedLowCalls_3",
+              "fullDescription": {
+                "text": "The return value of an external call is not checked. Note that execution continue even if the called contract throws."
+              },
+              "name": "UncheckedLowCallsVulnerability",
+              "shortDescription": {
+                "text": "Unchecked CALL return value"
+              }
+            },
+            {
+              "id": "Reentrancy_4",
+              "fullDescription": {
+                "text": "The contract account state is changed after an external call. Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities."
+              },
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "State change after external call"
+              }
+            }
+          ],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "dataset/reentrancy/simple_dao.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "function",
+          "name": "fallback"
+        },
+        {
+          "kind": "function",
+          "name": "withdraw(uint256)"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Integer Overflow "
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "fallback"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "= msg.value;\n  }\n\n  fun"
+                  },
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_4"
+        },
+        {
+          "message": {
+            "text": "Message call to external contract"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "withdraw(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "lue(amount)();\n      credit[msg"
+                  },
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_3"
+        },
+        {
+          "message": {
+            "text": "Unchecked CALL return value"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "withdraw(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "lue(amount)();\n      credit[msg"
+                  },
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_3"
+        },
+        {
+          "message": {
+            "text": "State change after external call"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "withdraw(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "=amount;\n    }\n  }\n\n  func"
+                  },
+                  "startLine": 20
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_4"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

@@ -1,0 +1,294 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Slither",
+          "fullDescription": {
+            "text": "Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses."
+          },
+          "informationUri": "https://github.com/crytic/slither",
+          "rules": [
+            {
+              "id": "Reentrancy_10",
+              "fullDescription": {
+                "text": "Reentrancy in SimpleDAO.withdraw (/mnt/dataset/reentrancy/simple_dao.sol#16-24):\n\tExternal calls:\n\t- res = msg.sender.call.value(amount)() (/mnt/dataset/reentrancy/simple_dao.sol#19-20)\n\tState variables written after the call(s):\n\t- credit (/mnt/dataset/reentrancy/simple_dao.sol#20-24)\n"
+              },
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "reentrancy-eth"
+              }
+            },
+            {
+              "id": "Ignore_11",
+              "fullDescription": {
+                "text": "SimpleDAO.donate (/mnt/dataset/reentrancy/simple_dao.sol#12-16) should be declared external\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "external-function"
+              }
+            },
+            {
+              "id": "Ignore_17",
+              "fullDescription": {
+                "text": "Detected issues with version pragma in /mnt/dataset/reentrancy/simple_dao.sol:\n\t- pragma solidity^0.4.2 (/mnt/dataset/reentrancy/simple_dao.sol#7-9): it allows old versions\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "solc-version"
+              }
+            },
+            {
+              "id": "UncheckedLowCalls_5",
+              "fullDescription": {
+                "text": "Low level call in SimpleDAO.withdraw (/mnt/dataset/reentrancy/simple_dao.sol#16-24):\n\t-res = msg.sender.call.value(amount)() /mnt/dataset/reentrancy/simple_dao.sol#19-20\n"
+              },
+              "name": "UncheckedLowCallsVulnerability",
+              "shortDescription": {
+                "text": "low-level-calls"
+              }
+            }
+          ],
+          "version": "0.7.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "dataset/reentrancy/simple_dao.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "reentrancy-eth"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "withdraw"
+                },
+                {
+                  "kind": "contract",
+                  "name": "SimpleDAO"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 24,
+                  "startLine": 16
+                }
+              }
+            },
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 20,
+                  "snippet": {
+                    "text": "res = msg.sender.call.value(amount)()"
+                  },
+                  "startLine": 19
+                }
+              }
+            },
+            {
+              "logicalLocations": [
+                {
+                  "kind": "variables_written",
+                  "name": "credit"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 24,
+                  "snippet": {
+                    "text": "credit[msg.sender] -= amount"
+                  },
+                  "startLine": 20
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_10"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "donate"
+                },
+                {
+                  "kind": "contract",
+                  "name": "SimpleDAO"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 16,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "withdraw"
+                },
+                {
+                  "kind": "contract",
+                  "name": "SimpleDAO"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 24,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "queryCredit"
+                },
+                {
+                  "kind": "contract",
+                  "name": "SimpleDAO"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 27,
+                  "startLine": 24
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "solc-version"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 9,
+                  "snippet": {
+                    "text": "^0.4.2"
+                  },
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_17"
+        },
+        {
+          "message": {
+            "text": "low-level-calls"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "withdraw"
+                },
+                {
+                  "kind": "contract",
+                  "name": "SimpleDAO"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 24,
+                  "startLine": 16
+                }
+              }
+            },
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "dataset/reentrancy/simple_dao.sol"
+                },
+                "region": {
+                  "endLine": 20,
+                  "snippet": {
+                    "text": "res = msg.sender.call.value(amount)()"
+                  },
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_5"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}
