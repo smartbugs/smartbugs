@@ -23,7 +23,7 @@ with open(cfg_dataset_path, 'r') as ymlfile:
     except yaml.YAMLError as exc:
         print(exc)
 
-output_folder = strftime("%Y%d%m_%H%M", localtime())
+output_folder = strftime("%Y%m%d_%H%M", localtime())
 pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
 logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
 
