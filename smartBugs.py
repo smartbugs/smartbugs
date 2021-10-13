@@ -23,7 +23,7 @@ with open(cfg_dataset_path, 'r') as ymlfile:
     except yaml.YAMLError as exc:
         print(exc)
 
-output_folder = strftime("%Y%d%m_%H%M", localtime())
+output_folder = strftime("%Y%m%d_%H%M", localtime())
 pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
 logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
 
@@ -35,6 +35,7 @@ def analyse(args):
 
     try:
         start = time()
+        nb_task_done.value += 1
 
         sys.stdout.write('\x1b[1;37m' + 'Analysing file [%d/%d]: ' % (nb_task_done.value, nb_task) + '\x1b[0m')
         sys.stdout.write('\x1b[1;34m' + file + '\x1b[0m')
@@ -42,7 +43,6 @@ def analyse(args):
 
         analyse_files(tool, file, logs, output_folder, sarif_outputs, output_version, import_path, bytecode)
 
-        nb_task_done.value += 1
 
         total_execution.value += time() - start
 
