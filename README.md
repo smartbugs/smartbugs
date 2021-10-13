@@ -72,7 +72,7 @@ SmartBugs provides a command-line interface that can be used as follows:
 ```bash
 smartBugs.py [-h, --help]
               --list tools          # list all the tools available
-              --list dataset        # list all the datasets available
+              --list datasets       # list all the datasets available
               --dataset DATASET     # the name of the dataset to analyze (e.g. reentrancy)
               --file FILES          # the paths to the folder(s) or the Solidity contract(s) to analyze
               --tool TOOLS          # the list of tools to use for the analysis (all to use all of them) 
