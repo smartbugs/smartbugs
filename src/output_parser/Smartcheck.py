@@ -45,7 +45,7 @@ class Smartcheck(Parser):
             rule = parseRule(tool="smartcheck", vulnerability=analysis["name"])
             result = parseResult(tool="smartcheck", vulnerability=analysis["name"], level=analysis["severity"],
                                  uri=file_path_in_repo,
-                                 line=analysis["line"], column=analysis["column"], snippet=analysis["content"])
+                                 line=analysis["line"], column=analysis["column"] + 1, snippet=analysis["content"])
 
             resultsList.append(result)
 

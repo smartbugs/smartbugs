@@ -47,6 +47,10 @@ class Conkas(Parser):
 
             logicalLocation = parseLogicalLocation(analysis_result["maybe_in_function"], kind="function")
 
+            # GH1003 & SARIF1007: Every result must provide a 'region' that specifies its location with "startLine"
+            if analysis_result["line_number"] == '':
+                continue
+
             result = parseResult(tool="conkas", vulnerability=analysis_result["vuln_type"], uri=file_path_in_repo,
                                  line=int(analysis_result["line_number"]),
                                  logicalLocation=logicalLocation)

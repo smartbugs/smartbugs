@@ -16,6 +16,12 @@ class Slither:
             locations = []
 
             for element in analysis["elements"]:
+
+                # Rules GH1003 & SARIF1007: Every result must provide a 'region' that specifies its location with "startLine"
+                if "source_mapping" not in element.keys() or "lines" not in element["source_mapping"].keys() or \
+                        len(element["source_mapping"]["lines"]) == 0:
+                    continue
+
                 location = Location(physical_location=PhysicalLocation(
                     artifact_location=ArtifactLocation(uri=file_path_in_repo),
                     region=Region(start_line=element["source_mapping"]["lines"][0],
@@ -32,6 +38,9 @@ class Slither:
                     location.logical_locations.append(
                         LogicalLocation(name=element["contract"]["name"], kind=element["contract"]["type"]))
                 locations.append(location)
+
+            if len(locations) == 0:
+                continue
 
             result = parseResult(tool="slither", vulnerability=analysis["check"], level=level)
 

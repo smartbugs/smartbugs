@@ -2,7 +2,7 @@ import numpy
 from sarif_om import *
 
 from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
-    parseRule, parseResult, isNotDuplicateLogicalLocation
+    parseRule, parseResult, isNotDuplicateLogicalLocation, isNotDuplicateRule
 
 
 class Securify:
@@ -22,13 +22,13 @@ class Securify:
 
             for vuln, analysisResult in analysis["results"].items():
                 rule = parseRule(tool="securify", vulnerability=vuln)
-                # Extra loop to add unique rule to tool in sarif
-                for level, lines in analysisResult.items():
-                    if len(lines) > 0:
-                        rulesList.append(rule)
-                        break
                 for level, lines in analysisResult.items():
                     for lineNumber in lines:
+                        # GH1003 & SARIF1007: Every result must provide a 'region' that specifies its location with "startLine"
+                        if lineNumber == -1:
+                            continue
+                        if isNotDuplicateRule(rule, rulesList):
+                            rulesList.append(rule)
                         result = parseResult(tool="securify", vulnerability=vuln, level=level, uri=file_path_in_repo,
                                              line=lineNumber)
 
@@ -52,17 +52,15 @@ class Securify:
         for name, analysis in securify_output_results["analysis"].items():
             for vuln, analysisResult in analysis["results"].items():
                 rule = parseRule(tool="securify", vulnerability=vuln)
-                # Extra loop to add unique rule to tool in sarif
-                for level, lines in analysisResult.items():
-                    if not isinstance(lines, list):
-                        continue
-                    if len(lines) > 0:
-                        rulesList.append(rule)
-                        break
                 for level, lines in analysisResult.items():
                     if not isinstance(lines, list):
                         continue
                     for lineNumber in list(numpy.unique(lines)):
+                        # GH1003 & SARIF1007: Every result must provide a 'region' that specifies its location with "startLine"
+                        if lineNumber == -1:
+                            continue
+                        if isNotDuplicateRule(rule, rulesList):
+                            rulesList.append(rule)
                         result = parseResult(tool="securify", vulnerability=vuln, level=level, uri=file_path_in_repo,
                                              line=int(lineNumber))  # without int() lineNumber returns null??!
 

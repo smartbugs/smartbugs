@@ -104,7 +104,7 @@ def parseRule(tool, vulnerability, full_description=None):
                                name=vuln_info["Type"] + "Vulnerability")
 
 
-def parseResult(tool, vulnerability, level="warning", uri=None, line=None, end_line=None, column=None, snippet=None,
+def parseResult(tool, vulnerability, level="warning", uri=None, line=1, end_line=None, column=None, snippet=None,
                 logicalLocation=None):
     vuln_info = findVulnerabilityOnTable(tool, vulnerability)
 
@@ -144,7 +144,10 @@ def findVulnerabilityOnTable(tool, vulnerability_found):
     # Due to messages that have extra information (for example the line where the vulnerability was found) this loop
     # will search if the vulnerability expressed on table exist inside vulnerability found
     for index, row in tool_table.iterrows():
-        if row["Vulnerability"] in vulnerability_found or vulnerability_found in row["Vulnerability"]:
+        if vulnerability_found in row["Vulnerability"]:
+            return row
+    for index, row in tool_table.iterrows():
+        if row["Vulnerability"] in vulnerability_found:
             return row
     raise VulnerabilityNotFoundException(tool=tool, vulnerability=vulnerability_found)
 
