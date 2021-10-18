@@ -10,6 +10,8 @@ import yaml
 
 from solidity_parser import parser
 
+from src.output_parser.Vandal import Vandal
+from src.output_parser.Pakala import Pakala
 from src.output_parser.Conkas import Conkas
 from src.output_parser.HoneyBadger import HoneyBadger
 from src.output_parser.Maian import Maian
@@ -190,6 +192,12 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
         elif tool == 'conkas':
             results['analysis'] = Conkas().parse(output)
             sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
+        elif tool == 'pakala':
+            results['analysis'] = Pakala().parse(output)
+            #TODO: SARIF?
+        elif tool == 'vandal':
+            results['analysis'] = Vandal().parse(output)
+            #TODO: SARIF?
 
         sarif_outputs[file_name] = sarif_holder
 
@@ -229,10 +237,14 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         # os.makedirs(os.path.dirname(results_folder), exist_ok=True)
 
         # check if config file as all required fields
+        if bytecode:
+            cmd_key = 'cmd_bytecode'
+        else:
+            cmd_key = 'cmd'
         if 'default' not in cfg['docker_image'] or cfg['docker_image'] == None:
             logs.write(tool + ': default docker image not provided. please check you config file.\n')
             sys.exit(tool + ': default docker image not provided. please check you config file.')
-        elif 'cmd' not in cfg or cfg['cmd'] == None:
+        elif cmd_key not in cfg or cfg[cmd_key] == None:
             logs.write(tool + ': commands not provided. please check you config file.\n')
             sys.exit(tool + ': commands not provided. please check you config file.')
 
@@ -272,7 +284,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
             cmd = cmd.replace('{contract}', '/' + file)
         else:
             cmd += ' /' + file
-        print("*********", cmd, volume_bindings)
+        #print("*********", cmd, volume_bindings)
         container = None
         try:
             container = client.containers.run(image,
