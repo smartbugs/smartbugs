@@ -154,6 +154,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             results['analysis'] = Maian().parse(output)
             sarif_holder.addRun(Maian().parseSarif(results, file_path_in_repo))
         elif tool == 'mythril':
+            results['success'] = not ('aborting analysis' in output)
             results['analysis'] = json.loads(output)
             sarif_holder.addRun(Mythril().parseSarif(results, file_path_in_repo))
         elif tool == 'securify':
