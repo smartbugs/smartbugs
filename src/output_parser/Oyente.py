@@ -6,10 +6,11 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 
 class Oyente(Parser):
-    def __init__(self):
-        pass
 
-    def extract_result_line(self, line):
+    def __init__(self, log_content):
+        self.str_output = log_content
+
+    def _extract_result_line(self, line):
         line = line.replace("INFO:symExec:	  ", '')
         index_split = line.index(":")
         key = line[:index_split].lower().replace(' ', '_').replace('(', '').replace(')', '').strip()
@@ -20,10 +21,13 @@ class Oyente(Parser):
             value = False
         return key, value
 
-    def parse(self, str_output):
+    def is_finished(self):
+        return "Analysis Completed" in self.str_output
+
+    def parse(self):
         output = []
         current_contract = None
-        lines = str_output.splitlines()
+        lines = self.str_output.splitlines()
         for line in lines:
             if "INFO:root:contract" in line:
                 if current_contract is not None:
@@ -35,9 +39,13 @@ class Oyente(Parser):
                 current_contract['file'] = file
                 current_contract['name'] = contract_name
             elif "INFO:symExec:	  " in line:
-                (key, value) = self.extract_result_line(line)
+                (key, value) = self._extract_result_line(line)
+                if current_contract is None:
+                    current_contract = {
+                        'errors': []
+                    }
                 current_contract[key] = value
-            elif current_contract and current_contract['file'] in line:
+            elif current_contract is not None and 'file' in current_contract and current_contract['file'] in line:
                 if "INFO:symExec:" not in line:
                     line = "INFO:symExec:" + line
                 (line, column, level, message) = line.replace("INFO:symExec:%s:" % (current_contract['file']),
@@ -68,10 +76,11 @@ class Oyente(Parser):
                 if isNotDuplicateRule(rule, rulesList):
                     rulesList.append(rule)
 
-            logicalLocation = parseLogicalLocation(name=analysis["name"])
+            if "name" in analysis:
+                logicalLocation = parseLogicalLocation(name=analysis["name"])
 
-            if isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
-                logicalLocationsList.append(logicalLocation)
+                if isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
+                    logicalLocationsList.append(logicalLocation)
 
         artifact = parseArtifact(uri=file_path_in_repo)
 

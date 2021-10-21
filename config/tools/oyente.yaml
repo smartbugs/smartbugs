@@ -1,5 +1,5 @@
 docker_image:
-  default: qspprotocol/oyente-0.4.25
+  default: smartbugs/oyente:480e725
 cmd: -s
 cmd_bytecode: -b -s
 info: Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness.
