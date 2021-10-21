@@ -7,6 +7,8 @@ import re
 import sys
 import tarfile
 import yaml
+import tempfile
+from shutil import copyfile, rmtree
 
 from solidity_parser import parser
 
@@ -65,7 +67,7 @@ mount volumes
 """
 def mount_volumes(dir_path, logs):
     try:
-        volume_bindings = {os.path.abspath(dir_path): {'bind': '/' + dir_path, 'mode': 'rw'}}
+        volume_bindings = {os.path.abspath(dir_path): {'bind': '/data', 'mode': 'rw'}}
         return volume_bindings
     except os.error as err:
         print(err)
@@ -242,11 +244,16 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         else:
             file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
 
-        # bind directory path instead of file path to allow imports in the same directory
-        volume_bindings = mount_volumes(os.path.dirname(import_path), logs)
-
         file_name = os.path.basename(file)
         file_name = os.path.splitext(file_name)[0]
+
+        working_dir = tempfile.mkdtemp()
+        copyfile(file, os.path.join(working_dir, os.path.basename(file)))
+        file = os.path.join(working_dir, os.path.basename(file))
+
+        # bind directory path instead of file path to allow imports in the same directory
+        volume_bindings = mount_volumes(working_dir, logs)
+
         start = time()
 
         (solc_version, solc_version_minor) = get_solc_version(file, logs)
@@ -262,9 +269,9 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
 
         cmd = cfg['cmd']
         if '{contract}' in cmd:
-            cmd = cmd.replace('{contract}', '/' + file)
+            cmd = cmd.replace('{contract}', '/data/' + os.path.basename(file))
         else:
-            cmd += ' /' + file
+            cmd += ' /data/' + os.path.basename(file)
         container = None
         try:
             container = client.containers.run(image,
@@ -289,6 +296,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         finally:
             stop_container(container, logs)
             remove_container(container, logs)
+            rmtree(working_dir)
 
     except (docker.errors.APIError, docker.errors.ContainerError, docker.errors.ImageNotFound) as err:
         print(err)
