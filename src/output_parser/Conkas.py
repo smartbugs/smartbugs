@@ -25,6 +25,9 @@ class Conkas(Parser):
             'pc': pc,
             'line_number': line_number
         }
+    
+    def is_success(self, str_output):
+        return "Traceback" not in str_output
 
     def parse(self, str_output):
         output = []
@@ -47,8 +50,10 @@ class Conkas(Parser):
 
             logicalLocation = parseLogicalLocation(analysis_result["maybe_in_function"], kind="function")
 
+            line = int(analysis_result["line_number"]) if analysis_result["line_number"] != "" else -1
+
             result = parseResult(tool="conkas", vulnerability=analysis_result["vuln_type"], uri=file_path_in_repo,
-                                 line=int(analysis_result["line_number"]),
+                                 line=line,
                                  logicalLocation=logicalLocation)
 
             resultsList.append(result)

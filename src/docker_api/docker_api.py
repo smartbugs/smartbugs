@@ -202,6 +202,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
                 sarif_holder.addRun(Manticore().parseSarif(results, file_path_in_repo))
         elif tool == 'conkas':
             results['analysis'] = Conkas().parse(output)
+            results['success'] = Conkas().is_success(output)
             sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
         elif tool == 'pakala':
             results['analysis'] = Pakala().parse(output)
