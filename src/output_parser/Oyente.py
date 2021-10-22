@@ -21,7 +21,7 @@ class Oyente(Parser):
             value = False
         return key, value
 
-    def is_finished(self):
+    def is_success(self):
         return "Analysis Completed" in self.str_output
 
     def parse(self):

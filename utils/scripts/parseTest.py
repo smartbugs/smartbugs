@@ -28,5 +28,5 @@ with open(file_path) as fd:
     if params.tool == "Oyente":
         parser = Oyente(content)
 
-    print(parser.is_finished())
+    print(parser.is_success())
     print(parser.parse())
