@@ -10,6 +10,7 @@ import yaml
 
 from datetime import timedelta
 from multiprocessing import Manager, Pool
+from src.logger import logs
 from src.docker_api.docker_api import analyse_files
 from src.interface.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
 from src.output_parser.SarifHolder import SarifHolder
@@ -23,15 +24,10 @@ with open(cfg_dataset_path, 'r') as ymlfile:
     except yaml.YAMLError as exc:
         print(exc)
 
-output_folder = strftime("%Y%m%d_%H%M", localtime())
-pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
-logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
 
 
 def analyse(args):
-    global logs, output_folder
-
-    (tool, file, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time, bytecode) = args
+    (tool, file, sarif_outputs, import_path, output_version, nb_task, nb_task_done, total_execution, start_time, bytecode, output_folder) = args
 
     try:
         start = time()
@@ -62,7 +58,6 @@ def analyse(args):
 
 
 def exec_cmd(args: argparse.Namespace):
-    global logs, output_folder
     logs.write('Arguments passed: ' + str(sys.argv) + '\n')
 
     files_to_analyze = []
@@ -160,7 +155,7 @@ def exec_cmd(args: argparse.Namespace):
                     continue
 
             tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
-                          total_execution, start_time, args.bytecode))
+                          total_execution, start_time, args.bytecode, output_folder))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 
     # initialize all sarif outputs
@@ -191,7 +186,16 @@ def exec_cmd(args: argparse.Namespace):
 if __name__ == '__main__':
     start_time = time()
     args = create_parser()
-    logs = exec_cmd(args)
+
+    if args.execution_name is not None:
+        output_folder = args.execution_name
+    else:
+        output_folder = strftime("%Y%m%d_%H%M", localtime())
+    
+    pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
+    logs.file_path = 'results/logs/SmartBugs_' + output_folder + '.log'
+
+    exec_cmd(args)
     elapsed_time = round(time() - start_time)
     if elapsed_time > 60:
         elapsed_time_sec = round(elapsed_time % 60)

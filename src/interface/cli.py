@@ -170,6 +170,9 @@ def create_parser():
                         choices=VERSION_CHOICES,
                         default='all',
                         help='Smartbugs\' version output - v1: Json - v2:SARIF')
+    
+    info.add_argument('--execution-name',
+                        help='Define the name of the execution')
 
     info.add_argument('--aggregate-sarif',
                         action='store_true',
