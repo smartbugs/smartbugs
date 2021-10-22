@@ -199,6 +199,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
         elif tool == 'pakala':
             results['analysis'] = Pakala().parse(output)
+            results['success'] = Pakala().is_success(output)
             #TODO: SARIF?
         elif tool == 'vandal':
             results['analysis'] = Vandal().parse(output)

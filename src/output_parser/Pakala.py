@@ -21,13 +21,21 @@ class Pakala(Parser):
             'vuln_type': vuln_type
         }
 
+    def is_success(self, str_output: str):
+        return "Nothing to report." in str_output
+
     def parse(self, str_output):
-        output = []
+        output = {
+            'errors': []
+        }
         str_output = str_output.split('\n')
+
         for line in str_output:
+            if "Symbolic execution finished with coverage " in line:
+                output["symbolic_coverage"] = line.replace("Symbolic execution finished with coverage ", "").replace(".", "")
             if 'Found' in line and 'bug.' in line:
                 try:
-                    output.append(self.__parse_vuln_line(line))
+                    output['errors'].append(self.__parse_vuln_line(line))
                 except:
                     continue
         return output
