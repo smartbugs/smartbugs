@@ -12,8 +12,9 @@ class Mythril:
         rulesList = []
 
         for issue in mythril_output_results["analysis"]["issues"]:
+            level = issue["severity"] if "severity" in issue else issue["type"]
             rule = parseRule(tool="mythril", vulnerability=issue["title"], full_description=issue["description"])
-            result = parseResult(tool="mythril", vulnerability=issue["title"], level=issue["type"],
+            result = parseResult(tool="mythril", vulnerability=issue["title"], level=level,
                                  uri=file_path_in_repo,
                                  line=issue["lineno"], snippet=issue["code"] if "code" in issue.keys() else None,
                                  logicalLocation=parseLogicalLocation(issue["function"],
