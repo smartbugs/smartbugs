@@ -312,7 +312,6 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
                                               volumes=volume_bindings)
             try:
                 result = container.wait(timeout=(30 * 60))
-                print("result", result)
             except Exception as e:
                 print(e)
                 pass
