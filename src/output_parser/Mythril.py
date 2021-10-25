@@ -1,10 +1,15 @@
 from sarif_om import *
+import json
 
+from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocation, parseRule, \
     parseResult, parseArtifact, isNotDuplicateLogicalLocation
 
 
-class Mythril:
+class Mythril(Parser):
+
+    def parse(self):
+        return json.loads(self.str_output)
 
     def parseSarif(self, mythril_output_results, file_path_in_repo):
         resultsList = []

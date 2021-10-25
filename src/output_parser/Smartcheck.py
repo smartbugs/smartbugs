@@ -5,10 +5,9 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 
 class Smartcheck(Parser):
-    def __init__(self):
-        pass
 
-    def extract_result_line(self, line):
+    @staticmethod
+    def extract_result_line(line):
         index_split = line.index(":")
         key = line[:index_split]
         value = line[index_split + 1:].strip()
@@ -16,10 +15,10 @@ class Smartcheck(Parser):
             value = int(value)
         return (key, value)
 
-    def parse(self, str_output):
+    def parse(self):
         output = []
         current_error = None
-        lines = str_output.splitlines()
+        lines = self.str_output.splitlines()
         for line in lines:
             if "ruleId: " in line:
                 if current_error is not None:
@@ -28,7 +27,7 @@ class Smartcheck(Parser):
                     'name': line[line.index("ruleId: ") + 8:]
                 }
             elif current_error is not None and ':' in line and ' :' not in line:
-                (key, value) = self.extract_result_line(line)
+                (key, value) = Smartcheck.extract_result_line(line)
                 current_error[key] = value
 
         if current_error is not None:

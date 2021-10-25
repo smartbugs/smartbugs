@@ -6,8 +6,6 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 
 class Vandal(Parser):
-    def __init__(self):
-        pass
 
     @staticmethod
     def __parse_vuln_line(line):
@@ -27,11 +25,11 @@ class Vandal(Parser):
             'vuln_type': vuln_type
         }
 
-    def parse(self, str_output):
+    def parse(self):
         output = {
             "errors": []
         }
-        str_output = str_output.split('\n')
+        str_output = self.str_output.split('\n')
         for line in str_output:
             if '.csv' in line:
                 try:
@@ -39,9 +37,9 @@ class Vandal(Parser):
                 except:
                     continue
         return [output]
-    
-    def is_success(self, str_output):
-        return "+ rm -rf facts-tmp" in "\n".join(str_output.split("\n")[4:])
+
+    def is_success(self):
+        return "+ rm -rf facts-tmp" in "\n".join(self.str_output.split("\n")[4:])
 
     ## TODO: Sarif
     def parseSarif(self, conkas_output_results, file_path_in_repo):
@@ -50,9 +48,11 @@ class Vandal(Parser):
         logicalLocationsList = []
 
         for analysis_result in conkas_output_results["analysis"]:
-            rule = parseRule(tool="conkas", vulnerability=analysis_result["vuln_type"])
+            rule = parseRule(
+                tool="conkas", vulnerability=analysis_result["vuln_type"])
 
-            logicalLocation = parseLogicalLocation(analysis_result["maybe_in_function"], kind="function")
+            logicalLocation = parseLogicalLocation(
+                analysis_result["maybe_in_function"], kind="function")
 
             result = parseResult(tool="conkas", vulnerability=analysis_result["vuln_type"], uri=file_path_in_repo,
                                  line=int(analysis_result["line_number"]),
@@ -73,6 +73,7 @@ class Vandal(Parser):
                                          full_description=MultiformatMessageString(
                                              text="Conkas is based on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Conkas uses rattle to lift bytecode to a high level representation.")))
 
-        run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
+        run = Run(tool=tool, artifacts=[
+                  artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run

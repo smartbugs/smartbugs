@@ -5,6 +5,8 @@ import os
 import sys
 from functools import reduce
 
+from src.logger import logs
+
 DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
 VERSION_CHOICES = ['v1', 'v2', 'all']
@@ -15,7 +17,7 @@ with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
     except yaml.YAMLError as exc:
-        print(exc)
+        logs.print(exc)
 
 
 class InfoAction(argparse.Action):
@@ -26,11 +28,11 @@ class InfoAction(argparse.Action):
                 try:
                     cfg = yaml.safe_load(ymlfile)
                 except yaml.YAMLError as exc:
-                    print(exc)
+                    logs.print(exc)
             if 'info' in cfg:
-                print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + cfg['info'])
+                logs.print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + cfg['info'])
             else:
-                print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + 'no info provided.')
+                logs.print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + 'no info provided.')
         parser.exit()
 
 

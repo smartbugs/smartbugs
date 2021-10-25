@@ -1,16 +1,18 @@
 from sarif_om import *
+import os
+import re
+import tarfile
 
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult
 
 
 class Manticore(Parser):
-    def __init__(self):
-        pass
 
-    def parse(self, str_output):
+    @staticmethod
+    def parseFile(content):
         output = []
-        lines = str_output.splitlines()
+        lines = content.splitlines()
 
         current_vul = None
         for line in lines:
@@ -32,6 +34,18 @@ class Manticore(Parser):
         if current_vul is not None:
             output.append(current_vul)
         return output
+
+    def parse(self):
+        if os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar')):
+            out = []
+            tar = tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'))
+            m = re.findall('Results in /(mcore_.+)', self.str_output)
+            for fout in m:
+                output_file = tar.extractfile('results/' + fout + '/global.findings')
+                out.append(Manticore.parseFile(output_file.read().decode('utf8')))
+    
+    def is_success(self) -> bool:
+        return os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar'))
 
     def parseSarif(self, manticore_output_results, file_path_in_repo):
         rulesList = []

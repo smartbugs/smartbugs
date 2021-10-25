@@ -6,16 +6,14 @@ from src.output_parser.SarifHolder import parseRule, \
 
 
 class Maian(Parser):
-    def __init__(self):
-        pass
 
-    def parse(self, str_output):
+    def parse(self):
         output = {
             'is_lock_vulnerable': False,
             'is_prodigal_vulnerable': False,
             'is_suicidal_vulnerable': False,
         }
-        lines = str_output.splitlines()
+        lines = self.str_output.splitlines()
         for line in lines:
             if 'Locking vulnerability found!' in line:
                 output['is_lock_vulnerable'] = True

@@ -7,9 +7,6 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 class Oyente(Parser):
 
-    def __init__(self, log_content):
-        self.str_output = log_content
-
     def _extract_result_line(self, line):
         line = line.replace("INFO:symExec:	  ", '')
         index_split = line.index(":")

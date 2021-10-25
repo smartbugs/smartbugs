@@ -1,3 +1,5 @@
+import sys
+
 class Logger():
 
     def __init__(self):
@@ -9,10 +11,14 @@ class Logger():
             return open(self.file_path, "w")
         return None
 
-    def write(self, message: str):
+    def print(self, print_message: str, message: str = None):
+        sys.stdout.write(print_message + "\n")
         fd = self.__get_fd()
         if fd is not None:
-            fd.write(message)
+            if message is not None:
+                fd.write(message + "\n")
+            else:
+                fd.write(print_message + "\n")
 
 
 logs = Logger()
