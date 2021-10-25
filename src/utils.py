@@ -2,6 +2,13 @@ from solidity_parser import parser
 from src.logger import logs
 
 
+def merge_two_dicts(x, y):
+    """Given two dictionaries, merge them into a new dict as a shallow copy."""
+    z = x.copy()
+    z.update(y)
+    return z
+
+
 def get_solc_version(file: str):
     """
     get solidity compiler version

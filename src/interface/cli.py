@@ -6,6 +6,7 @@ import sys
 from functools import reduce
 
 from src.logger import logs
+from src.utils import merge_two_dicts
 
 DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
@@ -53,7 +54,7 @@ class ListAction(argparse.Action):
 
 
 # Parser stuff
-def isRemoteDataset(cfg_dataset, name):
+def is_remote_dataset(cfg_dataset, name):
     """Given a dataset file configuration and a dataset name, return True
        if the dataset is remote and False otherwise.
     """
@@ -69,19 +70,12 @@ def isRemoteDataset(cfg_dataset, name):
     return False
 
 
-def merge_two_dicts(x, y):
-    """Given two dictionaries, merge them into a new dict as a shallow copy."""
-    z = x.copy()
-    z.update(y)
-    return z
-
-
 # transform remote dataset info in dictionary
-def getRemoteDataset(cfg_dataset, name):
+def get_remote_dataset(cfg_dataset, name):
     remote_dataset = {}
     remote_info = cfg_dataset[name]
 
-    if isRemoteDataset(cfg_dataset, name):
+    if is_remote_dataset(cfg_dataset, name):
         # url and local_dir
         for prop_name in ["url", "local_dir", "subsets"]:
             for prop_value in (e[prop_name] for e in remote_info if isinstance(e, dict) and prop_name in e):
@@ -114,8 +108,8 @@ def create_parser():
         DATASET_CHOICES.append(name[0])
 
         # list all subsets of remote datasets
-        if isRemoteDataset(cfg_dataset, name[0]):
-            remote_dataset = getRemoteDataset(cfg_dataset, name[0])
+        if is_remote_dataset(cfg_dataset, name[0]):
+            remote_dataset = get_remote_dataset(cfg_dataset, name[0])
             for sbset_name in remote_dataset['subsets']:
                 DATASET_CHOICES.append(name[0] + '/' + sbset_name)
 

@@ -12,7 +12,7 @@ from src.execution.execution import Execution
 from src.execution.execution_task import Execution_Task
 from src.execution.execution_configuration import Execution_Configuration
 from src.logger import logs
-from src.interface.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
+from src.interface.cli import create_parser, get_remote_dataset, is_remote_dataset, DATASET_CHOICES, TOOLS_CHOICES
 
 
 cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
@@ -36,8 +36,8 @@ def create_tasks(conf: Execution_Configuration, args: argparse.Namespace) -> lis
             args.dataset = DATASET_CHOICES
         for dataset in args.dataset:
             base_name = dataset.split('/')[0]
-            if isRemoteDataset(cfg_dataset, base_name):
-                remote_info = getRemoteDataset(cfg_dataset, base_name)
+            if is_remote_dataset(cfg_dataset, base_name):
+                remote_info = get_remote_dataset(cfg_dataset, base_name)
                 base_path = remote_info['local_dir']
 
                 if not os.path.isdir(base_path):
