@@ -209,6 +209,7 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             #TODO: SARIF?
         elif tool == 'vandal':
             results['analysis'] = Vandal().parse(output)
+            results['successgit '] = Vandal().is_success(output)
             #TODO: SARIF?
 
         sarif_outputs[file_name] = sarif_holder
@@ -309,8 +310,10 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
                                               # cpu_quota=150000,
                                               volumes=volume_bindings)
             try:
-                container.wait(timeout=(30 * 60))
+                result = container.wait(timeout=(30 * 60))
+                print("result", result)
             except Exception as e:
+                print(e)
                 pass
             output = container.logs().decode('utf8').strip()
             if (output.count('Solc experienced a fatal error') >= 1 or output.count('compilation failed') >= 1):

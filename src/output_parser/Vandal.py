@@ -28,15 +28,20 @@ class Vandal(Parser):
         }
 
     def parse(self, str_output):
-        output = []
+        output = {
+            "errors": []
+        }
         str_output = str_output.split('\n')
         for line in str_output:
             if '.csv' in line:
                 try:
-                    output.append(self.__parse_vuln_line(line))
+                    output['errors'].append(self.__parse_vuln_line(line))
                 except:
                     continue
-        return output
+        return [output]
+    
+    def is_success(self, str_output):
+        return "+ rm -rf facts-tmp" in "\n".join(str_output.split("\n")[4:])
 
     ## TODO: Sarif
     def parseSarif(self, conkas_output_results, file_path_in_repo):
