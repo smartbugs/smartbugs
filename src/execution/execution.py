@@ -87,6 +87,8 @@ class Execution:
             for task in self.tasks:
                 sarif_file_path = os.path.join(
                     self.conf.output_folder, self.conf.execution_name, task.file_name + '.sarif')
+                if not os.path.exists(os.path.dirname(sarif_file_path)):
+                    os.makedirs(os.path.dirname(sarif_file_path))
                 with open(sarif_file_path, 'w') as sarif_file:
                     json.dump(
                         self.sarif_cache[task.file_name].print(), sarif_file, indent=2)
@@ -96,8 +98,13 @@ class Execution:
             for sarif_output in self.sarif_cache.values():
                 for run in sarif_output.sarif.runs:
                     sarif_holder.addRun(run)
+
             sarif_file_path = os.path.join(
                 self.conf.output_folder, self.conf.execution_name + '.sarif')
+
+            if not os.path.exists(os.path.dirname(sarif_file_path)):
+                os.makedirs(os.path.dirname(sarif_file_path))
+
             with open(sarif_file_path, 'w') as sarif_file:
                 json.dump(sarif_holder.print(), sarif_file, indent=2)
 
@@ -123,10 +130,10 @@ class Execution:
             'success': False
         }
         output_folder = task.result_output_path()
-        if not os.path.exists(task.result_output_path()):
-            os.makedirs(task.result_output_path())
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
 
-        with open(os.path.join(task.result_output_path(), 'result.log'), 'w', encoding='utf-8') as f:
+        with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
             f.write(log_content)
 
         try:
