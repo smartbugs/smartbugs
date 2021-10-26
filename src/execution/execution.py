@@ -3,6 +3,8 @@ import sys
 import json
 import os
 import traceback
+from typing import List, Tuple
+
 
 from datetime import timedelta
 from multiprocessing import Pool, Manager
@@ -30,7 +32,7 @@ from src.output_parser.SarifHolder import SarifHolder
 
 class Execution:
 
-    def __init__(self, tasks: list[Execution_Task]):
+    def __init__(self, tasks: List['Execution_Task']):
         manager = Manager()
         self.tasks = tasks
         self.conf = tasks[0].execution_configuration
@@ -39,7 +41,7 @@ class Execution:
         self.serif_cache = manager.dict()
 
     @staticmethod
-    def analyze(args: tuple['Execution', Execution_Task]):
+    def analyze(args: Tuple['Execution', 'Execution_Task']):
         (self, task) = args
         try:
             self.analyze_start(task)
@@ -51,14 +53,14 @@ class Execution:
         except Exception as e:
             logs.print(e)
 
-    def analyze_start(self, task: Execution_Task):
+    def analyze_start(self, task: 'Execution_Task'):
         sys.stdout.write('\x1b[1;37m' + 'Analysing file [%d/%d]: ' %
                          (len(self.tasks_done), len(self.tasks)) + '\x1b[0m')
         sys.stdout.write('\x1b[1;34m' + task.file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' +
                          task.tool + ']' + '\x1b[0m' + '\n')
 
-    def analyze_end(self, task: Execution_Task):
+    def analyze_end(self, task: 'Execution_Task'):
         self.tasks_done.append(task)
 
         duration = task.end_time - task.start_time
@@ -109,7 +111,7 @@ class Execution:
             logs.print(
                 'Analysis completed. \nIt took %ss to analyse all files.' % elapsed_time)
 
-    def parse_results(self, task: Execution_Task, log_content: str):
+    def parse_results(self, task: 'Execution_Task', log_content: str):
         results = {
             'contract': task.file,
             'tool': task.tool,
@@ -153,7 +155,7 @@ class Execution:
                     tool=task.tool), sarif_file, indent=2)
 
     @staticmethod
-    def log_parser(task: Execution_Task, log: str) -> Parser:
+    def log_parser(task: 'Execution_Task', log: str) -> Parser:
         if task.tool == 'oyente':
             return Oyente(task, log)
         if task.tool == 'osiris':

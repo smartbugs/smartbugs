@@ -7,6 +7,7 @@ import pathlib
 import sys
 import yaml
 from time import localtime, strftime
+from typing import List
 
 from src.execution.execution import Execution
 from src.execution.execution_task import Execution_Task
@@ -23,7 +24,7 @@ with open(cfg_dataset_path, 'r') as ymlfile:
         logs.print(exc)
 
 
-def create_tasks(conf: Execution_Configuration, args: argparse.Namespace) -> list[Execution_Task]:
+def create_tasks(conf: 'Execution_Configuration', args: argparse.Namespace) -> List['Execution_Task']:
     files_to_analyze = []
 
     if args.tool == ['all']:

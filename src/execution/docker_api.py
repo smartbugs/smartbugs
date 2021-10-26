@@ -59,7 +59,7 @@ def remove_container(container):
 
 
 
-def analyse_files(task: Execution_Task):
+def analyse_files(task: 'Execution_Task'):
     """
     analyse solidity files
     """

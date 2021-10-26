@@ -5,7 +5,7 @@ from src.execution.execution_configuration import Execution_Configuration
 
 class Execution_Task:
 
-    def __init__(self, tool: str, file: str, execution_configuration: Execution_Configuration):
+    def __init__(self, tool: str, file: str, execution_configuration: 'Execution_Configuration'):
         self.tool = tool
         self.file = file
         self.file_name = os.path.splitext(os.path.basename(self.file))[0]

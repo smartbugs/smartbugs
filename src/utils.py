@@ -1,8 +1,9 @@
 from solidity_parser import parser
 from src.logger import logs
+from typing import Dict
 
 
-def merge_two_dicts(x: dict, y: dict):
+def merge_two_dicts(x: Dict, y: Dict):
     """Given two dictionaries, merge them into a new dict as a shallow copy."""
     z = x.copy()
     z.update(y)
