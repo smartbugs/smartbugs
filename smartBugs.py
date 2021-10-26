@@ -6,14 +6,13 @@ import os
 import pathlib
 import sys
 import yaml
-from time import localtime, strftime
 from typing import List
 
 from src.execution.execution import Execution
 from src.execution.execution_task import Execution_Task
 from src.execution.execution_configuration import Execution_Configuration
 from src.logger import logs
-from src.interface.cli import create_parser, get_remote_dataset, is_remote_dataset, DATASET_CHOICES, TOOLS_CHOICES
+from src.interface.cli import get_config, get_remote_dataset, is_remote_dataset
 
 
 cfg_dataset_path = os.path.join(os.path.dirname(__file__), 'config', 'dataset', 'dataset.yaml')
@@ -24,18 +23,11 @@ with open(cfg_dataset_path, 'r') as ymlfile:
         logs.print(exc)
 
 
-def create_tasks(conf: 'Execution_Configuration', args: argparse.Namespace) -> List['Execution_Task']:
+def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
     files_to_analyze = []
 
-    if args.tool == ['all']:
-        TOOLS_CHOICES.remove('all')
-        args.tool = TOOLS_CHOICES
-
-    if args.dataset:
-        if args.dataset == ['all']:
-            DATASET_CHOICES.remove('all')
-            args.dataset = DATASET_CHOICES
-        for dataset in args.dataset:
+    if conf.datasets:
+        for dataset in conf.datasets:
             base_name = dataset.split('/')[0]
             if is_remote_dataset(cfg_dataset, base_name):
                 remote_info = get_remote_dataset(cfg_dataset, base_name)
@@ -63,17 +55,17 @@ def create_tasks(conf: 'Execution_Configuration', args: argparse.Namespace) -> L
 
                 if dataset == base_name:  # basename included
                     dataset_path = base_path
-                    args.file.append(dataset_path)
-                if dataset != base_name and base_name not in args.dataset:
+                    conf.files.append(dataset_path)
+                if dataset != base_name and base_name not in conf.datasets:
                     subset_name = dataset.split('/')[1]
                     dataset_path = os.path.join(
                         base_path, remote_info['subsets'][subset_name])
-                    args.file.append(dataset_path)
+                    conf.files.append(dataset_path)
             else:
                 dataset_path = cfg_dataset[dataset]
-                args.file.append(dataset_path)
+                conf.files.append(dataset_path)
 
-    for file in args.file:
+    for file in conf.files:
         if os.path.isdir(file):
             for root, _, files in os.walk(file):
                 for name in files:
@@ -95,7 +87,7 @@ def create_tasks(conf: 'Execution_Configuration', args: argparse.Namespace) -> L
 
     tasks = []
     for file in files_to_analyze:
-        for tool in args.tool:
+        for tool in conf.tools:
             task = Execution_Task(tool, file, conf)
             if conf.skip_existing:
                 folder = os.path.join(task.result_output_path(), 'result.json')
@@ -108,21 +100,13 @@ def create_tasks(conf: 'Execution_Configuration', args: argparse.Namespace) -> L
 
 
 if __name__ == '__main__':
-    args = create_parser()
-
-    if args.execution_name is not None:
-        output_folder = args.execution_name
-    else:
-        output_folder = strftime("%Y%m%d_%H%M", localtime())
-
-    conf = Execution_Configuration(
-        execution_name=output_folder, output_folder="results", is_bytecode=args.bytecode, skip_existing=args.skip_existing, processes=args.processes, aggregate_sarif=args.aggregate_sarif, unique_sarif_output=args.unique_sarif_output, output_version=args.output_version)
+    conf = get_config()
 
     pathlib.Path(os.path.join(conf.output_folder, "logs")
                  ).mkdir(parents=True, exist_ok=True)
     logs.file_path = os.path.join(
-        conf.output_folder, "logs", 'SmartBugs_' + output_folder + '.log')
+        conf.output_folder, "logs", 'SmartBugs_' + conf.execution_name + '.log')
 
-    tasks = create_tasks(conf, args)
+    tasks = create_tasks(conf)
     execution = Execution(tasks=tasks)
     execution.exec()
