@@ -79,8 +79,10 @@ def create_tasks(conf: 'Execution_Configuration', args: argparse.Namespace) -> L
                 for name in files:
                     file_path = os.path.join(root, name)
                     if conf.is_bytecode and not name.endswith(".hex"):
+                        logs.print(f"[WARNING] {file_path} is ignored (only .hex files are considered)")
                         continue
                     if not conf.is_bytecode and not name.endswith(".sol"):
+                        logs.print(f"[WARNING] {file_path} is ignored (only .sol files are considered)")
                         continue
                     if os.name == 'nt':
                         file_path = file_path.replace('\\', '/')
