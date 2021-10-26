@@ -64,7 +64,7 @@ def analyse_files(task: 'Execution_Task'):
     analyse solidity files
     """
     try:
-        cfg_path = os.path.abspath('config/tools/' + task.tool + '.yaml')
+        cfg_path = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'tools', task.tool + '.yaml')
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
             try:
                 cfg = yaml.safe_load(ymlfile)

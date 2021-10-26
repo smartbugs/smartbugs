@@ -16,7 +16,7 @@ from src.logger import logs
 from src.interface.cli import create_parser, get_remote_dataset, is_remote_dataset, DATASET_CHOICES, TOOLS_CHOICES
 
 
-cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
+cfg_dataset_path = os.path.join(os.path.dirname(__file__), 'config', 'dataset', 'dataset.yaml')
 with open(cfg_dataset_path, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
