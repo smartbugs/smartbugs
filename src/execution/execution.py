@@ -55,7 +55,7 @@ class Execution:
 
     def analyze_start(self, task: 'Execution_Task'):
         sys.stdout.write('\x1b[1;37m' + 'Analysing file [%d/%d]: ' %
-                         (len(self.tasks_done), len(self.tasks)) + '\x1b[0m')
+                         (len(self.tasks_done) + 1, len(self.tasks)) + '\x1b[0m')
         sys.stdout.write('\x1b[1;34m' + task.file + '\x1b[0m')
         sys.stdout.write('\x1b[1;37m' + ' [' +
                          task.tool + ']' + '\x1b[0m' + '\n')
