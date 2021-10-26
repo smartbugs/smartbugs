@@ -108,5 +108,7 @@ if __name__ == '__main__':
         conf.output_folder, "logs", 'SmartBugs_' + conf.execution_name + '.log')
 
     tasks = create_tasks(conf)
-    execution = Execution(tasks=tasks)
-    execution.exec()
+
+    if tasks:
+        execution = Execution(tasks=tasks)
+        execution.exec()
