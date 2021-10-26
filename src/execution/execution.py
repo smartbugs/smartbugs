@@ -25,7 +25,7 @@ from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
 from src.execution.execution_task import Execution_Task
-from src.logger import logs
+from src.logger import logs, Logger
 from src.execution.docker_api import analyse_files
 from src.output_parser.SarifHolder import SarifHolder
 
@@ -41,8 +41,9 @@ class Execution:
         self.sarif_cache: Dict[str, SarifHolder] = manager.dict()
 
     @staticmethod
-    def analyze(args: Tuple['Execution', 'Execution_Task']):
-        (self, task) = args
+    def analyze(args: Tuple['Execution', 'Execution_Task', "Logger"]):
+        (self, task, logger) = args
+        logs.file_path = logger.file_path
         try:
             self.analyze_start(task)
             task.start_time = time()
@@ -80,7 +81,7 @@ class Execution:
         self.start_time = time()
 
         with Pool(processes=self.conf.processes) as pool:
-            pool.map(Execution.analyze, [(self, task, )
+            pool.map(Execution.analyze, [(self, task, logs, )
                      for task in self.tasks])
 
         if self.conf.aggregate_sarif:
