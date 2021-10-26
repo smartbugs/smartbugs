@@ -38,7 +38,7 @@ class Execution:
         self.conf = tasks[0].execution_configuration
         self.tasks_done = manager.list()
         self.total_execution = manager.Value("i", 0)
-        self.serif_cache = manager.dict()
+        self.sarif_cache = manager.dict()
 
     @staticmethod
     def analyze(args: Tuple['Execution', 'Execution_Task']):
@@ -89,11 +89,11 @@ class Execution:
                     self.conf.output_folder, self.conf.execution_name, task.file_name + '.sarif')
                 with open(sarif_file_path, 'w') as sarif_file:
                     json.dump(
-                        self.serif_cache[task.file_name].print(), sarif_file, indent=2)
+                        self.sarif_cache[task.file_name].print(), sarif_file, indent=2)
 
         if self.conf.unique_sarif_output:
             sarif_holder = SarifHolder()
-            for sarif_output in self.serif_cache.values():
+            for sarif_output in self.sarif_cache.values():
                 for run in sarif_output.sarif.runs:
                     sarif_holder.addRun(run)
             sarif_file_path = os.path.join(
@@ -135,9 +135,9 @@ class Execution:
             results['success'] = parser.is_success()
 
             if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
-                if task.file_name not in self.serif_cache:
-                    self.serif_cache[task.file_name] = SarifHolder()
-                self.serif_cache[task.file_name].addRun(
+                if task.file_name not in self.sarif_cache:
+                    self.sarif_cache[task.file_name] = SarifHolder()
+                self.sarif_cache[task.file_name].addRun(
                     parser.parseSarif(results, task.file))
         except Exception as e:
             traceback.print_exc()
@@ -151,7 +151,7 @@ class Execution:
 
         if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
             with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarif_file:
-                json.dump(self.serif_cache[task.file_name].printToolRun(
+                json.dump(self.sarif_cache[task.file_name].printToolRun(
                     tool=task.tool), sarif_file, indent=2)
 
     @staticmethod
