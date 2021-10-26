@@ -3,7 +3,7 @@ import sys
 import json
 import os
 import traceback
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 
 from datetime import timedelta
@@ -38,7 +38,7 @@ class Execution:
         self.conf = tasks[0].execution_configuration
         self.tasks_done = manager.list()
         self.total_execution = manager.Value("i", 0)
-        self.sarif_cache = manager.dict()
+        self.sarif_cache: Dict[str, SarifHolder] = manager.dict()
 
     @staticmethod
     def analyze(args: Tuple['Execution', 'Execution_Task']):
@@ -143,9 +143,11 @@ class Execution:
 
             if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
                 if task.file_name not in self.sarif_cache:
-                    self.sarif_cache[task.file_name] = SarifHolder()
-                self.sarif_cache[task.file_name].addRun(
-                    parser.parseSarif(results, task.file))
+                    sarif = SarifHolder()
+                else:
+                    sarif = self.sarif_cache[task.file_name]
+                sarif.addRun(parser.parseSarif(results, task.file))
+                self.sarif_cache[task.file_name] = sarif
         except Exception as e:
             traceback.print_exc()
             logs.print("Log parser error: %s" % e)
