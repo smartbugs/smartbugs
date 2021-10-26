@@ -1,4 +1,3 @@
-from multiprocessing import Manager
 
 
 class Execution_Configuration:
@@ -12,7 +11,6 @@ class Execution_Configuration:
         self.processes = processes
         self.aggregate_sarif = aggregate_sarif
         self.unique_sarif_output = unique_sarif_output
-        self.timeout = 30 * 60
+        self.timeout = 30 * 60 # 30min
         self.cpu_quota = None  # 150000
         self.mem_limit = None  # "512m"
-        self.serif_cache = Manager().dict()
