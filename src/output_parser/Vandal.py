@@ -8,7 +8,7 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 class Vandal(Parser):
 
     @staticmethod
-    def __parse_vuln_line(line):
+    def __parse_vuln_line(line: str):
         if 'checkedCallStateUpdate.csv' in line:
             vuln_type = 'CheckedCallStateUpdate'
         elif 'destroyable.csv' in line:
@@ -48,23 +48,28 @@ class Vandal(Parser):
         logicalLocationsList = []
 
         for analysis_result in conkas_output_results["analysis"]:
-            rule = parseRule(
-                tool="conkas", vulnerability=analysis_result["vuln_type"])
+            for error in analysis_result['errors']:
+                rule = parseRule(
+                    tool="conkas", vulnerability=error["vuln_type"])
 
-            logicalLocation = parseLogicalLocation(
-                analysis_result["maybe_in_function"], kind="function")
+                function_name = error["maybe_in_function"] if "maybe_in_function" in error else ""
+                logical_location = parseLogicalLocation(
+                    function_name, kind="function")
 
-            result = parseResult(tool="conkas", vulnerability=analysis_result["vuln_type"], uri=file_path_in_repo,
-                                 line=int(analysis_result["line_number"]),
-                                 logicalLocation=logicalLocation)
+                line_number = int(error["line_number"]
+                                  ) if "line_number" in error else -1
 
-            resultsList.append(result)
+                result = parseResult(tool="conkas", vulnerability=error["vuln_type"], uri=file_path_in_repo,
+                                     line=line_number,
+                                     logicalLocation=logical_location)
 
-            if isNotDuplicateRule(rule, rulesList):
-                rulesList.append(rule)
+                resultsList.append(result)
 
-            if isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
-                logicalLocationsList.append(logicalLocation)
+                if isNotDuplicateRule(rule, rulesList):
+                    rulesList.append(rule)
+
+                if isNotDuplicateLogicalLocation(logical_location, logicalLocationsList):
+                    logicalLocationsList.append(logical_location)
 
         artifact = parseArtifact(uri=file_path_in_repo)
 
