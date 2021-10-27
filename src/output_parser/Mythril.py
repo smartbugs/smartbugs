@@ -8,6 +8,9 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocati
 
 class Mythril(Parser):
 
+    def is_success(self) -> bool:
+        return 'aborting analysis' not in self.str_output
+
     def parse(self):
         return json.loads(self.str_output)
 
