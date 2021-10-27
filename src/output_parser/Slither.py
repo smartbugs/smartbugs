@@ -1,9 +1,22 @@
 from sarif_om import *
+import os
+import json
+import tarfile
 
+from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseArtifact, parseResult
 
 
-class Slither:
+class Slither(Parser):
+
+    def parse(self):
+        if os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar')):
+            tar = tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'))
+            output_file = tar.extractfile('output.json')
+            return json.loads(output_file.read())
+        
+    def is_success(self) -> bool:
+        return os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar'))
 
     def parseSarif(self, slither_output_results, file_path_in_repo):
         rulesList = []
@@ -23,21 +36,26 @@ class Slither:
 
                 if "name" in element.keys():
                     if "type" in element.keys():
-                        location.logical_locations.append(LogicalLocation(name=element["name"], kind=element["type"]))
+                        location.logical_locations.append(LogicalLocation(
+                            name=element["name"], kind=element["type"]))
                     if "target" in element.keys():
-                        location.logical_locations.append(LogicalLocation(name=element["name"], kind=element["target"]))
+                        location.logical_locations.append(LogicalLocation(
+                            name=element["name"], kind=element["target"]))
                 if "expression" in element.keys():
-                    location.physical_location.region.snippet = ArtifactContent(text=element["expression"])
+                    location.physical_location.region.snippet = ArtifactContent(
+                        text=element["expression"])
                 if "contract" in element.keys():
                     location.logical_locations.append(
                         LogicalLocation(name=element["contract"]["name"], kind=element["contract"]["type"]))
                 locations.append(location)
 
-            result = parseResult(tool="slither", vulnerability=analysis["check"], level=level)
+            result = parseResult(
+                tool="slither", vulnerability=analysis["check"], level=level)
 
             result.locations = locations
 
-            rule = parseRule(tool="slither", vulnerability=analysis["check"], full_description=message)
+            rule = parseRule(
+                tool="slither", vulnerability=analysis["check"], full_description=message)
 
             if isNotDuplicateRule(rule, rulesList):
                 rulesList.append(rule)
@@ -49,7 +67,7 @@ class Slither:
         tool = Tool(driver=ToolComponent(name="Slither", version="0.7.0", rules=rulesList,
                                          information_uri="https://github.com/crytic/slither",
                                          full_description=MultiformatMessageString(
-                                             text="Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses.")))
+                                             text="Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comprehension, and quickly prototype custom analyses.")))
 
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 

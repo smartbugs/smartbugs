@@ -4,6 +4,11 @@ import argparse
 import os
 import sys
 from functools import reduce
+from time import localtime, strftime
+from src.execution.execution_configuration import Execution_Configuration
+
+from src.logger import logs
+from src.utils import merge_two_dicts
 
 DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
@@ -15,7 +20,7 @@ with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
     except yaml.YAMLError as exc:
-        print(exc)
+        logs.print(exc)
 
 
 class InfoAction(argparse.Action):
@@ -26,11 +31,11 @@ class InfoAction(argparse.Action):
                 try:
                     cfg = yaml.safe_load(ymlfile)
                 except yaml.YAMLError as exc:
-                    print(exc)
+                    logs.print(exc)
             if 'info' in cfg:
-                print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + cfg['info'])
+                logs.print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + cfg['info'])
             else:
-                print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + 'no info provided.')
+                logs.print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + 'no info provided.')
         parser.exit()
 
 
@@ -51,7 +56,7 @@ class ListAction(argparse.Action):
 
 
 # Parser stuff
-def isRemoteDataset(cfg_dataset, name):
+def is_remote_dataset(cfg_dataset, name):
     """Given a dataset file configuration and a dataset name, return True
        if the dataset is remote and False otherwise.
     """
@@ -67,19 +72,12 @@ def isRemoteDataset(cfg_dataset, name):
     return False
 
 
-def merge_two_dicts(x, y):
-    """Given two dictionaries, merge them into a new dict as a shallow copy."""
-    z = x.copy()
-    z.update(y)
-    return z
-
-
 # transform remote dataset info in dictionary
-def getRemoteDataset(cfg_dataset, name):
+def get_remote_dataset(cfg_dataset, name):
     remote_dataset = {}
     remote_info = cfg_dataset[name]
 
-    if isRemoteDataset(cfg_dataset, name):
+    if is_remote_dataset(cfg_dataset, name):
         # url and local_dir
         for prop_name in ["url", "local_dir", "subsets"]:
             for prop_value in (e[prop_name] for e in remote_info if isinstance(e, dict) and prop_name in e):
@@ -96,7 +94,7 @@ def getRemoteDataset(cfg_dataset, name):
     return remote_dataset
 
 
-def create_parser():
+def get_config():
     parser = argparse.ArgumentParser(description="Static analysis of Ethereum smart contracts")
     group_source_files = parser.add_mutually_exclusive_group(required='True')
     group_tools = parser.add_mutually_exclusive_group(required='True')
@@ -112,8 +110,8 @@ def create_parser():
         DATASET_CHOICES.append(name[0])
 
         # list all subsets of remote datasets
-        if isRemoteDataset(cfg_dataset, name[0]):
-            remote_dataset = getRemoteDataset(cfg_dataset, name[0])
+        if is_remote_dataset(cfg_dataset, name[0]):
+            remote_dataset = get_remote_dataset(cfg_dataset, name[0])
             for sbset_name in remote_dataset['subsets']:
                 DATASET_CHOICES.append(name[0] + '/' + sbset_name)
 
@@ -165,6 +163,21 @@ def create_parser():
                         type=int,
                         default=1,
                         help='The number of parallel execution')
+    
+    info.add_argument('--timeout',
+                        type=int,
+                        default=30*60,
+                        help='The execution timeout of each process in sec')
+
+    info.add_argument('--cpu-quota',
+                        type=int,
+                        default=150000,
+                        help='The cpu quota provided to the docker image')
+
+    info.add_argument('--mem-quota',
+                        type=str,
+                        default=None,
+                        help='The memory quota provided to the docker image (e.g. 512m or 1g)')
 
     info.add_argument('--output-version',
                         choices=VERSION_CHOICES,
@@ -188,4 +201,27 @@ def create_parser():
                       help='Aggregates all sarif analysis outputs in a single file')
 
     args = parser.parse_args()
-    return(args)
+
+
+    if args.execution_name is not None:
+        output_folder = args.execution_name
+    else:
+        output_folder = strftime("%Y%m%d_%H%M", localtime())
+
+    conf = Execution_Configuration(
+        execution_name=output_folder, 
+        output_folder="results", 
+        is_bytecode=args.bytecode, 
+        skip_existing=args.skip_existing, 
+        processes=args.processes, 
+        aggregate_sarif=args.aggregate_sarif, 
+        unique_sarif_output=args.unique_sarif_output, 
+        output_version=args.output_version,
+        timeout=args.timeout,
+        cpu_quota=args.cpu_quota,
+        mem_quota=args.mem_quota,
+        tools=args.tool,
+        files=args.file,
+        datasets=args.dataset)
+        
+    return conf

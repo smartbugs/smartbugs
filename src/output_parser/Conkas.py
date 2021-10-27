@@ -6,8 +6,6 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 
 class Conkas(Parser):
-    def __init__(self):
-        pass
 
     @staticmethod
     def __parse_vuln_line(line):
@@ -26,12 +24,12 @@ class Conkas(Parser):
             'line_number': line_number
         }
     
-    def is_success(self, str_output):
-        return "Traceback" not in str_output
+    def is_success(self):
+        return "Traceback" not in self.str_output
 
-    def parse(self, str_output):
+    def parse(self):
         output = []
-        str_output = str_output.split('\n')
+        str_output = self.str_output.split('\n')
         for line in str_output:
             if 'Vulnerability' in line:
                 try:

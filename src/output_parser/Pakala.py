@@ -6,8 +6,6 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 
 class Pakala(Parser):
-    def __init__(self):
-        pass
 
     @staticmethod
     def __parse_vuln_line(line):
@@ -21,14 +19,14 @@ class Pakala(Parser):
             'vuln_type': vuln_type
         }
 
-    def is_success(self, str_output: str):
-        return "Nothing to report." in str_output
+    def is_success(self):
+        return "Nothing to report." in self.str_output
 
-    def parse(self, str_output):
+    def parse(self):
         output = {
             'errors': []
         }
-        str_output = str_output.split('\n')
+        str_output = self.str_output.split('\n')
 
         for line in str_output:
             if "Symbolic execution finished with coverage " in line:

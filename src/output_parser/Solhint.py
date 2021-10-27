@@ -5,12 +5,10 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 
 class Solhint(Parser):
-    def __init__(self):
-        pass
 
-    def parse(self, str_output):
+    def parse(self):
         output = []
-        lines = str_output.splitlines()
+        lines = self.str_output.splitlines()
         for line in lines:
             if ":" in line:
                 s_result = line.split(':')
