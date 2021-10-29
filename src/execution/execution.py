@@ -11,6 +11,7 @@ from multiprocessing import Pool, Manager
 
 from src.output_parser.Parser import Parser
 from src.execution.execution_task import Execution_Task
+from src.output_parser.EasyFlow import EasyFlow
 from src.output_parser.Vandal import Vandal
 from src.output_parser.Pakala import Pakala
 from src.output_parser.Conkas import Conkas
@@ -196,3 +197,5 @@ class Execution:
             return Pakala(task, log)
         if task.tool == 'vandal':
             return Vandal(task, log)
+        if task.tool == 'easyflow':
+            return EasyFlow(task, log)
