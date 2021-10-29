@@ -52,6 +52,7 @@ class Execution:
             self.parse_results(task, output)
             self.analyze_end(task)
         except Exception as e:
+            traceback.print_exc()
             logs.print(e)
 
     def analyze_start(self, task: 'Execution_Task'):
@@ -142,6 +143,15 @@ class Execution:
             results['analysis'] = parser.parse()
             results['success'] = parser.is_success()
 
+            if self.conf.output_version == 'v1' or self.conf.output_version == 'all':
+                with open(os.path.join(output_folder, 'result.json'), 'w') as f:
+                    json.dump(results, f, indent=2)
+        except Exception as e:
+            traceback.print_exc()
+            logs.print("Log parser error: %s" % e)
+            return # exit
+
+        try:
             if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
                 if task.file_name not in self.sarif_cache:
                     sarif = SarifHolder()
@@ -149,20 +159,14 @@ class Execution:
                     sarif = self.sarif_cache[task.file_name]
                 sarif.addRun(parser.parseSarif(results, task.file))
                 self.sarif_cache[task.file_name] = sarif
+
+                with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarif_file:
+                    json.dump(self.sarif_cache[task.file_name].printToolRun(
+                        tool=task.tool), sarif_file, indent=2)
         except Exception as e:
             traceback.print_exc()
-            logs.print("Log parser error: %s" % e)
-            # ignore
-            pass
-
-        if self.conf.output_version == 'v1' or self.conf.output_version == 'all':
-            with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-                json.dump(results, f, indent=2)
-
-        if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
-            with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarif_file:
-                json.dump(self.sarif_cache[task.file_name].printToolRun(
-                    tool=task.tool), sarif_file, indent=2)
+            logs.print("parse sarif error: %s" % e)
+        
 
     @staticmethod
     def log_parser(task: 'Execution_Task', log: str) -> Parser:
