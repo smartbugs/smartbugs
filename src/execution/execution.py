@@ -11,6 +11,7 @@ from multiprocessing import Pool, Manager
 
 from src.output_parser.Parser import Parser
 from src.execution.execution_task import Execution_Task
+from src.output_parser.TeEther import TeEther
 from src.output_parser.MadMax import MadMax
 from src.output_parser.EasyFlow import EasyFlow
 from src.output_parser.Vandal import Vandal
@@ -202,3 +203,5 @@ class Execution:
             return EasyFlow(task, log)
         if task.tool == 'madmax':
             return MadMax(task, log)
+        if task.tool == 'teether':
+            return TeEther(task, log)
