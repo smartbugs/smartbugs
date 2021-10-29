@@ -13,7 +13,7 @@ class Logger():
         return None
 
     def print(self, print_message: str, message: str = None):
-        sys.stdout.write(print_message + "\n")
+        sys.stdout.write(f"{print_message}\n")
         fd = self.__get_fd()
         if fd is not None:
             if message is not None:
