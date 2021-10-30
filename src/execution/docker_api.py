@@ -9,7 +9,7 @@ from shutil import copyfile, rmtree
 
 from src.execution.execution_task import Execution_Task
 from src.logger import logs
-from src.utils import get_solc_version
+from src.utils import get_solc_version,COLERR,COLRESET
 
 client = docker.from_env()
 
@@ -18,7 +18,7 @@ def pull_image(image: str):
     pull images
     """
     try:
-        logs.print('pulling ' + image + ' image, this may take a while...')
+        logs.print(f'pulling {image} image, this may take a while...')
         image = client.images.pull(image)
         logs.print('image pulled')
 
@@ -84,11 +84,13 @@ def analyse_files(task: 'Execution_Task'):
             cmd_key = 'cmd'
 
         if 'default' not in cfg['docker_image'] or cfg['docker_image'] == None:
-            logs.print(task.tool + ': default docker image not provided. please check you config file.')
-            sys.exit(task.tool + ': default docker image not provided. please check you config file.')
+            msg = f"{task.tool}: default docker image not provided. Please check you config file."
+            logs.print(msg)
+            sys.exit(msg)
         elif cmd_key not in cfg or cfg[cmd_key] == None:
-            logs.print(task.tool + ': commands not provided. please check you config file.')
-            sys.exit(task.tool + ': commands not provided. please check you config file.')
+            msg = f"{task.tool}: commands not provided. Please check you config file."
+            logs.print(msg)
+            sys.exit(msg)
 
         file_name = os.path.basename(task.file)
         file_name = os.path.splitext(file_name)[0]
@@ -137,7 +139,8 @@ def analyse_files(task: 'Execution_Task'):
                 pass
             output = container.logs().decode('utf8').strip()
             if (output.count('Solc experienced a fatal error') >= 1 or output.count('compilation failed') >= 1):
-                logs.print('\x1b[1;31m' + 'ERROR: Solc experienced a fatal error. Check the results file for more info' + '\x1b[0m', 'ERROR: Solc experienced a fatal error. Check the results file for more info')
+                msg = 'ERROR: Solc experienced a fatal error. Check the results file for more info'
+                logs.print(f"{COLERR}{msg}{COLRESET}", msg)
 
             if 'output_in_files' in cfg:
                 try:
@@ -147,7 +150,8 @@ def analyse_files(task: 'Execution_Task'):
                         for chunk in bits:
                             f.write(chunk)
                 except Exception as e:
-                    logs.print('\x1b[1;31m' + 'ERROR: could not get file from container. file not analysed.' + '\x1b[0m', 'ERROR: could not get file from container. file not analysed.\n')
+                    msg = 'ERROR: could not get file from container. File not analysed.'
+                    logs.print(f"{COLERR}{msg}{COLRESET}", msg)
             return output
         finally:
             rmtree(working_dir)

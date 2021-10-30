@@ -3,25 +3,33 @@ import yaml
 import argparse
 import os
 import sys
-from functools import reduce
 from time import localtime, strftime
 from src.execution.execution_configuration import Execution_Configuration
+from src.utils import COLSTATUS,COLRESET
 
 from src.logger import logs
-from src.utils import merge_two_dicts
 
-DATASET_CHOICES = ['all']
-TOOLS_CHOICES = ['all']
 VERSION_CHOICES = ['v1', 'v2', 'all']
-CONFIG_TOOLS_PATH = os.path.abspath('config/tools')
-CONFIG_DATASET_PATH = os.path.abspath('config/dataset/dataset.yaml')
 
+CONFIG_DATASET_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'dataset', 'dataset.yaml')
+DATASET_CHOICES = ['all']
 with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
     except yaml.YAMLError as exc:
         logs.print(exc)
+for name,location in cfg_dataset.items():
+    if isinstance(location, dict) and 'subsets' in location:
+        for sname in location['subsets']:
+            DATASET_CHOICES.append(f"{name}/{sname}")
+    else:
+        DATASET_CHOICES.append(name)
 
+CONFIG_TOOLS_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'tools')
+TOOLS_CHOICES = ['all']
+# get tools available by parsing the name of the config files
+tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
+TOOLS_CHOICES.extend(tools)
 
 class InfoAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -32,67 +40,20 @@ class InfoAction(argparse.Action):
                     cfg = yaml.safe_load(ymlfile)
                 except yaml.YAMLError as exc:
                     logs.print(exc)
-            if 'info' in cfg:
-                logs.print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + cfg['info'])
-            else:
-                logs.print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + 'no info provided.')
+            info = cfg['info'] if 'info' in cfg else 'no info available'
+            print(f"{COLSTATUS}: {info}{COLRESET}")
         parser.exit()
-
 
 class ListAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         for value in values:
             if value == 'tools':
-                print('Here are the tools choices: ')
-                for tool in TOOLS_CHOICES:
-                    print(tool)
-                sys.stdout.write('\n')
+                print('Choices for the analysis tool (option -t): ')
+                print(' '.join(TOOLS_CHOICES))
             elif value == 'datasets':
-                print('Here are the vulnerabilities datasets choices:')
-                for dataset in DATASET_CHOICES:
-                    print(dataset + ' ')
-                sys.stdout.write('\n')
+                print('Choices for the vulnerability dataset to analyze (option --dataset):')
+                print(' '.join(DATASET_CHOICES))
         parser.exit()
-
-
-# Parser stuff
-def is_remote_dataset(cfg_dataset, name):
-    """Given a dataset file configuration and a dataset name, return True
-       if the dataset is remote and False otherwise.
-    """
-    remote_info = cfg_dataset[name]
-    if isinstance(remote_info, list):
-        merged = {}
-        for d in remote_info:
-            if isinstance(d, dict):
-                merged = merge_two_dicts(merged, d)
-
-        # A remote dataset needs to define an url and a local dir
-        return 'url' in merged and 'local_dir' in merged
-    return False
-
-
-# transform remote dataset info in dictionary
-def get_remote_dataset(cfg_dataset, name):
-    remote_dataset = {}
-    remote_info = cfg_dataset[name]
-
-    if is_remote_dataset(cfg_dataset, name):
-        # url and local_dir
-        for prop_name in ["url", "local_dir", "subsets"]:
-            for prop_value in (e[prop_name] for e in remote_info if isinstance(e, dict) and prop_name in e):
-                remote_dataset[prop_name] = prop_value
-
-    # at this point, subsets is a list of dicts
-    # we want it to be a dictionary
-    if 'subsets' in remote_dataset:
-        remote_dataset['subsets'] = \
-            reduce(lambda a, b: dict(a, **b), remote_dataset['subsets'])
-    else:
-        remote_dataset['subsets'] = {}
-
-    return remote_dataset
-
 
 def get_config():
     parser = argparse.ArgumentParser(description="Static analysis of Ethereum smart contracts")
@@ -105,20 +66,6 @@ def get_config():
 
     parser.register('action', 'list_option', ListAction)
     list_option = parser.add_argument_group('list_option')
-
-    for name in cfg_dataset.items():
-        DATASET_CHOICES.append(name[0])
-
-        # list all subsets of remote datasets
-        if is_remote_dataset(cfg_dataset, name[0]):
-            remote_dataset = get_remote_dataset(cfg_dataset, name[0])
-            for sbset_name in remote_dataset['subsets']:
-                DATASET_CHOICES.append(name[0] + '/' + sbset_name)
-
-    # get tools available by parsing the name of the config files
-    tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
-    for tool in tools:
-        TOOLS_CHOICES.append(tool)
 
     group_source_files.add_argument('-f',
                         '--file',
