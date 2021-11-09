@@ -1,21 +1,23 @@
 # Docker Image with MAIAN and Solc for Augur contracts security analysis
 
 # Pull base image
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 # Install Python and build tools
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 RUN \
-  apt-get update && \
   apt-get install -y build-essential software-properties-common libssl-dev wget && \
-  apt-get install -y python python-dev python-pip git psmisc lsof
+  apt-get install -y python3 python3-dev python3-pip git psmisc lsof
+
 
 # Install Solidity compiler 0.4.25 release
-#RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
-#  mv solc-static-linux /usr/bin/solc
+RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
+  mv solc-static-linux /usr/bin/solc
 
 # Install Solidity compiler 0.5.10 release
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
-  mv solc-static-linux /usr/bin/solc
+#RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
+#  mv solc-static-linux /usr/bin/solc
 
 # Install Go Ethereum (GETH) from Ethereum PPA
 RUN \
@@ -54,8 +56,9 @@ RUN pip3 --no-cache-dir install --upgrade setuptools pip
 RUN pip3 install solidity_parser
 
 COPY scripts/printContractNames.py printContractNames.py
-COPY scripts/runMAIANall.sh runMAIANall.sh
-RUN chmod +x printContractNames.py runMAIANall.sh
+COPY scripts/run_maian_solidity.sh run_maian_solidity.sh
+COPY scripts/run_maian_bytecode.sh run_maian_bytecode.sh
+RUN chmod +x printContractNames.py run_maian_solidity.sh run_maian_bytecode.sh 
 
 # Allow insecure unlock
 RUN sed -si "s/'geth'/'geth','--allow-insecure-unlock'/g" /MAIAN/tool/blockchain.py
