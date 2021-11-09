@@ -76,13 +76,14 @@ class Execution:
             (len(self.tasks) - len(self.tasks_done)) / task_sec)))
 
         duration_str = str(timedelta(seconds=round(duration)))
+        exit_code = task.exit_code if task.exit_code is not None else "timeout"
         line = (
             f"{COLSTATUS}Done [{len(self.tasks_done)}/{len(self.tasks)}, {remaining_time}]: "
             f"{COLINFO}{task.file}"
             f"{COLSTATUS} [{task.tool}] in {duration_str}"
-            f"{COLRESET} with exit code: {task.exit_code}"
+            f"{COLRESET} with exit code: {exit_code}"
             )
-        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str}")
+        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str} with exit code: {exit_code}")
 
     def exec(self):
         self.start_time = time()
