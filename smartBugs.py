@@ -12,7 +12,7 @@ from src.execution.execution import Execution
 from src.execution.execution_task import Execution_Task
 from src.execution.execution_configuration import Execution_Configuration
 from src.logger import logs
-from src.interface.cli import get_config, cfg_dataset
+from src.interface.cli import get_config, cfg_dataset, is_remote_info, get_remote_info
 from src.utils import COLSTATUS,COLRESET,COLERR
 
 def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
@@ -22,9 +22,8 @@ def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
         for dataset in conf.datasets:
             base_name = dataset.split('/')[0]
             dataset_info = cfg_dataset[base_name]
-            if isinstance(dataset_info,dict) and 'url' in dataset_info and 'local_dir' in dataset_info: 
-                url = dataset_info['url']
-                base_path = dataset_info['local_dir']
+            if is_remote_info(dataset_info):
+                (url, base_path) = get_remote_info(dataset_info)
 
                 if not os.path.isdir(base_path):
                     # local copy does not exist; we need to clone it

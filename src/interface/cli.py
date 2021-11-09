@@ -31,6 +31,12 @@ TOOLS_CHOICES = ['all']
 tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
 TOOLS_CHOICES.extend(tools)
 
+def is_remote_info(info):
+    return isinstance(info,dict) and 'url' in info and 'local_dir' in info
+
+def get_remote_info(info):
+    return (info['url'], info['local_dir'])
+
 class InfoAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         for tool in values:
