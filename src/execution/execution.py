@@ -76,8 +76,10 @@ class Execution:
             (len(self.tasks) - len(self.tasks_done)) / task_sec)))
 
         duration_str = str(timedelta(seconds=round(duration)))
-        line = "\x1b[1;37mDone [%d/%d, %s]: \x1b[0m\x1b[1;34m%s\x1b[0m\x1b[1;37m [%s] in %s \x1b[0mwith exit code: %d" % (
-            len(self.tasks_done), len(self.tasks), remaining_time, task.file, task.tool, duration_str, task.exit_code)
+        exit_code = task.exit_code if task.exit_code is not None else "timeout"
+
+        line = "\x1b[1;37mDone [%d/%d, %s]: \x1b[0m\x1b[1;34m%s\x1b[0m\x1b[1;37m [%s] in %s \x1b[0mwith exit code: %s" % (
+            len(self.tasks_done), len(self.tasks), remaining_time, task.file, task.tool, duration_str, exit_code)
         logs.print(line, '[%d/%d] ' % (len(self.tasks_done), len(self.tasks)) +
                    task.file + ' [' + task.tool + '] in ' + duration_str)
 
