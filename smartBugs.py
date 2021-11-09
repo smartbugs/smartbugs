@@ -27,7 +27,8 @@ def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
 
                 if not os.path.isdir(base_path):
                     # local copy does not exist; we need to clone it
-                    print(f"{COLSTATUS}{base_name} is a remote dataset. Do you want to create a local copy? [Y/n]{COLRESET}")
+                    sys.stdout.write(f"{COLSTATUS}{base_name} is a remote dataset. Do you want to create a local copy? [Y/n]{COLRESET}")
+                    sys.stdout.flush()
                     answer = input()
                     if answer.lower() in ['yes', 'y', '']:
                         sys.stdout.write(f"{COLSTATUS}Cloning remote dataset [{base_path} <- {url}]... {COLRESET}")
@@ -38,7 +39,7 @@ def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
                         logs.print(f"{COLERR}ABORTING: cannot proceed without local copy of remote dataset {base_name}{COLRESET}")
                         quit()
                 else:
-                    sys.stdout.write(f"{COLSTATUS}Using remote dataset [{base_path} <- {url}]{COLRESET}")
+                    sys.stdout.write(f"{COLSTATUS}Using remote dataset [{base_path} <- {url}]{COLRESET}\n")
 
                 if dataset == base_name:  # basename included
                     dataset_path = base_path
