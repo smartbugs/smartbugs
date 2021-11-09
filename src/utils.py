@@ -2,13 +2,19 @@ from solidity_parser import parser
 from src.logger import logs
 from typing import Dict
 
-
-def merge_two_dicts(x: Dict, y: Dict):
-    """Given two dictionaries, merge them into a new dict as a shallow copy."""
-    z = x.copy()
-    z.update(y)
-    return z
-
+BLACK = '\x1b[1;30m'
+RED = '\x1b[1;31m'
+GREEN = '\x1b[1;32m'
+YELLOW = '\x1b[1;33m'
+BLUE = '\x1b[1;34m'
+MAGENTA = '\x1b[1;35m'
+CYAN = '\x1b[1;36m'
+WHITE = '\x1b[1;37m'
+COLRESET = '\x1b[0m'
+COLERR = RED
+COLWARN = YELLOW
+COLINFO = BLUE
+COLSTATUS = WHITE
 
 def get_solc_version(file: str):
     """
@@ -17,12 +23,9 @@ def get_solc_version(file: str):
     try:
         with open(file, 'r', encoding='utf-8') as fd:
             sourceUnit = parser.parse(fd.read())
-            solc_version = sourceUnit['children'][0]['value']
-            solc_version = solc_version.strip('^')
-            solc_version = solc_version.split('.')
-            return (int(solc_version[1]), int(solc_version[2]))
+        solc_version = sourceUnit['children'][0]['value'].strip('^').split('.')
+        return (int(solc_version[1]), int(solc_version[2]))
     except:
-        logs.print(
-            '\x1b[1;33m' + 'WARNING: could not parse solidity file to get solc version' + '\x1b[0m',
-            'WARNING: could not parse solidity file to get solc version')
+        msg = 'WARNING: could not parse solidity file to get solc version'
+        logs.print(f"{COLWARN}{msg}{COLRESET}", msg)
     return (None, None)

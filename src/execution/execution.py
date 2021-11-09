@@ -5,7 +5,6 @@ import os
 import traceback
 from typing import List, Tuple, Dict
 
-
 from datetime import timedelta
 from multiprocessing import Pool, Manager
 
@@ -31,7 +30,7 @@ from src.execution.execution_task import Execution_Task
 from src.logger import logs, Logger
 from src.execution.docker_api import analyse_files
 from src.output_parser.SarifHolder import SarifHolder
-
+from src.utils import COLINFO, COLSTATUS, COLRESET
 
 class Execution:
 
@@ -59,11 +58,12 @@ class Execution:
             logs.print(e)
 
     def analyze_start(self, task: 'Execution_Task'):
-        sys.stdout.write('\x1b[1;37m' + 'Analysing file [%d/%d]: ' %
-                         (len(self.tasks_done) + 1, len(self.tasks)) + '\x1b[0m')
-        sys.stdout.write('\x1b[1;34m' + task.file + '\x1b[0m')
-        sys.stdout.write('\x1b[1;37m' + ' [' +
-                         task.tool + ']' + '\x1b[0m' + '\n')
+        sys.stdout.write(
+            f"{COLSTATUS}Analyzing file [{len(self.tasks_done)+1}/{len(self.tasks)}]: "
+            f"{COLINFO}{task.file}"
+            f"{COLSTATUS} [{task.tool}]{COLRESET}\n"
+        )
+        sys.stdout.flush()
 
     def analyze_end(self, task: 'Execution_Task'):
         self.tasks_done.append(task)
@@ -77,11 +77,13 @@ class Execution:
 
         duration_str = str(timedelta(seconds=round(duration)))
         exit_code = task.exit_code if task.exit_code is not None else "timeout"
-
-        line = "\x1b[1;37mDone [%d/%d, %s]: \x1b[0m\x1b[1;34m%s\x1b[0m\x1b[1;37m [%s] in %s \x1b[0mwith exit code: %s" % (
-            len(self.tasks_done), len(self.tasks), remaining_time, task.file, task.tool, duration_str, exit_code)
-        logs.print(line, '[%d/%d] ' % (len(self.tasks_done), len(self.tasks)) +
-                   task.file + ' [' + task.tool + '] in ' + duration_str)
+        line = (
+            f"{COLSTATUS}Done [{len(self.tasks_done)}/{len(self.tasks)}, {remaining_time}]: "
+            f"{COLINFO}{task.file}"
+            f"{COLSTATUS} [{task.tool}] in {duration_str}"
+            f"{COLRESET} with exit code: {exit_code}"
+            )
+        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str} with exit code: {exit_code}")
 
     def exec(self):
         self.start_time = time()
@@ -119,11 +121,9 @@ class Execution:
         if elapsed_time > 60:
             elapsed_time_sec = round(elapsed_time % 60)
             elapsed_time = round(elapsed_time // 60)
-            logs.print('Analysis completed. \nIt took %sm %ss to analyse all files.' % (
-                elapsed_time, elapsed_time_sec))
+            logs.print(f"Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.")
         else:
-            logs.print(
-                'Analysis completed. \nIt took %ss to analyse all files.' % elapsed_time)
+            logs.print(f"Analysis completed. \nIt took {elapsed_time}s to analyse all files.")
 
     def parse_results(self, task: 'Execution_Task', log_content: str):
         results = {
@@ -153,7 +153,7 @@ class Execution:
                     json.dump(results, f, indent=2)
         except Exception as e:
             traceback.print_exc()
-            logs.print("Log parser error: %s" % e)
+            logs.print(f"Log parser error: {e}")
             return # exit
 
         try:
@@ -170,7 +170,7 @@ class Execution:
                         tool=task.tool), sarif_file, indent=2)
         except Exception as e:
             traceback.print_exc()
-            logs.print("parse sarif error: %s" % e)
+            logs.print(f"parse sarif error: {e}")
         
 
     @staticmethod

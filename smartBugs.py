@@ -12,16 +12,8 @@ from src.execution.execution import Execution
 from src.execution.execution_task import Execution_Task
 from src.execution.execution_configuration import Execution_Configuration
 from src.logger import logs
-from src.interface.cli import get_config, get_remote_dataset, is_remote_dataset
-
-
-cfg_dataset_path = os.path.join(os.path.dirname(__file__), 'config', 'dataset', 'dataset.yaml')
-with open(cfg_dataset_path, 'r') as ymlfile:
-    try:
-        cfg_dataset = yaml.safe_load(ymlfile)
-    except yaml.YAMLError as exc:
-        logs.print(exc)
-
+from src.interface.cli import get_config, cfg_dataset, is_remote_info, get_remote_info
+from src.utils import COLSTATUS,COLRESET,COLERR
 
 def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
     files_to_analyze = []
@@ -29,29 +21,25 @@ def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
     if conf.datasets:
         for dataset in conf.datasets:
             base_name = dataset.split('/')[0]
-            if is_remote_dataset(cfg_dataset, base_name):
-                remote_info = get_remote_dataset(cfg_dataset, base_name)
-                base_path = remote_info['local_dir']
+            dataset_info = cfg_dataset[base_name]
+            if is_remote_info(dataset_info):
+                (url, base_path) = get_remote_info(dataset_info)
 
                 if not os.path.isdir(base_path):
                     # local copy does not exist; we need to clone it
-                    print(
-                        '\x1b[1;37m' + "%s is a remote dataset. Do you want to create a local copy? [Y/n] " % base_name + '\x1b[0m')
+                    sys.stdout.write(f"{COLSTATUS}{base_name} is a remote dataset. Do you want to create a local copy? [Y/n]{COLRESET} ")
+                    sys.stdout.flush()
                     answer = input()
                     if answer.lower() in ['yes', 'y', '']:
-                        sys.stdout.write('\x1b[1;37m' + 'Cloning remote dataset [%s <- %s]... ' % (
-                            base_path, remote_info['url']) + '\x1b[0m')
+                        sys.stdout.write(f"{COLSTATUS}Cloning remote dataset [{base_path} <- {url}]... {COLRESET}")
                         sys.stdout.flush()
-                        git.Repo.clone_from(remote_info['url'], base_path)
-                        sys.stdout.write(
-                            '\x1b[1;37m\n' + 'Done.' + '\x1b[0m\n')
+                        git.Repo.clone_from(url, base_path)
+                        sys.stdout.write(f"{COLSTATUS}Done.{COLRESET}")
                     else:
-                        logs.print(
-                            '\x1b[1;33m' + 'ABORTING: cannot proceed without local copy of remote dataset %s' % base_name + '\x1b[0m')
+                        logs.print(f"{COLERR}ABORTING: cannot proceed without local copy of remote dataset {base_name}{COLRESET}")
                         quit()
                 else:
-                    sys.stdout.write('\x1b[1;37m' + 'Using remote dataset [%s <- %s] ' % (
-                        base_path, remote_info['url']) + '\x1b[0m\n')
+                    sys.stdout.write(f"{COLSTATUS}Using remote dataset [{base_path} <- {url}]{COLRESET}\n")
 
                 if dataset == base_name:  # basename included
                     dataset_path = base_path
@@ -59,11 +47,10 @@ def create_tasks(conf: 'Execution_Configuration') -> List['Execution_Task']:
                 if dataset != base_name and base_name not in conf.datasets:
                     subset_name = dataset.split('/')[1]
                     dataset_path = os.path.join(
-                        base_path, remote_info['subsets'][subset_name])
+                        base_path, dataset_info['subsets'][subset_name])
                     conf.files.append(dataset_path)
             else:
-                dataset_path = cfg_dataset[dataset]
-                conf.files.append(dataset_path)
+                conf.files.append(dataset_info)
 
     for file in conf.files:
         if os.path.isdir(file):
