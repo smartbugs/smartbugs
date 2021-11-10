@@ -23,6 +23,7 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
+from src.output_parser.myth import Myth
 
 from time import time
 
@@ -138,6 +139,9 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
             results['analysis'] = Oyente().parse(output)
             # Sarif Conversion
             sarif_holder.addRun(Oyente().parseSarif(results, file_path_in_repo))
+        elif tool == 'myth':
+            results['analysis'] = Myth().parse(output)
+            sarif_holder.addRun(Myth().parseSarif(results,file_path_in_repo))
         elif tool == 'osiris':
             results['analysis'] = Osiris().parse(output)
             sarif_holder.addRun(Osiris().parseSarif(results, file_path_in_repo))
@@ -272,6 +276,17 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
             cmd = cmd.replace('{contract}', '/data/' + os.path.basename(file))
         else:
             cmd += ' /data/' + os.path.basename(file)
+            
+        with open(file) as f:
+            file_data = f.read()
+            pattern = re.compile(r'pragma solidity (.?[0-9]+)+', re.I)
+            a=pattern.search(file_data)
+            b=str(a.group())
+            c=re.search(r'([0-9]+.?)+',b)
+            c=c.group()
+            if '{solv}' in cmd:
+                cmd = cmd.replace('{solv}' ,'--solv ' +'"'+c+'"')
+                
         container = None
         try:
             container = client.containers.run(image,
