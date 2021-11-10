@@ -7,6 +7,11 @@ from src.output_parser.SarifHolder import parseRule, \
 
 class Maian(Parser):
 
+    def is_success(self):
+	# Assume that if the GREEDY analysis starts,
+	# everything worked out as expected
+        return "GREEDY" in self.str_output
+
     def parse(self):
         output = {
             'is_lock_vulnerable': False,
