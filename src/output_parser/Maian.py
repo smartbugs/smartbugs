@@ -8,9 +8,16 @@ from src.output_parser.SarifHolder import parseRule, \
 class Maian(Parser):
 
     def is_success(self):
-	# Assume that if the GREEDY analysis starts,
-	# everything worked out as expected
-        return "GREEDY" in self.str_output
+	# Assume that if one of the following error messages is shown,
+	# the analysis is not successful; also, require the three analyses to run
+        return "Cannot compile the contract" not in self.str_output \
+            and "Some of the files is missing or empty" not in self.str_output \
+            and "The contracts have NOT been deployed" not in self.str_output \
+            and "Cannot deploy the contract" not in self.str_output \
+            and "does NOT exist" not in self.str_output \
+            and "SUICIDAL" in self.str_output \
+            and "PRODIGAL" in self.str_output \
+            and "GREEDY" in self.str_output 
 
     def parse(self):
         output = {
