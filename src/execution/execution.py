@@ -71,7 +71,7 @@ class Execution:
         duration = task.end_time - task.start_time
         self.total_execution.value += task.end_time - task.start_time
 
-        task_sec = len(self.tasks_done) / duration
+        task_sec = len(self.tasks_done) / self.total_execution.value
         remaining_time = str(timedelta(seconds=round(
             (len(self.tasks) - len(self.tasks_done)) / task_sec)))
 
