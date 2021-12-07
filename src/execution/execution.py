@@ -15,6 +15,7 @@ from src.output_parser.MadMax import MadMax
 from src.output_parser.EasyFlow import EasyFlow
 from src.output_parser.Vandal import Vandal
 from src.output_parser.Pakala import Pakala
+from src.output_parser.EThor import EThor
 from src.output_parser.Conkas import Conkas
 from src.output_parser.HoneyBadger import HoneyBadger
 from src.output_parser.Maian import Maian
@@ -199,6 +200,8 @@ class Execution:
             return Conkas(task, log)
         if task.tool == 'pakala':
             return Pakala(task, log)
+        if task.tool == 'ethor':
+            return EThor(task, log)
         if task.tool == 'vandal':
             return Vandal(task, log)
         if task.tool == 'easyflow':
