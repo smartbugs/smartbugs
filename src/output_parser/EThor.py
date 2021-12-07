@@ -18,7 +18,7 @@ class EThor(Parser):
     def is_success(self):
         return "sb_result_secure" in self.str_output or \
                 "sb_result_insecure" in self.str_output or \
-                "sb_result_unknown" in self
+                "sb_result_unknown" in self.str_output
 
     def parse(self):
         output = []
