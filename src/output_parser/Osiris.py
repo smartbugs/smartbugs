@@ -71,16 +71,24 @@ class Osiris(Parser):
         for analysis in osiris_output_results["analysis"]:
 
             for result in analysis["errors"]:
+                line = -1
+                column = -1
+                if "line" in result:
+                    line = result["line"]
+                if "column" in result:
+                    column = result["column"]
                 rule = parseRule(tool="osiris", vulnerability=result["message"])
                 result = parseResult(tool="osiris", vulnerability=result["message"], level="warning",
-                                     uri=file_path_in_repo, line=result["line"], column=result["column"])
+                                     uri=file_path_in_repo, line=line, column=column)
 
                 resultsList.append(result)
 
                 if isNotDuplicateRule(rule, rulesList):
                     rulesList.append(rule)
-
-            logicalLocation = parseLogicalLocation(name=analysis["name"])
+            name = ""
+            if "name" in analysis:
+                name = analysis["name"]
+            logicalLocation = parseLogicalLocation(name=name)
 
             if isNotDuplicateLogicalLocation(logicalLocation, logicalLocationsList):
                 logicalLocationsList.append(logicalLocation)
