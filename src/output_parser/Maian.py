@@ -21,17 +21,20 @@ class Maian(Parser):
 
     def parse(self):
         output = {
-            'is_lock_vulnerable': False,
+            'is_greedy_vulnerable': False,
             'is_prodigal_vulnerable': False,
             'is_suicidal_vulnerable': False,
         }
         lines = self.str_output.splitlines()
         for line in lines:
-            if 'Locking vulnerability found!' in line:
-                output['is_lock_vulnerable'] = True
-            if 'The contract is prodigal' in line:
+            if 'Locking vulnerability found!' in line or \
+                    'thus is greedy' in line:
+                output['is_greedy_vulnerable'] = True
+            if 'The contract is prodigal' in line or \
+                    'Leak vulnerability found' in line:
                 output['is_prodigal_vulnerable'] = True
-            if 'Confirmed ! The contract is suicidal' in line:
+            if 'Confirmed ! The contract is suicidal' in line or \
+                    'Suicidal vulnerability found!' in line:
                 output['is_suicidal_vulnerable'] = True
         return output
 
