@@ -1,4 +1,5 @@
 docker_image:
   default: christoftorres/honeybadger
 cmd: python honeybadger/honeybadger.py -glt 250 -t 1000 -ll 20 -s 
+cmd_bytecode: python honeybadger/honeybadger.py -glt 250 -t 1000 -ll 20 -b -s
 info: An analysis tool to detect honeypots in Ethereum smart contracts
