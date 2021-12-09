@@ -19,6 +19,9 @@ class Osiris(Parser):
             value = False
         return (key, value)
 
+    def is_success(self) -> bool:
+        return "====== Analysis Completed ======" in self.str_output
+
     def parse(self):
         output = []
         current_contract = None
@@ -37,16 +40,25 @@ class Osiris(Parser):
             elif "INFO:symExec:	  " in line and '---' not in line and '======' not in line:
                 current_error = None
                 (key, value) = Osiris.extract_result_line(line)
-                if value:
-                    current_error = key
-            elif current_contract is not None and current_contract['file'] in line and line.index(
+                if current_contract is None:
+                    current_contract = {
+                        'errors': [],
+                        'file': None,
+                    }
+
+                if key == "evm_code_coverage":
+                    current_contract['coverage'] = value
+                if value == True:
+                    current_error = {
+                        'message': key,
+                    }
+                    current_contract['errors'].append(current_error)
+            elif current_contract is not None and current_contract['file'] is not None and current_contract['file'] in line and line.index(
                     current_contract['file']) == 0:
                 (file, classname, line, column) = line.split(':')
-                current_contract['errors'].append({
-                    'line': int(line),
-                    'column': int(column),
-                    'message': current_error
-                })
+                current_error['line'] = int(line)
+                current_error['column'] = int(column)
+                current_error['classname'] = classname
         if current_contract is not None:
             output.append(current_contract)
         return output
