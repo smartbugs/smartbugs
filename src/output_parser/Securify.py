@@ -12,7 +12,11 @@ from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
 class Securify(Parser):
 
     def is_success(self) -> bool:
-        return os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar'))
+        try:
+            with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
+                return True
+        except e:
+            return False
 
     def parse(self):
         if len(self.str_output) > 0 and self.str_output[0] == '{':

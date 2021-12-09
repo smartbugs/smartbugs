@@ -16,7 +16,11 @@ class Slither(Parser):
             return json.loads(output_file.read())
         
     def is_success(self) -> bool:
-        return os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar'))
+        try:
+            with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
+                return True
+        except e:
+            return False
 
     def parseSarif(self, slither_output_results, file_path_in_repo):
         rulesList = []

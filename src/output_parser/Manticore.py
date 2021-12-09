@@ -38,14 +38,22 @@ class Manticore(Parser):
     def parse(self):
         if os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar')):
             out = []
-            tar = tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'))
-            m = re.findall('Results in /(mcore_.+)', self.str_output)
-            for fout in m:
-                output_file = tar.extractfile('results/' + fout + '/global.findings')
-                out.append(Manticore.parseFile(output_file.read().decode('utf8')))
-    
+            try:
+                with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
+                    m = re.findall('Results in /(mcore_.+)', self.str_output)
+                    for fout in m:
+                        output_file = tar.extractfile('results/' + fout + '/global.findings')
+                        out.append(Manticore.parseFile(output_file.read().decode('utf8')))
+            except e:
+                pass
+            return out
+
     def is_success(self) -> bool:
-        return os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar'))
+        try:
+            with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
+                return True
+        except e:
+            return False
 
     def parseSarif(self, manticore_output_results, file_path_in_repo):
         rulesList = []
