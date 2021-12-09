@@ -27,6 +27,7 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
+from src.output_parser.EthBMC import EthBMC
 from src.execution.execution_task import Execution_Task
 from src.logger import logs, Logger
 from src.execution.docker_api import analyse_files
@@ -210,3 +211,5 @@ class Execution:
             return MadMax(task, log)
         if task.tool == 'teether':
             return TeEther(task, log)
+        if task.tool == 'ethbmc':
+            return EthBMC(task, log)
