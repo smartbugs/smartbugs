@@ -20,7 +20,7 @@ class Pakala(Parser):
         }
 
     def is_success(self):
-        return "Nothing to report." in self.str_output
+        return "Nothing to report." in self.str_output or "Bug found!" in self.str_output
 
     def parse(self):
         output = {
