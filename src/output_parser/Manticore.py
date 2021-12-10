@@ -1,4 +1,4 @@
-from sarif_om import *
+from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
 import os
 import re
 import tarfile
@@ -44,7 +44,7 @@ class Manticore(Parser):
                     for fout in m:
                         output_file = tar.extractfile('results/' + fout + '/global.findings')
                         out.append(Manticore.parseFile(output_file.read().decode('utf8')))
-            except e:
+            except Exception as e:
                 pass
             return out
 
@@ -52,7 +52,7 @@ class Manticore(Parser):
         try:
             with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
                 return True
-        except e:
+        except Exception as e:
             return False
 
     def parseSarif(self, manticore_output_results, file_path_in_repo):

@@ -3,7 +3,7 @@ import json
 import os
 import tarfile
 
-from sarif_om import *
+from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
     parseRule, parseResult, isNotDuplicateLogicalLocation
@@ -15,7 +15,7 @@ class Securify(Parser):
         try:
             with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
                 return True
-        except e:
+        except Exception as e:
             return False
 
     def parse(self):

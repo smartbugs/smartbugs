@@ -1,4 +1,4 @@
-from sarif_om import *
+from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString, Location, PhysicalLocation, ArtifactLocation, Region, LogicalLocation, ArtifactContent
 import os
 import json
 import tarfile
@@ -19,7 +19,7 @@ class Slither(Parser):
         try:
             with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
                 return True
-        except e:
+        except Exception as e:
             return False
 
     def parseSarif(self, slither_output_results, file_path_in_repo):

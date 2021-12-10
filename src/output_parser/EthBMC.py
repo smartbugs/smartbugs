@@ -21,7 +21,6 @@ class EthBMC(Parser):
                 output['coverage'] = line.split("Code covered: ")[1]
             if "Found attack, " in line:
                 output['exploit'].append(line.split("Found attack, ")[1])
-            print(line)
 
         return [output]
     
