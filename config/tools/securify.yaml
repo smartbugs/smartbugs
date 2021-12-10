@@ -1,6 +1,6 @@
 docker_image:
-  default: qspprotocol/securify-usolc
-  solc<5: qspprotocol/securify-0.4.25
+  default: smartbugs/security:usolc
+  solc<5: smartbugs/securify:0.4.25
 cmd: --livestatusfile /results/live.json --output /results/results.json -fs
 cmd_bytecode: --livestatusfile /results/live.json --output /results/results.json -fh
 output_in_files:

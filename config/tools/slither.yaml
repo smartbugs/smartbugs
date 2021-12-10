@@ -1,5 +1,5 @@
 docker_image:
-  default: trailofbits/slither
+  default: smartbugs/slither
 cmd: slither {contract} --json /output.json
 output_in_files:
   folder: /output.json
