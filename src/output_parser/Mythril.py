@@ -8,11 +8,27 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocati
 
 class Mythril(Parser):
 
+    def __init__(self, task: 'Execution_Task', str_output: str):
+        Parser.__init__(self, task, str_output)
+        # success depends also whether json succeeds, so we
+        # do everything at once.
+        self.success = False
+        self.result = None
+        if str_output is not None:
+            lines = str_output.split('\n')
+            try:
+                # there may be a valid json in the last line even if there was an error
+                self.result = json.loads(lines[-1])
+            except:
+                return
+            # there was a valid json, but there may have been an error, too
+            self.success = 'aborting analysis' not in str_output and 'Traceback' not in str_output
+
     def is_success(self) -> bool:
-        return 'aborting analysis' not in self.str_output
+        return self.success
 
     def parse(self):
-        return json.loads(self.str_output)
+        return self.result
 
     def parseSarif(self, mythril_output_results, file_path_in_repo):
         resultsList = []

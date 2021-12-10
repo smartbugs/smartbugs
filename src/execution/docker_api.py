@@ -5,6 +5,7 @@ import os
 import sys
 import yaml
 import tempfile
+import requests
 from shutil import copyfile, rmtree
 
 from src.execution.execution_task import Execution_Task
@@ -126,6 +127,10 @@ def analyse_files(task: 'Execution_Task'):
             try:
                 result = container.wait(timeout=task.execution_configuration.timeout)
                 task.exit_code = result['StatusCode']
+            except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError):
+                # timeout occurred
+                # according to the docs, it's ReadTimeout, but for some versions of docker-py, it is actually ConnectionError
+                pass
             except Exception as e:
                 print(e)
                 pass
