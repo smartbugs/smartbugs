@@ -9,8 +9,6 @@ from src.utils import COLSTATUS,COLRESET
 
 from src.logger import logs
 
-VERSION_CHOICES = ['v1', 'v2', 'all']
-
 CONFIG_DATASET_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'dataset', 'dataset.yaml')
 DATASET_CHOICES = ['all']
 with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
@@ -131,23 +129,22 @@ def get_config():
                         type=str,
                         default=None,
                         help='The memory quota provided to the docker image (e.g. 512m or 1g)')
-
-    info.add_argument('--output-version',
-                        choices=VERSION_CHOICES,
-                        default='all',
-                        help='Smartbugs\' version output - v1: Json - v2:SARIF')
     
     info.add_argument('--execution-name',
                         help='Define the name of the execution')
-
-    info.add_argument('--aggregate-sarif',
-                        action='store_true',
-                        help='Aggregate sarif outputs for different tools run on the same file')
 
     info.add_argument('--import-path',
                         type=str,
                         default="FILE",     # different directory solidity imports will not work
                         help="Project's root directory")
+
+    info.add_argument('--sarif-output',
+                        action='store_true',
+                        help='Generate SARIF output')
+
+    info.add_argument('--aggregate-sarif',
+                        action='store_true',
+                        help='Aggregate sarif outputs for different tools run on the same file')
 
     info.add_argument('--unique-sarif-output',
                       action='store_true',
@@ -161,6 +158,10 @@ def get_config():
     else:
         output_folder = strftime("%Y%m%d_%H%M", localtime())
 
+    if args.unique_sarif_output or args.aggregate_sarif:
+        # if we are aggregating sarif files, we need to generate the sarif output
+        args.sarif_output = True
+ 
     conf = Execution_Configuration(
         execution_name=output_folder, 
         output_folder="results", 
@@ -169,7 +170,7 @@ def get_config():
         processes=args.processes, 
         aggregate_sarif=args.aggregate_sarif, 
         unique_sarif_output=args.unique_sarif_output, 
-        output_version=args.output_version,
+        sarif_output=args.sarif_output,
         timeout=args.timeout,
         cpu_quota=args.cpu_quota,
         mem_quota=args.mem_quota,

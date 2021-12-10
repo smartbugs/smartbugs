@@ -143,21 +143,21 @@ class Execution:
             os.makedirs(output_folder)
 
         try:
-            with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
-                f.write(log_content)
-            parser = Execution.log_parser(task, log_content)
-            results['analysis'] = parser.parse()
-            results['success'] = parser.is_success()
+            if log_content is not None:
+                with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
+                    f.write(log_content)
+                parser = Execution.log_parser(task, log_content)
+                results['analysis'] = parser.parse()
+                results['success'] = parser.is_success()
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
         
-        if self.conf.output_version == 'v1' or self.conf.output_version == 'all':
-            with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-                json.dump(results, f, indent=2)
+        with open(os.path.join(output_folder, 'result.json'), 'w') as f:
+            json.dump(results, f, indent=2)
 
         try:
-            if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
+            if self.conf.sarif_output:
                 if task.file_name not in self.sarif_cache:
                     sarif = SarifHolder()
                 else:
