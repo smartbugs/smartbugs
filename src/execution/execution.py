@@ -142,21 +142,19 @@ class Execution:
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
-        with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
-            f.write(log_content)
-
         try:
+            with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
+                f.write(log_content)
             parser = Execution.log_parser(task, log_content)
             results['analysis'] = parser.parse()
             results['success'] = parser.is_success()
-
-            if self.conf.output_version == 'v1' or self.conf.output_version == 'all':
-                with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-                    json.dump(results, f, indent=2)
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
-            return results
+        
+        if self.conf.output_version == 'v1' or self.conf.output_version == 'all':
+            with open(os.path.join(output_folder, 'result.json'), 'w') as f:
+                json.dump(results, f, indent=2)
 
         try:
             if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
