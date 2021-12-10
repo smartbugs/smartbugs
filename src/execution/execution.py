@@ -148,7 +148,7 @@ class Execution:
                     f.write(log_content)
                 parser = Execution.log_parser(task, log_content)
                 results['analysis'] = parser.parse()
-                results['success'] = parser.is_success()
+                results['success'] = parser.is_success() and task.exit_code is not None
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
