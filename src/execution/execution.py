@@ -71,11 +71,11 @@ class Execution:
         self.tasks_done.append(task)
 
         duration = task.end_time - task.start_time
-        self.total_execution.value += task.end_time - task.start_time
+        self.total_execution.value += duration
 
-        task_sec = len(self.tasks_done) / self.total_execution.value
+        avg_task_execution_time = self.total_execution.value / len(self.tasks_done)
         remaining_time = str(timedelta(seconds=round(
-            (len(self.tasks) - len(self.tasks_done)) / task_sec)))
+            (len(self.tasks) - len(self.tasks_done)) * avg_task_execution_time)))
 
         duration_str = str(timedelta(seconds=round(duration)))
         exit_code = task.exit_code if task.exit_code is not None else "timeout"

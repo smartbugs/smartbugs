@@ -124,7 +124,6 @@ def analyse_files(task: 'Execution_Task'):
             cmd += ' /data/' + os.path.basename(file)
         container = None
         try:
-            print(image, cmd)
             container = client.containers.run(image,
                                               cmd,
                                               detach=True,
