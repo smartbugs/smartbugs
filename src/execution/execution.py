@@ -32,7 +32,7 @@ from src.execution.execution_task import Execution_Task
 from src.logger import logs, Logger
 from src.execution.docker_api import analyse_files
 from src.output_parser.SarifHolder import SarifHolder
-from src.utils import COLINFO, COLSTATUS, COLRESET
+from src.utils import COLINFO, COLSTATUS, COLRESET, COLSUCCESS, COLERR
 
 class Execution:
 
@@ -53,8 +53,8 @@ class Execution:
             task.start_time = time()
             output = analyse_files(task)
             task.end_time = time()
-            self.parse_results(task, output)
-            self.analyze_end(task)
+            result = self.parse_results(task, output)
+            self.analyze_end(task, result)
         except Exception as e:
             traceback.print_exc()
             logs.print(e)
@@ -67,7 +67,7 @@ class Execution:
         )
         sys.stdout.flush()
 
-    def analyze_end(self, task: 'Execution_Task'):
+    def analyze_end(self, task: 'Execution_Task', result):
         self.tasks_done.append(task)
 
         duration = task.end_time - task.start_time
@@ -83,9 +83,9 @@ class Execution:
             f"{COLSTATUS}Done [{len(self.tasks_done)}/{len(self.tasks)}, {remaining_time}]: "
             f"{COLINFO}{task.file}"
             f"{COLSTATUS} [{task.tool}] in {duration_str}"
-            f"{COLRESET} with exit code: {exit_code}"
+            f"{COLRESET} with exit code: {exit_code} ({f'{COLSUCCESS}SUCCESS' if result['success'] else f'{COLERR}FAILED'}{COLRESET})"
             )
-        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str} with exit code: {exit_code}")
+        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str} with exit code: {exit_code} ({'SUCCESS' if result['success'] else 'FAILED'})")
 
     def exec(self):
         self.start_time = time()
@@ -156,7 +156,7 @@ class Execution:
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
-            return # exit
+            return results
 
         try:
             if self.conf.output_version == 'v2' or self.conf.output_version == 'all':
@@ -173,6 +173,7 @@ class Execution:
         except Exception as e:
             traceback.print_exc()
             logs.print(f"parse sarif error: {e}")
+        return results
         
 
     @staticmethod
