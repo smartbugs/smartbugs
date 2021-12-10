@@ -18,12 +18,11 @@ def pull_image(image: str):
     pull images
     """
     try:
-        logs.print(f'pulling {image} image, this may take a while...')
-        image = client.images.pull(image)
-        logs.print('image pulled')
-
+        logs.print(f'[DOCKER] pull image: {image} (this may take a while...)')
+        client.images.pull(image)
+        logs.print(f'[DOCKER] image {image} pulled')
     except docker.errors.APIError as err:
-        logs.print(err)
+        logs.print(f'[ERROR] [DOCKER] unable to pull {image}')
 
 def mount_volumes(dir_path: str):
     """
@@ -57,19 +56,25 @@ def remove_container(container):
     except (docker.errors.APIError) as err:
         logs.print(err)
 
+def tool_conf(tool: str):
+    cfg_path = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'tools', tool + '.yaml')
+    with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
+        try:
+            return yaml.safe_load(ymlfile)
+        except yaml.YAMLError as exc:
+            logs.print(exc)
 
+def tool_image(cfg, solc_version, is_bytecode = False):
+    if not is_bytecode and isinstance(solc_version, int) and solc_version < 5 and 'solc<5' in cfg['docker_image']:
+        return cfg['docker_image']['solc<5']
+    return cfg['docker_image']['default']
 
 def analyse_files(task: 'Execution_Task'):
     """
     analyse solidity files
     """
     try:
-        cfg_path = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'tools', task.tool + '.yaml')
-        with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
-            try:
-                cfg = yaml.safe_load(ymlfile)
-            except yaml.YAMLError as exc:
-                logs.print(exc)
+        cfg = tool_conf(task.tool)
 
         # create result folder with time
         results_folder = task.result_output_path()
@@ -102,19 +107,7 @@ def analyse_files(task: 'Execution_Task'):
         # bind directory path instead of file path to allow imports in the same directory
         volume_bindings = mount_volumes(working_dir)
 
-        if not task.execution_configuration.is_bytecode:
-            (solc_version, _) = get_solc_version(file)
-
-            if isinstance(solc_version, int) and solc_version < 5 and 'solc<5' in cfg['docker_image']:
-                image = cfg['docker_image']['solc<5']
-            # if there's no version or version >5, choose default
-            else:
-                image = cfg['docker_image']['default']
-        else:
-            image = cfg['docker_image']['default']
-
-        if not client.images.list(image):
-            pull_image(image)
+        image = tool_image(cfg, get_solc_version(file) if not task.execution_configuration.is_bytecode else 5, is_bytecode=task.execution_configuration.is_bytecode)
 
         cmd = cfg[cmd_key]
 
