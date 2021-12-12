@@ -12,17 +12,15 @@ class Conkas(Parser):
         if str_output is None:
             return
         self.output = []
-        lines = str_output.split('\n')
+        lines = str_output.splitlines()
         for line in lines:
-            try:
-                self.output.append(self.__parse_vuln_line(line))
-            except:
-                continue
+            if 'Vulnerability: ' in line:
+                self.output.append(Conkas.__parse_vuln_line(line))
         self.labels = sorted({issue['vuln_type'] for issue in self.output})
         self.success = 'Traceback' not in str_output
 
     @staticmethod
-    def __parse_vuln_line(line):
+    def __parse_vuln_line(line: str):
         vuln_type = line.split('Vulnerability: ')[1].split('.')[0]
         maybe_in_function = line.split('Maybe in function: ')[1].split('.')[0]
         pc = line.split('PC: ')[1].split('.')[0]
@@ -40,7 +38,7 @@ class Conkas(Parser):
         rulesList = []
         logicalLocationsList = []
 
-        for analysis_result in self.output["analysis"]:
+        for analysis_result in self.output:
             rule = parseRule(tool="conkas", vulnerability=analysis_result["vuln_type"])
 
             logicalLocation = parseLogicalLocation(analysis_result["maybe_in_function"], kind="function")

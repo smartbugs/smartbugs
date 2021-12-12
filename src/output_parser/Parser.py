@@ -27,8 +27,8 @@ class Parser:
     def str2label(s):
         l = []
         sep = False
-        for c in s:
-            if c.isalnum():
+        for c in s.lower():
+            if c.isalnum() or c in '-':
                 if sep:
                     l.append('_')
                 l.append(c)

@@ -12,7 +12,7 @@ class Mythril(Parser):
         super().__init__(task, str_output)
         if str_output is None:
             return
-        lines = str_output.split('\n')
+        lines = str_output.splitlines()
         try:
             # there may be a valid json in the last line even if there was an error
             self.output = json.loads(lines[-1])
@@ -32,7 +32,7 @@ class Mythril(Parser):
         logicalLocationsList = []
         rulesList = []
 
-        for issue in self.output["analysis"]["issues"]:
+        for issue in self.output["issues"]:
             level = issue["severity"] if "severity" in issue else issue["type"]
             rule = parseRule(tool="mythril", vulnerability=issue["title"], full_description=issue["description"])
             result = parseResult(tool="mythril", vulnerability=issue["title"], level=level,
