@@ -83,7 +83,7 @@ def analyse_files(task: 'Execution_Task'):
             os.makedirs(results_folder)
         # os.makedirs(os.path.dirname(results_folder), exist_ok=True)
 
-        # check if config file as all required fields
+        # check if config file has all required fields
         if task.execution_configuration.is_bytecode:
             cmd_key = 'cmd_bytecode'
         else:
