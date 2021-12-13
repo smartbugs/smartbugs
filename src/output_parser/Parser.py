@@ -25,14 +25,20 @@ class Parser:
 
     @staticmethod
     def str2label(s):
+        # Convert string to label satisfying:
+        # - letters and digits remain unaffected
+        # - leading or trailing punctuation and spaces are removed
+        # - sequences of punctuation and spaces are replaced by a single underscore
         l = []
         sep = False
-        for c in s.lower():
-            if c.isalnum() or c in '-':
+        ch = False
+        for c in s: # or in s.lower() (convert to lowercase)?
+            if c.isalnum(): # "or c in '-'", to allow for - and maybe other characters?
                 if sep:
                     l.append('_')
+                    sep = False
                 l.append(c)
-                sep = False
+                ch = True
             else:
-                sep = True
+                sep = ch
         return ''.join(l)
