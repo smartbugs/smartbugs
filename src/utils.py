@@ -25,8 +25,9 @@ def get_solc_version(file: str):
         with open(file, 'r', encoding='utf-8') as fd:
             sourceUnit = parser.parse(fd.read())
         solc_version = sourceUnit['children'][0]['value'].strip('^').split('.')
-        return (int(solc_version[1]), int(solc_version[2]))
+        if int(solc_version[0]) == 0:
+            return int(solc_version[1])
     except:
         msg = 'WARNING: could not parse solidity file to get solc version'
         logs.print(f"{COLWARN}{msg}{COLRESET}", msg)
-    return (None, None)
+    return None

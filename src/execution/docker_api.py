@@ -108,7 +108,7 @@ def analyse_files(task: 'Execution_Task'):
         # bind directory path instead of file path to allow imports in the same directory
         volume_bindings = mount_volumes(working_dir)
 
-        image = tool_image(cfg, get_solc_version(file) if not task.execution_configuration.is_bytecode else 5, is_bytecode=task.execution_configuration.is_bytecode)
+        image = tool_image(cfg, get_solc_version(file), is_bytecode=task.execution_configuration.is_bytecode)
 
         cmd = cfg[cmd_key]
 
