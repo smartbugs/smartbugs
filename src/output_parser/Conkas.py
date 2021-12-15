@@ -7,43 +7,38 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 class Conkas(Parser):
 
+    def __init__(self, task: 'Execution_Task', str_output: str):
+        super().__init__(task, str_output)
+        if str_output is None:
+            return
+        self.output = []
+        lines = str_output.splitlines()
+        for line in lines:
+            if 'Vulnerability: ' in line:
+                self.output.append(Conkas.__parse_vuln_line(line))
+        self.labels = sorted({issue['vuln_type'] for issue in self.output})
+        self.success = 'Traceback' not in str_output
+
     @staticmethod
-    def __parse_vuln_line(line):
+    def __parse_vuln_line(line: str):
         vuln_type = line.split('Vulnerability: ')[1].split('.')[0]
         maybe_in_function = line.split('Maybe in function: ')[1].split('.')[0]
         pc = line.split('PC: ')[1].split('.')[0]
         line_number = line.split('Line number: ')[1].split('.')[0]
-        if vuln_type == 'Integer Overflow':
-            vuln_type = 'Integer_Overflow'
-        elif vuln_type == 'Integer Underflow':
-            vuln_type = 'Integer_Underflow'
         return {
-            'vuln_type': vuln_type,
+            'vuln_type': Parser.str2label(vuln_type),
             'maybe_in_function': maybe_in_function,
             'pc': pc,
             'line_number': line_number
         }
     
-    def is_success(self):
-        return "Traceback" not in self.str_output
-
-    def parse(self):
-        output = []
-        str_output = self.str_output.split('\n')
-        for line in str_output:
-            if 'Vulnerability' in line:
-                try:
-                    output.append(self.__parse_vuln_line(line))
-                except:
-                    continue
-        return output
-
     def parseSarif(self, conkas_output_results, file_path_in_repo):
+        # conkas_output_results obsolete, kept for compatibility
         resultsList = []
         rulesList = []
         logicalLocationsList = []
 
-        for analysis_result in conkas_output_results["analysis"]:
+        for analysis_result in self.output:
             rule = parseRule(tool="conkas", vulnerability=analysis_result["vuln_type"])
 
             logicalLocation = parseLogicalLocation(analysis_result["maybe_in_function"], kind="function")

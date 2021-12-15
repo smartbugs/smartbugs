@@ -7,62 +7,74 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 class Oyente(Parser):
 
-    def _extract_result_line(self, line):
-        line = line.replace("INFO:symExec:	  ", '')
-        index_split = line.index(":")
-        key = line[:index_split].lower().replace(' ', '_').replace('(', '').replace(')', '').strip()
-        value = line[index_split + 1:].strip()
-        if "True" == value:
-            value = True
-        elif "False" == value:
-            value = False
-        return key, value
+    def __init__(self, task: 'Execution_Task', str_output: str):
+        super().__init__(task, str_output)
+        if str_output is None:
+            return
+        (output, labels) = Oyente.__parse_output(str_output)
+        self.output = output
+        self.labels = sorted(labels)
+        self.success = '====== Analysis Completed ======' in str_output
 
-    def is_success(self):
-        return "Analysis Completed" in self.str_output
-
-    def parse(self):
+    @staticmethod
+    def __parse_output(str_output: str):
+        labels = set()
         output = []
-        current_contract = None
-        lines = self.str_output.splitlines()
+        contract = None
+        lines = str_output.splitlines()
         for line in lines:
-            if "INFO:root:contract" in line:
-                if current_contract is not None:
-                    output.append(current_contract)
-                current_contract = {
-                    'errors': []
+            fields = [ f.strip() for f in line.split(':') ]
+            if line.startswith('INFO:root:contract') and len(fields) >= 4:
+                # INFO:root:contract <filename>:<contract name>:
+                if contract is not None:
+                    output.append(contract)
+                contract = {
+                    'errors': [],
+                    'file': fields[2].replace('contract ', ''),
+                    'name': fields[3]
                 }
-                (file, contract_name, _) = line.replace("INFO:root:contract ", '').split(':')
-                current_contract['file'] = file
-                current_contract['name'] = contract_name
-            elif "INFO:symExec:	  " in line:
-                (key, value) = self._extract_result_line(line)
-                if current_contract is None:
-                    current_contract = {
-                        'errors': []
-                    }
-                current_contract[key] = value
-            elif current_contract is not None and 'file' in current_contract and current_contract['file'] in line:
-                if "INFO:symExec:" not in line:
-                    line = "INFO:symExec:" + line
-                (line, column, level, message) = line.replace("INFO:symExec:%s:" % (current_contract['file']),
-                                                              '').split(':')
-                current_contract['errors'].append({
-                    'line': int(line),
-                    'column': int(column),
-                    'level': level.strip(),
-                    'message': message.strip()
-                })
-        if current_contract is not None:
-            output.append(current_contract)
-        return output
+            elif line.startswith('INFO:symExec:\t') and len(fields) >= 4:
+                # INFO:symExec:<key>:<value>
+                if contract is None:
+                    contract = {'errors': []}
+                key = Parser.str2label(fields[2])
+                val = fields[3]
+                if val == 'True':
+                    contract[key] = True
+                    labels.add(key)
+                elif val == 'False':
+                    contract[key] = False
+                else:
+                    contract[key] = val
+            elif contract is not None and 'file' in contract:
+                fn = contract['file']
+                if line.startswith(fn) and len(fields) >= 5:
+                    # <filename>:<line>:<column>:<level>:<message>
+                    contract['errors'].append({
+                        'line':    int(fields[1]),
+                        'column':  int(fields[2]),
+                        'level':   fields[3],
+                        'message': fields[4]
+                    })
+                elif line.startswith(f"INFO:symExec:{fn}") and len(fields) >= 7:
+                    # INFO:symExec:<filename>:<line>:<column>:<level>:<message>
+                    contract['errors'].append({
+                        'line':    int(fields[3]),
+                        'column':  int(fields[4]),
+                        'level':   fields[5],
+                        'message': fields[6]
+                    })
+        if contract is not None:
+            output.append(contract)
+        return (output, labels)
 
     def parseSarif(self, oyente_output_results, file_path_in_repo):
+        # oyente_output_results obsolete, kept for compatibility
         resultsList = []
         logicalLocationsList = []
         rulesList = []
 
-        for analysis in oyente_output_results["analysis"]:
+        for analysis in self.output:
             for result in analysis["errors"]:
                 rule = parseRule(tool="oyente", vulnerability=result["message"])
                 result = parseResult(tool="oyente", vulnerability=result["message"], level=result["level"],
