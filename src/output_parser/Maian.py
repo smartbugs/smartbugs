@@ -1,10 +1,11 @@
 from sarif_om import *
+import re
 
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseRule, \
     parseResult, parseArtifact
+from src.execution.execution_task import Execution_Task
 
-import re
 
 #FILE                = re.compile('\[ \] Compiling Solidity contract from the file .*/(.*) \.\.\.')
 MISSING_ABI_BIN     = re.compile('\[-\] Some of the files is missing or empty: \|(.*)\.abi\|=[0-9]+  \|(.*)\.bin\|=[0-9]+')
