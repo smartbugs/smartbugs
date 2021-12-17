@@ -3,7 +3,7 @@ from sarif_om import *
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
     parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
-
+from src.execution.execution_task import Execution_Task
 
 class Oyente(Parser):
 

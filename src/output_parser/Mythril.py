@@ -4,6 +4,7 @@ import json
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocation, parseRule, \
     parseResult, parseArtifact, isNotDuplicateLogicalLocation
+from src.execution.execution_task import Execution_Task
 
 
 class Mythril(Parser):
