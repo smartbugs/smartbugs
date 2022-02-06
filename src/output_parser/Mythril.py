@@ -1,39 +1,47 @@
-from sarif_om import *
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
+
+
 import json
-
+from sarif_om import *
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocation, parseRule, \
-    parseResult, parseArtifact, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocation, parseRule, parseResult, parseArtifact, isNotDuplicateLogicalLocation
 
+
+ERRORS = (
+    ('Traceback', 'exception occurred'),
+    ('aborting analysis', 'analysis incomplete')
+)
 
 class Mythril(Parser):
 
-    def __init__(self, task: 'Execution_Task', str_output: str):
-        super().__init__(task, str_output)
-        if str_output is None:
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
             return
-        lines = str_output.splitlines()
+        for indicator,msg in ERRORS:
+            if indicator in output:
+                self._errors.add(msg)
         try:
-            # there may be a valid json in the last line even if there was an error
-            self.output = json.loads(lines[-1])
+            # there may be a valid json object in the last line even if there was an error
+            self._analysis = json.loads(self._lines[-1])
         except:
             return
-        if self.output is not None and 'issues' in self.output and self.output['issues'] is not None:
-            labels = set()
-            for issue in self.output['issues']:
-                labels.add(Parser.str2label(issue['title']))
-            self.labels = sorted(labels)
-        # there was a valid json, but there may have been an error, too
-        self.success = 'aborting analysis' not in str_output and 'Traceback' not in str_output
+        if self._analysis is not None and 'issues' in self._analysis and self._analysis['issues'] is not None:
+            for issue in self._analysis['issues']:
+                self._findings.add(issue['title'])
+        if self._analysis is not None and 'error' in self._analysis and self._analysis['error'] is not None:
+            self._errors.add(self._analysis['error'].split('.')[0])
 
     def parseSarif(self, mythril_output_results, file_path_in_repo):
-        # mythril_output_results obsolete, kept for compatibility
         resultsList = []
         logicalLocationsList = []
         rulesList = []
 
-        for issue in self.output["issues"]:
+        for issue in mythril_output_results["analysis"]["issues"]:
             level = issue["severity"] if "severity" in issue else issue["type"]
             rule = parseRule(tool="mythril", vulnerability=issue["title"], full_description=issue["description"])
             result = parseResult(tool="mythril", vulnerability=issue["title"], level=level,
@@ -61,3 +69,8 @@ class Mythril(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Mythril)

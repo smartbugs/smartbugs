@@ -1,5 +1,9 @@
-from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
     parseLogicalLocation, isNotDuplicateLogicalLocation
@@ -7,22 +11,24 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 class EthBMC(Parser):
 
-    def is_success(self):
-        return "Finished analysis" in self.str_output
-
-    def parse(self):
-        output = {
-            'exploit': []
-        }
-        str_output = self.str_output.split('\n')
-
-        for line in str_output:
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None:
+            self._errors.add('output missing')
+            return
+        if 'Finished analysis' not in output:
+            self._errors.add('analysis incomplete')
+        exploit = []
+        coverage = None
+        for line in self._lines:
             if "Code covered: " in line:
-                output['coverage'] = line.split("Code covered: ")[1]
+                coverage = line.split("Code covered: ")[1]
             if "Found attack, " in line:
-                output['exploit'].append(line.split("Found attack, ")[1])
-
-        return [output]
+                exploit.append(line.split("Found attack, ")[1])
+        analysis = { 'exploit': exploit }
+        if coverage is not None:
+            analysis['coverage'] = coverage
+        self._analysis = [ analysis ]
     
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []
@@ -39,3 +45,8 @@ class EthBMC(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(EthBMC)

@@ -1,80 +1,116 @@
-from sarif_om import *
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+from sarif_om import *
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
     parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
+ERRORS = (
+    ('Traceback', 'exception occurred'),
+    ('incomplete push instruction', 'instruction error'),
+    ('UNKNOWN INSTRUCTION', 'instruction error'),
+    ('!!! SYMBOLIC EXECUTION TIMEOUT !!!', 'timeout'),
+    ('CRITICAL:root:Solidity compilation failed', 'compilation failed'),
+    ('Exception z3.z3types.Z3Exception', 'Z3 exception')
+)
+
 class Oyente(Parser):
 
-    def __init__(self, task: 'Execution_Task', str_output: str):
-        super().__init__(task, str_output)
-        if str_output is None:
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
             return
-        (output, labels) = Oyente.__parse_output(str_output)
-        self.output = output
-        self.labels = sorted(labels)
-        self.success = '====== Analysis Completed ======' in str_output
+        (self._analysis, self._findings, self._errors) = Oyente.__parse(self._lines)
 
     @staticmethod
-    def __parse_output(str_output: str):
-        labels = set()
-        output = []
+    def __parse(lines):
+        analysis = []
+        findings = set()
+        errors = set()
+        analysis_completed = False
         contract = None
-        lines = str_output.splitlines()
         for line in lines:
-            fields = [ f.strip() for f in line.split(':') ]
-            if line.startswith('INFO:root:contract') and len(fields) >= 4:
+            fields = [ f.strip().replace('└> ','') for f in line.split(':') ]
+            for ERROR, MSG in ERRORS:
+                if ERROR in line:
+                    errors.add(MSG)
+            if (line.startswith('INFO:root:contract') or line.startswith('INFO:root:Contract')) and len(fields) >= 4:
                 # INFO:root:contract <filename>:<contract name>:
                 if contract is not None:
-                    output.append(contract)
+                    analysis.append(contract)
                 contract = {
-                    'errors': [],
-                    'file': fields[2].replace('contract ', ''),
-                    'name': fields[3]
+                    'file': fields[2].replace('contract ', '').replace('Contract ',''),
+                    'contract': fields[3]
                 }
-            elif line.startswith('INFO:symExec:\t') and len(fields) >= 4:
-                # INFO:symExec:<key>:<value>
-                if contract is None:
-                    contract = {'errors': []}
-                key = Parser.str2label(fields[2])
-                val = fields[3]
-                if val == 'True':
-                    contract[key] = True
-                    labels.add(key)
-                elif val == 'False':
-                    contract[key] = False
-                else:
-                    contract[key] = val
+                key = None
+                val = None
+                analysis_completed = False
+            elif line.startswith('INFO:symExec:\t'):
+                if fields[2] == '============ Results ===========':
+                    # INFO:symExec:   ============ Results ===========
+                    pass
+                elif fields[2] == '====== Analysis Completed ======':
+                    # INFO:symExec:   ====== Analysis Completed ======
+                    analysis_completed = True
+                elif len(fields) >= 4:
+                    # INFO:symExec:<key>:<value>
+                    if contract is None:
+                        contract = {}
+                    key = fields[2]
+                    val = fields[3]
+                    if val == 'True':
+                        contract[key] = True
+                        findings.add(key)
+                    elif val == 'False':
+                        contract[key] = False
+                    else:
+                        contract[key] = val
             elif contract is not None and 'file' in contract:
                 fn = contract['file']
-                if line.startswith(fn) and len(fields) >= 5:
-                    # <filename>:<line>:<column>:<level>:<message>
-                    contract['errors'].append({
-                        'line':    int(fields[1]),
-                        'column':  int(fields[2]),
-                        'level':   fields[3],
-                        'message': fields[4]
-                    })
-                elif line.startswith(f"INFO:symExec:{fn}") and len(fields) >= 7:
+                if 'issues' not in contract:
+                    contract['issues'] = []
+                if line.startswith(f"INFO:symExec:{fn}") and len(fields) >= 7:
                     # INFO:symExec:<filename>:<line>:<column>:<level>:<message>
-                    contract['errors'].append({
+                    contract['issues'].append({
                         'line':    int(fields[3]),
                         'column':  int(fields[4]),
                         'level':   fields[5],
                         'message': fields[6]
                     })
+                elif line.startswith(fn) and len(fields) >= 5:
+                    # <filename>:<line>:<column>:<level>:<message>
+                    contract['issues'].append({
+                        'line':    int(fields[1]),
+                        'column':  int(fields[2]),
+                        'level':   fields[3],
+                        'message': fields[4]
+                    })
+                elif line.startswith(fn) and len(fields) >= 4:
+                    # <filename>:<contract>:<line>:<column>
+                    assert 'contract' in contract and contract['contract'] == fields[1]
+                    assert key is not None and val == 'True'
+                    contract['issues'].append({
+                        'line':    int(fields[2]),
+                        'column':  int(fields[3]),
+                        'message': key
+                    })
         if contract is not None:
-            output.append(contract)
-        return (output, labels)
+            analysis.append(contract)
+        if not analysis_completed:
+            errors.add('analysis incomplete')
+        return (analysis,findings,errors)
 
     def parseSarif(self, oyente_output_results, file_path_in_repo):
-        # oyente_output_results obsolete, kept for compatibility
         resultsList = []
         logicalLocationsList = []
         rulesList = []
 
-        for analysis in self.output:
+        for analysis in oyente_output_results["analysis"]:
             for result in analysis["errors"]:
                 rule = parseRule(tool="oyente", vulnerability=result["message"])
                 result = parseResult(tool="oyente", vulnerability=result["message"], level=result["level"],
@@ -101,3 +137,8 @@ class Oyente(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Oyente)

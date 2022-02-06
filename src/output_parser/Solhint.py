@@ -1,15 +1,22 @@
-from sarif_om import *
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+from sarif_om import *
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, parseArtifact, parseLogicalLocation
 
 
 class Solhint(Parser):
 
-    def parse(self):
-        output = []
-        lines = self.str_output.splitlines()
-        for line in lines:
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
+            return
+        self._analysis = []
+        for line in self._lines:
             if ":" in line:
                 s_result = line.split(':')
                 if len(s_result) != 4:
@@ -20,7 +27,7 @@ class Solhint(Parser):
                 message = end_error[1:end_error.index('[') - 1]
                 level = end_error[end_error.index('[') + 1: end_error.index('/')]
                 type = end_error[end_error.index('/') + 1: len(end_error) - 1]
-                output.append({
+                self._analysis.append({
                     'file': file,
                     'line': line,
                     'column': column,
@@ -28,8 +35,7 @@ class Solhint(Parser):
                     'level': level,
                     'type': type
                 })
-
-        return output
+                self._findings.append(type)
 
     def parseSarif(self, solhint_output_results, file_path_in_repo):
         resultsList = []
@@ -57,3 +63,8 @@ class Solhint(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=[logicalLocation], results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Solhint)

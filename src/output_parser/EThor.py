@@ -1,36 +1,40 @@
-from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
     parseLogicalLocation, isNotDuplicateLogicalLocation
 
+FINDINGS = (
+    ('sb_result_secure', 'sb_result_secure'),
+    ('sb_result_insecure', 'Reentrancy'),
+    ('sb_result_unknown', 'sb_result_unknown')
+)
+
+ERRORS = (
+    ('Encountered an unknown bytecode', 'instruction error'),
+)
 
 class EThor(Parser):
 
-    @staticmethod
-    def __parse_vuln_line(line):
-        if 'sb_result_insecure' in line:
-            vuln_type = 'Reentrancy'
-        return {
-            'vuln_type': vuln_type
-        }
-
-    def is_success(self):
-        return "sb_result_secure" in self.str_output or \
-                "sb_result_insecure" in self.str_output or \
-                "sb_result_unknown" in self.str_output
-
-    def parse(self):
-        output = []
-        str_output = self.str_output.split('\n')
-
-        for line in str_output:
-            if 'sb_result_insecure' in line:
-                try:
-                    output.append(self.__parse_vuln_line(line))
-                except:
-                    continue
-        return output
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
+            return
+        for line in self._lines:
+            for indicator,finding in FINDINGS:
+                if indicator in line:
+                    self._findings.add(finding)
+            for indicator,error in ERRORS:
+                if indicator in line:
+                    self._errors.add(error)
+        if not self._findings:
+            self._errors.add('analysis incomplete')
+        self._analysis = sorted(self._findings)
 
     ## TODO: Sarif
     def parseSarif(self, conkas_output_results, file_path_in_repo):
@@ -65,3 +69,8 @@ class EThor(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Ethor)

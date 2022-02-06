@@ -1,19 +1,44 @@
-from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
-import os
-import re
-import tarfile
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+import os,re,tarfile
+from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult
 
 
+ERRORS = (
+    ('Traceback', 'exception occurred'),
+    ('Invalid solc compilation', 'solc error')
+)
+
 class Manticore(Parser):
+
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
+            return
+        for indicator,msg in ERRORS:
+            if indicator in output:
+                self._errors.add(msg)
+        result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
+        try:
+            with tarfile.open(result_tar, 'r') as tar:
+                m = re.findall('Results in /(mcore_.+)', output)
+                self._analysis = []
+                for fout in m:
+                    output_file = tar.extractfile('results/' + fout + '/global.findings')
+                    self._analysis.append(Manticore.parseFile(output_file.read().decode('utf8')))
+        except Exception as e:
+            self._errors.add(f'problem accessing {result_tar}')
 
     @staticmethod
     def parseFile(content):
         output = []
         lines = content.splitlines()
-
         current_vul = None
         for line in lines:
             if len(line) == 0:
@@ -34,26 +59,6 @@ class Manticore(Parser):
         if current_vul is not None:
             output.append(current_vul)
         return output
-
-    def parse(self):
-        if os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar')):
-            out = []
-            try:
-                with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
-                    m = re.findall('Results in /(mcore_.+)', self.str_output)
-                    for fout in m:
-                        output_file = tar.extractfile('results/' + fout + '/global.findings')
-                        out.append(Manticore.parseFile(output_file.read().decode('utf8')))
-            except Exception as e:
-                pass
-            return out
-
-    def is_success(self) -> bool:
-        try:
-            with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
-                return True
-        except Exception as e:
-            return False
 
     def parseSarif(self, manticore_output_results, file_path_in_repo):
         rulesList = []
@@ -81,3 +86,9 @@ class Manticore(Parser):
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Manticore)
+

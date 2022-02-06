@@ -1,27 +1,27 @@
-from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString, Location, PhysicalLocation, ArtifactLocation, Region, LogicalLocation, ArtifactContent
-import os
-import json
-import tarfile
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+import os,json,tarfile
+from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString, Location, PhysicalLocation, ArtifactLocation, Region, LogicalLocation, ArtifactContent
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseArtifact, parseResult
 
 
 class Slither(Parser):
 
-    def parse(self):
-        if os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar')):
-            tar = tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'))
-            output_file = tar.extractfile('output.json')
-            return json.loads(output_file.read())
-        
-    def is_success(self) -> bool:
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
         try:
-            with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
-                return True
+            with tarfile.open(result_tar, 'r') as tar:
+                output_file = tar.extractfile('output.json')
+                self._analysis = json.loads(output_file.read())
         except Exception as e:
-            return False
-
+            self._errors.add(f'problem accessing {result_tar} or output.json')
+            return
+        
     def parseSarif(self, slither_output_results, file_path_in_repo):
         rulesList = []
         resultsList = []
@@ -76,3 +76,9 @@ class Slither(Parser):
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Slither)
+

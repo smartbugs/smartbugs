@@ -137,6 +137,7 @@ class Execution:
             'duration': task.end_time - task.start_time,
             'success': False,
             'findings': None,
+            'errors': None,
             'analysis': None
         }
         output_folder = task.result_output_path()
@@ -148,9 +149,13 @@ class Execution:
                 with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
                     f.write(log_content)
                 parser = Execution.log_parser(task, log_content)
-                results['success'] = parser.is_success() and task.exit_code is not None
                 results['findings'] = parser.findings()
-                results['analysis'] = parser.parse()
+                results['errors']   = parser.errors()
+                results['analysis'] = parser.analysis()
+                if task.exit_code is None:
+                    # If you change this error message, change it also in src/Parser.py, main()
+                    results['errors'].append('Docker container timed out')
+                results['success'] = not results['errors']
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
