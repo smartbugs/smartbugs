@@ -1,45 +1,56 @@
-from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
     parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
 
+ERRORS = (
+    ('Traceback', 'exception occurred'),
+    ('solcx.exceptions.SolcError:', 'solc error')
+)
+
 class Conkas(Parser):
 
-    def __init__(self, task: 'Execution_Task', str_output: str):
-        super().__init__(task, str_output)
-        if str_output is None:
-            return
-        self.output = []
-        lines = str_output.splitlines()
-        for line in lines:
-            if 'Vulnerability: ' in line:
-                self.output.append(Conkas.__parse_vuln_line(line))
-        self.labels = sorted({issue['vuln_type'] for issue in self.output})
-        self.success = 'Traceback' not in str_output
-
     @staticmethod
-    def __parse_vuln_line(line: str):
+    def __parse_vuln(line: str):
         vuln_type = line.split('Vulnerability: ')[1].split('.')[0]
         maybe_in_function = line.split('Maybe in function: ')[1].split('.')[0]
         pc = line.split('PC: ')[1].split('.')[0]
         line_number = line.split('Line number: ')[1].split('.')[0]
         return {
-            'vuln_type': Parser.str2label(vuln_type),
+            'vuln_type': vuln_type,
             'maybe_in_function': maybe_in_function,
             'pc': pc,
             'line_number': line_number
         }
+
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
+            return
+        for indicator,msg in ERRORS:
+            if indicator in output:
+                self._errors.add(msg)
+        self._analysis = []
+        for line in self._lines:
+            if 'Vulnerability: ' in line:
+                issue = Conkas.__parse_vuln(line)
+                self._analysis.append(issue)
+                self._findings.add(issue['vuln_type'])
     
     def parseSarif(self, conkas_output_results, file_path_in_repo):
-        # conkas_output_results obsolete, kept for compatibility
         resultsList = []
         rulesList = []
         logicalLocationsList = []
 
-        for analysis_result in self.output:
+        for analysis_result in conkas_output_results["analysis"]:
             rule = parseRule(tool="conkas", vulnerability=analysis_result["vuln_type"])
 
             logicalLocation = parseLogicalLocation(analysis_result["maybe_in_function"], kind="function")
@@ -68,3 +79,9 @@ class Conkas(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Conkas)
+

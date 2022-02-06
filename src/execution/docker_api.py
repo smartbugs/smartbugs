@@ -89,12 +89,12 @@ def analyse_files(task: 'Execution_Task'):
         else:
             cmd_key = 'cmd'
 
-        if 'default' not in cfg['docker_image'] or cfg['docker_image'] == None:
-            msg = f"{task.tool}: default docker image not provided. Please check you config file."
+        if 'docker_image' not in cfg or cfg['docker_image'] is None or 'default' not in cfg['docker_image']:
+            msg = f"{task.tool}: default docker image not provided. Please check your config file."
             logs.print(msg)
             sys.exit(msg)
-        elif cmd_key not in cfg or cfg[cmd_key] == None:
-            msg = f"{task.tool}: commands not provided. Please check you config file."
+        elif cmd_key not in cfg or cfg[cmd_key] is None:
+            msg = f"{task.tool}: commands not provided. Please check your config file."
             logs.print(msg)
             sys.exit(msg)
 

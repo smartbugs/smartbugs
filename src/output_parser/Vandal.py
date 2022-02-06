@@ -1,3 +1,8 @@
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
+
+
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 
 from src.output_parser.Parser import Parser
@@ -5,41 +10,32 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
     parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
+FINDINGS = (
+    ('checkedCallStateUpdate.csv', 'CheckedCallStateUpdate'),
+    ('destroyable.csv', 'Destroyable'),
+    ('originUsed.csv',  'OriginUsed'),
+    ('reentrantCall.csv', 'ReentrantCall'),
+    ('unsecuredValueSend.csv', 'UnsecuredValueSend'),
+    ('uncheckedCall.csv', 'UncheckedCall')
+)
+
+
+
 class Vandal(Parser):
 
-    @staticmethod
-    def __parse_vuln_line(line: str):
-        if 'checkedCallStateUpdate.csv' in line:
-            vuln_type = 'CheckedCallStateUpdate'
-        elif 'destroyable.csv' in line:
-            vuln_type = 'Destroyable'
-        elif 'originUsed.csv' in line:
-            vuln_type = 'OriginUsed'
-        elif 'reentrantCall.csv' in line:
-            vuln_type = 'ReentrantCall'
-        elif 'unsecuredValueSend.csv' in line:
-            vuln_type = 'UnsecuredValueSend'
-        elif 'uncheckedCall.csv' in line:
-            vuln_type = 'UncheckedCall'
-        return {
-            'vuln_type': vuln_type
-        }
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
+            return
+        if "+ rm -rf facts-tmp" not in "\n".join(self._lines[4:]):
+            self._errors.add('analysis incomplete')
+        for line in self._lines:
+            for indicator,vulnerability in FINDINGS:
+                if indicator in line:
+                    self._findings.add(vulnerability)
+        self._analysis = [ { 'errors': sorted(self._findings) } ]
 
-    def parse(self):
-        output = {
-            "errors": []
-        }
-        str_output = self.str_output.split('\n')
-        for line in str_output:
-            if '.csv' in line:
-                try:
-                    output['errors'].append(self.__parse_vuln_line(line))
-                except:
-                    continue
-        return [output]
-
-    def is_success(self):
-        return "+ rm -rf facts-tmp" in "\n".join(self.str_output.split("\n")[4:])
 
     ## TODO: Sarif
     def parseSarif(self, conkas_output_results, file_path_in_repo):
@@ -82,3 +78,9 @@ class Vandal(Parser):
                   artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Vandal)
+

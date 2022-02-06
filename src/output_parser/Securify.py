@@ -1,8 +1,9 @@
-import numpy
-import json
-import os
-import tarfile
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+import numpy,json,os,tarfile
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
@@ -11,32 +12,31 @@ from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
 
 class Securify(Parser):
 
-    def is_success(self) -> bool:
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is not None and 'Exception in thread "main" java.io.IOException' in output:
+            self._errors.add('exception occurred')
         try:
-            with tarfile.open(os.path.join(self.task.result_output_path(), 'result.tar'), 'r') as tar:
-                return True
-        except Exception as e:
-            return False
-
-    def parse(self):
-        if len(self.str_output) > 0 and self.str_output[0] == '{':
-            return json.loads(self.str_output)
-        elif os.path.exists(os.path.join(self.task.result_output_path(), 'result.tar')):
-            tar = tarfile.open(os.path.join(
-                self.task.result_output_path(), 'result.tar'))
-            try:
-                output_file = tar.extractfile('results/results.json')
-                return json.loads(output_file.read())
-            except:
+            self._analysis = json.loads(output)
+            return
+        except:
+            pass
+        result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
+        try:
+            with tarfile.open(result_tar, 'r') as tar:
                 try:
-                    output_file = tar.extractfile('results/live.json')
-                    out = {}
-                    out["%s:%s" % (self.task.file, self.task.file_name)] = {
-                        'results': json.loads(output_file.read())["patternResults"]
-                    }
-                    return out
+                    results_json = tar.extractfile('results/results.json')
+                    self._analysis = json.loads(results_json.read())
+                    return
                 except:
-                    return None
+                    live_json = tar.extractfile('results/live.json')
+                    self._analysis = {
+                        f"{self._task.file}:{self._task.file_name}": {
+                            'results': json.loads(live_json.read())["patternResults"]
+                        }
+                    }
+        except Exception as e:
+            self._errors.add(f'problem accessing result in {result_tar}')
 
     def parseSarif(self, securify_output_results, file_path_in_repo):
         resultsList = []
@@ -110,3 +110,9 @@ class Securify(Parser):
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Securify)
+

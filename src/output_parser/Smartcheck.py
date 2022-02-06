@@ -1,5 +1,9 @@
-from sarif_om import *
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
 
+
+from sarif_om import *
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult, parseLogicalLocation
 
@@ -15,24 +19,27 @@ class Smartcheck(Parser):
             value = int(value)
         return (key, value)
 
-    def parse(self):
-        output = []
+    def __init__(self, task: 'Execution_Task', output: str):
+        super().__init__(task, output)
+        if output is None or not output:
+            self._errors.add('output missing')
+            return
+        self._analysis = []
         current_error = None
-        lines = self.str_output.splitlines()
-        for line in lines:
+        for line in self._lines:
             if "ruleId: " in line:
                 if current_error is not None:
-                    output.append(current_error)
+                    self._analysis.append(current_error)
                 current_error = {
                     'name': line[line.index("ruleId: ") + 8:]
                 }
             elif current_error is not None and ':' in line and ' :' not in line:
                 (key, value) = Smartcheck.extract_result_line(line)
                 current_error[key] = value
-
         if current_error is not None:
-            output.append(current_error)
-        return output
+            self._analysis.append(current_error)
+        for e in self._analysis:
+            self._findings.add(e['name'])
 
     def parseSarif(self, smartcheck_output_results, file_path_in_repo):
         resultsList = []
@@ -61,3 +68,9 @@ class Smartcheck(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=[logicalLocation], results=resultsList)
 
         return run
+
+
+if __name__ == '__main__':
+    import Parser
+    Parser.main(Smartcheck)
+
