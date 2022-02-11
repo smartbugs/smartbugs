@@ -7,6 +7,7 @@ from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
+FINDINGS = ( "OverflowLoopIterator", "UnboundedMassOp", "WalletGriefing" )
 
 class MadMax(Parser):
 
@@ -17,6 +18,17 @@ class MadMax(Parser):
             return
         if 'Traceback' in output:
             self._errors.add('exception occurred')
+        if 'Writing results to results.json' not in output:
+            self._errors.add('analysis incomplete')
+        analysis = {}
+        for line in self._lines:
+            if ': ' in line:
+                kv = line.strip().split(': ')
+                analysis[kv[0]] = kv[1]
+        self._analysis = [ analysis ]
+        for f in FINDINGS:
+            if f in analysis and analysis[f] != '0.00%':
+                self._findings.add(f)
     
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []
@@ -37,4 +49,4 @@ class MadMax(Parser):
 
 if __name__ == '__main__':
     import Parser
-    Parser.main(Madmax)
+    Parser.main(MadMax)
