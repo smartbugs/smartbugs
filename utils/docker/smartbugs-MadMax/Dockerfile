@@ -34,7 +34,10 @@ RUN git checkout 6e9a6e9
 
 RUN cd gigahorse-toolchain/souffle-addon; make
 
-RUN python3 gigahorse-toolchain/gigahorse.py gigahorse-toolchain/examples/long_running.hex 
+# Precompile madmax.dl etc.
+RUN python3 gigahorse-toolchain/gigahorse.py -C madmax.dl gigahorse-toolchain/examples/long_running.hex 
+RUN rm -rf .temp results.json
 
 COPY scripts/run.sh run.sh
+
 ENTRYPOINT [ "bash", "run.sh" ]
