@@ -153,7 +153,7 @@ class Execution:
                 results['errors']   = parser.errors()
                 results['analysis'] = parser.analysis()
                 if task.exit_code is None:
-                    # If you change this error message, change it also in src/Parser.py, main()
+                    # If you change this error message, change it also in src/Parser.py:main()
                     results['errors'].append('Docker container timed out')
                 results['success'] = not results['errors']
         except Exception as e:

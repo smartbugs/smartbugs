@@ -63,6 +63,7 @@ def main(Parser):
         result_json[k] = v
     if timeout and DOCKER_TIMEOUT not in result_json['errors']:
         result_json['errors'].append(DOCKER_TIMEOUT)
+    result_json['success'] = result_json['errors'] == []
     print(json.dumps(result_json,indent=2))
 
 
