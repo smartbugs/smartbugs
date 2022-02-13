@@ -2,12 +2,11 @@ if __name__ == '__main__':
     import sys
     sys.path.append("../..")
 
+import re
 
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
-
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
-    parseLogicalLocation, isNotDuplicateLogicalLocation
+from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
 FINDINGS = (
@@ -19,7 +18,17 @@ FINDINGS = (
     ('uncheckedCall.csv', 'UncheckedCall')
 )
 
+ANALYSIS_COMPLETE = re.compile(
+    f".*{re.escape('+ /vandal/bin/decompile')}"
+    f".*{re.escape('+ souffle -F facts-tmp')}"
+    f".*{re.escape('+ rm -rf facts-tmp')}",
+    re.DOTALL)
 
+ERRORS = (
+    ('Traceback', 'exception occurred'),
+    ('Error loading data: Cannot open fact file', 'internal error'),
+    ('Killed', 'exception occurred')
+)
 
 class Vandal(Parser):
 
@@ -28,13 +37,16 @@ class Vandal(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        if "+ rm -rf facts-tmp" not in "\n".join(self._lines[4:]):
+        if not ANALYSIS_COMPLETE.match(output):
             self._errors.add('analysis incomplete')
         for line in self._lines:
-            for indicator,vulnerability in FINDINGS:
+            for indicator,error in ERRORS:
                 if indicator in line:
-                    self._findings.add(vulnerability)
-        self._analysis = [ { 'errors': sorted(self._findings) } ]
+                    self._errors.add(error)
+            for indicator,finding in FINDINGS:
+                if indicator in line:
+                    self._findings.add(finding)
+        self._analysis = sorted(self._findings)
 
 
     ## TODO: Sarif
