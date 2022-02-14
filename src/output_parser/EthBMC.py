@@ -5,8 +5,7 @@ if __name__ == '__main__':
 
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.Parser import Parser
-from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
-    parseLogicalLocation, isNotDuplicateLogicalLocation
+from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
 class EthBMC(Parser):
@@ -16,16 +15,17 @@ class EthBMC(Parser):
         if output is None:
             self._errors.add('output missing')
             return
-        if 'Finished analysis' not in output:
+        if 'Finished analysis in' not in output:
             self._errors.add('analysis incomplete')
-        exploit = []
+        if 'stack backtrace:' in output:
+            self._errors.add('exception occurred')
         coverage = None
         for line in self._lines:
             if "Code covered: " in line:
                 coverage = line.split("Code covered: ")[1]
             if "Found attack, " in line:
-                exploit.append(line.split("Found attack, ")[1])
-        analysis = { 'exploit': exploit }
+                self._findings.add(line.split("Found attack, ")[1])
+        analysis = { 'exploit': sorted(self._findings) }
         if coverage is not None:
             analysis['coverage'] = coverage
         self._analysis = [ analysis ]

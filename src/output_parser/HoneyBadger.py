@@ -1,7 +1,11 @@
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../..")
+
+
 from sarif_om import *
 from src.output_parser.Oyente import Oyente
-from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
-    parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
+from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
 class HoneyBadger(Oyente):
@@ -42,4 +46,3 @@ class HoneyBadger(Oyente):
 if __name__ == '__main__':
     import Parser
     Parser.main(HoneyBadger)
-
