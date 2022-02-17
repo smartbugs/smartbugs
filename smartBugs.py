@@ -14,9 +14,11 @@ from src.docker_api.docker_api import analyse_files
 from src.interface.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
 from src.output_parser.SarifHolder import SarifHolder
 from time import time, localtime, strftime
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
 
-cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
+cfg_dataset_path = f"{BASE_DIR}/config/dataset/dataset.yaml"
 with open(cfg_dataset_path, 'r') as ymlfile:
     try:
         cfg_dataset = yaml.safe_load(ymlfile)
@@ -24,7 +26,7 @@ with open(cfg_dataset_path, 'r') as ymlfile:
         print(exc)
 
 output_folder = strftime("%Y%m%d_%H%M", localtime())
-pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
+pathlib.Path(f'results/logs/').mkdir(parents=True, exist_ok=True)
 logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
 
 

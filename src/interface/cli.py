@@ -4,12 +4,15 @@ import argparse
 import os
 import sys
 from functools import reduce
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 DATASET_CHOICES = ['all']
 TOOLS_CHOICES = ['all']
 VERSION_CHOICES = ['v1', 'v2', 'all']
-CONFIG_TOOLS_PATH = os.path.abspath('config/tools')
-CONFIG_DATASET_PATH = os.path.abspath('config/dataset/dataset.yaml')
+CONFIG_TOOLS_PATH = f"{BASE_DIR}/config/tools"
+CONFIG_DATASET_PATH = f"{BASE_DIR}/config/dataset/dataset.yaml"
 
 with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
     try:
@@ -21,7 +24,7 @@ with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
 class InfoAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         for tool in values:
-            cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
+            cfg_path = f"{CONFIG_TOOLS_PATH}/{tool}.yaml"
             with open(cfg_path, 'r') as ymlfile:
                 try:
                     cfg = yaml.safe_load(ymlfile)

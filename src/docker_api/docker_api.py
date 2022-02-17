@@ -25,7 +25,9 @@ from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
 
 from time import time
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 client = docker.from_env()
 
@@ -216,7 +218,7 @@ analyse solidity files
 """
 def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path):
     try:
-        cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
+        cfg_path = f'{BASE_DIR}/config/tools/{tool}.yaml'
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
             try:
                 cfg = yaml.safe_load(ymlfile)
@@ -300,4 +302,4 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
 
     except (docker.errors.APIError, docker.errors.ContainerError, docker.errors.ImageNotFound) as err:
         print(err)
-        logs.write(err + '\n')
+        logs.write(f'{err}' + '\n')
