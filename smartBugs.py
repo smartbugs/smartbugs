@@ -148,7 +148,7 @@ def exec_cmd(args: argparse.Namespace):
     file_names = []
     for file in files_to_analyze:
         for tool in args.tool:
-            results_folder = 'results/' + tool + '/' + output_folder
+            results_folder = 'results/' + tool
             if not os.path.exists(results_folder):
                 os.makedirs(results_folder)
 

@@ -227,7 +227,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
                 logs.write(exc)
 
         # create result folder with time
-        results_folder = 'results/' + tool + '/' + now
+        results_folder = 'results/' + tool # + '/' + now
         if not os.path.exists(results_folder):
             os.makedirs(results_folder)
         # os.makedirs(os.path.dirname(results_folder), exist_ok=True)
