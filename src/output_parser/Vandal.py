@@ -5,7 +5,7 @@ if __name__ == '__main__':
 import re
 
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
@@ -25,9 +25,8 @@ ANALYSIS_COMPLETE = re.compile(
     re.DOTALL)
 
 ERRORS = (
-    ('Traceback', 'exception occurred'),
     ('Error loading data: Cannot open fact file', 'internal error'),
-    ('Killed', 'exception occurred')
+    ('Killed', 'exception occurred'),
 )
 
 class Vandal(Parser):
@@ -37,15 +36,15 @@ class Vandal(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
+        self._errors.update(python_errors(output))
         if not ANALYSIS_COMPLETE.match(output):
             self._errors.add('analysis incomplete')
-        for line in self._lines:
-            for indicator,error in ERRORS:
-                if indicator in line:
-                    self._errors.add(error)
-            for indicator,finding in FINDINGS:
-                if indicator in line:
-                    self._findings.add(finding)
+        for indicator,error in ERRORS:
+            if indicator in output:
+                self._errors.add(error)
+        for indicator,finding in FINDINGS:
+            if indicator in output:
+                self._findings.add(finding)
         self._analysis = sorted(self._findings)
 
 

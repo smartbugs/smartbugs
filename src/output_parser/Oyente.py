@@ -4,13 +4,12 @@ if __name__ == '__main__':
 
 
 from sarif_om import *
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
     parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
 ERRORS = (
-    ('Traceback', 'exception occurred'),
     ('incomplete push instruction', 'instruction error'),
     ('UNKNOWN INSTRUCTION', 'instruction error'),
     ('!!! SYMBOLIC EXECUTION TIMEOUT !!!', 'timeout'),
@@ -25,20 +24,22 @@ class Oyente(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        (self._analysis, self._findings, self._errors) = Oyente.__parse(self._lines)
+        self._errors.update(python_errors(output))
+        for indicator,error in ERRORS:
+            if indicator in output:
+                self._errors.add(error)
+        (self._analysis, self._findings, analysis_completed) = Oyente.__parse(self._lines)
+        if not analysis_completed:
+            self._errors.add('analysis incomplete')
 
     @staticmethod
     def __parse(lines):
         analysis = []
         findings = set()
-        errors = set()
         analysis_completed = False
         contract = None
         for line in lines:
             fields = [ f.strip().replace('└> ','') for f in line.split(':') ]
-            for ERROR, MSG in ERRORS:
-                if ERROR in line:
-                    errors.add(MSG)
             if (line.startswith('INFO:root:contract') or line.startswith('INFO:root:Contract')) and len(fields) >= 4:
                 # INFO:root:contract <filename>:<contract name>:
                 if contract is not None:
@@ -101,9 +102,7 @@ class Oyente(Parser):
                     })
         if contract is not None:
             analysis.append(contract)
-        if not analysis_completed:
-            errors.add('analysis incomplete')
-        return (analysis,findings,errors)
+        return (analysis,findings,analysis_completed)
 
     def parseSarif(self, oyente_output_results, file_path_in_repo):
         resultsList = []

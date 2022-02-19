@@ -4,7 +4,7 @@ if __name__ == '__main__':
 
 
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 FINDINGS = ( "OverflowLoopIterator", "UnboundedMassOp", "WalletGriefing" )
@@ -16,8 +16,7 @@ class MadMax(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        if 'Traceback' in output:
-            self._errors.add('exception occurred')
+        self._errors.update(python_errors(output))
         if 'Writing results to results.json' not in output:
             self._errors.add('analysis incomplete')
         analysis = {}

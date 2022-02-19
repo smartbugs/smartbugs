@@ -3,16 +3,15 @@ if __name__ == '__main__':
     sys.path.append("../..")
 
 
+import re
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
     parseLogicalLocation, isNotDuplicateLogicalLocation
 
-FINDINGS = (
-    ('delegatecall bug.', 'Delegate_Call'),
-    ('selfdestruct bug.', 'Selfdestruct'),
-    ('call bug.', 'Call_Bug')
-)
+FINDING = re.compile('.*pakala\.analyzer\[.*\] INFO Found (.*) bug\.')
+COVERAGE = re.compile('Symbolic execution finished with coverage (.*).')
+FINISHED = re.compile('Nothing to report.|======> Bug found! Need .* transactions. <======')
 
 class Pakala(Parser):
 
@@ -21,16 +20,19 @@ class Pakala(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        if not "Nothing to report." in output and not "Bug found!" in output:
-            self._errors.add('analysis incomplete')
+        self._errors.update(python_errors(output))
         coverage = None
+        finished = False
+        traceback = False
         for line in self._lines:
-            if "Symbolic execution finished with coverage " in line:
-                coverage = line.replace("Symbolic execution finished with coverage ", "").replace(".", "")
-            if 'Found' in line and 'bug.' in line:
-                for indicator,finding in FINDINGS:
-                    if indicator in line:
-                        self._findings.add(findings)
+            if m := COVERAGE.match(line):
+                coverage = m[1]
+            if m := FINDING.match(line):
+                self._findings.add(m[1])
+            if FINISHED.match(line):
+                finished = True
+        if not finished:
+            self._errors.add('analysis incomplete')
         analysis = { 'vulnerabilities': sorted(self._findings) }
         if coverage is not None:
             analysis['coverage'] = coverage

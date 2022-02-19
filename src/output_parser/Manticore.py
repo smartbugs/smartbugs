@@ -5,14 +5,9 @@ if __name__ == '__main__':
 
 import os,re,tarfile
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult
 
-
-ERRORS = (
-    ('Traceback', 'exception occurred'),
-    ('Invalid solc compilation', 'solc error')
-)
 
 class Manticore(Parser):
 
@@ -21,9 +16,9 @@ class Manticore(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        for indicator,msg in ERRORS:
-            if indicator in output:
-                self._errors.add(msg)
+        self._errors.update(python_errors(output))
+        if 'Invalid solc compilation' in output:
+            self._errors.add('solc error')
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
         try:
             with tarfile.open(result_tar, 'r') as tar:
