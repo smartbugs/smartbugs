@@ -1,33 +1,14 @@
 from time import time
-import sys
-import json
-import os
+import sys, json, os, importlib
 import traceback
 from typing import List, Tuple, Dict
 
 from datetime import timedelta
 from multiprocessing import Pool, Manager
 
+from src import output_parser
 from src.output_parser.Parser import Parser
-from src.execution.execution_task import Execution_Task
-from src.output_parser.TeEther import TeEther
-from src.output_parser.MadMax import MadMax
-from src.output_parser.EasyFlow import EasyFlow
-from src.output_parser.Vandal import Vandal
-from src.output_parser.Pakala import Pakala
-from src.output_parser.EThor import EThor
-from src.output_parser.Conkas import Conkas
-from src.output_parser.HoneyBadger import HoneyBadger
-from src.output_parser.Maian import Maian
-from src.output_parser.Manticore import Manticore
-from src.output_parser.Mythril import Mythril
-from src.output_parser.Osiris import Osiris
-from src.output_parser.Oyente import Oyente
-from src.output_parser.Securify import Securify
-from src.output_parser.Slither import Slither
-from src.output_parser.Smartcheck import Smartcheck
-from src.output_parser.Solhint import Solhint
-from src.output_parser.EthBMC import EthBMC
+from src.tools import TOOLS
 from src.execution.execution_task import Execution_Task
 from src.logger import logs, Logger
 from src.execution.docker_api import analyse_files
@@ -182,40 +163,8 @@ class Execution:
         
 
     @staticmethod
-    def log_parser(task: 'Execution_Task', log: str) -> Parser:
-        if task.tool == 'oyente':
-            return Oyente(task, log)
-        if task.tool == 'osiris':
-            return Osiris(task, log)
-        if task.tool == 'honeybadger':
-            return HoneyBadger(task, log)
-        if task.tool == 'smartcheck':
-            return Smartcheck(task, log)
-        if task.tool == 'solhint':
-            return Solhint(task, log)
-        if task.tool == 'maian':
-            return Maian(task, log)
-        if task.tool == 'mythril':
-            return Mythril(task, log)
-        if task.tool == 'securify':
-            return Securify(task, log)
-        if task.tool == 'slither':
-            return Slither(task, log)
-        if task.tool == 'manticore':
-            return Manticore(task, log)
-        if task.tool == 'conkas':
-            return Conkas(task, log)
-        if task.tool == 'pakala':
-            return Pakala(task, log)
-        if task.tool == 'ethor':
-            return EThor(task, log)
-        if task.tool == 'vandal':
-            return Vandal(task, log)
-        if task.tool == 'easyflow':
-            return EasyFlow(task, log)
-        if task.tool == 'madmax':
-            return MadMax(task, log)
-        if task.tool == 'teether':
-            return TeEther(task, log)
-        if task.tool == 'ethbmc':
-            return EthBMC(task, log)
+    def log_parser(task: 'Execution_Task', log: str) -> output_parser.Parser:
+        parser_name = TOOLS[task.tool]['output_parser']
+        module = importlib.import_module(f'src.output_parser.{parser_name}')
+        parser = getattr(module, parser_name)
+        return parser(task, log)

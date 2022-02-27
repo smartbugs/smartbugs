@@ -5,4 +5,5 @@ cmd: --livestatusfile /results/live.json --output /results/results.json -fs
 cmd_bytecode: --livestatusfile /results/live.json --output /results/results.json -fh
 output_in_files:
   folder: /results/
+output_parser: Securify
 info: Securify uses formal verification, also relying on static analysis checks. Securify’s analysis consists of two steps. First, it symbolically analyzes the contract’s dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not.

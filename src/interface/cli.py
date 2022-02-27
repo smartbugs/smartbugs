@@ -6,8 +6,8 @@ import sys
 from time import localtime, strftime
 from src.execution.execution_configuration import Execution_Configuration
 from src.utils import COLSTATUS,COLRESET
-
 from src.logger import logs
+from src.tools import TOOLS
 
 CONFIG_DATASET_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'dataset', 'dataset.yaml')
 DATASET_CHOICES = ['all']
@@ -23,11 +23,7 @@ for name,location in cfg_dataset.items():
     else:
         DATASET_CHOICES.append(name)
 
-CONFIG_TOOLS_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'tools')
-TOOLS_CHOICES = ['all']
-# get tools available by parsing the name of the config files
-tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
-TOOLS_CHOICES.extend(tools)
+TOOLS_CHOICES = ['all'].extend(TOOLS.keys())
 
 def is_remote_info(info):
     return isinstance(info,dict) and 'url' in info and 'local_dir' in info
@@ -37,13 +33,8 @@ def get_remote_info(info):
 
 class InfoAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        for tool in values:
-            cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
-            with open(cfg_path, 'r') as ymlfile:
-                try:
-                    cfg = yaml.safe_load(ymlfile)
-                except yaml.YAMLError as exc:
-                    logs.print(exc)
+        for value in values:
+            cfg = TOOLS[value]
             info = cfg['info'] if 'info' in cfg else 'no info available'
             print(f"{COLSTATUS}: {info}{COLRESET}")
         parser.exit()

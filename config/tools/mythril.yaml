@@ -3,4 +3,5 @@ docker_image:
   solc<5: smartbugs/mythril:0.4.25
 cmd: -xo json
 cmd_bytecode: analyze -o json --bin-runtime -f
+output_parser: Mythril
 info: Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities.

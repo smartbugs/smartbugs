@@ -3,8 +3,8 @@ if __name__ == '__main__':
     sys.path.append("../..")
 
 
-from sarif_om import *
 from src.output_parser.Oyente import Oyente
+from sarif_om import *
 from src.execution.execution_task import Execution_Task
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
