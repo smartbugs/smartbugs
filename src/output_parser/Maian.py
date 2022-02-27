@@ -5,7 +5,7 @@ if __name__ == '__main__':
 
 import re
 from sarif_om import *
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.execution.execution_task import Execution_Task
 from src.output_parser.SarifHolder import parseRule, parseResult, parseArtifact
 
@@ -31,7 +31,7 @@ SD_VULN_FOUND       = '[-] Suicidal vulnerability found!'
 SD_VULN_CONFIRMED   = '    Confirmed ! The contract is suicidal !'
 #SD_VULN_NOT_FOUND   = '[-] No suicidal vulnerability found'
 
-INFOS = (
+FINDINGS = (
     (NOT_PRODIGAL, 'No Ether leak (no send)'),
     (LEAK_FOUND, 'Ether leak'),
     (PRODIGAL_CONFIRMED, 'Ether leak (verified)'),
@@ -43,8 +43,8 @@ INFOS = (
     (LOCK_FOUND, 'Ether lock'),
     (NO_SELFDESTRUCT, 'Not destructible (no self-destruct)'),
     (SD_VULN_FOUND, 'Destructible'),
-    (SD_VULN_CONFIRMED, 'Destructible (verified)')
-#    (SD_VULN_NOT_FOUND, 'No destructibility found') # nothing detected
+    (SD_VULN_CONFIRMED, 'Destructible (verified)'),
+#    (SD_VULN_NOT_FOUND, 'No destructibility found'), # nothing detected
 )
 
 ERRORS = (
@@ -56,7 +56,6 @@ ERRORS = (
     re.compile('.*(need to set the parameters.*)'),
     re.compile('\[-\] (.* does NOT exist)'),
     re.compile('.*Exception: (.*)'),
-    re.compile('.*(Traceback) \(most recent call last\):')
 )
 
 CHECK = re.compile('\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)')
@@ -69,6 +68,7 @@ class Maian(Parser):
             self._errors.add('output missing')
             return
         (self._analysis, self._findings, self._errors) = Maian.__parse(self._lines)
+        self._errors.update(python_errors(output))
 
     @staticmethod
     def __empty_check():
@@ -92,8 +92,8 @@ class Maian(Parser):
                 deployed = True
             if line.startswith(CANNOT_DEPLOY):
                 deployed = False
-            for INFO, finding in INFOS:
-                if line.startswith(INFO):
+            for indicator,finding in FINDINGS:
+                if line.startswith(indicator):
                     check['findings'].add(finding)
             for ERROR in ERRORS:
                 if m := ERROR.match(line):

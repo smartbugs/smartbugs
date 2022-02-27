@@ -67,6 +67,20 @@ def main(Parser):
     print(json.dumps(result_json,indent=2))
 
 
+PYTHON_TRACEBACK = 'Traceback (most recent call last):'
+PYTHON_EXCEPTION = re.compile(f"{re.escape(PYTHON_TRACEBACK)}(?:\n .*)*\n(.*)")
+
+def python_errors(output):
+    if PYTHON_TRACEBACK in output:
+        exceptions = PYTHON_EXCEPTION.findall(output)
+        if exceptions:
+            return { f"Traceback ({e})" for e in exceptions}
+        else:
+            return { "Traceback" }
+    else:
+        return set()
+
+
 class Parser:
 
     def __init__(self, task: 'Execution_Task', output: str):

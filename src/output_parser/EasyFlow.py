@@ -4,7 +4,7 @@ if __name__ == '__main__':
 
 
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
-from src.output_parser.Parser import Parser
+from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
@@ -21,21 +21,16 @@ class EasyFlow(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        analysis = {
-            'errors': []
-        }
-        if 'Traceback' in output:
-            analysis['errors'].append('exception occurred')
+        self._errors.update(python_errors(output))
+        analysis = {}
         for line in self._lines:
             for indicator,key in KEYS:
                 if indicator in line:
                     analysis[key] = line.split(indicator)[1].strip()
                     break
-        self._analysis = [analysis]
         if 'result' in analysis:
             self._findings.add(analysis['result'])
-        for e in analysis['errors']:
-            self._errors.add(e)
+        self._analysis = [analysis]
     
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []

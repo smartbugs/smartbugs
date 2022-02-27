@@ -1,4 +1,5 @@
 docker_image:
   default: smartbugs/ethor
 cmd_bytecode: ethor-with-reconstruction {contract} --prune-strategy=aggressive --predicate-inlining-strategy=linear --preanalysis
+output_parser: EThor
 info: eThor is a sound static analyzer for EVM smart contracts based on HoRSt

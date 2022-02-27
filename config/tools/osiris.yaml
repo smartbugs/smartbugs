@@ -2,4 +2,5 @@ docker_image:
   default: smartbugs/osiris
 cmd: python osiris/osiris.py -s
 cmd_bytecode: python osiris/osiris.py -b -s
+output_parser: Osiris
 info: Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente.
