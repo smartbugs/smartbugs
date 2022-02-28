@@ -36,26 +36,25 @@ COPY scripts/run_maian_solidity.sh run_maian_solidity.sh
 COPY scripts/run_maian_bytecode.sh run_maian_bytecode.sh
 RUN chmod +x printContractNames.py run_maian_solidity.sh run_maian_bytecode.sh runMAIANall.sh
 
+# Install MAIAN from GitHub
+RUN git clone https://github.com/smartbugs/MAIAN
+
+# Checkout specific version of MAIAN's repository and install requirements
+RUN cd /MAIAN; git checkout 1c92091; pip3 install -r requirements-3.8.txt
+
 # Install Solidity compiler 0.4.25 release
-#RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
-#  mv solc-static-linux /usr/bin/solc
+RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
+  mv solc-static-linux /usr/bin/solc
 
 # Install Solidity compiler 0.5.10 release
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
-  mv solc-static-linux /usr/bin/solc
+#RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
+#  mv solc-static-linux /usr/bin/solc
 
 # Set SOLC environment variable
 ENV SOLC /usr/bin/solc
 
 # Add exec rights to solc
 RUN chmod +x /usr/bin/solc
-
-# Install MAIAN from GitHub
-RUN git clone https://github.com/smartbugs/MAIAN
-
-# Checkout specific version of MAIAN's repository and install requirements
-#RUN cd /MAIAN; git checkout 8bf16ac; pip3 install -r requirements-3.8.txt
-RUN cd /MAIAN; git checkout 088a213; pip3 install -r requirements-3.8.txt
 
 # Precompile program, test Maian installation
 RUN \
@@ -64,3 +63,4 @@ RUN \
     python3 maian.py -bs example_contracts/example_suicidal.bytecode_source -c $c; \
   done; \
   rm -rf out/*
+
