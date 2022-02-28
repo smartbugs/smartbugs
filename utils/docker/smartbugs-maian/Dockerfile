@@ -18,12 +18,6 @@ RUN tar zxvf geth-linux-amd64-1.10.14-11a3a350.tar.gz
 RUN cp geth-linux-amd64-1.10.14-11a3a350/geth /usr/local/bin
 RUN chmod +x /usr/local/bin/geth
 
-# Install MAIAN from GitHub
-RUN git clone https://github.com/smartbugs/MAIAN
-
-# Checkout specific version of MAIAN's repository and install requirements
-RUN cd /MAIAN; git checkout 8bf16ac; pip3 install -r requirements-3.8.txt
-
 # Precompute ethash data
 RUN \
   mkdir ~/.ethash; \
@@ -43,18 +37,25 @@ COPY scripts/run_maian_bytecode.sh run_maian_bytecode.sh
 RUN chmod +x printContractNames.py run_maian_solidity.sh run_maian_bytecode.sh runMAIANall.sh
 
 # Install Solidity compiler 0.4.25 release
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
-  mv solc-static-linux /usr/bin/solc
+#RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
+#  mv solc-static-linux /usr/bin/solc
 
 # Install Solidity compiler 0.5.10 release
-#RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
-#  mv solc-static-linux /usr/bin/solc
+RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
+  mv solc-static-linux /usr/bin/solc
 
 # Set SOLC environment variable
 ENV SOLC /usr/bin/solc
 
 # Add exec rights to solc
 RUN chmod +x /usr/bin/solc
+
+# Install MAIAN from GitHub
+RUN git clone https://github.com/smartbugs/MAIAN
+
+# Checkout specific version of MAIAN's repository and install requirements
+#RUN cd /MAIAN; git checkout 8bf16ac; pip3 install -r requirements-3.8.txt
+RUN cd /MAIAN; git checkout 088a213; pip3 install -r requirements-3.8.txt
 
 # Precompile program, test Maian installation
 RUN \
