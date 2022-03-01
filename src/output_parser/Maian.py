@@ -50,6 +50,7 @@ FINDINGS = (
 ERRORS = (
     re.compile('\[-\] (Cannot compile the contract)'),
     re.compile('.*(Unknown operation.*)'),
+    re.compile('.*(Some addresses are larger)'),
     re.compile('.*(did not process.*)'),
     re.compile('.*(In SLOAD the list at address.*)'),
     re.compile('.*(Incorrect final stack size)'),
@@ -67,8 +68,9 @@ class Maian(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        (self._analysis, self._findings, self._errors) = Maian.__parse(self._lines)
         self._errors.update(python_errors(output))
+        (self._analysis, self._findings, errors) = Maian.__parse(self._lines)
+        self._errors.update(errors)
 
     @staticmethod
     def __empty_check():

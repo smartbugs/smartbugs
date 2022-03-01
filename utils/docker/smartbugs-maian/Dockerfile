@@ -1,55 +1,29 @@
-# Docker Image with MAIAN and Solc for Augur contracts security analysis
+# Docker Image with MAIAN (Smartbugs fork)
 
 # Pull base image
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
-# Install Python and build tools
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+# Update packages, install build essentials, wget and Python
 RUN \
-  apt-get install -y build-essential software-properties-common libssl-dev wget && \
-  apt-get install -y python3 python3-dev python3-pip git psmisc lsof 
+  apt update; \
+  DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
+    tzdata build-essential software-properties-common libssl-dev wget git \
+    z3 psmisc lsof wget python3-pip python3-dev; \
+  pip install --upgrade pip
 
-# Install Solidity compiler 0.4.25 release
-#RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
-#  mv solc-static-linux /usr/bin/solc
-
-# Install Solidity compiler 0.5.10 release
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
-  mv solc-static-linux /usr/bin/solc
-
-# Install Go Ethereum (GETH) from Ethereum PPA
-#RUN \
-#  add-apt-repository ppa:ethereum/ethereum && \
-#  apt-get update && \
-#  apt-get -y install ethereum
-
-# Install GETH version 1.8.7 (that is the version expected by MAIAN)
-RUN wget https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.8.7-66432f38.tar.gz
-RUN tar zxvf geth-alltools-linux-amd64-1.8.7-66432f38.tar.gz
-RUN chmod +x geth-alltools-linux-amd64-1.8.7-66432f38/*
-RUN cp geth-alltools-linux-amd64-1.8.7-66432f38/* /usr/local/bin
-
-# Install MAIAN from GitHub
+# Install GETH version 1.10.14 
 RUN \
-  git clone https://github.com/MAIAN-tool/MAIAN.git
+  wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.14-11a3a350.tar.gz && \
+  tar zxvf geth-linux-amd64-1.10.14-11a3a350.tar.gz && \
+  cp geth-linux-amd64-1.10.14-11a3a350/geth /usr/local/bin && \
+  chmod +x /usr/local/bin/geth
 
-# Install Python dependencies
-
-#RUN pip install --upgrade pip
-
-COPY requirements.txt scripts/requirements.txt
+# Precompute ethash data
 RUN \
-  pip3 install -r scripts/requirements.txt
-
-# Copy test runner script to Docker image
-COPY scripts/test_runner.py scripts/test_runner.py
-
-# Set SOLC environment variable
-ENV SOLC /usr/bin/solc
-
-# Add exec rights to solc
-RUN chmod +x /usr/bin/solc
+  mkdir ~/.ethash; \
+  for block in 0 30000; do \
+    geth makedag $block ~/.ethash; \
+  done
 
 # Script that extracts contract names 
 ENV LC_ALL C.UTF-8  
@@ -57,9 +31,30 @@ RUN pip3 install solidity_parser
 COPY scripts/printContractNames.py printContractNames.py
 
 # Scripts that Smartbugs calls
+COPY scripts/runMAIANall.sh runMAIANall.sh
 COPY scripts/run_maian_solidity.sh run_maian_solidity.sh
 COPY scripts/run_maian_bytecode.sh run_maian_bytecode.sh
-RUN chmod +x printContractNames.py run_maian_solidity.sh run_maian_bytecode.sh 
+RUN chmod +x printContractNames.py run_maian_solidity.sh run_maian_bytecode.sh runMAIANall.sh
 
-# Allow insecure unlock
-#RUN sed -si "s/'geth'/'geth','--allow-insecure-unlock'/g" /MAIAN/tool/blockchain.py
+# Install MAIAN from GitHub, precompile and test it
+ARG MAIAN_COMMIT=master
+RUN \
+  git clone https://github.com/smartbugs/MAIAN; \
+  cd /MAIAN; \
+  git checkout $MAIAN_COMMIT; \
+  pip3 install -r requirements-3.8.txt; \
+  cd tool; \
+  for c in 0 1 2; do \
+    python3 maian.py -bs example_contracts/example_suicidal.bytecode_source -c $c; \
+  done; \
+  rm -rf out/*
+
+# Install Solidity compiler
+ARG SOLC_VERSION=0.5.10
+RUN \
+  wget https://github.com/ethereum/solidity/releases/download/v$SOLC_VERSION/solc-static-linux && \
+  mv solc-static-linux /usr/bin/solc && \
+  chmod +x /usr/bin/solc
+
+ENV SOLC /usr/bin/solc
+
