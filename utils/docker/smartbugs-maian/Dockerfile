@@ -4,19 +4,19 @@
 FROM ubuntu:20.04
 
 # Update packages, install build essentials, wget and Python
-RUN apt update
-RUN DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends tzdata \
-  build-essential software-properties-common libssl-dev wget git z3 psmisc lsof \
-  wget python3-pip python3-dev
-
-# Upgrade pip
-RUN pip install --upgrade pip
+RUN \
+  apt update; \
+  DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
+    tzdata build-essential software-properties-common libssl-dev wget git \
+    z3 psmisc lsof wget python3-pip python3-dev; \
+  pip install --upgrade pip
 
 # Install GETH version 1.10.14 
-RUN wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.14-11a3a350.tar.gz
-RUN tar zxvf geth-linux-amd64-1.10.14-11a3a350.tar.gz
-RUN cp geth-linux-amd64-1.10.14-11a3a350/geth /usr/local/bin
-RUN chmod +x /usr/local/bin/geth
+RUN \
+  wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.14-11a3a350.tar.gz && \
+  tar zxvf geth-linux-amd64-1.10.14-11a3a350.tar.gz && \
+  cp geth-linux-amd64-1.10.14-11a3a350/geth /usr/local/bin && \
+  chmod +x /usr/local/bin/geth
 
 # Precompute ethash data
 RUN \
@@ -36,31 +36,25 @@ COPY scripts/run_maian_solidity.sh run_maian_solidity.sh
 COPY scripts/run_maian_bytecode.sh run_maian_bytecode.sh
 RUN chmod +x printContractNames.py run_maian_solidity.sh run_maian_bytecode.sh runMAIANall.sh
 
-# Install MAIAN from GitHub
-RUN git clone https://github.com/smartbugs/MAIAN
-
-# Checkout specific version of MAIAN's repository and install requirements
-RUN cd /MAIAN; git checkout 1c92091; pip3 install -r requirements-3.8.txt
-
-# Install Solidity compiler 0.4.25 release
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux && \
-  mv solc-static-linux /usr/bin/solc
-
-# Install Solidity compiler 0.5.10 release
-#RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.10/solc-static-linux && \
-#  mv solc-static-linux /usr/bin/solc
-
-# Set SOLC environment variable
-ENV SOLC /usr/bin/solc
-
-# Add exec rights to solc
-RUN chmod +x /usr/bin/solc
-
-# Precompile program, test Maian installation
+# Install MAIAN from GitHub, precompile and test it
+ARG MAIAN_COMMIT=master
 RUN \
-  cd /MAIAN/tool; \
+  git clone https://github.com/smartbugs/MAIAN; \
+  cd /MAIAN; \
+  git checkout $MAIAN_COMMIT; \
+  pip3 install -r requirements-3.8.txt; \
+  cd tool; \
   for c in 0 1 2; do \
     python3 maian.py -bs example_contracts/example_suicidal.bytecode_source -c $c; \
   done; \
   rm -rf out/*
+
+# Install Solidity compiler
+ARG SOLC_VERSION=0.5.10
+RUN \
+  wget https://github.com/ethereum/solidity/releases/download/v$SOLC_VERSION/solc-static-linux && \
+  mv solc-static-linux /usr/bin/solc && \
+  chmod +x /usr/bin/solc
+
+ENV SOLC /usr/bin/solc
 
