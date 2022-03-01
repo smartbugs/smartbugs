@@ -50,6 +50,7 @@ FINDINGS = (
 ERRORS = (
     re.compile('\[-\] (Cannot compile the contract)'),
     re.compile('.*(Unknown operation.*)'),
+    re.compile('.*(Some addresses are larger)'),
     re.compile('.*(did not process.*)'),
     re.compile('.*(In SLOAD the list at address.*)'),
     re.compile('.*(Incorrect final stack size)'),
