@@ -10,8 +10,8 @@ import yaml
 
 from datetime import timedelta
 from multiprocessing import Manager, Pool
-from src.docker_api.docker_api import analyse_files
-from src.interface.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
+from src.docker_api import analyse_files
+from src.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
 from src.output_parser.SarifHolder import SarifHolder
 from time import time, localtime, strftime
 

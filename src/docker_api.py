@@ -8,9 +8,7 @@ import sys
 import tarfile
 import yaml
 import tempfile
-from shutil import copyfile, rmtree
-
-from solidity_parser import parser
+import shutil
 
 from src.output_parser.Conkas import Conkas
 from src.output_parser.HoneyBadger import HoneyBadger
@@ -26,25 +24,9 @@ from src.output_parser.Solhint import Solhint
 
 from time import time
 
+from src.get_solc import get_solc
 
 client = docker.from_env()
-
-"""
-get solidity compiler version
-"""
-def get_solc_version(file, logs):
-    try:
-        with open(file, 'r', encoding='utf-8') as fd:
-            sourceUnit = parser.parse(fd.read())
-            solc_version = sourceUnit['children'][0]['value']
-            solc_version = solc_version.strip('^')
-            solc_version = solc_version.split('.')
-            return (int(solc_version[1]), int(solc_version[2]))
-    except:
-        print('\x1b[1;33m' + 'WARNING: could not parse solidity file to get solc version' + '\x1b[0m')
-        logs.write('WARNING: could not parse solidity file to get solc version \n')
-    return (None, None)
-
 
 """
 pull images
@@ -216,7 +198,7 @@ analyse solidity files
 """
 def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path):
     try:
-        cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
+        cfg_path = os.path.abspath(f'config/tools/{tool}.yaml')
         with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
             try:
                 cfg = yaml.safe_load(ymlfile)
@@ -231,12 +213,9 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         # os.makedirs(os.path.dirname(results_folder), exist_ok=True)
 
         # check if config file as all required fields
-        if 'default' not in cfg['docker_image'] or cfg['docker_image'] == None:
-            logs.write(tool + ': default docker image not provided. please check you config file.\n')
-            sys.exit(tool + ': default docker image not provided. please check you config file.')
-        elif 'cmd' not in cfg or cfg['cmd'] == None:
-            logs.write(tool + ': commands not provided. please check you config file.\n')
-            sys.exit(tool + ': commands not provided. please check you config file.')
+        if 'docker_image' not in cfg or cfg['docker_image'] == None:
+            logs.write(tool + ': docker image not provided. please check you config file.\n')
+            sys.exit(tool + ': docker image not provided. please check you config file.')
 
         if import_path == "FILE":
             import_path = file
@@ -244,39 +223,32 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         else:
             file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
 
-        file_name = os.path.basename(file)
-        file_name = os.path.splitext(file_name)[0]
+        solc_compiler = get_solc(file)
 
+        filename = os.path.basename(file)
+        scripts  = os.path.abspath(f'config/tools/{tool}')
         working_dir = tempfile.mkdtemp()
-        copyfile(file, os.path.join(working_dir, os.path.basename(file)))
-        file = os.path.join(working_dir, os.path.basename(file))
+        shutil.copy(file, working_dir)
+        working_bin_dir = f'{working_dir}/bin'
+        shutil.copytree(scripts, working_bin_dir)
+        shutil.copyfile(solc_compiler, f'{working_bin_dir}/solc')
 
         # bind directory path instead of file path to allow imports in the same directory
         volume_bindings = mount_volumes(working_dir, logs)
 
         start = time()
 
-        (solc_version, solc_version_minor) = get_solc_version(file, logs)
-
-        if isinstance(solc_version, int) and solc_version < 5 and 'solc<5' in cfg['docker_image']:
-            image = cfg['docker_image']['solc<5']
-        # if there's no version or version >5, choose default
-        else:
-            image = cfg['docker_image']['default']
+        image = cfg['docker_image']
 
         if not client.images.list(image):
             pull_image(image, logs)
 
-        cmd = cfg['cmd']
-        if '{contract}' in cmd:
-            cmd = cmd.replace('{contract}', '/data/' + os.path.basename(file))
-        else:
-            cmd += ' /data/' + os.path.basename(file)
         container = None
         try:
             container = client.containers.run(image,
-                                              cmd,
+                                              entrypoint = f"/data/bin/run_solidity /data/{filename}",
                                               detach=True,
+                                              user = 0,
                                               # cpu_quota=150000,
                                               volumes=volume_bindings)
             try:
@@ -291,12 +263,12 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
 
             end = time()
 
-            parse_results(output, tool, file_name, container, cfg, logs, results_folder, start, end, sarif_outputs,
-                          file_path_in_repo, output_version)
+            parse_results(output, tool, os.path.splitext(filename)[0], container, cfg, logs, results_folder,
+                start, end, sarif_outputs, file_path_in_repo, output_version)
         finally:
             stop_container(container, logs)
             remove_container(container, logs)
-            rmtree(working_dir)
+            shutil.rmtree(working_dir)
 
     except (docker.errors.APIError, docker.errors.ContainerError, docker.errors.ImageNotFound) as err:
         print(err)

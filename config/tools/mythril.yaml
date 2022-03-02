@@ -1,5 +1,2 @@
-docker_image:
-  default: qspprotocol/mythril-usolc
-  solc<5: qspprotocol/mythril-0.4.25
-cmd: -xo json
+docker_image: qspprotocol/mythril-usolc
 info: Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities.

@@ -2,7 +2,7 @@ import attr
 import pandas
 from sarif_om import *
 
-from src.exception.VulnerabilityNotFoundException import VulnerabilityNotFoundException
+from src.VulnerabilityNotFoundException import VulnerabilityNotFoundException
 VERSION = "2.1.0"
 SCHEMA = "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
 

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+FILENAME="$1"
+
+export PATH="/data/bin:$PATH"
+chmod +x /data/bin/solc
+
+cd /conkas
+python3 conkas.py -fav -s "$FILENAME"

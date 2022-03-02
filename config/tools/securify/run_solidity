@@ -1,0 +1,8 @@
+#!/bin/sh
+
+FILENAME="$1"
+
+export PATH="/data/bin:$PATH"
+chmod +x /data/bin/solc
+
+java -Xmx16G -jar /securify_jar/securify.jar --livestatusfile /results/live.json --output /results/results.json -fs "$FILENAME"

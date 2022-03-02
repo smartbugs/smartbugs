@@ -1,0 +1,13 @@
+#!/bin/sh
+
+FILENAME="$1"
+
+export PATH="/data/bin:$PATH"
+chmod +x /data/bin/solc
+
+for CONTRACT in `python3 /data/bin/printContractNames.py "$FILENAME"`; do
+     	cd /MAIAN/tool; 
+	for c in 0 1 2; do
+		python3 maian.py -c "$c" -s "$FILENAME" "$CONTRACT"
+	done
+done
