@@ -4,11 +4,11 @@ import argparse
 import os
 import sys
 from functools import reduce
+from src.tools import TOOLS
 
 DATASET_CHOICES = ['all']
-TOOLS_CHOICES = ['all']
+TOOLS_CHOICES = ['all'].extend(TOOLS.keys())
 VERSION_CHOICES = ['v1', 'v2', 'all']
-CONFIG_TOOLS_PATH = os.path.abspath('config/tools')
 CONFIG_DATASET_PATH = os.path.abspath('config/dataset/dataset.yaml')
 
 with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
@@ -21,16 +21,10 @@ with open(CONFIG_DATASET_PATH, 'r') as ymlfile:
 class InfoAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         for tool in values:
-            cfg_path = os.path.abspath('config/tools/' + tool + '.yaml')
-            with open(cfg_path, 'r') as ymlfile:
-                try:
-                    cfg = yaml.safe_load(ymlfile)
-                except yaml.YAMLError as exc:
-                    print(exc)
-            if 'info' in cfg:
-                print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + cfg['info'])
+            if tool in TOOLS and 'info' in TOOLS[tool]:
+                print(f'\x1b[1;37m{tool}\x1b[0m: {TOOLS[tool][info]}')
             else:
-                print('\x1b[1;37m' + tool + '\x1b[0m' + ': ' + 'no info provided.')
+                print(f'\x1b[1;37m{tool}\x1b[0m: no info provided.')
         parser.exit()
 
 
@@ -39,7 +33,7 @@ class ListAction(argparse.Action):
         for value in values:
             if value == 'tools':
                 print('Here are the tools choices: ')
-                for tool in TOOLS_CHOICES:
+                for tool in TOOLS.keys():
                     print(tool)
                 sys.stdout.write('\n')
             elif value == 'datasets':
@@ -116,11 +110,6 @@ def create_parser():
             remote_dataset = getRemoteDataset(cfg_dataset, name[0])
             for sbset_name in remote_dataset['subsets']:
                 DATASET_CHOICES.append(name[0] + '/' + sbset_name)
-
-    # get tools available by parsing the name of the config files
-    tools = [os.path.splitext(f)[0] for f in os.listdir(CONFIG_TOOLS_PATH) if os.path.isfile(os.path.join(CONFIG_TOOLS_PATH, f))]
-    for tool in tools:
-        TOOLS_CHOICES.append(tool)
 
     group_source_files.add_argument('-f',
                         '--file',

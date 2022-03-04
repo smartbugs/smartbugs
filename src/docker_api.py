@@ -21,6 +21,7 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
+from src.tools import TOOLS,TOOLS_CFG_PATH
 
 from time import time
 
@@ -198,13 +199,7 @@ analyse solidity files
 """
 def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path):
     try:
-        cfg_path = os.path.abspath(f'config/tools/{tool}.yaml')
-        with open(cfg_path, 'r', encoding='utf-8') as ymlfile:
-            try:
-                cfg = yaml.safe_load(ymlfile)
-            except yaml.YAMLError as exc:
-                print(exc)
-                logs.write(exc)
+        cfg = TOOLS[tool]
 
         # create result folder with time
         results_folder = 'results/' + tool + '/' + now
@@ -226,7 +221,7 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
         solc_compiler = get_solc(file)
 
         filename = os.path.basename(file)
-        scripts  = os.path.abspath(f'config/tools/{tool}')
+        scripts  = os.path.join(TOOLS_CFG_PATH,tool)
         working_dir = tempfile.mkdtemp()
         shutil.copy(file, working_dir)
         working_bin_dir = f'{working_dir}/bin'
