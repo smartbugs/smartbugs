@@ -11,17 +11,10 @@ import yaml
 from datetime import timedelta
 from multiprocessing import Manager, Pool
 from src.docker_api import analyse_files
-from src.cli import create_parser, getRemoteDataset, isRemoteDataset, DATASET_CHOICES, TOOLS_CHOICES
+import src.cli as cli
+import src.config as config
 from src.output_parser.SarifHolder import SarifHolder
 from time import time, localtime, strftime
-
-
-cfg_dataset_path = os.path.abspath('config/dataset/dataset.yaml')
-with open(cfg_dataset_path, 'r') as ymlfile:
-    try:
-        cfg_dataset = yaml.safe_load(ymlfile)
-    except yaml.YAMLError as exc:
-        print(exc)
 
 output_folder = strftime("%Y%m%d_%H%M", localtime())
 pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
@@ -69,16 +62,15 @@ def exec_cmd(args: argparse.Namespace):
 
     if args.dataset:
         if args.dataset == ['all']:
-            DATASET_CHOICES.remove('all')
-            args.dataset = DATASET_CHOICES
+            args.dataset = config.DATASET_CHOICES
         for dataset in args.dataset:
             # Directory search is recursive (see below), so
             # if a remote D is used, we don't need to specify
             # the subsets of D
             base_name = dataset.split('/')[0]
-            if isRemoteDataset(cfg_dataset, base_name):
-                remote_info = getRemoteDataset(cfg_dataset, base_name)
-                base_path = remote_info['local_dir']
+            dataset_info = config.DATASETS[base_name]
+            if config.is_remote_info(dataset_info):
+                (url, base_path) = config.get_remote_info(dataset_info)
 
                 if not os.path.isdir(base_path):
                     # local copy does not exist; we need to clone it
@@ -103,12 +95,11 @@ def exec_cmd(args: argparse.Namespace):
                     dataset_path = base_path
                     args.file.append(dataset_path)
                 if dataset != base_name and base_name not in args.dataset:
-                    sbset_name = dataset.split('/')[1]
-                    dataset_path = os.path.join(base_path, remote_info['subsets'][sbset_name])
+                    subset_name = dataset.split('/')[1]
+                    dataset_path = os.path.join(base_path, remote_info['subsets'][subset_name])
                     args.file.append(dataset_path)
             else:
-                dataset_path = cfg_dataset[dataset]
-                args.file.append(dataset_path)
+                args.file.append(dataset_info)
 
     for file in args.file:
         # analyse files
@@ -130,8 +121,7 @@ def exec_cmd(args: argparse.Namespace):
             print('%s is not a directory or a solidity file' % file)
 
     if args.tool == ['all']:
-        TOOLS_CHOICES.remove('all')
-        args.tool = TOOLS_CHOICES
+        args.tool = config.TOOL_CHOICES
 
     # Setting up analysis variables
     start_time = time()
@@ -187,7 +177,7 @@ def exec_cmd(args: argparse.Namespace):
 
 if __name__ == '__main__':
     start_time = time()
-    args = create_parser()
+    args = cli.create_parser()
     logs = exec_cmd(args)
     elapsed_time = round(time() - start_time)
     if elapsed_time > 60:

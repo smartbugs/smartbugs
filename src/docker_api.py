@@ -21,7 +21,7 @@ from src.output_parser.Securify import Securify
 from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
-from src.tools import TOOLS,TOOLS_CFG_PATH
+from src.config import TOOLS,TOOLS_CFG_PATH
 
 from time import time
 
