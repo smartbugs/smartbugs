@@ -5,7 +5,7 @@ import solcx.install as solc
 # patch solcx to use Linux, independently of current OS
 solc._get_os_name.__code__ = (lambda:"linux").__code__
 
-SOLC_BINARY_PATH = os.path.abspath('.solcx')
+SOLC_BINARY_PATH = os.path.join(os.path.dirname(__file__), '..', '.solcx')
 Path(SOLC_BINARY_PATH).mkdir(parents=True,exist_ok=True)
 
 VOID_START = re.compile('//|/\*|"|\'')
