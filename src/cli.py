@@ -3,6 +3,7 @@ import yaml
 import argparse
 import os
 import sys
+import time
 from functools import reduce
 from src.config import TOOLS, TOOL_CHOICES, DATASET_CHOICES
 
@@ -51,45 +52,50 @@ def create_parser():
     parser.register('action', 'list_option', ListAction)
     list_option = parser.add_argument_group('list_option')
 
-    group_source_files.add_argument('-f',
-                        '--file',
-                        nargs='*',
+    group_source_files.add_argument('-f', '--file',
+                        nargs='+',
                         default=[],
-                        help='select solidity file(s) or directories to be analysed')
+                        help='solidity file(s) or directories to be analysed')
 
-    group_source_files.add_argument('--dataset',
+    group_source_files.add_argument('-d', '--dataset',
+                        metavar='DATASET',
                         choices=DATASET_CHOICES_ALL,
-                        help='pre made datasets',
-                        nargs='+')
+                        nargs='+',
+                        help=f'analyse pre-defined dataset, where DATASET may be "all" for all datasets, or one of: {", ".join(DATASET_CHOICES)}')
 
-    group_tools.add_argument('-t',
-                        '--tool',
+    group_tools.add_argument('-t', '--tool',
+                        metavar='TOOL',
                         choices=TOOL_CHOICES_ALL,
                         nargs='+',
-                        help='select tool(s)')
+                        help=f'tool to run on the contracts, where TOOL may be "all" for all tools, or one of: {", ".join(TOOL_CHOICES)}')
 
-    list_option.add_argument('-l',
-                        '--list',
+    list_option.add_argument('-l', '--list',
                         choices=['tools', 'datasets'],
                         nargs='+',
                         action='list_option',
                         help='list tools or datasets')
 
-    info.add_argument('-i',
-                        '--info',
-                        choices=TOOL_CHOICES,
+    info.add_argument('-i', '--info',
+                        metavar='TOOL',
                         nargs='+',
                         action='info',
-                        help='information about tool')
+                        help=f'show information about TOOL, where TOOL may be one of: {", ".join(TOOL_CHOICES)}')
 
     info.add_argument('--skip-existing',
                         action='store_true',
-                        help='skip the analysis that already have results')
+                        help='skip contracts that have already been analysed')
+
+    info.add_argument('--execution-name',
+                        type=str,
+                        metavar='ID',
+                        default=f'{time.strftime("%Y%m%d_%H%M", time.localtime())}',
+                        help='string identifying this run, used for file and directory names (default: date and time of run)')
 
     info.add_argument('--processes',
                         type=int,
+                        metavar='N',
                         default=1,
-                        help='The number of parallel execution')
+                        help='maximal number of parallel processes (default 1)')
 
     info.add_argument('--output-version',
                         choices=VERSION_CHOICES_ALL,

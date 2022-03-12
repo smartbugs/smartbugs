@@ -14,11 +14,7 @@ from src.docker_api import analyse_files
 import src.cli as cli
 import src.config as config
 from src.output_parser.SarifHolder import SarifHolder
-from time import time, localtime, strftime
-
-output_folder = strftime("%Y%m%d_%H%M", localtime())
-pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
-logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
+from time import time
 
 
 def analyse(args):
@@ -172,13 +168,14 @@ def exec_cmd(args: argparse.Namespace):
         with open(sarif_file_path, 'w') as sarif_file:
             json.dump(sarif_holder.print(), sarif_file, indent=2)
 
-    return logs
-
 
 if __name__ == '__main__':
     start_time = time()
     args = cli.create_parser()
-    logs = exec_cmd(args)
+    output_folder = args.execution_name
+    pathlib.Path('results/logs/').mkdir(parents=True, exist_ok=True)
+    logs = open('results/logs/SmartBugs_' + output_folder + '.log', 'w')
+    exec_cmd(args)
     elapsed_time = round(time() - start_time)
     if elapsed_time > 60:
         elapsed_time_sec = round(elapsed_time % 60)
