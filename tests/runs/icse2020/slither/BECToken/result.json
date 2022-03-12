@@ -1,0 +1,1099 @@
+{
+  "contract": "BECToken",
+  "tool": "slither",
+  "start": 1565777186.9720206,
+  "end": 1565777189.4349732,
+  "duration": 2.4629526138305664,
+  "analysis": [
+    {
+      "check": "constable-states",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "BecToken.decimals should be constant (/dataset/arithmetic/BECToken.sol#292)\nBecToken.name should be constant (/dataset/arithmetic/BECToken.sol#289)\nBecToken.symbol should be constant (/dataset/arithmetic/BECToken.sol#290)\nBecToken.version should be constant (/dataset/arithmetic/BECToken.sol#291)\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "decimals",
+          "source_mapping": {
+            "start": 8803,
+            "length": 26,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              292
+            ]
+          }
+        },
+        {
+          "type": "variable",
+          "name": "name",
+          "source_mapping": {
+            "start": 8692,
+            "length": 34,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              289
+            ]
+          }
+        },
+        {
+          "type": "variable",
+          "name": "symbol",
+          "source_mapping": {
+            "start": 8732,
+            "length": 28,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              290
+            ]
+          }
+        },
+        {
+          "type": "variable",
+          "name": "version",
+          "source_mapping": {
+            "start": 8766,
+            "length": 31,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              291
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "BasicToken.balanceOf (/dataset/arithmetic/BECToken.sol#81-83) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "balanceOf",
+          "source_mapping": {
+            "start": 2304,
+            "length": 111,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              81,
+              82,
+              83
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "BasicToken",
+            "source_mapping": {
+              "start": 1449,
+              "length": 968,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "ERC20Basic.balanceOf (/dataset/arithmetic/BECToken.sol#46) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "balanceOf",
+          "source_mapping": {
+            "start": 1144,
+            "length": 66,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              46
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "ERC20Basic",
+            "source_mapping": {
+              "start": 1090,
+              "length": 267,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                44,
+                45,
+                46,
+                47,
+                48,
+                49
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "ERC20.allowance (/dataset/arithmetic/BECToken.sol#91) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "allowance",
+          "source_mapping": {
+            "start": 2541,
+            "length": 85,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              91
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "ERC20",
+            "source_mapping": {
+              "start": 2508,
+              "length": 363,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                90,
+                91,
+                92,
+                93,
+                94,
+                95
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "StandardToken.allowance (/dataset/arithmetic/BECToken.sol#150-152) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "allowance",
+          "source_mapping": {
+            "start": 5111,
+            "length": 140,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              150,
+              151,
+              152
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "StandardToken",
+            "source_mapping": {
+              "start": 3141,
+              "length": 2112,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                142,
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152,
+                153
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Ownable.transferOwnership (/dataset/arithmetic/BECToken.sol#189-193) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "transferOwnership",
+          "source_mapping": {
+            "start": 6055,
+            "length": 169,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              189,
+              190,
+              191,
+              192,
+              193
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Ownable",
+            "source_mapping": {
+              "start": 5445,
+              "length": 782,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                160,
+                161,
+                162,
+                163,
+                164,
+                165,
+                166,
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                183,
+                184,
+                185,
+                186,
+                187,
+                188,
+                189,
+                190,
+                191,
+                192,
+                193,
+                194,
+                195
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Pausable.pause (/dataset/arithmetic/BECToken.sol#227-230) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "pause",
+          "source_mapping": {
+            "start": 6831,
+            "length": 85,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              227,
+              228,
+              229,
+              230
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Pausable",
+            "source_mapping": {
+              "start": 6342,
+              "length": 745,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225,
+                226,
+                227,
+                228,
+                229,
+                230,
+                231,
+                232,
+                233,
+                234,
+                235,
+                236,
+                237,
+                238,
+                239
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Pausable.unpause (/dataset/arithmetic/BECToken.sol#235-238) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "unpause",
+          "source_mapping": {
+            "start": 6998,
+            "length": 87,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              235,
+              236,
+              237,
+              238
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Pausable",
+            "source_mapping": {
+              "start": 6342,
+              "length": 745,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225,
+                226,
+                227,
+                228,
+                229,
+                230,
+                231,
+                232,
+                233,
+                234,
+                235,
+                236,
+                237,
+                238,
+                239
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "PausableToken.batchTransfer (/dataset/arithmetic/BECToken.sol#261-274) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "batchTransfer",
+          "source_mapping": {
+            "start": 7672,
+            "length": 553,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              261,
+              262,
+              263,
+              264,
+              265,
+              266,
+              267,
+              268,
+              269,
+              270,
+              271,
+              272,
+              273,
+              274
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "PausableToken",
+            "source_mapping": {
+              "start": 7183,
+              "length": 1044,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                247,
+                248,
+                249,
+                250,
+                251,
+                252,
+                253,
+                254,
+                255,
+                256,
+                257,
+                258,
+                259,
+                260,
+                261,
+                262,
+                263,
+                264,
+                265,
+                266,
+                267,
+                268,
+                269,
+                270,
+                271,
+                272,
+                273,
+                274,
+                275
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "BecToken.fallback (/dataset/arithmetic/BECToken.sol#302-305) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 9116,
+            "length": 95,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              302,
+              303,
+              304,
+              305
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "BecToken",
+            "source_mapping": {
+              "start": 8331,
+              "length": 882,
+              "filename": "/dataset/arithmetic/BECToken.sol",
+              "lines": [
+                282,
+                283,
+                284,
+                285,
+                286,
+                287,
+                288,
+                289,
+                290,
+                291,
+                292,
+                293,
+                294,
+                295,
+                296,
+                297,
+                298,
+                299,
+                300,
+                301,
+                302,
+                303,
+                304,
+                305,
+                306
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/BECToken.sol:\n\t- pragma solidity^0.4.16 (/dataset/arithmetic/BECToken.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.16",
+          "source_mapping": {
+            "start": 141,
+            "length": 24,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_owner' of BasicToken.balanceOf (/dataset/arithmetic/BECToken.sol#81) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_owner",
+          "source_mapping": {
+            "start": 2323,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              81
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_to' of BasicToken.transfer (/dataset/arithmetic/BECToken.sol#65) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_to",
+          "source_mapping": {
+            "start": 1727,
+            "length": 11,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              65
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of BasicToken.transfer (/dataset/arithmetic/BECToken.sol#65) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 1740,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              65
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_owner' of StandardToken.allowance (/dataset/arithmetic/BECToken.sol#150) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_owner",
+          "source_mapping": {
+            "start": 5130,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              150
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_spender' of StandardToken.allowance (/dataset/arithmetic/BECToken.sol#150) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_spender",
+          "source_mapping": {
+            "start": 5146,
+            "length": 16,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              150
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_from' of StandardToken.transferFrom (/dataset/arithmetic/BECToken.sol#116) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_from",
+          "source_mapping": {
+            "start": 3555,
+            "length": 13,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              116
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_to' of StandardToken.transferFrom (/dataset/arithmetic/BECToken.sol#116) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_to",
+          "source_mapping": {
+            "start": 3570,
+            "length": 11,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              116
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of StandardToken.transferFrom (/dataset/arithmetic/BECToken.sol#116) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 3583,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              116
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_spender' of StandardToken.approve (/dataset/arithmetic/BECToken.sol#138) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_spender",
+          "source_mapping": {
+            "start": 4626,
+            "length": 16,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              138
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of StandardToken.approve (/dataset/arithmetic/BECToken.sol#138) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 4644,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              138
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'Ownable.Ownable' (/dataset/arithmetic/BECToken.sol#171-173) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "Ownable",
+          "source_mapping": {
+            "start": 5697,
+            "length": 48,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              171,
+              172,
+              173
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_to' of PausableToken.transfer (/dataset/arithmetic/BECToken.sol#249) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_to",
+          "source_mapping": {
+            "start": 7256,
+            "length": 11,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              249
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of PausableToken.transfer (/dataset/arithmetic/BECToken.sol#249) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 7269,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              249
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_from' of PausableToken.transferFrom (/dataset/arithmetic/BECToken.sol#253) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_from",
+          "source_mapping": {
+            "start": 7392,
+            "length": 13,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              253
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_to' of PausableToken.transferFrom (/dataset/arithmetic/BECToken.sol#253) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_to",
+          "source_mapping": {
+            "start": 7407,
+            "length": 11,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              253
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of PausableToken.transferFrom (/dataset/arithmetic/BECToken.sol#253) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 7420,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              253
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_spender' of PausableToken.approve (/dataset/arithmetic/BECToken.sol#257) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_spender",
+          "source_mapping": {
+            "start": 7549,
+            "length": 16,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              257
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of PausableToken.approve (/dataset/arithmetic/BECToken.sol#257) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 7567,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              257
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_receivers' of PausableToken.batchTransfer (/dataset/arithmetic/BECToken.sol#261) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_receivers",
+          "source_mapping": {
+            "start": 7695,
+            "length": 20,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              261
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of PausableToken.batchTransfer (/dataset/arithmetic/BECToken.sol#261) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 7717,
+            "length": 14,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              261
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'BecToken.BecToken' (/dataset/arithmetic/BECToken.sol#297-300) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "BecToken",
+          "source_mapping": {
+            "start": 8939,
+            "length": 171,
+            "filename": "/dataset/arithmetic/BECToken.sol",
+            "lines": [
+              297,
+              298,
+              299,
+              300
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

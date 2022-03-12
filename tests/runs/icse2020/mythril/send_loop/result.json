@@ -1,0 +1,12 @@
+{
+  "contract": "send_loop",
+  "tool": "mythril",
+  "start": 1565777093.8978176,
+  "end": 1565777096.7976468,
+  "duration": 2.899829149246216,
+  "analysis": {
+    "success": false,
+    "error": "Solc experienced a fatal error (code 1).\n\n/dataset/denial_of_service/send_loop.sol:8:1: Error: Source file requires different compiler version (current compiler is 0.4.25+commit.59dbf8f1.Linux.g++ - note that nightly builds are considered to be strictly less than the released version\npragma solidity 0.4.24;\n^---------------------^\n/dataset/denial_of_service/send_loop.sol:17:30: Warning: This looks like an address but has an invalid checksum. If this is not used as an address, please prepend '00'. Correct checksummed address: '0x79B483371E87d664cd39491b5f06250165e4b185'. For more information please see https://solidity.readthedocs.io/en/develop/types.html#address-literals\n        refundAddresses.push(0x79B483371E87d664cd39491b5F06250165e4b185);\n                             ^----------------------------------------^\n",
+    "issues": []
+  }
+}

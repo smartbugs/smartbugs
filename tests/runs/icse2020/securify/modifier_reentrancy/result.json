@@ -1,0 +1,180 @@
+{
+  "contract": "modifier_reentrancy",
+  "tool": "securify",
+  "start": 1565776589.279766,
+  "end": 1565776667.7706826,
+  "duration": 78.49091649055481,
+  "analysis": {
+    "/dataset/reentrancy/modifier_reentrancy.sol:ModifierEntrancy": {
+      "results": {
+        "TODReceiver": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [
+            20
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [
+            20
+          ],
+          "safe": [],
+          "conflicts": []
+        }
+      }
+    },
+    "/dataset/reentrancy/modifier_reentrancy.sol:attack": {
+      "results": {
+        "TODReceiver": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [
+            41,
+            46
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [
+            38,
+            45
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [
+            41,
+            46
+          ],
+          "safe": [],
+          "conflicts": []
+        }
+      }
+    },
+    "/dataset/reentrancy/modifier_reentrancy.sol:Bank": {
+      "results": {
+        "TODReceiver": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [
+            31
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

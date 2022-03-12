@@ -1,0 +1,208 @@
+{
+  "contract": "incorrect_constructor_name3",
+  "tool": "slither",
+  "start": 1565776921.3040917,
+  "end": 1565776927.6049535,
+  "duration": 6.300861835479736,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Missing.Constructor (/dataset/access_control/incorrect_constructor_name3.sol#17-21) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "Constructor",
+          "source_mapping": {
+            "start": 358,
+            "length": 77,
+            "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+            "lines": [
+              17,
+              18,
+              19,
+              20,
+              21
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Missing",
+            "source_mapping": {
+              "start": 193,
+              "length": 380,
+              "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Missing.fallback (/dataset/access_control/incorrect_constructor_name3.sol#23) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 441,
+            "length": 22,
+            "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+            "lines": [
+              23
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Missing",
+            "source_mapping": {
+              "start": 193,
+              "length": 380,
+              "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Missing.withdraw (/dataset/access_control/incorrect_constructor_name3.sol#25-30) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 469,
+            "length": 101,
+            "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+            "lines": [
+              25,
+              26,
+              27,
+              28,
+              29,
+              30
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Missing",
+            "source_mapping": {
+              "start": 193,
+              "length": 380,
+              "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'Missing.Constructor' (/dataset/access_control/incorrect_constructor_name3.sol#17-21) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "Constructor",
+          "source_mapping": {
+            "start": 358,
+            "length": 77,
+            "filename": "/dataset/access_control/incorrect_constructor_name3.sol",
+            "lines": [
+              17,
+              18,
+              19,
+              20,
+              21
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

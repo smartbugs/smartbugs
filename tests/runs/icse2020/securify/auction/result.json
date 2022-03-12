@@ -1,0 +1,75 @@
+{
+  "contract": "auction",
+  "tool": "securify",
+  "start": 1565776269.4680414,
+  "end": 1565776275.5112147,
+  "duration": 6.043173313140869,
+  "analysis": {
+    "/dataset/denial_of_service/auction.sol:DosAuction": {
+      "results": {
+        "TODReceiver": {
+          "violations": [
+            22
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [
+            22
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [
+            22
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [
+            22
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [
+            14
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [],
+          "safe": [
+            22
+          ],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [],
+          "safe": [
+            22
+          ],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

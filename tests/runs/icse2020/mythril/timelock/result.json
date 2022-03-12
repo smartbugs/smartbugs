@@ -1,0 +1,57 @@
+{
+  "contract": "timelock",
+  "tool": "mythril",
+  "start": 1565777127.1303809,
+  "end": 1565777134.7235773,
+  "duration": 7.593196392059326,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 726,
+        "code": "msg.sender.transfer(transferValue)",
+        "debug": "",
+        "description": "In the function `withdraw()` the following predictable state variables are used to determine Ether recipient:\n- block.timestamp\n",
+        "filename": "/dataset/arithmetic/timelock.sol",
+        "function": "withdraw()",
+        "lineno": 30,
+        "title": "Dependence on predictable environment variable",
+        "type": "Warning"
+      },
+      {
+        "address": 822,
+        "code": "lockTime[msg.sender] += _secondsToIncrease",
+        "debug": "calldata_TimeLock_4: 0x57f25cd000000000000000000000000000000000000000000000000000000000\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xa8795cd3fffffffffffffffffffffffffffffffffffffffffffffffffffffffe\ncalldata_TimeLock_0: 0x79af55e400000000000000000000000000000000000000000000000000000000\ncalldatasize_TimeLock: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `increaseLockTime(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/timelock.sol",
+        "function": "increaseLockTime(uint256)",
+        "lineno": 22,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 925,
+        "code": "balances[msg.sender] += msg.value",
+        "debug": "storage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xa8795cd3fffffffffffffffffffffffffffffffffffffffffffffffffffffffe\ncallvalue: 0x57f25cd000000000000000000000000000000000000000000000000000000000\ncalldata_TimeLock_0: 0xd0e30db000000000000000000000000000000000000000000000000000000000\ncalldatasize_TimeLock: 0x4\n",
+        "description": "A possible integer overflow exists in the function `deposit()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/timelock.sol",
+        "function": "deposit()",
+        "lineno": 16,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 938,
+        "code": "now + 1 weeks",
+        "debug": "timestamp: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7e400\ncalldata_TimeLock_0: 0xd0e30db000000000000000000000000000000000000000000000000000000000\ncalldatasize_TimeLock: 0x4\n",
+        "description": "A possible integer overflow exists in the function `deposit()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/timelock.sol",
+        "function": "deposit()",
+        "lineno": 17,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

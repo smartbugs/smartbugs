@@ -1,0 +1,12 @@
+2019-08-13 17:59:42,421: [12] m.main:INFO: Registered plugins: DetectDelegatecall, DetectIntegerOverflow, DetectReentrancyAdvanced, DetectReentrancySimple, DetectInvalid, DetectUnusedRetVal, DetectUninitializedStorage, DetectExternalCallAndLeak, DetectSuicidal, DetectEnvInstruction, DetectUninitializedMemory
+2019-08-13 17:59:42,421: [12] m.main:INFO: Beginning analysis
+2019-08-13 17:59:42,435: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 17:59:43,943: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 17:59:45,179: [390] m.e.detectors:WARNING: Warning ORIGIN instruction used
+2019-08-13 17:59:45,377: [12] m.e.manticore:INFO: 0 alive states, 4 terminated states
+2019-08-13 17:59:45,764: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 17:59:45,841: [833] m.c.manticore:INFO: Generated testcase No. 0 - RETURN(1 txs)
+2019-08-13 17:59:45,851: [834] m.c.manticore:INFO: Generated testcase No. 1 - REVERT(2 txs)
+2019-08-13 17:59:45,871: [837] m.c.manticore:INFO: Generated testcase No. 2 - REVERT(2 txs)
+2019-08-13 17:59:45,882: [841] m.c.manticore:INFO: Generated testcase No. 3 - REVERT(2 txs)
+2019-08-13 17:59:47,207: [12] m.c.manticore:INFO: Results in /mcore_zgo0q6nj

@@ -1,0 +1,33 @@
+{
+  "contract": "wallet_03_wrong_constructor",
+  "tool": "smartcheck",
+  "start": 1565777006.360039,
+  "end": 1565777011.5931413,
+  "duration": 5.233102321624756,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 7,
+      "column": 17,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 14,
+      "column": 5,
+      "content": "addresscreator;"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 16,
+      "column": 5,
+      "content": "mapping(address=>uint256)balances;"
+    }
+  ]
+}

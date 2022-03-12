@@ -1,0 +1,212 @@
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m.................................[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  16840  : 0x60806040526004361061011d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WalletLibrary.address [0m
+[94m[ ] Check if contract is SUICIDAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061011d576000357c0100000000000000...
+[ ] Bytecode length    : 16838
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0m1111111111111111111111
+[ ][1m Search with call depth: 2   : [0m1112222222222222222222222122222222222222222222212222
+
+[91m[-] Suicidal vulnerability found! [0m
+
+    The following 2 transaction(s) will trigger the contract to be killed:
+    -Tx[1] :e46dcfeb 0000000000000000000000000000000000000000000000000000000000000040 0000000000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000000000000000000
+    -Tx[2] :cbf0b0c0
+
+    The transactions correspond to the functions:
+    -initWallet(address[],uint256,uint256)
+    -kill(address)
+
+[1m[ ] Confirming suicide vulnerability on private chain ... [0m........... tx[0] mined .... tx[1] mined 
+    [1m[91mConfirmed ! The contract is suicidal ![0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.............[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9e536236abf2288a7864c6a1afaa4cb98d464306  [0m............... tx[0] mined [92m Sent! [0m
+[1m[ ] Deploying contract [0m...[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  16840  : 0x60806040526004361061011d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WalletLibrary.address [0m
+[1m[ ] The contract balance: 44  [0m[92m Positive balance[0m
+[94m[ ] Check if contract is PRODIGAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061011d576000357c0100000000000000...
+[ ] Bytecode length    : 16838
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0m11111111111111111111
+[ ][1m Search with call depth: 2   : [0m1122222222222222222222122222222222222222221222
+
+[91m[-] Leak vulnerability found! [0m
+
+    The following 2 transaction(s) will trigger the contract to leak:
+    -Tx[1] :e46dcfeb 0000000000000000000000000000000000000000000000000000000000000040 0000000000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000000000000000000
+    -Tx[2] :cbf0b0c0 0000000000000000000000005a1cd1d07d9f59898c434ffc90a74ecd937feb12
+
+    The transactions correspond to the functions:
+    -initWallet(address[],uint256,uint256)
+    -kill(address)
+
+[1m[ ] Confirming leak vulnerability on private chain ... [0m.... tx[0] mined ................ tx[1] mined 
+    [1m[91mConfirmed ! The contract is prodigal ![0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m...........[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  16840  : 0x60806040526004361061011d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WalletLibrary.address [0m
+[94m[ ] Check if contract is GREEDY[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061011d576000357c0100000000000000...
+[ ] Bytecode length    : 16838
+[ ] Debug              : False
+[92m[+][0m [1mContract can receive Ether[0m
+
+[ ][1m Search with call depth: 1   : [0m1111111111
+[92m[+] No locking vulnerability found [0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[91m[-] Some of the files is missing or empty: |WalletAbi.abi|=1876  |WalletAbi.bin|=0
+The contracts have NOT been deployed[0m
+[91m[-] Cannot deploy the contract [0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9e536236abf2288a7864c6a1afaa4cb98d464306  [0m... tx[0] mined [92m Sent! [0m
+[91m[-] Some of the files is missing or empty: |WalletAbi.abi|=1876  |WalletAbi.bin|=0
+The contracts have NOT been deployed[0m
+[91m[-] Cannot deploy the contract [0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[91m[-] Some of the files is missing or empty: |WalletAbi.abi|=1876  |WalletAbi.bin|=0
+The contracts have NOT been deployed[0m
+[91m[-] Cannot deploy the contract [0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_obj_to_text` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_text` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+/usr/local/lib/python2.7/dist-packages/eth_utils/formatting.py:20: DeprecationWarning: The `is_prefixed` function has been deprecated and will be removed in a subsequent release of the eth-utils library. Now that eth-utils is compatible with Python3, we encourage developers to use stdlib functions where possible.
+  "functions where possible.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_obj_to_bytes` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m.....[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  108  : 0x6080604052600080fd00a165627a... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WalletEvents.address [0m
+[94m[ ] Check if contract is SUICIDAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 6080604052600080fd00a165627a7a723058201fb86d98e07b...
+[ ] Bytecode length    : 106
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[92m[-] The code does not contain SUICIDE instructions, hence it is not vulnerable[0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_obj_to_text` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_text` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:167: DeprecationWarning: The encoding keyword has been deprecated.  Please update your code to use sha3(text='txt'), sha3(hexstr='0x747874'), sha3(b'\x74\x78\x74'), or sha3(0x747874).
+  "The encoding keyword has been deprecated.  Please update your "
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_obj_to_bytes` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/eth_utils/formatting.py:20: DeprecationWarning: The `is_prefixed` function has been deprecated and will be removed in a subsequent release of the eth-utils library. Now that eth-utils is compatible with Python3, we encourage developers to use stdlib functions where possible.
+  "functions where possible.".format(fn.__name__)
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9e536236abf2288a7864c6a1afaa4cb98d464306  [0m................ tx[0] mined [92m Sent! [0m
+[1m[ ] Deploying contract [0m..[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  108  : 0x6080604052600080fd00a165627a... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WalletEvents.address [0m
+[1m[ ] The contract balance: 44  [0m[92m Positive balance[0m
+[94m[ ] Check if contract is PRODIGAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 6080604052600080fd00a165627a7a723058201fb86d98e07b...
+[ ] Bytecode length    : 106
+[ ] Blockchain contract: True
+[ ] Debug              : False
+[92m[+] The code does not have CALL/SUICIDE, hence it is not prodigal[0m
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_obj_to_text` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_text` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/web3/main.py:130: DeprecationWarning: Python 2 support is ending! Please upgrade to Python 3 promptly. Support will end at the beginning of 2018.
+  category=DeprecationWarning,
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/access_control/parity_wallet_bug_2.sol ... [0m[92m Done [0m
+/usr/local/lib/python2.7/dist-packages/eth_utils/formatting.py:20: DeprecationWarning: The `is_prefixed` function has been deprecated and will be removed in a subsequent release of the eth-utils library. Now that eth-utils is compatible with Python3, we encourage developers to use stdlib functions where possible.
+  "functions where possible.".format(fn.__name__)
+/usr/local/lib/python2.7/dist-packages/eth_utils/string.py:22: DeprecationWarning: The `force_obj_to_bytes` function has been deprecated and will be removed in a subsequent release of the eth-utils library. UTF8 cannot encode some byte values in the 0-255 range which makes naive coersion between bytes and text representations impossible without explicitly declared encodings.
+  "declared encodings.".format(fn.__name__)
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m.[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m...[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  108  : 0x6080604052600080fd00a165627a... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WalletEvents.address [0m
+[94m[ ] Check if contract is GREEDY[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 6080604052600080fd00a165627a7a723058201fb86d98e07b...
+[ ] Bytecode length    : 106
+[ ] Debug              : False
+[91m[-][0m [1mContract can receive Ether[0m
+
+[92m[-] No lock vulnerability found because the contract cannot receive Ether [0m

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat $1 \
+| egrep -v 'DeprecationWarning|Contract code length on the blockchain' \
+| fgrep -v 'format(fn__name__)' \
+| sed 's/\.\+/./g' \
+| egrep -v '^$' \
+| tr A-Z a-z \
+> $2
+

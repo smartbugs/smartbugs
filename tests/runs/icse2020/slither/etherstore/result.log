@@ -1,0 +1,27 @@
+INFO:Detectors:[91m
+Reentrancy in EtherStore.withdrawFunds (/dataset/reentrancy/etherstore.sol#20-30):
+	External calls:
+	- require(bool)(msg.sender.call.value(_weiToWithdraw)()) (/dataset/reentrancy/etherstore.sol#27)
+	State variables written after the call(s):
+	- balances (/dataset/reentrancy/etherstore.sol#28)
+	- lastWithdrawTime (/dataset/reentrancy/etherstore.sol#29)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[92m
+EtherStore.withdrawalLimit should be constant (/dataset/reentrancy/etherstore.sol#12)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+EtherStore.depositFunds (/dataset/reentrancy/etherstore.sol#16-18) should be declared external
+EtherStore.withdrawFunds (/dataset/reentrancy/etherstore.sol#20-30) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /dataset/reentrancy/etherstore.sol:
+	- pragma solidity^0.4.0 (/dataset/reentrancy/etherstore.sol#8): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in EtherStore.withdrawFunds (/dataset/reentrancy/etherstore.sol#20-30):
+	-require(bool)(msg.sender.call.value(_weiToWithdraw)()) /dataset/reentrancy/etherstore.sol#27
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Parameter '_weiToWithdraw' of EtherStore.withdrawFunds (/dataset/reentrancy/etherstore.sol#20) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/dataset/reentrancy/etherstore.sol analyzed (1 contracts), 7 result(s) found

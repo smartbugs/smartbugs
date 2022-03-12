@@ -1,0 +1,76 @@
+{
+  "contract": "FindThisHash",
+  "tool": "securify",
+  "start": 1565776010.3914165,
+  "end": 1565776021.262202,
+  "duration": 10.870785474777222,
+  "analysis": {
+    "/dataset/front_running/FindThisHash.sol:FindThisHash": {
+      "results": {
+        "TODReceiver": {
+          "violations": [],
+          "warnings": [
+            17
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [
+            17
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [],
+          "warnings": [
+            17
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [],
+          "warnings": [
+            17
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [
+            9,
+            13
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [
+            17
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [
+            17
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

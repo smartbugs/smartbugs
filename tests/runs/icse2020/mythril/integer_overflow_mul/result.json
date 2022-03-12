@@ -1,0 +1,24 @@
+{
+  "contract": "integer_overflow_mul",
+  "tool": "mythril",
+  "start": 1565777120.9777946,
+  "end": 1565777133.3253717,
+  "duration": 12.347577095031738,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 174,
+        "code": "count *= input",
+        "debug": "storage_0: 0xff3717ddf147ba7fd6976a72ee859c9c251431c6dd4346e384e0fd941c87b69c\ncalldata_IntegerOverflowMul_4: 0xde9aa0007ffff9dbbb05d00001000207fffdffbfffbfbfbfffbfbfefbfbff7f6\ncalldata_IntegerOverflowMul_0: 0xa444f5e900000000000000000000000000000000000000000000000000000000\ncalldatasize_IntegerOverflowMul: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `run(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/integer_overflow_mul.sol",
+        "function": "run(uint256)",
+        "lineno": 17,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

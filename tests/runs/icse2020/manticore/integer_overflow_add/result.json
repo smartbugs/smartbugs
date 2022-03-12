@@ -1,0 +1,16 @@
+{
+  "contract": "integer_overflow_add",
+  "tool": "manticore",
+  "start": 1565726959.4349015,
+  "end": 1565726971.4878595,
+  "duration": 12.052958011627197,
+  "analysis": [
+    [
+      {
+        "name": "Unsigned integer overflow at ADD instruction",
+        "line": 17,
+        "code": "count += input"
+      }
+    ]
+  ]
+}

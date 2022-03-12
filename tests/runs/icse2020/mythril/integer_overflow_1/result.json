@@ -1,0 +1,24 @@
+{
+  "contract": "integer_overflow_1",
+  "tool": "mythril",
+  "start": 1565777148.590982,
+  "end": 1565777152.6807706,
+  "duration": 4.0897886753082275,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 144,
+        "code": "sellerBalance += value",
+        "debug": "calldata_Overflow_4: 0x57f25cd000000000000000000000000000000000000000000000000000000000\nstorage_0: 0xa8795cd3fffffffffffffffffffffffffffffffffffffffffffffffffffffffe\ncalldata_Overflow_0: 0x1003e2d200000000000000000000000000000000000000000000000000000000\ncalldatasize_Overflow: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `add(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/integer_overflow_1.sol",
+        "function": "add(uint256)",
+        "lineno": 14,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

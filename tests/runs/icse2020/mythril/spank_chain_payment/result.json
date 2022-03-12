@@ -1,0 +1,35 @@
+{
+  "contract": "spank_chain_payment",
+  "tool": "mythril",
+  "start": 1565777048.2023537,
+  "end": 1565777059.7528827,
+  "duration": 11.55052900314331,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 1243,
+        "code": "balances[_to] += _value",
+        "debug": "calldata_Token_32 + 36: 0xfe51000008ce80008001c1d33616877ffffffffffffff7ffffe10000398d50ac\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_Token_32_+_4: 0xc050fffff320c00020003d81af848540000000000000040000110001bd062022\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xfe51000008ce80008001c1d33616877ffffffffffffff7ffffe10000398d50ac\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_Token_4: 0xfe51000008ce80008001c1d33616877ffffffffffffff7ffffe10000398d50ac\ncalldata_Token_0: 0x23b872dd00000000000000000000000000000000000000000000000000000000\ncalldatasize_Token: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `transferFrom(address,address,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/reentrancy/spank_chain_payment.sol",
+        "function": "transferFrom(address,address,uint256)",
+        "lineno": 198,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 1877,
+        "code": "balances[_to] += _value",
+        "debug": "calldata_Token_32 + 4: 0xc290137095b13347e55005a6dc184559e0489f1233480050d0fb4bba17d34179\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_Token_4: 0x9c9efb7ae5acd378025256a3945f5859076e809243093d9ecae2636c9fd28979\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xc290137095b13347e55005a6dc184559e0489f1233480050d0fb4bba17d34179\ncalldata_Token_0: 0xa9059cbb00000000000000000000000000000000000000000000000000000000\ncalldatasize_Token: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `transfer(address,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/reentrancy/spank_chain_payment.sol",
+        "function": "transfer(address,uint256)",
+        "lineno": 189,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

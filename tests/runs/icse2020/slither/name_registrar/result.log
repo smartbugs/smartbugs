@@ -1,0 +1,25 @@
+INFO:Slither:Compilation warnings/errors on /dataset/other/name_registrar.sol:
+/dataset/other/name_registrar.sol:6:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.25;"
+contract NameRegistrar {
+^ (Relevant source part starts here and spans across multiple lines).
+/dataset/other/name_registrar.sol:21:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        NameRecord newRecord;
+        ^------------------^
+/dataset/other/name_registrar.sol:21:9: Warning: Uninitialized storage pointer. Did you mean '<type> memory newRecord'?
+        NameRecord newRecord;
+        ^------------------^
+
+INFO:Detectors:[91m
+newRecord in NameRegistrar.register (/dataset/other/name_registrar.sol#21) is a storage variable never initialiazed
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#uninitialized-storage-variables[0m
+INFO:Detectors:[92m
+NameRegistrar.unlocked should be constant (/dataset/other/name_registrar.sol#8)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+NameRegistrar.register (/dataset/other/name_registrar.sol#18-29) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Parameter '_name' of NameRegistrar.register (/dataset/other/name_registrar.sol#18) is not in mixedCase
+Parameter '_mappedAddress' of NameRegistrar.register (/dataset/other/name_registrar.sol#18) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/dataset/other/name_registrar.sol analyzed (1 contracts), 5 result(s) found

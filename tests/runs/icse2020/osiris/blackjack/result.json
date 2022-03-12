@@ -1,0 +1,25 @@
+{
+  "contract": "blackjack",
+  "tool": "osiris",
+  "start": 1565864561.0129113,
+  "end": 1565864828.1772363,
+  "duration": 267.1643249988556,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 138,
+          "column": 3,
+          "message": "overflow_bugs"
+        }
+      ],
+      "file": "/dataset/bad_randomness/blackjack.sol",
+      "name": "BlackJack"
+    },
+    {
+      "errors": [],
+      "file": "/dataset/bad_randomness/blackjack.sol",
+      "name": "Deck"
+    }
+  ]
+}

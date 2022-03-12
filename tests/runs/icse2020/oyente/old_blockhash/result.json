@@ -1,0 +1,29 @@
+{
+  "contract": "old_blockhash",
+  "tool": "oyente",
+  "start": 1565863202.6063368,
+  "end": 1565863207.2729514,
+  "duration": 4.666614532470703,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 38,
+          "column": 13,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/bad_randomness/old_blockhash.sol",
+      "name": "PredictTheBlockHashChallenge",
+      "evm_code_coverage": "97.6%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

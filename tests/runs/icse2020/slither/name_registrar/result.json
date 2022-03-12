@@ -1,0 +1,217 @@
+{
+  "contract": "name_registrar",
+  "tool": "slither",
+  "start": 1565777020.4964793,
+  "end": 1565777023.485069,
+  "duration": 2.9885897636413574,
+  "analysis": [
+    {
+      "check": "uninitialized-storage",
+      "impact": "High",
+      "confidence": "High",
+      "description": "newRecord in NameRegistrar.register (/dataset/other/name_registrar.sol#21) is a storage variable never initialiazed\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "newRecord",
+          "source_mapping": {
+            "start": 695,
+            "length": 20,
+            "filename": "/dataset/other/name_registrar.sol",
+            "lines": [
+              21
+            ]
+          }
+        },
+        {
+          "type": "function",
+          "name": "register",
+          "source_mapping": {
+            "start": 528,
+            "length": 452,
+            "filename": "/dataset/other/name_registrar.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "NameRegistrar",
+            "source_mapping": {
+              "start": 137,
+              "length": 845,
+              "filename": "/dataset/other/name_registrar.sol",
+              "lines": [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "constable-states",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "NameRegistrar.unlocked should be constant (/dataset/other/name_registrar.sol#8)\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "unlocked",
+          "source_mapping": {
+            "start": 167,
+            "length": 28,
+            "filename": "/dataset/other/name_registrar.sol",
+            "lines": [
+              8
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "NameRegistrar.register (/dataset/other/name_registrar.sol#18-29) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "register",
+          "source_mapping": {
+            "start": 528,
+            "length": 452,
+            "filename": "/dataset/other/name_registrar.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "NameRegistrar",
+            "source_mapping": {
+              "start": 137,
+              "length": 845,
+              "filename": "/dataset/other/name_registrar.sol",
+              "lines": [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_name' of NameRegistrar.register (/dataset/other/name_registrar.sol#18) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_name",
+          "source_mapping": {
+            "start": 546,
+            "length": 13,
+            "filename": "/dataset/other/name_registrar.sol",
+            "lines": [
+              18
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_mappedAddress' of NameRegistrar.register (/dataset/other/name_registrar.sol#18) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_mappedAddress",
+          "source_mapping": {
+            "start": 561,
+            "length": 22,
+            "filename": "/dataset/other/name_registrar.sol",
+            "lines": [
+              18
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "contract": "tokensalechallenge",
+  "tool": "mythril",
+  "start": 1565777147.185284,
+  "end": 1565777163.845068,
+  "duration": 16.659784078598022,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 472,
+        "code": "balanceOf[msg.sender] += numTokens",
+        "debug": "storage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xa8795cd3fffffffffffffffffffffffffffffffffffffffffffffffffffffffe\ncalldata_TokenSaleChallenge_4: 0x57f25cd000000000000000000000000000000000000000000000000000000000\ncalldata_TokenSaleChallenge_0: 0xd96a094a00000000000000000000000000000000000000000000000000000000\ncalldatasize_TokenSaleChallenge: 0x4\ncallvalue: 0xf140000000000000000000000000000000000000000000000000000000000000\n",
+        "description": "A possible integer overflow exists in the function `buy(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/tokensalechallenge.sol",
+        "function": "buy(uint256)",
+        "lineno": 25,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "contract": "incorrect_constructor_name1",
+  "tool": "manticore",
+  "start": 1565721967.3861358,
+  "end": 1565721994.3674526,
+  "duration": 26.981316804885864,
+  "analysis": [
+    [
+      {
+        "name": "Reachable ether leak to sender",
+        "line": 32,
+        "code": "owner.transfer(this.balance)"
+      },
+      {
+        "name": "Reachable external call to sender",
+        "line": 32,
+        "code": "owner.transfer(this.balance)"
+      }
+    ]
+  ]
+}

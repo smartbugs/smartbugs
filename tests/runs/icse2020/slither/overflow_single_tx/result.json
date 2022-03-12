@@ -1,0 +1,473 @@
+{
+  "contract": "overflow_single_tx",
+  "tool": "slither",
+  "start": 1565777113.3427296,
+  "end": 1565777115.7842846,
+  "duration": 2.4415550231933594,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowSingleTransaction.overflowaddtostate (/dataset/arithmetic/overflow_single_tx.sol#16-19) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "overflowaddtostate",
+          "source_mapping": {
+            "start": 412,
+            "length": 118,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowSingleTransaction",
+            "source_mapping": {
+              "start": 278,
+              "length": 1136,
+              "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowSingleTransaction.overflowmultostate (/dataset/arithmetic/overflow_single_tx.sol#22-25) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "overflowmultostate",
+          "source_mapping": {
+            "start": 594,
+            "length": 118,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              22,
+              23,
+              24,
+              25
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowSingleTransaction",
+            "source_mapping": {
+              "start": 278,
+              "length": 1136,
+              "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowSingleTransaction.underflowtostate (/dataset/arithmetic/overflow_single_tx.sol#28-31) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "underflowtostate",
+          "source_mapping": {
+            "start": 773,
+            "length": 116,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              28,
+              29,
+              30,
+              31
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowSingleTransaction",
+            "source_mapping": {
+              "start": 278,
+              "length": 1136,
+              "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowSingleTransaction.overflowlocalonly (/dataset/arithmetic/overflow_single_tx.sol#34-37) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "overflowlocalonly",
+          "source_mapping": {
+            "start": 936,
+            "length": 127,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              34,
+              35,
+              36,
+              37
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowSingleTransaction",
+            "source_mapping": {
+              "start": 278,
+              "length": 1136,
+              "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowSingleTransaction.overflowmulocalonly (/dataset/arithmetic/overflow_single_tx.sol#40-43) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "overflowmulocalonly",
+          "source_mapping": {
+            "start": 1110,
+            "length": 129,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              40,
+              41,
+              42,
+              43
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowSingleTransaction",
+            "source_mapping": {
+              "start": 278,
+              "length": 1136,
+              "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowSingleTransaction.underflowlocalonly (/dataset/arithmetic/overflow_single_tx.sol#46-49) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "underflowlocalonly",
+          "source_mapping": {
+            "start": 1283,
+            "length": 128,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              46,
+              47,
+              48,
+              49
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowSingleTransaction",
+            "source_mapping": {
+              "start": 278,
+              "length": 1136,
+              "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/overflow_single_tx.sol:\n\t- pragma solidity^0.4.23 (/dataset/arithmetic/overflow_single_tx.sol#10): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.23",
+          "source_mapping": {
+            "start": 252,
+            "length": 24,
+            "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+            "lines": [
+              10
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

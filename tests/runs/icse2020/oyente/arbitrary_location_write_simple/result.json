@@ -1,0 +1,35 @@
+{
+  "contract": "arbitrary_location_write_simple",
+  "tool": "oyente",
+  "start": 1565863089.3365767,
+  "end": 1565863096.1149535,
+  "duration": 6.778376817703247,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 28,
+          "column": 10,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 9,
+          "column": 2,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/access_control/arbitrary_location_write_simple.sol",
+      "name": "Wallet",
+      "evm_code_coverage": "98.1%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

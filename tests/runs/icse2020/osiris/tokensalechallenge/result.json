@@ -1,0 +1,30 @@
+{
+  "contract": "tokensalechallenge",
+  "tool": "osiris",
+  "start": 1565864912.539117,
+  "end": 1565864931.1805332,
+  "duration": 18.64141607284546,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 25,
+          "column": 9,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 33,
+          "column": 29,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 23,
+          "column": 30,
+          "message": "overflow_bugs"
+        }
+      ],
+      "file": "/dataset/arithmetic/tokensalechallenge.sol",
+      "name": "TokenSaleChallenge"
+    }
+  ]
+}

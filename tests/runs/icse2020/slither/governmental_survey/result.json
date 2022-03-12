@@ -1,0 +1,536 @@
+{
+  "contract": "governmental_survey",
+  "tool": "slither",
+  "start": 1565777013.8330934,
+  "end": 1565777016.7815158,
+  "duration": 2.948422431945801,
+  "analysis": [
+    {
+      "check": "arbitrary-send",
+      "impact": "High",
+      "confidence": "Medium",
+      "description": "Governmental.resetInvestment (/dataset/time_manipulation/governmental_survey.sol#30-40) sends eth to arbitrary user\n\tDangerous calls:\n\t- owner.send(this.balance - 1000000000000000000) (/dataset/time_manipulation/governmental_survey.sol#35)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "resetInvestment",
+          "source_mapping": {
+            "start": 680,
+            "length": 257,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Governmental",
+            "source_mapping": {
+              "start": 188,
+              "length": 751,
+              "filename": "/dataset/time_manipulation/governmental_survey.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "owner.send(this.balance - 1000000000000000000)",
+          "source_mapping": {
+            "start": 821,
+            "length": 32,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              35
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "timestamp",
+      "impact": "Low",
+      "confidence": "Medium",
+      "description": "Governmental.resetInvestment (/dataset/time_manipulation/governmental_survey.sol#30-40) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp < lastInvestmentTimestamp + ONE_MINUTE (/dataset/time_manipulation/governmental_survey.sol#31-32)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "resetInvestment",
+          "source_mapping": {
+            "start": 680,
+            "length": 257,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Governmental",
+            "source_mapping": {
+              "start": 188,
+              "length": 751,
+              "filename": "/dataset/time_manipulation/governmental_survey.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "block.timestamp < lastInvestmentTimestamp + ONE_MINUTE",
+          "source_mapping": {
+            "start": 713,
+            "length": 69,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              31,
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "constable-states",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Governmental.ONE_MINUTE should be constant (/dataset/time_manipulation/governmental_survey.sol#15)\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "ONE_MINUTE",
+          "source_mapping": {
+            "start": 341,
+            "length": 34,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              15
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/time_manipulation/governmental_survey.sol#19:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 457,
+            "length": 5,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              19
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/time_manipulation/governmental_survey.sol#23:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 520,
+            "length": 5,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              23
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/time_manipulation/governmental_survey.sol#32:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 777,
+            "length": 5,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/time_manipulation/governmental_survey.sol#47:\n\t- Usage of \"msg.gas\" should be replaced with \"gasleft()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "this.attack.gas(msg.gas - 2000)(target,count + 1)",
+          "source_mapping": {
+            "start": 1050,
+            "length": 46,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              47
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Governmental.invest (/dataset/time_manipulation/governmental_survey.sol#22-28) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "invest",
+          "source_mapping": {
+            "start": 471,
+            "length": 205,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Governmental",
+            "source_mapping": {
+              "start": 188,
+              "length": 751,
+              "filename": "/dataset/time_manipulation/governmental_survey.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Governmental.resetInvestment (/dataset/time_manipulation/governmental_survey.sol#30-40) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "resetInvestment",
+          "source_mapping": {
+            "start": 680,
+            "length": 257,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Governmental",
+            "source_mapping": {
+              "start": 188,
+              "length": 751,
+              "filename": "/dataset/time_manipulation/governmental_survey.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Attacker.attack (/dataset/time_manipulation/governmental_survey.sol#45-52) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "attack",
+          "source_mapping": {
+            "start": 964,
+            "length": 206,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Attacker",
+            "source_mapping": {
+              "start": 941,
+              "length": 231,
+              "filename": "/dataset/time_manipulation/governmental_survey.sol",
+              "lines": [
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/time_manipulation/governmental_survey.sol:\n\t- pragma solidity^0.4.0 (/dataset/time_manipulation/governmental_survey.sol#8): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.0",
+          "source_mapping": {
+            "start": 163,
+            "length": 23,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              8
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'Governmental.Governmental' (/dataset/time_manipulation/governmental_survey.sol#17-20) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "Governmental",
+          "source_mapping": {
+            "start": 380,
+            "length": 87,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              17,
+              18,
+              19,
+              20
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Variable 'Governmental.ONE_MINUTE' (/dataset/time_manipulation/governmental_survey.sol#15) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "variable",
+          "convention": "mixedCase",
+          "name": "ONE_MINUTE",
+          "source_mapping": {
+            "start": 341,
+            "length": 34,
+            "filename": "/dataset/time_manipulation/governmental_survey.sol",
+            "lines": [
+              15
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

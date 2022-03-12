@@ -1,0 +1,29 @@
+{
+  "contract": "ether_lotto",
+  "tool": "oyente",
+  "start": 1565863110.8128064,
+  "end": 1565863114.3905594,
+  "duration": 3.5777530670166016,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 39,
+          "column": 9,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/time_manipulation/ether_lotto.sol",
+      "name": "EtherLotto",
+      "evm_code_coverage": "94.7%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": true,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

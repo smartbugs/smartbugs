@@ -1,0 +1,55 @@
+2019-08-13 19:36:02,725: [12] m.main:INFO: Registered plugins: DetectUninitializedStorage, DetectSuicidal, DetectDelegatecall, DetectIntegerOverflow, DetectExternalCallAndLeak, DetectReentrancySimple, DetectReentrancyAdvanced, DetectUnusedRetVal, DetectEnvInstruction, DetectUninitializedMemory, DetectInvalid
+2019-08-13 19:36:02,726: [12] m.main:INFO: Beginning analysis
+2019-08-13 19:36:02,737: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 19:36:03,811: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 19:36:06,931: [12] m.e.manticore:INFO: 2 alive states, 3 terminated states
+2019-08-13 19:36:07,437: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 19:36:09,857: [908] m.e.detectors:WARNING: Reachable ether leak to sender
+2019-08-13 19:36:12,997: [922] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:36:13,035: [922] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:36:13,752: [12] m.e.manticore:INFO: 5 alive states, 9 terminated states
+2019-08-13 19:36:14,330: [12] m.e.manticore:INFO: Starting symbolic transaction: 2
+2019-08-13 19:36:18,479: [2354] m.e.detectors:WARNING: Reachable ether leak to sender
+2019-08-13 19:36:18,917: [2345] m.e.detectors:WARNING: Reachable ether leak to sender
+2019-08-13 19:36:22,990: [2335] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:36:23,030: [2335] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:36:23,981: [2335] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:36:24,046: [2335] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:36:25,053: [12] m.e.manticore:INFO: 12 alive states, 24 terminated states
+2019-08-13 19:36:25,762: [5326] m.c.manticore:INFO: Generated testcase No. 0 - STOP(4 txs)
+2019-08-13 19:36:25,768: [5329] m.c.manticore:INFO: Generated testcase No. 1 - STOP(4 txs)
+2019-08-13 19:36:25,774: [5327] m.c.manticore:INFO: Generated testcase No. 2 - STOP(4 txs)
+2019-08-13 19:36:25,781: [5337] m.c.manticore:INFO: Generated testcase No. 3 - STOP(4 txs)
+2019-08-13 19:36:25,787: [5340] m.c.manticore:INFO: Generated testcase No. 4 - STOP(4 txs)
+2019-08-13 19:36:25,788: [5351] m.c.manticore:INFO: Generated testcase No. 5 - STOP(4 txs)
+2019-08-13 19:36:25,795: [5344] m.c.manticore:INFO: Generated testcase No. 6 - STOP(4 txs)
+2019-08-13 19:36:25,833: [5333] m.c.manticore:INFO: Generated testcase No. 7 - STOP(4 txs)
+2019-08-13 19:36:25,882: [5330] m.c.manticore:INFO: Generated testcase No. 8 - STOP(4 txs)
+2019-08-13 19:36:28,086: [5351] m.c.manticore:INFO: Generated testcase No. 9 - STOP(4 txs)
+2019-08-13 19:36:28,123: [5329] m.c.manticore:INFO: Generated testcase No. 10 - STOP(4 txs)
+2019-08-13 19:36:28,265: [5344] m.c.manticore:INFO: Generated testcase No. 11 - STOP(4 txs)
+2019-08-13 19:36:28,303: [5340] m.c.manticore:INFO: Generated testcase No. 12 - RETURN(1 txs)
+2019-08-13 19:36:28,319: [5337] m.c.manticore:INFO: Generated testcase No. 13 - REVERT(2 txs)
+2019-08-13 19:36:28,380: [5333] m.c.manticore:INFO: Generated testcase No. 14 - REVERT(2 txs)
+2019-08-13 19:36:28,382: [5330] m.c.manticore:INFO: Generated testcase No. 15 - STOP(2 txs)
+2019-08-13 19:36:28,411: [5326] m.c.manticore:INFO: Generated testcase No. 16 - STOP(2 txs)
+2019-08-13 19:36:28,884: [5327] m.c.manticore:INFO: Generated testcase No. 17 - REVERT(3 txs)
+2019-08-13 19:36:29,427: [5340] m.c.manticore:INFO: Generated testcase No. 18 - REVERT(3 txs)
+2019-08-13 19:36:29,842: [5337] m.c.manticore:INFO: Generated testcase No. 19 - REVERT(3 txs)
+2019-08-13 19:36:29,883: [5333] m.c.manticore:INFO: Generated testcase No. 20 - REVERT(3 txs)
+2019-08-13 19:36:29,884: [5330] m.c.manticore:INFO: Generated testcase No. 21 - STOP(3 txs)
+2019-08-13 19:36:30,036: [5326] m.c.manticore:INFO: Generated testcase No. 22 - STOP(3 txs)
+2019-08-13 19:36:30,449: [5329] m.c.manticore:INFO: Generated testcase No. 23 - STOP(3 txs)
+2019-08-13 19:36:30,640: [5344] m.c.manticore:INFO: Generated testcase No. 24 - STOP(3 txs)
+2019-08-13 19:36:30,761: [5327] m.c.manticore:INFO: Generated testcase No. 25 - STOP(3 txs)
+2019-08-13 19:36:30,818: [5351] m.c.manticore:INFO: Generated testcase No. 26 - REVERT(4 txs)
+2019-08-13 19:36:31,221: [5340] m.c.manticore:INFO: Generated testcase No. 27 - REVERT(4 txs)
+2019-08-13 19:36:31,987: [5330] m.c.manticore:INFO: Generated testcase No. 28 - REVERT(4 txs)
+2019-08-13 19:36:32,000: [5326] m.c.manticore:INFO: Generated testcase No. 29 - REVERT(4 txs)
+2019-08-13 19:36:32,035: [5333] m.c.manticore:INFO: Generated testcase No. 30 - REVERT(4 txs)
+2019-08-13 19:36:32,233: [5337] m.c.manticore:INFO: Generated testcase No. 31 - REVERT(4 txs)
+2019-08-13 19:36:32,373: [5329] m.c.manticore:INFO: Generated testcase No. 32 - REVERT(4 txs)
+2019-08-13 19:36:32,672: [5344] m.c.manticore:INFO: Generated testcase No. 33 - REVERT(4 txs)
+2019-08-13 19:36:33,186: [5351] m.c.manticore:INFO: Generated testcase No. 34 - REVERT(4 txs)
+2019-08-13 19:36:33,380: [5327] m.c.manticore:INFO: Generated testcase No. 35 - REVERT(4 txs)
+2019-08-13 19:36:36,217: [12] m.c.manticore:INFO: Results in /mcore_c54yr17c

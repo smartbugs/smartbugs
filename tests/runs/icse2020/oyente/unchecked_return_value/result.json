@@ -1,0 +1,22 @@
+{
+  "contract": "unchecked_return_value",
+  "tool": "oyente",
+  "start": 1565863585.9526458,
+  "end": 1565863587.9620023,
+  "duration": 2.0093564987182617,
+  "analysis": [
+    {
+      "errors": [],
+      "file": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+      "name": "ReturnValue",
+      "evm_code_coverage": "97.5%",
+      "integer_underflow": false,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/unchecked_low_level_calls/etherpot_lotto.sol:Lotto:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 66.4%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/unchecked_low_level_calls/etherpot_lotto.sol:124:17: Warning: Integer Overflow.
+         return rounds[roundIndex].ticketsCountByBuyer
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:73:17: Warning: Integer Overflow.
+         return ((roundIndex+1)*blocksPerRound)+subpotIndex
+Integer Overflow occurs if:
+    roundIndex = 4776541631041646616856079696158624109786884305067140366643101495967532141002
+    subpotIndex = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:43:17: Warning: Integer Overflow.
+         return rounds[roundIndex].isCashed
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:77:29: Warning: Integer Overflow.
+         var subpotsCount = rounds[roundIndex].pot
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:73:19: Warning: Integer Overflow.
+         return ((roundIndex+1
+Integer Overflow occurs if:
+    roundIndex = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:57:53: Warning: Integer Overflow.
+         var winningTicketIndex = decisionBlockHash%rounds[roundIndex].ticketsCount
+Integer Overflow occurs if:
+    roundIndex = 0
+    subpotIndex = 115792089237316195423570985008687907853269984665640564039457584007913129633135
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:79:13: Warning: Integer Overflow.
+         if(rounds[roundIndex].pot
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:120:10: Warning: Integer Overflow.
+         return rounds[roundIndex].buyers
+Integer Overflow occurs if:
+    return rounds[roundIndex].buyers = 3618502788666131106986593281521497120414687020801267626233049500247285301247
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:64:27: Warning: Integer Overflow.
+             ticketIndex+=rounds[roundIndex].ticketsCountByBuyer
+Integer Overflow occurs if:
+    rounds[roundIndex].buyers.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    rounds[roundIndex].ticketsCount = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    roundIndex = 0
+    subpotIndex = 115792089237316195423570985008687907853269984665640564039457584007913129633135
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:128:17: Warning: Integer Overflow.
+         return rounds[roundIndex].pot
+INFO:symExec:/dataset/unchecked_low_level_calls/etherpot_lotto.sol:141:14: Warning: Callstack Depth Attack Vulnerability.
+             msg.sender.send(msg.value-value)
+/dataset/unchecked_low_level_calls/etherpot_lotto.sol:109:10: Warning: Callstack Depth Attack Vulnerability.
+         winner.send(subpot)
+INFO:symExec:	====== Analysis Completed ======

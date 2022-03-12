@@ -1,0 +1,25 @@
+{
+  "contract": "lottery",
+  "tool": "osiris",
+  "start": 1565864469.9428048,
+  "end": 1565864725.1376884,
+  "duration": 255.1948835849762,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 11,
+          "column": 2,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 42,
+          "column": 10,
+          "message": "overflow_bugs"
+        }
+      ],
+      "file": "/dataset/bad_randomness/lottery.sol",
+      "name": "Lottery"
+    }
+  ]
+}

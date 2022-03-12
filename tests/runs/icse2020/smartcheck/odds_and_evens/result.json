@@ -1,0 +1,89 @@
+{
+  "contract": "odds_and_evens",
+  "tool": "smartcheck",
+  "start": 1565777017.6467495,
+  "end": 1565777023.5881555,
+  "duration": 5.941406011581421,
+  "analysis": [
+    {
+      "name": "SOLIDITY_DEPRECATED_CONSTRUCTIONS",
+      "patternId": "49bd2a",
+      "severity": 1,
+      "line": 26,
+      "column": 30,
+      "content": "throw"
+    },
+    {
+      "name": "SOLIDITY_DEPRECATED_CONSTRUCTIONS",
+      "patternId": "49bd2a",
+      "severity": 1,
+      "line": 49,
+      "column": 26,
+      "content": "throw"
+    },
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 7,
+      "column": 16,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_REVERT_REQUIRE",
+      "patternId": "c56b12",
+      "severity": 1,
+      "line": 26,
+      "column": 4,
+      "content": "if(msg.value!=1ether)throw;"
+    },
+    {
+      "name": "SOLIDITY_REVERT_REQUIRE",
+      "patternId": "c56b12",
+      "severity": 1,
+      "line": 49,
+      "column": 4,
+      "content": "if(msg.sender!=owner)throw;"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": 910067,
+      "severity": 1,
+      "line": 21,
+      "column": 2,
+      "content": "functionOddsAndEvens(){owner=msg.sender;}"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": 910067,
+      "severity": 1,
+      "line": 25,
+      "column": 2,
+      "content": "functionplay(uintnumber)payable{if(msg.value!=1ether)throw;players[tot]=Player(msg.sender,number);tot++;if(tot==2)andTheWinnerIs();}"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": 910067,
+      "severity": 1,
+      "line": 48,
+      "column": 2,
+      "content": "functiongetProfit(){if(msg.sender!=owner)throw;boolres=msg.sender.send(this.balance);}"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 18,
+      "column": 2,
+      "content": "uint8tot;"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 19,
+      "column": 2,
+      "content": "addressowner;"
+    }
+  ]
+}

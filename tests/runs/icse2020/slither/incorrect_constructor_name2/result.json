@@ -1,0 +1,180 @@
+{
+  "contract": "incorrect_constructor_name2",
+  "tool": "slither",
+  "start": 1565776998.509468,
+  "end": 1565777001.6546247,
+  "duration": 3.1451566219329834,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Missing.missing (/dataset/access_control/incorrect_constructor_name2.sol#18-22) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "missing",
+          "source_mapping": {
+            "start": 359,
+            "length": 73,
+            "filename": "/dataset/access_control/incorrect_constructor_name2.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Missing",
+            "source_mapping": {
+              "start": 194,
+              "length": 375,
+              "filename": "/dataset/access_control/incorrect_constructor_name2.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Missing.fallback (/dataset/access_control/incorrect_constructor_name2.sol#24) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 438,
+            "length": 22,
+            "filename": "/dataset/access_control/incorrect_constructor_name2.sol",
+            "lines": [
+              24
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Missing",
+            "source_mapping": {
+              "start": 194,
+              "length": 375,
+              "filename": "/dataset/access_control/incorrect_constructor_name2.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Missing.withdraw (/dataset/access_control/incorrect_constructor_name2.sol#26-31) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 466,
+            "length": 101,
+            "filename": "/dataset/access_control/incorrect_constructor_name2.sol",
+            "lines": [
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Missing",
+            "source_mapping": {
+              "start": 194,
+              "length": 375,
+              "filename": "/dataset/access_control/incorrect_constructor_name2.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

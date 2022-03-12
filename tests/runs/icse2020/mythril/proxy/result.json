@@ -1,0 +1,24 @@
+{
+  "contract": "proxy",
+  "tool": "mythril",
+  "start": 1565776936.2825756,
+  "end": 1565777019.5685868,
+  "duration": 83.28601121902466,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 136,
+        "code": "function forward(address callee, bytes _data) public {\n    // <yes> <report> ACCESS_CONTROL\n    require(callee.delegatecall(_data)); //Use delegatecall with caution and make sure to never call into untrusted contracts\n  }",
+        "debug": "calldata_Proxy_32 + 4: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc\ncalldata_Proxy_0: 0x6fadcf7200000000000000000000000000000000000000000000000000000000\ncalldatasize_Proxy: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `forward(address,bytes)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/proxy.sol",
+        "function": "forward(address,bytes)",
+        "lineno": 17,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

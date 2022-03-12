@@ -1,0 +1,48 @@
+{
+  "contract": "parity_wallet_bug_2",
+  "tool": "oyente",
+  "start": 1565863096.0431306,
+  "end": 1565863348.818907,
+  "duration": 252.775776386261,
+  "analysis": [
+    {
+      "errors": [],
+      "file": "/dataset/access_control/parity_wallet_bug_2.sol",
+      "name": "WalletEvents",
+      "evm_code_coverage": "100.0%",
+      "integer_underflow": false,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    },
+    {
+      "errors": [
+        {
+          "line": 169,
+          "column": 22,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 70,
+          "column": 1,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/access_control/parity_wallet_bug_2.sol",
+      "name": "WalletLibrary",
+      "evm_code_coverage": "20.3%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

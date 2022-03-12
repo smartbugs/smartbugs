@@ -1,0 +1,38 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/bad_randomness/lottery.sol:Lottery:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 73.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/bad_randomness/lottery.sol:58:40: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i].blockNumber
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/dataset/bad_randomness/lottery.sol:58:61: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i].blockNumber, bets[i]
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/dataset/bad_randomness/lottery.sol:58:21: Warning: Integer Overflow.
+             GetBet(bets[i]
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/dataset/bad_randomness/lottery.sol:58:40: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i]
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/dataset/bad_randomness/lottery.sol:58:61: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i].blockNumber, bets[i].won
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+INFO:symExec:	====== Analysis Completed ======

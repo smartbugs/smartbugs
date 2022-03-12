@@ -1,0 +1,85 @@
+{
+  "contract": "spank_chain_payment",
+  "tool": "oyente",
+  "start": 1565863169.608236,
+  "end": 1565863828.2880094,
+  "duration": 658.6797733306885,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 98,
+          "column": 6,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/reentrancy/spank_chain_payment.sol",
+      "name": "ECTools",
+      "evm_code_coverage": "27.6%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    },
+    {
+      "errors": [
+        {
+          "line": 233,
+          "column": 6,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 2,
+          "column": 69,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/reentrancy/spank_chain_payment.sol",
+      "name": "HumanStandardToken",
+      "evm_code_coverage": "90.5%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    },
+    {
+      "errors": [],
+      "file": "/dataset/reentrancy/spank_chain_payment.sol",
+      "name": "LedgerChannel",
+      "evm_code_coverage": "0/0",
+      "callstack_bug": false,
+      "money_concurrency_bug": false,
+      "time_dependency_bug": false,
+      "reentrancy_bug": false
+    },
+    {
+      "errors": [
+        {
+          "line": 189,
+          "column": 10,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/reentrancy/spank_chain_payment.sol",
+      "name": "StandardToken",
+      "evm_code_coverage": "99.9%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

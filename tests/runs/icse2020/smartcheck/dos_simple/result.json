@@ -1,0 +1,25 @@
+{
+  "contract": "dos_simple",
+  "tool": "smartcheck",
+  "start": 1565777087.3565273,
+  "end": 1565777092.238522,
+  "duration": 4.881994724273682,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 8,
+      "column": 16,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 12,
+      "column": 4,
+      "content": "address[]listAddresses;"
+    }
+  ]
+}

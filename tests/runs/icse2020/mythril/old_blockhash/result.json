@@ -1,0 +1,46 @@
+{
+  "contract": "old_blockhash",
+  "tool": "mythril",
+  "start": 1565777111.3348763,
+  "end": 1565777118.912762,
+  "duration": 7.577885627746582,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 498,
+        "code": "msg.sender.transfer(2 ether)",
+        "debug": "",
+        "description": "In the function `settle()` the following predictable state variables are used to determine Ether recipient:\n- block.number\n",
+        "filename": "/dataset/bad_randomness/old_blockhash.sol",
+        "function": "settle()",
+        "lineno": 39,
+        "title": "Dependence on predictable environment variable",
+        "type": "Warning"
+      },
+      {
+        "address": 498,
+        "code": "msg.sender.transfer(2 ether)",
+        "debug": "",
+        "description": "In the function `settle()` block.blockhash() is calculated using a value from storage at index 1",
+        "filename": "/dataset/bad_randomness/old_blockhash.sol",
+        "function": "settle()",
+        "lineno": 39,
+        "title": "Dependence on predictable variable",
+        "type": "Informational"
+      },
+      {
+        "address": 705,
+        "code": "block.number + 1",
+        "debug": "block_number: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_PredictTheBlockHashChallenge_0: 0xed7f559c00000000000000000000000000000000000000000000000000000000\ncalldatasize_PredictTheBlockHashChallenge: 0x4\ncallvalue: 0xde0b6b3a7640000\nstorage_0 +\nkeccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0x0\n",
+        "description": "A possible integer overflow exists in the function `lockInGuess(bytes32)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/bad_randomness/old_blockhash.sol",
+        "function": "lockInGuess(bytes32)",
+        "lineno": 29,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

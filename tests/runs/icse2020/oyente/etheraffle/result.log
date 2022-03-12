@@ -1,0 +1,113 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/bad_randomness/etheraffle.sol:Ethraffle_v4b:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 67.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/bad_randomness/etheraffle.sol:132:17: Warning: Integer Underflow.
+                gaps.push(i)
+Integer Underflow occurs if:
+    contestants[i].addr = 0
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].raffleId = 0
+    raffleId = 0
+INFO:symExec:/dataset/bad_randomness/etheraffle.sol:129:66: Warning: Integer Overflow.
+            if (msg.sender == contestants[i].addr && raffleId == contestants[i].raffleId
+Integer Overflow occurs if:
+    contestants[i].addr = 0
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+/dataset/bad_randomness/etheraffle.sol:2:21: Warning: Integer Overflow.
+ * @article: https://blog.positive.com
+Integer Overflow occurs if:
+    contestants[i].addr = 0
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].raffleId = 0
+    raffleId = 0
+/dataset/bad_randomness/etheraffle.sol:10:1: Warning: Integer Overflow.
+contract Ethraffle_v4b {
+^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    gaps.length = 104840631309944575729162857784403155326625936419586623394410746158723350923422
+    nextTicket = 49
+    paused = 0
+/dataset/bad_randomness/etheraffle.sol:81:13: Warning: Integer Overflow.
+            contestants[currTicket] = Contestant(msg.sender, raffleId)
+Integer Overflow occurs if:
+    nextTicket = 49
+    paused = 0
+    gaps.length = 0
+/dataset/bad_randomness/etheraffle.sol:75:30: Warning: Integer Overflow.
+                currTicket = gaps[gaps.length-1]
+Integer Overflow occurs if:
+    gaps.length = 41383974296373840273639193924470405456184014629083408144980422005631976734720
+    nextTicket = 49
+    paused = 0
+/dataset/bad_randomness/etheraffle.sol:131:17: Warning: Integer Overflow.
+                contestants[i] = Contestant(address(0), 0)
+Integer Overflow occurs if:
+    contestants[i].addr = 0
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].raffleId = 0
+    raffleId = 0
+/dataset/bad_randomness/etheraffle.sol:132:17: Warning: Integer Overflow.
+                gaps.push(i)
+Integer Overflow occurs if:
+    contestants[i].addr = 0
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].addr = 1461501637330902918203684832716283019655932542975
+    contestants[i].raffleId = 0
+    raffleId = 0
+INFO:symExec:Flow1
+/dataset/bad_randomness/etheraffle.sol:93:13: Warning: Transaction-Ordering Dependency.
+            msg.sender.transfer(moneySent)
+Flow2
+/dataset/bad_randomness/etheraffle.sol:121:9: Warning: Transaction-Ordering Dependency.
+        winningAddress.transfer(prize)
+INFO:symExec:	====== Analysis Completed ======

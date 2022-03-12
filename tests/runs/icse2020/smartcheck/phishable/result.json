@@ -1,0 +1,41 @@
+{
+  "contract": "phishable",
+  "tool": "smartcheck",
+  "start": 1565777004.2139697,
+  "end": 1565777010.2834797,
+  "duration": 6.069509983062744,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 7,
+      "column": 17,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_TX_ORIGIN",
+      "patternId": "12e802",
+      "severity": 2,
+      "line": 20,
+      "column": 16,
+      "content": "tx.origin"
+    },
+    {
+      "name": "SOLIDITY_UPGRADE_TO_050",
+      "patternId": "91h3sa",
+      "severity": 1,
+      "line": 16,
+      "column": 16,
+      "content": "public"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": 910067,
+      "severity": 1,
+      "line": 12,
+      "column": 4,
+      "content": "constructor(address_owner){owner=_owner;}"
+    }
+  ]
+}

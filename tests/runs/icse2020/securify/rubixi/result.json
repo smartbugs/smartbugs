@@ -1,0 +1,125 @@
+{
+  "contract": "rubixi",
+  "tool": "securify",
+  "start": 1565775794.5461683,
+  "end": 1565775993.9643037,
+  "duration": 199.4181354045868,
+  "analysis": {
+    "/dataset/access_control/rubixi.sol:Rubixi": {
+      "results": {
+        "TODReceiver": {
+          "violations": [
+            84,
+            94,
+            102
+          ],
+          "warnings": [],
+          "safe": [
+            73,
+            84
+          ],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [
+            73,
+            84,
+            94,
+            102
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [
+            84,
+            94,
+            102
+          ],
+          "warnings": [
+            73,
+            84
+          ],
+          "safe": [],
+          "conflicts": [
+            73
+          ]
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [
+            84
+          ],
+          "warnings": [
+            94
+          ],
+          "safe": [
+            73,
+            84
+          ],
+          "conflicts": [
+            102
+          ]
+        },
+        "MissingInputValidation": {
+          "violations": [
+            107
+          ],
+          "warnings": [
+            139,
+            155,
+            129,
+            143,
+            117,
+            147,
+            58,
+            134,
+            22,
+            88,
+            151,
+            111,
+            81,
+            124,
+            43
+          ],
+          "safe": [
+            98
+          ],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [
+            84,
+            94,
+            102,
+            73
+          ],
+          "warnings": [
+            73
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [
+            84,
+            94,
+            102
+          ],
+          "safe": [
+            73,
+            84
+          ],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

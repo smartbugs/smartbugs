@@ -1,0 +1,61 @@
+{
+  "contract": "simple_suicide",
+  "tool": "securify",
+  "start": 1565775627.3719385,
+  "end": 1565775650.5288587,
+  "duration": 23.156920194625854,
+  "analysis": {
+    "/dataset/access_control/simple_suicide.sol:SimpleSuicide": {
+      "results": {
+        "TODReceiver": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

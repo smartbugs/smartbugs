@@ -1,0 +1,24 @@
+{
+  "contract": "integer_overflow_mapping_sym_1",
+  "tool": "mythril",
+  "start": 1565777166.6898263,
+  "end": 1565777170.2198687,
+  "duration": 3.5300424098968506,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 145,
+        "code": "map[k] -= v",
+        "debug": "storage_keccac_calldata_IntegerOverflowMappingSym1_4: 0x0\ncalldata_IntegerOverflowMappingSym1_32 + 4: 0x1\ncalldata_IntegerOverflowMappingSym1_0: 0xa5843f0800000000000000000000000000000000000000000000000000000000\ncalldatasize_IntegerOverflowMappingSym1: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer underflow exists in the function `init(uint256,uint256)`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+        "function": "init(uint256,uint256)",
+        "lineno": 16,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

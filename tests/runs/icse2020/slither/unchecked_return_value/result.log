@@ -1,0 +1,16 @@
+INFO:Slither:Compilation warnings/errors on /dataset/unchecked_low_level_calls/unchecked_return_value.sol:
+/dataset/unchecked_low_level_calls/unchecked_return_value.sol:18:5: Warning: Return value of low-level calls not used.
+    callee.call();
+    ^-----------^
+
+INFO:Detectors:[92m
+ReturnValue.callchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#11-14) should be declared external
+ReturnValue.callnotchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#16-19) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Low level call in ReturnValue.callchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#11-14):
+	-require(bool)(callee.call()) /dataset/unchecked_low_level_calls/unchecked_return_value.sol#13
+Low level call in ReturnValue.callnotchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#16-19):
+	-callee.call() /dataset/unchecked_low_level_calls/unchecked_return_value.sol#18
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Slither:/dataset/unchecked_low_level_calls/unchecked_return_value.sol analyzed (1 contracts), 4 result(s) found

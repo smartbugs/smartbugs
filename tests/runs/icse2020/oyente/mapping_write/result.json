@@ -1,0 +1,29 @@
+{
+  "contract": "mapping_write",
+  "tool": "oyente",
+  "start": 1565863089.3366165,
+  "end": 1565863095.798091,
+  "duration": 6.461474418640137,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 11,
+          "column": 2,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/access_control/mapping_write.sol",
+      "name": "Map",
+      "evm_code_coverage": "90.0%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

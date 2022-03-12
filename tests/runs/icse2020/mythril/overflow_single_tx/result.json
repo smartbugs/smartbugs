@@ -1,0 +1,46 @@
+{
+  "contract": "overflow_single_tx",
+  "tool": "mythril",
+  "start": 1565777109.1927757,
+  "end": 1565777130.1414745,
+  "duration": 20.94869875907898,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 476,
+        "code": "count -= input",
+        "debug": "storage_0: 0x0\ncalldata_IntegerOverflowSingleTransaction_4: 0x1\ncalldata_IntegerOverflowSingleTransaction_0: 0x4c4f50f300000000000000000000000000000000000000000000000000000000\ncalldatasize_IntegerOverflowSingleTransaction: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer underflow exists in the function `underflowtostate(uint256)`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+        "function": "underflowtostate(uint256)",
+        "lineno": 30,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      },
+      {
+        "address": 494,
+        "code": "count *= input",
+        "debug": "calldata_IntegerOverflowSingleTransaction_4: 0xde9aa0007ffff9dbbb05d00001000207fffdffbfffbfbfbfffbfbfefbfbff7f6\nstorage_0: 0xff3717ddf147ba7fd6976a72ee859c9c251431c6dd4346e384e0fd941c87b69c\ncalldata_IntegerOverflowSingleTransaction_0: 0x5c68bc0600000000000000000000000000000000000000000000000000000000\ncalldatasize_IntegerOverflowSingleTransaction: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `overflowmultostate(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+        "function": "overflowmultostate(uint256)",
+        "lineno": 24,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 525,
+        "code": "count += input",
+        "debug": "calldata_IntegerOverflowSingleTransaction_4: 0x57f25cd000000000000000000000000000000000000000000000000000000000\nstorage_0: 0xa8795cd3fffffffffffffffffffffffffffffffffffffffffffffffffffffffe\ncalldata_IntegerOverflowSingleTransaction_0: 0xdef92d6800000000000000000000000000000000000000000000000000000000\ncalldatasize_IntegerOverflowSingleTransaction: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `overflowaddtostate(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/overflow_single_tx.sol",
+        "function": "overflowaddtostate(uint256)",
+        "lineno": 18,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

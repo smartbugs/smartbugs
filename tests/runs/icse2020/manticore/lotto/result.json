@@ -1,0 +1,26 @@
+{
+  "contract": "lotto",
+  "tool": "manticore",
+  "start": 1565727807.0328333,
+  "end": 1565727998.916276,
+  "duration": 191.88344264030457,
+  "analysis": [
+    [
+      {
+        "name": "Returned value at CALL instruction is not used",
+        "line": 20,
+        "code": "winner.send(winAmount)"
+      },
+      {
+        "name": "Reachable external call to sender",
+        "line": 27,
+        "code": "msg.sender.send(this.balance)"
+      },
+      {
+        "name": "Returned value at CALL instruction is not used",
+        "line": 27,
+        "code": "msg.sender.send(this.balance)"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "contract": "unchecked_return_value",
+  "tool": "mythril",
+  "start": 1565777066.5855815,
+  "end": 1565777071.6862924,
+  "duration": 5.100710868835449,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 255,
+        "code": "callee.call()",
+        "debug": "",
+        "description": "This contract executes a message call to an address provided as a function argument. Generally, it is not recommended to call user-supplied addresses using Solidity's call() construct. Note that attackers might leverage reentrancy attacks to exploit race conditions or manipulate this contract's state.",
+        "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+        "function": "callchecked(address)",
+        "lineno": 13,
+        "title": "Message call to external contract",
+        "type": "Warning"
+      },
+      {
+        "address": 312,
+        "code": "callee.call()",
+        "debug": "",
+        "description": "This contract executes a message call to an address provided as a function argument. Generally, it is not recommended to call user-supplied addresses using Solidity's call() construct. Note that attackers might leverage reentrancy attacks to exploit race conditions or manipulate this contract's state.",
+        "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+        "function": "callnotchecked(address)",
+        "lineno": 18,
+        "title": "Message call to external contract",
+        "type": "Warning"
+      },
+      {
+        "address": 312,
+        "code": "callee.call()",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+        "function": "callnotchecked(address)",
+        "lineno": 18,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      }
+    ],
+    "success": true
+  }
+}

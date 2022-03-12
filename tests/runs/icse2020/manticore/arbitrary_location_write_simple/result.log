@@ -1,0 +1,801 @@
+2019-08-13 17:59:42,422: [12] m.main:INFO: Registered plugins: DetectReentrancySimple, DetectInvalid, DetectUnusedRetVal, DetectSuicidal, DetectUninitializedStorage, DetectEnvInstruction, DetectDelegatecall, DetectUninitializedMemory, DetectReentrancyAdvanced, DetectExternalCallAndLeak, DetectIntegerOverflow
+2019-08-13 17:59:42,423: [12] m.main:INFO: Beginning analysis
+2019-08-13 17:59:42,436: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 17:59:44,972: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 17:59:46,878: [597] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 17:59:47,812: [12] m.e.manticore:INFO: 3 alive states, 7 terminated states
+2019-08-13 17:59:48,524: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 17:59:51,460: [1615] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 17:59:52,328: [1611] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 17:59:52,375: [1611] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 17:59:53,216: [1625] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 17:59:53,253: [1625] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 17:59:59,250: [12] m.e.manticore:INFO: 11 alive states, 28 terminated states
+2019-08-13 17:59:59,962: [12] m.e.manticore:INFO: Starting symbolic transaction: 2
+2019-08-13 18:00:08,092: [5015] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:08,160: [5015] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:09,081: [5026] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:09,158: [5026] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:09,222: [5026] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:09,312: [5013] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:10,969: [5034] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:11,012: [5034] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:11,071: [5034] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:11,718: [5036] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:11,757: [5036] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:12,686: [5034] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:00:12,709: [5043] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:13,387: [5015] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:13,433: [5015] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:13,481: [5015] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:16,394: [5031] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:16,432: [5031] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:16,721: [5034] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:16,755: [5034] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,250: [5015] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,284: [5015] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,341: [5015] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,703: [5043] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:17,798: [5043] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,862: [5013] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,864: [5043] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:17,897: [5013] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:00:17,949: [5013] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:00:52,566: [12] m.e.manticore:INFO: 43 alive states, 106 terminated states
+2019-08-13 18:00:53,408: [12] m.e.manticore:INFO: Starting symbolic transaction: 3
+2019-08-13 18:01:19,585: [17725] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:21,538: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:21,692: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:21,784: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:21,809: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:21,837: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:21,893: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:21,922: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:21,958: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:22,015: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:23,761: [17686] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:23,838: [17686] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:23,921: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:32,951: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:33,055: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:33,146: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:35,243: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:39,148: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:54,643: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:57,457: [17698] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:57,543: [17698] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:01:57,642: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:01:58,979: [17705] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:00,312: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:00,363: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:00,402: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:00,501: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:00,504: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:00,555: [17686] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:00,586: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:00,643: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:01,956: [17720] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:02,063: [17720] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:06,464: [17720] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:06,524: [17720] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:06,611: [17720] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:07,891: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:08,042: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:11,272: [17686] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:11,362: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:11,427: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:15,485: [17725] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:15,986: [17729] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:16,037: [17729] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:16,095: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:16,143: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:16,172: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:16,195: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:16,248: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:16,301: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:17,440: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:17,491: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:23,110: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:23,178: [17698] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:23,273: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:26,199: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:26,252: [17688] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:26,350: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:27,013: [17725] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:27,150: [17725] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:27,279: [17725] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:27,394: [17725] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:30,434: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:30,659: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:30,779: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:30,810: [17729] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:30,958: [17729] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:31,330: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:32,177: [17688] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:32,493: [17688] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:32,667: [17688] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:32,809: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:36,659: [17725] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:36,760: [17725] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:36,855: [17725] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:36,893: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:36,938: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:36,983: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:37,063: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:37,105: [17686] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:39,401: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:39,455: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:39,513: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:39,600: [17720] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:40,631: [17686] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:40,827: [17698] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:40,953: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:41,078: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:44,278: [17688] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:47,023: [17692] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:47,411: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:47,524: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:47,612: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:48,087: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:48,145: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:48,246: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:48,348: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:48,479: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:48,530: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:48,965: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:48,998: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:49,016: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:49,135: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:49,255: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:49,399: [17705] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:49,497: [17705] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:49,956: [17720] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:02:50,455: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:50,510: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:50,596: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:51,329: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:51,379: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:51,421: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:51,505: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:52,035: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:52,088: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:52,333: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:52,386: [17688] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:53,709: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:53,761: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:53,863: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:55,893: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:56,024: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:56,183: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:56,465: [17715] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:56,601: [17715] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:56,654: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:56,708: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:56,798: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:57,464: [17720] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:57,600: [17720] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:57,776: [17720] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:57,863: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:57,875: [17720] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:57,919: [17692] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:58,007: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:58,071: [17692] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:59,218: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:59,268: [17710] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:02:59,273: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:59,318: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:02:59,339: [17710] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:00,147: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:00,186: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:00,287: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:04,216: [17698] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:03:04,272: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:04,356: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:04,945: [17720] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:05,293: [17720] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:03:07,329: [17698] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:07,533: [17698] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:03:12,249: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:12,296: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:12,355: [17686] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:03:12,440: [17686] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:18,020: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:18,072: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:18,131: [17729] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:03:18,186: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:22,224: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:03:22,323: [17729] m.e.detectors:WARNING: Unsigned integer overflow at ADD instruction
+2019-08-13 18:03:22,419: [17729] m.e.detectors:WARNING: Unsigned integer overflow at SUB instruction
+2019-08-13 18:05:29,742: [12] m.e.manticore:INFO: 177 alive states, 414 terminated states
+2019-08-13 18:05:30,933: [5322] m.c.manticore:INFO: Generated testcase No. 0 - STOP(5 txs)
+2019-08-13 18:05:30,962: [5323] m.c.manticore:INFO: Generated testcase No. 1 - STOP(5 txs)
+2019-08-13 18:05:30,990: [5326] m.c.manticore:INFO: Generated testcase No. 2 - STOP(5 txs)
+2019-08-13 18:05:30,992: [5331] m.c.manticore:INFO: Generated testcase No. 3 - STOP(5 txs)
+2019-08-13 18:05:30,995: [5353] m.c.manticore:INFO: Generated testcase No. 4 - STOP(5 txs)
+2019-08-13 18:05:31,000: [5357] m.c.manticore:INFO: Generated testcase No. 5 - STOP(5 txs)
+2019-08-13 18:05:31,006: [5347] m.c.manticore:INFO: Generated testcase No. 6 - STOP(5 txs)
+2019-08-13 18:05:31,013: [5339] m.c.manticore:INFO: Generated testcase No. 7 - STOP(5 txs)
+2019-08-13 18:05:31,048: [5344] m.c.manticore:INFO: Generated testcase No. 8 - STOP(5 txs)
+2019-08-13 18:05:36,856: [5339] m.c.manticore:INFO: Generated testcase No. 9 - STOP(5 txs)
+2019-08-13 18:05:37,149: [5353] m.c.manticore:INFO: Generated testcase No. 10 - STOP(5 txs)
+2019-08-13 18:05:37,701: [5331] m.c.manticore:INFO: Generated testcase No. 11 - STOP(5 txs)
+2019-08-13 18:05:37,811: [5326] m.c.manticore:INFO: Generated testcase No. 12 - STOP(5 txs)
+2019-08-13 18:05:38,906: [5347] m.c.manticore:INFO: Generated testcase No. 13 - STOP(5 txs)
+2019-08-13 18:05:40,019: [5344] m.c.manticore:INFO: Generated testcase No. 14 - STOP(5 txs)
+2019-08-13 18:05:40,608: [5357] m.c.manticore:INFO: Generated testcase No. 15 - STOP(5 txs)
+2019-08-13 18:05:41,578: [5323] m.c.manticore:INFO: Generated testcase No. 16 - STOP(5 txs)
+2019-08-13 18:05:41,596: [5322] m.c.manticore:INFO: Generated testcase No. 17 - STOP(5 txs)
+2019-08-13 18:05:41,672: [5353] m.c.manticore:INFO: Generated testcase No. 18 - STOP(5 txs)
+2019-08-13 18:05:42,248: [5326] m.c.manticore:INFO: Generated testcase No. 19 - STOP(5 txs)
+2019-08-13 18:05:42,331: [5331] m.c.manticore:INFO: Generated testcase No. 20 - STOP(5 txs)
+2019-08-13 18:05:43,340: [5339] m.c.manticore:INFO: Generated testcase No. 21 - STOP(5 txs)
+2019-08-13 18:05:43,481: [5347] m.c.manticore:INFO: Generated testcase No. 22 - STOP(5 txs)
+2019-08-13 18:05:44,413: [5344] m.c.manticore:INFO: Generated testcase No. 23 - STOP(5 txs)
+2019-08-13 18:05:45,790: [5353] m.c.manticore:INFO: Generated testcase No. 24 - STOP(5 txs)
+2019-08-13 18:05:46,269: [5322] m.c.manticore:INFO: Generated testcase No. 25 - STOP(5 txs)
+2019-08-13 18:05:46,359: [5323] m.c.manticore:INFO: Generated testcase No. 26 - STOP(5 txs)
+2019-08-13 18:05:46,461: [5331] m.c.manticore:INFO: Generated testcase No. 27 - STOP(5 txs)
+2019-08-13 18:05:47,137: [5326] m.c.manticore:INFO: Generated testcase No. 28 - STOP(5 txs)
+2019-08-13 18:05:48,715: [5357] m.c.manticore:INFO: Generated testcase No. 29 - STOP(5 txs)
+2019-08-13 18:05:49,899: [5339] m.c.manticore:INFO: Generated testcase No. 30 - STOP(5 txs)
+2019-08-13 18:05:49,960: [5344] m.c.manticore:INFO: Generated testcase No. 31 - STOP(5 txs)
+2019-08-13 18:05:51,085: [5323] m.c.manticore:INFO: Generated testcase No. 32 - STOP(5 txs)
+2019-08-13 18:05:51,780: [5331] m.c.manticore:INFO: Generated testcase No. 33 - STOP(5 txs)
+2019-08-13 18:05:52,483: [5347] m.c.manticore:INFO: Generated testcase No. 34 - STOP(5 txs)
+2019-08-13 18:05:53,843: [5326] m.c.manticore:INFO: Generated testcase No. 35 - STOP(5 txs)
+2019-08-13 18:05:54,100: [5353] m.c.manticore:INFO: Generated testcase No. 36 - STOP(5 txs)
+2019-08-13 18:05:54,173: [5322] m.c.manticore:INFO: Generated testcase No. 37 - STOP(5 txs)
+2019-08-13 18:05:55,653: [5344] m.c.manticore:INFO: Generated testcase No. 38 - STOP(5 txs)
+2019-08-13 18:05:56,877: [5331] m.c.manticore:INFO: Generated testcase No. 39 - STOP(5 txs)
+2019-08-13 18:05:57,300: [5347] m.c.manticore:INFO: Generated testcase No. 40 - STOP(5 txs)
+2019-08-13 18:05:57,518: [5339] m.c.manticore:INFO: Generated testcase No. 41 - STOP(5 txs)
+2019-08-13 18:05:58,085: [5357] m.c.manticore:INFO: Generated testcase No. 42 - STOP(5 txs)
+2019-08-13 18:05:58,251: [5323] m.c.manticore:INFO: Generated testcase No. 43 - STOP(5 txs)
+2019-08-13 18:05:58,877: [5326] m.c.manticore:INFO: Generated testcase No. 44 - STOP(5 txs)
+2019-08-13 18:05:59,833: [5322] m.c.manticore:INFO: Generated testcase No. 45 - STOP(5 txs)
+2019-08-13 18:06:00,803: [5344] m.c.manticore:INFO: Generated testcase No. 46 - STOP(5 txs)
+2019-08-13 18:06:02,530: [5339] m.c.manticore:INFO: Generated testcase No. 47 - STOP(5 txs)
+2019-08-13 18:06:02,663: [5347] m.c.manticore:INFO: Generated testcase No. 48 - STOP(5 txs)
+2019-08-13 18:06:03,121: [5353] m.c.manticore:INFO: Generated testcase No. 49 - STOP(5 txs)
+2019-08-13 18:06:03,496: [5326] m.c.manticore:INFO: Generated testcase No. 50 - STOP(5 txs)
+2019-08-13 18:06:03,931: [5323] m.c.manticore:INFO: Generated testcase No. 51 - STOP(5 txs)
+2019-08-13 18:06:05,234: [5331] m.c.manticore:INFO: Generated testcase No. 52 - STOP(5 txs)
+2019-08-13 18:06:05,617: [5322] m.c.manticore:INFO: Generated testcase No. 53 - STOP(5 txs)
+2019-08-13 18:06:05,834: [5344] m.c.manticore:INFO: Generated testcase No. 54 - STOP(5 txs)
+2019-08-13 18:06:07,573: [5357] m.c.manticore:INFO: Generated testcase No. 55 - STOP(5 txs)
+2019-08-13 18:06:08,300: [5353] m.c.manticore:INFO: Generated testcase No. 56 - STOP(5 txs)
+2019-08-13 18:06:09,649: [5339] m.c.manticore:INFO: Generated testcase No. 57 - STOP(5 txs)
+2019-08-13 18:06:09,950: [5323] m.c.manticore:INFO: Generated testcase No. 58 - STOP(5 txs)
+2019-08-13 18:06:10,016: [5347] m.c.manticore:INFO: Generated testcase No. 59 - STOP(5 txs)
+2019-08-13 18:06:10,673: [5322] m.c.manticore:INFO: Generated testcase No. 60 - STOP(5 txs)
+2019-08-13 18:06:10,951: [5344] m.c.manticore:INFO: Generated testcase No. 61 - STOP(5 txs)
+2019-08-13 18:06:11,231: [5326] m.c.manticore:INFO: Generated testcase No. 62 - STOP(5 txs)
+2019-08-13 18:06:13,135: [5331] m.c.manticore:INFO: Generated testcase No. 63 - STOP(5 txs)
+2019-08-13 18:06:13,275: [5353] m.c.manticore:INFO: Generated testcase No. 64 - STOP(5 txs)
+2019-08-13 18:06:15,058: [5357] m.c.manticore:INFO: Generated testcase No. 65 - STOP(5 txs)
+2019-08-13 18:06:16,010: [5326] m.c.manticore:INFO: Generated testcase No. 66 - STOP(5 txs)
+2019-08-13 18:06:16,298: [5322] m.c.manticore:INFO: Generated testcase No. 67 - STOP(5 txs)
+2019-08-13 18:06:16,373: [5323] m.c.manticore:INFO: Generated testcase No. 68 - STOP(5 txs)
+2019-08-13 18:06:17,363: [5339] m.c.manticore:INFO: Generated testcase No. 69 - STOP(5 txs)
+2019-08-13 18:06:17,592: [5353] m.c.manticore:INFO: Generated testcase No. 70 - STOP(5 txs)
+2019-08-13 18:06:18,691: [5347] m.c.manticore:INFO: Generated testcase No. 71 - STOP(5 txs)
+2019-08-13 18:06:19,846: [5331] m.c.manticore:INFO: Generated testcase No. 72 - STOP(5 txs)
+2019-08-13 18:06:20,063: [5357] m.c.manticore:INFO: Generated testcase No. 73 - STOP(5 txs)
+2019-08-13 18:06:20,085: [5344] m.c.manticore:INFO: Generated testcase No. 74 - STOP(5 txs)
+2019-08-13 18:06:21,303: [5326] m.c.manticore:INFO: Generated testcase No. 75 - STOP(5 txs)
+2019-08-13 18:06:22,018: [5323] m.c.manticore:INFO: Generated testcase No. 76 - STOP(5 txs)
+2019-08-13 18:06:22,335: [5322] m.c.manticore:INFO: Generated testcase No. 77 - STOP(5 txs)
+2019-08-13 18:06:23,269: [5339] m.c.manticore:INFO: Generated testcase No. 78 - STOP(5 txs)
+2019-08-13 18:06:23,534: [5353] m.c.manticore:INFO: Generated testcase No. 79 - STOP(5 txs)
+2019-08-13 18:06:25,007: [5347] m.c.manticore:INFO: Generated testcase No. 80 - STOP(5 txs)
+2019-08-13 18:06:25,402: [5357] m.c.manticore:INFO: Generated testcase No. 81 - STOP(5 txs)
+2019-08-13 18:06:26,210: [5344] m.c.manticore:INFO: Generated testcase No. 82 - STOP(5 txs)
+2019-08-13 18:06:26,922: [5326] m.c.manticore:INFO: Generated testcase No. 83 - STOP(5 txs)
+2019-08-13 18:06:27,062: [5331] m.c.manticore:INFO: Generated testcase No. 84 - STOP(5 txs)
+2019-08-13 18:06:27,735: [5323] m.c.manticore:INFO: Generated testcase No. 85 - STOP(5 txs)
+2019-08-13 18:06:27,982: [5353] m.c.manticore:INFO: Generated testcase No. 86 - STOP(5 txs)
+2019-08-13 18:06:28,147: [5339] m.c.manticore:INFO: Generated testcase No. 87 - STOP(5 txs)
+2019-08-13 18:06:29,302: [5322] m.c.manticore:INFO: Generated testcase No. 88 - STOP(5 txs)
+2019-08-13 18:06:30,544: [5357] m.c.manticore:INFO: Generated testcase No. 89 - STOP(5 txs)
+2019-08-13 18:06:31,357: [5331] m.c.manticore:INFO: Generated testcase No. 90 - STOP(5 txs)
+2019-08-13 18:06:32,147: [5339] m.c.manticore:INFO: Generated testcase No. 91 - STOP(5 txs)
+2019-08-13 18:06:32,328: [5323] m.c.manticore:INFO: Generated testcase No. 92 - STOP(5 txs)
+2019-08-13 18:06:32,365: [5344] m.c.manticore:INFO: Generated testcase No. 93 - STOP(5 txs)
+2019-08-13 18:06:32,601: [5326] m.c.manticore:INFO: Generated testcase No. 94 - STOP(5 txs)
+2019-08-13 18:06:33,474: [5353] m.c.manticore:INFO: Generated testcase No. 95 - STOP(5 txs)
+2019-08-13 18:06:34,091: [5322] m.c.manticore:INFO: Generated testcase No. 96 - STOP(5 txs)
+2019-08-13 18:06:34,206: [5347] m.c.manticore:INFO: Generated testcase No. 97 - STOP(5 txs)
+2019-08-13 18:06:35,593: [5357] m.c.manticore:INFO: Generated testcase No. 98 - STOP(5 txs)
+2019-08-13 18:06:36,762: [5331] m.c.manticore:INFO: Generated testcase No. 99 - STOP(5 txs)
+2019-08-13 18:06:36,957: [5339] m.c.manticore:INFO: Generated testcase No. 100 - STOP(5 txs)
+2019-08-13 18:06:37,300: [5326] m.c.manticore:INFO: Generated testcase No. 101 - STOP(5 txs)
+2019-08-13 18:06:37,733: [5344] m.c.manticore:INFO: Generated testcase No. 102 - STOP(5 txs)
+2019-08-13 18:06:38,060: [5323] m.c.manticore:INFO: Generated testcase No. 103 - STOP(5 txs)
+2019-08-13 18:06:38,382: [5353] m.c.manticore:INFO: Generated testcase No. 104 - STOP(5 txs)
+2019-08-13 18:06:38,832: [5347] m.c.manticore:INFO: Generated testcase No. 105 - STOP(5 txs)
+2019-08-13 18:06:40,010: [5322] m.c.manticore:INFO: Generated testcase No. 106 - STOP(5 txs)
+2019-08-13 18:06:41,346: [5331] m.c.manticore:INFO: Generated testcase No. 107 - STOP(5 txs)
+2019-08-13 18:06:41,722: [5357] m.c.manticore:INFO: Generated testcase No. 108 - STOP(5 txs)
+2019-08-13 18:06:42,351: [5339] m.c.manticore:INFO: Generated testcase No. 109 - STOP(5 txs)
+2019-08-13 18:06:42,422: [5344] m.c.manticore:INFO: Generated testcase No. 110 - STOP(5 txs)
+2019-08-13 18:06:42,995: [5353] m.c.manticore:INFO: Generated testcase No. 111 - STOP(5 txs)
+2019-08-13 18:06:43,236: [5323] m.c.manticore:INFO: Generated testcase No. 112 - STOP(5 txs)
+2019-08-13 18:06:43,434: [5326] m.c.manticore:INFO: Generated testcase No. 113 - STOP(5 txs)
+2019-08-13 18:06:44,990: [5347] m.c.manticore:INFO: Generated testcase No. 114 - STOP(5 txs)
+2019-08-13 18:06:45,185: [5322] m.c.manticore:INFO: Generated testcase No. 115 - STOP(5 txs)
+2019-08-13 18:06:46,539: [5331] m.c.manticore:INFO: Generated testcase No. 116 - STOP(5 txs)
+2019-08-13 18:06:47,890: [5326] m.c.manticore:INFO: Generated testcase No. 117 - STOP(5 txs)
+2019-08-13 18:06:48,018: [5323] m.c.manticore:INFO: Generated testcase No. 118 - STOP(5 txs)
+2019-08-13 18:06:48,050: [5339] m.c.manticore:INFO: Generated testcase No. 119 - STOP(5 txs)
+2019-08-13 18:06:48,409: [5357] m.c.manticore:INFO: Generated testcase No. 120 - STOP(5 txs)
+2019-08-13 18:06:49,172: [5344] m.c.manticore:INFO: Generated testcase No. 121 - STOP(5 txs)
+2019-08-13 18:06:49,277: [5353] m.c.manticore:INFO: Generated testcase No. 122 - STOP(5 txs)
+2019-08-13 18:06:49,906: [5347] m.c.manticore:INFO: Generated testcase No. 123 - STOP(5 txs)
+2019-08-13 18:06:51,652: [5322] m.c.manticore:INFO: Generated testcase No. 124 - STOP(5 txs)
+2019-08-13 18:06:52,248: [5331] m.c.manticore:INFO: Generated testcase No. 125 - STOP(5 txs)
+2019-08-13 18:06:53,086: [5339] m.c.manticore:INFO: Generated testcase No. 126 - STOP(5 txs)
+2019-08-13 18:06:53,407: [5326] m.c.manticore:INFO: Generated testcase No. 127 - STOP(5 txs)
+2019-08-13 18:06:53,788: [5323] m.c.manticore:INFO: Generated testcase No. 128 - STOP(5 txs)
+2019-08-13 18:06:54,312: [5357] m.c.manticore:INFO: Generated testcase No. 129 - STOP(5 txs)
+2019-08-13 18:06:54,464: [5344] m.c.manticore:INFO: Generated testcase No. 130 - STOP(5 txs)
+2019-08-13 18:06:55,107: [5353] m.c.manticore:INFO: Generated testcase No. 131 - STOP(5 txs)
+2019-08-13 18:06:56,427: [5347] m.c.manticore:INFO: Generated testcase No. 132 - STOP(5 txs)
+2019-08-13 18:06:57,109: [5322] m.c.manticore:INFO: Generated testcase No. 133 - STOP(5 txs)
+2019-08-13 18:06:58,474: [5339] m.c.manticore:INFO: Generated testcase No. 134 - STOP(5 txs)
+2019-08-13 18:06:59,128: [5323] m.c.manticore:INFO: Generated testcase No. 135 - STOP(5 txs)
+2019-08-13 18:06:59,148: [5326] m.c.manticore:INFO: Generated testcase No. 136 - STOP(5 txs)
+2019-08-13 18:07:00,287: [5331] m.c.manticore:INFO: Generated testcase No. 137 - STOP(5 txs)
+2019-08-13 18:07:00,428: [5357] m.c.manticore:INFO: Generated testcase No. 138 - STOP(5 txs)
+2019-08-13 18:07:02,278: [5347] m.c.manticore:INFO: Generated testcase No. 139 - STOP(5 txs)
+2019-08-13 18:07:02,443: [5344] m.c.manticore:INFO: Generated testcase No. 140 - STOP(5 txs)
+2019-08-13 18:07:02,714: [5353] m.c.manticore:INFO: Generated testcase No. 141 - STOP(5 txs)
+2019-08-13 18:07:03,556: [5322] m.c.manticore:INFO: Generated testcase No. 142 - STOP(5 txs)
+2019-08-13 18:07:04,702: [5339] m.c.manticore:INFO: Generated testcase No. 143 - STOP(5 txs)
+2019-08-13 18:07:04,792: [5326] m.c.manticore:INFO: Generated testcase No. 144 - STOP(5 txs)
+2019-08-13 18:07:04,861: [5323] m.c.manticore:INFO: Generated testcase No. 145 - STOP(5 txs)
+2019-08-13 18:07:05,261: [5357] m.c.manticore:INFO: Generated testcase No. 146 - STOP(5 txs)
+2019-08-13 18:07:07,568: [5331] m.c.manticore:INFO: Generated testcase No. 147 - STOP(5 txs)
+2019-08-13 18:07:08,119: [5353] m.c.manticore:INFO: Generated testcase No. 148 - STOP(5 txs)
+2019-08-13 18:07:08,156: [5344] m.c.manticore:INFO: Generated testcase No. 149 - STOP(5 txs)
+2019-08-13 18:07:08,733: [5347] m.c.manticore:INFO: Generated testcase No. 150 - STOP(5 txs)
+2019-08-13 18:07:09,239: [5322] m.c.manticore:INFO: Generated testcase No. 151 - STOP(5 txs)
+2019-08-13 18:07:10,320: [5323] m.c.manticore:INFO: Generated testcase No. 152 - STOP(5 txs)
+2019-08-13 18:07:10,453: [5326] m.c.manticore:INFO: Generated testcase No. 153 - STOP(5 txs)
+2019-08-13 18:07:11,328: [5357] m.c.manticore:INFO: Generated testcase No. 154 - STOP(5 txs)
+2019-08-13 18:07:11,583: [5339] m.c.manticore:INFO: Generated testcase No. 155 - STOP(5 txs)
+2019-08-13 18:07:12,054: [5331] m.c.manticore:INFO: Generated testcase No. 156 - STOP(5 txs)
+2019-08-13 18:07:12,518: [5353] m.c.manticore:INFO: Generated testcase No. 157 - STOP(5 txs)
+2019-08-13 18:07:13,133: [5344] m.c.manticore:INFO: Generated testcase No. 158 - STOP(5 txs)
+2019-08-13 18:07:13,911: [5322] m.c.manticore:INFO: Generated testcase No. 159 - STOP(5 txs)
+2019-08-13 18:07:14,882: [5326] m.c.manticore:INFO: Generated testcase No. 160 - STOP(5 txs)
+2019-08-13 18:07:15,478: [5347] m.c.manticore:INFO: Generated testcase No. 161 - STOP(5 txs)
+2019-08-13 18:07:15,771: [5323] m.c.manticore:INFO: Generated testcase No. 162 - STOP(5 txs)
+2019-08-13 18:07:16,626: [5331] m.c.manticore:INFO: Generated testcase No. 163 - STOP(5 txs)
+2019-08-13 18:07:17,919: [5357] m.c.manticore:INFO: Generated testcase No. 164 - STOP(5 txs)
+2019-08-13 18:07:18,114: [5353] m.c.manticore:INFO: Generated testcase No. 165 - STOP(5 txs)
+2019-08-13 18:07:19,286: [5339] m.c.manticore:INFO: Generated testcase No. 166 - STOP(5 txs)
+2019-08-13 18:07:19,578: [5326] m.c.manticore:INFO: Generated testcase No. 167 - STOP(5 txs)
+2019-08-13 18:07:19,929: [5344] m.c.manticore:INFO: Generated testcase No. 168 - STOP(5 txs)
+2019-08-13 18:07:19,993: [5322] m.c.manticore:INFO: Generated testcase No. 169 - STOP(5 txs)
+2019-08-13 18:07:20,820: [5347] m.c.manticore:INFO: Generated testcase No. 170 - STOP(5 txs)
+2019-08-13 18:07:21,249: [5323] m.c.manticore:INFO: Generated testcase No. 171 - STOP(5 txs)
+2019-08-13 18:07:22,815: [5357] m.c.manticore:INFO: Generated testcase No. 172 - STOP(5 txs)
+2019-08-13 18:07:23,505: [5331] m.c.manticore:INFO: Generated testcase No. 173 - STOP(5 txs)
+2019-08-13 18:07:23,665: [5339] m.c.manticore:INFO: Generated testcase No. 174 - STOP(5 txs)
+2019-08-13 18:07:23,797: [5353] m.c.manticore:INFO: Generated testcase No. 175 - STOP(5 txs)
+2019-08-13 18:07:24,666: [5322] m.c.manticore:INFO: Generated testcase No. 176 - STOP(5 txs)
+2019-08-13 18:07:24,935: [5344] m.c.manticore:INFO: Generated testcase No. 177 - RETURN(1 txs)
+2019-08-13 18:07:26,168: [5323] m.c.manticore:INFO: Generated testcase No. 178 - REVERT(2 txs)
+2019-08-13 18:07:26,749: [5326] m.c.manticore:INFO: Generated testcase No. 179 - REVERT(2 txs)
+2019-08-13 18:07:26,834: [5344] m.c.manticore:INFO: Generated testcase No. 180 - REVERT(2 txs)
+2019-08-13 18:07:27,616: [5347] m.c.manticore:INFO: Generated testcase No. 181 - REVERT(2 txs)
+2019-08-13 18:07:28,028: [5331] m.c.manticore:INFO: Generated testcase No. 182 - REVERT(2 txs)
+2019-08-13 18:07:28,525: [5323] m.c.manticore:INFO: Generated testcase No. 183 - REVERT(2 txs)
+2019-08-13 18:07:28,857: [5326] m.c.manticore:INFO: Generated testcase No. 184 - STOP(2 txs)
+2019-08-13 18:07:28,960: [5344] m.c.manticore:INFO: Generated testcase No. 185 - STOP(2 txs)
+2019-08-13 18:07:29,439: [5339] m.c.manticore:INFO: Generated testcase No. 186 - REVERT(3 txs)
+2019-08-13 18:07:29,651: [5357] m.c.manticore:INFO: Generated testcase No. 187 - STOP(2 txs)
+2019-08-13 18:07:30,375: [5347] m.c.manticore:INFO: Generated testcase No. 188 - REVERT(3 txs)
+2019-08-13 18:07:30,430: [5331] m.c.manticore:INFO: Generated testcase No. 189 - REVERT(3 txs)
+2019-08-13 18:07:30,620: [5322] m.c.manticore:INFO: Generated testcase No. 190 - REVERT(3 txs)
+2019-08-13 18:07:30,781: [5353] m.c.manticore:INFO: Generated testcase No. 191 - REVERT(3 txs)
+2019-08-13 18:07:31,551: [5326] m.c.manticore:INFO: Generated testcase No. 192 - REVERT(3 txs)
+2019-08-13 18:07:31,697: [5323] m.c.manticore:INFO: Generated testcase No. 193 - REVERT(3 txs)
+2019-08-13 18:07:31,955: [5357] m.c.manticore:INFO: Generated testcase No. 194 - REVERT(3 txs)
+2019-08-13 18:07:33,212: [5344] m.c.manticore:INFO: Generated testcase No. 195 - REVERT(3 txs)
+2019-08-13 18:07:33,336: [5339] m.c.manticore:INFO: Generated testcase No. 196 - REVERT(3 txs)
+2019-08-13 18:07:33,472: [5353] m.c.manticore:INFO: Generated testcase No. 197 - REVERT(3 txs)
+2019-08-13 18:07:33,712: [5347] m.c.manticore:INFO: Generated testcase No. 198 - REVERT(3 txs)
+2019-08-13 18:07:34,333: [5331] m.c.manticore:INFO: Generated testcase No. 199 - REVERT(3 txs)
+2019-08-13 18:07:34,729: [5326] m.c.manticore:INFO: Generated testcase No. 200 - REVERT(3 txs)
+2019-08-13 18:07:34,787: [5323] m.c.manticore:INFO: Generated testcase No. 201 - REVERT(3 txs)
+2019-08-13 18:07:35,003: [5322] m.c.manticore:INFO: Generated testcase No. 202 - REVERT(3 txs)
+2019-08-13 18:07:35,215: [5357] m.c.manticore:INFO: Generated testcase No. 203 - REVERT(3 txs)
+2019-08-13 18:07:36,270: [5344] m.c.manticore:INFO: Generated testcase No. 204 - REVERT(3 txs)
+2019-08-13 18:07:36,389: [5353] m.c.manticore:INFO: Generated testcase No. 205 - STOP(3 txs)
+2019-08-13 18:07:36,597: [5339] m.c.manticore:INFO: Generated testcase No. 206 - STOP(3 txs)
+2019-08-13 18:07:36,696: [5347] m.c.manticore:INFO: Generated testcase No. 207 - STOP(3 txs)
+2019-08-13 18:07:37,309: [5331] m.c.manticore:INFO: Generated testcase No. 208 - STOP(3 txs)
+2019-08-13 18:07:37,782: [5323] m.c.manticore:INFO: Generated testcase No. 209 - STOP(3 txs)
+2019-08-13 18:07:37,924: [5322] m.c.manticore:INFO: Generated testcase No. 210 - STOP(3 txs)
+2019-08-13 18:07:38,283: [5357] m.c.manticore:INFO: Generated testcase No. 211 - STOP(3 txs)
+2019-08-13 18:07:39,160: [5326] m.c.manticore:INFO: Generated testcase No. 212 - STOP(3 txs)
+2019-08-13 18:07:39,629: [5339] m.c.manticore:INFO: Generated testcase No. 213 - STOP(3 txs)
+2019-08-13 18:07:39,810: [5344] m.c.manticore:INFO: Generated testcase No. 214 - REVERT(4 txs)
+2019-08-13 18:07:40,452: [5353] m.c.manticore:INFO: Generated testcase No. 215 - STOP(3 txs)
+2019-08-13 18:07:40,556: [5347] m.c.manticore:INFO: Generated testcase No. 216 - STOP(3 txs)
+2019-08-13 18:07:41,004: [5331] m.c.manticore:INFO: Generated testcase No. 217 - REVERT(4 txs)
+2019-08-13 18:07:41,011: [5322] m.c.manticore:INFO: Generated testcase No. 218 - REVERT(4 txs)
+2019-08-13 18:07:42,704: [5339] m.c.manticore:INFO: Generated testcase No. 219 - REVERT(4 txs)
+2019-08-13 18:07:42,784: [5357] m.c.manticore:INFO: Generated testcase No. 220 - REVERT(4 txs)
+2019-08-13 18:07:42,849: [5326] m.c.manticore:INFO: Generated testcase No. 221 - REVERT(4 txs)
+2019-08-13 18:07:42,892: [5323] m.c.manticore:INFO: Generated testcase No. 222 - REVERT(4 txs)
+2019-08-13 18:07:43,999: [5347] m.c.manticore:INFO: Generated testcase No. 223 - REVERT(4 txs)
+2019-08-13 18:07:44,030: [5353] m.c.manticore:INFO: Generated testcase No. 224 - REVERT(4 txs)
+2019-08-13 18:07:44,956: [5344] m.c.manticore:INFO: Generated testcase No. 225 - REVERT(4 txs)
+2019-08-13 18:07:46,436: [5326] m.c.manticore:INFO: Generated testcase No. 226 - REVERT(4 txs)
+2019-08-13 18:07:46,610: [5322] m.c.manticore:INFO: Generated testcase No. 227 - REVERT(4 txs)
+2019-08-13 18:07:46,804: [5331] m.c.manticore:INFO: Generated testcase No. 228 - REVERT(4 txs)
+2019-08-13 18:07:46,926: [5357] m.c.manticore:INFO: Generated testcase No. 229 - REVERT(4 txs)
+2019-08-13 18:07:47,835: [5323] m.c.manticore:INFO: Generated testcase No. 230 - REVERT(4 txs)
+2019-08-13 18:07:48,426: [5353] m.c.manticore:INFO: Generated testcase No. 231 - REVERT(4 txs)
+2019-08-13 18:07:48,480: [5347] m.c.manticore:INFO: Generated testcase No. 232 - REVERT(4 txs)
+2019-08-13 18:07:48,971: [5339] m.c.manticore:INFO: Generated testcase No. 233 - REVERT(4 txs)
+2019-08-13 18:07:49,624: [5344] m.c.manticore:INFO: Generated testcase No. 234 - REVERT(4 txs)
+2019-08-13 18:07:50,847: [5322] m.c.manticore:INFO: Generated testcase No. 235 - REVERT(4 txs)
+2019-08-13 18:07:50,898: [5357] m.c.manticore:INFO: Generated testcase No. 236 - REVERT(4 txs)
+2019-08-13 18:07:51,754: [5331] m.c.manticore:INFO: Generated testcase No. 237 - REVERT(4 txs)
+2019-08-13 18:07:52,530: [5353] m.c.manticore:INFO: Generated testcase No. 238 - REVERT(4 txs)
+2019-08-13 18:07:52,562: [5326] m.c.manticore:INFO: Generated testcase No. 239 - REVERT(4 txs)
+2019-08-13 18:07:52,592: [5323] m.c.manticore:INFO: Generated testcase No. 240 - REVERT(4 txs)
+2019-08-13 18:07:52,678: [5339] m.c.manticore:INFO: Generated testcase No. 241 - REVERT(4 txs)
+2019-08-13 18:07:53,336: [5344] m.c.manticore:INFO: Generated testcase No. 242 - REVERT(4 txs)
+2019-08-13 18:07:53,968: [5347] m.c.manticore:INFO: Generated testcase No. 243 - REVERT(4 txs)
+2019-08-13 18:07:54,916: [5322] m.c.manticore:INFO: Generated testcase No. 244 - REVERT(4 txs)
+2019-08-13 18:07:55,452: [5331] m.c.manticore:INFO: Generated testcase No. 245 - REVERT(4 txs)
+2019-08-13 18:07:56,226: [5339] m.c.manticore:INFO: Generated testcase No. 246 - REVERT(4 txs)
+2019-08-13 18:07:56,755: [5326] m.c.manticore:INFO: Generated testcase No. 247 - REVERT(4 txs)
+2019-08-13 18:07:56,763: [5357] m.c.manticore:INFO: Generated testcase No. 248 - REVERT(4 txs)
+2019-08-13 18:07:58,392: [5347] m.c.manticore:INFO: Generated testcase No. 249 - REVERT(4 txs)
+2019-08-13 18:07:58,731: [5323] m.c.manticore:INFO: Generated testcase No. 250 - REVERT(4 txs)
+2019-08-13 18:07:58,965: [5344] m.c.manticore:INFO: Generated testcase No. 251 - REVERT(4 txs)
+2019-08-13 18:07:59,365: [5322] m.c.manticore:INFO: Generated testcase No. 252 - REVERT(4 txs)
+2019-08-13 18:07:59,419: [5353] m.c.manticore:INFO: Generated testcase No. 253 - REVERT(4 txs)
+2019-08-13 18:08:00,895: [5331] m.c.manticore:INFO: Generated testcase No. 254 - REVERT(4 txs)
+2019-08-13 18:08:01,048: [5326] m.c.manticore:INFO: Generated testcase No. 255 - REVERT(4 txs)
+2019-08-13 18:08:01,243: [5339] m.c.manticore:INFO: Generated testcase No. 256 - REVERT(4 txs)
+2019-08-13 18:08:01,429: [5357] m.c.manticore:INFO: Generated testcase No. 257 - REVERT(4 txs)
+2019-08-13 18:08:02,117: [5347] m.c.manticore:INFO: Generated testcase No. 258 - REVERT(4 txs)
+2019-08-13 18:08:02,570: [5323] m.c.manticore:INFO: Generated testcase No. 259 - REVERT(4 txs)
+2019-08-13 18:08:02,992: [5344] m.c.manticore:INFO: Generated testcase No. 260 - REVERT(4 txs)
+2019-08-13 18:08:03,035: [5353] m.c.manticore:INFO: Generated testcase No. 261 - REVERT(4 txs)
+2019-08-13 18:08:04,634: [5322] m.c.manticore:INFO: Generated testcase No. 262 - REVERT(4 txs)
+2019-08-13 18:08:05,365: [5339] m.c.manticore:INFO: Generated testcase No. 263 - REVERT(4 txs)
+2019-08-13 18:08:05,498: [5331] m.c.manticore:INFO: Generated testcase No. 264 - REVERT(4 txs)
+2019-08-13 18:08:06,180: [5326] m.c.manticore:INFO: Generated testcase No. 265 - REVERT(4 txs)
+2019-08-13 18:08:06,236: [5357] m.c.manticore:INFO: Generated testcase No. 266 - REVERT(4 txs)
+2019-08-13 18:08:07,009: [5323] m.c.manticore:INFO: Generated testcase No. 267 - REVERT(4 txs)
+2019-08-13 18:08:07,427: [5353] m.c.manticore:INFO: Generated testcase No. 268 - SELFDESTRUCT(4 txs)
+2019-08-13 18:08:08,079: [5347] m.c.manticore:INFO: Generated testcase No. 269 - REVERT(4 txs)
+2019-08-13 18:08:08,152: [5344] m.c.manticore:INFO: Generated testcase No. 270 - REVERT(4 txs)
+2019-08-13 18:08:08,934: [5322] m.c.manticore:INFO: Generated testcase No. 271 - REVERT(4 txs)
+2019-08-13 18:08:09,359: [5339] m.c.manticore:INFO: Generated testcase No. 272 - REVERT(4 txs)
+2019-08-13 18:08:10,541: [5331] m.c.manticore:INFO: Generated testcase No. 273 - REVERT(4 txs)
+2019-08-13 18:08:10,757: [5326] m.c.manticore:INFO: Generated testcase No. 274 - REVERT(4 txs)
+2019-08-13 18:08:11,246: [5353] m.c.manticore:INFO: Generated testcase No. 275 - REVERT(4 txs)
+2019-08-13 18:08:12,048: [5357] m.c.manticore:INFO: Generated testcase No. 276 - REVERT(4 txs)
+2019-08-13 18:08:12,408: [5347] m.c.manticore:INFO: Generated testcase No. 277 - REVERT(4 txs)
+2019-08-13 18:08:12,574: [5323] m.c.manticore:INFO: Generated testcase No. 278 - REVERT(4 txs)
+2019-08-13 18:08:13,298: [5322] m.c.manticore:INFO: Generated testcase No. 279 - REVERT(4 txs)
+2019-08-13 18:08:13,741: [5344] m.c.manticore:INFO: Generated testcase No. 280 - REVERT(4 txs)
+2019-08-13 18:08:15,000: [5326] m.c.manticore:INFO: Generated testcase No. 281 - REVERT(4 txs)
+2019-08-13 18:08:15,038: [5339] m.c.manticore:INFO: Generated testcase No. 282 - REVERT(4 txs)
+2019-08-13 18:08:15,659: [5353] m.c.manticore:INFO: Generated testcase No. 283 - STOP(4 txs)
+2019-08-13 18:08:16,077: [5331] m.c.manticore:INFO: Generated testcase No. 284 - STOP(4 txs)
+2019-08-13 18:08:16,881: [5323] m.c.manticore:INFO: Generated testcase No. 285 - STOP(4 txs)
+2019-08-13 18:08:16,925: [5357] m.c.manticore:INFO: Generated testcase No. 286 - STOP(4 txs)
+2019-08-13 18:08:16,992: [5347] m.c.manticore:INFO: Generated testcase No. 287 - STOP(4 txs)
+2019-08-13 18:08:17,987: [5344] m.c.manticore:INFO: Generated testcase No. 288 - STOP(4 txs)
+2019-08-13 18:08:19,164: [5322] m.c.manticore:INFO: Generated testcase No. 289 - STOP(4 txs)
+2019-08-13 18:08:20,368: [5339] m.c.manticore:INFO: Generated testcase No. 290 - STOP(4 txs)
+2019-08-13 18:08:21,052: [5353] m.c.manticore:INFO: Generated testcase No. 291 - STOP(4 txs)
+2019-08-13 18:08:21,056: [5323] m.c.manticore:INFO: Generated testcase No. 292 - STOP(4 txs)
+2019-08-13 18:08:21,191: [5326] m.c.manticore:INFO: Generated testcase No. 293 - STOP(4 txs)
+2019-08-13 18:08:21,242: [5331] m.c.manticore:INFO: Generated testcase No. 294 - STOP(4 txs)
+2019-08-13 18:08:21,289: [5357] m.c.manticore:INFO: Generated testcase No. 295 - STOP(4 txs)
+2019-08-13 18:08:23,940: [5347] m.c.manticore:INFO: Generated testcase No. 296 - REVERT(5 txs)
+2019-08-13 18:08:23,989: [5322] m.c.manticore:INFO: Generated testcase No. 297 - REVERT(5 txs)
+2019-08-13 18:08:24,500: [5344] m.c.manticore:INFO: Generated testcase No. 298 - STOP(4 txs)
+2019-08-13 18:08:24,667: [5339] m.c.manticore:INFO: Generated testcase No. 299 - REVERT(5 txs)
+2019-08-13 18:08:25,138: [5326] m.c.manticore:INFO: Generated testcase No. 300 - STOP(4 txs)
+2019-08-13 18:08:26,306: [5331] m.c.manticore:INFO: Generated testcase No. 301 - REVERT(5 txs)
+2019-08-13 18:08:26,937: [5353] m.c.manticore:INFO: Generated testcase No. 302 - STOP(4 txs)
+2019-08-13 18:08:26,959: [5323] m.c.manticore:INFO: Generated testcase No. 303 - STOP(4 txs)
+2019-08-13 18:08:27,201: [5357] m.c.manticore:INFO: Generated testcase No. 304 - REVERT(5 txs)
+2019-08-13 18:08:29,629: [5326] m.c.manticore:INFO: Generated testcase No. 305 - REVERT(5 txs)
+2019-08-13 18:08:29,896: [5347] m.c.manticore:INFO: Generated testcase No. 306 - STOP(4 txs)
+2019-08-13 18:08:30,432: [5344] m.c.manticore:INFO: Generated testcase No. 307 - REVERT(5 txs)
+2019-08-13 18:08:31,064: [5322] m.c.manticore:INFO: Generated testcase No. 308 - STOP(4 txs)
+2019-08-13 18:08:31,516: [5323] m.c.manticore:INFO: Generated testcase No. 309 - STOP(4 txs)
+2019-08-13 18:08:31,708: [5353] m.c.manticore:INFO: Generated testcase No. 310 - REVERT(5 txs)
+2019-08-13 18:08:32,323: [5339] m.c.manticore:INFO: Generated testcase No. 311 - STOP(4 txs)
+2019-08-13 18:08:33,111: [5357] m.c.manticore:INFO: Generated testcase No. 312 - STOP(4 txs)
+2019-08-13 18:08:34,459: [5331] m.c.manticore:INFO: Generated testcase No. 313 - STOP(4 txs)
+2019-08-13 18:08:34,786: [5347] m.c.manticore:INFO: Generated testcase No. 314 - STOP(4 txs)
+2019-08-13 18:08:35,488: [5322] m.c.manticore:INFO: Generated testcase No. 315 - REVERT(5 txs)
+2019-08-13 18:08:35,593: [5323] m.c.manticore:INFO: Generated testcase No. 316 - STOP(4 txs)
+2019-08-13 18:08:36,415: [5344] m.c.manticore:INFO: Generated testcase No. 317 - STOP(4 txs)
+2019-08-13 18:08:36,764: [5353] m.c.manticore:INFO: Generated testcase No. 318 - REVERT(5 txs)
+2019-08-13 18:08:37,235: [5339] m.c.manticore:INFO: Generated testcase No. 319 - STOP(4 txs)
+2019-08-13 18:08:37,538: [5326] m.c.manticore:INFO: Generated testcase No. 320 - REVERT(5 txs)
+2019-08-13 18:08:38,919: [5331] m.c.manticore:INFO: Generated testcase No. 321 - STOP(4 txs)
+2019-08-13 18:08:40,415: [5344] m.c.manticore:INFO: Generated testcase No. 322 - REVERT(5 txs)
+2019-08-13 18:08:40,783: [5323] m.c.manticore:INFO: Generated testcase No. 323 - STOP(4 txs)
+2019-08-13 18:08:40,997: [5347] m.c.manticore:INFO: Generated testcase No. 324 - REVERT(5 txs)
+2019-08-13 18:08:41,159: [5322] m.c.manticore:INFO: Generated testcase No. 325 - REVERT(5 txs)
+2019-08-13 18:08:41,619: [5357] m.c.manticore:INFO: Generated testcase No. 326 - REVERT(5 txs)
+2019-08-13 18:08:41,821: [5339] m.c.manticore:INFO: Generated testcase No. 327 - STOP(4 txs)
+2019-08-13 18:08:43,397: [5353] m.c.manticore:INFO: Generated testcase No. 328 - REVERT(5 txs)
+2019-08-13 18:08:43,423: [5326] m.c.manticore:INFO: Generated testcase No. 329 - STOP(4 txs)
+2019-08-13 18:08:44,687: [5331] m.c.manticore:INFO: Generated testcase No. 330 - REVERT(5 txs)
+2019-08-13 18:08:46,015: [5323] m.c.manticore:INFO: Generated testcase No. 331 - STOP(4 txs)
+2019-08-13 18:08:46,616: [5347] m.c.manticore:INFO: Generated testcase No. 332 - STOP(4 txs)
+2019-08-13 18:08:46,620: [5344] m.c.manticore:INFO: Generated testcase No. 333 - REVERT(5 txs)
+2019-08-13 18:08:47,319: [5357] m.c.manticore:INFO: Generated testcase No. 334 - REVERT(5 txs)
+2019-08-13 18:08:47,850: [5322] m.c.manticore:INFO: Generated testcase No. 335 - STOP(4 txs)
+2019-08-13 18:08:48,407: [5353] m.c.manticore:INFO: Generated testcase No. 336 - STOP(4 txs)
+2019-08-13 18:08:48,695: [5326] m.c.manticore:INFO: Generated testcase No. 337 - REVERT(5 txs)
+2019-08-13 18:08:49,042: [5339] m.c.manticore:INFO: Generated testcase No. 338 - REVERT(5 txs)
+2019-08-13 18:08:50,413: [5347] m.c.manticore:INFO: Generated testcase No. 339 - STOP(4 txs)
+2019-08-13 18:08:50,520: [5323] m.c.manticore:INFO: Generated testcase No. 340 - REVERT(5 txs)
+2019-08-13 18:08:52,043: [5344] m.c.manticore:INFO: Generated testcase No. 341 - REVERT(5 txs)
+2019-08-13 18:08:52,691: [5322] m.c.manticore:INFO: Generated testcase No. 342 - REVERT(5 txs)
+2019-08-13 18:08:53,409: [5357] m.c.manticore:INFO: Generated testcase No. 343 - REVERT(5 txs)
+2019-08-13 18:08:53,576: [5353] m.c.manticore:INFO: Generated testcase No. 344 - STOP(4 txs)
+2019-08-13 18:08:54,419: [5339] m.c.manticore:INFO: Generated testcase No. 345 - REVERT(5 txs)
+2019-08-13 18:08:55,112: [5326] m.c.manticore:INFO: Generated testcase No. 346 - REVERT(5 txs)
+2019-08-13 18:08:55,225: [5331] m.c.manticore:INFO: Generated testcase No. 347 - REVERT(5 txs)
+2019-08-13 18:08:56,510: [5347] m.c.manticore:INFO: Generated testcase No. 348 - REVERT(5 txs)
+2019-08-13 18:08:57,259: [5323] m.c.manticore:INFO: Generated testcase No. 349 - REVERT(5 txs)
+2019-08-13 18:08:57,764: [5322] m.c.manticore:INFO: Generated testcase No. 350 - STOP(4 txs)
+2019-08-13 18:08:57,919: [5344] m.c.manticore:INFO: Generated testcase No. 351 - REVERT(5 txs)
+2019-08-13 18:08:59,713: [5326] m.c.manticore:INFO: Generated testcase No. 352 - REVERT(5 txs)
+2019-08-13 18:08:59,805: [5353] m.c.manticore:INFO: Generated testcase No. 353 - REVERT(5 txs)
+2019-08-13 18:09:00,028: [5331] m.c.manticore:INFO: Generated testcase No. 354 - STOP(4 txs)
+2019-08-13 18:09:00,286: [5357] m.c.manticore:INFO: Generated testcase No. 355 - REVERT(5 txs)
+2019-08-13 18:09:01,518: [5339] m.c.manticore:INFO: Generated testcase No. 356 - REVERT(5 txs)
+2019-08-13 18:09:01,671: [5347] m.c.manticore:INFO: Generated testcase No. 357 - STOP(4 txs)
+2019-08-13 18:09:02,907: [5323] m.c.manticore:INFO: Generated testcase No. 358 - REVERT(5 txs)
+2019-08-13 18:09:03,258: [5322] m.c.manticore:INFO: Generated testcase No. 359 - REVERT(5 txs)
+2019-08-13 18:09:04,308: [5353] m.c.manticore:INFO: Generated testcase No. 360 - REVERT(5 txs)
+2019-08-13 18:09:04,740: [5344] m.c.manticore:INFO: Generated testcase No. 361 - REVERT(5 txs)
+2019-08-13 18:09:06,063: [5357] m.c.manticore:INFO: Generated testcase No. 362 - STOP(4 txs)
+2019-08-13 18:09:06,733: [5339] m.c.manticore:INFO: Generated testcase No. 363 - REVERT(5 txs)
+2019-08-13 18:09:06,836: [5331] m.c.manticore:INFO: Generated testcase No. 364 - REVERT(5 txs)
+2019-08-13 18:09:07,249: [5347] m.c.manticore:INFO: Generated testcase No. 365 - REVERT(5 txs)
+2019-08-13 18:09:07,422: [5326] m.c.manticore:INFO: Generated testcase No. 366 - REVERT(5 txs)
+2019-08-13 18:09:08,928: [5322] m.c.manticore:INFO: Generated testcase No. 367 - REVERT(5 txs)
+2019-08-13 18:09:09,987: [5323] m.c.manticore:INFO: Generated testcase No. 368 - STOP(4 txs)
+2019-08-13 18:09:10,191: [5344] m.c.manticore:INFO: Generated testcase No. 369 - REVERT(5 txs)
+2019-08-13 18:09:11,224: [5353] m.c.manticore:INFO: Generated testcase No. 370 - REVERT(5 txs)
+2019-08-13 18:09:11,622: [5357] m.c.manticore:INFO: Generated testcase No. 371 - REVERT(5 txs)
+2019-08-13 18:09:12,445: [5331] m.c.manticore:INFO: Generated testcase No. 372 - REVERT(5 txs)
+2019-08-13 18:09:12,513: [5339] m.c.manticore:INFO: Generated testcase No. 373 - REVERT(5 txs)
+2019-08-13 18:09:13,534: [5347] m.c.manticore:INFO: Generated testcase No. 374 - REVERT(5 txs)
+2019-08-13 18:09:13,867: [5322] m.c.manticore:INFO: Generated testcase No. 375 - REVERT(5 txs)
+2019-08-13 18:09:14,560: [5323] m.c.manticore:INFO: Generated testcase No. 377 - REVERT(5 txs)
+2019-08-13 18:09:14,564: [5326] m.c.manticore:INFO: Generated testcase No. 376 - REVERT(5 txs)
+2019-08-13 18:09:16,518: [5353] m.c.manticore:INFO: Generated testcase No. 378 - REVERT(5 txs)
+2019-08-13 18:09:17,381: [5344] m.c.manticore:INFO: Generated testcase No. 379 - REVERT(5 txs)
+2019-08-13 18:09:18,822: [5339] m.c.manticore:INFO: Generated testcase No. 380 - REVERT(5 txs)
+2019-08-13 18:09:19,275: [5357] m.c.manticore:INFO: Generated testcase No. 381 - REVERT(5 txs)
+2019-08-13 18:09:19,478: [5326] m.c.manticore:INFO: Generated testcase No. 382 - REVERT(5 txs)
+2019-08-13 18:09:19,516: [5331] m.c.manticore:INFO: Generated testcase No. 383 - REVERT(5 txs)
+2019-08-13 18:09:20,058: [5347] m.c.manticore:INFO: Generated testcase No. 384 - REVERT(5 txs)
+2019-08-13 18:09:20,895: [5323] m.c.manticore:INFO: Generated testcase No. 385 - REVERT(5 txs)
+2019-08-13 18:09:21,805: [5322] m.c.manticore:INFO: Generated testcase No. 386 - REVERT(5 txs)
+2019-08-13 18:09:22,082: [5353] m.c.manticore:INFO: Generated testcase No. 387 - REVERT(5 txs)
+2019-08-13 18:09:23,495: [5344] m.c.manticore:INFO: Generated testcase No. 388 - REVERT(5 txs)
+2019-08-13 18:09:24,050: [5357] m.c.manticore:INFO: Generated testcase No. 389 - REVERT(5 txs)
+2019-08-13 18:09:25,108: [5331] m.c.manticore:INFO: Generated testcase No. 390 - REVERT(5 txs)
+2019-08-13 18:09:25,165: [5339] m.c.manticore:INFO: Generated testcase No. 391 - REVERT(5 txs)
+2019-08-13 18:09:26,590: [5322] m.c.manticore:INFO: Generated testcase No. 392 - REVERT(5 txs)
+2019-08-13 18:09:27,108: [5326] m.c.manticore:INFO: Generated testcase No. 393 - REVERT(5 txs)
+2019-08-13 18:09:27,798: [5347] m.c.manticore:INFO: Generated testcase No. 394 - REVERT(5 txs)
+2019-08-13 18:09:27,959: [5323] m.c.manticore:INFO: Generated testcase No. 395 - REVERT(5 txs)
+2019-08-13 18:09:29,662: [5344] m.c.manticore:INFO: Generated testcase No. 396 - REVERT(5 txs)
+2019-08-13 18:09:30,105: [5339] m.c.manticore:INFO: Generated testcase No. 397 - REVERT(5 txs)
+2019-08-13 18:09:30,249: [5353] m.c.manticore:INFO: Generated testcase No. 398 - REVERT(5 txs)
+2019-08-13 18:09:30,811: [5357] m.c.manticore:INFO: Generated testcase No. 399 - REVERT(5 txs)
+2019-08-13 18:09:31,317: [5331] m.c.manticore:INFO: Generated testcase No. 400 - REVERT(5 txs)
+2019-08-13 18:09:32,683: [5323] m.c.manticore:INFO: Generated testcase No. 401 - REVERT(5 txs)
+2019-08-13 18:09:33,213: [5326] m.c.manticore:INFO: Generated testcase No. 402 - REVERT(5 txs)
+2019-08-13 18:09:34,184: [5322] m.c.manticore:INFO: Generated testcase No. 403 - REVERT(5 txs)
+2019-08-13 18:09:35,642: [5353] m.c.manticore:INFO: Generated testcase No. 404 - REVERT(5 txs)
+2019-08-13 18:09:35,683: [5347] m.c.manticore:INFO: Generated testcase No. 405 - REVERT(5 txs)
+2019-08-13 18:09:36,421: [5339] m.c.manticore:INFO: Generated testcase No. 406 - REVERT(5 txs)
+2019-08-13 18:09:36,508: [5357] m.c.manticore:INFO: Generated testcase No. 407 - REVERT(5 txs)
+2019-08-13 18:09:36,985: [5344] m.c.manticore:INFO: Generated testcase No. 408 - REVERT(5 txs)
+2019-08-13 18:09:37,813: [5323] m.c.manticore:INFO: Generated testcase No. 409 - REVERT(5 txs)
+2019-08-13 18:09:38,932: [5331] m.c.manticore:INFO: Generated testcase No. 410 - REVERT(5 txs)
+2019-08-13 18:09:39,183: [5322] m.c.manticore:INFO: Generated testcase No. 411 - REVERT(5 txs)
+2019-08-13 18:09:39,532: [5326] m.c.manticore:INFO: Generated testcase No. 412 - REVERT(5 txs)
+2019-08-13 18:09:41,500: [5357] m.c.manticore:INFO: Generated testcase No. 413 - REVERT(5 txs)
+2019-08-13 18:09:41,579: [5347] m.c.manticore:INFO: Generated testcase No. 414 - REVERT(5 txs)
+2019-08-13 18:09:42,061: [5344] m.c.manticore:INFO: Generated testcase No. 415 - REVERT(5 txs)
+2019-08-13 18:09:42,128: [5339] m.c.manticore:INFO: Generated testcase No. 416 - REVERT(5 txs)
+2019-08-13 18:09:43,316: [5353] m.c.manticore:INFO: Generated testcase No. 417 - REVERT(5 txs)
+2019-08-13 18:09:45,040: [5322] m.c.manticore:INFO: Generated testcase No. 418 - REVERT(5 txs)
+2019-08-13 18:09:45,186: [5331] m.c.manticore:INFO: Generated testcase No. 419 - REVERT(5 txs)
+2019-08-13 18:09:46,491: [5323] m.c.manticore:INFO: Generated testcase No. 420 - REVERT(5 txs)
+2019-08-13 18:09:47,229: [5326] m.c.manticore:INFO: Generated testcase No. 421 - REVERT(5 txs)
+2019-08-13 18:09:47,820: [5347] m.c.manticore:INFO: Generated testcase No. 422 - REVERT(5 txs)
+2019-08-13 18:09:47,839: [5344] m.c.manticore:INFO: Generated testcase No. 423 - REVERT(5 txs)
+2019-08-13 18:09:48,555: [5357] m.c.manticore:INFO: Generated testcase No. 424 - REVERT(5 txs)
+2019-08-13 18:09:49,418: [5353] m.c.manticore:INFO: Generated testcase No. 425 - REVERT(5 txs)
+2019-08-13 18:09:49,566: [5339] m.c.manticore:INFO: Generated testcase No. 426 - REVERT(5 txs)
+2019-08-13 18:09:50,993: [5331] m.c.manticore:INFO: Generated testcase No. 427 - REVERT(5 txs)
+2019-08-13 18:09:51,895: [5322] m.c.manticore:INFO: Generated testcase No. 428 - REVERT(5 txs)
+2019-08-13 18:09:52,410: [5323] m.c.manticore:INFO: Generated testcase No. 429 - REVERT(5 txs)
+2019-08-13 18:09:52,609: [5326] m.c.manticore:INFO: Generated testcase No. 430 - REVERT(5 txs)
+2019-08-13 18:09:53,093: [5347] m.c.manticore:INFO: Generated testcase No. 431 - REVERT(5 txs)
+2019-08-13 18:09:54,482: [5357] m.c.manticore:INFO: Generated testcase No. 432 - REVERT(5 txs)
+2019-08-13 18:09:54,881: [5339] m.c.manticore:INFO: Generated testcase No. 433 - REVERT(5 txs)
+2019-08-13 18:09:55,381: [5353] m.c.manticore:INFO: Generated testcase No. 434 - REVERT(5 txs)
+2019-08-13 18:09:57,100: [5322] m.c.manticore:INFO: Generated testcase No. 435 - REVERT(5 txs)
+2019-08-13 18:09:57,203: [5344] m.c.manticore:INFO: Generated testcase No. 436 - REVERT(5 txs)
+2019-08-13 18:09:58,512: [5323] m.c.manticore:INFO: Generated testcase No. 437 - REVERT(5 txs)
+2019-08-13 18:09:59,794: [5326] m.c.manticore:INFO: Generated testcase No. 438 - REVERT(5 txs)
+2019-08-13 18:10:00,823: [5331] m.c.manticore:INFO: Generated testcase No. 439 - REVERT(5 txs)
+2019-08-13 18:10:00,848: [5339] m.c.manticore:INFO: Generated testcase No. 440 - REVERT(5 txs)
+2019-08-13 18:10:01,167: [5347] m.c.manticore:INFO: Generated testcase No. 441 - REVERT(5 txs)
+2019-08-13 18:10:01,732: [5357] m.c.manticore:INFO: Generated testcase No. 442 - REVERT(5 txs)
+2019-08-13 18:10:02,197: [5353] m.c.manticore:INFO: Generated testcase No. 443 - REVERT(5 txs)
+2019-08-13 18:10:03,831: [5344] m.c.manticore:INFO: Generated testcase No. 444 - REVERT(5 txs)
+2019-08-13 18:10:03,867: [5322] m.c.manticore:INFO: Generated testcase No. 445 - REVERT(5 txs)
+2019-08-13 18:10:05,732: [5326] m.c.manticore:INFO: Generated testcase No. 446 - REVERT(5 txs)
+2019-08-13 18:10:05,758: [5323] m.c.manticore:INFO: Generated testcase No. 447 - REVERT(5 txs)
+2019-08-13 18:10:06,283: [5331] m.c.manticore:INFO: Generated testcase No. 448 - STOP(4 txs)
+2019-08-13 18:10:06,397: [5339] m.c.manticore:INFO: Generated testcase No. 449 - REVERT(5 txs)
+2019-08-13 18:10:07,289: [5347] m.c.manticore:INFO: Generated testcase No. 450 - REVERT(5 txs)
+2019-08-13 18:10:08,157: [5357] m.c.manticore:INFO: Generated testcase No. 451 - REVERT(5 txs)
+2019-08-13 18:10:09,190: [5353] m.c.manticore:INFO: Generated testcase No. 452 - REVERT(5 txs)
+2019-08-13 18:10:09,874: [5344] m.c.manticore:INFO: Generated testcase No. 453 - REVERT(5 txs)
+2019-08-13 18:10:10,342: [5322] m.c.manticore:INFO: Generated testcase No. 454 - REVERT(5 txs)
+2019-08-13 18:10:11,041: [5331] m.c.manticore:INFO: Generated testcase No. 455 - REVERT(5 txs)
+2019-08-13 18:10:11,874: [5339] m.c.manticore:INFO: Generated testcase No. 456 - REVERT(5 txs)
+2019-08-13 18:10:11,968: [5347] m.c.manticore:INFO: Generated testcase No. 457 - REVERT(5 txs)
+2019-08-13 18:10:12,042: [5323] m.c.manticore:INFO: Generated testcase No. 458 - REVERT(5 txs)
+2019-08-13 18:10:12,904: [5326] m.c.manticore:INFO: Generated testcase No. 459 - REVERT(5 txs)
+2019-08-13 18:10:13,503: [5357] m.c.manticore:INFO: Generated testcase No. 460 - REVERT(5 txs)
+2019-08-13 18:10:15,069: [5322] m.c.manticore:INFO: Generated testcase No. 461 - REVERT(5 txs)
+2019-08-13 18:10:16,140: [5344] m.c.manticore:INFO: Generated testcase No. 462 - REVERT(5 txs)
+2019-08-13 18:10:17,770: [5331] m.c.manticore:INFO: Generated testcase No. 463 - REVERT(5 txs)
+2019-08-13 18:10:18,762: [5353] m.c.manticore:INFO: Generated testcase No. 464 - REVERT(5 txs)
+2019-08-13 18:10:18,951: [5347] m.c.manticore:INFO: Generated testcase No. 465 - REVERT(5 txs)
+2019-08-13 18:10:19,238: [5339] m.c.manticore:INFO: Generated testcase No. 466 - REVERT(5 txs)
+2019-08-13 18:10:19,245: [5323] m.c.manticore:INFO: Generated testcase No. 467 - REVERT(5 txs)
+2019-08-13 18:10:20,015: [5326] m.c.manticore:INFO: Generated testcase No. 468 - REVERT(5 txs)
+2019-08-13 18:10:20,697: [5357] m.c.manticore:INFO: Generated testcase No. 469 - REVERT(5 txs)
+2019-08-13 18:10:21,497: [5322] m.c.manticore:INFO: Generated testcase No. 470 - REVERT(5 txs)
+2019-08-13 18:10:21,799: [5344] m.c.manticore:INFO: Generated testcase No. 471 - REVERT(5 txs)
+2019-08-13 18:10:23,006: [5331] m.c.manticore:INFO: Generated testcase No. 472 - REVERT(5 txs)
+2019-08-13 18:10:23,878: [5323] m.c.manticore:INFO: Generated testcase No. 473 - REVERT(5 txs)
+2019-08-13 18:10:24,254: [5347] m.c.manticore:INFO: Generated testcase No. 474 - REVERT(5 txs)
+2019-08-13 18:10:24,688: [5353] m.c.manticore:INFO: Generated testcase No. 475 - REVERT(5 txs)
+2019-08-13 18:10:24,968: [5339] m.c.manticore:INFO: Generated testcase No. 476 - REVERT(5 txs)
+2019-08-13 18:10:25,657: [5326] m.c.manticore:INFO: Generated testcase No. 477 - REVERT(5 txs)
+2019-08-13 18:10:26,949: [5357] m.c.manticore:INFO: Generated testcase No. 478 - REVERT(5 txs)
+2019-08-13 18:10:27,176: [5322] m.c.manticore:INFO: Generated testcase No. 479 - REVERT(5 txs)
+2019-08-13 18:10:28,452: [5344] m.c.manticore:INFO: Generated testcase No. 480 - REVERT(5 txs)
+2019-08-13 18:10:30,853: [5331] m.c.manticore:INFO: Generated testcase No. 481 - REVERT(5 txs)
+2019-08-13 18:10:30,996: [5347] m.c.manticore:INFO: Generated testcase No. 482 - REVERT(5 txs)
+2019-08-13 18:10:31,244: [5353] m.c.manticore:INFO: Generated testcase No. 483 - REVERT(5 txs)
+2019-08-13 18:10:31,984: [5339] m.c.manticore:INFO: Generated testcase No. 484 - SELFDESTRUCT(5 txs)
+2019-08-13 18:10:32,575: [5323] m.c.manticore:INFO: Generated testcase No. 485 - REVERT(5 txs)
+2019-08-13 18:10:35,301: [5322] m.c.manticore:INFO: Generated testcase No. 486 - REVERT(5 txs)
+2019-08-13 18:10:35,484: [5326] m.c.manticore:INFO: Generated testcase No. 487 - REVERT(5 txs)
+2019-08-13 18:10:35,663: [5357] m.c.manticore:INFO: Generated testcase No. 488 - REVERT(5 txs)
+2019-08-13 18:10:35,997: [5344] m.c.manticore:INFO: Generated testcase No. 489 - REVERT(5 txs)
+2019-08-13 18:10:37,471: [5331] m.c.manticore:INFO: Generated testcase No. 490 - REVERT(5 txs)
+2019-08-13 18:10:38,335: [5339] m.c.manticore:INFO: Generated testcase No. 491 - REVERT(5 txs)
+2019-08-13 18:10:38,482: [5347] m.c.manticore:INFO: Generated testcase No. 492 - REVERT(5 txs)
+2019-08-13 18:10:38,767: [5353] m.c.manticore:INFO: Generated testcase No. 493 - REVERT(5 txs)
+2019-08-13 18:10:40,791: [5323] m.c.manticore:INFO: Generated testcase No. 494 - REVERT(5 txs)
+2019-08-13 18:10:40,982: [5326] m.c.manticore:INFO: Generated testcase No. 495 - REVERT(5 txs)
+2019-08-13 18:10:41,000: [5357] m.c.manticore:INFO: Generated testcase No. 496 - REVERT(5 txs)
+2019-08-13 18:10:42,660: [5331] m.c.manticore:INFO: Generated testcase No. 497 - REVERT(5 txs)
+2019-08-13 18:10:42,882: [5322] m.c.manticore:INFO: Generated testcase No. 498 - REVERT(5 txs)
+2019-08-13 18:10:43,707: [5344] m.c.manticore:INFO: Generated testcase No. 499 - REVERT(5 txs)
+2019-08-13 18:10:44,298: [5347] m.c.manticore:INFO: Generated testcase No. 500 - REVERT(5 txs)
+2019-08-13 18:10:44,997: [5339] m.c.manticore:INFO: Generated testcase No. 501 - REVERT(5 txs)
+2019-08-13 18:10:45,787: [5353] m.c.manticore:INFO: Generated testcase No. 502 - REVERT(5 txs)
+2019-08-13 18:10:46,129: [5323] m.c.manticore:INFO: Generated testcase No. 503 - REVERT(5 txs)
+2019-08-13 18:10:46,387: [5326] m.c.manticore:INFO: Generated testcase No. 504 - REVERT(5 txs)
+2019-08-13 18:10:46,469: [5357] m.c.manticore:INFO: Generated testcase No. 505 - REVERT(5 txs)
+2019-08-13 18:10:49,909: [5344] m.c.manticore:INFO: Generated testcase No. 506 - REVERT(5 txs)
+2019-08-13 18:10:50,055: [5322] m.c.manticore:INFO: Generated testcase No. 507 - REVERT(5 txs)
+2019-08-13 18:10:51,151: [5339] m.c.manticore:INFO: Generated testcase No. 508 - REVERT(5 txs)
+2019-08-13 18:10:51,268: [5331] m.c.manticore:INFO: Generated testcase No. 509 - REVERT(5 txs)
+2019-08-13 18:10:52,213: [5347] m.c.manticore:INFO: Generated testcase No. 510 - REVERT(5 txs)
+2019-08-13 18:10:52,307: [5353] m.c.manticore:INFO: Generated testcase No. 511 - REVERT(5 txs)
+2019-08-13 18:10:53,288: [5326] m.c.manticore:INFO: Generated testcase No. 512 - REVERT(5 txs)
+2019-08-13 18:10:53,487: [5357] m.c.manticore:INFO: Generated testcase No. 513 - REVERT(5 txs)
+2019-08-13 18:10:53,947: [5323] m.c.manticore:INFO: Generated testcase No. 514 - REVERT(5 txs)
+2019-08-13 18:10:57,107: [5322] m.c.manticore:INFO: Generated testcase No. 515 - REVERT(5 txs)
+2019-08-13 18:10:57,339: [5344] m.c.manticore:INFO: Generated testcase No. 516 - REVERT(5 txs)
+2019-08-13 18:10:57,465: [5347] m.c.manticore:INFO: Generated testcase No. 517 - REVERT(5 txs)
+2019-08-13 18:10:57,489: [5331] m.c.manticore:INFO: Generated testcase No. 518 - REVERT(5 txs)
+2019-08-13 18:10:58,456: [5339] m.c.manticore:INFO: Generated testcase No. 519 - REVERT(5 txs)
+2019-08-13 18:10:59,673: [5326] m.c.manticore:INFO: Generated testcase No. 520 - REVERT(5 txs)
+2019-08-13 18:10:59,727: [5323] m.c.manticore:INFO: Generated testcase No. 521 - REVERT(5 txs)
+2019-08-13 18:10:59,756: [5353] m.c.manticore:INFO: Generated testcase No. 522 - REVERT(5 txs)
+2019-08-13 18:11:00,312: [5357] m.c.manticore:INFO: Generated testcase No. 523 - REVERT(5 txs)
+2019-08-13 18:11:02,599: [5322] m.c.manticore:INFO: Generated testcase No. 524 - REVERT(5 txs)
+2019-08-13 18:11:03,036: [5347] m.c.manticore:INFO: Generated testcase No. 525 - REVERT(5 txs)
+2019-08-13 18:11:04,648: [5331] m.c.manticore:INFO: Generated testcase No. 526 - REVERT(5 txs)
+2019-08-13 18:11:04,889: [5339] m.c.manticore:INFO: Generated testcase No. 527 - REVERT(5 txs)
+2019-08-13 18:11:05,016: [5326] m.c.manticore:INFO: Generated testcase No. 528 - REVERT(5 txs)
+2019-08-13 18:11:05,375: [5353] m.c.manticore:INFO: Generated testcase No. 529 - REVERT(5 txs)
+2019-08-13 18:11:05,497: [5344] m.c.manticore:INFO: Generated testcase No. 530 - REVERT(5 txs)
+2019-08-13 18:11:05,568: [5323] m.c.manticore:INFO: Generated testcase No. 531 - REVERT(5 txs)
+2019-08-13 18:11:06,024: [5357] m.c.manticore:INFO: Generated testcase No. 532 - REVERT(5 txs)
+2019-08-13 18:11:08,968: [5322] m.c.manticore:INFO: Generated testcase No. 533 - REVERT(5 txs)
+2019-08-13 18:11:11,236: [5347] m.c.manticore:INFO: Generated testcase No. 534 - REVERT(5 txs)
+2019-08-13 18:11:11,730: [5344] m.c.manticore:INFO: Generated testcase No. 535 - REVERT(5 txs)
+2019-08-13 18:11:12,075: [5353] m.c.manticore:INFO: Generated testcase No. 536 - REVERT(5 txs)
+2019-08-13 18:11:12,259: [5339] m.c.manticore:INFO: Generated testcase No. 537 - REVERT(5 txs)
+2019-08-13 18:11:12,937: [5323] m.c.manticore:INFO: Generated testcase No. 538 - REVERT(5 txs)
+2019-08-13 18:11:13,857: [5357] m.c.manticore:INFO: Generated testcase No. 539 - REVERT(5 txs)
+2019-08-13 18:11:14,565: [5326] m.c.manticore:INFO: Generated testcase No. 540 - REVERT(5 txs)
+2019-08-13 18:11:15,140: [5331] m.c.manticore:INFO: Generated testcase No. 541 - REVERT(5 txs)
+2019-08-13 18:11:16,707: [5322] m.c.manticore:INFO: Generated testcase No. 542 - REVERT(5 txs)
+2019-08-13 18:11:17,441: [5344] m.c.manticore:INFO: Generated testcase No. 543 - REVERT(5 txs)
+2019-08-13 18:11:17,841: [5339] m.c.manticore:INFO: Generated testcase No. 544 - REVERT(5 txs)
+2019-08-13 18:11:18,082: [5347] m.c.manticore:INFO: Generated testcase No. 545 - REVERT(5 txs)
+2019-08-13 18:11:18,114: [5323] m.c.manticore:INFO: Generated testcase No. 546 - REVERT(5 txs)
+2019-08-13 18:11:19,470: [5353] m.c.manticore:INFO: Generated testcase No. 547 - REVERT(5 txs)
+2019-08-13 18:11:20,415: [5326] m.c.manticore:INFO: Generated testcase No. 548 - REVERT(5 txs)
+2019-08-13 18:11:20,685: [5357] m.c.manticore:INFO: Generated testcase No. 549 - REVERT(5 txs)
+2019-08-13 18:11:22,215: [5322] m.c.manticore:INFO: Generated testcase No. 550 - REVERT(5 txs)
+2019-08-13 18:11:24,112: [5331] m.c.manticore:INFO: Generated testcase No. 551 - REVERT(5 txs)
+2019-08-13 18:11:25,294: [5339] m.c.manticore:INFO: Generated testcase No. 552 - REVERT(5 txs)
+2019-08-13 18:11:25,718: [5323] m.c.manticore:INFO: Generated testcase No. 553 - REVERT(5 txs)
+2019-08-13 18:11:25,789: [5347] m.c.manticore:INFO: Generated testcase No. 554 - REVERT(5 txs)
+2019-08-13 18:11:25,975: [5344] m.c.manticore:INFO: Generated testcase No. 555 - REVERT(5 txs)
+2019-08-13 18:11:27,856: [5326] m.c.manticore:INFO: Generated testcase No. 556 - REVERT(5 txs)
+2019-08-13 18:11:27,870: [5357] m.c.manticore:INFO: Generated testcase No. 557 - REVERT(5 txs)
+2019-08-13 18:11:28,207: [5322] m.c.manticore:INFO: Generated testcase No. 558 - REVERT(5 txs)
+2019-08-13 18:11:29,062: [5353] m.c.manticore:INFO: Generated testcase No. 559 - REVERT(5 txs)
+2019-08-13 18:11:31,517: [5323] m.c.manticore:INFO: Generated testcase No. 560 - REVERT(5 txs)
+2019-08-13 18:11:32,393: [5347] m.c.manticore:INFO: Generated testcase No. 561 - REVERT(5 txs)
+2019-08-13 18:11:32,643: [5344] m.c.manticore:INFO: Generated testcase No. 562 - REVERT(5 txs)
+2019-08-13 18:11:33,132: [5339] m.c.manticore:INFO: Generated testcase No. 563 - REVERT(5 txs)
+2019-08-13 18:11:34,232: [5357] m.c.manticore:INFO: Generated testcase No. 564 - REVERT(5 txs)
+2019-08-13 18:11:34,558: [5326] m.c.manticore:INFO: Generated testcase No. 565 - REVERT(5 txs)
+2019-08-13 18:11:34,768: [5331] m.c.manticore:INFO: Generated testcase No. 566 - SELFDESTRUCT(5 txs)
+2019-08-13 18:11:36,637: [5322] m.c.manticore:INFO: Generated testcase No. 567 - REVERT(5 txs)
+2019-08-13 18:11:36,995: [5353] m.c.manticore:INFO: Generated testcase No. 568 - REVERT(5 txs)
+2019-08-13 18:11:38,105: [5347] m.c.manticore:INFO: Generated testcase No. 569 - REVERT(5 txs)
+2019-08-13 18:11:39,209: [5331] m.c.manticore:INFO: Generated testcase No. 570 - SELFDESTRUCT(5 txs)
+2019-08-13 18:11:39,368: [5323] m.c.manticore:INFO: Generated testcase No. 571 - REVERT(5 txs)
+2019-08-13 18:11:39,699: [5339] m.c.manticore:INFO: Generated testcase No. 572 - SELFDESTRUCT(5 txs)
+2019-08-13 18:11:39,932: [5326] m.c.manticore:INFO: Generated testcase No. 573 - REVERT(5 txs)
+2019-08-13 18:11:40,278: [5357] m.c.manticore:INFO: Generated testcase No. 574 - REVERT(5 txs)
+2019-08-13 18:11:41,747: [5344] m.c.manticore:INFO: Generated testcase No. 575 - REVERT(5 txs)
+2019-08-13 18:11:43,587: [5331] m.c.manticore:INFO: Generated testcase No. 576 - REVERT(5 txs)
+2019-08-13 18:11:44,439: [5322] m.c.manticore:INFO: Generated testcase No. 577 - REVERT(5 txs)
+2019-08-13 18:11:44,517: [5339] m.c.manticore:INFO: Generated testcase No. 578 - REVERT(5 txs)
+2019-08-13 18:11:45,601: [5353] m.c.manticore:INFO: Generated testcase No. 579 - REVERT(5 txs)
+2019-08-13 18:11:46,606: [5347] m.c.manticore:INFO: Generated testcase No. 580 - REVERT(5 txs)
+2019-08-13 18:11:48,555: [5323] m.c.manticore:INFO: Generated testcase No. 581 - REVERT(5 txs)
+2019-08-13 18:11:48,716: [5326] m.c.manticore:INFO: Generated testcase No. 582 - REVERT(5 txs)
+2019-08-13 18:11:49,504: [5344] m.c.manticore:INFO: Generated testcase No. 583 - SELFDESTRUCT(5 txs)
+2019-08-13 18:11:50,023: [5357] m.c.manticore:INFO: Generated testcase No. 584 - REVERT(5 txs)
+2019-08-13 18:11:51,481: [5331] m.c.manticore:INFO: Generated testcase No. 585 - REVERT(5 txs)
+2019-08-13 18:11:52,351: [5339] m.c.manticore:INFO: Generated testcase No. 586 - REVERT(5 txs)
+2019-08-13 18:11:52,445: [5347] m.c.manticore:INFO: Generated testcase No. 587 - REVERT(5 txs)
+2019-08-13 18:11:52,694: [5353] m.c.manticore:INFO: Generated testcase No. 588 - REVERT(5 txs)
+2019-08-13 18:11:52,713: [5322] m.c.manticore:INFO: Generated testcase No. 589 - SELFDESTRUCT(5 txs)
+2019-08-13 18:11:54,027: [5344] m.c.manticore:INFO: Generated testcase No. 590 - SELFDESTRUCT(5 txs)
+2019-08-13 18:12:00,022: [12] m.c.manticore:INFO: Results in /mcore_gpgcqsa2

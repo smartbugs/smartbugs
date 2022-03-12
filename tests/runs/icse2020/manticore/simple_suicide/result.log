@@ -1,0 +1,12 @@
+2019-08-13 18:14:11,165: [12] m.main:INFO: Registered plugins: DetectSuicidal, DetectReentrancySimple, DetectInvalid, DetectUnusedRetVal, DetectExternalCallAndLeak, DetectUninitializedStorage, DetectEnvInstruction, DetectUninitializedMemory, DetectIntegerOverflow, DetectDelegatecall, DetectReentrancyAdvanced
+2019-08-13 18:14:11,166: [12] m.main:INFO: Beginning analysis
+2019-08-13 18:14:11,178: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:14:11,850: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 18:14:12,582: [308] m.e.detectors:WARNING: Reachable SELFDESTRUCT
+2019-08-13 18:14:12,680: [12] m.e.manticore:INFO: 0 alive states, 4 terminated states
+2019-08-13 18:14:12,870: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 18:14:12,930: [654] m.c.manticore:INFO: Generated testcase No. 0 - RETURN(1 txs)
+2019-08-13 18:14:12,954: [655] m.c.manticore:INFO: Generated testcase No. 1 - REVERT(2 txs)
+2019-08-13 18:14:12,959: [660] m.c.manticore:INFO: Generated testcase No. 2 - REVERT(2 txs)
+2019-08-13 18:14:12,963: [661] m.c.manticore:INFO: Generated testcase No. 3 - SELFDESTRUCT(2 txs)
+2019-08-13 18:14:14,021: [12] m.c.manticore:INFO: Results in /mcore__6c0nk7p

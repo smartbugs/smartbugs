@@ -1,0 +1,189 @@
+{
+  "contract": "parity_wallet_bug_2",
+  "tool": "mythril",
+  "start": 1565777011.6082494,
+  "end": 1565777357.504302,
+  "duration": 345.89605259895325,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 1063,
+        "code": "function execute(address _to, uint _value, bytes _data) external onlyowner returns (bytes32 o_hash) {\n    // first, take the opportunity to check that we're under the daily limit.\n    if ((_data.length == 0 && underLimit(_value)) || m_required == 1) {\n      // yes - just execute the call.\n      address created;\n      if (_to == 0) {\n        created = create(_value, _data);\n      } else {\n        if (!_to.call.value(_value)(_data))\n          throw;\n      }\n      SingleTransact(msg.sender, _value, _to, _data, created);\n    } else {\n      // determine our operation hash.\n      o_hash = sha3(msg.data, block.number);\n      // store if it's new\n      if (m_txs[o_hash].to == 0 && m_txs[o_hash].value == 0 && m_txs[o_hash].data.length == 0) {\n        m_txs[o_hash].to = _to;\n        m_txs[o_hash].value = _value;\n        m_txs[o_hash].data = _data;\n      }\n      if (!confirm(o_hash)) {\n        ConfirmationNeeded(o_hash, msg.sender, _value, _to, _data);\n      }\n    }\n  }",
+        "debug": "calldata_WalletLibrary_32 + 36: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc\ncalldata_WalletLibrary_0: 0xb61d27f600000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `execute(address,uint256,bytes)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "execute(address,uint256,bytes)",
+        "lineno": 241,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 1458,
+        "code": "function initMultiowned(address[] _owners, uint _required) only_uninitialized {\n    m_numOwners = _owners.length + 1;\n    m_owners[1] = uint(msg.sender);\n    m_ownerIndex[uint(msg.sender)] = 1;\n    for (uint i = 0; i < _owners.length; ++i)\n    {\n      m_owners[2 + i] = uint(_owners[i]);\n      m_ownerIndex[uint(_owners[i])] = 2 + i;\n    }\n    m_required = _required;\n  }",
+        "debug": "calldata_WalletLibrary_4: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc\ncalldata_WalletLibrary_0: 0xc57c5f6000000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `initMultiowned(address[],uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "initMultiowned(address[],uint256)",
+        "lineno": 113,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 1883,
+        "code": "sha3(msg.data)",
+        "debug": "calldatasize_WalletLibrary: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80\ncalldata_WalletLibrary_0: 0x173825d900000000000000000000000000000000000000000000000000000000\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `removeOwner(address)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "removeOwner(address)",
+        "lineno": 166,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 1976,
+        "code": "m_numOwners - 1",
+        "debug": "storage_263: 0x40000000000001ffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_1: 0x0\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_WalletLibrary_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_0: 0x0\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0x173825d900000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\nstorage_0 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x0\ncallvalue: 0x0\n",
+        "description": "A possible integer underflow exists in the function `removeOwner(address)`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "removeOwner(address)",
+        "lineno": 169,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      },
+      {
+        "address": 2007,
+        "code": "m_owners[ownerIndex]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_263: 0x3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_0: 0x0\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_WalletLibrary_4: 0x8000000000000000000000000000000000000000000000000000000000000000\nstorage_1: 0x1\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0x173825d900000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\nstorage_0 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x0\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "removeOwner(address)",
+        "lineno": 171,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 2264,
+        "code": "sha3(msg.data)",
+        "debug": "calldatasize_WalletLibrary: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80\ncalldata_WalletLibrary_0: 0x5c52c2f500000000000000000000000000000000000000000000000000000000\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `resetSpentToday()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "resetSpentToday()",
+        "lineno": 216,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 2326,
+        "code": "sha3(msg.data)",
+        "debug": "calldatasize_WalletLibrary: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80\ncalldata_WalletLibrary_0: 0x7065cb4800000000000000000000000000000000000000000000000000000000\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `addOwner(address)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "addOwner(address)",
+        "lineno": 152,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 4128,
+        "code": "sha3(msg.data)",
+        "debug": "calldatasize_WalletLibrary: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80\ncalldata_WalletLibrary_0: 0xb20d30a900000000000000000000000000000000000000000000000000000000\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `setDailyLimit(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "setDailyLimit(uint256)",
+        "lineno": 212,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 4384,
+        "code": "_to.call.value(_value)(_data)",
+        "debug": "",
+        "description": "This contract executes a message call to an address provided as a function argument. Generally, it is not recommended to call user-supplied addresses using Solidity's call() construct. Note that attackers might leverage reentrancy attacks to exploit race conditions or manipulate this contract's state.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "execute(address,uint256,bytes)",
+        "lineno": 249,
+        "title": "Message call to external contract",
+        "type": "Warning"
+      },
+      {
+        "address": 5434,
+        "code": "pending.yetNeeded++",
+        "debug": "storage_0 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\ncalldata_WalletLibrary_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\n2_EXP_storage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_1 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\ncalldata_WalletLibrary_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0xb75c7dc600000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `revoke(bytes32)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "revoke(bytes32)",
+        "lineno": 133,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 5450,
+        "code": "pending.ownersDone -= ownerIndexBit",
+        "debug": "2_EXP_storage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0x7ffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffff\nstorage_1 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\ncalldata_WalletLibrary_4: 0x7ffffffffffffffffffffffffffffffeffffffffffffffffffffffffffffffff\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0xb75c7dc600000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer underflow exists in the function `revoke(bytes32)`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "revoke(bytes32)",
+        "lineno": 134,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      },
+      {
+        "address": 5863,
+        "code": "m_owners[ownerIndex + 1]",
+        "debug": "The exception is triggered under the following conditions:\n\ncalldata_WalletLibrary_4: 0xff\ncalldata_WalletLibrary_0: 0xc41a360a00000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "getOwner(uint256)",
+        "lineno": 187,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 5895,
+        "code": "_owners.length + 1",
+        "debug": "calldata_WalletLibrary_4 + calldata_WalletLibrary_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0xc57c5f6000000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\nstorage_1: 0x0\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `initMultiowned(address[],uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "initMultiowned(address[],uint256)",
+        "lineno": 114,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 6862,
+        "code": "m_pendingIndex.length++",
+        "debug": "storage_263: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0xba51a6df00000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\nstorage_0 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x0\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `changeRequirement(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "changeRequirement(uint256)",
+        "lineno": 310,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 6900,
+        "code": "m_pendingIndex[pending.index]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_263: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0x7065cb4800000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\nstorage_0 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x0\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "addOwner(address)",
+        "lineno": 311,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 7116,
+        "code": "m_pendingIndex[m_pending[_operation].index]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_0 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x1\nstorage_2 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x0\nstorage_263: 0x0\n2_EXP_storage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_1 +\nkeccac_115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\n115792089237316195423570985008687907853269984665640564039457584007913129639935_-\n0_&\nKECCAC_mem_128): 0x0\nstorage_keccac_1461501637330902918203684832716283019655932542975_&_caller: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_WalletLibrary_0: 0xb20d30a900000000000000000000000000000000000000000000000000000000\ncalldatasize_WalletLibrary: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/parity_wallet_bug_2.sol",
+        "function": "setDailyLimit(uint256)",
+        "lineno": 321,
+        "title": "Exception state",
+        "type": "Informational"
+      }
+    ],
+    "success": true
+  }
+}

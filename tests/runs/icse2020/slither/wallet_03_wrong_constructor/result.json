@@ -1,0 +1,261 @@
+{
+  "contract": "wallet_03_wrong_constructor",
+  "tool": "slither",
+  "start": 1565777002.9537024,
+  "end": 1565777006.0966842,
+  "duration": 3.142981767654419,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.initWallet (/dataset/access_control/wallet_03_wrong_constructor.sol#19-21) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "initWallet",
+          "source_mapping": {
+            "start": 465,
+            "length": 68,
+            "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+            "lines": [
+              19,
+              20,
+              21
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 332,
+              "length": 768,
+              "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+              "lines": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.deposit (/dataset/access_control/wallet_03_wrong_constructor.sol#23-26) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "deposit",
+          "source_mapping": {
+            "start": 540,
+            "length": 160,
+            "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+            "lines": [
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 332,
+              "length": 768,
+              "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+              "lines": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.withdraw (/dataset/access_control/wallet_03_wrong_constructor.sol#28-32) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 707,
+            "length": 178,
+            "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+            "lines": [
+              28,
+              29,
+              30,
+              31,
+              32
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 332,
+              "length": 768,
+              "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+              "lines": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.migrateTo (/dataset/access_control/wallet_03_wrong_constructor.sol#36-39) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "migrateTo",
+          "source_mapping": {
+            "start": 973,
+            "length": 123,
+            "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+            "lines": [
+              36,
+              37,
+              38,
+              39
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 332,
+              "length": 768,
+              "filename": "/dataset/access_control/wallet_03_wrong_constructor.sol",
+              "lines": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

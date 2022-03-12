@@ -1,0 +1,24 @@
+{
+  "contract": "simple_suicide",
+  "tool": "mythril",
+  "start": 1565776928.0302668,
+  "end": 1565776997.8200333,
+  "duration": 69.78976655006409,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 112,
+        "code": "selfdestruct(msg.sender)",
+        "debug": "SOLVER OUTPUT:\ncalldata_SimpleSuicide_0: 0xa56a3b5a00000000000000000000000000000000000000000000000000000000\ncalldatasize_SimpleSuicide: 0x4\ncallvalue: 0x0\n",
+        "description": "The function `sudicideAnyone()` executes the SUICIDE instruction. The remaining Ether is sent to the caller's address.\n\nIt seems that this function can be called without restrictions.",
+        "filename": "/dataset/access_control/simple_suicide.sol",
+        "function": "sudicideAnyone()",
+        "lineno": 13,
+        "title": "Unchecked SUICIDE",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

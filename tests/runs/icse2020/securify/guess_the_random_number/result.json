@@ -1,0 +1,76 @@
+{
+  "contract": "guess_the_random_number",
+  "tool": "securify",
+  "start": 1565776021.5046604,
+  "end": 1565776029.3133135,
+  "duration": 7.808653116226196,
+  "analysis": {
+    "/dataset/bad_randomness/guess_the_random_number.sol:GuessTheRandomNumberChallenge": {
+      "results": {
+        "TODReceiver": {
+          "violations": [],
+          "warnings": [
+            25
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [
+            25
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [],
+          "warnings": [
+            25
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [],
+          "warnings": [
+            25
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [
+            17,
+            21
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [],
+          "warnings": [
+            25
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [
+            25
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

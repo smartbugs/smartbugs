@@ -1,0 +1,22 @@
+{
+  "contract": "auction",
+  "tool": "oyente",
+  "start": 1565863998.208276,
+  "end": 1565864000.8769472,
+  "duration": 2.668671131134033,
+  "analysis": [
+    {
+      "errors": [],
+      "file": "/dataset/denial_of_service/auction.sol",
+      "name": "DosAuction",
+      "evm_code_coverage": "97.1%",
+      "integer_underflow": false,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

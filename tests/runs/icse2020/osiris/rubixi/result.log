@@ -1,0 +1,52 @@
+INFO:root:Contract /dataset/access_control/rubixi.sol:Rubixi:
+incomplete push instruction at 4203
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 74.1%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/dataset/access_control/rubixi.sol:Rubixi:90:18
+_amt *= 1 ether
+^
+INFO:symExec:	  └> Underflow bugs: 	 True
+/dataset/access_control/rubixi.sol:Rubixi:153:26
+participants.length - payoutOrder
+^
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 True
+/dataset/access_control/rubixi.sol:Rubixi:85:18
+creator.send(collectedFees)
+^
+/dataset/access_control/rubixi.sol:Rubixi:74:26
+participants[payoutOrder].etherAddress.send(payoutToSend)
+^
+/dataset/access_control/rubixi.sol:Rubixi:95:18
+creator.send(_amt)
+^
+/dataset/access_control/rubixi.sol:Rubixi:103:18
+creator.send(feesToCollect)
+^
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/dataset/access_control/rubixi.sol:Rubixi:103:18
+creator.send(feesToCollect)
+^
+Flow 2:
+/dataset/access_control/rubixi.sol:Rubixi:85:18
+creator.send(collectedFees)
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	 --- 91.7678210735 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'

@@ -1,0 +1,24 @@
+{
+  "contract": "short_address_example",
+  "tool": "mythril",
+  "start": 1565777065.303693,
+  "end": 1565777071.3214178,
+  "duration": 6.0177247524261475,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 495,
+        "code": "balances[to] += amount",
+        "debug": "calldata_MyToken_32 + 4: 0xc290137095b13347e55005a6dc184559e0489f1233480050d0fb4bba17d34179\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_MyToken_4: 0x9c9efb7ae5acd378025256a3945f5859076e809243093d9ecae2636c9fd28979\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xc290137095b13347e55005a6dc184559e0489f1233480050d0fb4bba17d34179\ncalldata_MyToken_0: 0x90b98a1100000000000000000000000000000000000000000000000000000000\ncalldatasize_MyToken: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `sendCoin(address,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/short_addresses/short_address_example.sol",
+        "function": "sendCoin(address,uint256)",
+        "lineno": 21,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

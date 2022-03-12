@@ -1,0 +1,597 @@
+{
+  "contract": "open_address_lottery",
+  "tool": "slither",
+  "start": 1565777030.167009,
+  "end": 1565777033.2013981,
+  "duration": 3.034389019012451,
+  "analysis": [
+    {
+      "check": "uninitialized-storage",
+      "impact": "High",
+      "confidence": "High",
+      "description": "s in OpenAddressLottery.forceReseed (/dataset/other/open_address_lottery.sol#91) is a storage variable never initialiazed\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "s",
+          "source_mapping": {
+            "start": 3555,
+            "length": 16,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              91
+            ]
+          }
+        },
+        {
+          "type": "function",
+          "name": "forceReseed",
+          "source_mapping": {
+            "start": 3375,
+            "length": 452,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OpenAddressLottery",
+            "source_mapping": {
+              "start": 1021,
+              "length": 3072,
+              "filename": "/dataset/other/open_address_lottery.sol",
+              "lines": [
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "constable-states",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "OpenAddressLottery.LuckyNumber should be constant (/dataset/other/open_address_lottery.sol#37)\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "LuckyNumber",
+          "source_mapping": {
+            "start": 1414,
+            "length": 20,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              37
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/other/open_address_lottery.sol#93:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "s.component2 = uint256(block.blockhash(block.number - 1))",
+          "source_mapping": {
+            "start": 3622,
+            "length": 57,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              93
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "OpenAddressLottery.kill (/dataset/other/open_address_lottery.sol#82-86) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "kill",
+          "source_mapping": {
+            "start": 3263,
+            "length": 102,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              82,
+              83,
+              84,
+              85,
+              86
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OpenAddressLottery",
+            "source_mapping": {
+              "start": 1021,
+              "length": 3072,
+              "filename": "/dataset/other/open_address_lottery.sol",
+              "lines": [
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "OpenAddressLottery.forceReseed (/dataset/other/open_address_lottery.sol#88-98) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "forceReseed",
+          "source_mapping": {
+            "start": 3375,
+            "length": 452,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OpenAddressLottery",
+            "source_mapping": {
+              "start": 1021,
+              "length": 3072,
+              "filename": "/dataset/other/open_address_lottery.sol",
+              "lines": [
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "OpenAddressLottery.fallback (/dataset/other/open_address_lottery.sol#100-103) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 3837,
+            "length": 253,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              100,
+              101,
+              102,
+              103
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OpenAddressLottery",
+            "source_mapping": {
+              "start": 1021,
+              "length": 3072,
+              "filename": "/dataset/other/open_address_lottery.sol",
+              "lines": [
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/other/open_address_lottery.sol:\n\t- pragma solidity^0.4.19 (/dataset/other/open_address_lottery.sol#6): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.19",
+          "source_mapping": {
+            "start": 125,
+            "length": 24,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'OpenAddressLottery.OpenAddressLottery' (/dataset/other/open_address_lottery.sol#41-44) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "OpenAddressLottery",
+          "source_mapping": {
+            "start": 1591,
+            "length": 205,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              41,
+              42,
+              43,
+              44
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Variable 'OpenAddressLottery.LuckyNumber' (/dataset/other/open_address_lottery.sol#37) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "variable",
+          "convention": "mixedCase",
+          "name": "LuckyNumber",
+          "source_mapping": {
+            "start": 1414,
+            "length": 20,
+            "filename": "/dataset/other/open_address_lottery.sol",
+            "lines": [
+              37
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

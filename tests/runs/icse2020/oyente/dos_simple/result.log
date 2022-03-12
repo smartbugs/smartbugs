@@ -1,0 +1,23 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/denial_of_service/dos_simple.sol:DosOneFunc:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 79.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/denial_of_service/dos_simple.sol:18:17: Warning: Integer Overflow.
+                listAddresses.push(msg.sender)
+Integer Overflow occurs if:
+    listAddresses.length = 1274
+/dataset/denial_of_service/dos_simple.sol:10:1: Warning: Integer Overflow.
+contract DosOneFunc {
+^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    listAddresses.length = 68479938317169324036501069590029392385404849235742668221576999497491254659852
+INFO:symExec:	====== Analysis Completed ======

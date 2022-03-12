@@ -1,0 +1,217 @@
+{
+  "contract": "unchecked_return_value",
+  "tool": "slither",
+  "start": 1565777078.612608,
+  "end": 1565777082.5862057,
+  "duration": 3.973597764968872,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "ReturnValue.callchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#11-14) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "callchecked",
+          "source_mapping": {
+            "start": 208,
+            "length": 119,
+            "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "lines": [
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "ReturnValue",
+            "source_mapping": {
+              "start": 182,
+              "length": 264,
+              "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "ReturnValue.callnotchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#16-19) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "callnotchecked",
+          "source_mapping": {
+            "start": 331,
+            "length": 113,
+            "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "ReturnValue",
+            "source_mapping": {
+              "start": 182,
+              "length": 264,
+              "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "low-level-calls",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Low level call in ReturnValue.callchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#11-14):\n\t-require(bool)(callee.call()) /dataset/unchecked_low_level_calls/unchecked_return_value.sol#13\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "callchecked",
+          "source_mapping": {
+            "start": 208,
+            "length": 119,
+            "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "lines": [
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "ReturnValue",
+            "source_mapping": {
+              "start": 182,
+              "length": 264,
+              "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "require(bool)(callee.call())",
+          "source_mapping": {
+            "start": 300,
+            "length": 22,
+            "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "lines": [
+              13
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "low-level-calls",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Low level call in ReturnValue.callnotchecked (/dataset/unchecked_low_level_calls/unchecked_return_value.sol#16-19):\n\t-callee.call() /dataset/unchecked_low_level_calls/unchecked_return_value.sol#18\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "callnotchecked",
+          "source_mapping": {
+            "start": 331,
+            "length": 113,
+            "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "ReturnValue",
+            "source_mapping": {
+              "start": 182,
+              "length": 264,
+              "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "callee.call()",
+          "source_mapping": {
+            "start": 426,
+            "length": 13,
+            "filename": "/dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "lines": [
+              18
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

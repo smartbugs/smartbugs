@@ -1,0 +1,655 @@
+{
+  "contract": "lottery",
+  "tool": "slither",
+  "start": 1565777102.8925204,
+  "end": 1565777105.5446267,
+  "duration": 2.652106285095215,
+  "analysis": [
+    {
+      "check": "incorrect-equality",
+      "impact": "Medium",
+      "confidence": "High",
+      "description": "Lottery.makeBet (/dataset/bad_randomness/lottery.sol#34-51) uses a dangerous strict equality:\n\t- won = (block.number % 2) == 0\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "makeBet",
+          "source_mapping": {
+            "start": 773,
+            "length": 615,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Lottery",
+            "source_mapping": {
+              "start": 302,
+              "length": 1479,
+              "filename": "/dataset/bad_randomness/lottery.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "won = (block.number % 2) == 0",
+          "source_mapping": {
+            "start": 984,
+            "length": 34,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              38
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/bad_randomness/lottery.sol#30:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 734,
+            "length": 5,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              30
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/bad_randomness/lottery.sol#48:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 1349,
+            "length": 5,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              48
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/bad_randomness/lottery.sol#55:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 1496,
+            "length": 5,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              55
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/bad_randomness/lottery.sol#64:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 1733,
+            "length": 5,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              64
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/bad_randomness/lottery.sol#66:\n\t- Usage of \"suicide()\" should be replaced with \"selfdestruct()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "suicide(address)(organizer)",
+          "source_mapping": {
+            "start": 1752,
+            "length": 18,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              66
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Lottery.fallback (/dataset/bad_randomness/lottery.sol#29-31) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 712,
+            "length": 35,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              29,
+              30,
+              31
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Lottery",
+            "source_mapping": {
+              "start": 302,
+              "length": 1479,
+              "filename": "/dataset/bad_randomness/lottery.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Lottery.makeBet (/dataset/bad_randomness/lottery.sol#34-51) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "makeBet",
+          "source_mapping": {
+            "start": 773,
+            "length": 615,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Lottery",
+            "source_mapping": {
+              "start": 302,
+              "length": 1479,
+              "filename": "/dataset/bad_randomness/lottery.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Lottery.getBets (/dataset/bad_randomness/lottery.sol#54-60) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "getBets",
+          "source_mapping": {
+            "start": 1436,
+            "length": 211,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Lottery",
+            "source_mapping": {
+              "start": 302,
+              "length": 1479,
+              "filename": "/dataset/bad_randomness/lottery.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Lottery.destroy (/dataset/bad_randomness/lottery.sol#63-67) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "destroy",
+          "source_mapping": {
+            "start": 1673,
+            "length": 105,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              63,
+              64,
+              65,
+              66,
+              67
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Lottery",
+            "source_mapping": {
+              "start": 302,
+              "length": 1479,
+              "filename": "/dataset/bad_randomness/lottery.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/bad_randomness/lottery.sol:\n\t- pragma solidity^0.4.0 (/dataset/bad_randomness/lottery.sol#9): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.0",
+          "source_mapping": {
+            "start": 274,
+            "length": 23,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              9
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'Lottery.Lottery' (/dataset/bad_randomness/lottery.sol#24-26) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "Lottery",
+          "source_mapping": {
+            "start": 605,
+            "length": 60,
+            "filename": "/dataset/bad_randomness/lottery.sol",
+            "lines": [
+              24,
+              25,
+              26
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

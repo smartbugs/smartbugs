@@ -1,0 +1,57 @@
+{
+  "contract": "simple_dao",
+  "tool": "mythril",
+  "start": 1565777028.8528075,
+  "end": 1565777035.9758525,
+  "duration": 7.123044967651367,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 444,
+        "code": "credit[to] += msg.value",
+        "debug": "storage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_SimpleDAO_4: 0xa8795cd3fffffffffffffffffffffffffffffffffffffffffffffffffffffffe\ncallvalue: 0x57f25cd000000000000000000000000000000000000000000000000000000000\ncalldata_SimpleDAO_0: 0x362a9500000000000000000000000000000000000000000000000000000000\ncalldatasize_SimpleDAO: 0x4\n",
+        "description": "A possible integer overflow exists in the function `fallback`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/reentrancy/simple_dao.sol",
+        "function": "fallback",
+        "lineno": 13,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 567,
+        "code": "msg.sender.call.value(amount)()",
+        "debug": "",
+        "description": "This contract executes a message call to the address of the transaction sender. Generally, it is not recommended to call user-supplied addresses using Solidity's call() construct. Note that attackers might leverage reentrancy attacks to exploit race conditions or manipulate this contract's state.",
+        "filename": "/dataset/reentrancy/simple_dao.sol",
+        "function": "withdraw(uint256)",
+        "lineno": 19,
+        "title": "Message call to external contract",
+        "type": "Warning"
+      },
+      {
+        "address": 567,
+        "code": "msg.sender.call.value(amount)()",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/reentrancy/simple_dao.sol",
+        "function": "withdraw(uint256)",
+        "lineno": 19,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 648,
+        "code": "credit[msg.sender]-=amount",
+        "debug": "",
+        "description": "The contract account state is changed after an external call. Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.",
+        "filename": "/dataset/reentrancy/simple_dao.sol",
+        "function": "withdraw(uint256)",
+        "lineno": 20,
+        "title": "State change after external call",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

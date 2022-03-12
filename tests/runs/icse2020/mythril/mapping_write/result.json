@@ -1,0 +1,57 @@
+{
+  "contract": "mapping_write",
+  "tool": "mythril",
+  "start": 1565776921.306031,
+  "end": 1565777022.5141616,
+  "duration": 101.20813059806824,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 351,
+        "code": "key + 1",
+        "debug": "calldata_Map_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_Map_0: 0x1ab06ee500000000000000000000000000000000000000000000000000000000\ncalldatasize_Map: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `set(uint256,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/mapping_write.sol",
+        "function": "set(uint256,uint256)",
+        "lineno": 17,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 381,
+        "code": "map[key]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_1: 0x4\ncalldata_Map_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_Map_0: 0x1ab06ee500000000000000000000000000000000000000000000000000000000\ncalldatasize_Map: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/mapping_write.sol",
+        "function": "set(uint256,uint256)",
+        "lineno": 20,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 640,
+        "code": "map[key]",
+        "debug": "The exception is triggered under the following conditions:\n\ncalldata_Map_4: 0x0\nstorage_1: 0x0\ncalldata_Map_0: 0x9507d39a00000000000000000000000000000000000000000000000000000000\ncalldatasize_Map: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/mapping_write.sol",
+        "function": "get(uint256)",
+        "lineno": 24,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 685,
+        "code": "contract Map {\n     address public owner;\n     uint256[] map;\n\n     function set(uint256 key, uint256 value) public {\n         if (map.length <= key) {\n             map.length = key + 1;\n         }\n        // <yes> <report> ACCESS_CONTROL\n         map[key] = value;\n     }\n\n     function get(uint256 key) public view returns (uint256) {\n         return map[key];\n     }\n     function withdraw() public{\n       require(msg.sender == owner);\n       msg.sender.transfer(address(this).balance);\n     }\n }",
+        "debug": "storage_1: 0x80b01eb19bf0403ffd1e0000ffd1e000008fbff803800fc21020001d01000000\ncalldata_Map_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_Map_0: 0x1ab06ee500000000000000000000000000000000000000000000000000000000\ncalldatasize_Map: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `set(uint256,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/mapping_write.sol",
+        "function": "set(uint256,uint256)",
+        "lineno": 11,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "contract": "dos_address",
+  "tool": "oyente",
+  "start": 1565863719.653758,
+  "end": 1565863801.0991223,
+  "duration": 81.44536423683167,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 24,
+          "column": 11,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 2,
+          "column": 21,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/denial_of_service/dos_address.sol",
+      "name": "DosGas",
+      "evm_code_coverage": "80.4%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "contract": "rubixi",
+  "tool": "osiris",
+  "start": 1565864353.461393,
+  "end": 1565864447.718012,
+  "duration": 94.25661897659302,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 90,
+          "column": 18,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 153,
+          "column": 26,
+          "message": "underflow_bugs"
+        },
+        {
+          "line": 85,
+          "column": 18,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 74,
+          "column": 26,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 95,
+          "column": 18,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 103,
+          "column": 18,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 103,
+          "column": 18,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 85,
+          "column": 18,
+          "message": "concurrency_bug"
+        }
+      ],
+      "file": "/dataset/access_control/rubixi.sol",
+      "name": "Rubixi"
+    }
+  ]
+}

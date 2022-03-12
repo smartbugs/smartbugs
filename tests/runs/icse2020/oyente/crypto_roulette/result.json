@@ -1,0 +1,41 @@
+{
+  "contract": "crypto_roulette",
+  "tool": "oyente",
+  "start": 1565863139.0298038,
+  "end": 1565863145.3349364,
+  "duration": 6.305132627487183,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 43,
+          "column": 9,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 55,
+          "column": 46,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        },
+        {
+          "line": 55,
+          "column": 9,
+          "level": "Warning",
+          "message": "Timestamp Dependency."
+        }
+      ],
+      "file": "/dataset/other/crypto_roulette.sol",
+      "name": "CryptoRoulette",
+      "evm_code_coverage": "98.6%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": true,
+      "timestamp_dependency": true,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

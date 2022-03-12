@@ -1,0 +1,70 @@
+{
+  "contract": "dos_simple",
+  "tool": "slither",
+  "start": 1565777084.2774563,
+  "end": 1565777087.0789697,
+  "duration": 2.801513433456421,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosOneFunc.ifillArray (/dataset/denial_of_service/dos_simple.sol#14-26) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "ifillArray",
+          "source_mapping": {
+            "start": 255,
+            "length": 363,
+            "filename": "/dataset/denial_of_service/dos_simple.sol",
+            "lines": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosOneFunc",
+            "source_mapping": {
+              "start": 198,
+              "length": 422,
+              "filename": "/dataset/denial_of_service/dos_simple.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contract": "integer_overflow_mapping_sym_1",
+  "tool": "oyente",
+  "start": 1565863760.291377,
+  "end": 1565863762.5427501,
+  "duration": 2.251373052597046,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 16,
+          "column": 9,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        }
+      ],
+      "file": "/dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+      "name": "IntegerOverflowMappingSym1",
+      "evm_code_coverage": "99.0%",
+      "integer_underflow": true,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contract": "dos_number",
+  "tool": "oyente",
+  "start": 1565863591.4108822,
+  "end": 1565863655.378352,
+  "duration": 63.967469692230225,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 22,
+          "column": 19,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/denial_of_service/dos_number.sol",
+      "name": "DosNumber",
+      "evm_code_coverage": "90.0%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

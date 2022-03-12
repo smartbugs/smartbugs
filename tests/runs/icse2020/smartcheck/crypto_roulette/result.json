@@ -1,0 +1,57 @@
+{
+  "contract": "crypto_roulette",
+  "tool": "smartcheck",
+  "start": 1565777079.212383,
+  "end": 1565777086.8232996,
+  "duration": 7.610916614532471,
+  "analysis": [
+    {
+      "name": "SOLIDITY_DEPRECATED_CONSTRUCTIONS",
+      "patternId": "27cb59",
+      "severity": 1,
+      "line": 56,
+      "column": 12,
+      "content": "suicide"
+    },
+    {
+      "name": "SOLIDITY_DEPRECATED_CONSTRUCTIONS",
+      "patternId": "187b5a",
+      "severity": 1,
+      "line": 34,
+      "column": 29,
+      "content": "sha3"
+    },
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 5,
+      "column": 16,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA",
+      "patternId": "5616b2",
+      "severity": 1,
+      "line": 16,
+      "column": 12,
+      "content": "private"
+    },
+    {
+      "name": "SOLIDITY_UPGRADE_TO_050",
+      "patternId": "91h3sa",
+      "severity": 1,
+      "line": 60,
+      "column": 15,
+      "content": "public"
+    },
+    {
+      "name": "SOLIDITY_UPGRADE_TO_050",
+      "patternId": "441gim",
+      "severity": 1,
+      "line": 40,
+      "column": 8,
+      "content": "Gamegame"
+    }
+  ]
+}

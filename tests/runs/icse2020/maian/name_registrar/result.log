@@ -1,0 +1,21 @@
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/other/name_registrar.sol ... [0m[92m Done [0m
+[91m[-] Contract NameRegistrar does NOT exist[0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/other/name_registrar.sol ... [0m/dataset/other/name_registrar.sol:6:1: Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.5.10;"
+contract NameRegistrar {
+^ (Relevant source part starts here and spans across multiple lines).
+/dataset/other/name_registrar.sol:21:9: Error: Data location must be "storage" or "memory" for variable, but none was given.
+        NameRecord newRecord;
+
+[91m[-] Cannot compile the contract [0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /dataset/other/name_registrar.sol ... [0m/dataset/other/name_registrar.sol:6:1: Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.5.10;"
+contract NameRegistrar {
+^ (Relevant source part starts here and spans across multiple lines).
+/dataset/other/name_registrar.sol:21:9: Error: Data location must be "storage" or "memory" for variable, but none was given.
+        NameRecord newRecord;
+
+[91m[-] Cannot compile the contract [0m

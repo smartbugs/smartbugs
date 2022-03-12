@@ -1,0 +1,46 @@
+2019-08-13 18:03:48,133: [12] m.main:INFO: Registered plugins: DetectDelegatecall, DetectReentrancySimple, DetectInvalid, DetectExternalCallAndLeak, DetectUnusedRetVal, DetectSuicidal, DetectUninitializedMemory, DetectIntegerOverflow, DetectEnvInstruction, DetectUninitializedStorage, DetectReentrancyAdvanced
+2019-08-13 18:03:48,134: [12] m.main:INFO: Beginning analysis
+2019-08-13 18:03:48,146: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:03:48,774: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 18:03:49,126: [12] m.e.manticore:INFO: 0 alive states, 2 terminated states
+2019-08-13 18:03:49,203: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 18:03:49,248: [548] m.c.manticore:INFO: Generated testcase No. 0 - RETURN(1 txs)
+2019-08-13 18:03:49,266: [550] m.c.manticore:INFO: Generated testcase No. 1 - REVERT(2 txs)
+2019-08-13 18:03:50,007: [12] m.c.manticore:INFO: Results in /mcore_nehorlck
+2019-08-13 18:03:50,829: [863] m.main:INFO: Registered plugins: DetectReentrancyAdvanced, DetectReentrancySimple, DetectInvalid, DetectUnusedRetVal, DetectUninitializedStorage, DetectExternalCallAndLeak, DetectSuicidal, DetectEnvInstruction, DetectIntegerOverflow, DetectUninitializedMemory, DetectDelegatecall
+2019-08-13 18:03:50,829: [863] m.main:INFO: Beginning analysis
+2019-08-13 18:03:50,842: [863] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:03:51,005: [907] m.c.manticore:INFO: Generated testcase No. 0 - NO STATE RESULT (?)(0 txs)
+2019-08-13 18:03:51,172: [863] m.c.manticore:INFO: Results in /mcore_wyza7dh6
+2019-08-13 18:03:51,816: [1166] m.main:INFO: Registered plugins: DetectUnusedRetVal, DetectUninitializedStorage, DetectEnvInstruction, DetectInvalid, DetectIntegerOverflow, DetectSuicidal, DetectExternalCallAndLeak, DetectReentrancySimple, DetectDelegatecall, DetectUninitializedMemory, DetectReentrancyAdvanced
+2019-08-13 18:03:51,816: [1166] m.main:INFO: Beginning analysis
+2019-08-13 18:03:51,829: [1166] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:04:06,275: [1166] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 18:04:31,393: [1462] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:04:40,532: [1494] m.e.detectors:WARNING: INVALID instruction
+2019-08-13 18:07:03,255: [1462] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:10:04,603: [1166] m.e.manticore:INFO: 23 alive states, 23 terminated states
+2019-08-13 18:10:14,613: [1166] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 18:12:13,861: [7729] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:13:11,250: [7692] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:15:08,165: [7768] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:15:31,727: [7713] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:19:11,824: [7759] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:20:16,947: [7768] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:20:58,325: [7692] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:21:31,621: [7751] m.e.detectors:WARNING: INVALID instruction
+2019-08-13 18:21:58,069: [7703] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:22:43,707: [7692] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:22:44,554: [7768] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:25:28,231: [7759] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:26:59,386: [7759] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:27:06,085: [7687] m.e.detectors:WARNING: INVALID instruction
+2019-08-13 18:27:08,109: [7759] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:27:42,920: [7759] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:28:17,612: [7768] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:28:20,111: [7768] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:28:34,850: [7768] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:30:56,144: [7740] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:31:09,659: [7740] m.e.detectors:WARNING: Warning TIMESTAMP instruction used
+2019-08-13 18:31:39,461: [7687] m.e.detectors:WARNING: INVALID instruction
+2019-08-13 18:33:06,025: [7692] m.e.detectors:WARNING: INVALID instruction

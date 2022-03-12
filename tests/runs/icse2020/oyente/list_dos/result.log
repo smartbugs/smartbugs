@@ -1,0 +1,95 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/denial_of_service/list_dos.sol:Government:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 59.2%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/denial_of_service/list_dos.sol:39:32: Warning: Integer Underflow.
+             creditorAddresses[creditorAddresses.length - 1
+Integer Underflow occurs if:
+    lastTimeOfNewCredit = 0
+    creditorAddresses.length = 0
+INFO:symExec:/dataset/denial_of_service/list_dos.sol:16:6: Warning: Integer Overflow.
+     address[] public creditorAddresses
+/dataset/denial_of_service/list_dos.sol:35:14: Warning: Integer Overflow.
+         if (lastTimeOfNewCredit + TWELVE_HOURS
+Integer Overflow occurs if:
+    lastTimeOfNewCredit = 115792089237316195423570985008687907853269984665640564039457584007913129613696
+/dataset/denial_of_service/list_dos.sol:101:24: Warning: Integer Overflow.
+             payout += creditorAmounts[i]
+Integer Overflow occurs if:
+    creditorAmounts[i] = 5575186299632655785383929568162090376495104
+    lastCreditorPayedOut = 2147483648
+/dataset/denial_of_service/list_dos.sol:101:14: Warning: Integer Overflow.
+             payout += creditorAmounts[i]
+Integer Overflow occurs if:
+    creditorAmounts[i] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    lastCreditorPayedOut = 4294967295
+    creditorAmounts[i] = 1
+    creditorAmounts[i] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/dataset/denial_of_service/list_dos.sol:118:10: Warning: Integer Overflow.
+         return creditorAddresses
+Integer Overflow occurs if:
+    return creditorAddresses = 3618502788666131106986593281521497120414687020801267626233049500247285301247
+/dataset/denial_of_service/list_dos.sol:10:1: Warning: Integer Overflow.
+contract Government {
+^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    creditorAddresses.length = 28948218901470770301695140900792780710248668242675594789168419330933812887552
+    profitFromCrash = 57896486330424292307867888328719139656263949203794500924468322405506887974912
+    lastTimeOfNewCredit = 115792089237316195423570985008687907853269984665640564039457584007913129596736
+/dataset/denial_of_service/list_dos.sol:95:22: Warning: Integer Overflow.
+             debt += creditorAmounts[i]
+Integer Overflow occurs if:
+    creditorAmounts.length = 144115189294307595
+    lastCreditorPayedOut = 3438196341
+/dataset/denial_of_service/list_dos.sol:39:14: Warning: Integer Overflow.
+             creditorAddresses[creditorAddresses.length - 1]
+Integer Overflow occurs if:
+    creditorAddresses.length = 110834043009220012235133335089276451969603524438780275671569023340184168562688
+    lastTimeOfNewCredit = 115792089237316195423570985008687907853269984665640564039457584007913129596736
+/dataset/denial_of_service/list_dos.sol:17:6: Warning: Integer Overflow.
+     uint[] public creditorAmounts
+/dataset/denial_of_service/list_dos.sol:122:10: Warning: Integer Overflow.
+         return creditorAmounts
+Integer Overflow occurs if:
+    return creditorAmounts = 3618502788666131106986593281521497120414687020801267626233049500247285301247
+/dataset/denial_of_service/list_dos.sol:95:14: Warning: Integer Overflow.
+             debt += creditorAmounts[i]
+Integer Overflow occurs if:
+    creditorAmounts.length = 4563402752
+    lastCreditorPayedOut = 3489660416
+INFO:symExec:/dataset/denial_of_service/list_dos.sol:39:14: Warning: Callstack Depth Attack Vulnerability.
+             creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)
+/dataset/denial_of_service/list_dos.sol:37:14: Warning: Callstack Depth Attack Vulnerability.
+             msg.sender.send(amount)
+/dataset/denial_of_service/list_dos.sol:40:14: Warning: Callstack Depth Attack Vulnerability.
+             corruptElite.send(this.balance)
+/dataset/denial_of_service/list_dos.sol:70:22: Warning: Callstack Depth Attack Vulnerability.
+                     buddy.send(amount * 5/100)
+/dataset/denial_of_service/list_dos.sol:62:18: Warning: Callstack Depth Attack Vulnerability.
+                 corruptElite.send(amount * 5/100)
+/dataset/denial_of_service/list_dos.sol:75:22: Warning: Callstack Depth Attack Vulnerability.
+                     creditorAddresses[lastCreditorPayedOut].send(creditorAmounts[lastCreditorPayedOut])
+INFO:symExec:Flow1
+/dataset/denial_of_service/list_dos.sol:82:18: Warning: Transaction-Ordering Dependency.
+                 msg.sender.send(amount)
+Flow2
+/dataset/denial_of_service/list_dos.sol:37:14: Warning: Transaction-Ordering Dependency.
+             msg.sender.send(amount)
+/dataset/denial_of_service/list_dos.sol:40:14: Warning: Transaction-Ordering Dependency.
+             corruptElite.send(this.balance)
+/dataset/denial_of_service/list_dos.sol:39:14: Warning: Transaction-Ordering Dependency.
+             creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)
+INFO:symExec:/dataset/denial_of_service/list_dos.sol:35:10: Warning: Timestamp Dependency.
+         if (lastTimeOfNewCredit + TWELVE_HOURS < block.timestamp) {
+         ^
+Spanning multiple lines.
+INFO:symExec:	====== Analysis Completed ======

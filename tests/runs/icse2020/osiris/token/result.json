@@ -1,0 +1,30 @@
+{
+  "contract": "token",
+  "tool": "osiris",
+  "start": 1565864933.3510494,
+  "end": 1565864935.6696103,
+  "duration": 2.318560838699341,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 23,
+          "column": 6,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 20,
+          "column": 14,
+          "message": "underflow_bugs"
+        },
+        {
+          "line": 22,
+          "column": 6,
+          "message": "underflow_bugs"
+        }
+      ],
+      "file": "/dataset/arithmetic/token.sol",
+      "name": "Token"
+    }
+  ]
+}

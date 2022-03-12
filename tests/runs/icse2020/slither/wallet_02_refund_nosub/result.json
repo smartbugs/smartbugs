@@ -1,0 +1,278 @@
+{
+  "contract": "wallet_02_refund_nosub",
+  "tool": "slither",
+  "start": 1565777009.4958217,
+  "end": 1565777012.863792,
+  "duration": 3.3679702281951904,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.deposit (/dataset/access_control/wallet_02_refund_nosub.sol#23-26) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "deposit",
+          "source_mapping": {
+            "start": 583,
+            "length": 160,
+            "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+            "lines": [
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 426,
+              "length": 851,
+              "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.withdraw (/dataset/access_control/wallet_02_refund_nosub.sol#28-32) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 750,
+            "length": 178,
+            "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+            "lines": [
+              28,
+              29,
+              30,
+              31,
+              32
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 426,
+              "length": 851,
+              "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.refund (/dataset/access_control/wallet_02_refund_nosub.sol#34-37) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "refund",
+          "source_mapping": {
+            "start": 935,
+            "length": 127,
+            "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+            "lines": [
+              34,
+              35,
+              36,
+              37
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 426,
+              "length": 851,
+              "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.migrateTo (/dataset/access_control/wallet_02_refund_nosub.sol#41-44) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "migrateTo",
+          "source_mapping": {
+            "start": 1150,
+            "length": 123,
+            "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+            "lines": [
+              41,
+              42,
+              43,
+              44
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 426,
+              "length": 851,
+              "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
