@@ -34,3 +34,6 @@ def is_remote_info(info):
 def get_remote_info(info):
     return (info['url'], info['local_dir'])
 
+import pandas
+VULNERABILITY_MAP_PATH = os.path.join(os.path.dirname(__file__), 'output_parser', 'sarif_vulnerability_mapping.csv')
+VULNERABILITY_MAP = pandas.read_csv(VULNERABILITY_MAP_PATH)

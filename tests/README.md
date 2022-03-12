@@ -34,12 +34,12 @@ The directory `samples` contains the following datasets.
 
 ### Examples
 
-- Run the current branch on the set of 10 sample contracts. The output will be in directory `runs/solidity2-10`.
+- Run the current branch on the set of ten sample contracts. The output will be in directory `runs/solidity2-10`.
 ```bash
 ./run.sh cmds/solidity2 samples/10
 ```
 
-- Run commit `6d23825` of Smartbugs on the set of 10 sample contracts. This version has to be run from Smartbugs' home directory, therefore we have to use
+- Run commit `6d23825` of Smartbugs on the set of ten sample contracts. This version has to be run from Smartbugs' home directory, therefore we use
   the script `solidity1`. The output ends up in directory `runs/solidity1-10-6d23825`.
 ```bash
 ./run.sh cmds/solidity1 samples/10 6d23825
@@ -57,7 +57,7 @@ compares the output of `RUN1` to the output of `RUN2` (and pipes it through `les
 - For each of the common contracts, it identifies the file names occurring in the output of both contracts.
 
 - For each of the common files, `diff.sh` checks whether there is a filter in subdirectory `filters`.
-  If yes, the files are piped through the filter and its output is used instead of the file.
+  If yes, the files are piped through the filter and the filtered outputs are used instead of the files.
   The purpose of the filters is to remove parts that change with every run, in order to restrict differences to relevant ones.
 
 - Finally, the script uses `diff` to compare the (filtered) files.
@@ -67,10 +67,10 @@ Therefore we do not necessarily obtain identical output from identical input.
 
 ### Filters
 
-The files in the output of a run are identified by a path of the form `TOOL/contract/FILE.EXT`.
+The files in the output of a run (below `runs`) are identified by a path of the form `.../TOOL/contract/FILE.EXT`.
 When processing such a file, `diff.sh` first looks for a filter `filters/TOOL-FILE-EXT`.
 If it does not exist, then `diff.sh` looks for `filters/FILE-EXT`.
-If this file does not exist either, then `TOOL/contract/FILE.EXT` is diff'ed unchanged.
+If this file does not exist either, then `TOOL/contract/FILE.EXT` remains unchanged.
 
 ### Examples
 
