@@ -19,7 +19,7 @@ class InfoAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         for tool in values:
             if tool in TOOLS and 'info' in TOOLS[tool]:
-                print(f'\x1b[1;37m{tool}\x1b[0m: {TOOLS[tool][info]}')
+                print(f'\x1b[1;37m{tool}\x1b[0m: {TOOLS[tool]["info"]}')
             else:
                 print(f'\x1b[1;37m{tool}\x1b[0m: no info provided.')
         parser.exit()
