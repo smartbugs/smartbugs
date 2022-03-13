@@ -30,7 +30,7 @@ The directory `samples` contains the following datasets.
 - `samples/curated`: a collection of 69 contracts used in the paper "Empirical Review of Automated Analysis Tools on 47,587 Ethereum Smart Contracts".
   As a reference, the results of Smartbugs from this paper run on `curated` can be found in `runs/icse2020`.
 
-- `samples/1` contains a single contract, `FindThisHash.sol`. This dataset is intended for quickly checking whether the test framework and Smartbugs work.
+- `samples/1` contains a single contract. This dataset is intended for quickly checking whether the test framework and Smartbugs work.
 
 - `samples/10` contains ten contracts randomly selected from `samples/curated`.
 
