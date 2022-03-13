@@ -14,6 +14,7 @@ for f in os.listdir(TOOLS_CFG_PATH):
 TOOL_CHOICES = TOOLS.keys()
 
 DATASETS_CFG_PATH = os.path.join(os.path.dirname(__file__), '..', 'config', 'datasets.yaml')
+DATASETS_PARENT = os.path.join(os.path.dirname(__file__), '..')
 with open(DATASETS_CFG_PATH, 'r') as ymlfile:
     try:
         DATASETS = yaml.safe_load(ymlfile)
@@ -32,7 +33,7 @@ def is_remote_info(info):
     return isinstance(info,dict) and 'url' in info and 'local_dir' in info
 
 def get_remote_info(info):
-    return (info['url'], info['local_dir'])
+    return (info['url'], info['local_dir'], info['subsets'])
 
 import pandas
 VULNERABILITY_MAP_PATH = os.path.join(os.path.dirname(__file__), 'output_parser', 'sarif_vulnerability_mapping.csv')

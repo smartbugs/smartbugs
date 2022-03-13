@@ -1,0 +1,621 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Solhint",
+          "fullDescription": {
+            "text": "Open source project for linting solidity code. This project provide both security and style guide validations."
+          },
+          "informationUri": "https://protofire.github.io/solhint/",
+          "rules": [
+            {
+              "id": "Ignore_41",
+              "fullDescription": {
+                "text": "Line length must be no more than 120 but current length is 129."
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "max-line-length"
+              }
+            },
+            {
+              "id": "Ignore_40",
+              "fullDescription": {
+                "text": "Expected indentation of 4 spaces but found 2"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "indent"
+              }
+            }
+          ],
+          "version": "3.3.2"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "timed_crowdsale"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "max-line-length"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 2,
+                  "startLine": 2
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_41"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "HoneyBadger",
+          "fullDescription": {
+            "text": "An analysis tool to detect honeypots in Ethereum smart contracts"
+          },
+          "informationUri": "https://honeybadger.uni.lu/",
+          "rules": [],
+          "version": "1.8.16"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "TimedCrowdsale"
+        }
+      ],
+      "results": []
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Slither",
+          "fullDescription": {
+            "text": "Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses."
+          },
+          "informationUri": "https://github.com/crytic/slither",
+          "rules": [
+            {
+              "id": "TimeManipulation_4",
+              "fullDescription": {
+                "text": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= 1546300800 (/data/timed_crowdsale.sol#13)\n"
+              },
+              "name": "TimeManipulationVulnerability",
+              "shortDescription": {
+                "text": "timestamp"
+              }
+            },
+            {
+              "id": "Ignore_11",
+              "fullDescription": {
+                "text": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) should be declared external\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "external-function"
+              }
+            }
+          ],
+          "version": "0.7.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "timestamp"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "isSaleFinished"
+                },
+                {
+                  "kind": "contract",
+                  "name": "TimedCrowdsale"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "endLine": 14,
+                  "startLine": 11
+                }
+              }
+            },
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "endLine": 13,
+                  "snippet": {
+                    "text": "block.timestamp >= 1546300800"
+                  },
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "TimeManipulation_4"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "isSaleFinished"
+                },
+                {
+                  "kind": "contract",
+                  "name": "TimedCrowdsale"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "endLine": 14,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Osiris",
+          "fullDescription": {
+            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
+          },
+          "informationUri": "https://github.com/christoftorres/Osiris",
+          "rules": [],
+          "version": "1.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "TimedCrowdsale"
+        }
+      ],
+      "results": []
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Oyente",
+          "fullDescription": {
+            "text": "Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness."
+          },
+          "informationUri": "https://oyente.tech/",
+          "rules": [],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "TimedCrowdsale"
+        }
+      ],
+      "results": []
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Mythril",
+          "fullDescription": {
+            "text": "Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities."
+          },
+          "informationUri": "https://mythx.io/",
+          "rules": [],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [],
+      "results": []
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Conkas",
+          "fullDescription": {
+            "text": "Conkas is based on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Conkas uses rattle to lift bytecode to a high level representation."
+          },
+          "informationUri": "https://github.com/nveloso/conkas",
+          "rules": [
+            {
+              "id": "TimeManipulation_6",
+              "name": "TimeManipulationVulnerability",
+              "shortDescription": {
+                "text": "Time Manipulation"
+              }
+            }
+          ],
+          "version": "1.0.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "function",
+          "name": "isSaleFinished()"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Time Manipulation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "isSaleFinished()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "TimeManipulation_6"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "SmartCheck",
+          "fullDescription": {
+            "text": "Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code."
+          },
+          "informationUri": "https://tool.smartdec.net/",
+          "rules": [
+            {
+              "id": "Ignore_28",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_PRAGMAS_VERSION"
+              }
+            }
+          ],
+          "version": "0.0.12"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "timed_crowdsale"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "SOLIDITY_PRAGMAS_VERSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "^"
+                  },
+                  "startColumn": 16,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_28"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Manticore",
+          "fullDescription": {
+            "text": "Manticore is a symbolic execution tool for analysis of smart contracts and binaries."
+          },
+          "informationUri": "https://github.com/trailofbits/manticore",
+          "rules": [
+            {
+              "id": "TimeManipulation_1",
+              "name": "TimeManipulationVulnerability",
+              "shortDescription": {
+                "text": "Warning TIMESTAMP instruction used"
+              }
+            }
+          ],
+          "version": "0.3.5"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Warning TIMESTAMP instruction used"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "block.timestamp"
+                  },
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "TimeManipulation_1"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Securify",
+          "fullDescription": {
+            "text": "Securify uses formal verification, also relying on static analysis checks. Securify\u2019s analysis consists of two steps. First, it symbolically analyzes the contract\u2019s dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not."
+          },
+          "informationUri": "https://github.com/eth-sri/securify2",
+          "rules": [
+            {
+              "id": "Ignore_3",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "MissingInputValidation"
+              }
+            }
+          ],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "TimedCrowdsale"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Maian",
+          "fullDescription": {
+            "text": "Maian is a tool for automatic detection of buggy Ethereum smart contracts of three different types prodigal, suicidal and greedy."
+          },
+          "informationUri": "https://github.com/ivicanikolicsg/MAIAN",
+          "rules": [],
+          "version": "5.10"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "results": []
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

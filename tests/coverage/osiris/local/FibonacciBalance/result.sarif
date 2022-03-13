@@ -1,0 +1,110 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Osiris",
+          "fullDescription": {
+            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
+          },
+          "informationUri": "https://github.com/christoftorres/Osiris",
+          "rules": [
+            {
+              "id": "Arithmetic_7",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "overflow_bugs"
+              }
+            }
+          ],
+          "version": "1.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/FibonacciBalance.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "FibonacciBalance"
+        },
+        {
+          "kind": "contract",
+          "name": "FibonacciLib"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "overflow_bugs"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FibonacciBalance.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 9,
+                  "startLine": 27
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_7"
+        },
+        {
+          "message": {
+            "text": "overflow_bugs"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FibonacciBalance.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 29,
+                  "startLine": 32
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_7"
+        },
+        {
+          "message": {
+            "text": "overflow_bugs"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FibonacciBalance.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 33,
+                  "startLine": 59
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_7"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

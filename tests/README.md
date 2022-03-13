@@ -1,7 +1,9 @@
 # Testing Smartbugs
 
-The test framework consists of a script `run.sh` to process sample contracts with a specific version of Smartbugs,
-and a script `diff.sh` to compare the output of two runs, filtering noise.
+The test framework consists of a script `run.sh` to process sample contracts
+with a specific version of Smartbugs, a script `diff.sh` to compare the output
+of two runs, and a script `coverage.sh` for running most parts of Smasrtbugs at
+least once.
 
 ## Running a Specific Version of Smartbugs on Sample Contracts
 
@@ -83,3 +85,25 @@ compares the output of Smartbugs, commit `6d23825`, to the output of the current
 ./diff.sh runs/icse2020 runs/solidity2-10
 ```
 compares the historic data from the conference ICSE2020 to the output of the current Smartbugs.
+
+### Coverage test
+
+```bash
+rm -rf results # remove remnants of a previous run
+./coverage.sh
+```
+runs Smartbugs with different options, trying to cover as much code as possible:
+
+- all tools run on a single file, with json and aggregated sarif output
+
+- a single tool (Smartcheck) run on the contracts of a directory, with json output only
+
+- a single tool (Osiris) on a builtin dataset, with sarif output only
+
+- a single tool (Solhint) on a remote dataset, with a single sarif file as output
+
+The output in `results` is compared to reference data in `coverage`.
+
+Note that this script delete the directory `dataset/solidiFI`, to test the download.
+This also means that you have to acknowledge the download when asked.
+

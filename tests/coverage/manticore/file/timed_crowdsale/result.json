@@ -1,0 +1,16 @@
+{
+  "contract": "timed_crowdsale",
+  "tool": "manticore",
+  "start": 1647191623.4737754,
+  "end": 1647191634.1220574,
+  "duration": 10.648282051086426,
+  "analysis": [
+    [
+      {
+        "name": "Warning TIMESTAMP instruction used",
+        "line": 13,
+        "code": "block.timestamp"
+      }
+    ]
+  ]
+}

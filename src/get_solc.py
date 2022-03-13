@@ -5,9 +5,6 @@ import solcx.install as solc
 # patch solcx to use Linux, independently of current OS
 solc._get_os_name.__code__ = (lambda:"linux").__code__
 
-SOLC_BINARY_PATH = os.path.join(os.path.dirname(__file__), '..', '.solcx')
-Path(SOLC_BINARY_PATH).mkdir(parents=True,exist_ok=True)
-
 VOID_START = re.compile('//|/\*|"|\'')
 PRAGMA = re.compile('pragma solidity.*?;')
 QUOTE_END = re.compile("(?<!\\\\)'")
@@ -46,7 +43,8 @@ def get_pragma(file: str) -> Optional[str]:
                 line = line[end+2:]
         line, in_comment = remove_void(line)
         if m := PRAGMA.search(line):
-            return m[0]
+            pragma = m[0]
+            return re.sub(r'(\D)0+(\d)',r'\1\2', pragma) # remove leading zeros
     return None
 
 def get_solc(filename: str) -> Optional[Path]:
@@ -55,7 +53,7 @@ def get_solc(filename: str) -> Optional[Path]:
     pragma = get_pragma(file)
     if not pragma:
         return None
-    version = solc.install_solc_pragma(pragma, solcx_binary_path=SOLC_BINARY_PATH)
+    version = solc.install_solc_pragma(pragma)
     if not version:
         return None
-    return solc.get_executable(version, SOLC_BINARY_PATH)
+    return solc.get_executable(version)
