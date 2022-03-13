@@ -89,7 +89,7 @@ compares the historic data from the conference ICSE2020 to the output of the cur
 ### Coverage test
 
 ```bash
-rm -rf results # remove remnants of a previous run
+rm -rf results dataset ../dataset/solidiFI
 ./coverage.sh
 ```
 runs Smartbugs with different options, trying to cover as much code as possible:
