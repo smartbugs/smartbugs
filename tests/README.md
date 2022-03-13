@@ -104,6 +104,6 @@ runs Smartbugs with different options, trying to cover as much code as possible:
 
 The output in `results` is compared to reference data in `coverage`.
 
-Note that this script delete the directory `dataset/solidiFI`, to test the download.
-This also means that you have to acknowledge the download when asked.
+In order to test the download of remote datasets, the script requires you to delete the directories `../dataset/solidiFI`, `./dataset` and `./results`; the last two directories are remnants of a previous run.
+Moreover, during the run of `./coverage.sh` you have to acknowledge at one point the download of the dataset.
 
