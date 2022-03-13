@@ -75,9 +75,9 @@ def exec_cmd(args: argparse.Namespace):
                     answer = input()
                     if answer.lower() in ['yes', 'y', '']:
                         sys.stdout.write('\x1b[1;37m' + 'Cloning remote dataset [%s <- %s]... ' % (
-                            base_path, remote_info['url']) + '\x1b[0m')
+                            base_path, url) + '\x1b[0m')
                         sys.stdout.flush()
-                        git.Repo.clone_from(remote_info['url'], base_path)
+                        git.Repo.clone_from(url, base_path)
                         sys.stdout.write('\x1b[1;37m\n' + 'Done.' + '\x1b[0m\n')
                     else:
                         print(
@@ -85,14 +85,14 @@ def exec_cmd(args: argparse.Namespace):
                         quit()
                 else:
                     sys.stdout.write('\x1b[1;37m' + 'Using remote dataset [%s <- %s] ' % (
-                        base_path, remote_info['url']) + '\x1b[0m\n')
+                        base_path, url) + '\x1b[0m\n')
 
                 if dataset == base_name:  # basename included
                     dataset_path = base_path
                     args.file.append(dataset_path)
                 if dataset != base_name and base_name not in args.dataset:
                     subset_name = dataset.split('/')[1]
-                    dataset_path = os.path.join(base_path, remote_info['subsets'][subset_name])
+                    dataset_path = os.path.join(base_path, dataset_info['subsets'][subset_name])
                     args.file.append(dataset_path)
             else:
                 args.file.append(dataset_info)
