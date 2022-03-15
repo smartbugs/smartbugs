@@ -106,6 +106,10 @@ def analyse_files(task: 'Execution_Task'):
 
         cmd = cfg[cmd_key]
 
+        if '{timeout}' in cmd:
+            # give 5min to the tool to setup
+            cmd = cmd.replace('{timeout}', str(task.execution_configuration.timeout - 5 * 60))
+
         if '{contract}' in cmd:
             cmd = cmd.replace('{contract}', f'/data/{contract_base}')
         else:
