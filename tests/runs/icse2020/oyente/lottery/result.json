@@ -1,0 +1,29 @@
+{
+  "contract": "lottery",
+  "tool": "oyente",
+  "start": 1565863196.490636,
+  "end": 1565863202.59181,
+  "duration": 6.1011738777160645,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 58,
+          "column": 40,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/bad_randomness/lottery.sol",
+      "name": "Lottery",
+      "evm_code_coverage": "73.0%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

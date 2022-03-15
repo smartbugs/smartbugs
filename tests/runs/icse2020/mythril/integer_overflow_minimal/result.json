@@ -1,0 +1,24 @@
+{
+  "contract": "integer_overflow_minimal",
+  "tool": "mythril",
+  "start": 1565777147.9395912,
+  "end": 1565777151.9334042,
+  "duration": 3.9938130378723145,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 174,
+        "code": "count -= input",
+        "debug": "storage_0: 0x0\ncalldata_IntegerOverflowMinimal_4: 0x1\ncalldata_IntegerOverflowMinimal_0: 0xa444f5e900000000000000000000000000000000000000000000000000000000\ncalldatasize_IntegerOverflowMinimal: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer underflow exists in the function `run(uint256)`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/arithmetic/integer_overflow_minimal.sol",
+        "function": "run(uint256)",
+        "lineno": 17,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

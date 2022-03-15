@@ -1,0 +1,167 @@
+{
+  "contract": "rubixi",
+  "tool": "mythril",
+  "start": 1565777009.0486894,
+  "end": 1565777122.6802464,
+  "duration": 113.63155698776245,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 1673,
+        "code": "creator.send(feesToCollect)",
+        "debug": "SOLVER OUTPUT:\ncalldata_Rubixi_4: 0x0\nstorage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nstorage_5: 0x0\ncaller: 0x0\ncalldata_Rubixi_0: 0x4229616d00000000000000000000000000000000000000000000000000000000\ncalldatasize_Rubixi: 0x4\ncallvalue: 0x0\n",
+        "description": "In the function `collectPercentOfFees(uint256)` a non-zero amount of Ether is sent to an address taken from storage slot 5.\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\n\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\nThere is a check on storage index 1. This storage slot can be written to by calling the function `fallback`.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectPercentOfFees(uint256)",
+        "lineno": 103,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 1673,
+        "code": "creator.send(feesToCollect)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function collectPercentOfFees(uint256). The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectPercentOfFees(uint256)",
+        "lineno": 103,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      },
+      {
+        "address": 1673,
+        "code": "creator.send(feesToCollect)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectPercentOfFees(uint256)",
+        "lineno": 103,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 1727,
+        "code": "participants[payoutOrder]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_4: 0x0\nstorage_6: 0x0\ncalldata_Rubixi_0: 0x57d4021b00000000000000000000000000000000000000000000000000000000\ncalldatasize_Rubixi: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "nextPayoutWhenPyramidBalanceTotalsApproximately()",
+        "lineno": 141,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 2014,
+        "code": "creator.send(collectedFees)",
+        "debug": "SOLVER OUTPUT:\ncalldata_Rubixi_4: 0x3fc008034000c72a0209000007281f800000080000021040010020022000\nstorage_1: 0x1f6e63c4deec066afc549c20ff27d3b5b9de110e189b00fb5d2a43b47ff80000\nstorage_5: 0x0\ncaller: 0x0\ncalldata_Rubixi_0: 0xb402295000000000000000000000000000000000000000000000000000000000\ncalldatasize_Rubixi: 0x4\ncallvalue: 0x0\n",
+        "description": "In the function `collectFeesInEther(uint256)` a non-zero amount of Ether is sent to an address taken from storage slot 5.\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\n\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\nThere is a check on storage index 1. This storage slot can be written to by calling the function `fallback`.\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\nThere is a check on storage index 1. This storage slot can be written to by calling the function `fallback`.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 85,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 2014,
+        "code": "creator.send(collectedFees)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function collectFeesInEther(uint256). The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 85,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      },
+      {
+        "address": 2014,
+        "code": "creator.send(collectedFees)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 85,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 2147,
+        "code": "participants[orderInPyramid]",
+        "debug": "The exception is triggered under the following conditions:\n\ncalldata_Rubixi_4: 0x0\nstorage_6: 0x0\ncalldata_Rubixi_0: 0x9dbc4f9b00000000000000000000000000000000000000000000000000000000\ncalldatasize_Rubixi: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "participantDetails(uint256)",
+        "lineno": 158,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 2525,
+        "code": "_amt *= 1 ether",
+        "debug": "calldata_Rubixi_4: 0xf77124b52a24e057d8a070024000e4e0e29fe1280e6ec1bac4ce6c09cd081036\nstorage_5: 0x0\ncaller: 0x0\ncalldata_Rubixi_0: 0xb402295000000000000000000000000000000000000000000000000000000000\ncalldatasize_Rubixi: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `collectFeesInEther(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 90,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 2644,
+        "code": "creator.send(_amt)",
+        "debug": "SOLVER OUTPUT:\ncalldata_Rubixi_4: 0x1c0410d067097a1bc7404939abe92829663ec7901626ef1475ffee212c7e\nstorage_1: 0xde23e67fdbeff7821b7b3f55d5f2ca1317ffdfffff36b7f6572b3f9bf2a80000\nstorage_5: 0x0\ncaller: 0x0\ncalldata_Rubixi_0: 0xb402295000000000000000000000000000000000000000000000000000000000\ncalldatasize_Rubixi: 0x4\ncallvalue: 0x0\n",
+        "description": "In the function `collectFeesInEther(uint256)` a non-zero amount of Ether is sent to an address taken from storage slot 5.\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\n\nThere is a check on storage index 5. This storage slot can be written to by calling the function `DynamicPyramid()`.\nThere is a check on storage index 1. This storage slot can be written to by calling the function `fallback`.\nThere is a check on storage index 1. This storage slot can be written to by calling the function `fallback`.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 95,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 2644,
+        "code": "creator.send(_amt)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function collectFeesInEther(uint256). The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 95,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      },
+      {
+        "address": 2644,
+        "code": "creator.send(_amt)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "collectFeesInEther(uint256)",
+        "lineno": 95,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 3420,
+        "code": "participants[payoutOrder].etherAddress.send(payoutToSend)",
+        "debug": "",
+        "description": "Multiple sends exist in one transaction, try to isolate each external call into its own transaction. As external calls can fail accidentally or deliberately.\nConsecutive calls: \nCall at address: 3420\n",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "fallback",
+        "lineno": 74,
+        "title": "Multiple Calls",
+        "type": "Information"
+      },
+      {
+        "address": 3420,
+        "code": "participants[payoutOrder].etherAddress.send(payoutToSend)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/access_control/rubixi.sol",
+        "function": "fallback",
+        "lineno": 74,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      }
+    ],
+    "success": true
+  }
+}

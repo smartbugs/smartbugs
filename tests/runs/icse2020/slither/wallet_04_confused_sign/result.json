@@ -1,0 +1,200 @@
+{
+  "contract": "wallet_04_confused_sign",
+  "tool": "slither",
+  "start": 1565776999.7057352,
+  "end": 1565777003.1823432,
+  "duration": 3.4766080379486084,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.deposit (/dataset/access_control/wallet_04_confused_sign.sol#23-26) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "deposit",
+          "source_mapping": {
+            "start": 544,
+            "length": 160,
+            "filename": "/dataset/access_control/wallet_04_confused_sign.sol",
+            "lines": [
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 387,
+              "length": 759,
+              "filename": "/dataset/access_control/wallet_04_confused_sign.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.withdraw (/dataset/access_control/wallet_04_confused_sign.sol#28-33) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 711,
+            "length": 220,
+            "filename": "/dataset/access_control/wallet_04_confused_sign.sol",
+            "lines": [
+              28,
+              29,
+              30,
+              31,
+              32,
+              33
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 387,
+              "length": 759,
+              "filename": "/dataset/access_control/wallet_04_confused_sign.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Wallet.migrateTo (/dataset/access_control/wallet_04_confused_sign.sol#37-40) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "migrateTo",
+          "source_mapping": {
+            "start": 1019,
+            "length": 123,
+            "filename": "/dataset/access_control/wallet_04_confused_sign.sol",
+            "lines": [
+              37,
+              38,
+              39,
+              40
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Wallet",
+            "source_mapping": {
+              "start": 387,
+              "length": 759,
+              "filename": "/dataset/access_control/wallet_04_confused_sign.sol",
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

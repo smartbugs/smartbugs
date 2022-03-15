@@ -1,0 +1,251 @@
+{
+  "contract": "token",
+  "tool": "slither",
+  "start": 1565777159.5361562,
+  "end": 1565777161.8449893,
+  "duration": 2.308833122253418,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Token.transfer (/dataset/arithmetic/token.sol#18-25) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "transfer",
+          "source_mapping": {
+            "start": 342,
+            "length": 275,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Token",
+            "source_mapping": {
+              "start": 149,
+              "length": 586,
+              "filename": "/dataset/arithmetic/token.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Token.balanceOf (/dataset/arithmetic/token.sol#27-29) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "balanceOf",
+          "source_mapping": {
+            "start": 622,
+            "length": 110,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              27,
+              28,
+              29
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Token",
+            "source_mapping": {
+              "start": 149,
+              "length": 586,
+              "filename": "/dataset/arithmetic/token.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/token.sol:\n\t- pragma solidity^0.4.18 (/dataset/arithmetic/token.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.18",
+          "source_mapping": {
+            "start": 122,
+            "length": 24,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'Token.Token' (/dataset/arithmetic/token.sol#14-16) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "Token",
+          "source_mapping": {
+            "start": 237,
+            "length": 100,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              14,
+              15,
+              16
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_initialSupply' of Token.Token (/dataset/arithmetic/token.sol#14) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_initialSupply",
+          "source_mapping": {
+            "start": 252,
+            "length": 19,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              14
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_to' of Token.transfer (/dataset/arithmetic/token.sol#18) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_to",
+          "source_mapping": {
+            "start": 360,
+            "length": 11,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              18
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_value' of Token.transfer (/dataset/arithmetic/token.sol#18) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_value",
+          "source_mapping": {
+            "start": 373,
+            "length": 11,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              18
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_owner' of Token.balanceOf (/dataset/arithmetic/token.sol#27) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_owner",
+          "source_mapping": {
+            "start": 641,
+            "length": 14,
+            "filename": "/dataset/arithmetic/token.sol",
+            "lines": [
+              27
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+2019-08-13 19:05:26,791: [12] m.main:INFO: Registered plugins: DetectReentrancySimple, DetectInvalid, DetectUnusedRetVal, DetectDelegatecall, DetectReentrancyAdvanced, DetectUninitializedStorage, DetectIntegerOverflow, DetectEnvInstruction, DetectSuicidal, DetectUninitializedMemory, DetectExternalCallAndLeak
+2019-08-13 19:05:26,792: [12] m.main:INFO: Beginning analysis
+2019-08-13 19:05:26,804: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 19:05:28,170: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 19:05:29,934: [314] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 19:05:31,942: [329] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:05:31,970: [329] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:05:32,303: [12] m.e.manticore:INFO: 3 alive states, 4 terminated states
+2019-08-13 19:05:32,990: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 19:05:35,457: [1261] m.e.detectors:WARNING: Reachable ether leak to sender
+2019-08-13 19:05:35,604: [1271] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 19:05:36,321: [1286] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 19:05:37,973: [1292] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:05:38,007: [1292] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:05:38,164: [1277] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:05:38,198: [1277] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:05:38,403: [1282] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 19:05:40,093: [1266] m.e.detectors:WARNING: Potential reentrancy vulnerability
+2019-08-13 19:05:40,173: [1266] m.e.detectors:WARNING: Reentrancy multi-million ether bug
+2019-08-13 19:05:40,729: [12] m.e.manticore:INFO: 9 alive states, 16 terminated states
+2019-08-13 19:05:41,582: [3658] m.c.manticore:INFO: Generated testcase No. 0 - STOP(3 txs)
+2019-08-13 19:05:41,622: [3676] m.c.manticore:INFO: Generated testcase No. 1 - STOP(3 txs)
+2019-08-13 19:05:41,628: [3695] m.c.manticore:INFO: Generated testcase No. 3 - STOP(3 txs)
+2019-08-13 19:05:41,629: [3686] m.c.manticore:INFO: Generated testcase No. 2 - STOP(3 txs)
+2019-08-13 19:05:41,634: [3690] m.c.manticore:INFO: Generated testcase No. 4 - STOP(3 txs)
+2019-08-13 19:05:41,637: [3699] m.c.manticore:INFO: Generated testcase No. 5 - STOP(3 txs)
+2019-08-13 19:05:41,677: [3660] m.c.manticore:INFO: Generated testcase No. 6 - RETURN(3 txs)
+2019-08-13 19:05:41,708: [3665] m.c.manticore:INFO: Generated testcase No. 7 - RETURN(3 txs)
+2019-08-13 19:05:41,717: [3670] m.c.manticore:INFO: Generated testcase No. 8 - RETURN(3 txs)
+2019-08-13 19:05:44,380: [3686] m.c.manticore:INFO: Generated testcase No. 9 - RETURN(1 txs)
+2019-08-13 19:05:44,427: [3676] m.c.manticore:INFO: Generated testcase No. 10 - REVERT(2 txs)
+2019-08-13 19:05:44,472: [3695] m.c.manticore:INFO: Generated testcase No. 11 - REVERT(2 txs)
+2019-08-13 19:05:44,504: [3699] m.c.manticore:INFO: Generated testcase No. 12 - REVERT(2 txs)
+2019-08-13 19:05:45,055: [3658] m.c.manticore:INFO: Generated testcase No. 13 - STOP(2 txs)
+2019-08-13 19:05:45,319: [3690] m.c.manticore:INFO: Generated testcase No. 14 - STOP(2 txs)
+2019-08-13 19:05:45,474: [3670] m.c.manticore:INFO: Generated testcase No. 15 - RETURN(2 txs)
+2019-08-13 19:05:45,801: [3665] m.c.manticore:INFO: Generated testcase No. 16 - REVERT(3 txs)
+2019-08-13 19:05:45,904: [3660] m.c.manticore:INFO: Generated testcase No. 17 - REVERT(3 txs)
+2019-08-13 19:05:46,064: [3686] m.c.manticore:INFO: Generated testcase No. 18 - REVERT(3 txs)
+2019-08-13 19:05:46,582: [3676] m.c.manticore:INFO: Generated testcase No. 19 - REVERT(3 txs)
+2019-08-13 19:05:46,751: [3699] m.c.manticore:INFO: Generated testcase No. 20 - REVERT(3 txs)
+2019-08-13 19:05:46,792: [3695] m.c.manticore:INFO: Generated testcase No. 21 - REVERT(3 txs)
+2019-08-13 19:05:47,351: [3658] m.c.manticore:INFO: Generated testcase No. 22 - REVERT(3 txs)
+2019-08-13 19:05:47,642: [3690] m.c.manticore:INFO: Generated testcase No. 23 - REVERT(3 txs)
+2019-08-13 19:05:48,326: [3670] m.c.manticore:INFO: Generated testcase No. 24 - REVERT(3 txs)
+2019-08-13 19:05:51,605: [12] m.c.manticore:INFO: Results in /mcore_jtsmyqew

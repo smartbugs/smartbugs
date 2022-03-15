@@ -1,0 +1,50 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/other/crypto_roulette.sol:CryptoRoulette:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.6%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/other/crypto_roulette.sol:43:9: Warning: Integer Underflow.
+        gamesPlayed.push(game)
+Integer Underflow occurs if:
+    number = 0
+    betPrice = 0
+/dataset/other/crypto_roulette.sol:34:56: Warning: Integer Underflow.
+        secretNumber = uint8(sha3(now, block.blockhash(block.number-1
+Integer Underflow occurs if:
+    number = 0
+    betPrice = 0
+INFO:symExec:/dataset/other/crypto_roulette.sol:55:46: Warning: Integer Overflow.
+        if (msg.sender == ownerAddr && now > lastPlayed + 1 days
+Integer Overflow occurs if:
+    lastPlayed = 115792089237316195423570985008687907853269984665640564039457584007913129619968
+    ownerAddr = 0
+/dataset/other/crypto_roulette.sol:2:21: Warning: Integer Overflow.
+ * @source: https://github.com/thec00n
+Integer Overflow occurs if:
+    number = 0
+    betPrice = 0
+/dataset/other/crypto_roulette.sol:25:5: Warning: Integer Overflow.
+    Game[] public gamesPlayed
+/dataset/other/crypto_roulette.sol:43:9: Warning: Integer Overflow.
+        gamesPlayed.push(game)
+Integer Overflow occurs if:
+    number = 0
+    betPrice = 0
+INFO:symExec:Flow1
+/dataset/other/crypto_roulette.sol:56:13: Warning: Transaction-Ordering Dependency.
+            suicide(msg.sender)
+Flow2
+/dataset/other/crypto_roulette.sol:47:13: Warning: Transaction-Ordering Dependency.
+            msg.sender.transfer(this.balance)
+INFO:symExec:/dataset/other/crypto_roulette.sol:55:9: Warning: Timestamp Dependency.
+        if (msg.sender == ownerAddr && now > lastPlayed + 1 days) {
+        ^
+Spanning multiple lines.
+INFO:symExec:	====== Analysis Completed ======

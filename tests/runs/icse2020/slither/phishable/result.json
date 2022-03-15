@@ -1,0 +1,291 @@
+{
+  "contract": "phishable",
+  "tool": "slither",
+  "start": 1565777000.8593981,
+  "end": 1565777003.9041693,
+  "duration": 3.044771194458008,
+  "analysis": [
+    {
+      "check": "arbitrary-send",
+      "impact": "High",
+      "confidence": "Medium",
+      "description": "Phishable.withdrawAll (/dataset/access_control/phishable.sol#18-22) sends eth to arbitrary user\n\tDangerous calls:\n\t- _recipient.transfer(this.balance) (/dataset/access_control/phishable.sol#21)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdrawAll",
+          "source_mapping": {
+            "start": 307,
+            "length": 176,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Phishable",
+            "source_mapping": {
+              "start": 137,
+              "length": 348,
+              "filename": "/dataset/access_control/phishable.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "_recipient.transfer(this.balance)",
+          "source_mapping": {
+            "start": 443,
+            "length": 33,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              21
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "tx-origin",
+      "impact": "Medium",
+      "confidence": "Medium",
+      "description": "Phishable.withdrawAll uses tx.origin for authorization:\n\t- require(bool)(tx.origin == owner) (/dataset/access_control/phishable.sol#20)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdrawAll",
+          "source_mapping": {
+            "start": 307,
+            "length": 176,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Phishable",
+            "source_mapping": {
+              "start": 137,
+              "length": 348,
+              "filename": "/dataset/access_control/phishable.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "require(bool)(tx.origin == owner)",
+          "source_mapping": {
+            "start": 406,
+            "length": 27,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              20
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Phishable.fallback (/dataset/access_control/phishable.sol#16) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 255,
+            "length": 29,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              16
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Phishable",
+            "source_mapping": {
+              "start": 137,
+              "length": 348,
+              "filename": "/dataset/access_control/phishable.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Phishable.withdrawAll (/dataset/access_control/phishable.sol#18-22) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdrawAll",
+          "source_mapping": {
+            "start": 307,
+            "length": 176,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Phishable",
+            "source_mapping": {
+              "start": 137,
+              "length": 348,
+              "filename": "/dataset/access_control/phishable.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/access_control/phishable.sol:\n\t- pragma solidity^0.4.22 (/dataset/access_control/phishable.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.22",
+          "source_mapping": {
+            "start": 110,
+            "length": 24,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_owner' of Phishable. (/dataset/access_control/phishable.sol#12) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_owner",
+          "source_mapping": {
+            "start": 202,
+            "length": 14,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              12
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_recipient' of Phishable.withdrawAll (/dataset/access_control/phishable.sol#18) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_recipient",
+          "source_mapping": {
+            "start": 328,
+            "length": 18,
+            "filename": "/dataset/access_control/phishable.sol",
+            "lines": [
+              18
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

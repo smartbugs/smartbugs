@@ -1,0 +1,63 @@
+{
+  "contract": "multiowned_vulnerable",
+  "tool": "manticore",
+  "start": 1565721229.519103,
+  "end": 1565721946.3857174,
+  "duration": 716.8666143417358,
+  "analysis": [
+    [
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 40,
+        "code": "owners[_owner] = msg.sender"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 14,
+        "code": "mapping (address => address) public owners"
+      }
+    ],
+    [
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 40,
+        "code": "owners[_owner] = msg.sender"
+      },
+      {
+        "name": "Reachable external call to sender",
+        "line": 57,
+        "code": "msg.sender.transfer(this.balance)"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 29,
+        "code": "owners[msg.sender]"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 48,
+        "code": "owners[_owner]"
+      },
+      {
+        "name": "Reachable ether leak to sender",
+        "line": 57,
+        "code": "msg.sender.transfer(this.balance)"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 29,
+        "code": "owners[msg.sender]"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 48,
+        "code": "owners[_owner]"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 14,
+        "code": "mapping (address => address) public owners"
+      }
+    ]
+  ]
+}

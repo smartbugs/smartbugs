@@ -1,0 +1,71 @@
+{
+  "contract": "integer_overflow_mapping_sym_1",
+  "tool": "slither",
+  "start": 1565777155.7981489,
+  "end": 1565777158.1905084,
+  "duration": 2.392359495162964,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowMappingSym1.init (/dataset/arithmetic/integer_overflow_mapping_sym_1.sol#14-17) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "init",
+          "source_mapping": {
+            "start": 342,
+            "length": 108,
+            "filename": "/dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+            "lines": [
+              14,
+              15,
+              16,
+              17
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowMappingSym1",
+            "source_mapping": {
+              "start": 262,
+              "length": 190,
+              "filename": "/dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/integer_overflow_mapping_sym_1.sol:\n\t- pragma solidity^0.4.11 (/dataset/arithmetic/integer_overflow_mapping_sym_1.sol#9): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.11",
+          "source_mapping": {
+            "start": 236,
+            "length": 24,
+            "filename": "/dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+            "lines": [
+              9
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

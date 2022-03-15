@@ -1,0 +1,57 @@
+{
+  "contract": "open_address_lottery",
+  "tool": "mythril",
+  "start": 1565777086.839671,
+  "end": 1565777116.2888625,
+  "duration": 29.449191570281982,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 586,
+        "code": "msg.value*7",
+        "debug": "callvalue: 0xa00168a0e20000e0000000000000000000000000000000000023f56150000000\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0x0\nstorage_0: 0x0\ncaller: 0xffffffffffffffffffffffffffffffffffffffff\ncalldata_OpenAddressLottery_0: 0x0\ncalldatasize_OpenAddressLottery: 0x4\nkeccac_1461501637330902918203684832716283019655932542975_&_caller: 0x0\nstorage_3: 0x0\n",
+        "description": "A possible integer overflow exists in the function `fallback`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/other/open_address_lottery.sol",
+        "function": "fallback",
+        "lineno": 56,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 726,
+        "code": "block.number-lastReseed",
+        "debug": "callvalue: 0x16345785d8c0000\nblock_number: 0x0\nstorage_2: 0x1\nretval_694: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\nbalance_at_1461501637330902918203684832716283019655932542975 & 0: 0x9b6e64a8ed3ffff\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0x0\nstorage_0: 0x0\ncaller: 0xffffffffffffffffffffffffffffffffffffffff\ncalldata_OpenAddressLottery_0: 0x0\ncalldatasize_OpenAddressLottery: 0x4\nkeccac_1461501637330902918203684832716283019655932542975_&_caller: 0x0\nstorage_3: 0x0\n",
+        "description": "A possible integer underflow exists in the function `fallback`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/other/open_address_lottery.sol",
+        "function": "fallback",
+        "lineno": 63,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      },
+      {
+        "address": 1204,
+        "code": "block.number - 1",
+        "debug": "block_number: 0x0\nstorage_0: 0x0\ncaller: 0x0\ncalldata_OpenAddressLottery_0: 0x80ca7aec00000000000000000000000000000000000000000000000000000000\ncalldatasize_OpenAddressLottery: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer underflow exists in the function `forceReseed()`.\nThe subtraction may result in a value < 0.",
+        "filename": "/dataset/other/open_address_lottery.sol",
+        "function": "forceReseed()",
+        "lineno": 93,
+        "title": "Integer Underflow",
+        "type": "Warning"
+      },
+      {
+        "address": 1254,
+        "code": "tx.gasprice * 7",
+        "debug": "gasprice: 0xe0125571596dcdb7a800140800f000052535492d704926c02910f12000092011\nstorage_0: 0x0\ncaller: 0x0\ncalldata_OpenAddressLottery_0: 0x80ca7aec00000000000000000000000000000000000000000000000000000000\ncalldatasize_OpenAddressLottery: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `forceReseed()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/other/open_address_lottery.sol",
+        "function": "forceReseed()",
+        "lineno": 95,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

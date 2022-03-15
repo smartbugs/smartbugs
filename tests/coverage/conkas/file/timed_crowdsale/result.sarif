@@ -1,0 +1,69 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Conkas",
+          "fullDescription": {
+            "text": "Conkas is based on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Conkas uses rattle to lift bytecode to a high level representation."
+          },
+          "informationUri": "https://github.com/nveloso/conkas",
+          "rules": [
+            {
+              "id": "TimeManipulation_6",
+              "name": "TimeManipulationVulnerability",
+              "shortDescription": {
+                "text": "Time Manipulation"
+              }
+            }
+          ],
+          "version": "1.0.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "samples/1/timed_crowdsale.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "function",
+          "name": "isSaleFinished()"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Time Manipulation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "isSaleFinished()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/1/timed_crowdsale.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "TimeManipulation_6"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

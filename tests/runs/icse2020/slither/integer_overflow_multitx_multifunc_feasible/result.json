@@ -1,0 +1,131 @@
+{
+  "contract": "integer_overflow_multitx_multifunc_feasible",
+  "tool": "slither",
+  "start": 1565777136.0894418,
+  "end": 1565777138.6167173,
+  "duration": 2.527275562286377,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowMultiTxMultiFuncFeasible.init (/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol#16-18) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "init",
+          "source_mapping": {
+            "start": 356,
+            "length": 55,
+            "filename": "/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+            "lines": [
+              16,
+              17,
+              18
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowMultiTxMultiFuncFeasible",
+            "source_mapping": {
+              "start": 233,
+              "length": 344,
+              "filename": "/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowMultiTxMultiFuncFeasible.run (/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol#20-26) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "run",
+          "source_mapping": {
+            "start": 417,
+            "length": 158,
+            "filename": "/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+            "lines": [
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowMultiTxMultiFuncFeasible",
+            "source_mapping": {
+              "start": 233,
+              "length": 344,
+              "filename": "/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol:\n\t- pragma solidity^0.4.23 (/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol#10): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.23",
+          "source_mapping": {
+            "start": 207,
+            "length": 24,
+            "filename": "/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+            "lines": [
+              10
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

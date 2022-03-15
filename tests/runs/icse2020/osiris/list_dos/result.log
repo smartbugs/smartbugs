@@ -1,0 +1,81 @@
+INFO:root:Contract /dataset/denial_of_service/list_dos.sol:Government:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 50.5%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/dataset/denial_of_service/list_dos.sol:Government:101:14
+payout += creditorAmounts[i]
+^
+/dataset/denial_of_service/list_dos.sol:Government:121:6
+function getCreditorAmounts() returns (uint[]) {
+^
+/dataset/denial_of_service/list_dos.sol:Government:122:10
+return creditorAmounts
+^
+/dataset/denial_of_service/list_dos.sol:Government:35:14
+lastTimeOfNewCredit + TWELVE_HOURS
+^
+/dataset/denial_of_service/list_dos.sol:Government:122:10
+return creditorAmounts
+^
+INFO:symExec:	  └> Underflow bugs: 	 False
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 True
+/dataset/denial_of_service/list_dos.sol:Government:100:26
+lastCreditorPayedOut
+^
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 True
+/dataset/denial_of_service/list_dos.sol:Government:39:14
+creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)
+^
+/dataset/denial_of_service/list_dos.sol:Government:37:14
+msg.sender.send(amount)
+^
+/dataset/denial_of_service/list_dos.sol:Government:40:14
+corruptElite.send(this.balance)
+^
+/dataset/denial_of_service/list_dos.sol:Government:70:22
+buddy.send(amount * 5/100)
+^
+/dataset/denial_of_service/list_dos.sol:Government:62:18
+corruptElite.send(amount * 5/100)
+^
+/dataset/denial_of_service/list_dos.sol:Government:75:22
+creditorAddresses[lastCreditorPayedOut].send(creditorAmounts[lastCreditorPayedOut])
+^
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/dataset/denial_of_service/list_dos.sol:Government:82:18
+msg.sender.send(amount)
+^
+Flow 2:
+/dataset/denial_of_service/list_dos.sol:Government:37:14
+msg.sender.send(amount)
+^
+/dataset/denial_of_service/list_dos.sol:Government:40:14
+corruptElite.send(this.balance)
+^
+/dataset/denial_of_service/list_dos.sol:Government:39:14
+creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)
+^
+INFO:symExec:	  Time dependency bug: 	 True
+/dataset/denial_of_service/list_dos.sol:Government:35:10
+if (lastTimeOfNewCredit + TWELVE_HOURS < block.timestamp) {
+^
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	 --- 250.12428093 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'
+
+
+!!! SYMBOLIC EXECUTION TIMEOUT !!!

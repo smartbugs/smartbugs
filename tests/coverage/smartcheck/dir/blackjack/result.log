@@ -1,0 +1,317 @@
+/data/blackjack.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 70
+column: 3
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 102
+column: 3
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 106
+column: 3
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 170
+column: 36
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 183
+column: 47
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 186
+column: 41
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 223
+column: 42
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 236
+column: 37
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 240
+column: 41
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 268
+column: 3
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 275
+column: 3
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 290
+column: 3
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 24
+column: 1
+content: functionvalueOf(uint8card,boolisBigAce)internalconstantreturns(uint8){uint8value=card/4;if(value==0||value==11||value==12){return10;}if(value==1&&isBigAce){return11;}returnvalue;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 35
+column: 1
+content: functionisAce(uint8card)internalconstantreturns(bool){returncard/4==1;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 39
+column: 1
+content: functionisTen(uint8card)internalconstantreturns(bool){returncard/4==10;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 249
+column: 1
+content: functioncalculateScore(uint8[]cards)privateconstantreturns(uint8,uint8){uint8score=0;uint8scoreBig=0;boolbigAceUsed=false;for(uinti=0;i<cards.length;++i){uint8card=cards[i];if(Deck.isAce(card)&&!bigAceUsed){scoreBig+=Deck.valueOf(card,true);bigAceUsed=true;}else{scoreBig+=Deck.valueOf(card,false);}score+=Deck.valueOf(card,false);}return(score,scoreBig);}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 266
+column: 1
+content: functiongetPlayerCard(uint8id)publicgameIsGoingOnconstantreturns(uint8){if(id<0||id>games[msg.sender].playerCards.length){throw;}returngames[msg.sender].playerCards[id];}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 273
+column: 1
+content: functiongetHouseCard(uint8id)publicgameIsGoingOnconstantreturns(uint8){if(id<0||id>games[msg.sender].houseCards.length){throw;}returngames[msg.sender].houseCards[id];}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 280
+column: 1
+content: functiongetPlayerCardsNumber()publicgameIsGoingOnconstantreturns(uint){returngames[msg.sender].playerCards.length;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 284
+column: 1
+content: functiongetHouseCardsNumber()publicgameIsGoingOnconstantreturns(uint){returngames[msg.sender].houseCards.length;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 288
+column: 1
+content: functiongetGameState()publicconstantreturns(uint8){if(games[msg.sender].player==0){throw;}Gamegame=games[msg.sender];if(game.state==GameState.Player){return1;}if(game.state==GameState.House){return2;}if(game.state==GameState.Tie){return3;}return0;}
+
+ruleId: SOLIDITY_EXTRA_GAS_IN_LOOPS
+patternId: d3j11j
+severity: 1
+line: 253
+column: 2
+content: for(uinti=0;i<cards.length;++i){uint8card=cards[i];if(Deck.isAce(card)&&!bigAceUsed){scoreBig+=Deck.valueOf(card,true);bigAceUsed=true;}else{scoreBig+=Deck.valueOf(card,false);}score+=Deck.valueOf(card,false);}
+
+ruleId: SOLIDITY_GAS_LIMIT_IN_LOOPS
+patternId: f6f853
+severity: 2
+line: 253
+column: 2
+content: for(uinti=0;i<cards.length;++i){uint8card=cards[i];if(Deck.isAce(card)&&!bigAceUsed){scoreBig+=Deck.valueOf(card,true);bigAceUsed=true;}else{scoreBig+=Deck.valueOf(card,false);}score+=Deck.valueOf(card,false);}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 8
+column: 17
+content: ^
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 69
+column: 2
+content: if(games[msg.sender].player==0||games[msg.sender].state!=GameState.Ongoing){throw;}
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 101
+column: 2
+content: if(games[msg.sender].player!=0&&games[msg.sender].state==GameState.Ongoing){throw;}
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 105
+column: 2
+content: if(msg.value<minBet||msg.value>maxBet){throw;}
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 170
+column: 4
+content: if(!msg.sender.send(game.bet))throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 183
+column: 5
+content: if(!msg.sender.send((game.bet*5)/2))throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 186
+column: 5
+content: if(!msg.sender.send(game.bet*2))throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 223
+column: 6
+content: if(!msg.sender.send(game.bet*2))throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 236
+column: 5
+content: if(!msg.sender.send(game.bet))throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 240
+column: 5
+content: if(!msg.sender.send(game.bet*2))throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 267
+column: 2
+content: if(id<0||id>games[msg.sender].playerCards.length){throw;}
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 274
+column: 2
+content: if(id<0||id>games[msg.sender].houseCards.length){throw;}
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 289
+column: 2
+content: if(games[msg.sender].player==0){throw;}
+
+ruleId: SOLIDITY_SHOULD_RETURN_STRUCT
+patternId: 7d54ca
+severity: 1
+line: 249
+column: 65
+content: (uint8,uint8)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 901eae
+severity: 1
+line: 21
+column: 23
+content: keccak256(block.blockhash(b),player,cardNumber,timestamp)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 159
+column: 26
+content: Gamegame
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 249
+column: 25
+content: uint8[]cards
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 441gim
+severity: 1
+line: 293
+column: 2
+content: Gamegame=games[msg.sender]
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 91
+column: 1
+content: functionBlackJack(){}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 95
+column: 1
+content: function()payable{}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 51
+column: 1
+content: uint8BLACKJACK=21;
+
+SOLIDITY_VISIBILITY :3
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :21
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_REVERT_REQUIRE :12
+SOLIDITY_EXTRA_GAS_IN_LOOPS :1
+SOLIDITY_UPGRADE_TO_050 :4
+SOLIDITY_GAS_LIMIT_IN_LOOPS :1
+SOLIDITY_SHOULD_RETURN_STRUCT :1

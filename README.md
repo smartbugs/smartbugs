@@ -23,8 +23,12 @@ SmartBugs is an execution framework aiming at simplifying the execution of analy
 ## Features
 
 - A plugin system to easily add new analysis tools, based on Docker images;
+
 - Parallel execution of the tools to speed up the execution time;
+
 - An output mechanism that normalizes the way the tools are outputting the results, and simplifies the process of the output across tools.
+
+- Automatic detection and download of the correct version of the Solidity compiler as required by the contract under analysis.
 
 ## Supported Tools
 
@@ -62,10 +66,6 @@ git clone https://github.com/smartbugs/smartbugs.git
 pip3 install -r requirements.txt
 ```
 
-## Alternative Installation Methods
-
-- We provide a [Vagrant box that you can use to experiment with SmartBugs](https://github.com/smartbugs/smartbugs/tree/master/utils/vagrant)
-
 ## Usage
 
 SmartBugs provides a command-line interface that can be used as follows:
@@ -98,10 +98,6 @@ python3 smartBugs.py --tool all --file dataset/reentrancy/simple_dao.sol
 ```
 
 By default, results will be placed in the directory `results`. 
-
-## Known Limitations
-
-When running a tool the user must be aware of the solc compatibility. Due to the major changes introduced in solidity v0.5.0, we provide the option to pass another docker image to run contracts with solidity version below v0.5.0. However, please note that there may still be problems with the solidity compiler when compiling older versions of solidity code. 
 
 ## Smart Contracts Datasets
 

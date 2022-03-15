@@ -1,0 +1,33 @@
+{
+  "contract": "dos_address",
+  "tool": "smartcheck",
+  "start": 1647191697.893927,
+  "end": 1647191707.773111,
+  "duration": 9.879184007644653,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 7,
+      "column": 16,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 11,
+      "column": 4,
+      "content": "address[]creditorAddresses;"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 12,
+      "column": 4,
+      "content": "boolwin=false;"
+    }
+  ]
+}

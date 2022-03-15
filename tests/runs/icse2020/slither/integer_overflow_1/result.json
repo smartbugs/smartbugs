@@ -1,0 +1,82 @@
+{
+  "contract": "integer_overflow_1",
+  "tool": "slither",
+  "start": 1565777157.9893653,
+  "end": 1565777160.205518,
+  "duration": 2.2161526679992676,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Overflow.add (/dataset/arithmetic/integer_overflow_1.sol#12-18) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "add",
+          "source_mapping": {
+            "start": 257,
+            "length": 220,
+            "filename": "/dataset/arithmetic/integer_overflow_1.sol",
+            "lines": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Overflow",
+            "source_mapping": {
+              "start": 196,
+              "length": 429,
+              "filename": "/dataset/arithmetic/integer_overflow_1.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/integer_overflow_1.sol:\n\t- pragma solidity^0.4.15 (/dataset/arithmetic/integer_overflow_1.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.15",
+          "source_mapping": {
+            "start": 169,
+            "length": 24,
+            "filename": "/dataset/arithmetic/integer_overflow_1.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

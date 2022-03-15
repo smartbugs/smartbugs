@@ -1,0 +1,366 @@
+{
+  "contract": "odds_and_evens",
+  "tool": "slither",
+  "start": 1565777040.284314,
+  "end": 1565777043.2864318,
+  "duration": 3.002117872238159,
+  "analysis": [
+    {
+      "check": "arbitrary-send",
+      "impact": "High",
+      "confidence": "Medium",
+      "description": "OddsAndEvens.andTheWinnerIs (/dataset/front_running/odds_and_evens.sol#34-46) sends eth to arbitrary user\n\tDangerous calls:\n\t- res = players[0].addr.send(1800000000000000000) (/dataset/front_running/odds_and_evens.sol#38)\n\t- res = players[1].addr.send(1800000000000000000) (/dataset/front_running/odds_and_evens.sol#41)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "andTheWinnerIs",
+          "source_mapping": {
+            "start": 649,
+            "length": 271,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OddsAndEvens",
+            "source_mapping": {
+              "start": 168,
+              "length": 864,
+              "filename": "/dataset/front_running/odds_and_evens.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "res = players[0].addr.send(1800000000000000000)",
+          "source_mapping": {
+            "start": 774,
+            "length": 39,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              38
+            ]
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "res = players[1].addr.send(1800000000000000000)",
+          "source_mapping": {
+            "start": 838,
+            "length": 39,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              41
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/front_running/odds_and_evens.sol#26:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 506,
+            "length": 5,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              26
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "deprecated-standards",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Deprecated standard detected @ /dataset/front_running/odds_and_evens.sol#49:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "None",
+          "source_mapping": {
+            "start": 973,
+            "length": 5,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              49
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "OddsAndEvens.play (/dataset/front_running/odds_and_evens.sol#25-32) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "play",
+          "source_mapping": {
+            "start": 440,
+            "length": 205,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OddsAndEvens",
+            "source_mapping": {
+              "start": 168,
+              "length": 864,
+              "filename": "/dataset/front_running/odds_and_evens.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "OddsAndEvens.getProfit (/dataset/front_running/odds_and_evens.sol#48-51) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "getProfit",
+          "source_mapping": {
+            "start": 924,
+            "length": 105,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              48,
+              49,
+              50,
+              51
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "OddsAndEvens",
+            "source_mapping": {
+              "start": 168,
+              "length": 864,
+              "filename": "/dataset/front_running/odds_and_evens.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/front_running/odds_and_evens.sol:\n\t- pragma solidity^0.4.2 (/dataset/front_running/odds_and_evens.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.2",
+          "source_mapping": {
+            "start": 143,
+            "length": 23,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'OddsAndEvens.OddsAndEvens' (/dataset/front_running/odds_and_evens.sol#21-23) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "OddsAndEvens",
+          "source_mapping": {
+            "start": 352,
+            "length": 53,
+            "filename": "/dataset/front_running/odds_and_evens.sol",
+            "lines": [
+              21,
+              22,
+              23
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contract": "overflow_simple_add",
+  "tool": "oyente",
+  "start": 1565863744.1332169,
+  "end": 1565863746.539687,
+  "duration": 2.4064700603485107,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 14,
+          "column": 9,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/arithmetic/overflow_simple_add.sol",
+      "name": "Overflow_Add",
+      "evm_code_coverage": "99.2%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

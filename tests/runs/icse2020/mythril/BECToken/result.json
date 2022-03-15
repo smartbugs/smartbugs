@@ -1,0 +1,24 @@
+{
+  "contract": "BECToken",
+  "tool": "mythril",
+  "start": 1565777162.6810403,
+  "end": 1565777173.1663373,
+  "duration": 10.485296964645386,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 2730,
+        "code": "a + b",
+        "debug": "storage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncalldata_StandardToken_4: 0xa7e6e147bc0ca40011bf9bbaadf7593cb8cc90b17cb7d73775f0d8eb1435e9c1\ncalldata_StandardToken_32 + 4: 0xb135d1e4a0020a903239033aa9b45a69384c906b52a71e0575829626809581fd\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0xb135d1e4a0020a903239033aa9b45a69384c906b52a71e0575829626809581fd\ncalldata_StandardToken_4: 0xffffffffffffffffffffffffffffffffffffffff\ncalldata_StandardToken_0: 0xa9059cbb00000000000000000000000000000000000000000000000000000000\ncalldatasize_StandardToken: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `transfer(address,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/arithmetic/BECToken.sol",
+        "function": "transfer(address,uint256)",
+        "lineno": 33,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

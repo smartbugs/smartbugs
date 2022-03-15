@@ -1,0 +1,24 @@
+{
+  "contract": "mycontract",
+  "tool": "mythril",
+  "start": 1565776921.3058937,
+  "end": 1565776998.9981477,
+  "duration": 77.69225406646729,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 204,
+        "code": "tx.origin",
+        "debug": "",
+        "description": "Function sendTo(address,uint256) retrieves the transaction origin (tx.origin) using the ORIGIN opcode. Use msg.sender instead.\nSee also: https://solidity.readthedocs.io/en/develop/security-considerations.html#tx-origin",
+        "filename": "/dataset/access_control/mycontract.sol",
+        "function": "sendTo(address,uint256)",
+        "lineno": 20,
+        "title": "Use of tx.origin",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

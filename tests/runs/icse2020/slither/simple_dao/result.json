@@ -1,0 +1,338 @@
+{
+  "contract": "simple_dao",
+  "tool": "slither",
+  "start": 1565777044.9986992,
+  "end": 1565777048.0589812,
+  "duration": 3.060281991958618,
+  "analysis": [
+    {
+      "check": "reentrancy-eth",
+      "impact": "High",
+      "confidence": "Medium",
+      "description": "Reentrancy in SimpleDAO.withdraw (/dataset/reentrancy/simple_dao.sol#16-22):\n\tExternal calls:\n\t- res = msg.sender.call.value(amount)() (/dataset/reentrancy/simple_dao.sol#19)\n\tState variables written after the call(s):\n\t- credit (/dataset/reentrancy/simple_dao.sol#20)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 303,
+            "length": 200,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleDAO",
+            "source_mapping": {
+              "start": 162,
+              "length": 422,
+              "filename": "/dataset/reentrancy/simple_dao.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        },
+        {
+          "type": "external_calls",
+          "expression": "res = msg.sender.call.value(amount)()",
+          "source_mapping": {
+            "start": 416,
+            "length": 42,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              19
+            ]
+          }
+        },
+        {
+          "type": "variables_written",
+          "name": "credit",
+          "expression": "credit[msg.sender] -= amount",
+          "source_mapping": {
+            "start": 466,
+            "length": 26,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              20
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "SimpleDAO.donate (/dataset/reentrancy/simple_dao.sol#12-14) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "donate",
+          "source_mapping": {
+            "start": 229,
+            "length": 70,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleDAO",
+            "source_mapping": {
+              "start": 162,
+              "length": 422,
+              "filename": "/dataset/reentrancy/simple_dao.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "SimpleDAO.withdraw (/dataset/reentrancy/simple_dao.sol#16-22) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 303,
+            "length": 200,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleDAO",
+            "source_mapping": {
+              "start": 162,
+              "length": 422,
+              "filename": "/dataset/reentrancy/simple_dao.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "SimpleDAO.queryCredit (/dataset/reentrancy/simple_dao.sol#24-26) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "queryCredit",
+          "source_mapping": {
+            "start": 507,
+            "length": 75,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              24,
+              25,
+              26
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleDAO",
+            "source_mapping": {
+              "start": 162,
+              "length": 422,
+              "filename": "/dataset/reentrancy/simple_dao.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/reentrancy/simple_dao.sol:\n\t- pragma solidity^0.4.2 (/dataset/reentrancy/simple_dao.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.2",
+          "source_mapping": {
+            "start": 137,
+            "length": 23,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "low-level-calls",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Low level call in SimpleDAO.withdraw (/dataset/reentrancy/simple_dao.sol#16-22):\n\t-res = msg.sender.call.value(amount)() /dataset/reentrancy/simple_dao.sol#19\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 303,
+            "length": 200,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleDAO",
+            "source_mapping": {
+              "start": 162,
+              "length": 422,
+              "filename": "/dataset/reentrancy/simple_dao.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "res = msg.sender.call.value(amount)()",
+          "source_mapping": {
+            "start": 416,
+            "length": 42,
+            "filename": "/dataset/reentrancy/simple_dao.sol",
+            "lines": [
+              19
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

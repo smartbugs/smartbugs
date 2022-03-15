@@ -1,0 +1,57 @@
+{
+  "contract": "eth_tx_order_dependence_minimal",
+  "tool": "mythril",
+  "start": 1565777023.6046574,
+  "end": 1565777028.4699912,
+  "duration": 4.865333795547485,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 554,
+        "code": "owner.transfer(reward)",
+        "debug": "SOLVER OUTPUT:\nstorage_0: 0x0\ncaller: 0x0\ncalldata_EthTxOrderDependenceMinimal_0: 0x3eb6a67e00000000000000000000000000000000000000000000000000000000\ncalldatasize_EthTxOrderDependenceMinimal: 0x4\n",
+        "description": "In the function `setReward()` a non-zero amount of Ether is sent to an address taken from storage slot 0.\nThere is a check on storage index 0. This storage slot can be written to by calling the function `claimReward(uint256)`.\n\nThere is a check on storage index 0. This storage slot can be written to by calling the function `claimReward(uint256)`.\nThere is a check on storage index 0. This storage slot can be written to by calling the function `claimReward(uint256)`.",
+        "filename": "/dataset/front_running/eth_tx_order_dependence_minimal.sol",
+        "function": "setReward()",
+        "lineno": 23,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 554,
+        "code": "owner.transfer(reward)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function setReward(). The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/front_running/eth_tx_order_dependence_minimal.sol",
+        "function": "setReward()",
+        "lineno": 23,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      },
+      {
+        "address": 716,
+        "code": "msg.sender.transfer(reward)",
+        "debug": "SOLVER OUTPUT:\ncalldata_EthTxOrderDependenceMinimal_4: 0x9\nstorage_0: 0x0\ncalldata_EthTxOrderDependenceMinimal_0: 0xae169a5000000000000000000000000000000000000000000000000000000000\ncalldatasize_EthTxOrderDependenceMinimal: 0x4\ncallvalue: 0x0\n",
+        "description": "In the function `claimReward(uint256)` a non-zero amount of Ether is sent to msg.sender.\n\nThere is a check on storage index 0. This storage slot can be written to by calling the function `claimReward(uint256)`.",
+        "filename": "/dataset/front_running/eth_tx_order_dependence_minimal.sol",
+        "function": "claimReward(uint256)",
+        "lineno": 31,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 716,
+        "code": "msg.sender.transfer(reward)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function claimReward(uint256). The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/front_running/eth_tx_order_dependence_minimal.sol",
+        "function": "claimReward(uint256)",
+        "lineno": 31,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "contract": "lotto",
+  "tool": "osiris",
+  "start": 1565865083.220697,
+  "end": 1565865085.5398839,
+  "duration": 2.3191869258880615,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 20,
+          "column": 10,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 27,
+          "column": 10,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 20,
+          "column": 10,
+          "message": "concurrency_bug"
+        }
+      ],
+      "file": "/dataset/unchecked_low_level_calls/lotto.sol",
+      "name": "Lotto"
+    }
+  ]
+}

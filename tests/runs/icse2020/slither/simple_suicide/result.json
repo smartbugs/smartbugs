@@ -1,0 +1,109 @@
+{
+  "contract": "simple_suicide",
+  "tool": "slither",
+  "start": 1565777004.16626,
+  "end": 1565777007.6285493,
+  "duration": 3.462289333343506,
+  "analysis": [
+    {
+      "check": "suicidal",
+      "impact": "High",
+      "confidence": "High",
+      "description": "SimpleSuicide.sudicideAnyone (/dataset/access_control/simple_suicide.sol#12-14) allows anyone to destruct the contract\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "sudicideAnyone",
+          "source_mapping": {
+            "start": 301,
+            "length": 61,
+            "filename": "/dataset/access_control/simple_suicide.sol",
+            "lines": [
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleSuicide",
+            "source_mapping": {
+              "start": 239,
+              "length": 126,
+              "filename": "/dataset/access_control/simple_suicide.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "SimpleSuicide.sudicideAnyone (/dataset/access_control/simple_suicide.sol#12-14) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "sudicideAnyone",
+          "source_mapping": {
+            "start": 301,
+            "length": 61,
+            "filename": "/dataset/access_control/simple_suicide.sol",
+            "lines": [
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "SimpleSuicide",
+            "source_mapping": {
+              "start": 239,
+              "length": 126,
+              "filename": "/dataset/access_control/simple_suicide.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/access_control/simple_suicide.sol:\n\t- pragma solidity^0.4.0 (/dataset/access_control/simple_suicide.sol#8): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.0",
+          "source_mapping": {
+            "start": 214,
+            "length": 23,
+            "filename": "/dataset/access_control/simple_suicide.sol",
+            "lines": [
+              8
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

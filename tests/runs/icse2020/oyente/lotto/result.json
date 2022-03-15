@@ -1,0 +1,29 @@
+{
+  "contract": "lotto",
+  "tool": "oyente",
+  "start": 1565863465.6709397,
+  "end": 1565863468.0439804,
+  "duration": 2.3730406761169434,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 20,
+          "column": 10,
+          "level": "Warning",
+          "message": "Callstack Depth Attack Vulnerability."
+        }
+      ],
+      "file": "/dataset/unchecked_low_level_calls/lotto.sol",
+      "name": "Lotto",
+      "evm_code_coverage": "99.7%",
+      "integer_underflow": false,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": true,
+      "transaction-ordering_dependence_tod": true,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

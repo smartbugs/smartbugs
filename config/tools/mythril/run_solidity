@@ -1,0 +1,8 @@
+#!/bin/sh
+
+FILENAME="$1"
+
+export PATH="/data/bin:$PATH"
+chmod +x /data/bin/solc
+
+/usr/local/bin/myth -xo json "$FILENAME"

@@ -1,0 +1,23 @@
+# SB Curated (local)
+access_control: dataset/access_control
+arithmetic: dataset/arithmetic
+bad_randomness: dataset/bad_randomness
+denial_of_service: dataset/denial_of_service
+front_running: dataset/front_running
+reentrancy: dataset/reentrancy
+short_addresses: dataset/short_addresses
+time_manipulation: dataset/time_manipulation
+unchecked_ll_calls: dataset/unchecked_low_level_calls
+
+# External datasets
+solidiFI: 
+    url: https://github.com/smartbugs/SolidiFI-benchmark.git
+    local_dir: dataset/solidiFI
+    subsets: # Accessed as solidiFI/name 
+        overflow_underflow: buggy_contracts/Overflow-Underflow
+        reentrancy: buggy_contracts/Re-entrancy
+        tod: buggy_contracts/TOD
+        timestamp_dependency: buggy_contracts/Timestamp-Dependency
+        unchecked_send: buggy_contracts/Unchecked-Send
+        unhandled_exceptions: buggy_contracts/Unhandled-Exceptions
+        tx_origin: buggy_contracts/tx.origin

@@ -1,0 +1,25 @@
+{
+  "contract": "incorrect_constructor_name1",
+  "tool": "solhint",
+  "start": 1565705917.240486,
+  "end": 1565705919.7335029,
+  "duration": 2.4930169582366943,
+  "analysis": [
+    {
+      "file": "/dataset/access_control/incorrect_constructor_name1.sol",
+      "line": "2",
+      "column": "2",
+      "message": "Line length must be no more than 120 but current length is 126.",
+      "level": "Error",
+      "type": "max-line-length"
+    },
+    {
+      "file": "/dataset/access_control/incorrect_constructor_name1.sol",
+      "line": "32",
+      "column": "8",
+      "message": "Expected indentation of 8 spaces but found 7",
+      "level": "Error",
+      "type": "indent"
+    }
+  ]
+}

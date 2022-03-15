@@ -1,0 +1,164 @@
+{
+  "contract": "short_address_example",
+  "tool": "slither",
+  "start": 1565777080.9115412,
+  "end": 1565777084.756076,
+  "duration": 3.8445348739624023,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "MyToken.sendCoin (/dataset/short_addresses/short_address_example.sol#18-24) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "sendCoin",
+          "source_mapping": {
+            "start": 415,
+            "length": 273,
+            "filename": "/dataset/short_addresses/short_address_example.sol",
+            "lines": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "MyToken",
+            "source_mapping": {
+              "start": 157,
+              "length": 638,
+              "filename": "/dataset/short_addresses/short_address_example.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "MyToken.getBalance (/dataset/short_addresses/short_address_example.sol#26-28) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "getBalance",
+          "source_mapping": {
+            "start": 695,
+            "length": 97,
+            "filename": "/dataset/short_addresses/short_address_example.sol",
+            "lines": [
+              26,
+              27,
+              28
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "MyToken",
+            "source_mapping": {
+              "start": 157,
+              "length": 638,
+              "filename": "/dataset/short_addresses/short_address_example.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/short_addresses/short_address_example.sol:\n\t- pragma solidity^0.4.11 (/dataset/short_addresses/short_address_example.sol#7): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.11",
+          "source_mapping": {
+            "start": 130,
+            "length": 24,
+            "filename": "/dataset/short_addresses/short_address_example.sol",
+            "lines": [
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Function 'MyToken.MyToken' (/dataset/short_addresses/short_address_example.sol#14-16) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "function",
+          "convention": "mixedCase",
+          "name": "MyToken",
+          "source_mapping": {
+            "start": 305,
+            "length": 65,
+            "filename": "/dataset/short_addresses/short_address_example.sol",
+            "lines": [
+              14,
+              15,
+              16
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

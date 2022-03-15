@@ -1,0 +1,29 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/front_running/odds_and_evens.sol:OddsAndEvens:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/front_running/odds_and_evens.sol:36:14: Warning: Integer Overflow.
+    uint n = players[0].number+players[1].number
+Integer Overflow occurs if:
+    tot = 36028797018963969
+    players[1].number = 57990350974675815733765385921675561179977156722398309762832884349652523419860
+    players[0].number = 58916018010444286637619001765541766948313631511854779120579875919518511532846
+INFO:symExec:/dataset/front_running/odds_and_evens.sol:38:13: Warning: Callstack Depth Attack Vulnerability.
+      res = players[0].addr.send(1800 finney)
+/dataset/front_running/odds_and_evens.sol:41:13: Warning: Callstack Depth Attack Vulnerability.
+      res = players[1].addr.send(1800 finney)
+INFO:symExec:Flow1
+/dataset/front_running/odds_and_evens.sol:50:16: Warning: Transaction-Ordering Dependency.
+    bool res = msg.sender.send(this.balance)
+Flow2
+/dataset/front_running/odds_and_evens.sol:41:13: Warning: Transaction-Ordering Dependency.
+      res = players[1].addr.send(1800 finney)
+INFO:symExec:	====== Analysis Completed ======

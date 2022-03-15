@@ -1,0 +1,35 @@
+{
+  "contract": "wallet_04_confused_sign",
+  "tool": "oyente",
+  "start": 1565863098.1411052,
+  "end": 1565863102.7902167,
+  "duration": 4.64911150932312,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 32,
+          "column": 10,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 24,
+          "column": 17,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/access_control/wallet_04_confused_sign.sol",
+      "name": "Wallet",
+      "evm_code_coverage": "96.0%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": true,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

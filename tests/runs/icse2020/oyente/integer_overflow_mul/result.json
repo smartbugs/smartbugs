@@ -1,0 +1,22 @@
+{
+  "contract": "integer_overflow_mul",
+  "tool": "oyente",
+  "start": 1565863727.2209804,
+  "end": 1565863730.4537008,
+  "duration": 3.232720375061035,
+  "analysis": [
+    {
+      "errors": [],
+      "file": "/dataset/arithmetic/integer_overflow_mul.sol",
+      "name": "IntegerOverflowMul",
+      "evm_code_coverage": "99.2%",
+      "integer_underflow": false,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

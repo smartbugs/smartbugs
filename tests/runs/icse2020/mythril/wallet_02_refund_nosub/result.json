@@ -1,0 +1,35 @@
+{
+  "contract": "wallet_02_refund_nosub",
+  "tool": "mythril",
+  "start": 1565776928.1009798,
+  "end": 1565776999.9370573,
+  "duration": 71.83607745170593,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 776,
+        "code": "msg.sender.transfer(balances[msg.sender])",
+        "debug": "SOLVER OUTPUT:\ncalldata_Wallet_0: 0x590e1ae300000000000000000000000000000000000000000000000000000000\ncalldatasize_Wallet: 0x4\ncallvalue: 0x0\n",
+        "description": "In the function `refund()` a non-zero amount of Ether is sent to msg.sender.\nIt seems that this function can be called without restrictions.",
+        "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+        "function": "refund()",
+        "lineno": 36,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 939,
+        "code": "assert(balances[msg.sender] + msg.value > balances[msg.sender])",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_keccac_1461501637330902918203684832716283019655932542975_&\n1461501637330902918203684832716283019655932542975_&\ncaller: 0x0\ncallvalue: 0x0\ncalldata_Wallet_0: 0xd0e30db000000000000000000000000000000000000000000000000000000000\ncalldatasize_Wallet: 0x4\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/access_control/wallet_02_refund_nosub.sol",
+        "function": "deposit()",
+        "lineno": 24,
+        "title": "Exception state",
+        "type": "Informational"
+      }
+    ],
+    "success": true
+  }
+}

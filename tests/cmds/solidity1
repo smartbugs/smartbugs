@@ -1,0 +1,10 @@
+#!/bin/bash
+# older versions of smartBugs have to be run from the SB directory,
+# otherwise the config files are not found
+cd ..
+source venv/bin/activate
+TMPDIR=$(mktemp -d)
+test -e results && mv results "$TMPDIR"
+python smartBugs.py -t all -f "tests/$1" --processes 20
+test -e results && mv results tests
+test -e "$TMPDIR" && mv "$TMPDIR" results

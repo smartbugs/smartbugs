@@ -1,0 +1,25 @@
+{
+  "contract": "eth_tx_order_dependence_minimal",
+  "tool": "osiris",
+  "start": 1565864375.431721,
+  "end": 1565864377.9768813,
+  "duration": 2.5451602935791016,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 23,
+          "column": 9,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 31,
+          "column": 9,
+          "message": "concurrency_bug"
+        }
+      ],
+      "file": "/dataset/front_running/eth_tx_order_dependence_minimal.sol",
+      "name": "EthTxOrderDependenceMinimal"
+    }
+  ]
+}

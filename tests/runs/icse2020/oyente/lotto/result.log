@@ -1,0 +1,21 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/unchecked_low_level_calls/lotto.sol:Lotto:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/unchecked_low_level_calls/lotto.sol:20:10: Warning: Callstack Depth Attack Vulnerability.
+         winner.send(winAmount)
+INFO:symExec:Flow1
+/dataset/unchecked_low_level_calls/lotto.sol:27:10: Warning: Transaction-Ordering Dependency.
+         msg.sender.send(this.balance)
+Flow2
+/dataset/unchecked_low_level_calls/lotto.sol:20:10: Warning: Transaction-Ordering Dependency.
+         winner.send(winAmount)
+INFO:symExec:	====== Analysis Completed ======

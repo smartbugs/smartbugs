@@ -1,0 +1,33 @@
+{
+  "contract": "mycontract",
+  "tool": "smartcheck",
+  "start": 1565777008.6734326,
+  "end": 1565777014.8334692,
+  "duration": 6.160036563873291,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 8,
+      "column": 16,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_TX_ORIGIN",
+      "patternId": "12e802",
+      "severity": 2,
+      "line": 20,
+      "column": 16,
+      "content": "tx.origin"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 12,
+      "column": 4,
+      "content": "addressowner;"
+    }
+  ]
+}

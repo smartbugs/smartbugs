@@ -1,0 +1,224 @@
+{
+  "contract": "timelock",
+  "tool": "slither",
+  "start": 1565777144.5578814,
+  "end": 1565777147.2394392,
+  "duration": 2.6815578937530518,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "TimeLock.deposit (/dataset/arithmetic/timelock.sol#15-18) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "deposit",
+          "source_mapping": {
+            "start": 281,
+            "length": 133,
+            "filename": "/dataset/arithmetic/timelock.sol",
+            "lines": [
+              15,
+              16,
+              17,
+              18
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "TimeLock",
+            "source_mapping": {
+              "start": 160,
+              "length": 685,
+              "filename": "/dataset/arithmetic/timelock.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "TimeLock.increaseLockTime (/dataset/arithmetic/timelock.sol#20-23) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "increaseLockTime",
+          "source_mapping": {
+            "start": 421,
+            "length": 157,
+            "filename": "/dataset/arithmetic/timelock.sol",
+            "lines": [
+              20,
+              21,
+              22,
+              23
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "TimeLock",
+            "source_mapping": {
+              "start": 160,
+              "length": 685,
+              "filename": "/dataset/arithmetic/timelock.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "TimeLock.withdraw (/dataset/arithmetic/timelock.sol#25-31) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "withdraw",
+          "source_mapping": {
+            "start": 585,
+            "length": 257,
+            "filename": "/dataset/arithmetic/timelock.sol",
+            "lines": [
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "TimeLock",
+            "source_mapping": {
+              "start": 160,
+              "length": 685,
+              "filename": "/dataset/arithmetic/timelock.sol",
+              "lines": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/timelock.sol:\n\t- pragma solidity^0.4.0 (/dataset/arithmetic/timelock.sol#8): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.0",
+          "source_mapping": {
+            "start": 133,
+            "length": 23,
+            "filename": "/dataset/arithmetic/timelock.sol",
+            "lines": [
+              8
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Parameter '_secondsToIncrease' of TimeLock.increaseLockTime (/dataset/arithmetic/timelock.sol#20) is not in mixedCase\n",
+      "elements": [
+        {
+          "target": "parameter",
+          "convention": "mixedCase",
+          "name": "_secondsToIncrease",
+          "source_mapping": {
+            "start": 447,
+            "length": 23,
+            "filename": "/dataset/arithmetic/timelock.sol",
+            "lines": [
+              20
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

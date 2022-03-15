@@ -1,0 +1,22 @@
+{
+  "contract": "eth_tx_order_dependence_minimal",
+  "tool": "oyente",
+  "start": 1565863131.9539785,
+  "end": 1565863135.3976617,
+  "duration": 3.44368314743042,
+  "analysis": [
+    {
+      "errors": [],
+      "file": "/dataset/front_running/eth_tx_order_dependence_minimal.sol",
+      "name": "EthTxOrderDependenceMinimal",
+      "evm_code_coverage": "91.6%",
+      "integer_underflow": false,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "contract": "integer_overflow_multitx_onefunc_feasible",
+  "tool": "slither",
+  "start": 1565777140.150986,
+  "end": 1565777142.8259616,
+  "duration": 2.674975633621216,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowMultiTxOneFuncFeasible.run (/dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol#16-23) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "run",
+          "source_mapping": {
+            "start": 355,
+            "length": 194,
+            "filename": "/dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol",
+            "lines": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowMultiTxOneFuncFeasible",
+            "source_mapping": {
+              "start": 234,
+              "length": 317,
+              "filename": "/dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol:\n\t- pragma solidity^0.4.23 (/dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol#10): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.23",
+          "source_mapping": {
+            "start": 208,
+            "length": 24,
+            "filename": "/dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol",
+            "lines": [
+              10
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

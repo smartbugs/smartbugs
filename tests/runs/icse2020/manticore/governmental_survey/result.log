@@ -1,0 +1,112 @@
+2019-08-13 18:15:51,636: [12] m.main:INFO: Registered plugins: DetectReentrancySimple, DetectInvalid, DetectUnusedRetVal, DetectUninitializedStorage, DetectIntegerOverflow, DetectSuicidal, DetectExternalCallAndLeak, DetectEnvInstruction, DetectUninitializedMemory, DetectReentrancyAdvanced, DetectDelegatecall
+2019-08-13 18:15:51,637: [12] m.main:INFO: Beginning analysis
+2019-08-13 18:15:51,648: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:15:53,201: [12] m.e.manticore:INFO: Failed to create contract: exception in constructor
+2019-08-13 18:15:53,252: [408] m.c.manticore:INFO: Generated testcase No. 0 - REVERT(1 txs)
+2019-08-13 18:15:53,410: [12] m.c.manticore:INFO: Results in /mcore_ojfyx33l
+2019-08-13 18:15:54,356: [689] m.main:INFO: Registered plugins: DetectReentrancyAdvanced, DetectInvalid, DetectExternalCallAndLeak, DetectUnusedRetVal, DetectSuicidal, DetectReentrancySimple, DetectIntegerOverflow, DetectUninitializedStorage, DetectEnvInstruction, DetectUninitializedMemory, DetectDelegatecall
+2019-08-13 18:15:54,356: [689] m.main:INFO: Beginning analysis
+2019-08-13 18:15:54,368: [689] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:15:55,618: [689] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 18:16:00,788: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:00,791: [1007] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:04,125: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:04,185: [989] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:08,253: [1011] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:08,397: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:13,341: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:13,527: [986] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:19,455: [1003] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:19,733: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:27,194: [986] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:27,977: [996] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:37,710: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:38,086: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:47,403: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:47,764: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:16:57,789: [985] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:16:58,627: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:17:07,935: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:17:09,256: [996] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:17:20,603: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:17:20,893: [1007] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:17:34,458: [1000] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:17:35,354: [985] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:17:46,624: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:17:47,926: [996] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:17:59,529: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:18:01,331: [985] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:18:13,416: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:18:20,283: [996] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:18:31,238: [989] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:18:32,598: [1011] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:18:52,469: [1011] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:18:53,743: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:19:10,172: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:19:14,282: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:19:30,074: [986] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:19:34,623: [1007] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:19:48,181: [986] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:19:51,195: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:20:12,493: [1011] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:20:17,725: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:20:39,681: [996] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:20:42,259: [1011] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:21:06,324: [1003] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:21:12,976: [986] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:21:33,960: [989] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:21:37,948: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:22:00,091: [989] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:22:06,367: [1011] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:22:37,763: [996] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:22:49,155: [1007] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:23:00,995: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:23:08,489: [1007] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:23:25,131: [1000] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:23:29,815: [986] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:24:28,269: [992] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:24:29,174: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:24:55,738: [996] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:25:12,831: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:25:25,147: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:25:46,212: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:26:14,787: [985] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:26:25,999: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:27:15,939: [1011] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:27:20,843: [1003] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:27:49,967: [985] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:27:56,786: [1007] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:28:34,104: [1011] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:28:45,781: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:29:24,967: [1000] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:29:27,722: [985] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:30:14,844: [996] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:30:29,659: [1003] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:30:56,623: [986] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:31:19,571: [1011] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:31:53,198: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:31:58,514: [1015] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:33:09,586: [1003] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:33:25,850: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:34:00,585: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:34:10,693: [985] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:35:06,944: [986] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:35:17,256: [986] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:35:44,826: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:36:20,223: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:36:32,423: [985] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:36:59,806: [1015] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:37:34,571: [1011] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:37:38,470: [1007] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:38:43,059: [986] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:39:09,455: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:39:31,730: [989] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:39:39,336: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:40:49,888: [989] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:40:56,056: [996] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:41:41,603: [992] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:42:10,548: [1000] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:42:51,651: [989] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:43:18,881: [985] m.e.detectors:WARNING: Reachable external call to sender via argument
+2019-08-13 18:45:14,581: [1015] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:45:44,497: [996] m.e.detectors:WARNING: Reachable external call to sender via argument

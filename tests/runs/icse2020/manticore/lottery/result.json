@@ -1,0 +1,26 @@
+{
+  "contract": "lottery",
+  "tool": "manticore",
+  "start": 1565724004.202316,
+  "end": 1565724048.1133685,
+  "duration": 43.91105246543884,
+  "analysis": [
+    [
+      {
+        "name": "Reachable external call to sender",
+        "line": 46,
+        "code": "msg.sender.send(msg.value)"
+      },
+      {
+        "name": "Warning NUMBER instruction used",
+        "line": 38,
+        "code": "block.number"
+      },
+      {
+        "name": "Warning NUMBER instruction used",
+        "line": 42,
+        "code": "block.number"
+      }
+    ]
+  ]
+}

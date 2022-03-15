@@ -1,0 +1,260 @@
+{
+  "contract": "dos_address",
+  "tool": "slither",
+  "start": 1565777088.5595717,
+  "end": 1565777090.9779725,
+  "duration": 2.418400764465332,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosGas.emptyCreditors (/dataset/denial_of_service/dos_address.sol#14-20) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "emptyCreditors",
+          "source_mapping": {
+            "start": 280,
+            "length": 212,
+            "filename": "/dataset/denial_of_service/dos_address.sol",
+            "lines": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosGas",
+            "source_mapping": {
+              "start": 201,
+              "length": 647,
+              "filename": "/dataset/denial_of_service/dos_address.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosGas.addCreditors (/dataset/denial_of_service/dos_address.sol#22-27) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "addCreditors",
+          "source_mapping": {
+            "start": 498,
+            "length": 164,
+            "filename": "/dataset/denial_of_service/dos_address.sol",
+            "lines": [
+              22,
+              23,
+              24,
+              25,
+              26,
+              27
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosGas",
+            "source_mapping": {
+              "start": 201,
+              "length": 647,
+              "filename": "/dataset/denial_of_service/dos_address.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosGas.iWin (/dataset/denial_of_service/dos_address.sol#29-31) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "iWin",
+          "source_mapping": {
+            "start": 668,
+            "length": 70,
+            "filename": "/dataset/denial_of_service/dos_address.sol",
+            "lines": [
+              29,
+              30,
+              31
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosGas",
+            "source_mapping": {
+              "start": 201,
+              "length": 647,
+              "filename": "/dataset/denial_of_service/dos_address.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosGas.numberCreditors (/dataset/denial_of_service/dos_address.sol#33-35) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "numberCreditors",
+          "source_mapping": {
+            "start": 744,
+            "length": 102,
+            "filename": "/dataset/denial_of_service/dos_address.sol",
+            "lines": [
+              33,
+              34,
+              35
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosGas",
+            "source_mapping": {
+              "start": 201,
+              "length": 647,
+              "filename": "/dataset/denial_of_service/dos_address.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

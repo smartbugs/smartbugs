@@ -1,0 +1,79 @@
+{
+  "contract": "overflow_simple_add",
+  "tool": "slither",
+  "start": 1565777140.26966,
+  "end": 1565777142.734033,
+  "duration": 2.4643731117248535,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Overflow_Add.add (/dataset/arithmetic/overflow_simple_add.sol#12-15) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "add",
+          "source_mapping": {
+            "start": 234,
+            "length": 109,
+            "filename": "/dataset/arithmetic/overflow_simple_add.sol",
+            "lines": [
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Overflow_Add",
+            "source_mapping": {
+              "start": 176,
+              "length": 169,
+              "filename": "/dataset/arithmetic/overflow_simple_add.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Contract 'Overflow_Add' (/dataset/arithmetic/overflow_simple_add.sol#9-16) is not in CapWords\n",
+      "elements": [
+        {
+          "target": "contract",
+          "convention": "CapWords",
+          "name": "Overflow_Add",
+          "source_mapping": {
+            "start": 176,
+            "length": 169,
+            "filename": "/dataset/arithmetic/overflow_simple_add.sol",
+            "lines": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

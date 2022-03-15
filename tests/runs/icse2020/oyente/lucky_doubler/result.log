@@ -1,0 +1,65 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/bad_randomness/lucky_doubler.sol:LuckyDoubler:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 61.0%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/bad_randomness/lucky_doubler.sol:170:5: Warning: Integer Underflow.
+    function userStats(address user) constant returns (uint deposits, uint payouts, string info)
+    ^
+Spanning multiple lines.
+Integer Underflow occurs if:
+    users[user].id = 0
+/dataset/bad_randomness/lucky_doubler.sol:180:5: Warning: Integer Underflow.
+    function entryDetails(uint index) constant returns (address user, uint payout, bool paid, string info)
+    ^
+Spanning multiple lines.
+Integer Underflow occurs if:
+    index = 0
+    entries.length = 0
+INFO:symExec:/dataset/bad_randomness/lucky_doubler.sol:183:20: Warning: Integer Overflow.
+            user = entries[index]
+Integer Overflow occurs if:
+    index = 7237005577332262213973186563042994240829374041602535252466099000494570602496
+    entries.length = 7237005577332262213973186563042994240829374041602535252466099000494570602497
+/dataset/bad_randomness/lucky_doubler.sol:184:22: Warning: Integer Overflow.
+            payout = entries[index].payout
+Integer Overflow occurs if:
+    index = 0
+    entries.length = 1
+/dataset/bad_randomness/lucky_doubler.sol:185:20: Warning: Integer Overflow.
+            paid = entries[index].paid
+Integer Overflow occurs if:
+    index = 0
+    entries.length = 1
+/dataset/bad_randomness/lucky_doubler.sol:175:23: Warning: Integer Overflow.
+            payouts = users[user].payoutsReceived
+Integer Overflow occurs if:
+    users[user].id = 1461501637330902918203684832716283019655932542975
+/dataset/bad_randomness/lucky_doubler.sol:185:20: Warning: Integer Overflow.
+            paid = entries[index]
+Integer Overflow occurs if:
+    index = 7237005577332262213973186563042994240829374041602535252466099000494570602496
+    entries.length = 7237005577332262213973186563042994240829374041602535252466099000494570602497
+/dataset/bad_randomness/lucky_doubler.sol:174:24: Warning: Integer Overflow.
+            deposits = users[user].deposits
+Integer Overflow occurs if:
+    users[user].id = 1461501637330902918203684832716283019655932542975
+/dataset/bad_randomness/lucky_doubler.sol:184:22: Warning: Integer Overflow.
+            payout = entries[index]
+Integer Overflow occurs if:
+    index = 7237005577332262213973186563042994240829374041602535252466099000494570602496
+    entries.length = 7237005577332262213973186563042994240829374041602535252466099000494570602497
+INFO:symExec:/dataset/bad_randomness/lucky_doubler.sol:119:17: Warning: Callstack Depth Attack Vulnerability.
+                owner.send(fees)
+/dataset/bad_randomness/lucky_doubler.sol:102:13: Warning: Callstack Depth Attack Vulnerability.
+            theEntry.entryAddress.send(payout)
+/dataset/bad_randomness/lucky_doubler.sol:74:10: Warning: Callstack Depth Attack Vulnerability.
+        	msg.sender.send(msg.value - 1 ether)
+INFO:symExec:	====== Analysis Completed ======

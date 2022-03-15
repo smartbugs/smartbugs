@@ -1,0 +1,29 @@
+{
+  "contract": "open_address_lottery",
+  "tool": "oyente",
+  "start": 1565863145.3486006,
+  "end": 1565863170.5502965,
+  "duration": 25.201695919036865,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 93,
+          "column": 48,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        }
+      ],
+      "file": "/dataset/other/open_address_lottery.sol",
+      "name": "OpenAddressLottery",
+      "evm_code_coverage": "98.2%",
+      "integer_underflow": true,
+      "integer_overflow": false,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": true,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

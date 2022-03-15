@@ -1,0 +1,25 @@
+{
+  "contract": "tokensalechallenge",
+  "tool": "smartcheck",
+  "start": 1565777143.6291423,
+  "end": 1565777148.5767553,
+  "duration": 4.947613000869751,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 7,
+      "column": 16,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1,
+      "line": 11,
+      "column": 4,
+      "content": "uint256constantPRICE_PER_TOKEN=1ether;"
+    }
+  ]
+}

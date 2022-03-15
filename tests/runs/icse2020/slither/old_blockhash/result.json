@@ -1,0 +1,174 @@
+{
+  "contract": "old_blockhash",
+  "tool": "slither",
+  "start": 1565777049.4501884,
+  "end": 1565777052.0633767,
+  "duration": 2.6131882667541504,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "PredictTheBlockHashChallenge.lockInGuess (/dataset/bad_randomness/old_blockhash.sol#24-30) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "lockInGuess",
+          "source_mapping": {
+            "start": 747,
+            "length": 243,
+            "filename": "/dataset/bad_randomness/old_blockhash.sol",
+            "lines": [
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "PredictTheBlockHashChallenge",
+            "source_mapping": {
+              "start": 517,
+              "length": 819,
+              "filename": "/dataset/bad_randomness/old_blockhash.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "PredictTheBlockHashChallenge.settle (/dataset/bad_randomness/old_blockhash.sol#32-41) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "settle",
+          "source_mapping": {
+            "start": 996,
+            "length": 338,
+            "filename": "/dataset/bad_randomness/old_blockhash.sol",
+            "lines": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "PredictTheBlockHashChallenge",
+            "source_mapping": {
+              "start": 517,
+              "length": 819,
+              "filename": "/dataset/bad_randomness/old_blockhash.sol",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "naming-convention",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Struct 'PredictTheBlockHashChallenge.guess' (/dataset/bad_randomness/old_blockhash.sol#13-16) is not in CapWords\n",
+      "elements": [
+        {
+          "target": "structure",
+          "convention": "CapWords",
+          "name": "guess",
+          "source_mapping": {
+            "start": 562,
+            "length": 58,
+            "filename": "/dataset/bad_randomness/old_blockhash.sol",
+            "lines": [
+              13,
+              14,
+              15,
+              16
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

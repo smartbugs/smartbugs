@@ -1,0 +1,35 @@
+{
+  "contract": "overflow_single_tx",
+  "tool": "oyente",
+  "start": 1565863723.0588305,
+  "end": 1565863727.207109,
+  "duration": 4.148278474807739,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 48,
+          "column": 20,
+          "level": "Warning",
+          "message": "Integer Underflow."
+        },
+        {
+          "line": 18,
+          "column": 9,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        }
+      ],
+      "file": "/dataset/arithmetic/overflow_single_tx.sol",
+      "name": "IntegerOverflowSingleTransaction",
+      "evm_code_coverage": "99.7%",
+      "integer_underflow": true,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": false,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

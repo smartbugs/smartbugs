@@ -1,0 +1,91 @@
+{
+  "contract": "integer_overflow_benign_1",
+  "tool": "slither",
+  "start": 1565777136.7980022,
+  "end": 1565777139.4552472,
+  "duration": 2.657244920730591,
+  "analysis": [
+    {
+      "check": "constable-states",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowBenign1.count should be constant (/dataset/arithmetic/integer_overflow_benign_1.sol#13)\n",
+      "elements": [
+        {
+          "type": "variable",
+          "name": "count",
+          "source_mapping": {
+            "start": 354,
+            "length": 21,
+            "filename": "/dataset/arithmetic/integer_overflow_benign_1.sol",
+            "lines": [
+              13
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "IntegerOverflowBenign1.run (/dataset/arithmetic/integer_overflow_benign_1.sol#15-18) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "run",
+          "source_mapping": {
+            "start": 382,
+            "length": 113,
+            "filename": "/dataset/arithmetic/integer_overflow_benign_1.sol",
+            "lines": [
+              15,
+              16,
+              17,
+              18
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "IntegerOverflowBenign1",
+            "source_mapping": {
+              "start": 316,
+              "length": 181,
+              "filename": "/dataset/arithmetic/integer_overflow_benign_1.sol",
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "solc-version",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Detected issues with version pragma in /dataset/arithmetic/integer_overflow_benign_1.sol:\n\t- pragma solidity^0.4.19 (/dataset/arithmetic/integer_overflow_benign_1.sol#10): it allows old versions\n",
+      "elements": [
+        {
+          "type": "expression",
+          "expression": "^0.4.19",
+          "source_mapping": {
+            "start": 290,
+            "length": 24,
+            "filename": "/dataset/arithmetic/integer_overflow_benign_1.sol",
+            "lines": [
+              10
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

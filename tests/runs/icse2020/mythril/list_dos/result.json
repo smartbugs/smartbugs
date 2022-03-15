@@ -1,0 +1,321 @@
+{
+  "contract": "list_dos",
+  "tool": "mythril",
+  "start": 1565777095.9966297,
+  "end": 1565777172.811729,
+  "duration": 76.81509923934937,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 699,
+        "code": "function getCreditorAmounts() returns (uint[]) {\n         return creditorAmounts;\n     }",
+        "debug": "storage_4: 0x800000000000000000000000000000000000000000000000000000000000000\ncalldata_Government_0: 0x81064e2d00000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getCreditorAmounts()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "getCreditorAmounts()",
+        "lineno": 121,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 916,
+        "code": "function getCreditorAddresses() returns (address[]) {\n         return creditorAddresses;\n     }",
+        "debug": "storage_3: 0x800000000000000000000000000000000000000000000000000000000000000\ncalldata_Government_0: 0xd3edcb5b00000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getCreditorAddresses()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "getCreditorAddresses()",
+        "lineno": 117,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 1182,
+        "code": "lastTimeOfNewCredit + TWELVE_HOURS",
+        "debug": "storage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9780\ncalldata_Government_0: 0x0\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `fallback`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 35,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 1236,
+        "code": "msg.sender.send(amount)",
+        "debug": "",
+        "description": "Multiple sends exist in one transaction, try to isolate each external call into its own transaction. As external calls can fail accidentally or deliberately.\nConsecutive calls: \nCall at address: 1357\nCall at address: 1468\n",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 37,
+        "title": "Multiple Calls",
+        "type": "Information"
+      },
+      {
+        "address": 1236,
+        "code": "msg.sender.send(amount)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 37,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 1264,
+        "code": "creditorAddresses[creditorAddresses.length - 1]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_3: 0x0\ntimestamp: 0x1\nstorage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5740\ncalldata_Government_0: 0x100000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 39,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 1357,
+        "code": "creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)",
+        "debug": "",
+        "description": "In the function `fallback` the following predictable state variables are used to determine Ether recipient:\n- block.timestamp\n",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 39,
+        "title": "Dependence on predictable environment variable",
+        "type": "Warning"
+      },
+      {
+        "address": 1357,
+        "code": "creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)",
+        "debug": "SOLVER OUTPUT:\nstorage_3: 0xffc0000000000000000000000000000000000000000000000000000000000000\ntimestamp: 0x1\nstorage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5740\ncalldata_Government_0: 0x100000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "In the function `fallback` a non-zero amount of Ether is sent to an address taken from storage slot 87903029871075914254377627908054574944891091886930582284385770809450030037083.\nThere is a check on storage index 87903029871075914254377627908054574944891091886930582284385770809450030037083. This storage slot can be written to by calling the function `fallback`.\n\nThere is a check on storage index 1. This storage slot can be written to by calling the function `fallback`.\nThere is a check on storage index 3. This storage slot can be written to by calling the function `fallback`.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 39,
+        "title": "Ether send",
+        "type": "Warning"
+      },
+      {
+        "address": 1357,
+        "code": "creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)",
+        "debug": "",
+        "description": "Multiple sends exist in one transaction, try to isolate each external call into its own transaction. As external calls can fail accidentally or deliberately.\nConsecutive calls: \nCall at address: 1468\n",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 39,
+        "title": "Multiple Calls",
+        "type": "Information"
+      },
+      {
+        "address": 1357,
+        "code": "creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function fallback. The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 39,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      },
+      {
+        "address": 1357,
+        "code": "creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 39,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 1468,
+        "code": "corruptElite.send(this.balance)",
+        "debug": "",
+        "description": "In the function `fallback` the following predictable state variables are used to determine Ether recipient:\n- block.timestamp\n",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 40,
+        "title": "Dependence on predictable environment variable",
+        "type": "Warning"
+      },
+      {
+        "address": 1468,
+        "code": "corruptElite.send(this.balance)",
+        "debug": "",
+        "description": "A possible transaction order independence vulnerability exists in function fallback. The value or direction of the call statement is determined from a tainted storage location",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 40,
+        "title": "Transaction order dependence",
+        "type": "Warning"
+      },
+      {
+        "address": 1468,
+        "code": "corruptElite.send(this.balance)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 40,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 2001,
+        "code": "corruptElite.send(amount * 5/100)",
+        "debug": "",
+        "description": "Multiple sends exist in one transaction, try to isolate each external call into its own transaction. As external calls can fail accidentally or deliberately.\nConsecutive calls: \nCall at address: 2194\n",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "lendGovernmentMoney(address)",
+        "lineno": 62,
+        "title": "Multiple Calls",
+        "type": "Information"
+      },
+      {
+        "address": 2001,
+        "code": "corruptElite.send(amount * 5/100)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 62,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 2194,
+        "code": "buddy.send(amount * 5/100)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "lendGovernmentMoney(address)",
+        "lineno": 70,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 2553,
+        "code": "creditorAddresses[lastCreditorPayedOut].send(creditorAmounts[lastCreditorPayedOut])",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 75,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 2876,
+        "code": "msg.sender.send(amount)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 82,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 3203,
+        "code": "creditorAmounts[i]",
+        "debug": "The exception is triggered under the following conditions:\n\nstorage_0: 0xffffffff00\ncalldata_Government_0: 0x6831c16900000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\nstorage_4: 0x0\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "totalPayedOut()",
+        "lineno": 101,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 3286,
+        "code": "return creditorAmounts",
+        "debug": "storage_4: 0x8421003f084001f4210815cf88407c00000000000000037c1d000e8d178001f\ncalldata_Government_0: 0x81064e2d00000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getCreditorAmounts()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "getCreditorAmounts()",
+        "lineno": 122,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3288,
+        "code": "return creditorAmounts",
+        "debug": "storage_4: 0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb\ncalldata_Government_0: 0x81064e2d00000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getCreditorAmounts()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "getCreditorAmounts()",
+        "lineno": 122,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3344,
+        "code": "address[] public creditorAddresses",
+        "debug": "The exception is triggered under the following conditions:\n\ncalldata_Government_4: 0x0\nstorage_3: 0x0\ncalldata_Government_0: 0xce43b0c000000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "_function_0xce43b0c0",
+        "lineno": 16,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 3436,
+        "code": "return creditorAddresses",
+        "debug": "storage_3: 0x8421003f084001f4210815cf88407c00000000000000037c1d000e8d178001f\ncalldata_Government_0: 0xd3edcb5b00000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getCreditorAddresses()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "getCreditorAddresses()",
+        "lineno": 118,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3438,
+        "code": "return creditorAddresses",
+        "debug": "storage_3: 0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb\ncalldata_Government_0: 0xd3edcb5b00000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getCreditorAddresses()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "getCreditorAddresses()",
+        "lineno": 118,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3548,
+        "code": "uint[] public creditorAmounts",
+        "debug": "The exception is triggered under the following conditions:\n\ncalldata_Government_4: 0x0\nstorage_4: 0x0\ncalldata_Government_0: 0xf42d1d3000000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "_function_0xf42d1d30",
+        "lineno": 17,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 3677,
+        "code": "contract Government {\n\n     // Global Variables\n     uint32 public lastCreditorPayedOut;\n     uint public lastTimeOfNewCredit;\n     uint public profitFromCrash;\n     address[] public creditorAddresses;\n     uint[] public creditorAmounts;\n     address public corruptElite;\n     mapping (address => uint) buddies;\n     uint constant TWELVE_HOURS = 43200;\n     uint8 public round;\n\n     function Government() {\n         // The corrupt elite establishes a new government\n         // this is the commitment of the corrupt Elite - everything that can not be saved from a crash\n         profitFromCrash = msg.value;\n         corruptElite = msg.sender;\n         lastTimeOfNewCredit = block.timestamp;\n     }\n\n     function lendGovernmentMoney(address buddy) returns (bool) {\n         uint amount = msg.value;\n         // check if the system already broke down. If for 12h no new creditor gives new credit to the system it will brake down.\n         // 12h are on average = 60*60*12/12.5 = 3456\n         if (lastTimeOfNewCredit + TWELVE_HOURS < block.timestamp) {\n             // Return money to sender\n             msg.sender.send(amount);\n             // Sends all contract money to the last creditor\n             creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash);\n             corruptElite.send(this.balance);\n             // Reset contract state\n             lastCreditorPayedOut = 0;\n             lastTimeOfNewCredit = block.timestamp;\n             profitFromCrash = 0;\n            // <yes> <report> DENIAL_OF_SERVICE\n             creditorAddresses = new address[](0);\n            // <yes> <report> DENIAL_OF_SERVICE\n             creditorAmounts = new uint[](0);\n             round += 1;\n             return false;\n         }\n         else {\n             // the system needs to collect at least 1% of the profit from a crash to stay alive\n             if (amount >= 10 ** 18) {\n                 // the System has received fresh money, it will survive at leat 12h more\n                 lastTimeOfNewCredit = block.timestamp;\n                 // register the new creditor and his amount with 10% interest rate\n                 creditorAddresses.push(msg.sender);\n                 creditorAmounts.push(amount * 110 / 100);\n                 // now the money is distributed\n                 // first the corrupt elite grabs 5% - thieves!\n                 corruptElite.send(amount * 5/100);\n                 // 5% are going into the economy (they will increase the value for the person seeing the crash comming)\n                 if (profitFromCrash < 10000 * 10**18) {\n                     profitFromCrash += amount * 5/100;\n                 }\n                 // if you have a buddy in the government (and he is in the creditor list) he can get 5% of your credits.\n                 // Make a deal with him.\n                 if(buddies[buddy] >= amount) {\n                     buddy.send(amount * 5/100);\n                 }\n                 buddies[msg.sender] += amount * 110 / 100;\n                 // 90% of the money will be used to pay out old creditors\n                 if (creditorAmounts[lastCreditorPayedOut] <= address(this).balance - profitFromCrash) {\n                     creditorAddresses[lastCreditorPayedOut].send(creditorAmounts[lastCreditorPayedOut]);\n                     buddies[creditorAddresses[lastCreditorPayedOut]] -= creditorAmounts[lastCreditorPayedOut];\n                     lastCreditorPayedOut += 1;\n                 }\n                 return true;\n             }\n             else {\n                 msg.sender.send(amount);\n                 return false;\n             }\n         }\n     }\n\n     // fallback function\n     function() {\n         lendGovernmentMoney(0);\n     }\n\n     function totalDebt() returns (uint debt) {\n         for(uint i=lastCreditorPayedOut; i<creditorAmounts.length; i++){\n             debt += creditorAmounts[i];\n         }\n     }\n\n     function totalPayedOut() returns (uint payout) {\n         for(uint i=0; i<lastCreditorPayedOut; i++){\n             payout += creditorAmounts[i];\n         }\n     }\n\n     // better don't do it (unless you are the corrupt elite and you want to establish trust in the system)\n     function investInTheSystem() {\n         profitFromCrash += msg.value;\n     }\n\n     // From time to time the corrupt elite inherits it's power to the next generation\n     function inheritToNextGeneration(address nextGeneration) {\n         if (msg.sender == corruptElite) {\n             corruptElite = nextGeneration;\n         }\n     }\n\n     function getCreditorAddresses() returns (address[]) {\n         return creditorAddresses;\n     }\n\n     function getCreditorAmounts() returns (uint[]) {\n         return creditorAmounts;\n     }\n }",
+        "debug": "storage_3: 0xfffcffffe1e7e1ffffe7ffffffeffff7f7fce7e7efff7ed7d0ed74ddd04603de\ntimestamp: 0x1\nstorage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5740\ncalldata_Government_0: 0xd95a2d4200000000000000000000000000000000000000000000000000000000\ncalldatasize_Government: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `lendGovernmentMoney(address)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "lendGovernmentMoney(address)",
+        "lineno": 10,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3815,
+        "code": "contract Government {\n\n     // Global Variables\n     uint32 public lastCreditorPayedOut;\n     uint public lastTimeOfNewCredit;\n     uint public profitFromCrash;\n     address[] public creditorAddresses;\n     uint[] public creditorAmounts;\n     address public corruptElite;\n     mapping (address => uint) buddies;\n     uint constant TWELVE_HOURS = 43200;\n     uint8 public round;\n\n     function Government() {\n         // The corrupt elite establishes a new government\n         // this is the commitment of the corrupt Elite - everything that can not be saved from a crash\n         profitFromCrash = msg.value;\n         corruptElite = msg.sender;\n         lastTimeOfNewCredit = block.timestamp;\n     }\n\n     function lendGovernmentMoney(address buddy) returns (bool) {\n         uint amount = msg.value;\n         // check if the system already broke down. If for 12h no new creditor gives new credit to the system it will brake down.\n         // 12h are on average = 60*60*12/12.5 = 3456\n         if (lastTimeOfNewCredit + TWELVE_HOURS < block.timestamp) {\n             // Return money to sender\n             msg.sender.send(amount);\n             // Sends all contract money to the last creditor\n             creditorAddresses[creditorAddresses.length - 1].send(profitFromCrash);\n             corruptElite.send(this.balance);\n             // Reset contract state\n             lastCreditorPayedOut = 0;\n             lastTimeOfNewCredit = block.timestamp;\n             profitFromCrash = 0;\n            // <yes> <report> DENIAL_OF_SERVICE\n             creditorAddresses = new address[](0);\n            // <yes> <report> DENIAL_OF_SERVICE\n             creditorAmounts = new uint[](0);\n             round += 1;\n             return false;\n         }\n         else {\n             // the system needs to collect at least 1% of the profit from a crash to stay alive\n             if (amount >= 10 ** 18) {\n                 // the System has received fresh money, it will survive at leat 12h more\n                 lastTimeOfNewCredit = block.timestamp;\n                 // register the new creditor and his amount with 10% interest rate\n                 creditorAddresses.push(msg.sender);\n                 creditorAmounts.push(amount * 110 / 100);\n                 // now the money is distributed\n                 // first the corrupt elite grabs 5% - thieves!\n                 corruptElite.send(amount * 5/100);\n                 // 5% are going into the economy (they will increase the value for the person seeing the crash comming)\n                 if (profitFromCrash < 10000 * 10**18) {\n                     profitFromCrash += amount * 5/100;\n                 }\n                 // if you have a buddy in the government (and he is in the creditor list) he can get 5% of your credits.\n                 // Make a deal with him.\n                 if(buddies[buddy] >= amount) {\n                     buddy.send(amount * 5/100);\n                 }\n                 buddies[msg.sender] += amount * 110 / 100;\n                 // 90% of the money will be used to pay out old creditors\n                 if (creditorAmounts[lastCreditorPayedOut] <= address(this).balance - profitFromCrash) {\n                     creditorAddresses[lastCreditorPayedOut].send(creditorAmounts[lastCreditorPayedOut]);\n                     buddies[creditorAddresses[lastCreditorPayedOut]] -= creditorAmounts[lastCreditorPayedOut];\n                     lastCreditorPayedOut += 1;\n                 }\n                 return true;\n             }\n             else {\n                 msg.sender.send(amount);\n                 return false;\n             }\n         }\n     }\n\n     // fallback function\n     function() {\n         lendGovernmentMoney(0);\n     }\n\n     function totalDebt() returns (uint debt) {\n         for(uint i=lastCreditorPayedOut; i<creditorAmounts.length; i++){\n             debt += creditorAmounts[i];\n         }\n     }\n\n     function totalPayedOut() returns (uint payout) {\n         for(uint i=0; i<lastCreditorPayedOut; i++){\n             payout += creditorAmounts[i];\n         }\n     }\n\n     // better don't do it (unless you are the corrupt elite and you want to establish trust in the system)\n     function investInTheSystem() {\n         profitFromCrash += msg.value;\n     }\n\n     // From time to time the corrupt elite inherits it's power to the next generation\n     function inheritToNextGeneration(address nextGeneration) {\n         if (msg.sender == corruptElite) {\n             corruptElite = nextGeneration;\n         }\n     }\n\n     function getCreditorAddresses() returns (address[]) {\n         return creditorAddresses;\n     }\n\n     function getCreditorAmounts() returns (uint[]) {\n         return creditorAmounts;\n     }\n }",
+        "debug": "storage_3: 0x2\nstorage_4: 0xfa6529821f5000306328c12a081477057904ff8000000000481000000040001e\ntimestamp: 0x1\nstorage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5740\ncalldatasize_Government: 0x3\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `fallback`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/denial_of_service/list_dos.sol",
+        "function": "fallback",
+        "lineno": 10,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

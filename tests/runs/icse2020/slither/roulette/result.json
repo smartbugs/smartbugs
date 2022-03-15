@@ -1,0 +1,206 @@
+{
+  "contract": "roulette",
+  "tool": "slither",
+  "start": 1565777047.6431003,
+  "end": 1565777050.3424273,
+  "duration": 2.699326992034912,
+  "analysis": [
+    {
+      "check": "arbitrary-send",
+      "impact": "High",
+      "confidence": "Medium",
+      "description": "Roulette.fallback (/dataset/time_manipulation/roulette.sol#15-24) sends eth to arbitrary user\n\tDangerous calls:\n\t- msg.sender.transfer(this.balance) (/dataset/time_manipulation/roulette.sol#22)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 330,
+            "length": 387,
+            "filename": "/dataset/time_manipulation/roulette.sol",
+            "lines": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Roulette",
+            "source_mapping": {
+              "start": 138,
+              "length": 581,
+              "filename": "/dataset/time_manipulation/roulette.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "msg.sender.transfer(this.balance)",
+          "source_mapping": {
+            "start": 667,
+            "length": 33,
+            "filename": "/dataset/time_manipulation/roulette.sol",
+            "lines": [
+              22
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "incorrect-equality",
+      "impact": "Medium",
+      "confidence": "High",
+      "description": "Roulette.fallback (/dataset/time_manipulation/roulette.sol#15-24) uses a dangerous strict equality:\n\t- now % 15 == 0\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 330,
+            "length": 387,
+            "filename": "/dataset/time_manipulation/roulette.sol",
+            "lines": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Roulette",
+            "source_mapping": {
+              "start": 138,
+              "length": 581,
+              "filename": "/dataset/time_manipulation/roulette.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "now % 15 == 0",
+          "source_mapping": {
+            "start": 625,
+            "length": 86,
+            "filename": "/dataset/time_manipulation/roulette.sol",
+            "lines": [
+              21,
+              22,
+              23
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Roulette.fallback (/dataset/time_manipulation/roulette.sol#15-24) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "fallback",
+          "source_mapping": {
+            "start": 330,
+            "length": 387,
+            "filename": "/dataset/time_manipulation/roulette.sol",
+            "lines": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "Roulette",
+            "source_mapping": {
+              "start": 138,
+              "length": 581,
+              "filename": "/dataset/time_manipulation/roulette.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+#!/bin/bash
+source ../venv/bin/activate
+python ../smartBugs.py -t all -f "$1" --processes 20

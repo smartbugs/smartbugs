@@ -1,0 +1,18 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.19
+INFO:root:contract /dataset/arithmetic/integer_overflow_1.sol:Overflow:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/dataset/arithmetic/integer_overflow_1.sol:14:10: Warning: Integer Overflow.
+         sellerBalance += value
+Integer Overflow occurs if:
+    value = 101899390626783806037295490765068204308122352654189651841593311131125579810884
+    sellerBalance = 32371359253229829210837324395482629452253063192603397441700599936706675587004
+INFO:symExec:	====== Analysis Completed ======

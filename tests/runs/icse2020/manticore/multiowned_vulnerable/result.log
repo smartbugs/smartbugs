@@ -1,0 +1,469 @@
+2019-08-13 18:33:51,683: [12] m.main:INFO: Registered plugins: DetectUninitializedStorage, DetectEnvInstruction, DetectDelegatecall, DetectIntegerOverflow, DetectReentrancyAdvanced, DetectUninitializedMemory, DetectUnusedRetVal, DetectSuicidal, DetectExternalCallAndLeak, DetectReentrancySimple, DetectInvalid
+2019-08-13 18:33:51,684: [12] m.main:INFO: Beginning analysis
+2019-08-13 18:33:51,695: [12] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:33:55,533: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 18:33:59,484: [532] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:00,370: [547] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:03,918: [12] m.e.manticore:INFO: 3 alive states, 8 terminated states
+2019-08-13 18:34:05,764: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 18:34:12,136: [1713] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:12,411: [1729] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:12,955: [1743] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:14,251: [1740] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:14,519: [1736] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:15,726: [1718] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:34:21,832: [12] m.e.manticore:INFO: 9 alive states, 32 terminated states
+2019-08-13 18:34:24,011: [4853] m.c.manticore:INFO: Generated testcase No. 0 - RETURN(3 txs)
+2019-08-13 18:34:24,012: [4854] m.c.manticore:INFO: Generated testcase No. 1 - RETURN(3 txs)
+2019-08-13 18:34:24,046: [4859] m.c.manticore:INFO: Generated testcase No. 2 - RETURN(3 txs)
+2019-08-13 18:34:24,048: [4866] m.c.manticore:INFO: Generated testcase No. 3 - RETURN(3 txs)
+2019-08-13 18:34:24,059: [4877] m.c.manticore:INFO: Generated testcase No. 5 - RETURN(3 txs)
+2019-08-13 18:34:24,060: [4871] m.c.manticore:INFO: Generated testcase No. 4 - RETURN(3 txs)
+2019-08-13 18:34:24,065: [4883] m.c.manticore:INFO: Generated testcase No. 6 - RETURN(3 txs)
+2019-08-13 18:34:24,080: [4896] m.c.manticore:INFO: Generated testcase No. 7 - RETURN(1 txs)
+2019-08-13 18:34:24,093: [4893] m.c.manticore:INFO: Generated testcase No. 8 - RETURN(3 txs)
+2019-08-13 18:34:24,109: [4887] m.c.manticore:INFO: Generated testcase No. 9 - RETURN(3 txs)
+2019-08-13 18:34:28,190: [4896] m.c.manticore:INFO: Generated testcase No. 10 - REVERT(2 txs)
+2019-08-13 18:34:29,958: [4877] m.c.manticore:INFO: Generated testcase No. 11 - REVERT(2 txs)
+2019-08-13 18:34:30,290: [4893] m.c.manticore:INFO: Generated testcase No. 12 - REVERT(2 txs)
+2019-08-13 18:34:30,666: [4887] m.c.manticore:INFO: Generated testcase No. 13 - REVERT(2 txs)
+2019-08-13 18:34:30,770: [4866] m.c.manticore:INFO: Generated testcase No. 14 - REVERT(2 txs)
+2019-08-13 18:34:30,895: [4859] m.c.manticore:INFO: Generated testcase No. 15 - REVERT(2 txs)
+2019-08-13 18:34:30,946: [4871] m.c.manticore:INFO: Generated testcase No. 16 - REVERT(2 txs)
+2019-08-13 18:34:31,333: [4854] m.c.manticore:INFO: Generated testcase No. 17 - RETURN(2 txs)
+2019-08-13 18:34:31,512: [4883] m.c.manticore:INFO: Generated testcase No. 18 - RETURN(2 txs)
+2019-08-13 18:34:32,020: [4853] m.c.manticore:INFO: Generated testcase No. 19 - RETURN(2 txs)
+2019-08-13 18:34:33,157: [4896] m.c.manticore:INFO: Generated testcase No. 20 - REVERT(3 txs)
+2019-08-13 18:34:34,719: [4877] m.c.manticore:INFO: Generated testcase No. 21 - REVERT(3 txs)
+2019-08-13 18:34:35,122: [4893] m.c.manticore:INFO: Generated testcase No. 22 - REVERT(3 txs)
+2019-08-13 18:34:35,527: [4887] m.c.manticore:INFO: Generated testcase No. 23 - REVERT(3 txs)
+2019-08-13 18:34:35,625: [4866] m.c.manticore:INFO: Generated testcase No. 24 - REVERT(3 txs)
+2019-08-13 18:34:35,780: [4859] m.c.manticore:INFO: Generated testcase No. 25 - REVERT(3 txs)
+2019-08-13 18:34:35,881: [4871] m.c.manticore:INFO: Generated testcase No. 26 - REVERT(3 txs)
+2019-08-13 18:34:36,500: [4883] m.c.manticore:INFO: Generated testcase No. 27 - REVERT(3 txs)
+2019-08-13 18:34:37,294: [4854] m.c.manticore:INFO: Generated testcase No. 28 - REVERT(3 txs)
+2019-08-13 18:34:37,617: [4853] m.c.manticore:INFO: Generated testcase No. 29 - REVERT(3 txs)
+2019-08-13 18:34:39,174: [4896] m.c.manticore:INFO: Generated testcase No. 30 - REVERT(3 txs)
+2019-08-13 18:34:41,604: [4877] m.c.manticore:INFO: Generated testcase No. 31 - REVERT(3 txs)
+2019-08-13 18:34:41,636: [4887] m.c.manticore:INFO: Generated testcase No. 32 - REVERT(3 txs)
+2019-08-13 18:34:41,675: [4893] m.c.manticore:INFO: Generated testcase No. 33 - REVERT(3 txs)
+2019-08-13 18:34:42,319: [4859] m.c.manticore:INFO: Generated testcase No. 34 - REVERT(3 txs)
+2019-08-13 18:34:42,560: [4866] m.c.manticore:INFO: Generated testcase No. 35 - REVERT(3 txs)
+2019-08-13 18:34:42,768: [4871] m.c.manticore:INFO: Generated testcase No. 36 - REVERT(3 txs)
+2019-08-13 18:34:43,266: [4854] m.c.manticore:INFO: Generated testcase No. 37 - REVERT(3 txs)
+2019-08-13 18:34:43,475: [4883] m.c.manticore:INFO: Generated testcase No. 38 - REVERT(3 txs)
+2019-08-13 18:34:44,432: [4853] m.c.manticore:INFO: Generated testcase No. 39 - REVERT(3 txs)
+2019-08-13 18:34:45,212: [4896] m.c.manticore:INFO: Generated testcase No. 40 - REVERT(3 txs)
+2019-08-13 18:34:51,630: [12] m.c.manticore:INFO: Results in /mcore_92qwe_s4
+2019-08-13 18:34:54,673: [6761] m.main:INFO: Registered plugins: DetectEnvInstruction, DetectSuicidal, DetectReentrancySimple, DetectInvalid, DetectReentrancyAdvanced, DetectDelegatecall, DetectUnusedRetVal, DetectUninitializedStorage, DetectIntegerOverflow, DetectExternalCallAndLeak, DetectUninitializedMemory
+2019-08-13 18:34:54,673: [6761] m.main:INFO: Beginning analysis
+2019-08-13 18:34:54,685: [6761] m.e.manticore:INFO: Starting symbolic create contract
+2019-08-13 18:34:58,626: [6761] m.e.manticore:INFO: Starting symbolic transaction: 0
+2019-08-13 18:35:03,042: [7286] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:04,749: [7272] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:08,676: [6761] m.e.manticore:INFO: 4 alive states, 9 terminated states
+2019-08-13 18:35:10,691: [6761] m.e.manticore:INFO: Starting symbolic transaction: 1
+2019-08-13 18:35:17,915: [8626] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:18,514: [8634] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:18,519: [8631] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:19,063: [8611] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:19,267: [8605] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:21,959: [8621] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:22,871: [8611] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:35:23,334: [8617] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:23,527: [8626] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:24,234: [8598] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:25,029: [8631] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:28,305: [8592] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:35,865: [8590] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:35:50,451: [6761] m.e.manticore:INFO: 18 alive states, 47 terminated states
+2019-08-13 18:35:52,808: [6761] m.e.manticore:INFO: Starting symbolic transaction: 2
+2019-08-13 18:36:06,736: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:09,286: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:10,855: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:11,131: [14095] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:13,012: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:13,024: [14099] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:13,417: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:15,415: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:18,105: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:20,365: [14072] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:21,013: [14074] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:36:22,137: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:23,350: [14120] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:23,784: [14103] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:24,315: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:25,674: [14072] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:25,846: [14099] m.e.detectors:WARNING: Reachable ether leak to sender
+2019-08-13 18:36:28,130: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:28,542: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:31,403: [14095] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:32,737: [14103] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:33,343: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:34,729: [14072] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:35,499: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:37,864: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:39,200: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:40,547: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:40,884: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:43,124: [14095] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:45,246: [14120] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:45,976: [14103] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:47,274: [14120] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:51,574: [14110] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:36:51,886: [14095] m.e.detectors:WARNING: Reachable ether leak to sender
+2019-08-13 18:36:52,483: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:54,275: [14099] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:54,620: [14103] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:36:55,572: [14120] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:36:57,619: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:36:59,595: [14072] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:37:02,578: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:03,447: [14072] m.e.detectors:WARNING: Reachable external call to sender
+2019-08-13 18:37:06,795: [14095] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:08,812: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:10,953: [14099] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:12,430: [14072] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:13,895: [14103] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:14,686: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:14,687: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:15,808: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:16,863: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:16,997: [14120] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:26,747: [14103] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:28,051: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:32,989: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:34,524: [14099] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:34,602: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:36,116: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:38,048: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:39,907: [14099] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:41,103: [14095] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:43,624: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:45,891: [14120] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:46,058: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:52,135: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:37:53,320: [14074] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:05,675: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:11,732: [14072] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:12,305: [14095] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:15,133: [14110] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:25,165: [14081] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:40,615: [14089] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:46,255: [14113] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:38:57,388: [14072] m.e.detectors:WARNING: Potentially reading uninitialized storage
+2019-08-13 18:39:22,049: [6761] m.e.manticore:INFO: 90 alive states, 223 terminated states
+2019-08-13 18:39:24,760: [9246] m.c.manticore:INFO: Generated testcase No. 0 - RETURN(4 txs)
+2019-08-13 18:39:24,778: [9243] m.c.manticore:INFO: Generated testcase No. 1 - RETURN(4 txs)
+2019-08-13 18:39:24,789: [9252] m.c.manticore:INFO: Generated testcase No. 2 - RETURN(4 txs)
+2019-08-13 18:39:24,797: [9259] m.c.manticore:INFO: Generated testcase No. 3 - RETURN(4 txs)
+2019-08-13 18:39:24,808: [9284] m.c.manticore:INFO: Generated testcase No. 5 - STOP(4 txs)
+2019-08-13 18:39:24,809: [9273] m.c.manticore:INFO: Generated testcase No. 4 - STOP(4 txs)
+2019-08-13 18:39:24,827: [9279] m.c.manticore:INFO: Generated testcase No. 6 - RETURN(4 txs)
+2019-08-13 18:39:24,827: [9298] m.c.manticore:INFO: Generated testcase No. 7 - RETURN(4 txs)
+2019-08-13 18:39:24,873: [9267] m.c.manticore:INFO: Generated testcase No. 8 - RETURN(4 txs)
+2019-08-13 18:39:32,994: [9273] m.c.manticore:INFO: Generated testcase No. 9 - RETURN(4 txs)
+2019-08-13 18:39:34,168: [9284] m.c.manticore:INFO: Generated testcase No. 10 - RETURN(4 txs)
+2019-08-13 18:39:37,778: [9298] m.c.manticore:INFO: Generated testcase No. 11 - STOP(4 txs)
+2019-08-13 18:39:38,608: [9259] m.c.manticore:INFO: Generated testcase No. 12 - RETURN(4 txs)
+2019-08-13 18:39:38,917: [9279] m.c.manticore:INFO: Generated testcase No. 13 - RETURN(4 txs)
+2019-08-13 18:39:39,668: [9252] m.c.manticore:INFO: Generated testcase No. 14 - RETURN(4 txs)
+2019-08-13 18:39:40,348: [9243] m.c.manticore:INFO: Generated testcase No. 15 - RETURN(4 txs)
+2019-08-13 18:39:40,478: [9267] m.c.manticore:INFO: Generated testcase No. 16 - RETURN(4 txs)
+2019-08-13 18:39:41,891: [9273] m.c.manticore:INFO: Generated testcase No. 17 - STOP(4 txs)
+2019-08-13 18:39:43,688: [9246] m.c.manticore:INFO: Generated testcase No. 18 - RETURN(4 txs)
+2019-08-13 18:39:46,113: [9298] m.c.manticore:INFO: Generated testcase No. 19 - STOP(4 txs)
+2019-08-13 18:39:46,153: [9279] m.c.manticore:INFO: Generated testcase No. 20 - STOP(4 txs)
+2019-08-13 18:39:47,091: [9284] m.c.manticore:INFO: Generated testcase No. 21 - STOP(4 txs)
+2019-08-13 18:39:49,768: [9259] m.c.manticore:INFO: Generated testcase No. 22 - RETURN(4 txs)
+2019-08-13 18:39:49,806: [9273] m.c.manticore:INFO: Generated testcase No. 23 - RETURN(4 txs)
+2019-08-13 18:39:51,057: [9246] m.c.manticore:INFO: Generated testcase No. 24 - RETURN(4 txs)
+2019-08-13 18:39:52,782: [9252] m.c.manticore:INFO: Generated testcase No. 25 - STOP(4 txs)
+2019-08-13 18:39:54,065: [9298] m.c.manticore:INFO: Generated testcase No. 26 - STOP(4 txs)
+2019-08-13 18:39:54,191: [9279] m.c.manticore:INFO: Generated testcase No. 27 - RETURN(4 txs)
+2019-08-13 18:39:54,288: [9267] m.c.manticore:INFO: Generated testcase No. 28 - STOP(4 txs)
+2019-08-13 18:39:55,027: [9243] m.c.manticore:INFO: Generated testcase No. 29 - RETURN(4 txs)
+2019-08-13 18:39:55,839: [9284] m.c.manticore:INFO: Generated testcase No. 30 - STOP(4 txs)
+2019-08-13 18:39:57,033: [9273] m.c.manticore:INFO: Generated testcase No. 31 - STOP(4 txs)
+2019-08-13 18:39:57,560: [9259] m.c.manticore:INFO: Generated testcase No. 32 - STOP(4 txs)
+2019-08-13 18:40:00,824: [9252] m.c.manticore:INFO: Generated testcase No. 33 - STOP(4 txs)
+2019-08-13 18:40:01,711: [9243] m.c.manticore:INFO: Generated testcase No. 34 - STOP(4 txs)
+2019-08-13 18:40:01,896: [9298] m.c.manticore:INFO: Generated testcase No. 35 - RETURN(4 txs)
+2019-08-13 18:40:02,058: [9246] m.c.manticore:INFO: Generated testcase No. 36 - RETURN(4 txs)
+2019-08-13 18:40:02,433: [9267] m.c.manticore:INFO: Generated testcase No. 37 - RETURN(4 txs)
+2019-08-13 18:40:03,428: [9284] m.c.manticore:INFO: Generated testcase No. 38 - RETURN(4 txs)
+2019-08-13 18:40:05,073: [9259] m.c.manticore:INFO: Generated testcase No. 39 - STOP(4 txs)
+2019-08-13 18:40:08,556: [9273] m.c.manticore:INFO: Generated testcase No. 40 - RETURN(4 txs)
+2019-08-13 18:40:09,911: [9252] m.c.manticore:INFO: Generated testcase No. 41 - RETURN(4 txs)
+2019-08-13 18:40:10,212: [9279] m.c.manticore:INFO: Generated testcase No. 42 - RETURN(4 txs)
+2019-08-13 18:40:10,693: [9243] m.c.manticore:INFO: Generated testcase No. 43 - RETURN(4 txs)
+2019-08-13 18:40:10,859: [9298] m.c.manticore:INFO: Generated testcase No. 44 - RETURN(4 txs)
+2019-08-13 18:40:12,296: [9259] m.c.manticore:INFO: Generated testcase No. 45 - RETURN(4 txs)
+2019-08-13 18:40:13,491: [9246] m.c.manticore:INFO: Generated testcase No. 46 - STOP(4 txs)
+2019-08-13 18:40:14,539: [9284] m.c.manticore:INFO: Generated testcase No. 47 - STOP(4 txs)
+2019-08-13 18:40:14,717: [9267] m.c.manticore:INFO: Generated testcase No. 48 - RETURN(4 txs)
+2019-08-13 18:40:19,478: [9273] m.c.manticore:INFO: Generated testcase No. 49 - STOP(4 txs)
+2019-08-13 18:40:21,290: [9259] m.c.manticore:INFO: Generated testcase No. 50 - RETURN(4 txs)
+2019-08-13 18:40:22,900: [9252] m.c.manticore:INFO: Generated testcase No. 51 - STOP(4 txs)
+2019-08-13 18:40:23,449: [9284] m.c.manticore:INFO: Generated testcase No. 52 - RETURN(4 txs)
+2019-08-13 18:40:23,813: [9243] m.c.manticore:INFO: Generated testcase No. 53 - RETURN(4 txs)
+2019-08-13 18:40:23,963: [9246] m.c.manticore:INFO: Generated testcase No. 54 - RETURN(4 txs)
+2019-08-13 18:40:24,769: [9279] m.c.manticore:INFO: Generated testcase No. 55 - STOP(4 txs)
+2019-08-13 18:40:26,206: [9298] m.c.manticore:INFO: Generated testcase No. 56 - RETURN(4 txs)
+2019-08-13 18:40:28,719: [9267] m.c.manticore:INFO: Generated testcase No. 57 - RETURN(4 txs)
+2019-08-13 18:40:29,430: [9273] m.c.manticore:INFO: Generated testcase No. 58 - STOP(4 txs)
+2019-08-13 18:40:31,590: [9279] m.c.manticore:INFO: Generated testcase No. 59 - RETURN(4 txs)
+2019-08-13 18:40:31,674: [9259] m.c.manticore:INFO: Generated testcase No. 60 - RETURN(4 txs)
+2019-08-13 18:40:32,052: [9252] m.c.manticore:INFO: Generated testcase No. 61 - RETURN(4 txs)
+2019-08-13 18:40:32,072: [9243] m.c.manticore:INFO: Generated testcase No. 62 - RETURN(4 txs)
+2019-08-13 18:40:33,492: [9284] m.c.manticore:INFO: Generated testcase No. 63 - RETURN(4 txs)
+2019-08-13 18:40:33,541: [9246] m.c.manticore:INFO: Generated testcase No. 64 - RETURN(4 txs)
+2019-08-13 18:40:36,945: [9298] m.c.manticore:INFO: Generated testcase No. 65 - RETURN(4 txs)
+2019-08-13 18:40:38,879: [9252] m.c.manticore:INFO: Generated testcase No. 66 - RETURN(4 txs)
+2019-08-13 18:40:38,978: [9273] m.c.manticore:INFO: Generated testcase No. 67 - STOP(4 txs)
+2019-08-13 18:40:40,644: [9243] m.c.manticore:INFO: Generated testcase No. 68 - RETURN(4 txs)
+2019-08-13 18:40:40,756: [9279] m.c.manticore:INFO: Generated testcase No. 69 - STOP(4 txs)
+2019-08-13 18:40:42,407: [9259] m.c.manticore:INFO: Generated testcase No. 70 - RETURN(4 txs)
+2019-08-13 18:40:42,508: [9267] m.c.manticore:INFO: Generated testcase No. 71 - RETURN(4 txs)
+2019-08-13 18:40:43,593: [9246] m.c.manticore:INFO: Generated testcase No. 72 - RETURN(4 txs)
+2019-08-13 18:40:45,161: [9284] m.c.manticore:INFO: Generated testcase No. 73 - STOP(4 txs)
+2019-08-13 18:40:47,382: [9298] m.c.manticore:INFO: Generated testcase No. 74 - RETURN(4 txs)
+2019-08-13 18:40:47,974: [9273] m.c.manticore:INFO: Generated testcase No. 75 - STOP(4 txs)
+2019-08-13 18:40:49,075: [9279] m.c.manticore:INFO: Generated testcase No. 76 - RETURN(4 txs)
+2019-08-13 18:40:49,531: [9252] m.c.manticore:INFO: Generated testcase No. 77 - STOP(4 txs)
+2019-08-13 18:40:52,651: [9243] m.c.manticore:INFO: Generated testcase No. 78 - RETURN(4 txs)
+2019-08-13 18:40:53,898: [9267] m.c.manticore:INFO: Generated testcase No. 79 - RETURN(4 txs)
+2019-08-13 18:40:54,446: [9259] m.c.manticore:INFO: Generated testcase No. 80 - RETURN(4 txs)
+2019-08-13 18:40:54,758: [9284] m.c.manticore:INFO: Generated testcase No. 81 - RETURN(4 txs)
+2019-08-13 18:40:56,047: [9246] m.c.manticore:INFO: Generated testcase No. 82 - STOP(4 txs)
+2019-08-13 18:40:56,840: [9273] m.c.manticore:INFO: Generated testcase No. 83 - RETURN(4 txs)
+2019-08-13 18:40:58,123: [9279] m.c.manticore:INFO: Generated testcase No. 84 - RETURN(4 txs)
+2019-08-13 18:40:58,300: [9298] m.c.manticore:INFO: Generated testcase No. 85 - RETURN(4 txs)
+2019-08-13 18:41:00,731: [9252] m.c.manticore:INFO: Generated testcase No. 86 - RETURN(4 txs)
+2019-08-13 18:41:03,642: [9259] m.c.manticore:INFO: Generated testcase No. 87 - RETURN(4 txs)
+2019-08-13 18:41:04,768: [9284] m.c.manticore:INFO: Generated testcase No. 88 - RETURN(4 txs)
+2019-08-13 18:41:05,012: [9243] m.c.manticore:INFO: Generated testcase No. 89 - RETURN(4 txs)
+2019-08-13 18:41:05,134: [9246] m.c.manticore:INFO: Generated testcase No. 90 - RETURN(1 txs)
+2019-08-13 18:41:05,426: [9267] m.c.manticore:INFO: Generated testcase No. 91 - REVERT(2 txs)
+2019-08-13 18:41:06,590: [9273] m.c.manticore:INFO: Generated testcase No. 92 - REVERT(2 txs)
+2019-08-13 18:41:06,824: [9279] m.c.manticore:INFO: Generated testcase No. 93 - REVERT(2 txs)
+2019-08-13 18:41:08,769: [9298] m.c.manticore:INFO: Generated testcase No. 94 - REVERT(2 txs)
+2019-08-13 18:41:10,575: [9246] m.c.manticore:INFO: Generated testcase No. 95 - REVERT(2 txs)
+2019-08-13 18:41:11,997: [9273] m.c.manticore:INFO: Generated testcase No. 96 - REVERT(2 txs)
+2019-08-13 18:41:12,082: [9267] m.c.manticore:INFO: Generated testcase No. 97 - REVERT(2 txs)
+2019-08-13 18:41:12,765: [9279] m.c.manticore:INFO: Generated testcase No. 98 - REVERT(2 txs)
+2019-08-13 18:41:13,977: [9252] m.c.manticore:INFO: Generated testcase No. 99 - RETURN(2 txs)
+2019-08-13 18:41:14,603: [9259] m.c.manticore:INFO: Generated testcase No. 100 - RETURN(2 txs)
+2019-08-13 18:41:15,092: [9298] m.c.manticore:INFO: Generated testcase No. 101 - STOP(2 txs)
+2019-08-13 18:41:16,506: [9284] m.c.manticore:INFO: Generated testcase No. 102 - REVERT(3 txs)
+2019-08-13 18:41:16,561: [9243] m.c.manticore:INFO: Generated testcase No. 103 - RETURN(2 txs)
+2019-08-13 18:41:17,048: [9246] m.c.manticore:INFO: Generated testcase No. 104 - REVERT(3 txs)
+2019-08-13 18:41:17,857: [9273] m.c.manticore:INFO: Generated testcase No. 105 - REVERT(3 txs)
+2019-08-13 18:41:18,081: [9267] m.c.manticore:INFO: Generated testcase No. 106 - REVERT(3 txs)
+2019-08-13 18:41:18,879: [9252] m.c.manticore:INFO: Generated testcase No. 107 - REVERT(3 txs)
+2019-08-13 18:41:18,936: [9279] m.c.manticore:INFO: Generated testcase No. 108 - REVERT(3 txs)
+2019-08-13 18:41:21,284: [9298] m.c.manticore:INFO: Generated testcase No. 109 - REVERT(3 txs)
+2019-08-13 18:41:21,325: [9259] m.c.manticore:INFO: Generated testcase No. 110 - REVERT(3 txs)
+2019-08-13 18:41:22,596: [9243] m.c.manticore:INFO: Generated testcase No. 111 - REVERT(3 txs)
+2019-08-13 18:41:23,933: [9284] m.c.manticore:INFO: Generated testcase No. 112 - REVERT(3 txs)
+2019-08-13 18:41:24,247: [9267] m.c.manticore:INFO: Generated testcase No. 113 - REVERT(3 txs)
+2019-08-13 18:41:24,459: [9246] m.c.manticore:INFO: Generated testcase No. 114 - REVERT(3 txs)
+2019-08-13 18:41:24,596: [9273] m.c.manticore:INFO: Generated testcase No. 115 - REVERT(3 txs)
+2019-08-13 18:41:25,228: [9279] m.c.manticore:INFO: Generated testcase No. 116 - REVERT(3 txs)
+2019-08-13 18:41:26,510: [9252] m.c.manticore:INFO: Generated testcase No. 117 - REVERT(3 txs)
+2019-08-13 18:41:27,092: [9298] m.c.manticore:INFO: Generated testcase No. 118 - REVERT(3 txs)
+2019-08-13 18:41:27,973: [9259] m.c.manticore:INFO: Generated testcase No. 119 - REVERT(3 txs)
+2019-08-13 18:41:29,814: [9246] m.c.manticore:INFO: Generated testcase No. 120 - REVERT(3 txs)
+2019-08-13 18:41:30,283: [9284] m.c.manticore:INFO: Generated testcase No. 121 - REVERT(3 txs)
+2019-08-13 18:41:30,356: [9243] m.c.manticore:INFO: Generated testcase No. 122 - REVERT(3 txs)
+2019-08-13 18:41:31,993: [9273] m.c.manticore:INFO: Generated testcase No. 123 - REVERT(3 txs)
+2019-08-13 18:41:32,007: [9267] m.c.manticore:INFO: Generated testcase No. 124 - REVERT(3 txs)
+2019-08-13 18:41:32,793: [9279] m.c.manticore:INFO: Generated testcase No. 125 - REVERT(3 txs)
+2019-08-13 18:41:33,442: [9252] m.c.manticore:INFO: Generated testcase No. 126 - REVERT(3 txs)
+2019-08-13 18:41:35,648: [9298] m.c.manticore:INFO: Generated testcase No. 127 - REVERT(3 txs)
+2019-08-13 18:41:36,131: [9259] m.c.manticore:INFO: Generated testcase No. 128 - REVERT(3 txs)
+2019-08-13 18:41:37,942: [9246] m.c.manticore:INFO: Generated testcase No. 129 - REVERT(3 txs)
+2019-08-13 18:41:38,700: [9267] m.c.manticore:INFO: Generated testcase No. 130 - REVERT(3 txs)
+2019-08-13 18:41:38,754: [9284] m.c.manticore:INFO: Generated testcase No. 131 - REVERT(3 txs)
+2019-08-13 18:41:39,909: [9243] m.c.manticore:INFO: Generated testcase No. 132 - REVERT(3 txs)
+2019-08-13 18:41:40,681: [9273] m.c.manticore:INFO: Generated testcase No. 133 - REVERT(3 txs)
+2019-08-13 18:41:41,176: [9252] m.c.manticore:INFO: Generated testcase No. 134 - REVERT(3 txs)
+2019-08-13 18:41:41,383: [9279] m.c.manticore:INFO: Generated testcase No. 135 - REVERT(3 txs)
+2019-08-13 18:41:44,503: [9298] m.c.manticore:INFO: Generated testcase No. 136 - REVERT(3 txs)
+2019-08-13 18:41:44,510: [9259] m.c.manticore:INFO: Generated testcase No. 137 - STOP(3 txs)
+2019-08-13 18:41:46,344: [9246] m.c.manticore:INFO: Generated testcase No. 138 - RETURN(3 txs)
+2019-08-13 18:41:47,391: [9284] m.c.manticore:INFO: Generated testcase No. 139 - RETURN(3 txs)
+2019-08-13 18:41:48,012: [9267] m.c.manticore:INFO: Generated testcase No. 140 - STOP(3 txs)
+2019-08-13 18:41:48,272: [9243] m.c.manticore:INFO: Generated testcase No. 141 - RETURN(3 txs)
+2019-08-13 18:41:50,280: [9273] m.c.manticore:INFO: Generated testcase No. 142 - RETURN(3 txs)
+2019-08-13 18:41:50,934: [9252] m.c.manticore:INFO: Generated testcase No. 143 - STOP(3 txs)
+2019-08-13 18:41:52,593: [9259] m.c.manticore:INFO: Generated testcase No. 144 - RETURN(3 txs)
+2019-08-13 18:41:53,776: [9279] m.c.manticore:INFO: Generated testcase No. 145 - RETURN(3 txs)
+2019-08-13 18:41:55,310: [9284] m.c.manticore:INFO: Generated testcase No. 146 - RETURN(3 txs)
+2019-08-13 18:41:56,144: [9243] m.c.manticore:INFO: Generated testcase No. 147 - RETURN(3 txs)
+2019-08-13 18:41:56,238: [9246] m.c.manticore:INFO: Generated testcase No. 148 - REVERT(4 txs)
+2019-08-13 18:41:56,332: [9267] m.c.manticore:INFO: Generated testcase No. 149 - RETURN(3 txs)
+2019-08-13 18:41:56,710: [9298] m.c.manticore:INFO: Generated testcase No. 150 - RETURN(3 txs)
+2019-08-13 18:41:58,454: [9273] m.c.manticore:INFO: Generated testcase No. 151 - REVERT(4 txs)
+2019-08-13 18:41:59,750: [9252] m.c.manticore:INFO: Generated testcase No. 152 - RETURN(3 txs)
+2019-08-13 18:42:01,921: [9259] m.c.manticore:INFO: Generated testcase No. 153 - RETURN(3 txs)
+2019-08-13 18:42:03,703: [9279] m.c.manticore:INFO: Generated testcase No. 154 - STOP(3 txs)
+2019-08-13 18:42:03,913: [9267] m.c.manticore:INFO: Generated testcase No. 155 - REVERT(4 txs)
+2019-08-13 18:42:04,423: [9243] m.c.manticore:INFO: Generated testcase No. 156 - REVERT(4 txs)
+2019-08-13 18:42:05,301: [9284] m.c.manticore:INFO: Generated testcase No. 157 - REVERT(4 txs)
+2019-08-13 18:42:05,882: [9298] m.c.manticore:INFO: Generated testcase No. 158 - STOP(3 txs)
+2019-08-13 18:42:07,542: [9246] m.c.manticore:INFO: Generated testcase No. 159 - RETURN(3 txs)
+2019-08-13 18:42:09,846: [9273] m.c.manticore:INFO: Generated testcase No. 160 - REVERT(4 txs)
+2019-08-13 18:42:10,333: [9252] m.c.manticore:INFO: Generated testcase No. 161 - REVERT(4 txs)
+2019-08-13 18:42:12,394: [9279] m.c.manticore:INFO: Generated testcase No. 162 - REVERT(4 txs)
+2019-08-13 18:42:12,427: [9259] m.c.manticore:INFO: Generated testcase No. 163 - REVERT(4 txs)
+2019-08-13 18:42:12,564: [9243] m.c.manticore:INFO: Generated testcase No. 164 - REVERT(4 txs)
+2019-08-13 18:42:15,428: [9267] m.c.manticore:INFO: Generated testcase No. 165 - REVERT(4 txs)
+2019-08-13 18:42:15,458: [9298] m.c.manticore:INFO: Generated testcase No. 166 - REVERT(4 txs)
+2019-08-13 18:42:16,399: [9284] m.c.manticore:INFO: Generated testcase No. 167 - REVERT(4 txs)
+2019-08-13 18:42:17,916: [9246] m.c.manticore:INFO: Generated testcase No. 168 - REVERT(4 txs)
+2019-08-13 18:42:19,784: [9252] m.c.manticore:INFO: Generated testcase No. 169 - REVERT(4 txs)
+2019-08-13 18:42:21,563: [9273] m.c.manticore:INFO: Generated testcase No. 170 - REVERT(4 txs)
+2019-08-13 18:42:22,175: [9279] m.c.manticore:INFO: Generated testcase No. 171 - REVERT(4 txs)
+2019-08-13 18:42:23,208: [9259] m.c.manticore:INFO: Generated testcase No. 172 - REVERT(4 txs)
+2019-08-13 18:42:23,421: [9243] m.c.manticore:INFO: Generated testcase No. 173 - REVERT(4 txs)
+2019-08-13 18:42:25,855: [9267] m.c.manticore:INFO: Generated testcase No. 174 - REVERT(4 txs)
+2019-08-13 18:42:26,072: [9246] m.c.manticore:INFO: Generated testcase No. 175 - REVERT(4 txs)
+2019-08-13 18:42:26,381: [9284] m.c.manticore:INFO: Generated testcase No. 176 - REVERT(4 txs)
+2019-08-13 18:42:26,824: [9298] m.c.manticore:INFO: Generated testcase No. 177 - REVERT(4 txs)
+2019-08-13 18:42:29,540: [9252] m.c.manticore:INFO: Generated testcase No. 178 - REVERT(4 txs)
+2019-08-13 18:42:31,616: [9279] m.c.manticore:INFO: Generated testcase No. 179 - REVERT(4 txs)
+2019-08-13 18:42:32,000: [9259] m.c.manticore:INFO: Generated testcase No. 180 - REVERT(4 txs)
+2019-08-13 18:42:32,135: [9273] m.c.manticore:INFO: Generated testcase No. 181 - REVERT(4 txs)
+2019-08-13 18:42:32,686: [9243] m.c.manticore:INFO: Generated testcase No. 182 - REVERT(4 txs)
+2019-08-13 18:42:34,508: [9246] m.c.manticore:INFO: Generated testcase No. 183 - REVERT(4 txs)
+2019-08-13 18:42:35,882: [9284] m.c.manticore:INFO: Generated testcase No. 185 - REVERT(4 txs)
+2019-08-13 18:42:36,135: [9298] m.c.manticore:INFO: Generated testcase No. 186 - REVERT(4 txs)
+2019-08-13 18:42:36,282: [9267] m.c.manticore:INFO: Generated testcase No. 184 - REVERT(4 txs)
+2019-08-13 18:42:37,977: [9252] m.c.manticore:INFO: Generated testcase No. 187 - REVERT(4 txs)
+2019-08-13 18:42:39,359: [9273] m.c.manticore:INFO: Generated testcase No. 188 - REVERT(4 txs)
+2019-08-13 18:42:40,723: [9259] m.c.manticore:INFO: Generated testcase No. 189 - REVERT(4 txs)
+2019-08-13 18:42:40,723: [9243] m.c.manticore:INFO: Generated testcase No. 190 - REVERT(4 txs)
+2019-08-13 18:42:41,535: [9279] m.c.manticore:INFO: Generated testcase No. 191 - REVERT(4 txs)
+2019-08-13 18:42:43,470: [9267] m.c.manticore:INFO: Generated testcase No. 192 - REVERT(4 txs)
+2019-08-13 18:42:43,768: [9246] m.c.manticore:INFO: Generated testcase No. 193 - REVERT(4 txs)
+2019-08-13 18:42:44,219: [9284] m.c.manticore:INFO: Generated testcase No. 194 - REVERT(4 txs)
+2019-08-13 18:42:46,691: [9298] m.c.manticore:INFO: Generated testcase No. 195 - REVERT(4 txs)
+2019-08-13 18:42:47,549: [9252] m.c.manticore:INFO: Generated testcase No. 196 - REVERT(4 txs)
+2019-08-13 18:42:48,929: [9273] m.c.manticore:INFO: Generated testcase No. 197 - REVERT(4 txs)
+2019-08-13 18:42:50,502: [9259] m.c.manticore:INFO: Generated testcase No. 198 - REVERT(4 txs)
+2019-08-13 18:42:51,717: [9279] m.c.manticore:INFO: Generated testcase No. 199 - REVERT(4 txs)
+2019-08-13 18:42:51,793: [9246] m.c.manticore:INFO: Generated testcase No. 200 - REVERT(4 txs)
+2019-08-13 18:42:53,580: [9284] m.c.manticore:INFO: Generated testcase No. 201 - REVERT(4 txs)
+2019-08-13 18:42:53,635: [9243] m.c.manticore:INFO: Generated testcase No. 202 - REVERT(4 txs)
+2019-08-13 18:42:54,362: [9267] m.c.manticore:INFO: Generated testcase No. 203 - REVERT(4 txs)
+2019-08-13 18:42:57,196: [9252] m.c.manticore:INFO: Generated testcase No. 204 - REVERT(4 txs)
+2019-08-13 18:42:57,814: [9298] m.c.manticore:INFO: Generated testcase No. 205 - REVERT(4 txs)
+2019-08-13 18:42:59,422: [9259] m.c.manticore:INFO: Generated testcase No. 206 - REVERT(4 txs)
+2019-08-13 18:42:59,830: [9273] m.c.manticore:INFO: Generated testcase No. 207 - REVERT(4 txs)
+2019-08-13 18:43:00,053: [9279] m.c.manticore:INFO: Generated testcase No. 208 - REVERT(4 txs)
+2019-08-13 18:43:00,429: [9246] m.c.manticore:INFO: Generated testcase No. 209 - REVERT(4 txs)
+2019-08-13 18:43:03,241: [9284] m.c.manticore:INFO: Generated testcase No. 210 - REVERT(4 txs)
+2019-08-13 18:43:03,525: [9243] m.c.manticore:INFO: Generated testcase No. 211 - REVERT(4 txs)
+2019-08-13 18:43:05,040: [9267] m.c.manticore:INFO: Generated testcase No. 212 - REVERT(4 txs)
+2019-08-13 18:43:07,342: [9298] m.c.manticore:INFO: Generated testcase No. 213 - REVERT(4 txs)
+2019-08-13 18:43:08,116: [9252] m.c.manticore:INFO: Generated testcase No. 214 - REVERT(4 txs)
+2019-08-13 18:43:08,922: [9273] m.c.manticore:INFO: Generated testcase No. 215 - REVERT(4 txs)
+2019-08-13 18:43:09,147: [9279] m.c.manticore:INFO: Generated testcase No. 216 - REVERT(4 txs)
+2019-08-13 18:43:09,268: [9246] m.c.manticore:INFO: Generated testcase No. 217 - REVERT(4 txs)
+2019-08-13 18:43:09,395: [9259] m.c.manticore:INFO: Generated testcase No. 218 - REVERT(4 txs)
+2019-08-13 18:43:11,762: [9243] m.c.manticore:INFO: Generated testcase No. 219 - REVERT(4 txs)
+2019-08-13 18:43:12,431: [9284] m.c.manticore:INFO: Generated testcase No. 220 - REVERT(4 txs)
+2019-08-13 18:43:12,968: [9267] m.c.manticore:INFO: Generated testcase No. 221 - REVERT(4 txs)
+2019-08-13 18:43:15,299: [9298] m.c.manticore:INFO: Generated testcase No. 222 - REVERT(4 txs)
+2019-08-13 18:43:16,547: [9252] m.c.manticore:INFO: Generated testcase No. 223 - REVERT(4 txs)
+2019-08-13 18:43:17,508: [9273] m.c.manticore:INFO: Generated testcase No. 224 - REVERT(4 txs)
+2019-08-13 18:43:18,343: [9259] m.c.manticore:INFO: Generated testcase No. 225 - REVERT(4 txs)
+2019-08-13 18:43:18,739: [9246] m.c.manticore:INFO: Generated testcase No. 226 - REVERT(4 txs)
+2019-08-13 18:43:20,267: [9243] m.c.manticore:INFO: Generated testcase No. 227 - REVERT(4 txs)
+2019-08-13 18:43:21,604: [9279] m.c.manticore:INFO: Generated testcase No. 228 - REVERT(4 txs)
+2019-08-13 18:43:22,206: [9284] m.c.manticore:INFO: Generated testcase No. 229 - REVERT(4 txs)
+2019-08-13 18:43:22,535: [9267] m.c.manticore:INFO: Generated testcase No. 230 - REVERT(4 txs)
+2019-08-13 18:43:25,678: [9298] m.c.manticore:INFO: Generated testcase No. 231 - REVERT(4 txs)
+2019-08-13 18:43:25,806: [9252] m.c.manticore:INFO: Generated testcase No. 232 - REVERT(4 txs)
+2019-08-13 18:43:28,901: [9246] m.c.manticore:INFO: Generated testcase No. 233 - REVERT(4 txs)
+2019-08-13 18:43:29,555: [9273] m.c.manticore:INFO: Generated testcase No. 234 - REVERT(4 txs)
+2019-08-13 18:43:31,072: [9243] m.c.manticore:INFO: Generated testcase No. 235 - REVERT(4 txs)
+2019-08-13 18:43:31,286: [9259] m.c.manticore:INFO: Generated testcase No. 236 - REVERT(4 txs)
+2019-08-13 18:43:31,399: [9279] m.c.manticore:INFO: Generated testcase No. 237 - REVERT(4 txs)
+2019-08-13 18:43:33,125: [9267] m.c.manticore:INFO: Generated testcase No. 238 - REVERT(4 txs)
+2019-08-13 18:43:33,645: [9298] m.c.manticore:INFO: Generated testcase No. 239 - REVERT(4 txs)
+2019-08-13 18:43:34,222: [9284] m.c.manticore:INFO: Generated testcase No. 240 - REVERT(4 txs)
+2019-08-13 18:43:36,867: [9252] m.c.manticore:INFO: Generated testcase No. 241 - REVERT(4 txs)
+2019-08-13 18:43:39,379: [9273] m.c.manticore:INFO: Generated testcase No. 242 - REVERT(4 txs)
+2019-08-13 18:43:40,365: [9246] m.c.manticore:INFO: Generated testcase No. 243 - REVERT(4 txs)
+2019-08-13 18:43:40,739: [9259] m.c.manticore:INFO: Generated testcase No. 244 - REVERT(4 txs)
+2019-08-13 18:43:40,888: [9243] m.c.manticore:INFO: Generated testcase No. 245 - REVERT(4 txs)
+2019-08-13 18:43:42,358: [9284] m.c.manticore:INFO: Generated testcase No. 246 - REVERT(4 txs)
+2019-08-13 18:43:43,169: [9298] m.c.manticore:INFO: Generated testcase No. 247 - REVERT(4 txs)
+2019-08-13 18:43:43,185: [9279] m.c.manticore:INFO: Generated testcase No. 248 - REVERT(4 txs)
+2019-08-13 18:43:43,342: [9267] m.c.manticore:INFO: Generated testcase No. 249 - REVERT(4 txs)
+2019-08-13 18:43:46,123: [9252] m.c.manticore:INFO: Generated testcase No. 250 - REVERT(4 txs)
+2019-08-13 18:43:48,790: [9243] m.c.manticore:INFO: Generated testcase No. 251 - REVERT(4 txs)
+2019-08-13 18:43:49,736: [9273] m.c.manticore:INFO: Generated testcase No. 252 - REVERT(4 txs)
+2019-08-13 18:43:51,784: [9246] m.c.manticore:INFO: Generated testcase No. 253 - REVERT(4 txs)
+2019-08-13 18:43:52,628: [9259] m.c.manticore:INFO: Generated testcase No. 254 - REVERT(4 txs)
+2019-08-13 18:43:53,394: [9284] m.c.manticore:INFO: Generated testcase No. 255 - REVERT(4 txs)
+2019-08-13 18:43:53,518: [9279] m.c.manticore:INFO: Generated testcase No. 256 - REVERT(4 txs)
+2019-08-13 18:43:54,222: [9298] m.c.manticore:INFO: Generated testcase No. 257 - REVERT(4 txs)
+2019-08-13 18:43:55,022: [9267] m.c.manticore:INFO: Generated testcase No. 258 - REVERT(4 txs)
+2019-08-13 18:43:55,780: [9252] m.c.manticore:INFO: Generated testcase No. 259 - REVERT(4 txs)
+2019-08-13 18:43:59,998: [9243] m.c.manticore:INFO: Generated testcase No. 260 - REVERT(4 txs)
+2019-08-13 18:44:02,204: [9273] m.c.manticore:INFO: Generated testcase No. 261 - REVERT(4 txs)
+2019-08-13 18:44:02,558: [9259] m.c.manticore:INFO: Generated testcase No. 262 - REVERT(4 txs)
+2019-08-13 18:44:04,150: [9284] m.c.manticore:INFO: Generated testcase No. 263 - REVERT(4 txs)
+2019-08-13 18:44:04,301: [9246] m.c.manticore:INFO: Generated testcase No. 264 - REVERT(4 txs)
+2019-08-13 18:44:04,424: [9279] m.c.manticore:INFO: Generated testcase No. 265 - REVERT(4 txs)
+2019-08-13 18:44:04,757: [9267] m.c.manticore:INFO: Generated testcase No. 266 - REVERT(4 txs)
+2019-08-13 18:44:05,960: [9298] m.c.manticore:INFO: Generated testcase No. 267 - REVERT(4 txs)
+2019-08-13 18:44:06,392: [9252] m.c.manticore:INFO: Generated testcase No. 268 - REVERT(4 txs)
+2019-08-13 18:44:10,771: [9243] m.c.manticore:INFO: Generated testcase No. 269 - REVERT(4 txs)
+2019-08-13 18:44:11,258: [9259] m.c.manticore:INFO: Generated testcase No. 270 - REVERT(4 txs)
+2019-08-13 18:44:13,038: [9273] m.c.manticore:INFO: Generated testcase No. 271 - REVERT(4 txs)
+2019-08-13 18:44:14,199: [9279] m.c.manticore:INFO: Generated testcase No. 272 - REVERT(4 txs)
+2019-08-13 18:44:14,542: [9284] m.c.manticore:INFO: Generated testcase No. 273 - REVERT(4 txs)
+2019-08-13 18:44:14,895: [9267] m.c.manticore:INFO: Generated testcase No. 274 - REVERT(4 txs)
+2019-08-13 18:44:15,751: [9252] m.c.manticore:INFO: Generated testcase No. 275 - REVERT(4 txs)
+2019-08-13 18:44:16,227: [9246] m.c.manticore:INFO: Generated testcase No. 276 - REVERT(4 txs)
+2019-08-13 18:44:18,113: [9298] m.c.manticore:INFO: Generated testcase No. 277 - REVERT(4 txs)
+2019-08-13 18:44:20,237: [9243] m.c.manticore:INFO: Generated testcase No. 278 - REVERT(4 txs)
+2019-08-13 18:44:21,017: [9259] m.c.manticore:INFO: Generated testcase No. 279 - REVERT(4 txs)
+2019-08-13 18:44:22,424: [9273] m.c.manticore:INFO: Generated testcase No. 280 - REVERT(4 txs)
+2019-08-13 18:44:25,587: [9284] m.c.manticore:INFO: Generated testcase No. 281 - REVERT(4 txs)
+2019-08-13 18:44:25,697: [9267] m.c.manticore:INFO: Generated testcase No. 282 - REVERT(4 txs)
+2019-08-13 18:44:26,119: [9246] m.c.manticore:INFO: Generated testcase No. 283 - REVERT(4 txs)
+2019-08-13 18:44:26,679: [9252] m.c.manticore:INFO: Generated testcase No. 284 - REVERT(4 txs)
+2019-08-13 18:44:26,823: [9279] m.c.manticore:INFO: Generated testcase No. 285 - REVERT(4 txs)
+2019-08-13 18:44:30,233: [9298] m.c.manticore:INFO: Generated testcase No. 286 - REVERT(4 txs)
+2019-08-13 18:44:31,331: [9259] m.c.manticore:INFO: Generated testcase No. 287 - REVERT(4 txs)
+2019-08-13 18:44:33,505: [9243] m.c.manticore:INFO: Generated testcase No. 288 - REVERT(4 txs)
+2019-08-13 18:44:33,613: [9273] m.c.manticore:INFO: Generated testcase No. 289 - REVERT(4 txs)
+2019-08-13 18:44:35,957: [9246] m.c.manticore:INFO: Generated testcase No. 290 - REVERT(4 txs)
+2019-08-13 18:44:36,286: [9284] m.c.manticore:INFO: Generated testcase No. 291 - REVERT(4 txs)
+2019-08-13 18:44:38,356: [9267] m.c.manticore:INFO: Generated testcase No. 292 - REVERT(4 txs)
+2019-08-13 18:44:38,380: [9279] m.c.manticore:INFO: Generated testcase No. 293 - REVERT(4 txs)
+2019-08-13 18:44:38,502: [9252] m.c.manticore:INFO: Generated testcase No. 294 - REVERT(4 txs)
+2019-08-13 18:44:41,662: [9298] m.c.manticore:INFO: Generated testcase No. 295 - REVERT(4 txs)
+2019-08-13 18:44:42,975: [9259] m.c.manticore:INFO: Generated testcase No. 296 - REVERT(4 txs)
+2019-08-13 18:44:44,976: [9243] m.c.manticore:INFO: Generated testcase No. 297 - REVERT(4 txs)
+2019-08-13 18:44:47,043: [9284] m.c.manticore:INFO: Generated testcase No. 298 - REVERT(4 txs)
+2019-08-13 18:44:47,356: [9246] m.c.manticore:INFO: Generated testcase No. 299 - REVERT(4 txs)
+2019-08-13 18:44:47,557: [9273] m.c.manticore:INFO: Generated testcase No. 300 - REVERT(4 txs)
+2019-08-13 18:44:47,838: [9279] m.c.manticore:INFO: Generated testcase No. 301 - REVERT(4 txs)
+2019-08-13 18:44:48,471: [9267] m.c.manticore:INFO: Generated testcase No. 302 - REVERT(4 txs)
+2019-08-13 18:44:50,315: [9298] m.c.manticore:INFO: Generated testcase No. 303 - REVERT(4 txs)
+2019-08-13 18:44:56,293: [9246] m.c.manticore:INFO: Generated testcase No. 304 - REVERT(4 txs)
+2019-08-13 18:44:58,620: [9284] m.c.manticore:INFO: Generated testcase No. 305 - REVERT(4 txs)
+2019-08-13 18:45:00,533: [9252] m.c.manticore:INFO: Generated testcase No. 306 - REVERT(4 txs)
+2019-08-13 18:45:04,250: [9259] m.c.manticore:INFO: Generated testcase No. 307 - REVERT(4 txs)
+2019-08-13 18:45:06,679: [9243] m.c.manticore:INFO: Generated testcase No. 308 - REVERT(4 txs)
+2019-08-13 18:45:06,986: [9279] m.c.manticore:INFO: Generated testcase No. 309 - REVERT(4 txs)
+2019-08-13 18:45:10,040: [9273] m.c.manticore:INFO: Generated testcase No. 310 - REVERT(4 txs)
+2019-08-13 18:45:12,791: [9267] m.c.manticore:INFO: Generated testcase No. 311 - REVERT(4 txs)
+2019-08-13 18:45:12,866: [9298] m.c.manticore:INFO: Generated testcase No. 312 - REVERT(4 txs)
+2019-08-13 18:45:40,165: [6761] m.c.manticore:INFO: Results in /mcore_3ovg31qx

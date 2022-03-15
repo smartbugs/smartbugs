@@ -1,0 +1,382 @@
+{
+  "contract": "dos_number",
+  "tool": "slither",
+  "start": 1565777090.4934616,
+  "end": 1565777093.1060102,
+  "duration": 2.612548589706421,
+  "analysis": [
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosNumber.insertNnumbers (/dataset/denial_of_service/dos_number.sol#14-24) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "insertNnumbers",
+          "source_mapping": {
+            "start": 277,
+            "length": 373,
+            "filename": "/dataset/denial_of_service/dos_number.sol",
+            "lines": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosNumber",
+            "source_mapping": {
+              "start": 206,
+              "length": 933,
+              "filename": "/dataset/denial_of_service/dos_number.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosNumber.clear (/dataset/denial_of_service/dos_number.sol#26-29) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "clear",
+          "source_mapping": {
+            "start": 656,
+            "length": 91,
+            "filename": "/dataset/denial_of_service/dos_number.sol",
+            "lines": [
+              26,
+              27,
+              28,
+              29
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosNumber",
+            "source_mapping": {
+              "start": 206,
+              "length": 933,
+              "filename": "/dataset/denial_of_service/dos_number.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosNumber.clearDOS (/dataset/denial_of_service/dos_number.sol#32-38) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "clearDOS",
+          "source_mapping": {
+            "start": 774,
+            "length": 172,
+            "filename": "/dataset/denial_of_service/dos_number.sol",
+            "lines": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosNumber",
+            "source_mapping": {
+              "start": 206,
+              "length": 933,
+              "filename": "/dataset/denial_of_service/dos_number.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosNumber.getLengthArray (/dataset/denial_of_service/dos_number.sol#40-42) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "getLengthArray",
+          "source_mapping": {
+            "start": 952,
+            "length": 87,
+            "filename": "/dataset/denial_of_service/dos_number.sol",
+            "lines": [
+              40,
+              41,
+              42
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosNumber",
+            "source_mapping": {
+              "start": 206,
+              "length": 933,
+              "filename": "/dataset/denial_of_service/dos_number.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "DosNumber.getRealLengthArray (/dataset/denial_of_service/dos_number.sol#44-46) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "getRealLengthArray",
+          "source_mapping": {
+            "start": 1045,
+            "length": 92,
+            "filename": "/dataset/denial_of_service/dos_number.sol",
+            "lines": [
+              44,
+              45,
+              46
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "DosNumber",
+            "source_mapping": {
+              "start": 206,
+              "length": 933,
+              "filename": "/dataset/denial_of_service/dos_number.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

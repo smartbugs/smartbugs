@@ -1,7 +1,4 @@
-docker_image:
-  default: qspprotocol/securify-usolc
-  solc<5: qspprotocol/securify-0.4.25
-cmd: --livestatusfile /results/live.json --output /results/results.json -fs
+docker_image: qspprotocol/securify-usolc
 output_in_files:
   folder: /results/
 info: Securify uses formal verification, also relying on static analysis checks. Securify’s analysis consists of two steps. First, it symbolically analyzes the contract’s dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not.

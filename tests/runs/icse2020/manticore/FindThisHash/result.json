@@ -1,0 +1,16 @@
+{
+  "contract": "FindThisHash",
+  "tool": "manticore",
+  "start": 1565722004.4966414,
+  "end": 1565722786.507901,
+  "duration": 782.0112595558167,
+  "analysis": [
+    [
+      {
+        "name": "Unsigned integer overflow at MUL instruction",
+        "line": 10,
+        "code": "bytes32 constant public hash = 0xb5b5b97fafd9855eec9b41f74dfb6c38f5951141f9a3ecd7f44d5479b630ee0a"
+      }
+    ]
+  ]
+}

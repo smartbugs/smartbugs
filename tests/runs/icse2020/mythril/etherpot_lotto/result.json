@@ -1,0 +1,101 @@
+{
+  "contract": "etherpot_lotto",
+  "tool": "mythril",
+  "start": 1565777073.6769953,
+  "end": 1565777211.422967,
+  "duration": 137.7459716796875,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 355,
+        "code": "msg.sender.send(msg.value-value)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "fallback",
+        "lineno": 141,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 1268,
+        "code": "function getBuyers(uint roundIndex,address buyer) constant returns (address[]){\n         return rounds[roundIndex].buyers;\n     }",
+        "debug": "storage_0 + keccac_calldata_Lotto_4: 0x800000000000000000000000000000000000000000000000000000000000000\ncalldata_Lotto_0: 0x459f93f700000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getBuyers(uint256,address)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "getBuyers(uint256,address)",
+        "lineno": 119,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 2231,
+        "code": "return rounds[roundIndex].buyers",
+        "debug": "storage_0 + keccac_calldata_Lotto_4: 0x8421003f084001f4210815cf88407c00000000000000037c1d000e8d178001f\ncalldata_Lotto_0: 0x459f93f700000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getBuyers(uint256,address)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "getBuyers(uint256,address)",
+        "lineno": 120,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 2233,
+        "code": "return rounds[roundIndex].buyers",
+        "debug": "storage_0 + keccac_calldata_Lotto_4: 0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb\ncalldata_Lotto_0: 0x459f93f700000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `getBuyers(uint256,address)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "getBuyers(uint256,address)",
+        "lineno": 120,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 2523,
+        "code": "decisionBlockHash%rounds[roundIndex].ticketsCount",
+        "debug": "The exception is triggered under the following conditions:\n\nblock_number: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_Lotto_4: 0x0\ncalldata_Lotto_32 + 4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe56f\ncalldata_Lotto_0: 0x6572ae1300000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\nstorage_2 + keccac_calldata_Lotto_4: 0x0\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "calculateWinner(uint256,uint256)",
+        "lineno": 57,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 3156,
+        "code": "roundIndex+1",
+        "debug": "calldata_Lotto_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_Lotto_0: 0x6572ae1300000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `calculateWinner(uint256,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "calculateWinner(uint256,uint256)",
+        "lineno": 73,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3157,
+        "code": "(roundIndex+1)*blocksPerRound",
+        "debug": "calldata_Lotto_4: 0x1147d49730a3d7092f95fc62c92f95fc62ce4e4e4e4e4e4e4e4e4e4e4e4e4e4e\ncalldata_Lotto_0: 0x6572ae1300000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `calculateWinner(uint256,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "calculateWinner(uint256,uint256)",
+        "lineno": 73,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 3158,
+        "code": "((roundIndex+1)*blocksPerRound)+subpotIndex",
+        "debug": "calldata_Lotto_32 + 4: 0xffe0688ebf1c81eca77e010b3652fa48582ffff5010000082a0a199fa10083e0\ncalldata_Lotto_4: 0xa40e140d547bda425a3c1356da775c39eb3795488874283656099d27610d402\ncalldata_Lotto_0: 0x6572ae1300000000000000000000000000000000000000000000000000000000\ncalldatasize_Lotto: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `calculateWinner(uint256,uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+        "function": "calculateWinner(uint256,uint256)",
+        "lineno": 73,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

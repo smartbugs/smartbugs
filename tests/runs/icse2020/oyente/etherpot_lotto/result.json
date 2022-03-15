@@ -1,0 +1,35 @@
+{
+  "contract": "etherpot_lotto",
+  "tool": "oyente",
+  "start": 1565863417.383526,
+  "end": 1565863465.6563883,
+  "duration": 48.27286219596863,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 124,
+          "column": 17,
+          "level": "Warning",
+          "message": "Integer Overflow."
+        },
+        {
+          "line": 141,
+          "column": 14,
+          "level": "Warning",
+          "message": "Callstack Depth Attack Vulnerability."
+        }
+      ],
+      "file": "/dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+      "name": "Lotto",
+      "evm_code_coverage": "66.4%",
+      "integer_underflow": false,
+      "integer_overflow": true,
+      "parity_multisig_bug_2": false,
+      "callstack_depth_attack_vulnerability": true,
+      "transaction-ordering_dependence_tod": false,
+      "timestamp_dependency": false,
+      "re-entrancy_vulnerability": false
+    }
+  ]
+}

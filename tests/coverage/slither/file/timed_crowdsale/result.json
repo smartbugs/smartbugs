@@ -1,0 +1,103 @@
+{
+  "contract": "timed_crowdsale",
+  "tool": "slither",
+  "start": 1647191619.3374946,
+  "end": 1647191624.1774502,
+  "duration": 4.839955568313599,
+  "analysis": [
+    {
+      "check": "timestamp",
+      "impact": "Low",
+      "confidence": "Medium",
+      "description": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= 1546300800 (/data/timed_crowdsale.sol#13)\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "isSaleFinished",
+          "source_mapping": {
+            "start": 285,
+            "length": 140,
+            "filename": "/data/timed_crowdsale.sol",
+            "lines": [
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "TimedCrowdsale",
+            "source_mapping": {
+              "start": 206,
+              "length": 221,
+              "filename": "/data/timed_crowdsale.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ]
+            }
+          }
+        },
+        {
+          "type": "expression",
+          "expression": "block.timestamp >= 1546300800",
+          "source_mapping": {
+            "start": 384,
+            "length": 36,
+            "filename": "/data/timed_crowdsale.sol",
+            "lines": [
+              13
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "external-function",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) should be declared external\n",
+      "elements": [
+        {
+          "type": "function",
+          "name": "isSaleFinished",
+          "source_mapping": {
+            "start": 285,
+            "length": 140,
+            "filename": "/data/timed_crowdsale.sol",
+            "lines": [
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          "contract": {
+            "type": "contract",
+            "name": "TimedCrowdsale",
+            "source_mapping": {
+              "start": 206,
+              "length": 221,
+              "filename": "/data/timed_crowdsale.sol",
+              "lines": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "contract": "FindThisHash",
+  "tool": "mythril",
+  "start": 1565777017.9209373,
+  "end": 1565777065.194336,
+  "duration": 47.273398637771606,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 166,
+        "code": "function solve(string solution) public {\n        // If you can find the pre image of the hash, receive 1000 ether\n         // <yes> <report> FRONT_RUNNING\n        require(hash == sha3(solution));\n        msg.sender.transfer(1000 ether);\n    }",
+        "debug": "calldata_FindThisHash_4: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc\ncalldata_FindThisHash_0: 0x76fe1e9200000000000000000000000000000000000000000000000000000000\ncalldatasize_FindThisHash: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `solve(string)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/front_running/FindThisHash.sol",
+        "function": "solve(string)",
+        "lineno": 14,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 488,
+        "code": "msg.sender.transfer(1000 ether)",
+        "debug": "SOLVER OUTPUT:\ncalldata_FindThisHash_4 + calldata_FindThisHash_4: 0xe0\ncalldata_FindThisHash_0: 0x76fe1e9200000000000000000000000000000000000000000000000000000000\ncalldatasize_FindThisHash: 0x4\nKECCAC_mem_128 +\n32 +\n32*\nConcat(0,\n       Extract(255,\n               5,\n               31 +\n               calldata_FindThisHash_4 + calldata_FindThisHash_4))): 0xb5b5b97fafd9855eec9b41f74dfb6c38f5951141f9a3ecd7f44d5479b630ee0a\ncallvalue: 0x0\n",
+        "description": "In the function `solve(string)` a non-zero amount of Ether is sent to msg.sender.\nIt seems that this function can be called without restrictions.",
+        "filename": "/dataset/front_running/FindThisHash.sol",
+        "function": "solve(string)",
+        "lineno": 18,
+        "title": "Ether send",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

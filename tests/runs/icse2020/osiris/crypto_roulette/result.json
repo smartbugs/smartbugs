@@ -1,0 +1,35 @@
+{
+  "contract": "crypto_roulette",
+  "tool": "osiris",
+  "start": 1565864379.833815,
+  "end": 1565864535.5571609,
+  "duration": 155.72334575653076,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 14,
+          "column": 1,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 55,
+          "column": 46,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 43,
+          "column": 9,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 47,
+          "column": 13,
+          "message": "concurrency_bug"
+        }
+      ],
+      "file": "/dataset/other/crypto_roulette.sol",
+      "name": "CryptoRoulette"
+    }
+  ]
+}

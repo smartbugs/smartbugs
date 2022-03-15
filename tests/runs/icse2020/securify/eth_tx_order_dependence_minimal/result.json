@@ -1,0 +1,87 @@
+{
+  "contract": "eth_tx_order_dependence_minimal",
+  "tool": "securify",
+  "start": 1565775947.1698086,
+  "end": 1565776010.1922219,
+  "duration": 63.02241325378418,
+  "analysis": {
+    "/dataset/front_running/eth_tx_order_dependence_minimal.sol:EthTxOrderDependenceMinimal": {
+      "results": {
+        "TODReceiver": {
+          "violations": [
+            22
+          ],
+          "warnings": [
+            30
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnhandledException": {
+          "violations": [],
+          "warnings": [
+            30,
+            22
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODTransfer": {
+          "violations": [
+            30,
+            22
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAO": {
+          "violations": [],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "TODAmount": {
+          "violations": [
+            30,
+            22
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "MissingInputValidation": {
+          "violations": [],
+          "warnings": [
+            10,
+            26,
+            11,
+            9,
+            17
+          ],
+          "safe": [],
+          "conflicts": []
+        },
+        "DAOConstantGas": {
+          "violations": [
+            30,
+            22
+          ],
+          "warnings": [],
+          "safe": [],
+          "conflicts": []
+        },
+        "UnrestrictedEtherFlow": {
+          "violations": [],
+          "warnings": [
+            22
+          ],
+          "safe": [
+            30
+          ],
+          "conflicts": []
+        }
+      }
+    }
+  }
+}

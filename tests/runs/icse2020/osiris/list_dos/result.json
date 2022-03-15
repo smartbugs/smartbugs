@@ -1,0 +1,100 @@
+{
+  "contract": "list_dos",
+  "tool": "osiris",
+  "start": 1565864620.9473896,
+  "end": 1565864873.1870298,
+  "duration": 252.23964023590088,
+  "analysis": [
+    {
+      "errors": [
+        {
+          "line": 101,
+          "column": 14,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 121,
+          "column": 6,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 122,
+          "column": 10,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 35,
+          "column": 14,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 122,
+          "column": 10,
+          "message": "overflow_bugs"
+        },
+        {
+          "line": 100,
+          "column": 26,
+          "message": "truncation_bugs"
+        },
+        {
+          "line": 39,
+          "column": 14,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 37,
+          "column": 14,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 40,
+          "column": 14,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 70,
+          "column": 22,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 62,
+          "column": 18,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 75,
+          "column": 22,
+          "message": "callstack_bug"
+        },
+        {
+          "line": 82,
+          "column": 18,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 37,
+          "column": 14,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 40,
+          "column": 14,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 39,
+          "column": 14,
+          "message": "concurrency_bug"
+        },
+        {
+          "line": 35,
+          "column": 10,
+          "message": "time_dependency_bug"
+        }
+      ],
+      "file": "/dataset/denial_of_service/list_dos.sol",
+      "name": "Government"
+    }
+  ]
+}

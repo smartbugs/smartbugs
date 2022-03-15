@@ -1,0 +1,33 @@
+{
+  "contract": "lotto",
+  "tool": "smartcheck",
+  "start": 1565777063.702415,
+  "end": 1565777069.1816254,
+  "duration": 5.479210376739502,
+  "analysis": [
+    {
+      "name": "SOLIDITY_PRAGMAS_VERSION",
+      "patternId": "23fc32",
+      "severity": 1,
+      "line": 7,
+      "column": 17,
+      "content": "^"
+    },
+    {
+      "name": "SOLIDITY_UNCHECKED_CALL",
+      "patternId": "f39eed",
+      "severity": 3,
+      "line": 20,
+      "column": 16,
+      "content": "send(winAmount)"
+    },
+    {
+      "name": "SOLIDITY_UNCHECKED_CALL",
+      "patternId": "f39eed",
+      "severity": 3,
+      "line": 27,
+      "column": 20,
+      "content": "send(this.balance)"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+FILENAME="$1"
+
+export PATH="/data/bin:$PATH"
+chmod +x /data/bin/solc
+
+python honeybadger/honeybadger.py -glt 250 -t 1000 -ll 20 -s "$FILENAME"

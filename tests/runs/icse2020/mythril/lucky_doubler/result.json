@@ -1,0 +1,79 @@
+{
+  "contract": "lucky_doubler",
+  "tool": "mythril",
+  "start": 1565777042.5188537,
+  "end": 1565777104.637315,
+  "duration": 62.11846137046814,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 1276,
+        "code": "msg.sender.send(msg.value)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/bad_randomness/lucky_doubler.sol",
+        "function": "fallback",
+        "lineno": 60,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 2868,
+        "code": "msg.sender.send(msg.value - 1 ether)",
+        "debug": "",
+        "description": "Multiple sends exist in one transaction, try to isolate each external call into its own transaction. As external calls can fail accidentally or deliberately.\nConsecutive calls: \nCall at address: 3924\nCall at address: 3924\n",
+        "filename": "/dataset/bad_randomness/lucky_doubler.sol",
+        "function": "fallback",
+        "lineno": 74,
+        "title": "Multiple Calls",
+        "type": "Information"
+      },
+      {
+        "address": 2868,
+        "code": "msg.sender.send(msg.value - 1 ether)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/bad_randomness/lucky_doubler.sol",
+        "function": "fallback",
+        "lineno": 74,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 3924,
+        "code": "theEntry.entryAddress.send(payout)",
+        "debug": "",
+        "description": "Multiple sends exist in one transaction, try to isolate each external call into its own transaction. As external calls can fail accidentally or deliberately.\nConsecutive calls: \nCall at address: 4316\nCall at address: 4316\n",
+        "filename": "/dataset/bad_randomness/lucky_doubler.sol",
+        "function": "fallback",
+        "lineno": 102,
+        "title": "Multiple Calls",
+        "type": "Information"
+      },
+      {
+        "address": 3924,
+        "code": "theEntry.entryAddress.send(payout)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/bad_randomness/lucky_doubler.sol",
+        "function": "fallback",
+        "lineno": 102,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      },
+      {
+        "address": 4316,
+        "code": "owner.send(fees)",
+        "debug": "",
+        "description": "The return value of an external call is not checked. Note that execution continue even if the called contract throws.",
+        "filename": "/dataset/bad_randomness/lucky_doubler.sol",
+        "function": "fallback",
+        "lineno": 119,
+        "title": "Unchecked CALL return value",
+        "type": "Informational"
+      }
+    ],
+    "success": true
+  }
+}

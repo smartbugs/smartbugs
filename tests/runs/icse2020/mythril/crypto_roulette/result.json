@@ -1,0 +1,46 @@
+{
+  "contract": "crypto_roulette",
+  "tool": "mythril",
+  "start": 1565777081.8737628,
+  "end": 1565777093.8778396,
+  "duration": 12.004076719284058,
+  "analysis": {
+    "error": null,
+    "issues": [
+      {
+        "address": 480,
+        "code": "Game[] public gamesPlayed",
+        "debug": "The exception is triggered under the following conditions:\n\ncalldata_CryptoRoulette_4: 0x0\nstorage_4: 0x0\ncalldata_CryptoRoulette_0: 0x382cf0a600000000000000000000000000000000000000000000000000000000\ncalldatasize_CryptoRoulette: 0x4\ncallvalue: 0x0\n",
+        "description": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. ",
+        "filename": "/dataset/other/crypto_roulette.sol",
+        "function": "_function_0x382cf0a6",
+        "lineno": 25,
+        "title": "Exception state",
+        "type": "Informational"
+      },
+      {
+        "address": 645,
+        "code": "lastPlayed + 1 days",
+        "debug": "storage_1: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffef00\nstorage_3: 0x0\ncaller: 0x0\ncalldata_CryptoRoulette_0: 0x41c0e1b500000000000000000000000000000000000000000000000000000000\ncalldatasize_CryptoRoulette: 0x4\ncallvalue: 0x0\n",
+        "description": "A possible integer overflow exists in the function `kill()`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/other/crypto_roulette.sol",
+        "function": "kill()",
+        "lineno": 55,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      },
+      {
+        "address": 798,
+        "code": "github.com/thec00n",
+        "debug": "storage_4: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\ncalldata_CryptoRoulette_4: 0x3\ncallvalue: 0x0\nstorage_2: 0x0\ncalldata_CryptoRoulette_0: 0x6898f82b00000000000000000000000000000000000000000000000000000000\ncalldatasize_CryptoRoulette: 0x4\n",
+        "description": "A possible integer overflow exists in the function `play(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer.",
+        "filename": "/dataset/other/crypto_roulette.sol",
+        "function": "play(uint256)",
+        "lineno": 2,
+        "title": "Integer Overflow ",
+        "type": "Warning"
+      }
+    ],
+    "success": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "contract": "name_registrar",
+  "tool": "manticore",
+  "start": 1565722898.4272087,
+  "end": 1565722993.6946383,
+  "duration": 95.26742959022522,
+  "analysis": [
+    [
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 15,
+        "code": "mapping(address => NameRecord) public registeredNameRecord"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 25,
+        "code": "resolve[_name] = _mappedAddress"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 16,
+        "code": "mapping(bytes32 => address) public resolve"
+      },
+      {
+        "name": "Potentially reading uninitialized storage",
+        "line": 15,
+        "code": "mapping(address => NameRecord) public registeredNameRecord"
+      }
+    ]
+  ]
+}
