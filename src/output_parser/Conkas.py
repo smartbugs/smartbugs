@@ -10,6 +10,14 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
     parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
+ERRORS = (
+        ('PHI instruction need arguments but ', 'PHI error'),
+        ('solcx.exceptions.SolcError:', 'solc error'),
+        ('CREATE2 instruction needs ', 'CREATE2 error'),
+        ('JUMPDEST instruction should not be reached', 'JUMPDEST error'),
+        ('PUSH instruction needs ', 'PUSH error'),
+)
+
 
 class Conkas(Parser):
 
@@ -32,8 +40,9 @@ class Conkas(Parser):
             self._errors.add('output missing')
             return
         self._errors.update(python_errors(re.sub('Analysing .*\.\.\.\n','',output)))
-        if 'solcx.exceptions.SolcError:' in output:
-            self._errors.add('solc error')
+        for indicator,error in ERRORS:
+            if indicator in output:
+                self._errors.add(error)
         self._analysis = []
         for line in self._lines:
             if 'Vulnerability: ' in line:

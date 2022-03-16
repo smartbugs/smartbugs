@@ -68,7 +68,8 @@ def main(Parser):
 
 
 PYTHON_TRACEBACK = 'Traceback (most recent call last):'
-PYTHON_EXCEPTION = re.compile(f"{re.escape(PYTHON_TRACEBACK)}(?:\n .*)*\n(.*)")
+# PYTHON_EXCEPTION = re.compile(f"{re.escape(PYTHON_TRACEBACK)}(?:\n .*)*\n(.*)")
+PYTHON_EXCEPTION = re.compile(f"{re.escape(PYTHON_TRACEBACK)}(?s:.*?)\n(?=\S)(.*(?:Exception|Error).*)")
 
 def python_errors(output):
     if PYTHON_TRACEBACK in output:
