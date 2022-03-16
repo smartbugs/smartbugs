@@ -1,4 +1,4 @@
-import os, yaml, pathlib
+import os, yaml, pathlib, csv
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 
@@ -14,6 +14,7 @@ for f in os.listdir(TOOLS_CFG_PATH):
             except yaml.YAMLError as exc:
                 print(exc)
 TOOL_CHOICES = TOOLS.keys()
+
 
 DATASETS_CFG_PATH = os.path.join(BASE_DIR, 'config', 'datasets.yaml')
 DATASETS_PARENT = BASE_DIR
@@ -36,6 +37,13 @@ def is_remote_info(info):
 def get_remote_info(info):
     return (info['url'], info['local_dir'], info['subsets'])
 
-import pandas
+
 VULNERABILITY_MAP_PATH = os.path.join(BASE_DIR, 'src', 'output_parser', 'sarif_vulnerability_mapping.csv')
-VULNERABILITY_MAP = pandas.read_csv(VULNERABILITY_MAP_PATH)
+VULNERABILITY_MAP = {}
+with open(VULNERABILITY_MAP_PATH, 'r') as csvfile:
+    rows = csv.reader(csvfile)
+    next(rows)
+    for Tool,RuleId,Vulnerability,Type in rows:
+        if Tool not in VULNERABILITY_MAP:
+            VULNERABILITY_MAP[Tool] = []
+        VULNERABILITY_MAP[Tool].append((RuleId,Vulnerability,Type))

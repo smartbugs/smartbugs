@@ -1,25 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Manticore",
-          "fullDescription": {
-            "text": "Manticore is a symbolic execution tool for analysis of smart contracts and binaries."
-          },
-          "informationUri": "https://github.com/trailofbits/manticore",
-          "rules": [
-            {
-              "id": "TimeManipulation_1",
-              "name": "TimeManipulationVulnerability",
-              "shortDescription": {
-                "text": "Warning TIMESTAMP instruction used"
-              }
-            }
-          ],
-          "version": "0.3.5"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -30,9 +12,6 @@
       ],
       "results": [
         {
-          "message": {
-            "text": "Warning TIMESTAMP instruction used"
-          },
           "level": "warning",
           "locations": [
             {
@@ -49,11 +28,32 @@
               }
             }
           ],
+          "message": {
+            "text": "Warning TIMESTAMP instruction used"
+          },
           "ruleId": "TimeManipulation_1"
         }
-      ]
+      ],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Manticore is a symbolic execution tool for analysis of smart contracts and binaries."
+          },
+          "informationUri": "https://github.com/trailofbits/manticore",
+          "name": "Manticore",
+          "rules": [
+            {
+              "id": "TimeManipulation_1",
+              "name": "TimeManipulationVulnerability",
+              "shortDescription": {
+                "text": "Warning TIMESTAMP instruction used"
+              }
+            }
+          ],
+          "version": "0.3.5"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

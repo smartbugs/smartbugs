@@ -186,11 +186,11 @@ def parse_results(output, tool, file_name, container, cfg, logs, results_folder,
 
     if output_version == 'v1' or output_version == 'all':
         with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-            json.dump(results, f, indent=2)
+            json.dump(results, f, indent=2, sort_keys=True)
 
     if output_version == 'v2' or output_version == 'all':
         with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarifFile:
-            json.dump(sarif_outputs[file_name].printToolRun(tool=tool), sarifFile, indent=2)
+            json.dump(sarif_outputs[file_name].printToolRun(tool=tool), sarifFile, indent=2, sort_keys=True)
 
 
 

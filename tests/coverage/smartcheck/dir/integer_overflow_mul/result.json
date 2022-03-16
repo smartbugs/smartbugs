@@ -1,17 +1,17 @@
 {
-  "contract": "integer_overflow_mul",
-  "tool": "smartcheck",
-  "start": 1647191697.8995306,
-  "end": 1647191706.8089132,
-  "duration": 8.909382581710815,
   "analysis": [
     {
+      "column": 16,
+      "content": "^",
+      "line": 10,
       "name": "SOLIDITY_PRAGMAS_VERSION",
       "patternId": "23fc32",
-      "severity": 1,
-      "line": 10,
-      "column": 16,
-      "content": "^"
+      "severity": 1
     }
-  ]
+  ],
+  "contract": "integer_overflow_mul",
+  "duration": 6.187837600708008,
+  "end": 1647469967.1725807,
+  "start": 1647469960.984743,
+  "tool": "smartcheck"
 }

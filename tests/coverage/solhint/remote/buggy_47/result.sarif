@@ -1,28 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Solhint",
-          "fullDescription": {
-            "text": "Open source project for linting solidity code. This project provide both security and style guide validations."
-          },
-          "informationUri": "https://protofire.github.io/solhint/",
-          "rules": [
-            {
-              "id": "Ignore_40",
-              "fullDescription": {
-                "text": "Expected indentation of 4 spaces but found 0"
-              },
-              "name": "IgnoreVulnerability",
-              "shortDescription": {
-                "text": "indent"
-              }
-            }
-          ],
-          "version": "3.3.2"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -39,9 +18,6 @@
       ],
       "results": [
         {
-          "message": {
-            "text": "indent"
-          },
           "level": "error",
           "locations": [
             {
@@ -57,12 +33,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -78,12 +54,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -99,12 +75,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -120,12 +96,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -141,12 +117,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -162,12 +138,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -183,12 +159,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -204,12 +180,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -225,12 +201,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -246,12 +222,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -267,12 +243,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -288,12 +264,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -309,12 +285,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -330,12 +306,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -351,12 +327,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -372,12 +348,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -393,12 +369,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -414,12 +390,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -435,12 +411,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -456,12 +432,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -477,12 +453,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -498,12 +474,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -519,12 +495,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -540,12 +516,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -561,12 +537,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -582,12 +558,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -603,12 +579,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -624,12 +600,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -645,12 +621,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -666,12 +642,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -687,12 +663,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -708,12 +684,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -729,12 +705,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -750,12 +726,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -771,12 +747,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -792,12 +768,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -813,12 +789,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -834,12 +810,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -855,12 +831,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -876,12 +852,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -897,12 +873,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -918,12 +894,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -939,12 +915,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -960,12 +936,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -981,12 +957,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1002,12 +978,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1023,12 +999,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1044,12 +1020,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1065,12 +1041,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1086,12 +1062,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1107,12 +1083,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1128,12 +1104,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1149,12 +1125,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1170,12 +1146,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1191,12 +1167,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1212,12 +1188,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1233,12 +1209,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1254,12 +1230,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1275,12 +1251,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1296,12 +1272,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1317,12 +1293,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1338,12 +1314,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1359,12 +1335,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1380,12 +1356,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1401,12 +1377,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1422,12 +1398,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1443,12 +1419,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1464,12 +1440,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1485,12 +1461,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1506,12 +1482,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1527,12 +1503,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1548,12 +1524,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1569,12 +1545,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1590,12 +1566,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1611,12 +1587,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1632,12 +1608,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1653,12 +1629,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1674,12 +1650,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1695,12 +1671,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1716,12 +1692,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1737,12 +1713,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1758,12 +1734,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1779,12 +1755,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1800,12 +1776,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1821,12 +1797,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1842,12 +1818,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1863,12 +1839,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1884,12 +1860,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1905,12 +1881,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1926,12 +1902,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1947,12 +1923,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1968,12 +1944,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -1989,12 +1965,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2010,12 +1986,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2031,12 +2007,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2052,12 +2028,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2073,12 +2049,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2094,12 +2070,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2115,12 +2091,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2136,12 +2112,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2157,12 +2133,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2178,12 +2154,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2199,12 +2175,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2220,12 +2196,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2241,12 +2217,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2262,12 +2238,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2283,12 +2259,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2304,12 +2280,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2325,12 +2301,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2346,12 +2322,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2367,12 +2343,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2388,12 +2364,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2409,12 +2385,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2430,12 +2406,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2451,12 +2427,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2472,12 +2448,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2493,12 +2469,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2514,12 +2490,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2535,12 +2511,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2556,12 +2532,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2577,12 +2553,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2598,12 +2574,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2619,12 +2595,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2640,12 +2616,12 @@
               }
             }
           ],
-          "ruleId": "Ignore_40"
-        },
-        {
           "message": {
             "text": "indent"
           },
+          "ruleId": "Ignore_40"
+        },
+        {
           "level": "error",
           "locations": [
             {
@@ -2661,11 +2637,35 @@
               }
             }
           ],
+          "message": {
+            "text": "indent"
+          },
           "ruleId": "Ignore_40"
         }
-      ]
+      ],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Open source project for linting solidity code. This project provide both security and style guide validations."
+          },
+          "informationUri": "https://protofire.github.io/solhint/",
+          "name": "Solhint",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "Expected indentation of 4 spaces but found 0"
+              },
+              "id": "Ignore_40",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "indent"
+              }
+            }
+          ],
+          "version": "3.3.2"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

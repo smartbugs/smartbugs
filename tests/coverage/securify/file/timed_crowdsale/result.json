@@ -1,63 +1,63 @@
 {
-  "contract": "timed_crowdsale",
-  "tool": "securify",
-  "start": 1647191619.3316967,
-  "end": 1647191634.854265,
-  "duration": 15.522568225860596,
   "analysis": {
     "/data/timed_crowdsale.sol:TimedCrowdsale": {
       "results": {
-        "TODReceiver": {
-          "violations": [],
-          "warnings": [],
-          "safe": [],
-          "conflicts": []
-        },
-        "UnhandledException": {
-          "violations": [],
-          "warnings": [],
-          "safe": [],
-          "conflicts": []
-        },
-        "TODTransfer": {
-          "violations": [],
-          "warnings": [],
-          "safe": [],
-          "conflicts": []
-        },
         "DAO": {
-          "violations": [],
-          "warnings": [],
+          "conflicts": [],
           "safe": [],
-          "conflicts": []
+          "violations": [],
+          "warnings": []
         },
-        "TODAmount": {
-          "violations": [],
-          "warnings": [],
+        "DAOConstantGas": {
+          "conflicts": [],
           "safe": [],
-          "conflicts": []
+          "violations": [],
+          "warnings": []
         },
         "MissingInputValidation": {
+          "conflicts": [],
+          "safe": [],
           "violations": [],
           "warnings": [
             10
-          ],
-          "safe": [],
-          "conflicts": []
+          ]
         },
-        "DAOConstantGas": {
-          "violations": [],
-          "warnings": [],
+        "TODAmount": {
+          "conflicts": [],
           "safe": [],
-          "conflicts": []
+          "violations": [],
+          "warnings": []
+        },
+        "TODReceiver": {
+          "conflicts": [],
+          "safe": [],
+          "violations": [],
+          "warnings": []
+        },
+        "TODTransfer": {
+          "conflicts": [],
+          "safe": [],
+          "violations": [],
+          "warnings": []
+        },
+        "UnhandledException": {
+          "conflicts": [],
+          "safe": [],
+          "violations": [],
+          "warnings": []
         },
         "UnrestrictedEtherFlow": {
-          "violations": [],
-          "warnings": [],
+          "conflicts": [],
           "safe": [],
-          "conflicts": []
+          "violations": [],
+          "warnings": []
         }
       }
     }
-  }
+  },
+  "contract": "timed_crowdsale",
+  "duration": 6.458327770233154,
+  "end": 1647469911.9310832,
+  "start": 1647469905.4727554,
+  "tool": "securify"
 }

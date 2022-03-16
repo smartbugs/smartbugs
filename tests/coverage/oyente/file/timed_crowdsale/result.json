@@ -1,22 +1,22 @@
 {
-  "contract": "timed_crowdsale",
-  "tool": "oyente",
-  "start": 1647191619.338738,
-  "end": 1647191625.469867,
-  "duration": 6.131129026412964,
   "analysis": [
     {
-      "errors": [],
-      "file": "/data/timed_crowdsale.sol",
-      "name": "TimedCrowdsale",
-      "evm_code_coverage": "98.6%",
-      "integer_underflow": false,
-      "integer_overflow": false,
-      "parity_multisig_bug_2": false,
       "callstack_depth_attack_vulnerability": false,
-      "transaction-ordering_dependence_tod": false,
+      "errors": [],
+      "evm_code_coverage": "98.6%",
+      "file": "/data/timed_crowdsale.sol",
+      "integer_overflow": false,
+      "integer_underflow": false,
+      "name": "TimedCrowdsale",
+      "parity_multisig_bug_2": false,
+      "re-entrancy_vulnerability": false,
       "timestamp_dependency": false,
-      "re-entrancy_vulnerability": false
+      "transaction-ordering_dependence_tod": false
     }
-  ]
+  ],
+  "contract": "timed_crowdsale",
+  "duration": 2.9775829315185547,
+  "end": 1647469908.4579942,
+  "start": 1647469905.4804113,
+  "tool": "oyente"
 }

@@ -1,33 +1,33 @@
 {
-  "contract": "dos_address",
-  "tool": "smartcheck",
-  "start": 1647191697.893927,
-  "end": 1647191707.773111,
-  "duration": 9.879184007644653,
   "analysis": [
     {
+      "column": 16,
+      "content": "^",
+      "line": 7,
       "name": "SOLIDITY_PRAGMAS_VERSION",
       "patternId": "23fc32",
-      "severity": 1,
-      "line": 7,
-      "column": 16,
-      "content": "^"
+      "severity": 1
     },
     {
-      "name": "SOLIDITY_VISIBILITY",
-      "patternId": "b51ce0",
-      "severity": 1,
+      "column": 4,
+      "content": "address[]creditorAddresses;",
       "line": 11,
-      "column": 4,
-      "content": "address[]creditorAddresses;"
-    },
-    {
       "name": "SOLIDITY_VISIBILITY",
       "patternId": "b51ce0",
-      "severity": 1,
-      "line": 12,
+      "severity": 1
+    },
+    {
       "column": 4,
-      "content": "boolwin=false;"
+      "content": "boolwin=false;",
+      "line": 12,
+      "name": "SOLIDITY_VISIBILITY",
+      "patternId": "b51ce0",
+      "severity": 1
     }
-  ]
+  ],
+  "contract": "dos_address",
+  "duration": 6.369231700897217,
+  "end": 1647469967.3574164,
+  "start": 1647469960.9881847,
+  "tool": "smartcheck"
 }

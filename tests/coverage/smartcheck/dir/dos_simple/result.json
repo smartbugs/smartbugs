@@ -1,25 +1,25 @@
 {
-  "contract": "dos_simple",
-  "tool": "smartcheck",
-  "start": 1647191697.886015,
-  "end": 1647191707.643081,
-  "duration": 9.757066011428833,
   "analysis": [
     {
+      "column": 16,
+      "content": "^",
+      "line": 8,
       "name": "SOLIDITY_PRAGMAS_VERSION",
       "patternId": "23fc32",
-      "severity": 1,
-      "line": 8,
-      "column": 16,
-      "content": "^"
+      "severity": 1
     },
     {
+      "column": 4,
+      "content": "address[]listAddresses;",
+      "line": 12,
       "name": "SOLIDITY_VISIBILITY",
       "patternId": "b51ce0",
-      "severity": 1,
-      "line": 12,
-      "column": 4,
-      "content": "address[]listAddresses;"
+      "severity": 1
     }
-  ]
+  ],
+  "contract": "dos_simple",
+  "duration": 6.099481105804443,
+  "end": 1647469967.0802202,
+  "start": 1647469960.980739,
+  "tool": "smartcheck"
 }

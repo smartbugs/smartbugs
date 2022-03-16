@@ -153,7 +153,7 @@ def exec_cmd(args: argparse.Namespace):
         for file_name in file_names:
             sarif_file_path = os.path.join(sarif_aggregate_folder, f'{file_name}.sarif')
             with open(sarif_file_path, 'w') as sarif_file:
-                json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2)
+                json.dump(sarif_outputs[file_name].print(), sarif_file, indent=2, sort_keys=True)
 
     if args.unique_sarif_output:
         sarif_holder = SarifHolder()
@@ -162,7 +162,7 @@ def exec_cmd(args: argparse.Namespace):
                 sarif_holder.addRun(run)
         sarif_file_path = os.path.join('results', f'{output_folder}.sarif')
         with open(sarif_file_path, 'w') as sarif_file:
-            json.dump(sarif_holder.print(), sarif_file, indent=2)
+            json.dump(sarif_holder.print(), sarif_file, indent=2, sort_keys=True)
 
 
 if __name__ == '__main__':

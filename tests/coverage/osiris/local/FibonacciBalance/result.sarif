@@ -1,25 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Osiris",
-          "fullDescription": {
-            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
-          },
-          "informationUri": "https://github.com/christoftorres/Osiris",
-          "rules": [
-            {
-              "id": "Arithmetic_7",
-              "name": "ArithmeticVulnerability",
-              "shortDescription": {
-                "text": "overflow_bugs"
-              }
-            }
-          ],
-          "version": "1.0"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -40,9 +22,6 @@
       ],
       "results": [
         {
-          "message": {
-            "text": "overflow_bugs"
-          },
           "level": "warning",
           "locations": [
             {
@@ -58,12 +37,12 @@
               }
             }
           ],
-          "ruleId": "Arithmetic_7"
-        },
-        {
           "message": {
             "text": "overflow_bugs"
           },
+          "ruleId": "Arithmetic_7"
+        },
+        {
           "level": "warning",
           "locations": [
             {
@@ -79,12 +58,12 @@
               }
             }
           ],
-          "ruleId": "Arithmetic_7"
-        },
-        {
           "message": {
             "text": "overflow_bugs"
           },
+          "ruleId": "Arithmetic_7"
+        },
+        {
           "level": "warning",
           "locations": [
             {
@@ -100,11 +79,32 @@
               }
             }
           ],
+          "message": {
+            "text": "overflow_bugs"
+          },
           "ruleId": "Arithmetic_7"
         }
-      ]
+      ],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
+          },
+          "informationUri": "https://github.com/christoftorres/Osiris",
+          "name": "Osiris",
+          "rules": [
+            {
+              "id": "Arithmetic_7",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "overflow_bugs"
+              }
+            }
+          ],
+          "version": "1.0"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

@@ -1,17 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "HoneyBadger",
-          "fullDescription": {
-            "text": "An analysis tool to detect honeypots in Ethereum smart contracts"
-          },
-          "informationUri": "https://honeybadger.uni.lu/",
-          "rules": [],
-          "version": "1.8.16"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -26,9 +16,19 @@
           "name": "TimedCrowdsale"
         }
       ],
-      "results": []
+      "results": [],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "An analysis tool to detect honeypots in Ethereum smart contracts"
+          },
+          "informationUri": "https://honeybadger.uni.lu/",
+          "name": "HoneyBadger",
+          "rules": [],
+          "version": "1.8.16"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

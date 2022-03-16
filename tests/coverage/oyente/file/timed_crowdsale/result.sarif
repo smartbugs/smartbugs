@@ -1,17 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Oyente",
-          "fullDescription": {
-            "text": "Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness."
-          },
-          "informationUri": "https://oyente.tech/",
-          "rules": [],
-          "version": "0.4.25"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -26,9 +16,19 @@
           "name": "TimedCrowdsale"
         }
       ],
-      "results": []
+      "results": [],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness."
+          },
+          "informationUri": "https://oyente.tech/",
+          "name": "Oyente",
+          "rules": [],
+          "version": "0.4.25"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

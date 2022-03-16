@@ -1,17 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Maian",
-          "fullDescription": {
-            "text": "Maian is a tool for automatic detection of buggy Ethereum smart contracts of three different types prodigal, suicidal and greedy."
-          },
-          "informationUri": "https://github.com/ivicanikolicsg/MAIAN",
-          "rules": [],
-          "version": "5.10"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -20,9 +10,19 @@
           "sourceLanguage": "Solidity"
         }
       ],
-      "results": []
+      "results": [],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Maian is a tool for automatic detection of buggy Ethereum smart contracts of three different types prodigal, suicidal and greedy."
+          },
+          "informationUri": "https://github.com/ivicanikolicsg/MAIAN",
+          "name": "Maian",
+          "rules": [],
+          "version": "5.10"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

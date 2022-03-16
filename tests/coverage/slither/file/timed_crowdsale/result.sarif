@@ -1,38 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Slither",
-          "fullDescription": {
-            "text": "Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses."
-          },
-          "informationUri": "https://github.com/crytic/slither",
-          "rules": [
-            {
-              "id": "TimeManipulation_4",
-              "fullDescription": {
-                "text": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= 1546300800 (/data/timed_crowdsale.sol#13)\n"
-              },
-              "name": "TimeManipulationVulnerability",
-              "shortDescription": {
-                "text": "timestamp"
-              }
-            },
-            {
-              "id": "Ignore_11",
-              "fullDescription": {
-                "text": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) should be declared external\n"
-              },
-              "name": "IgnoreVulnerability",
-              "shortDescription": {
-                "text": "external-function"
-              }
-            }
-          ],
-          "version": "0.7.0"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -43,9 +12,6 @@
       ],
       "results": [
         {
-          "message": {
-            "text": "timestamp"
-          },
           "level": "warning",
           "locations": [
             {
@@ -85,12 +51,12 @@
               }
             }
           ],
+          "message": {
+            "text": "timestamp"
+          },
           "ruleId": "TimeManipulation_4"
         },
         {
-          "message": {
-            "text": "external-function"
-          },
           "level": "note",
           "locations": [
             {
@@ -115,11 +81,45 @@
               }
             }
           ],
+          "message": {
+            "text": "external-function"
+          },
           "ruleId": "Ignore_11"
         }
-      ]
+      ],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses."
+          },
+          "informationUri": "https://github.com/crytic/slither",
+          "name": "Slither",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= 1546300800 (/data/timed_crowdsale.sol#13)\n"
+              },
+              "id": "TimeManipulation_4",
+              "name": "TimeManipulationVulnerability",
+              "shortDescription": {
+                "text": "timestamp"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "TimedCrowdsale.isSaleFinished (/data/timed_crowdsale.sol#11-14) should be declared external\n"
+              },
+              "id": "Ignore_11",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "external-function"
+              }
+            }
+          ],
+          "version": "0.7.0"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

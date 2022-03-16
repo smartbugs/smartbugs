@@ -2,7 +2,7 @@
 
 The test framework consists of a script `run.sh` to process sample contracts
 with a specific version of Smartbugs, a script `diff.sh` to compare the output
-of two runs, and a script `coverage.sh` for running most parts of Smasrtbugs at
+of two runs, and a script `coverage.sh` for running most parts of Smartbugs at
 least once.
 
 ## Running a Specific Version of Smartbugs on Sample Contracts

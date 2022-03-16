@@ -1,4 +1,3 @@
-import numpy
 from sarif_om import *
 
 from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
@@ -62,7 +61,7 @@ class Securify:
                 for level, lines in analysisResult.items():
                     if not isinstance(lines, list):
                         continue
-                    for lineNumber in list(numpy.unique(lines)):
+                    for lineNumber in sorted(lines):
                         result = parseResult(tool="securify", vulnerability=vuln, level=level, uri=file_path_in_repo,
                                              line=int(lineNumber))  # without int() lineNumber returns null??!
 

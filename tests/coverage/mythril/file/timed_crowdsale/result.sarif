@@ -1,17 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Mythril",
-          "fullDescription": {
-            "text": "Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities."
-          },
-          "informationUri": "https://mythx.io/",
-          "rules": [],
-          "version": "0.4.25"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -21,9 +11,19 @@
         }
       ],
       "logicalLocations": [],
-      "results": []
+      "results": [],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities."
+          },
+          "informationUri": "https://mythx.io/",
+          "name": "Mythril",
+          "rules": [],
+          "version": "0.4.25"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

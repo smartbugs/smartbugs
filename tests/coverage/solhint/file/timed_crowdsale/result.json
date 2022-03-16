@@ -1,41 +1,41 @@
 {
-  "contract": "timed_crowdsale",
-  "tool": "solhint",
-  "start": 1647191619.3465006,
-  "end": 1647191623.2626774,
-  "duration": 3.9161767959594727,
   "analysis": [
     {
-      "file": "/data/timed_crowdsale.sol",
-      "line": "2",
       "column": "2",
-      "message": "Line length must be no more than 120 but current length is 129.",
+      "file": "/data/timed_crowdsale.sol",
       "level": "Error",
+      "line": "2",
+      "message": "Line length must be no more than 120 but current length is 129.",
       "type": "max-line-length"
     },
     {
+      "column": "3",
       "file": "/data/timed_crowdsale.sol",
+      "level": "Error",
       "line": "11",
-      "column": "3",
       "message": "Expected indentation of 4 spaces but found 2",
-      "level": "Error",
       "type": "indent"
     },
     {
-      "file": "/data/timed_crowdsale.sol",
-      "line": "13",
       "column": "5",
-      "message": "Expected indentation of 8 spaces but found 4",
+      "file": "/data/timed_crowdsale.sol",
       "level": "Error",
+      "line": "13",
+      "message": "Expected indentation of 8 spaces but found 4",
       "type": "indent"
     },
     {
-      "file": "/data/timed_crowdsale.sol",
-      "line": "14",
       "column": "3",
-      "message": "Expected indentation of 4 spaces but found 2",
+      "file": "/data/timed_crowdsale.sol",
       "level": "Error",
+      "line": "14",
+      "message": "Expected indentation of 4 spaces but found 2",
       "type": "indent"
     }
-  ]
+  ],
+  "contract": "timed_crowdsale",
+  "duration": 2.3639321327209473,
+  "end": 1647469907.8537824,
+  "start": 1647469905.4898503,
+  "tool": "solhint"
 }

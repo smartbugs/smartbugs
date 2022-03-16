@@ -1,32 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "runs": [
     {
-      "tool": {
-        "driver": {
-          "name": "Osiris",
-          "fullDescription": {
-            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
-          },
-          "informationUri": "https://github.com/christoftorres/Osiris",
-          "rules": [
-            {
-              "id": "Arithmetic_10",
-              "name": "ArithmeticVulnerability",
-              "shortDescription": {
-                "text": "underflow_bugs"
-              }
-            },
-            {
-              "id": "Arithmetic_9",
-              "name": "ArithmeticVulnerability",
-              "shortDescription": {
-                "text": "truncation_bugs"
-              }
-            }
-          ],
-          "version": "1.0"
-        }
-      },
       "artifacts": [
         {
           "location": {
@@ -47,9 +22,6 @@
       ],
       "results": [
         {
-          "message": {
-            "text": "underflow_bugs"
-          },
           "level": "warning",
           "locations": [
             {
@@ -65,12 +37,12 @@
               }
             }
           ],
+          "message": {
+            "text": "underflow_bugs"
+          },
           "ruleId": "Arithmetic_10"
         },
         {
-          "message": {
-            "text": "truncation_bugs"
-          },
           "level": "warning",
           "locations": [
             {
@@ -86,11 +58,39 @@
               }
             }
           ],
+          "message": {
+            "text": "truncation_bugs"
+          },
           "ruleId": "Arithmetic_9"
         }
-      ]
+      ],
+      "tool": {
+        "driver": {
+          "fullDescription": {
+            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
+          },
+          "informationUri": "https://github.com/christoftorres/Osiris",
+          "name": "Osiris",
+          "rules": [
+            {
+              "id": "Arithmetic_10",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "underflow_bugs"
+              }
+            },
+            {
+              "id": "Arithmetic_9",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "truncation_bugs"
+              }
+            }
+          ],
+          "version": "1.0"
+        }
+      }
     }
   ],
-  "version": "2.1.0",
-  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+  "version": "2.1.0"
 }

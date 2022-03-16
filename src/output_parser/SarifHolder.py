@@ -85,24 +85,23 @@ class SarifHolder:
 
 
 def parseRule(tool, vulnerability, full_description=None):
-    vuln_info = findVulnerabilityOnTable(tool, vulnerability)
-
+    RuleId,Vulnerability,Type = identifyVulnerability(tool, vulnerability)
     if full_description is None:
-        return ReportingDescriptor(id=vuln_info["RuleId"],
-                                   short_description=MultiformatMessageString(
-                                       vuln_info["Vulnerability"]),
-                                   name=vuln_info["Type"] + "Vulnerability")
-
-    return ReportingDescriptor(id=vuln_info["RuleId"],
-                               short_description=MultiformatMessageString(
-                                   vuln_info["Vulnerability"]),
-                               full_description=MultiformatMessageString(full_description),
-                               name=vuln_info["Type"] + "Vulnerability")
+        return ReportingDescriptor(
+            id=RuleId,
+            short_description=MultiformatMessageString(Vulnerability),
+            name=f"{Type}Vulnerability")
+    else:
+        return ReportingDescriptor(
+            id=RuleId,
+            short_description=MultiformatMessageString(Vulnerability),
+            full_description=MultiformatMessageString(full_description),
+            name=f"{Type}Vulnerability")
 
 
 def parseResult(tool, vulnerability, level="warning", uri=None, line=None, end_line=None, column=None, snippet=None,
                 logicalLocation=None):
-    vuln_info = findVulnerabilityOnTable(tool, vulnerability)
+    RuleId,Vulnerability,Type = identifyVulnerability(tool, vulnerability)
 
     level = parseLevel(level)
 
@@ -117,7 +116,7 @@ def parseResult(tool, vulnerability, level="warning", uri=None, line=None, end_l
     if logicalLocation is not None:
         locations[0].logical_locations = [logicalLocation]
 
-    return Result(rule_id=vuln_info["RuleId"],
+    return Result(rule_id=RuleId,
                   message=Message(text=vulnerability),
                   level=level,
                   locations=locations)
@@ -132,17 +131,15 @@ def parseLogicalLocation(name, kind="contract"):
 
 
 # returns the row from the table for a given vulnerability and tool
-def findVulnerabilityOnTable(tool, vulnerability_found):
-    table = config.VULNERABILITY_MAP
-
-    tool_table = table.loc[table["Tool"] == tool]
+def identifyVulnerability(tool, vulnerability_msg):
+    vmap = config.VULNERABILITY_MAP[tool]
 
     # Due to messages that have extra information (for example the line where the vulnerability was found) this loop
     # will search if the vulnerability expressed on table exist inside vulnerability found
-    for index, row in tool_table.iterrows():
-        if row["Vulnerability"] in vulnerability_found or vulnerability_found in row["Vulnerability"]:
-            return row
-    raise VulnerabilityNotFoundException(tool=tool, vulnerability=vulnerability_found)
+    for RuleId,Vulnerability,Type in vmap:
+        if Vulnerability in vulnerability_msg or vulnerability_msg in Vulnerability:
+            return RuleId,Vulnerability,Type
+    raise VulnerabilityNotFoundException(tool=tool, vulnerability=vulnerability_msg)
 
 
 # given a level produced by a tool, returns the level in SARIF format
