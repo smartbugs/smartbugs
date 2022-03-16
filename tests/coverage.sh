@@ -13,7 +13,7 @@ function headline {
 }
 
 [ -d results ] && error "'results' already exists, remove it to rerun $0"
-[ -d dataset ] && error "'dataset' already exists, remove it to test the solidiFI download"
+#[ -d dataset ] && error "'dataset' already exists, remove it to test the solidiFI download"
 [ -d ../dataset/solidiFI ] && error "'../dataset/solidiFI' already exists, remove it to test the solidiFI download"
 
 headline 'single file, all tools, output: json+sarif (aggregated)'

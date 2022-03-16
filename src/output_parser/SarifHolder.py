@@ -132,11 +132,9 @@ def parseLogicalLocation(name, kind="contract"):
 
 # returns the row from the table for a given vulnerability and tool
 def identifyVulnerability(tool, vulnerability_msg):
-    vmap = config.VULNERABILITY_MAP[tool]
-
     # Due to messages that have extra information (for example the line where the vulnerability was found) this loop
     # will search if the vulnerability expressed on table exist inside vulnerability found
-    for RuleId,Vulnerability,Type in vmap:
+    for RuleId,Vulnerability,Type in config.VULNERABILITY_MAP[tool]:
         if Vulnerability in vulnerability_msg or vulnerability_msg in Vulnerability:
             return RuleId,Vulnerability,Type
     raise VulnerabilityNotFoundException(tool=tool, vulnerability=vulnerability_msg)
