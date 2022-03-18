@@ -61,7 +61,7 @@ class Securify:
                 for level, lines in analysisResult.items():
                     if not isinstance(lines, list):
                         continue
-                    for lineNumber in sorted(lines):
+                    for lineNumber in sorted(set(lines)):
                         result = parseResult(tool="securify", vulnerability=vuln, level=level, uri=file_path_in_repo,
                                              line=int(lineNumber))  # without int() lineNumber returns null??!
 
