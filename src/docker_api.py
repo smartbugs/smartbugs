@@ -9,6 +9,7 @@ import tarfile
 import yaml
 import tempfile
 import shutil
+from time import time
 
 from src.output_parser.Conkas import Conkas
 from src.output_parser.HoneyBadger import HoneyBadger
@@ -22,10 +23,7 @@ from src.output_parser.Slither import Slither
 from src.output_parser.Smartcheck import Smartcheck
 from src.output_parser.Solhint import Solhint
 from src.config import TOOLS,TOOLS_CFG_PATH
-
-from time import time
-
-from src.get_solc import get_solc
+from src.solidity import get_solc
 
 client = docker.from_env()
 
