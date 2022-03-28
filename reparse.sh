@@ -27,10 +27,11 @@ if [ ! -f "$PARSER" ]; then
 fi
 
 source ../../venv/bin/activate
-for LOG in `find "$DIR" -name result.log`; do
-	echo "$LOG"
-	JSON=${LOG%.log}.json
-	JSONNEW=${LOG%.log}.new.json
+for d in `find "../../$DIR" -name 'result.*' | sed 's"/result\..*""' | sort -u`; do
+	echo "$d"
+	LOG="${d}/result.log"
+	JSON="${d}/result.json"
+	JSONNEW="${d}/result.new.json"
 	if [ -f "$JSONNEW" ]; then
 		echo "$JSONNEW already exists, skipping $LOG"
 		continue

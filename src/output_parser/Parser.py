@@ -50,14 +50,18 @@ def main(Parser):
     if len(sys.argv) not in (2,3):
         print(f"Usage: python3 {sys.argv[0]} result.log [result.json] > result.json")
         return
-    with open(sys.argv[1]) as f:
-        result_log = f.read().rstrip()
+    try:
+        with open(sys.argv[1]) as f:
+            result_log = f.read().rstrip()
+    except:
+        result_log = None
     if len(sys.argv) == 3:
         with open(sys.argv[2]) as f:
             result_json = json.load(f)
     else:
         result_json = {}
-    timeout = 'errors' in result_json and DOCKER_TIMEOUT in result_json['errors']
+    timeout = (('errors' in result_json and DOCKER_TIMEOUT in result_json['errors']) or
+               ('exit_code' in result_json and result_json['exit_code'] is None))
     parser = Parser(None, result_log)
     for k,v in parser.result().items():
         result_json[k] = v
