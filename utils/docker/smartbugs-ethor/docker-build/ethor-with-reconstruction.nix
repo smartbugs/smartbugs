@@ -60,11 +60,11 @@ stdenv.mkDerivation rec {
     ${findutils}/bin/xargs -I{} sh -c '${coreutils}/bin/cat "{}/out"; ${coreutils}/bin/rm -r "{}"' > "$RESULT_FILE"
 
     if ${gnugrep}/bin/grep -oE '^sat$' "$RESULT_FILE" > /dev/null; then
-      echo "$HEX_FILE sb_result_insecure" 
+      echo "$HEX_FILE insecure" 
     elif ${gnugrep}/bin/grep -oE '^unknown' "$RESULT_FILE" > /dev/null; then
-      echo "$HEX_FILE sb_result_unknown" 
+      echo "$HEX_FILE unknown" 
     else
-      echo "$HEX_FILE sb_result_secure"
+      echo "$HEX_FILE secure"
     fi
 
     ${coreutils}/bin/rm -r "$WORK_DIR"

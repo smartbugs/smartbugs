@@ -10,7 +10,11 @@ let
 
     buildInputs = with pkgs; [ unzip ];
 
-    phases = ["unpackPhase" "installPhase"];
+    phases = ["unpackPhase" "patchPhase" "installPhase"];
+
+    patches = [ ./reconstruction.patch ];
+
+    patchFlags = [ "-p0" ];
 
     unpackPhase = ''
       unzip $src
