@@ -9,7 +9,7 @@ with open(sys.argv[1], 'rb') as f:
 
 user_account = m.create_account(balance=10000000)
 
-contract_account = m.create_contract(owner=user_account, init=bytecode)
+contract_account = m.create_contract(owner=user_account, code=bytecode)
 
 symbolic_data = m.make_symbolic_buffer(320)
 symbolic_value = m.make_symbolic_value()
