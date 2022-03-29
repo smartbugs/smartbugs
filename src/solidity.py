@@ -1,9 +1,8 @@
 import os,re
 from pathlib import Path
 from typing import Optional
-import solcx.install as solc
-# patch solcx to use Linux, independently of current OS
-solc._get_os_name.__code__ = (lambda:"linux").__code__
+import solcx
+solcx.set_cross_platform("linux")
 
 VOID_START = re.compile('//|/\*|"|\'')
 PRAGMA = re.compile('pragma solidity.*?;')
@@ -53,7 +52,7 @@ def get_solc(filename: str) -> Optional[Path]:
     pragma = get_pragma(file)
     if not pragma:
         return None
-    version = solc.install_solc_pragma(pragma)
+    version = solcx.install_solc_pragma(pragma)
     if not version:
         return None
-    return solc.get_executable(version)
+    return solcx.get_executable(version)
