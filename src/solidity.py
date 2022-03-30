@@ -52,7 +52,7 @@ def get_solc(filename: str) -> Optional[Path]:
     pragma = get_pragma(file)
     if not pragma:
         return None
-    version = solcx.install_solc_pragma(pragma)
+    version = solcx.install_solc_pragma(pragma, favor_older_versions = True)
     if not version:
         return None
     return solcx.get_executable(version)

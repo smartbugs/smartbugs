@@ -51,7 +51,7 @@ _default_solc_binary = None
 _cross_platform = None
 
 
-def set_cross_platform(platform: Optional(str) = None):
+def set_cross_platform(platform: Optional[str] = None):
     """
     Set the platform for the solc binaries to a fixed value, independently of current platform.
     """
@@ -235,7 +235,7 @@ def set_solc_version(
 
 
 def _select_pragma_version(
-    pragma_string: str, version_list: List[Version], favor_earlier_versions: bool = False
+    pragma_string: str, version_list: List[Version], favor_older_versions: bool = False
 ) -> Optional[Version]:
     pragma_string = re.sub(r"(\D)0+(\d)", r"\1\2", pragma_string)
     comparator_set_range = pragma_string.replace(" ", "").split("||")
@@ -245,19 +245,19 @@ def _select_pragma_version(
     for comparator_set in comparator_set_range:
         spec = SimpleSpec(",".join((i[0] for i in comparator_regex.findall(comparator_set))))
         selected = spec.select(version_list)
-        if selected and (not version or (selected < version and favor_earlier_versions) or (selected > version and not favor_earlier_versions):
+        if selected and (not version or (selected < version and favor_older_versions) or (selected > version and not favor_older_versions)):
             version = selected
 
     return version
 
 
 def set_solc_version_pragma(
-    pragma_string: str, silent: bool = False, check_new: bool = False, favor_earlier_versions: bool = False
+    pragma_string: str, silent: bool = False, check_new: bool = False, favor_older_versions: bool = False
 ) -> Version:
     """
     Set the currently active `solc` binary based on a pragma statement.
 
-    If favor_earlier_versions is False, the newest installed version matching the pragma is chosen;
+    If favor_older_versions is False, the newest installed version matching the pragma is chosen;
     otherwise the oldest version is returned.
     Raises `SolcNotInstalled` if no installed versions match.
 
@@ -276,7 +276,7 @@ def set_solc_version_pragma(
     Version
         The new active `solc` version.
     """
-    version = _select_pragma_version(pragma_string, get_installed_solc_versions(not favor_earlier_versions))
+    version = _select_pragma_version(pragma_string, get_installed_solc_versions(not favor_older_versions))
     if version is None:
         raise SolcNotInstalled(
             f"No compatible solc version installed."
@@ -284,10 +284,10 @@ def set_solc_version_pragma(
         )
     set_solc_version(version, silent)
     if check_new:
-        favored = install_solc_pragma(pragma_string, False, favor_earlier_versions=favor_earlier_versions)
-        if favored > version and not favor_earlier_versions:
+        favored = install_solc_pragma(pragma_string, False, favor_older_versions=favor_older_versions)
+        if favored > version and not favor_older_versions:
             LOGGER.info(f"Newer compatible solc version exists: {favored}")
-        if favored < version and favor_earlier_versions:
+        if favored < version and favor_older_versions:
             LOGGER.info(f"Older compatible solc version exists: {favored}")
 
     return version
@@ -298,7 +298,7 @@ def install_solc_pragma(
     install: bool = True,
     show_progress: bool = False,
     solcx_binary_path: Union[Path, str] = None,
-    favor_earlier_versions: bool = False
+    favor_older_versions: bool = False
 ) -> Version:
     """
     Find, and optionally install, the latest compatible `solc` version based on
@@ -321,7 +321,7 @@ def install_solc_pragma(
     Version
         Installed `solc` version.
     """
-    version = _select_pragma_version(pragma_string, get_installable_solc_versions())
+    version = _select_pragma_version(pragma_string, get_installable_solc_versions(not favor_older_versions))
     if not version:
         raise UnsupportedVersionError("Compatible solc version does not exist")
     if install:
