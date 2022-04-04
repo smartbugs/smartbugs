@@ -23,7 +23,8 @@ for name,location in cfg_dataset.items():
     else:
         DATASET_CHOICES.append(name)
 
-TOOLS_CHOICES = ['all'].extend(TOOLS.keys())
+TOOLS_CHOICES = ['all']
+TOOLS_CHOICES += TOOLS.keys()
 
 def is_remote_info(info):
     return isinstance(info,dict) and 'url' in info and 'local_dir' in info
