@@ -1,5 +1,4 @@
-from manticore.ethereum import evm, ManticoreEVM
-from binascii import unhexlify, hexlify
+from manticore.ethereum import ManticoreEVM
 import sys
 
 m = ManticoreEVM()
@@ -9,8 +8,7 @@ with open(sys.argv[1], 'rb') as f:
 
 user_account = m.create_account(balance=10000000)
 
-# contract_account = m.create_contract(owner=user_account, init=bytecode)
-contract_account = m.create_contract(owner=user_account, code=bytecode)
+contract_account = m.create_contract(owner=user_account, init=bytecode)
 
 symbolic_data = m.make_symbolic_buffer(320)
 symbolic_value = m.make_symbolic_value()

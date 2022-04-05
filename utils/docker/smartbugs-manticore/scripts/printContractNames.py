@@ -1,5 +1,4 @@
 import sys
-import pprint
 
 from solidity_parser import parser
 
