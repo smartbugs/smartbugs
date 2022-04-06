@@ -86,7 +86,7 @@ compares the output of Smartbugs, commit `6d23825`, to the output of the current
 ```
 compares the historic data from the conference ICSE2020 to the output of the current Smartbugs.
 
-### Coverage test
+## Coverage test
 
 ```bash
 rm -rf results dataset ../dataset/solidiFI
