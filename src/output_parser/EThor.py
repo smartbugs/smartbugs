@@ -9,13 +9,20 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
     parseLogicalLocation, isNotDuplicateLogicalLocation
 
 FINDINGS = (
-    ('sb_result_secure', 'sb_result_secure'),
-    ('sb_result_insecure', 'Reentrancy'),
-    ('sb_result_unknown', 'sb_result_unknown')
+    (' secure', 'ethor_secure'),
+    (' insecure', 'Reentrancy'),
 )
 
 ERRORS = (
     ('Encountered an unknown bytecode', 'instruction error'),
+    ('Cannot allocate memory', 'memory allocation error'),
+    ('Floating-point arithmetic', 'floating point error'),
+    ('Undefined relation EXTCODEHASH', 'EXTCODEHASH error'),
+    ('Segmentation fault', 'segmentation fault'),
+    ('UnsupportedOperationException', 'unsupported operation exception'),
+    ('RuntimeException', 'runtime exception'),
+    ('Aborted', 'execution aborted'),
+    ('Killed', 'execution killed'),
 )
 
 class EThor(Parser):
