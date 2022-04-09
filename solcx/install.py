@@ -48,22 +48,24 @@ LOGGER = logging.getLogger("solcx")
 SOLCX_BINARY_PATH_VARIABLE = "SOLCX_BINARY_PATH"
 
 _default_solc_binary = None
-_cross_platform = None
+_target_os = None
 
 
-def set_cross_platform(platform: Optional[str] = None):
+def set_target_os(platform: Optional[str] = None):
     """
-    Set the platform for the solc binaries to a fixed value, independently of current platform.
+    Set the target platform for the solc binaries. If unset, it defaults to the current os.
     """
     if platform is None or platform in ("linux", "macosx", "windows"):
-        _cross_platform = platform
+        _target_os = platform
     else:
-        raise OSError(f"Unsupported OS: '{platform}' - py-solc-x supports 'linux', 'macosx', or 'windows'.")
+        raise OSError(f"Unsupported target OS: '{platform}' - py-solc-x supports 'linux', 'macosx', or 'windows'.")
+
+
+def _get_target_os() -> str:
+    return _target_os if _target_os else _get_os_name()
 
 
 def _get_os_name() -> str:
-    if _cross_platform:
-        return _cross_platform
     if sys.platform.startswith("linux"):
         return "linux"
     if sys.platform == "darwin":
@@ -85,7 +87,7 @@ def _convert_and_validate_version(version: Union[str, Version]) -> Version:
 
 def _unlink_solc(solc_path: Path) -> None:
     solc_path.unlink()
-    if _get_os_name() == "windows":
+    if _get_target_os() == "windows":
         shutil.rmtree(solc_path.parent)
 
 
@@ -105,12 +107,17 @@ def get_solcx_install_folder(solcx_binary_path: Union[Path, str] = None) -> Path
     Path
         Subdirectory where `solc` binaries are are saved.
     """
-    if os.getenv(SOLCX_BINARY_PATH_VARIABLE):
-        return Path(os.environ[SOLCX_BINARY_PATH_VARIABLE])
-    elif solcx_binary_path is not None:
-        return Path(solcx_binary_path)
+    if _get_target_os() == _get_os_name():
+        if os.getenv(SOLCX_BINARY_PATH_VARIABLE):
+            return Path(os.environ[SOLCX_BINARY_PATH_VARIABLE])
+        elif solcx_binary_path is not None:
+            return Path(solcx_binary_path)
+        else:
+            path = Path.home().joinpath(".solcx")
+            path.mkdir(exist_ok=True)
+            return path
     else:
-        path = Path.home().joinpath(".solcx")
+        path = Path.home().joinpath(f".solcx-{_get_target_os()}")
         path.mkdir(exist_ok=True)
         return path
 
@@ -201,7 +208,7 @@ def get_executable(
 
     version = _convert_and_validate_version(version)
     solc_bin = get_solcx_install_folder(solcx_binary_path).joinpath(f"solc-v{version}")
-    if _get_os_name() == "windows":
+    if _get_target_os() == "windows":
         solc_bin = solc_bin.joinpath("solc.exe")
     if not solc_bin.exists():
         raise SolcNotInstalled(
@@ -234,9 +241,7 @@ def set_solc_version(
         LOGGER.info(f"Using solc version {version}")
 
 
-def _select_pragma_version(
-    pragma_string: str, version_list: List[Version], favor_older_versions: bool = False
-) -> Optional[Version]:
+def _select_pragma_version(pragma_string: str, version_list: List[Version]) -> Optional[Version]:
     pragma_string = re.sub(r"(\D)0+(\d)", r"\1\2", pragma_string)
     comparator_set_range = pragma_string.replace(" ", "").split("||")
     comparator_regex = re.compile(r"(([<>]?=?|\^)\d+\.\d+\.\d+)")
@@ -245,21 +250,20 @@ def _select_pragma_version(
     for comparator_set in comparator_set_range:
         spec = SimpleSpec(",".join((i[0] for i in comparator_regex.findall(comparator_set))))
         selected = spec.select(version_list)
-        if selected and (not version or (selected < version and favor_older_versions) or (selected > version and not favor_older_versions)):
+        if selected and (not version or version < selected):
             version = selected
 
     return version
 
 
 def set_solc_version_pragma(
-    pragma_string: str, silent: bool = False, check_new: bool = False, favor_older_versions: bool = False
+    pragma_string: str, silent: bool = False, check_new: bool = False
 ) -> Version:
     """
     Set the currently active `solc` binary based on a pragma statement.
 
-    If favor_older_versions is False, the newest installed version matching the pragma is chosen;
-    otherwise the oldest version is returned.
-    Raises `SolcNotInstalled` if no installed versions match.
+    The newest installed version that matches the pragma is chosen. Raises
+    `SolcNotInstalled` if no installed versions match.
 
     Arguments
     ---------
@@ -268,7 +272,7 @@ def set_solc_version_pragma(
     silent : bool, optional
         If True, do not generate any logger output.
     check_new : bool, optional
-        If True, also check if there is a newer/older compatible version that has not
+        If True, also check if there is a newer compatible version that has not
         been installed.
 
     Returns
@@ -276,7 +280,7 @@ def set_solc_version_pragma(
     Version
         The new active `solc` version.
     """
-    version = _select_pragma_version(pragma_string, get_installed_solc_versions(not favor_older_versions))
+    version = _select_pragma_version(pragma_string, get_installed_solc_versions())
     if version is None:
         raise SolcNotInstalled(
             f"No compatible solc version installed."
@@ -284,11 +288,9 @@ def set_solc_version_pragma(
         )
     set_solc_version(version, silent)
     if check_new:
-        favored = install_solc_pragma(pragma_string, False, favor_older_versions=favor_older_versions)
-        if favored > version and not favor_older_versions:
-            LOGGER.info(f"Newer compatible solc version exists: {favored}")
-        if favored < version and favor_older_versions:
-            LOGGER.info(f"Older compatible solc version exists: {favored}")
+        latest = install_solc_pragma(pragma_string, False)
+        if latest > version:
+            LOGGER.info(f"Newer compatible solc version exists: {latest}")
 
     return version
 
@@ -298,7 +300,6 @@ def install_solc_pragma(
     install: bool = True,
     show_progress: bool = False,
     solcx_binary_path: Union[Path, str] = None,
-    favor_older_versions: bool = False
 ) -> Version:
     """
     Find, and optionally install, the latest compatible `solc` version based on
@@ -321,7 +322,7 @@ def install_solc_pragma(
     Version
         Installed `solc` version.
     """
-    version = _select_pragma_version(pragma_string, get_installable_solc_versions(not favor_older_versions))
+    version = _select_pragma_version(pragma_string, get_installable_solc_versions())
     if not version:
         raise UnsupportedVersionError("Compatible solc version does not exist")
     if install:
@@ -330,7 +331,7 @@ def install_solc_pragma(
     return version
 
 
-def get_installable_solc_versions(reverse=True) -> List[Version]:
+def get_installable_solc_versions() -> List[Version]:
     """
     Return a list of all `solc` versions that can be installed by py-solc-x.
 
@@ -344,7 +345,7 @@ def get_installable_solc_versions(reverse=True) -> List[Version]:
         raise ConnectionError(
             f"Status {data.status_code} when getting solc versions from solc-bin.ethereum.org"
         )
-    version_list = sorted((Version(i) for i in data.json()["releases"]), reverse=reverse)
+    version_list = sorted((Version(i) for i in data.json()["releases"]), reverse=True)
     version_list = [i for i in version_list if i >= MINIMAL_SOLC_VERSION]
     return version_list
 
@@ -363,7 +364,7 @@ def get_compilable_solc_versions(headers: Optional[Dict] = None) -> List[Version
     List
         List of Versions objects of installable `solc` versions.
     """
-    if _get_os_name() == "windows":
+    if _get_target_os() == "windows":
         raise OSError("Compiling from source is not supported on Windows systems")
 
     version_list = []
@@ -449,7 +450,8 @@ def install_solc(
     else:
         version = _convert_and_validate_version(version)
 
-    os_name = _get_os_name()
+    target_os = _get_target_os()
+    this_os = _get_os_name()
     process_lock = get_process_lock(str(version))
 
     with process_lock:
@@ -458,7 +460,7 @@ def install_solc(
             LOGGER.info(f"solc {version} already installed at: {path}")
             return version
 
-        data = requests.get(BINARY_DOWNLOAD_BASE.format(_get_os_name(), "list.json"))
+        data = requests.get(BINARY_DOWNLOAD_BASE.format(target_os, "list.json"))
         if data.status_code != 200:
             raise ConnectionError(
                 f"Status {data.status_code} when getting solc versions from solc-bin.ethereum.org"
@@ -468,17 +470,17 @@ def install_solc(
         except KeyError:
             raise SolcInstallationError(f"Solc binary for v{version} is not available for this OS")
 
-        if os_name == "linux":
+        if target_os == "linux":
             _install_solc_unix(version, filename, show_progress, solcx_binary_path)
-        elif os_name == "macosx":
+        elif target_os == "macosx":
             _install_solc_unix(version, filename, show_progress, solcx_binary_path)
-        elif os_name == "windows":
+        elif target_os == "windows":
             _install_solc_windows(version, filename, show_progress, solcx_binary_path)
 
         try:
             _validate_installation(version, solcx_binary_path)
         except SolcInstallationError as exc:
-            if os_name != "windows":
+            if target_os != "windows" and target_os == this_os:
                 exc.args = (
                     f"{exc.args[0]} If this issue persists, you can try to compile from "
                     f"source code using `solcx.compile_solc('{version}')`.",
@@ -509,6 +511,8 @@ def compile_solc(
     Version
         installed solc version
     """
+    if _get_os_name() != _get_target_os():
+        raise OSError("Cross-compiling is not supported")
     if _get_os_name() == "windows":
         raise OSError("Compiling from source is not supported on Windows systems")
 
@@ -556,7 +560,7 @@ def compile_solc(
                 " while attempting to build solc from the source.\n"
                 "This is likely due to a missing or incorrect version of a build dependency."
             )
-            if _get_os_name() == "macosx":
+            if _get_target_os() == "macosx":
                 err_msg = (
                     f"{err_msg}\n\nFor suggested installation options: "
                     "https://github.com/iamdefinitelyahuman/py-solc-x/wiki/Installing-Solidity-on-OSX"  # noqa: E501
@@ -617,7 +621,7 @@ def _download_solc(url: str, show_progress: bool) -> bytes:
 def _install_solc_unix(
     version: Version, filename: str, show_progress: bool, solcx_binary_path: Union[Path, str, None]
 ) -> None:
-    download = BINARY_DOWNLOAD_BASE.format(_get_os_name(), filename)
+    download = BINARY_DOWNLOAD_BASE.format(_get_target_os(), filename)
     install_path = get_solcx_install_folder(solcx_binary_path).joinpath(f"solc-v{version}")
 
     content = _download_solc(download, show_progress)
@@ -630,7 +634,7 @@ def _install_solc_unix(
 def _install_solc_windows(
     version: Version, filename: str, show_progress: bool, solcx_binary_path: Union[Path, str, None]
 ) -> None:
-    download = BINARY_DOWNLOAD_BASE.format(_get_os_name(), filename)
+    download = BINARY_DOWNLOAD_BASE.format(_get_target_os(), filename)
     install_path = get_solcx_install_folder(solcx_binary_path).joinpath(f"solc-v{version}")
 
     temp_path = _get_temp_folder()
@@ -648,6 +652,8 @@ def _install_solc_windows(
 
 
 def _validate_installation(version: Version, solcx_binary_path: Union[Path, str, None]) -> None:
+    if _get_target_os() != _get_os_name():
+        return
     binary_path = get_executable(version, solcx_binary_path)
     try:
         installed_version = wrapper._get_solc_version(binary_path)

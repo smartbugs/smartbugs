@@ -2,7 +2,7 @@ import os,re
 from pathlib import Path
 from typing import Optional
 import solcx
-solcx.set_cross_platform("linux")
+solcx.set_target_os("linux")
 
 VOID_START = re.compile('//|/\*|"|\'')
 PRAGMA = re.compile('pragma solidity.*?;')
@@ -42,17 +42,16 @@ def get_pragma(file: str) -> Optional[str]:
                 line = line[end+2:]
         line, in_comment = remove_void(line)
         if m := PRAGMA.search(line):
-            pragma = m[0]
-            return re.sub(r'(\D)0+(\d)',r'\1\2', pragma) # remove leading zeros
+            return m[0]
     return None
 
 def get_solc(filename: str) -> Optional[Path]:
     with open(filename) as f:
         file = f.read()
-    pragma = get_pragma(file)
-    if not pragma:
+    try:
+        pragma = get_pragma(file)
+        pragma = re.sub(r">=0\.", r"^0.", pragma)
+        version = solcx.install_solc_pragma(pragma)
+        return solcx.get_executable(version)
+    except:
         return None
-    version = solcx.install_solc_pragma(pragma, favor_older_versions = True)
-    if not version:
-        return None
-    return solcx.get_executable(version)
