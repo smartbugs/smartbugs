@@ -1,8 +1,8 @@
 import csv
-import sys
 import os
 
-initial_directory = "./dataset"
+# IMPORTANT: run from main folder
+initial_directory = "dataset"
 master_csv = open("./dataset/vulnerabilities.csv", 'w')
 master_csv_writter = csv.writer(master_csv)
 

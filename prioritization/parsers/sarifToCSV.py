@@ -4,14 +4,14 @@ import numpy as np
 from lib2to3.pgen2 import driver
 
 def bugID(file, line):
-    return str(file) + "_" + str(line)
+    return str(file) + ":" + str(line)
 
 # Parse file
-with open('./Dinis/test1.sarif') as json_file:
+with open('./data/results1.sarif') as json_file:
     sarif = json.load(json_file)
 
 # Results file
-csv_file = open('./Dinis/result1.csv', 'w')
+csv_file = open('./results/result1.csv', 'w')
 csv_writer = csv.writer(csv_file)
 
 headers = ["bug_id"]
