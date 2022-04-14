@@ -1,0 +1,85 @@
+{
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "Nome da tool",
+                    "fullDescription": {
+                        "text": "Description da tool"
+                    },
+                    "informationURI": "uri da tool",
+                    "rules": [
+                        {
+                            "id": "Id da rule 1",
+                            "fullDescription": {
+                                "text": "Description da rule 1"
+                            },
+                            "name": "Name da rule",
+                            "shortDescription": {
+                                "text": "Short Description da rule 1"
+                            }
+                        },
+                        {
+                            "id": "Id da rule 2",
+                            "fullDescription": {
+                                "text": "Description da rule 2"
+                            },
+                            "name": "Name da rule 2",
+                            "shortDescription": {
+                                "text": "Short Description da rule 2"
+                            }
+                        }
+                    ],
+                    "version": "version da tool"
+                }
+            },
+            "artifacts": [
+                {
+                    "location": {
+                      "uri": "file error 1"
+                    },
+                    "sourceLanguage": "Solidity"
+                },
+                {
+                    "location": {
+                      "uri": "file error 2"
+                    },
+                    "sourceLanguage": "Solidity"
+                }
+            ],
+            "logicalLocations": [
+                {
+                    "kind": "contract",
+                    "name": "contract error 1"
+                },
+                {
+                    "kind": "contract",
+                    "name": "contract error 1"
+                }
+            ],
+            "results": [
+                {
+                    "message": {
+                      "text": "Short Description da rule quebrada"
+                    },
+                    "level": "error",
+                    "locations": [
+                      {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "ficheiro com erro"
+                          },
+                          "region": {
+                            "snippet": {},
+                            "startColumn": 2,
+                            "startLine": 2
+                          }
+                        }
+                      }
+                    ],
+                    "ruleId": "nome da rule quebrada"
+                }
+            ]
+        }
+    ]
+}

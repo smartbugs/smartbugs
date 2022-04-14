@@ -212,11 +212,14 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
             logs.write(tool + ': docker image not provided. please check you config file.\n')
             sys.exit(tool + ': docker image not provided. please check you config file.')
 
+        # HERE
+        #print("Import Path", import_path)
+        #print("File", file)
         if import_path == "FILE":
             import_path = file
             file_path_in_repo = file
         else:
-            file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
+            file_path_in_repo = file  # file path relative to project's root directory
 
         solc_compiler = get_solc(file)
 
@@ -267,4 +270,4 @@ def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_p
 
     except (docker.errors.APIError, docker.errors.ContainerError, docker.errors.ImageNotFound) as err:
         print(err)
-        logs.write(err + '\n')
+        logs.write(str(err) + '\n')

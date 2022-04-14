@@ -1,0 +1,37 @@
+Headers:
+Contract -> Name of file
+Lines -> List of lines where we consider bug to be, seperated by "/"
+  To make a range of lines we can use "-"
+Categories -> List of categories we consider bug to be, seperated by "/"
+  Should we accept all we can use the ANY keyword
+
+
+// Example for arbitrary_location_write_simple
+
+Contract,Lines,Categories
+arbitrary_location_write_simple.sol,27,access_control
+
+// Example for contract contract.sol where bug is from line 10-15 or line 18 for access_control Category
+
+Contract,Lines,Categories
+contract.sol,10-15/18,access_control
+
+// Example for contract contract.sol where bug is from line 10-15 for access_control or reentrancry Category
+
+Contract,Lines,Categories
+contract.sol,10-15,access_control/reentrancry
+
+
+// Example for contract contract.sol where bug is from line 10-15 or line 18 for any Category
+
+Contract,Lines,Categories
+contract.sol,10-15/18,ANY
+
+
+
+
+// TO DECODE
+sepetate by "," to get each collumn and by "/" to get each element in collumn
+
+Dijuncao por row (eg. uma linha ou outra)
+Conjuncao entre rows (eg. cada linha representa um bug differente)

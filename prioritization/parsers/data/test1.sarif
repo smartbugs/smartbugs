@@ -1,0 +1,6378 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Solhint",
+          "fullDescription": {
+            "text": "Open source project for linting solidity code. This project provide both security and style guide validations."
+          },
+          "informationUri": "https://protofire.github.io/solhint/",
+          "rules": [
+            {
+              "id": "Ignore_41",
+              "fullDescription": {
+                "text": "Line length must be no more than 120 but current length is 127."
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "max-line-length"
+              }
+            },
+            {
+              "id": "Ignore_40",
+              "fullDescription": {
+                "text": "Expected indentation of 4 spaces but found 2"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "indent"
+              }
+            }
+          ],
+          "version": "3.3.2"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "ERC20"
+        },
+        {
+          "kind": "contract",
+          "name": "odds_and_evens"
+        },
+        {
+          "kind": "contract",
+          "name": "FindThisHash"
+        },
+        {
+          "kind": "contract",
+          "name": "eth_tx_order_dependence_minimal"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "max-line-length"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 2,
+                  "startLine": 2
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_41"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 7,
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 24
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 27
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 29
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 35
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 46
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 47
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 48
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 51
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 56
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 57
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 58
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 60
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 61
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 67
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 68
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 69
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 70
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 76
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 77
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 78
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 82
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 84
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 86
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 87
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 88
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 90
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 91
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 92
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 95
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 96
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 97
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 98
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 100
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 101
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 102
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 104
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 105
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 106
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 107
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 108
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 110
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 111
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 113
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 114
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 115
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 116
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 118
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 119
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 120
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 121
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 123
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 124
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 125
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 126
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 127
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 128
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 21
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 25
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 28
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 29
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 32
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 34
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 35
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 7,
+                  "startLine": 38
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 39
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 7,
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 44
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 45
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 46
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 48
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        },
+        {
+          "message": {
+            "text": "indent"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 3,
+                  "startLine": 51
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_40"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Oyente",
+          "fullDescription": {
+            "text": "Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness."
+          },
+          "informationUri": "https://oyente.tech/",
+          "rules": [
+            {
+              "id": "Arithmetic_11",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "Integer Overflow."
+              }
+            }
+          ],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "ERC20"
+        },
+        {
+          "kind": "contract",
+          "name": "SafeMath"
+        },
+        {
+          "kind": "contract",
+          "name": "FindThisHash"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Integer Overflow."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_11"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "HoneyBadger",
+          "fullDescription": {
+            "text": "An analysis tool to detect honeypots in Ethereum smart contracts"
+          },
+          "informationUri": "https://honeybadger.uni.lu/",
+          "rules": [
+            {
+              "id": "Other_20",
+              "name": "OtherVulnerability",
+              "shortDescription": {
+                "text": "uninitialised_struct"
+              }
+            }
+          ],
+          "version": "1.8.16"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "ERC20"
+        },
+        {
+          "kind": "contract",
+          "name": "SafeMath"
+        },
+        {
+          "kind": "contract",
+          "name": "OddsAndEvens"
+        },
+        {
+          "kind": "contract",
+          "name": "FindThisHash"
+        },
+        {
+          "kind": "contract",
+          "name": "EthTxOrderDependenceMinimal"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "uninitialised_struct"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 5,
+                  "startLine": 29
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_20"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Osiris",
+          "fullDescription": {
+            "text": "Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente."
+          },
+          "informationUri": "https://github.com/christoftorres/Osiris",
+          "rules": [
+            {
+              "id": "Arithmetic_7",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "overflow_bugs"
+              }
+            },
+            {
+              "id": "DenialService_1",
+              "name": "DenialServiceVulnerability",
+              "shortDescription": {
+                "text": "callstack_bug"
+              }
+            },
+            {
+              "id": "Ignore_2",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "concurrency_bug"
+              }
+            }
+          ],
+          "version": "1.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "OddsAndEvens"
+        },
+        {
+          "kind": "contract",
+          "name": "EthTxOrderDependenceMinimal"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "overflow_bugs"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 14,
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_7"
+        },
+        {
+          "message": {
+            "text": "callstack_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 13,
+                  "startLine": 38
+                }
+              }
+            }
+          ],
+          "ruleId": "DenialService_1"
+        },
+        {
+          "message": {
+            "text": "callstack_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 13,
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "DenialService_1"
+        },
+        {
+          "message": {
+            "text": "concurrency_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 16,
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_2"
+        },
+        {
+          "message": {
+            "text": "concurrency_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 13,
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_2"
+        },
+        {
+          "message": {
+            "text": "concurrency_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 9,
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_2"
+        },
+        {
+          "message": {
+            "text": "concurrency_bug"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startColumn": 9,
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_2"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Securify",
+          "fullDescription": {
+            "text": "Securify uses formal verification, also relying on static analysis checks. Securify\u2019s analysis consists of two steps. First, it symbolically analyzes the contract\u2019s dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not."
+          },
+          "informationUri": "https://github.com/eth-sri/securify2",
+          "rules": [
+            {
+              "id": "FrontRunning_3",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "TODReceiver"
+              }
+            },
+            {
+              "id": "UncheckedLowCalls_4",
+              "name": "UncheckedLowCallsVulnerability",
+              "shortDescription": {
+                "text": "UnhandledException"
+              }
+            },
+            {
+              "id": "FrontRunning_4",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "TODTransfer"
+              }
+            },
+            {
+              "id": "FrontRunning_2",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "TODAmount"
+              }
+            },
+            {
+              "id": "Ignore_3",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "MissingInputValidation"
+              }
+            },
+            {
+              "id": "Reentrancy_7",
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "DAO"
+              }
+            },
+            {
+              "id": "AccessControl_17",
+              "name": "AccessControlVulnerability",
+              "shortDescription": {
+                "text": "UnrestrictedEtherFlow"
+              }
+            }
+          ],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "ERC20"
+        },
+        {
+          "kind": "contract",
+          "name": "SafeMath"
+        },
+        {
+          "kind": "contract",
+          "name": "OddsAndEvens"
+        },
+        {
+          "kind": "contract",
+          "name": "FindThisHash"
+        },
+        {
+          "kind": "contract",
+          "name": "EthTxOrderDependenceMinimal"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 24
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 47
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 33
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 40
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 37
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "TODReceiver"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_3"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "UnhandledException"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODTransfer"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_4"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "TODAmount"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_2"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "MissingInputValidation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_3"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "DAOConstantGas"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_7"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        },
+        {
+          "message": {
+            "text": "UnrestrictedEtherFlow"
+          },
+          "level": "none",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_17"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Manticore",
+          "fullDescription": {
+            "text": "Manticore is a symbolic execution tool for analysis of smart contracts and binaries."
+          },
+          "informationUri": "https://github.com/trailofbits/manticore",
+          "rules": [
+            {
+              "id": "Other_4",
+              "name": "OtherVulnerability",
+              "shortDescription": {
+                "text": "Potentially reading uninitialized storage"
+              }
+            },
+            {
+              "id": "Other_2",
+              "name": "OtherVulnerability",
+              "shortDescription": {
+                "text": "INVALID instruction"
+              }
+            },
+            {
+              "id": "Arithmetic_2",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "Unsigned integer overflow at MUL instruction"
+              }
+            },
+            {
+              "id": "AccessControl_7",
+              "name": "AccessControlVulnerability",
+              "shortDescription": {
+                "text": "Reachable external call to sender"
+              }
+            }
+          ],
+          "version": "0.3.5"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Potentially reading uninitialized storage"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "_balances[owner]"
+                  },
+                  "startLine": 91
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_4"
+        },
+        {
+          "message": {
+            "text": "Potentially reading uninitialized storage"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "_allowed[owner][spender]"
+                  },
+                  "startLine": 97
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_4"
+        },
+        {
+          "message": {
+            "text": "Potentially reading uninitialized storage"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "_balances[from]"
+                  },
+                  "startLine": 119
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_4"
+        },
+        {
+          "message": {
+            "text": "Potentially reading uninitialized storage"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "_balances[from]"
+                  },
+                  "startLine": 123
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_4"
+        },
+        {
+          "message": {
+            "text": "Potentially reading uninitialized storage"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "_balances[to]"
+                  },
+                  "startLine": 124
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_4"
+        },
+        {
+          "message": {
+            "text": "Potentially reading uninitialized storage"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "_balances[to]"
+                  },
+                  "startLine": 105
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_4"
+        },
+        {
+          "message": {
+            "text": "INVALID instruction"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "Player[2] public players"
+                  },
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_2"
+        },
+        {
+          "message": {
+            "text": "Unsigned integer overflow at MUL instruction"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "bytes32 constant public hash = 0xb5b5b97fafd9855eec9b41f74dfb6c38f5951141f9a3ecd7f44d5479b630ee0a"
+                  },
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_2"
+        },
+        {
+          "message": {
+            "text": "Reachable external call to sender"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "msg.sender.transfer(reward)"
+                  },
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_7"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "SmartCheck",
+          "fullDescription": {
+            "text": "Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code."
+          },
+          "informationUri": "https://tool.smartdec.net/",
+          "rules": [
+            {
+              "id": "Ignore_22",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_ERC20_APPROVE"
+              }
+            },
+            {
+              "id": "Ignore_28",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_PRAGMAS_VERSION"
+              }
+            },
+            {
+              "id": "Ignore_29",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA"
+              }
+            },
+            {
+              "id": "Ignore_32",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_SAFEMATH"
+              }
+            },
+            {
+              "id": "Ignore_38",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_VISIBILITY"
+              }
+            },
+            {
+              "id": "Ignore_21",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_DEPRECATED_CONSTRUCTIONS"
+              }
+            },
+            {
+              "id": "Ignore_31",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_REVERT_REQUIRE"
+              }
+            },
+            {
+              "id": "Ignore_36",
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "SOLIDITY_UPGRADE_TO_050"
+              }
+            }
+          ],
+          "version": "0.0.12"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "contract",
+          "name": "ERC20"
+        },
+        {
+          "kind": "contract",
+          "name": "odds_and_evens"
+        },
+        {
+          "kind": "contract",
+          "name": "FindThisHash"
+        },
+        {
+          "kind": "contract",
+          "name": "eth_tx_order_dependence_minimal"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "SOLIDITY_ERC20_APPROVE"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functionapprove(addressspender,uint256value)publicreturns(bool){require(spender!=address(0));_allowed[msg.sender][spender]=value;emitApproval(msg.sender,spender,value);returntrue;}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 110
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_22"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRAGMAS_VERSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "^"
+                  },
+                  "startColumn": 16,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_28"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "private"
+                  },
+                  "startColumn": 31,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_29"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "private"
+                  },
+                  "startColumn": 52,
+                  "startLine": 82
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_29"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "private"
+                  },
+                  "startColumn": 10,
+                  "startLine": 84
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_29"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_SAFEMATH"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "usingSafeMathfor*;"
+                  },
+                  "startColumn": 2,
+                  "startLine": 78
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_32"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "constructor(uinttotalSupply){_balances[msg.sender]=totalSupply;}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 86
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_DEPRECATED_CONSTRUCTIONS"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "throw"
+                  },
+                  "startColumn": 30,
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_21"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_DEPRECATED_CONSTRUCTIONS"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "throw"
+                  },
+                  "startColumn": 26,
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_21"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRAGMAS_VERSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "^"
+                  },
+                  "startColumn": 16,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_28"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_REVERT_REQUIRE"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "if(msg.value!=1ether)throw;"
+                  },
+                  "startColumn": 4,
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_31"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_REVERT_REQUIRE"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "if(msg.sender!=owner)throw;"
+                  },
+                  "startColumn": 4,
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_31"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functionOddsAndEvens(){owner=msg.sender;}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 21
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functionplay(uintnumber)payable{if(msg.value!=1ether)throw;players[tot]=Player(msg.sender,number);tot++;if(tot==2)andTheWinnerIs();}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 25
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functiongetProfit(){if(msg.sender!=owner)throw;boolres=msg.sender.send(this.balance);}"
+                  },
+                  "startColumn": 2,
+                  "startLine": 48
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "uint8tot;"
+                  },
+                  "startColumn": 2,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "addressowner;"
+                  },
+                  "startColumn": 2,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_DEPRECATED_CONSTRUCTIONS"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "sha3"
+                  },
+                  "startColumn": 24,
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_21"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRAGMAS_VERSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "^"
+                  },
+                  "startColumn": 16,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_28"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_UPGRADE_TO_050"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "stringsolution"
+                  },
+                  "startColumn": 19,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_36"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_PRAGMAS_VERSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "^"
+                  },
+                  "startColumn": 16,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_28"
+        },
+        {
+          "message": {
+            "text": "SOLIDITY_VISIBILITY"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "functionclaimReward(uint256submission){require(!claimed);require(submission<10);msg.sender.transfer(reward);claimed=true;}"
+                  },
+                  "startColumn": 4,
+                  "startLine": 27
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_38"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Slither",
+          "fullDescription": {
+            "text": "Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses."
+          },
+          "informationUri": "https://github.com/crytic/slither",
+          "rules": [
+            {
+              "id": "Ignore_6",
+              "fullDescription": {
+                "text": "ERC20._totalSupply should be constant (/dataset/front_running/ERC20.sol#84)\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "constable-states"
+              }
+            },
+            {
+              "id": "Ignore_11",
+              "fullDescription": {
+                "text": "ERC20.balanceOf (/dataset/front_running/ERC20.sol#90-92) should be declared external\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "external-function"
+              }
+            },
+            {
+              "id": "Ignore_18",
+              "fullDescription": {
+                "text": "ERC20._totalSupply (/dataset/front_running/ERC20.sol#84) is never used in ERC20\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "unused-state"
+              }
+            },
+            {
+              "id": "AccessControl_19",
+              "fullDescription": {
+                "text": "OddsAndEvens.andTheWinnerIs (/dataset/front_running/odds_and_evens.sol#34-46) sends eth to arbitrary user\n\tDangerous calls:\n\t- res = players[0].addr.send(1800000000000000000) (/dataset/front_running/odds_and_evens.sol#38)\n\t- res = players[1].addr.send(1800000000000000000) (/dataset/front_running/odds_and_evens.sol#41)\n"
+              },
+              "name": "AccessControlVulnerability",
+              "shortDescription": {
+                "text": "arbitrary-send"
+              }
+            },
+            {
+              "id": "Ignore_8",
+              "fullDescription": {
+                "text": "Deprecated standard detected @ /dataset/front_running/odds_and_evens.sol#26:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "deprecated-standards"
+              }
+            },
+            {
+              "id": "Ignore_17",
+              "fullDescription": {
+                "text": "Detected issues with version pragma in /dataset/front_running/odds_and_evens.sol:\n\t- pragma solidity^0.4.2 (/dataset/front_running/odds_and_evens.sol#7): it allows old versions\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "solc-version"
+              }
+            },
+            {
+              "id": "Ignore_12",
+              "fullDescription": {
+                "text": "Function 'OddsAndEvens.OddsAndEvens' (/dataset/front_running/odds_and_evens.sol#21-23) is not in mixedCase\n"
+              },
+              "name": "IgnoreVulnerability",
+              "shortDescription": {
+                "text": "naming-convention"
+              }
+            }
+          ],
+          "version": "0.7.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "constable-states"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "variable",
+                  "name": "_totalSupply"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 84,
+                  "startLine": 84
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_6"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "balanceOf"
+                },
+                {
+                  "kind": "contract",
+                  "name": "ERC20"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 92,
+                  "startLine": 90
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "allowance"
+                },
+                {
+                  "kind": "contract",
+                  "name": "ERC20"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 98,
+                  "startLine": 95
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "transfer"
+                },
+                {
+                  "kind": "contract",
+                  "name": "ERC20"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 108,
+                  "startLine": 100
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "approve"
+                },
+                {
+                  "kind": "contract",
+                  "name": "ERC20"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 116,
+                  "startLine": 110
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "transferFrom"
+                },
+                {
+                  "kind": "contract",
+                  "name": "ERC20"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 128,
+                  "startLine": 118
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "unused-state"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "variable",
+                  "name": "_totalSupply"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/ERC20.sol"
+                },
+                "region": {
+                  "endLine": 84,
+                  "startLine": 84
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_18"
+        },
+        {
+          "message": {
+            "text": "arbitrary-send"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "andTheWinnerIs"
+                },
+                {
+                  "kind": "contract",
+                  "name": "OddsAndEvens"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 46,
+                  "startLine": 34
+                }
+              }
+            },
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 38,
+                  "snippet": {
+                    "text": "res = players[0].addr.send(1800000000000000000)"
+                  },
+                  "startLine": 38
+                }
+              }
+            },
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 41,
+                  "snippet": {
+                    "text": "res = players[1].addr.send(1800000000000000000)"
+                  },
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_19"
+        },
+        {
+          "message": {
+            "text": "deprecated-standards"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 26,
+                  "snippet": {
+                    "text": "None"
+                  },
+                  "startLine": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_8"
+        },
+        {
+          "message": {
+            "text": "deprecated-standards"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 49,
+                  "snippet": {
+                    "text": "None"
+                  },
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_8"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play"
+                },
+                {
+                  "kind": "contract",
+                  "name": "OddsAndEvens"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 32,
+                  "startLine": 25
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "getProfit"
+                },
+                {
+                  "kind": "contract",
+                  "name": "OddsAndEvens"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 51,
+                  "startLine": 48
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "solc-version"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 7,
+                  "snippet": {
+                    "text": "^0.4.2"
+                  },
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_17"
+        },
+        {
+          "message": {
+            "text": "naming-convention"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "OddsAndEvens"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "endLine": 23,
+                  "startLine": 21
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_12"
+        },
+        {
+          "message": {
+            "text": "arbitrary-send"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "solve"
+                },
+                {
+                  "kind": "contract",
+                  "name": "FindThisHash"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "endLine": 19,
+                  "startLine": 14
+                }
+              }
+            },
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "endLine": 18,
+                  "snippet": {
+                    "text": "msg.sender.transfer(1000000000000000000000)"
+                  },
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_19"
+        },
+        {
+          "message": {
+            "text": "deprecated-standards"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "endLine": 17,
+                  "snippet": {
+                    "text": "require(bool)(hash == sha3()(solution))"
+                  },
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_8"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "solve"
+                },
+                {
+                  "kind": "contract",
+                  "name": "FindThisHash"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "endLine": 19,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "solc-version"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "endLine": 7,
+                  "snippet": {
+                    "text": "^0.4.22"
+                  },
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_17"
+        },
+        {
+          "message": {
+            "text": "naming-convention"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "variable_constant",
+                  "name": "hash"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "endLine": 10,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_12"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "setReward"
+                },
+                {
+                  "kind": "contract",
+                  "name": "EthTxOrderDependenceMinimal"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "endLine": 25,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "external-function"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "claimReward"
+                },
+                {
+                  "kind": "contract",
+                  "name": "EthTxOrderDependenceMinimal"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "endLine": 33,
+                  "startLine": 27
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_11"
+        },
+        {
+          "message": {
+            "text": "solc-version"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "endLine": 7,
+                  "snippet": {
+                    "text": "^0.4.16"
+                  },
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_17"
+        },
+        {
+          "message": {
+            "text": "naming-convention"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "EthTxOrderDependenceMinimal"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "endLine": 16,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Ignore_12"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Mythril",
+          "fullDescription": {
+            "text": "Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities."
+          },
+          "informationUri": "https://mythx.io/",
+          "rules": [
+            {
+              "id": "AccessControl_13",
+              "fullDescription": {
+                "text": "In the function `getProfit()` a non-zero amount of Ether is sent to msg.sender.\n\nThere is a check on storage index 4. This storage slot can be written to by calling the function `play(uint256)`."
+              },
+              "name": "AccessControlVulnerability",
+              "shortDescription": {
+                "text": "Ether send"
+              }
+            },
+            {
+              "id": "UncheckedLowCalls_3",
+              "fullDescription": {
+                "text": "The return value of an external call is not checked. Note that execution continue even if the called contract throws."
+              },
+              "name": "UncheckedLowCallsVulnerability",
+              "shortDescription": {
+                "text": "Unchecked CALL return value"
+              }
+            },
+            {
+              "id": "Other_9",
+              "fullDescription": {
+                "text": "A reachable exception (opcode 0xfe) has been detected. This can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. This is acceptable in most situations. Note however that `assert()` should only be used to check invariants. Use `require()` for regular input checking. "
+              },
+              "name": "OtherVulnerability",
+              "shortDescription": {
+                "text": "Exception state"
+              }
+            },
+            {
+              "id": "Arithmetic_4",
+              "fullDescription": {
+                "text": "A possible integer overflow exists in the function `play(uint256)`.\nThe addition or multiplication may result in a value higher than the maximum representable integer."
+              },
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "Integer Overflow"
+              }
+            },
+            {
+              "id": "FrontRunning_1",
+              "fullDescription": {
+                "text": "A possible transaction order independence vulnerability exists in function play(uint256). The value or direction of the call statement is determined from a tainted storage location"
+              },
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "Transaction order dependence"
+              }
+            }
+          ],
+          "version": "0.4.25"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "function",
+          "name": "getProfit()"
+        },
+        {
+          "kind": "function",
+          "name": "play(uint256)"
+        },
+        {
+          "kind": "function",
+          "name": "_function_0xf71d96cb"
+        },
+        {
+          "kind": "function",
+          "name": "solve(string)"
+        },
+        {
+          "kind": "function",
+          "name": "setReward()"
+        },
+        {
+          "kind": "function",
+          "name": "claimReward(uint256)"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Ether send"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "getProfit()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "msg.sender.send(this.balance)"
+                  },
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_13"
+        },
+        {
+          "message": {
+            "text": "Unchecked CALL return value"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "getProfit()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "msg.sender.send(this.balance)"
+                  },
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_3"
+        },
+        {
+          "message": {
+            "text": "Exception state"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "players[tot]"
+                  },
+                  "startLine": 28
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_9"
+        },
+        {
+          "message": {
+            "text": "Exception state"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "_function_0xf71d96cb"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "Player[2] public players"
+                  },
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "ruleId": "Other_9"
+        },
+        {
+          "message": {
+            "text": "Integer Overflow "
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "players[0].number+players[1].number"
+                  },
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_4"
+        },
+        {
+          "message": {
+            "text": "Transaction order dependence"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "players[0].addr.send(1800 finney)"
+                  },
+                  "startLine": 38
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_1"
+        },
+        {
+          "message": {
+            "text": "Unchecked CALL return value"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "players[0].addr.send(1800 finney)"
+                  },
+                  "startLine": 38
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_3"
+        },
+        {
+          "message": {
+            "text": "Transaction order dependence"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "players[1].addr.send(1800 finney)"
+                  },
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_1"
+        },
+        {
+          "message": {
+            "text": "Unchecked CALL return value"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "players[1].addr.send(1800 finney)"
+                  },
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_3"
+        },
+        {
+          "message": {
+            "text": "Integer Overflow "
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "solve(string)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "function solve(string solution) public {\n        // If you can find the pre image of the hash, receive 1000 ether\n         // <yes> <report> FRONT_RUNNING\n        require(hash == sha3(solution));\n        msg.sender.transfer(1000 ether);\n    }"
+                  },
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_4"
+        },
+        {
+          "message": {
+            "text": "Ether send"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "solve(string)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "msg.sender.transfer(1000 ether)"
+                  },
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_13"
+        },
+        {
+          "message": {
+            "text": "Ether send"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "setReward()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "owner.transfer(reward)"
+                  },
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_13"
+        },
+        {
+          "message": {
+            "text": "Transaction order dependence"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "setReward()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "owner.transfer(reward)"
+                  },
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_1"
+        },
+        {
+          "message": {
+            "text": "Ether send"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "claimReward(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "msg.sender.transfer(reward)"
+                  },
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "AccessControl_13"
+        },
+        {
+          "message": {
+            "text": "Transaction order dependence"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "claimReward(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {
+                    "text": "msg.sender.transfer(reward)"
+                  },
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_1"
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Conkas",
+          "fullDescription": {
+            "text": "Conkas is based on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Conkas uses rattle to lift bytecode to a high level representation."
+          },
+          "informationUri": "https://github.com/nveloso/conkas",
+          "rules": [
+            {
+              "id": "UncheckedLowCalls_9",
+              "name": "UncheckedLowCallsVulnerability",
+              "shortDescription": {
+                "text": "Unchecked Low Level Call"
+              }
+            },
+            {
+              "id": "Arithmetic_19",
+              "name": "ArithmeticVulnerability",
+              "shortDescription": {
+                "text": "Integer_Overflow"
+              }
+            },
+            {
+              "id": "Reentrancy_14",
+              "name": "ReentrancyVulnerability",
+              "shortDescription": {
+                "text": "Reentrancy"
+              }
+            },
+            {
+              "id": "FrontRunning_5",
+              "name": "FrontRunningVulnerability",
+              "shortDescription": {
+                "text": "Transaction Ordering Dependence"
+              }
+            }
+          ],
+          "version": "1.0.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/ERC20.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/odds_and_evens.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/FindThisHash.sol"
+          },
+          "sourceLanguage": "Solidity"
+        },
+        {
+          "location": {
+            "uri": "/eth_tx_order_dependence_minimal.sol"
+          },
+          "sourceLanguage": "Solidity"
+        }
+      ],
+      "logicalLocations": [
+        {
+          "kind": "function",
+          "name": "play(uint256)"
+        },
+        {
+          "kind": "function",
+          "name": "getProfit()"
+        },
+        {
+          "kind": "function",
+          "name": "solve(string)"
+        },
+        {
+          "kind": "function",
+          "name": "0x3eb6a67e"
+        },
+        {
+          "kind": "function",
+          "name": "claimReward(uint256)"
+        }
+      ],
+      "results": [
+        {
+          "message": {
+            "text": "Unchecked Low Level Call"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_9"
+        },
+        {
+          "message": {
+            "text": "Unchecked Low Level Call"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 38
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_9"
+        },
+        {
+          "message": {
+            "text": "Integer_Overflow"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "play(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 36
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_19"
+        },
+        {
+          "message": {
+            "text": "Unchecked Low Level Call"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "getProfit()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "UncheckedLowCalls_9"
+        },
+        {
+          "message": {
+            "text": "Reentrancy"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "getProfit()"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/odds_and_evens.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 50
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_14"
+        },
+        {
+          "message": {
+            "text": "Integer_Overflow"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "solve(string)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "Arithmetic_19"
+        },
+        {
+          "message": {
+            "text": "Reentrancy"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "solve(string)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/FindThisHash.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_14"
+        },
+        {
+          "message": {
+            "text": "Reentrancy"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "0x3eb6a67e"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_14"
+        },
+        {
+          "message": {
+            "text": "Transaction Ordering Dependence"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "0x3eb6a67e"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_5"
+        },
+        {
+          "message": {
+            "text": "Reentrancy"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "claimReward(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "Reentrancy_14"
+        },
+        {
+          "message": {
+            "text": "Transaction Ordering Dependence"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "kind": "function",
+                  "name": "claimReward(uint256)"
+                }
+              ],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/eth_tx_order_dependence_minimal.sol"
+                },
+                "region": {
+                  "snippet": {},
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "ruleId": "FrontRunning_5"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}
