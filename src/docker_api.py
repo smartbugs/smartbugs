@@ -1,268 +1,134 @@
 #!/usr/bin/env python3
 
 import docker
-import json
 import os
-import re
 import sys
 import tarfile
-import yaml
 import tempfile
 import shutil
-from time import time
+import time
+import json
+import requests
 
-from src.output_parser.Conkas import Conkas
-from src.output_parser.HoneyBadger import HoneyBadger
-from src.output_parser.Maian import Maian
-from src.output_parser.Manticore import Manticore
-from src.output_parser.Mythril import Mythril
-from src.output_parser.Osiris import Osiris
-from src.output_parser.Oyente import Oyente
-from src.output_parser.Securify import Securify
-from src.output_parser.Slither import Slither
-from src.output_parser.Smartcheck import Smartcheck
-from src.output_parser.Solhint import Solhint
-from src.config import TOOLS,TOOLS_CFG_PATH
-from src.solidity import get_solc
+import src.solidity as solidity
+import src.config as config
+import src.logging as log
+import src.colors as col
 
 client = docker.from_env()
 
-"""
-pull images
-"""
-def pull_image(image, logs):
+def pull_image(image):
+    if client.images.list(image):
+        return
     try:
-        print('pulling ' + image + ' image, this may take a while...')
-        logs.write('pulling ' + image + ' image, this may take a while...\n')
-        image = client.images.pull(image)
-        print('image pulled')
-        logs.write('image pulled\n')
-
-    except docker.errors.APIError as err:
-        print(err)
-        logs.write(err + '\n')
+        log.message(f"Pulling image {image}, this may take a while ...")
+        client.images.pull(image)
+        log.message(f"Image {image} pulled")
+    except Exception as err:
+        log.message(col.error(f"Error pulling image {image}.\n{err}"))
+        sys.exit(1)
 
 
-"""
-mount volumes
-"""
-def mount_volumes(dir_path, logs):
+def volume_binding(dir_path):
     try:
-        volume_bindings = {os.path.abspath(dir_path): {'bind': '/data', 'mode': 'rw'}}
-        return volume_bindings
-    except os.error as err:
-        print(err)
-        logs.write(err + '\n')
+        return {os.path.abspath(dir_path): {'bind': '/data', 'mode': 'rw'}}
+    except Exception as err:
+        log.message(col.error(f"Error constructing volume binding for {dir_path}.\n{err}"))
+        sys.exit(1)
 
 
-"""
-stop container
-"""
-def stop_container(container, logs):
+def stop_container(container):
     try:
         if container is not None:
             container.stop(timeout=0)
-    except (docker.errors.APIError) as err:
-        print(err)
-        logs.write(str(err) + '\n')
+    except Exception as err:
+        log.message(col.error(f"Error stopping container.\n{err}"))
+        sys.exit(1)
 
 
-"""
-remove container
-"""
-def remove_container(container, logs):
+def remove_container(container):
     try:
         if container is not None:
             container.remove()
-    except (docker.errors.APIError) as err:
-        print(err)
-        logs.write(err + '\n')
+    except Exception as err:
+        log.message(col.error(f"Error removing container.\n{err}"))
+        sys.exit(1)
 
 
-"""
-write output
-"""
-def parse_results(output, tool, file_name, container, cfg, logs, results_folder, start, end, sarif_outputs,
-                  file_path_in_repo, output_version):
-    output_folder = os.path.join(results_folder, file_name)
+def run(file, tool, results_folder):
+    working_dir = tempfile.mkdtemp()
+    working_bin_dir = os.path.join(working_dir, "bin")
+    shutil.copy(file, working_dir)
+    shutil.copytree(os.path.join(config.TOOLS_CFG_PATH,tool["name"]), working_bin_dir)
+    solc_compiler = solidity.get_solc(file)
+    shutil.copyfile(solc_compiler, os.path.join(working_bin_dir, "solc"))
+    volumes = volume_binding(working_dir)
+
+    exit_code = None
+    result_log = None
+    result_tar = None
+    start_time = time.time()
+    try:
+        container = client.containers.run(tool["docker_image"],
+                                          entrypoint = f"/data/bin/run_solidity /data/{os.path.basename(file)}",
+                                          detach=True,
+                                          user = 0,
+                                          # cpu_quota=150000,
+                                          volumes=volumes
+                                          )
+        try:
+            result = container.wait(timeout=(30 * 60))
+            exit_code = result['StatusCode']
+        except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError):
+            # according to the docs, timeout gives ReadTimeout, but sometimes it is ConnectionError
+            pass
+
+        output = container.logs().decode('utf8').strip()
+        if output is None:
+            output = ''
+        try:
+            result_log = os.path.join(results_folder, "result.log")
+            with open(result_log, 'w', encoding='utf-8') as f:
+                f.write(output)
+        except Exception as err:
+            log.message(col.error(f"{tool['name']}, {file}: Failing to write output of container to {result_log}.\n{err}"))
+            result_log = None
+
+        if "output_in_files" in tool and "folder" in tool["output_in_files"]:
+            try:
+                output_folder = tool["output_in_files"]["folder"]
+                output_tar, _ = container.get_archive(output_folder)
+                result_tar = os.path.join(results_folder, "result.tar")
+                with open(result_tar, 'wb') as f:
+                    for chunk in output_tar:
+                        f.write(chunk)
+            except Exception as err:
+                log.message(col.error(f"{tool['name']}, {file}: Failing to copy {output_folder} from container to {result_tar}.\n{err}"))
+                result_tar = None
+
+    except Exception as err:
+        log.message(col.error(f"{tool['name']}, {file}: docker run failed.\n{err}"))
+    finally:
+        stop_container(container)
+        remove_container(container)
+        shutil.rmtree(working_dir)
+    end_time = time.time()
 
     results = {
-        'contract': file_name,
-        'tool': tool,
-        'start': start,
-        'end': end,
-        'duration': end - start,
-        'analysis': None
+        "contract": file,
+        "tool": tool["name"],
+        "start": start_time,
+        "end": end_time,
+        "duration": end_time-start_time,
+        "exit_code": exit_code
     }
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-
-    with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
-        f.write(output)
-
-    if 'output_in_files' in cfg:
-        try:
-            with open(os.path.join(output_folder, 'result.tar'), 'wb') as f:
-                output_in_file = cfg['output_in_files']['folder']
-                bits, stat = container.get_archive(output_in_file)
-                for chunk in bits:
-                    f.write(chunk)
-        except Exception as e:
-            print(output)
-            print(e)
-            print('\x1b[1;31m' + 'ERROR: could not get file from container. file not analysed.' + '\x1b[0m')
-            logs.write('ERROR: could not get file from container. file not analysed.\n')
-
+    
     try:
-        sarif_holder = sarif_outputs[file_name]
-        if tool == 'oyente':
-            results['analysis'] = Oyente().parse(output)
-            # Sarif Conversion
-            sarif_holder.addRun(Oyente().parseSarif(results, file_path_in_repo))
-        elif tool == 'osiris':
-            results['analysis'] = Osiris().parse(output)
-            sarif_holder.addRun(Osiris().parseSarif(results, file_path_in_repo))
-        elif tool == 'honeybadger':
-            results['analysis'] = HoneyBadger().parse(output)
-            sarif_holder.addRun(HoneyBadger().parseSarif(results, file_path_in_repo))
-        elif tool == 'smartcheck':
-            results['analysis'] = Smartcheck().parse(output)
-            sarif_holder.addRun(Smartcheck().parseSarif(results, file_path_in_repo))
-        elif tool == 'solhint':
-            results['analysis'] = Solhint().parse(output)
-            sarif_holder.addRun(Solhint().parseSarif(results, file_path_in_repo))
-        elif tool == 'maian':
-            results['analysis'] = Maian().parse(output)
-            sarif_holder.addRun(Maian().parseSarif(results, file_path_in_repo))
-        elif tool == 'mythril':
-            results['analysis'] = json.loads(output)
-            sarif_holder.addRun(Mythril().parseSarif(results, file_path_in_repo))
-        elif tool == 'securify':
-            if len(output) > 0 and output[0] == '{':
-                results['analysis'] = json.loads(output)
-            elif os.path.exists(os.path.join(output_folder, 'result.tar')):
-                tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
-                try:
-                    output_file = tar.extractfile('results/results.json')
-                    results['analysis'] = json.loads(output_file.read())
-                    sarif_holder.addRun(Securify().parseSarif(results, file_path_in_repo))
-                except Exception as e:
-                    print('pas terrible')
-                    output_file = tar.extractfile('results/live.json')
-                    results['analysis'] = {
-                        file_name: {
-                            'results': json.loads(output_file.read())["patternResults"]
-                        }
-                    }
-                    sarif_holder.addRun(Securify().parseSarifFromLiveJson(results, file_path_in_repo))
-        elif tool == 'slither':
-            if os.path.exists(os.path.join(output_folder, 'result.tar')):
-                tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
-                output_file = tar.extractfile('output.json')
-                results['analysis'] = json.loads(output_file.read())
-                sarif_holder.addRun(Slither().parseSarif(results, file_path_in_repo))
-        elif tool == 'manticore':
-            if os.path.exists(os.path.join(output_folder, 'result.tar')):
-                tar = tarfile.open(os.path.join(output_folder, 'result.tar'))
-                m = re.findall('Results in /(mcore_.+)', output)
-                results['analysis'] = []
-                for fout in m:
-                    output_file = tar.extractfile('results/' + fout + '/global.findings')
-                    results['analysis'].append(Manticore().parse(output_file.read().decode('utf8')))
-                sarif_holder.addRun(Manticore().parseSarif(results, file_path_in_repo))
-        elif tool == 'conkas':
-            results['analysis'] = Conkas().parse(output)
-            sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
+        smartbugs_json = os.path.join(results_folder, "smartbugs.json")
+        with open(smartbugs_json, 'w') as f:
+            json.dump(results, f, indent=2)
+    except Exception as err:
+        log.message(col.error(f"{tool['name']}, {file}: Failing to write {smartbugs_json}.\n{err}"))
 
-        sarif_outputs[file_name] = sarif_holder
+    return results, result_log, result_tar
 
-    except Exception as e:
-        print(output)
-        print(e)
-        # ignore
-        pass
-
-    if output_version == 'v1' or output_version == 'all':
-        with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-            json.dump(results, f, indent=2, sort_keys=True)
-
-    if output_version == 'v2' or output_version == 'all':
-        with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarifFile:
-            json.dump(sarif_outputs[file_name].printToolRun(tool=tool), sarifFile, indent=2, sort_keys=True)
-
-
-
-"""
-analyse solidity files
-"""
-def analyse_files(tool, file, logs, now, sarif_outputs, output_version, import_path):
-    try:
-        cfg = TOOLS[tool]
-
-        # create result folder with time
-        results_folder = 'results/' + tool + '/' + now
-        if not os.path.exists(results_folder):
-            os.makedirs(results_folder)
-        # os.makedirs(os.path.dirname(results_folder), exist_ok=True)
-
-        # check if config file as all required fields
-        if 'docker_image' not in cfg or cfg['docker_image'] == None:
-            logs.write(tool + ': docker image not provided. please check you config file.\n')
-            sys.exit(tool + ': docker image not provided. please check you config file.')
-
-        if import_path == "FILE":
-            import_path = file
-            file_path_in_repo = file
-        else:
-            file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
-
-        solc_compiler = get_solc(file)
-
-        filename = os.path.basename(file)
-        scripts  = os.path.join(TOOLS_CFG_PATH,tool)
-        working_dir = tempfile.mkdtemp()
-        shutil.copy(file, working_dir)
-        working_bin_dir = f'{working_dir}/bin'
-        shutil.copytree(scripts, working_bin_dir)
-        shutil.copyfile(solc_compiler, f'{working_bin_dir}/solc')
-
-        # bind directory path instead of file path to allow imports in the same directory
-        volume_bindings = mount_volumes(working_dir, logs)
-
-        start = time()
-
-        image = cfg['docker_image']
-
-        if not client.images.list(image):
-            pull_image(image, logs)
-
-        container = None
-        try:
-            container = client.containers.run(image,
-                                              entrypoint = f"/data/bin/run_solidity /data/{filename}",
-                                              detach=True,
-                                              user = 0,
-                                              # cpu_quota=150000,
-                                              volumes=volume_bindings)
-            try:
-                container.wait(timeout=(30 * 60))
-            except Exception as e:
-                pass
-            output = container.logs().decode('utf8').strip()
-            if (output.count('Solc experienced a fatal error') >= 1 or output.count('compilation failed') >= 1):
-                print(
-                    '\x1b[1;31m' + 'ERROR: Solc experienced a fatal error. Check the results file for more info' + '\x1b[0m')
-                logs.write('ERROR: Solc experienced a fatal error. Check the results file for more info\n')
-
-            end = time()
-
-            parse_results(output, tool, os.path.splitext(filename)[0], container, cfg, logs, results_folder,
-                start, end, sarif_outputs, file_path_in_repo, output_version)
-        finally:
-            stop_container(container, logs)
-            remove_container(container, logs)
-            shutil.rmtree(working_dir)
-
-    except (docker.errors.APIError, docker.errors.ContainerError, docker.errors.ImageNotFound) as err:
-        print(err)
-        logs.write(err + '\n')

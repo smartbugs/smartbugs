@@ -40,7 +40,7 @@ class ListAction(argparse.Action):
                 print()
         parser.exit()
 
-def create_parser():
+def arguments():
     parser = argparse.ArgumentParser(description="Static analysis of Ethereum smart contracts")
     group_source_files = parser.add_mutually_exclusive_group(required='True')
     group_tools = parser.add_mutually_exclusive_group(required='True')
@@ -116,4 +116,4 @@ def create_parser():
                       help='Aggregates all sarif analysis outputs in a single file')
 
     args = parser.parse_args()
-    return(args)
+    return(vars(args))
