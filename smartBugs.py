@@ -10,30 +10,35 @@ import src.logging as log
 import src.colors as col
 import src.parsing as parsing
 import src.output_parser.SarifHolder as SarifHolder
+import src.shared as shared
 
 
 def analyze(file, id, tool, results_folder, import_path, output_version, n_processes, n_tasks):
-    with tasks_started.get_lock():
-        tasks_started.value += 1
-        n_started = tasks_started.value
+    with shared.tasks_started.get_lock():
+        shared.tasks_started.value += 1
+        n_started = shared.tasks_started.value
+
     log.message(f"Analyzing file [{n_started}/{n_tasks}]: {col.file(file)} [{col.tool(tool['name'])}]", None)
 
     results, result_log, result_tar = docker_api.run(file, tool, results_folder)
-    parsing.parse_results(results, result_log, result_tar, results_folder, sarif_outputs, id, import_path, output_version)
+    parsing.parse_results(id, results, result_log, result_tar, results_folder, import_path, output_version)
 
-    with total_time.get_lock():
-        total_time.value += results["duration"]
-        total = total_time.value
+    with shared.total_time.get_lock():
+        shared.total_time.value += results["duration"]
+        total = shared.total_time.value
     duration = datetime.timedelta(seconds=round(results["duration"]))
-    with tasks_completed.get_lock():
-        tasks_completed.value += 1
-        n_completed = tasks_completed.value
+
+    with shared.tasks_completed.get_lock():
+        shared.tasks_completed.value += 1
+        n_completed = shared.tasks_completed.value
+
     if n_completed >= 3*n_processes: # make prediction more reliable; still sucks because of timeouts
         # estimated time to completion = avg.time per task * remaining tasks / no.processes
         etc = (total/n_completed) * (n_tasks-n_completed) / n_processes
         etc = f", ETC {datetime.timedelta(seconds=round(etc))}"
     else:
         etc = ''
+
     log.message(
         f"Done [{n_completed}/{n_tasks}{etc}]: {col.file(file)} [{col.tool(tool['name'])}] in {duration}",
         f"[{n_completed}/{n_tasks}] {file} [{tool['name']}] in {duration}")
@@ -59,7 +64,7 @@ def process_datasets(context):
                 log.message(f"Using remote dataset [{global_path} <- {url}]")
                 base_path = global_path
             else: # local copy does not exist; we need to clone it
-                #time.sleep(1)
+                time.sleep(1)
                 answer = input(f"{base_name} is a remote dataset. Do you want to create a local copy? [Y/n] ").strip()
                 if answer.lower() in ['yes', 'y', '']:
                     print(f"Cloning remote dataset [{base_path} <- {url}]... ", flush=True, end='')
@@ -151,33 +156,22 @@ def collect_tasks(files_to_analyze, tools_to_use, skip_existing):
     return tasks
 
 
-def allocate_shared_memory(files_to_analyze):
-    global sarif_outputs, tasks_started, tasks_completed, total_time
-    manager = multiprocessing.Manager()
-    sarif_outputs = manager.dict()
-    for _,id in files_to_analyze:
-        sarif_outputs[id] = SarifHolder.SarifHolder()
-    tasks_started = multiprocessing.Value('L', 0)
-    tasks_completed = multiprocessing.Value('L', 0)
-    total_time = multiprocessing.Value('f', 0.0)
-
-
 def aggregate_sarif(context):
     if not context["aggregate_sarif"]:
         return
     sarif_folder = os.path.join("results", context["execution_name"])
     os.makedirs(sarif_folder, exist_ok=True)
-    for id in sarif_outputs:
+    for id in shared.sarif_outputs:
         with open(os.path.join(sarif_folder,f"{id}.sarif"), "w") as sarif_file:
-            json.dump(sarif_outputs[id].print(), sarif_file, indent=2, sort_keys=True)
+            json.dump(shared.sarif_outputs[id].print(), sarif_file, indent=2, sort_keys=True)
 
 
 def unique_sarif(context):
     if not context["unique_sarif_output"]:
         return
     sarif_holder = SarifHolder.SarifHolder()
-    for sarif_output in sarif_outputs.values():
-        for run in sarif_output.sarif.runs:
+    for sarif_output in shared.sarif_outputs.values():
+        for run in shared.sarif_output.sarif.runs:
             sarif_holder.addRun(run)
     sarif_file_path = os.path.join("results", f"{context['execution_name']}.sarif")
     with open(sarif_file_path, 'w') as sarif_file:
@@ -199,7 +193,6 @@ def smartbugs(context):
         constants        = (context["import_path"], context["output_version"], context["processes"], len(tasks))
 
         # parallelized execution
-        allocate_shared_memory(files_to_analyze)
         random.shuffle(tasks)
         args = [ task + constants for task in tasks ]
         with multiprocessing.Pool(processes=context["processes"]) as pool:

@@ -19,9 +19,10 @@ from src.output_parser.Solhint import Solhint
 import src.logging as log
 import src.colors as col
 import src.output_parser.SarifHolder as SarifHolder
+import src.shared as shared
 
 
-def parse_results(results, result_log, result_tar, results_folder, sarif_outputs, id, import_path, output_version):
+def parse_results(id, results, result_log, result_tar, results_folder, import_path, output_version):
     toolname = results["tool"]
     file = results["contract"]
     if import_path == "FILE":
@@ -29,7 +30,11 @@ def parse_results(results, result_log, result_tar, results_folder, sarif_outputs
     else:
         file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
 
-    sarif_holder = sarif_outputs[id]
+    if id in shared.sarif_outputs:
+        sarif_holder = shared.sarif_outputs[id]
+    else:
+        sarif_holder = SarifHolder.SarifHolder()
+
     try:
         with open(result_log) as f:
             output = f.read()
@@ -93,7 +98,8 @@ def parse_results(results, result_log, result_tar, results_folder, sarif_outputs
             sarif_holder.addRun(Conkas().parseSarif(results, file_path_in_repo))
     except Exception as err:
         log.message(col.error(f"Error parsing output of {toolname} for file {file}\n{err}"))
-    sarif_outputs[id] = sarif_holder
+
+    shared.sarif_outputs[id] = sarif_holder
 
     if output_version == 'v1' or output_version == 'all':
         with open(os.path.join(results_folder, 'result.json'), 'w') as f:
