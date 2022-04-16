@@ -55,6 +55,7 @@ def set_target_os(platform: Optional[str] = None):
     """
     Set the target platform for the solc binaries. If unset, it defaults to the current os.
     """
+    global _target_os
     if platform is None or platform in ("linux", "macosx", "windows"):
         _target_os = platform
     else:

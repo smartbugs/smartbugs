@@ -147,7 +147,7 @@ def analyzer(logqueue, taskqueue, sarifqueue, tasks_started, tasks_completed, to
             if sarif is not None:
                 sarifqueue.put((id, tool["name"], sarif, results_folder))
         except Exception as err:
-            log.message(logqueue, col.error(f"Error parsing output of {toolname} for file {file}\n{err}"))
+            log.message(logqueue, col.error(f"Error parsing output of {tool['name']} for file {file}\n{err}"))
 
         with total_time.get_lock():
             total_time.value += results["duration"]
