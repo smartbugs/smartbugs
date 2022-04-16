@@ -17,52 +17,52 @@ import src.colors as col
 
 client = docker.from_env()
 
-def pull_image(image):
+def pull_image(logqueue, image):
     if client.images.list(image):
         return
     try:
-        log.message(f"Pulling image {image}, this may take a while ...")
+        log.message(logqueue, f"Pulling image {image}, this may take a while ...")
         client.images.pull(image)
-        log.message(f"Image {image} pulled")
+        log.message(logqueue, f"Image {image} pulled")
     except Exception as err:
-        log.message(col.error(f"Error pulling image {image}.\n{err}"))
+        log.message(logqueue, col.error(f"Error pulling image {image}.\n{err}"))
         sys.exit(1)
 
 
-def volume_binding(dir_path):
+def volume_binding(logqueue, dir_path):
     try:
         return {os.path.abspath(dir_path): {'bind': '/data', 'mode': 'rw'}}
     except Exception as err:
-        log.message(col.error(f"Error constructing volume binding for {dir_path}.\n{err}"))
+        log.message(logqueue, col.error(f"Error constructing volume binding for {dir_path}.\n{err}"))
         sys.exit(1)
 
 
-def stop_container(container):
+def stop_container(logqueue, container):
     try:
         if container is not None:
             container.stop(timeout=0)
     except Exception as err:
-        log.message(col.error(f"Error stopping container.\n{err}"))
+        log.message(logqueue, col.error(f"Error stopping container.\n{err}"))
         sys.exit(1)
 
 
-def remove_container(container):
+def remove_container(logqueue, container):
     try:
         if container is not None:
             container.remove()
     except Exception as err:
-        log.message(col.error(f"Error removing container.\n{err}"))
+        log.message(logqueue, col.error(f"Error removing container.\n{err}"))
         sys.exit(1)
 
 
-def run(file, tool, results_folder):
+def run(logqueue, file, tool, results_folder):
     working_dir = tempfile.mkdtemp()
     working_bin_dir = os.path.join(working_dir, "bin")
     shutil.copy(file, working_dir)
     shutil.copytree(os.path.join(config.TOOLS_CFG_PATH,tool["name"]), working_bin_dir)
     solc_compiler = solidity.get_solc(file)
     shutil.copyfile(solc_compiler, os.path.join(working_bin_dir, "solc"))
-    volumes = volume_binding(working_dir)
+    volumes = volume_binding(logqueue, working_dir)
 
     exit_code = None
     result_log = None
@@ -91,7 +91,7 @@ def run(file, tool, results_folder):
             with open(result_log, 'w', encoding='utf-8') as f:
                 f.write(output)
         except Exception as err:
-            log.message(col.error(f"{tool['name']}, {file}: Failing to write output of container to {result_log}.\n{err}"))
+            log.message(logqueue, col.error(f"{tool['name']}, {file}: Failing to write output of container to {result_log}.\n{err}"))
             result_log = None
 
         if "output_in_files" in tool and "folder" in tool["output_in_files"]:
@@ -103,14 +103,14 @@ def run(file, tool, results_folder):
                     for chunk in output_tar:
                         f.write(chunk)
             except Exception as err:
-                log.message(col.error(f"{tool['name']}, {file}: Failing to copy {output_folder} from container to {result_tar}.\n{err}"))
+                log.message(logqueue, col.error(f"{tool['name']}, {file}: Failing to copy {output_folder} from container to {result_tar}.\n{err}"))
                 result_tar = None
 
     except Exception as err:
-        log.message(col.error(f"{tool['name']}, {file}: docker run failed.\n{err}"))
+        log.message(logqueue, col.error(f"{tool['name']}, {file}: docker run failed.\n{err}"))
     finally:
-        stop_container(container)
-        remove_container(container)
+        stop_container(logqueue, container)
+        remove_container(logqueue, container)
         shutil.rmtree(working_dir)
     end_time = time.time()
 
@@ -128,7 +128,7 @@ def run(file, tool, results_folder):
         with open(smartbugs_json, 'w') as f:
             json.dump(results, f, indent=2)
     except Exception as err:
-        log.message(col.error(f"{tool['name']}, {file}: Failing to write {smartbugs_json}.\n{err}"))
+        log.message(logqueue, col.error(f"{tool['name']}, {file}: Failing to write {smartbugs_json}.\n{err}"))
 
     return results, result_log, result_tar
 
