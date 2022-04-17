@@ -149,24 +149,21 @@ def analyzer(logqueue, taskqueue, sarifqueue, tasks_started, tasks_completed, to
         except Exception as err:
             log.message(logqueue, col.error(f"Error parsing output of {tool['name']} for file {file}\n{err}"))
 
-        with total_time.get_lock():
+        with total_time.get_lock(), tasks_completed.get_lock(), tasks_started.get_lock():
             total_time.value += results["duration"]
             total = total_time.value
-
-        with tasks_completed.get_lock():
             tasks_completed.value += 1
             n_completed = tasks_completed.value
+            n_started = tasks_started.value
 
-        if n_completed >= 3*n_processes: # make prediction more reliable; still sucks because of timeouts
-            # estimated time to completion = avg.time per task * remaining tasks / no.processes
-            etc = (total/n_completed) * (n_tasks-n_completed) / n_processes
-            etc = f", ETC {datetime.timedelta(seconds=round(etc))}"
-        else:
-            etc = ''
-
+        # estimated time to completion = avg.time per task * remaining tasks / no.processes
+        # we assume that the tasks that have started but haven't yet completed run into a timeout
+        timeout = 30 * 60 
+        etc = (total+(n_started-n_completed)*timeout) / n_started * (n_tasks-n_completed) / n_processes
+        etc = datetime.timedelta(seconds=round(etc))
         duration = datetime.timedelta(seconds=round(results["duration"]))
         log.message(logqueue,
-            f"Done [{n_completed}/{n_tasks}{etc}]: {col.file(file)} [{col.tool(tool['name'])}] in {duration}",
+            f"Done [{n_completed}/{n_tasks}, ETC {etc}]: {col.file(file)} [{col.tool(tool['name'])}] in {duration}",
             f"[{n_completed}/{n_tasks}] {file} [{tool['name']}] in {duration}")
 
 
@@ -233,6 +230,7 @@ def smartbugs(settings):
 
         # parallel execution
         # fill task queue, add sentinels to stop analyzers
+        random.shuffle(tasks)
         for task in tasks:
             taskqueue.put(task)
         for _ in range(settings["processes"]):
