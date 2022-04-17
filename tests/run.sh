@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RUNS=runs
+TMP=tests.tmp
 
 function error {
 	echo $1
@@ -25,6 +26,21 @@ fi
 test ! -d "$RUN" || error "$RUN already exists, nothing to do"
 test ! -e "$RUN" || error "$RUN already exists, but is not a directory!?"
 
+# when switching to another commit, the tests directory may not exist anymore
+# hence we make a temporary copy and continue from there
+CWD=$(pwd)
+if [ ${CWD##*/} = "tests" ]; then
+	cd ..
+	test ! -e "$TMP" || error "$TMP already exists, delete it before continuing"
+	cp -a tests "$TMP"
+	cd "$TMP"
+	exec ./${0##*/} $*
+fi
+
+if [ ${CWD##*/} != "tests.tmp" ]; then
+	error "Run the script from the tests directory"
+fi
+
 if [ "$COMMIT" ]; then
 	git checkout "$COMMIT" || exit 1
 fi
@@ -33,10 +49,11 @@ if [ "$COMMIT" ]; then
 	git switch - || exit 1
 fi
 
-test -d results && mv results "$RUN"
+test -d results && mv results "../tests/$RUN"
 echo "For the results, see $RUN"
 
-cd "$RUN"
+# remove execution name (defaulting to the date)
+cd "../tests/$RUN"
 mv logs/* .
 rmdir logs
 for d in */*; do
@@ -45,3 +62,7 @@ for d in */*; do
 		rmdir $d
 	fi
 done
+
+cd ../..
+rm -rf "$TMP"
+
