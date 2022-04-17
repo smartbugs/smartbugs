@@ -18,9 +18,9 @@ The output of the run is copied to the directory `runs/CMD-SAMPLE-COMMIT` or `ru
 
 The directory `cmds` contains two scripts.
 
-- `cmds/solidity1` runs Smartbugs from its home directory, as required by older versions of Smartbugs. As input, Smartbugs expects Solidity source code.
+- `cmds/sb1` runs Smartbugs from its home directory, as required by older versions of Smartbugs. As input, Smartbugs expects Solidity source code.
 
-- `cmds/solidity2` runs Smartbugs from the `tests` directory below the home directory and verifies, as a side effect, that Smartbugs finds all its files.
+- `cmds/sb2` runs Smartbugs from the `tests` directory below the home directory and verifies, as a side effect, that Smartbugs finds all its files.
   As input, Smartbugs expects Solidity source code.
 
 ### Contract samples
@@ -36,15 +36,15 @@ The directory `samples` contains the following datasets.
 
 ### Examples
 
-- Run the current branch on the set of ten sample contracts. The output will be in directory `runs/solidity2-10`.
+- Run the current branch on the set of ten sample contracts. The output will be in directory `runs/sb2-10`.
 ```bash
-./run.sh cmds/solidity2 samples/10
+./run.sh cmds/sb2 samples/10
 ```
 
 - Run commit `6d23825` of Smartbugs on the set of ten sample contracts. This version has to be run from Smartbugs' home directory, therefore we use
-  the script `solidity1`. The output ends up in directory `runs/solidity1-10-6d23825`.
+  the script `sb1`. The output ends up in directory `runs/sb1-10-6d23825`.
 ```bash
-./run.sh cmds/solidity1 samples/10 6d23825
+./run.sh cmds/sb1 samples/10 6d23825
 ```
 
 ## Comparing the Output of Different Versions of Smartbugs
@@ -77,12 +77,12 @@ If this file does not exist either, then `TOOL/contract/FILE.EXT` remains unchan
 ### Examples
 
 ```bash
-./diff.sh runs/solidity1-10-6d23825 runs/solidity2-10
+./diff.sh runs/sb1-10-6d23825 runs/sb2-10
 ```
 compares the output of Smartbugs, commit `6d23825`, to the output of the current Smartbugs.
 
 ```bash
-./diff.sh runs/icse2020 runs/solidity2-10
+./diff.sh runs/icse2020 runs/sb2-10
 ```
 compares the historic data from the conference ICSE2020 to the output of the current Smartbugs.
 

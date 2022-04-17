@@ -51,10 +51,13 @@ fi
 
 test -d results && mv results "../tests/$RUN"
 echo "For the results, see $RUN"
+cd ..
+rm -rf "$TMP"
 
 # remove execution name (defaulting to the date)
-cd "../tests/$RUN"
+cd "tests/$RUN"
 mv logs/* .
+mv *.log SmartBugs.log
 rmdir logs
 for d in */*; do
 	if [ -d "$d" ]; then
@@ -62,7 +65,3 @@ for d in */*; do
 		rmdir $d
 	fi
 done
-
-cd ../..
-rm -rf "$TMP"
-
