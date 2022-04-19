@@ -15,7 +15,12 @@ import src.config as config
 import src.logging as log
 import src.colors as col
 
-client = docker.from_env()
+try:
+    client = docker.from_env()
+    client.info()
+except:
+    print(col.error("Please make sure that docker is installed and running."))
+    sys.exit(1)
 
 def pull_image(logqueue, image):
     if client.images.list(image):
