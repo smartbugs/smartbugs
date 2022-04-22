@@ -61,18 +61,29 @@ def remove_container(logqueue, container):
 
 
 def run(logqueue, file, tool, results_folder):
+    start_time = time.time()
+    results = {
+        "contract": file,
+        "tool": tool["name"],
+        "start": start_time,
+        "end": start_time,
+        "duration": 0,
+        "exit_code": None
+    }
+    result_log = None
+    result_tar = None
+    
     working_dir = tempfile.mkdtemp()
     working_bin_dir = os.path.join(working_dir, "bin")
     shutil.copy(file, working_dir)
     shutil.copytree(os.path.join(config.TOOLS_CFG_PATH,tool["name"]), working_bin_dir)
     solc_compiler = solidity.get_solc(file)
+    if not solc_compiler:
+        log.message(logqueue, col.error(f"No compiler found for file '{file}'. Does it contain a version pragma?"))
+        return results, result_log, result_tar
     shutil.copyfile(solc_compiler, os.path.join(working_bin_dir, "solc"))
     volumes = volume_binding(logqueue, working_dir)
 
-    exit_code = None
-    result_log = None
-    result_tar = None
-    start_time = time.time()
     try:
         container = client.containers.run(tool["docker_image"],
                                           entrypoint = f"/data/bin/run_solidity /data/{os.path.basename(file)}",
@@ -83,7 +94,7 @@ def run(logqueue, file, tool, results_folder):
                                           )
         try:
             result = container.wait(timeout=(30 * 60))
-            exit_code = result['StatusCode']
+            results["exit_code"] = result["StatusCode"]
         except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError):
             # according to the docs, timeout gives ReadTimeout, but sometimes it is ConnectionError
             pass
@@ -117,17 +128,9 @@ def run(logqueue, file, tool, results_folder):
         stop_container(logqueue, container)
         remove_container(logqueue, container)
         shutil.rmtree(working_dir)
-    end_time = time.time()
+    results["end"] = time.time()
+    results["duration"] = results["end"] - results["start"]
 
-    results = {
-        "contract": file,
-        "tool": tool["name"],
-        "start": start_time,
-        "end": end_time,
-        "duration": end_time-start_time,
-        "exit_code": exit_code
-    }
-    
     try:
         smartbugs_json = os.path.join(results_folder, "smartbugs.json")
         with open(smartbugs_json, 'w') as f:

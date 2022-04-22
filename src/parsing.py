@@ -28,7 +28,11 @@ def parse_results(logqueue, results, result_log, result_tar, import_path):
         file_path_in_repo = file
     else:
         file_path_in_repo = file.replace(import_path, '')  # file path relative to project's root directory
+    sarif = None
 
+    if not result_log:
+        log.message(logqueue, col.error(f"Output of {results['tool']} for {results['contract']} not found."))
+        return results, sarif
     with open(result_log) as f:
         output = f.read()
 
@@ -94,5 +98,5 @@ def parse_results(logqueue, results, result_log, result_tar, import_path):
         results["analysis"] = None
         sarif = None
         log.message(logqueue, col.error(f"No parser for {toolname} available, skipping {file}"))
-
     return results, sarif
+
