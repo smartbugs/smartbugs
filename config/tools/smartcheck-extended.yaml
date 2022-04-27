@@ -1,4 +1,5 @@
 docker_image:
   default: smartbugs/smartcheck:extended
 cmd: -p
-info: Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code.
+output_parser: Smartcheck
+info: Smartcheck automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code.
