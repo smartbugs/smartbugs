@@ -137,8 +137,8 @@ for vulnerability_row in vulnerabilities_reader:
     # Put a row for a true bug that no tool has found
     bug = [bugID(vulnerability_row[0], vulnerability_row[1])]
 
-    for i in range(2, len(headers)-1):
-      bug.append("")
+    for i in range(1, len(headers)-1):
+      bug.append("0")
     
     # Add the final value of true
     bug.append("True")
