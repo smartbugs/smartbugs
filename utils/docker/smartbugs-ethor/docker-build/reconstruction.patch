@@ -1,0 +1,27 @@
+--- script/evm-abstract-semantics-light.dl	2022-01-10 15:47:55.076241068 +0100
++++ evm-abstract-semantics-light-new.dl	2022-01-10 15:47:31.367928794 +0100
+@@ -148,7 +148,7 @@
+ BINOP(pc) :- SLT(pc).
+ BINOP(pc) :- SGT(pc).
+ BINOP(pc) :- EQ(pc).
+-BINOP(pc) :- AND(pc).
++//BINOP(pc) :- AND(pc).
+ BINOP(pc) :- OR(pc).
+ BINOP(pc) :- XOR(pc).
+ BINOP(pc) :- BYTE(pc).
+@@ -257,6 +257,15 @@
+ // POP
+ State(pc + 1, stack) :- State(pc, [_,stack]), POP(pc).
+ 
++State(pc + 1, ["T",stack]) :- State(pc, ["T", [_,stack]]), AND(pc).
++
++State(pc + 1, ["T",stack]) :- State(pc, [_, ["T",stack]]), AND(pc).
++
++State(pc + 1, [X ,stack]) :- State(pc, [X, ["4294967295",stack]]), AND(pc).
++State(pc + 1, [X ,stack]) :- State(pc, ["4294967295", [X,stack]]), AND(pc).
++
++State(pc + 1, ["T" ,stack]) :- State(pc, [Y, [X, stack]]), AND(pc), Y != "4294967295", X !=  "4294967295".
++
+ State(pc + 1, ["T",stack]) :- State(pc, [_, [_,stack]]), BINOP(pc).
+ 
+ State(pc + 1, ["T",stack]) :- State(pc, [_,stack]), UNOP(pc).
