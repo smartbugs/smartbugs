@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: nbclassic
+Version: 0.3.7
+Summary: Jupyter Notebook as a Jupyter Server extension.
+Home-page: https://jupyter.org
+Author: Jupyter Development Team
+Author-email: jupyter@googlegroups.com
+License: UNKNOWN
+Keywords: ipython,jupyter
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: notebook (<7)
+Requires-Dist: notebook-shim (>=0.1.0)
+Requires-Dist: jupyter-server (>=1.8)
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-tornasync ; extra == 'test'
+Requires-Dist: pytest-console-scripts ; extra == 'test'
+
+# Jupyter Notebook as a Jupyter Server Extension
+
+![Testing nbclassic](https://github.com/jupyterlab/nbclassic/workflows/Testing%20nbclassic/badge.svg)
+
+
+NBClassic runs the [Jupyter Notebook](https://github.com/jupyter/notebook) frontend on the Jupyter Server backend.
+
+This project prepares for a future where JupyterLab and other frontends switch to [Jupyter Server](https://github.com/jupyter/jupyter_server/) for their Python Web application backend. Using this package, users can launch Jupyter Notebook, JupyterLab and other frontends side-by-side on top of the new Python server backend.
+
+## Basic Usage
+
+Install from PyPI:
+```
+> pip install nbclassic
+```
+This will automatically enable the extension in Jupyter Server.
+
+Launch directly:
+```
+> jupyter nbclassic
+```
+
+Alternatively, you can run Jupyter Server and visiting the `/tree` endpoint:
+```
+> jupyter server
+```
+
+

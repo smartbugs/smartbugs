@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: terminado
+Version: 0.13.3
+Summary: Tornado websocket backend for the Xterm.js Javascript terminal emulator library.
+Home-page: https://github.com/jupyter/terminado
+Author: Jupyter Development Team
+Author-email: jupyter@googlegroups.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Terminals :: Terminal Emulators/X Terminals
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: tornado (>=4)
+Requires-Dist: ptyprocess ; os_name != "nt"
+Requires-Dist: pywinpty (>=1.1.0) ; os_name == "nt"
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+
+UNKNOWN
+

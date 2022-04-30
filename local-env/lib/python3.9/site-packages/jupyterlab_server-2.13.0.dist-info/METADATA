@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: jupyterlab-server
+Version: 2.13.0
+Summary: A set of server components for JupyterLab and JupyterLab like applications .
+Home-page: https://jupyterlab-server.readthedocs.io
+Author: Jupyter Development Team
+Author-email: jupyter@googlegroups.com
+License: UNKNOWN
+Project-URL: Documentation, https://jupyterlab-server.readthedocs.io
+Project-URL: Funding, https://numfocus.org/donate-to-jupyter
+Project-URL: Source, https://github.com/jupyterlab/jupyterlab_server
+Project-URL: Tracker, https://github.com/jupyterlab/jupyterlab_server/issues
+Keywords: jupyter,jupyterlab
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Framework :: Jupyter
+Classifier: Framework :: Jupyter :: JupyterLab
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: babel
+Requires-Dist: jinja2 (>=3.0.3)
+Requires-Dist: json5
+Requires-Dist: jsonschema (>=3.0.1)
+Requires-Dist: jupyter-server (<2,>=1.8)
+Requires-Dist: packaging
+Requires-Dist: requests
+Requires-Dist: importlib-metadata (>=3.6) ; python_version < "3.10"
+Provides-Extra: openapi
+Requires-Dist: openapi-core (>=0.14.2) ; extra == 'openapi'
+Requires-Dist: ruamel.yaml ; extra == 'openapi'
+Provides-Extra: test
+Requires-Dist: openapi-core (>=0.14.2) ; extra == 'test'
+Requires-Dist: ruamel.yaml ; extra == 'test'
+Requires-Dist: codecov ; extra == 'test'
+Requires-Dist: ipykernel ; extra == 'test'
+Requires-Dist: jupyter-server[test] ; extra == 'test'
+Requires-Dist: openapi-spec-validator (<0.5) ; extra == 'test'
+Requires-Dist: pytest-console-scripts ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest (>=5.3.2) ; extra == 'test'
+Requires-Dist: strict-rfc3339 ; extra == 'test'
+Requires-Dist: wheel ; extra == 'test'
+
+# jupyterlab server
+
+[![Coverage](https://codecov.io/gh/jupyterlab/jupyterlab_server/branch/master/graph/badge.svg)](https://codecov.io/gh/jupyterlab/jupyterlab_server)
+[![Build Status](https://github.com/jupyterlab/jupyterlab_server/workflows/Tests/badge.svg?branch=master)](https://github.com/jupyterlab/jupyterlab_server/actions?query=branch%3Amaster+workflow%3A%22Tests%22)
+[![Documentation Status](https://readthedocs.org/projects/jupyterlab_server/badge/?version=stable)](http://jupyterlab_server.readthedocs.io/en/stable/)
+
+## Motivation
+
+JupyterLab Server sits between JupyterLab and Jupyter Server, and provides a
+set of REST API handlers and utilities that are used by JupyterLab. It is a separate project in order to
+accommodate creating JupyterLab-like applications from a more limited scope.
+
+## Install
+
+`pip install jupyterlab_server`
+
+To include optional `openapi` dependencies, use:
+
+`pip install jupyterlab_server[openapi]`
+
+To include optional `pytest_plugin` dependencies, use:
+
+`pip install jupyterlab_server[test]`
+
+## Usage
+
+See the full documentation for [API docs](https://jupyterlab-server.readthedocs.io/en/stable/api/index.html) and [REST endpoint descriptions](https://jupyterlab-server.readthedocs.io/en/stable/api/rest.html).
+
+## Extending the Application
+
+Subclass the `LabServerApp` and provide additional traits and handlers as appropriate for your application.
+
+## Contribution
+
+Please see `CONTRIBUTING.md` for details.
+
+

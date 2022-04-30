@@ -1,0 +1,111 @@
+Metadata-Version: 2.1
+Name: py-solc-x
+Version: 1.1.1
+Summary: Python wrapper and version management tool for the solc Solidity compiler.
+Home-page: https://github.com/iamdefinitelyahuman/py-solc-x
+Author: Ben Hauser (forked from py-solc by Piper Merriam)
+Author-email: ben@hauser.id
+License: MIT
+Keywords: ethereum solidity solc
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.6, <4
+Requires-Dist: requests (<3,>=2.19.0)
+Requires-Dist: semantic-version (<3,>=2.8.1)
+
+py-solc-x
+=========
+
+|Pypi Status| |Build Status| |Coverage Status|
+
+Python wrapper and version management tool for the ``solc`` Solidity
+compiler.
+
+Forked from ```py-solc`` <https://github.com/ethereum/py-solc>`__.
+
+Features
+--------
+
+-  Full support for Solidity ``>=0.4.11``
+-  Install Solidity on Linux, OSX and Windows
+-  Compile Solidity from source on Linux and OSX
+
+Dependencies
+------------
+
+Py-solc-x allows the use of multiple versions of solc, and can install
+or compile them as needed. If you wish to compile from source you must
+first insall the required `solc
+dependencies <https://solidity.readthedocs.io/en/latest/installing-solidity.html#building-from-source>`__.
+
+Installation
+------------
+
+via ``pip``
+~~~~~~~~~~~
+
+.. code:: bash
+
+   pip install py-solc-x
+
+via ``setuptools``
+~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+   git clone https://github.com/iamdefinitelyahuman/py-solc-x.git
+   cd py-solc-x
+   python3 setup.py install
+
+Documentation
+-------------
+
+Documentation is hosted at `Read the
+Docs <https://solcx.readthedocs.io/en/latest/>`__.
+
+Testing
+-------
+
+Py-solc-x is tested on Linux, OSX and Windows with solc versions
+``>=0.4.11``.
+
+To run the test suite:
+
+.. code:: bash
+
+   pytest tests/
+
+By default, the test suite installs all available ``solc`` versions for
+your OS. If you only wish to test against already installed versions,
+include the ``--no-install`` flag.
+
+Contributing
+------------
+
+Help is always appreciated! Feel free to open an issue if you find a
+problem, or a pull request if you’ve solved an issue.
+
+Please check out our `Contribution Guide <CONTRIBUTING.md>`__ prior to
+opening a pull request, and join the Brownie `Gitter
+channel <https://gitter.im/eth-brownie/community>`__ if you have any
+questions.
+
+License
+-------
+
+This project is licensed under the `MIT license <LICENSE>`__.
+
+.. |Pypi Status| image:: https://img.shields.io/pypi/v/py-solc-x.svg
+   :target: https://pypi.org/project/py-solc-x/
+.. |Build Status| image:: https://img.shields.io/github/workflow/status/iamdefinitelyahuman/py-solc-x/py-solc-x%20workflow
+   :target: https://github.com/iamdefinitelyahuman/py-solc-x/actions
+.. |Coverage Status| image:: https://img.shields.io/codecov/c/github/iamdefinitelyahuman/py-solc-x
+   :target: https://codecov.io/gh/iamdefinitelyahuman/py-solc-x
+

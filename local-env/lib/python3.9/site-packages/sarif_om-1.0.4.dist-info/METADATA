@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: sarif-om
+Version: 1.0.4
+Summary: Classes implementing the SARIF 2.1.0 object model.
+Home-page: https://github.com/microsoft/sarif-python-om
+Author: Microsoft Corporation
+Author-email: v-lgold@microsoft.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >= 2.7
+Requires-Dist: attrs
+Requires-Dist: pbr
+
+sarif-python-om
+===============
+
+Python classes for the SARIF 2.1.0 object model
+
+Usage
+=====
+::
+
+    pip install sarif-python-om
+
+    import sarif_om
+
+Description
+===========
+
+This module contains classes for the object model defined by the
+`Static Analysis Results Interchange Format (SARIF) Version 2.1.0 <https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01>`_ file format,
+an `OASIS <https://www.oasis-open.org>`_ `Committee Specification <https://www.oasis-open.org/news/announcements/static-analysis-results-interchange-format-sarif-v2-1-0-from-the-sarif-tc-is-an-a>`_.
+
+To learn more about SARIF and find resources for working with it, you can visit the `SARIF Home Page <http://sarifweb.azurewebsites.net/>`_.
+
+The source code is available at https://github.com/microsoft/sarif-python-om.
+
+Generation
+==========
+
+The classes in this module were generated from the `SARIF JSON schema <https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/schemas/sarif-schema-2.1.0.json>`_
+by the `jschema-to-python <https://github.com/microsoft/jschema-to-python>`_ code generator,
+using the JSON schema file ``sarif-2.1.0-rtm.4.json`` and the code generation hints file ``code-gen-hints.json``
+at the root of the GitHub repo, with the following command line::
+
+    pip install jschema-to-python
+
+    py -m jschema_to_python
+        --schema-path sarif-2.1.0-rtm.4.json
+        --module-name sarif_om
+        --output-directory sarif_om
+        --root-class-name SarifLog
+        --hints-file-path code-gen-hints.json
+        --force
+        -vv
+
+Contributing
+============
+
+This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
+the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+
+When you submit a pull request, a CLA bot will automatically determine whether you need to provide
+a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
+provided by the bot. You will only need to do this once across all repos using our CLA.
+
+This project has adopted the `Microsoft Open Source Code of Conduct <https://opensource.microsoft.com/codeofconduct>`_.
+For more information see the `Code of Conduct FAQ <https://opensource.microsoft.com/codeofconduct/faq>`_ or
+contact `opencode@microsoft.com <mailto:opencode@microsoft.com>`_ with any additional questions or comments.
+
+
+

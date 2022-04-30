@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: ipykernel
+Version: 6.13.0
+Summary: IPython Kernel for Jupyter
+Home-page: https://ipython.org
+Author: IPython Development Team
+Author-email: ipython-dev@scipy.org
+License: BSD
+Project-URL: Documentation, https://ipython.readthedocs.io/
+Project-URL: Funding, https://numfocus.org/
+Project-URL: Source, https://github.com/ipython/ipykernel
+Project-URL: Tracker, https://github.com/ipython/ipykernel/issues
+Keywords: Interactive,Interpreter,Shell,Web
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: COPYING.md
+Requires-Dist: debugpy (>=1.0)
+Requires-Dist: ipython (>=7.23.1)
+Requires-Dist: traitlets (>=5.1.0)
+Requires-Dist: jupyter-client (>=6.1.12)
+Requires-Dist: tornado (>=6.1)
+Requires-Dist: matplotlib-inline (>=0.1)
+Requires-Dist: psutil
+Requires-Dist: nest-asyncio
+Requires-Dist: packaging
+Requires-Dist: appnope ; platform_system == "Darwin"
+Provides-Extra: test
+Requires-Dist: pytest (>=6.0) ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: flaky ; extra == 'test'
+Requires-Dist: ipyparallel ; extra == 'test'
+Requires-Dist: pre-commit ; extra == 'test'
+Requires-Dist: pytest-timeout ; extra == 'test'
+
+# IPython Kernel for Jupyter
+
+This package provides the IPython kernel for Jupyter.
+
+## Installation from source
+
+1. `git clone`
+2. `cd ipykernel`
+3. `pip install -e ".[test]"`
+
+After that, all normal `ipython` commands will use this newly-installed version of the kernel.
+
+## Running tests
+
+Follow the instructions from `Installation from source`.
+
+and then from the root directory
+
+```bash
+pytest ipykernel
+```
+
+## Running tests with coverage
+
+Follow the instructions from `Installation from source`.
+
+and then from the root directory
+
+```bash
+pytest ipykernel -vv -s --cov ipykernel --cov-branch --cov-report term-missing:skip-covered --durations 10
+```
+
+
