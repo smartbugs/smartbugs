@@ -2,62 +2,24 @@ import csv
 from re import T
 from traceback import print_tb
 
-# Make mapping a dictionary of dictionaries, where first key is tool, second is vulnerability name and last item is category
-mapping = {}
-categories = []
-
 # Final file
-final_file = open('./results/final.csv', 'w')
+final_file = open('./prioritization/notebooks/final_solidifi.csv', 'w')
 final_writer = csv.writer(final_file)
 
 # Results file
-results_file = open('./data/result1.csv', 'r')
+results_file = open('./prioritization/parsers/data/result_solidifi.csv', 'r')
 results_reader = csv.reader(results_file)
 
 # Vulnerabilities file
-vulnerabilities_file = open('./data/vulnerabilities.csv', 'r')
+vulnerabilities_file = open('./prioritization/parsers/data/vulnerabilities_solidifi.csv', 'r')
 vulnerabilities_reader = csv.reader(vulnerabilities_file)
-
-# Vulnerabilities Mapping file
-mapping_file = open('./vulnerabilities_mapping.csv', 'r')
-mapping_reader = csv.reader(mapping_file)
-
-def getCategoryIndex(row):
-  counter = 0
-  for column in row:
-    if (column == "TRUE"):
-      return counter - 2
-    counter += 1
-
-
-# Set up mapping
-first_row = True
-row_counter = 0
-for row in mapping_reader:
-  # Prepare headers
-  if (first_row):
-    counter = 0
-    for header in row:
-      # Ignore first two headers
-      if counter >= 2:
-        categories.append(header)
-      counter += 1
-    first_row = False
-    
-  else:
-    index = getCategoryIndex(row)
-    if (row[0] in mapping):
-      mapping[row[0]][row[1]] = categories[index]
-    # If tool is not yet on mapping
-    else:
-      mapping[row[0]] = {row[1]:categories[index]}
-
 
 # Join the two CSV
 # Make a list of the rows of found vulnerabilites
 found_vulnerabilites = [0]
 
-def isTruePositive(bugId):
+def isTruePositive(bugRow):
+  bugId = bugRow[0]
   bug = bugId.split(":")
 
   # Return to begging of file
@@ -78,16 +40,15 @@ def isTruePositive(bugId):
       line_range = line_p.split("-")
       # If its a line range
       if len(line_range) == 2:
-        for i in range (line_range[0], line_range[1]+1):
+        for i in range (int(line_range[0]), int(line_range[1])+1):
           lines.append(i)
-      
       # If it is a single line
       else:
         lines.append(line_p)
 
-    if (bug[0] == vul[0] and bug[1] in lines):
+    if (bug[0] == vul[0] and int(bug[1]) in lines):
       return row_counter
-  
+
     row_counter += 1
 
   return 0
@@ -105,7 +66,7 @@ for result_row in results_reader:
     first_row = False
   else:
     #print(result_row[0])
-    bugTruth = isTruePositive(result_row[0])
+    bugTruth = isTruePositive(result_row)
     
     # If is true positive
     if (bugTruth != 0):
@@ -135,7 +96,11 @@ for vulnerability_row in vulnerabilities_reader:
   if (row_counter not in found_vulnerabilites):
     
     # Put a row for a true bug that no tool has found
-    bug = [bugID(vulnerability_row[0], vulnerability_row[1])]
+    split = vulnerability_row[1].split("-")
+    if len(split) == 2:
+      bug = [bugID(vulnerability_row[0], split[0])]
+    else:
+      bug = [bugID(vulnerability_row[0], vulnerability_row[1])]
 
     for i in range(1, len(headers)-1):
       bug.append("0")
