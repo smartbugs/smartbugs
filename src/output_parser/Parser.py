@@ -1,94 +1,15 @@
 import re,json
 from typing import List
-from src.execution.execution_task import Execution_Task
+import src.execution.execution_configuration as execution_configuration
+import src.execution.execution_task as execution_task
+import os
 
-RUBBISH = (
-    'ANTLR runtime and generated code versions disagree: ',
-    'DeprecationWarning: Python 2 support is ending!'
-    )
-VT100 = re.compile('\x1b\[[^m]*m')
-
-def is_rubbish(line):
-    for r in RUBBISH:
-        if r in line:
-            return True
-    return False
-
-def sanitized(lines):
-    slines = []
-    for line in lines:
-        if not is_rubbish(line):
-            slines.append(VT100.sub('',line))
-    return slines
-
-def str2label(s):
-    # Convert string to label satisfying:
-    # - letters and digits remain unaffected
-    # - other leading or trailing characters are removed
-    # - sequences of other characters occurring inbetween are replaced by a single underscore
-    l = []
-    sep = False
-    ch = False
-    for c in s: # or "in s.lower()" (convert to lowercase)?
-        if c.isalnum(): # "or c in '-'", to allow for - and maybe other characters?
-            if sep:
-                l.append('_')
-                sep = False
-            l.append(c)
-            ch = True
-        else:
-            sep = ch
-    return ''.join(l)
-
-DOCKER_TIMEOUT = 'Docker container timed out'
-
-def main(Parser):
-    # Runs parser standalone, to test it or to re-parse output later on
-    # Only works if result.log is the only input to the parser; task is set to None
-    # We take care to preserve DOCKER_TIMEOUT, set by src/execution/execution.py
-    import sys
-    if len(sys.argv) not in (2,3):
-        print(f"Usage: python3 {sys.argv[0]} result.log [result.json] > result.json")
-        return
-    try:
-        with open(sys.argv[1]) as f:
-            result_log = f.read().rstrip()
-    except:
-        result_log = None
-    if len(sys.argv) == 3:
-        with open(sys.argv[2]) as f:
-            result_json = json.load(f)
-    else:
-        result_json = {}
-    timeout = (('errors' in result_json and DOCKER_TIMEOUT in result_json['errors']) or
-               ('exit_code' in result_json and result_json['exit_code'] is None))
-    parser = Parser(None, result_log)
-    for k,v in parser.result().items():
-        result_json[k] = v
-    if timeout and DOCKER_TIMEOUT not in result_json['errors']:
-        result_json['errors'].append(DOCKER_TIMEOUT)
-    result_json['success'] = result_json['errors'] == []
-    print(json.dumps(result_json,indent=2))
-
-
-PYTHON_TRACEBACK = 'Traceback (most recent call last):'
-# PYTHON_EXCEPTION = re.compile(f"{re.escape(PYTHON_TRACEBACK)}(?:\n .*)*\n(.*)")
-PYTHON_EXCEPTION = re.compile(f"{re.escape(PYTHON_TRACEBACK)}(?s:.*?)\n(?=\S)(.*(?:Exception|Error).*)")
-
-def python_errors(output):
-    if PYTHON_TRACEBACK in output:
-        exceptions = PYTHON_EXCEPTION.findall(output)
-        if exceptions:
-            return { f"Traceback ({e})" for e in exceptions}
-        else:
-            return { "Traceback" }
-    else:
-        return set()
 
 
 class Parser:
+    """Base class of all output parsers."""
 
-    def __init__(self, task: 'Execution_Task', output: str):
+    def __init__(self, task: 'execution_task.Execution_Task', output: str):
         self._task     = task
         self._lines    = [] if output is None else sanitized(output.splitlines())
         self._findings = set()
@@ -115,3 +36,122 @@ class Parser:
 
     def parseSarif(self, str, file_path_in_repo):
         pass
+
+
+
+######################################################
+# Utility functions
+
+RUBBISH = (
+    'ANTLR runtime and generated code versions disagree: ',
+    'DeprecationWarning: Python 2 support is ending!'
+    )
+ANSI = re.compile('\x1b\[[^m]*m')
+
+def is_rubbish(line):
+    for r in RUBBISH:
+        if r in line:
+            return True
+    return False
+
+def sanitized(lines):
+    """Remove rubbish and ANSI color escapes."""
+    slines = []
+    for line in lines:
+        if not is_rubbish(line):
+            slines.append(ANSI.sub('',line))
+    return slines
+
+
+def str2label(s):
+    """Convert string to label.
+
+    The label is constructed as follows:
+    - letters and digits remain unaffected
+    - other leading or trailing characters are removed
+    - sequences of other characters occurring inbetween are replaced by a single underscore
+    """
+    l = []
+    sep = False
+    ch = False
+    for c in s: # or "in s.lower()" (convert to lowercase)?
+        if c.isalnum(): # "or c in '-'", to allow for - and maybe other characters?
+            if sep:
+                l.append('_')
+                sep = False
+            l.append(c)
+            ch = True
+        else:
+            sep = ch
+    return ''.join(l)
+
+
+EXCEPTIONS = (
+    ("Traceback (most recent call last):", re.compile(f"(?s:Traceback \(most recent call last\).*?)\n(?=\S)(.*)")), # Python
+    ("Exception in thread", re.compile(f'Exception in thread "[^"]*" (.*)')) # Java
+    )
+
+def exceptions(output):
+    """Detect uncaught exceptions in output."""
+    exceptions = set()
+    for indicator, re_exception in EXCEPTIONS:
+        if indicator in output:
+            es = re_exception.findall(output)
+            if es:
+                exceptions.update({f"exception ({e})" for e in es})
+            else:
+                exceptions.add("exception")
+    return exceptions
+
+
+
+################################################
+# Running parser standalone
+
+# The string below has to match the one in src/execution/execution.py
+# Currently, an explicit import is cumbersome (circularity). Dependency
+# will vanish with Smartbugs 2.0, where run information will be
+# separated from parser output
+DOCKER_TIMEOUT = 'Docker container timed out'
+
+def main(Parser):
+    """Run parser standalone, to test it or to re-parse output."""
+    import sys
+    if len(sys.argv) not in (2,3):
+        print(f"Usage: python3 {sys.argv[0]} result.log [result.json] > result.json")
+        return
+    log_name  = sys.argv[1] if len(sys.argv) >= 2 else None
+    json_name = sys.argv[2] if len(sys.argv) >= 3 else None
+    # read result.log (stdout of tool)
+    try:
+        with open(log_name) as f:
+            result_log = f.read().rstrip()
+    except:
+        result_log = None
+    # read result.json (old parser output)
+    if json_name:
+        with open(json_name) as f:
+            result_json = json.load(f)
+    else:
+        result_json = {}
+    # did a docker timeout occur when originally running the tool?
+    timeout = (('errors' in result_json and DOCKER_TIMEOUT in result_json['errors']) or
+               ('exit_code' in result_json and result_json['exit_code'] is None))
+    # dummy config
+    path,_ = os.path.split(os.path.abspath(log_name))
+    path,file_name = os.path.split(path)
+    path,execution_name = os.path.split(path)
+    output_folder,tool = os.path.split(path)
+    exec_cfg = execution_configuration.Execution_Configuration(
+        output_folder, execution_name,
+        None, None, None, None, None, None, None, None, None, None, None, None)
+    exec_task = execution_task.Execution_Task(tool, file_name, exec_cfg)
+    # reparse
+    parser = Parser(exec_task, result_log)
+    # write new result.json (new parser output)
+    for k,v in parser.result().items():
+        result_json[k] = v
+    if timeout and DOCKER_TIMEOUT not in result_json['errors']:
+        result_json['errors'].append(DOCKER_TIMEOUT)
+    result_json['success'] = result_json['errors'] == []
+    print(json.dumps(result_json,indent=2))

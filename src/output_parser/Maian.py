@@ -4,8 +4,8 @@ if __name__ == '__main__':
 
 
 import re
+import src.output_parser.Parser as Parser
 from sarif_om import *
-from src.output_parser.Parser import Parser, python_errors
 from src.execution.execution_task import Execution_Task
 from src.output_parser.SarifHolder import parseRule, parseResult, parseArtifact
 
@@ -61,14 +61,14 @@ ERRORS = (
 
 CHECK = re.compile('\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)')
 
-class Maian(Parser):
+class Maian(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
         if output is None or not output:
             self._errors.add('output missing')
             return
-        self._errors.update(python_errors(output))
+        self._errors.update(Parser.exceptions(output))
         (self._analysis, self._findings, errors) = Maian.__parse(self._lines)
         self._errors.update(errors)
 

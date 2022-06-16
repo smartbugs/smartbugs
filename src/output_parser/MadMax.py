@@ -3,12 +3,12 @@ if __name__ == '__main__':
     sys.path.append("../..")
 
 
-from src.output_parser.Gigahorse import Gigahorse
+import src.output_parser.Gigahorse as Gigahorse
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
-class MadMax(Gigahorse):
+class MadMax(Gigahorse.Gigahorse):
 
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []

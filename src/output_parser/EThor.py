@@ -10,18 +10,16 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 FINDINGS = (
     (' secure', 'ethor_secure'),
-    (' insecure', 'Reentrancy'),
+    (' insecure', 'ethor_insecure'),
+    (' unknown', 'ethor_unknown')
 )
 
 ERRORS = (
     ('Encountered an unknown bytecode', 'instruction error'),
     ('Cannot allocate memory', 'memory allocation error'),
-    ('Floating-point arithmetic', 'floating point error'),
+    ('Floating-point arithmetic', 'exception (floating-point arithmetic)'),
     ('Undefined relation EXTCODEHASH', 'EXTCODEHASH error'),
     ('Segmentation fault', 'segmentation fault'),
-    ('UnsupportedOperationException', 'unsupported operation exception'),
-    ('RuntimeException', 'runtime exception'),
-    ('Aborted', 'execution aborted'),
     ('Killed', 'execution killed'),
 )
 
@@ -32,9 +30,10 @@ class EThor(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
+        self._errors.update(Parser.exceptions(output))
         for line in self._lines:
             for indicator,finding in FINDINGS:
-                if indicator in line:
+                if line.endswith(indicator):
                     self._findings.add(finding)
             for indicator,error in ERRORS:
                 if indicator in line:
@@ -80,4 +79,4 @@ class EThor(Parser):
 
 if __name__ == '__main__':
     import Parser
-    Parser.main(Ethor)
+    Parser.main(EThor)

@@ -4,11 +4,11 @@ if __name__ == '__main__':
 
 
 from sarif_om import *
-from src.output_parser.Oyente import Oyente
+import src.output_parser.Oyente as Oyente
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
-class HoneyBadger(Oyente):
+class HoneyBadger(Oyente.Oyente):
 
     def parseSarif(self, honeybadger_output_results, file_path_in_repo):
         resultsList = []

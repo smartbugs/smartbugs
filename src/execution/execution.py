@@ -142,7 +142,7 @@ class Execution:
             logs.print(f"Log parser error: {e}")
         
         with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-            json.dump(results, f, indent=2)
+            print(json.dumps(result_json,indent=2), file=f)
 
         try:
             if self.conf.sarif_output:

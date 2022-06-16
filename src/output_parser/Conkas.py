@@ -4,8 +4,8 @@ if __name__ == '__main__':
 
 
 import re
+import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
-from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
     parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
@@ -19,7 +19,7 @@ ERRORS = (
 )
 
 
-class Conkas(Parser):
+class Conkas(Parser.Parser):
 
     @staticmethod
     def __parse_vuln(line: str):
@@ -39,7 +39,7 @@ class Conkas(Parser):
         if output is None or not output:
             self._errors.add('output missing')
             return
-        self._errors.update(python_errors(re.sub('Analysing .*\.\.\.\n','',output)))
+        self._errors.update(Parser.exceptions(re.sub('Analysing .*?\.\.\.\n','',output)))
         for indicator,error in ERRORS:
             if indicator in output:
                 self._errors.add(error)

@@ -2,13 +2,14 @@ if __name__ == '__main__':
     import sys
     sys.path.append("../..")
 
-
+import re
+import src.output_parser.Parser as Parser
 from sarif_om import *
-from src.output_parser.Parser import Parser, python_errors
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, \
     parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
+# ERRORS also for Osiris and Honeybadger
 ERRORS = (
     ('incomplete push instruction', 'instruction error'),
     ('UNKNOWN INSTRUCTION', 'instruction error'),
@@ -17,14 +18,15 @@ ERRORS = (
     ('Exception z3.z3types.Z3Exception', 'Z3 exception')
 )
 
-class Oyente(Parser):
+class Oyente(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
         if output is None or not output:
             self._errors.add('output missing')
             return
-        self._errors.update(python_errors(output))
+        # remove lines of Osiris logo that may interfere with exception parsing
+        self._errors.update(Parser.exceptions(re.sub("(888 |`88b|!!! ).*?\n","",output)))
         for indicator,error in ERRORS:
             if indicator in output:
                 self._errors.add(error)

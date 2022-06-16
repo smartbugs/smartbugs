@@ -4,20 +4,20 @@ if __name__ == '__main__':
 
 
 import json
+import src.output_parser.Parser as Parser
 from sarif_om import *
-from src.output_parser.Parser import Parser, python_errors
 from src.execution.execution_task import Execution_Task
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocation, parseRule, parseResult, parseArtifact, isNotDuplicateLogicalLocation
 
 
-class Mythril(Parser):
+class Mythril(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
         if output is None or not output:
             self._errors.add('output missing')
             return
-        self._errors.update(python_errors(output))
+        self._errors.update(Parser.exceptions(output))
         if 'aborting analysis' in output:
             self._errors.add('analysis incomplete')
         try:
