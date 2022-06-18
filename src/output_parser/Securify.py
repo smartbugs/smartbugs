@@ -4,13 +4,13 @@ if __name__ == '__main__':
 
 
 import numpy,json,os,tarfile
+import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
-from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
     parseRule, parseResult, isNotDuplicateLogicalLocation
 
 
-class Securify(Parser):
+class Securify(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -110,9 +110,3 @@ class Securify(Parser):
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 
         return run
-
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Securify)
-

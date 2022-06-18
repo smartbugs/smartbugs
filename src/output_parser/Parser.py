@@ -1,4 +1,4 @@
-import re,json
+import re, json, importlib
 from typing import List
 import src.execution.execution_configuration as execution_configuration
 import src.execution.execution_task as execution_task
@@ -114,29 +114,32 @@ def exceptions(output):
 # separated from parser output
 DOCKER_TIMEOUT = 'Docker container timed out'
 
-def main(Parser):
-    """Run parser standalone, to test it or to re-parse output."""
-    import sys
-    if len(sys.argv) not in (2,3):
-        print(f"Usage: python3 {sys.argv[0]} result.log [result.json] > result.json")
-        return
-    log_name  = sys.argv[1] if len(sys.argv) >= 2 else None
-    json_name = sys.argv[2] if len(sys.argv) >= 3 else None
+def reparse(output_parser, log_name, json_name):
+    """Parse the output of a tool for a single contract.
+
+    Runs output_parser on log_name (typically .../result.log) and any other
+    output files in the same directory. If json_name exists (typically .../result.json),
+    it is used to initialize the dict with the parsed results, in order to keep run times.
+    """
+
     # read result.log (stdout of tool)
     try:
         with open(log_name) as f:
             result_log = f.read().rstrip()
     except:
         result_log = None
+
     # read result.json (old parser output)
-    if json_name:
+    try:
         with open(json_name) as f:
             result_json = json.load(f)
-    else:
+    except:
         result_json = {}
+
     # did a docker timeout occur when originally running the tool?
     timeout = (('errors' in result_json and DOCKER_TIMEOUT in result_json['errors']) or
                ('exit_code' in result_json and result_json['exit_code'] is None))
+
     # dummy config
     path,_ = os.path.split(os.path.abspath(log_name))
     path,file_name = os.path.split(path)
@@ -146,12 +149,18 @@ def main(Parser):
         output_folder, execution_name,
         None, None, None, None, None, None, None, None, None, None, None, None)
     exec_task = execution_task.Execution_Task(tool, file_name, exec_cfg)
+
     # reparse
-    parser = Parser(exec_task, result_log)
+    if type(output_parser) == str:
+        module = importlib.import_module(f"src.output_parser.{output_parser}")
+        output_parser = getattr(module, output_parser)
+
+    p = output_parser(exec_task, result_log)
+
     # write new result.json (new parser output)
-    for k,v in parser.result().items():
+    for k,v in p.result().items():
         result_json[k] = v
     if timeout and DOCKER_TIMEOUT not in result_json['errors']:
         result_json['errors'].append(DOCKER_TIMEOUT)
     result_json['success'] = result_json['errors'] == []
-    print(json.dumps(result_json,indent=2))
+    return result_json

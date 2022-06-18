@@ -1,8 +1,3 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
 import re
 import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
@@ -84,9 +79,3 @@ class Conkas(Parser.Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
-
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Conkas)
-

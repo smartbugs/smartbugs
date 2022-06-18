@@ -1,14 +1,9 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
+import src.output_parser.Parser as Parser
 from sarif_om import *
-from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseResult, parseArtifact, parseLogicalLocation
 
 
-class Solhint(Parser):
+class Solhint(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -63,8 +58,3 @@ class Solhint(Parser):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=[logicalLocation], results=resultsList)
 
         return run
-
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Solhint)

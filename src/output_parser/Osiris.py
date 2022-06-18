@@ -1,8 +1,3 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
 import src.output_parser.Oyente as Oyente
 from sarif_om import *
 from src.execution.execution_task import Execution_Task
@@ -51,8 +46,3 @@ class Osiris(Oyente.Oyente):
         run = Run(tool=tool, artifacts=[artifact], logical_locations=logicalLocationsList, results=resultsList)
 
         return run
-
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Osiris)

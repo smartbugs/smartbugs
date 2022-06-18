@@ -1,8 +1,3 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
 import os,re,tarfile
 import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
@@ -81,9 +76,3 @@ class Manticore(Parser.Parser):
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 
         return run
-
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Manticore)
-

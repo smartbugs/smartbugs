@@ -1,8 +1,3 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
 import os,tarfile,json
 import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
@@ -56,8 +51,3 @@ class Gigahorse(Parser.Parser):
         except Exception as e:
             self._errors.add(f'problem accessing findings in results.json')
             return
-    
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Gigahorse)

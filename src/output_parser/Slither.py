@@ -1,15 +1,10 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
 import os,json,tarfile
+import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString, Location, PhysicalLocation, ArtifactLocation, Region, LogicalLocation, ArtifactContent
-from src.output_parser.Parser import Parser
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseArtifact, parseResult
 
 
-class Slither(Parser):
+class Slither(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -76,9 +71,3 @@ class Slither(Parser):
         run = Run(tool=tool, artifacts=[artifact], results=resultsList)
 
         return run
-
-
-if __name__ == '__main__':
-    import Parser
-    Parser.main(Slither)
-
