@@ -1,5 +1,6 @@
 import json
 import csv
+import sys
 import numpy as np
 from lib2to3.pgen2 import driver
 
@@ -45,17 +46,17 @@ for row in mapping_reader:
 
 
 def getCategory(toolId, ruleId):
-    tool = tools[toolId].lower()
-    category = mapping[tool][ruleId]
-    return category
+  tool = tools[toolId].lower()
+  category = mapping[tool][ruleId]
+  return category
 
 
 def bugID(file, line, category):
-    return str(file) + ":" + str(line) + ":" + str(category)
+  return str(file) + ":" + str(line) + ":" + str(category)
 
 # Parse file
 with open('./prioritization/parsers/data/results_solidifi.sarif') as json_file:
-    sarif = json.load(json_file)
+  sarif = json.load(json_file)
 
 # Results file
 csv_file = open('./prioritization/parsers/data/result_solidifi_category.csv', 'w')
@@ -65,10 +66,14 @@ headers = ["bug_id"]
 
 # Headers
 for run in sarif["runs"]:
-    headers.append(str(run["tool"]["driver"]["name"]) + "_rule_id")
-    headers.append(str(run["tool"]["driver"]["name"]) + "_level")
+  headers.append(str(run["tool"]["driver"]["name"]) + "_rule_id")
+  headers.append(str(run["tool"]["driver"]["name"]) + "_level")
 
 csv_writer.writerow(headers)
+
+bug_count = [0,0,0,0,0,0,0,0,0,0,0]
+
+missing_categories = []
 
 # Calculate Data
 data = {}
@@ -79,7 +84,11 @@ for run in sarif["runs"]:
         for location in res["locations"]:
             try:
                 category = getCategory(tool_id, res["message"]["text"])
-                bug_id = bugID(location["physicalLocation"]["artifactLocation"]["uri"], location["physicalLocation"]["region"]["startLine"], category)
+                local_file = location["physicalLocation"]["artifactLocation"]["uri"]
+                start_line = location["physicalLocation"]["region"]["startLine"]
+
+                bug_id = bugID(local_file, start_line, category)
+                bug_count[tool_id] += 1
 
                 # If is first time seeing this error
                 if (bug_id in data):
@@ -98,7 +107,13 @@ for run in sarif["runs"]:
                     #print(new_bug)
                     #print()
             except:
-                som = 0
+              missing_cat = tools[tool_id] + " - " + res["message"]["text"]
+              if (missing_cat not in missing_categories):
+                missing_categories.append(missing_cat)
+              #print(missing_cat)
+              #print(res)
+              #print("")
+              som = 0
 
 
     tool_id += 1
@@ -110,3 +125,10 @@ for d in data:
     csv_writer.writerow(data[d])
 
 csv_file.close()
+
+print(mapping)
+print("----------")
+for cat in missing_categories:
+  print(cat)
+#for count in bug_count:
+#  print(count)

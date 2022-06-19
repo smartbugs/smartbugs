@@ -23,6 +23,8 @@ for run in sarif["runs"]:
 
 csv_writer.writerow(headers)
 
+bug_count = []
+
 # Calculate Data
 data = {}
 tool_id = 0
@@ -32,6 +34,8 @@ for run in sarif["runs"]:
         for location in res["locations"]:
             try:
                 bug_id = bugID(location["physicalLocation"]["artifactLocation"]["uri"], location["physicalLocation"]["region"]["startLine"])
+
+                bug_count[tool_id] += 1
 
                 # If is first time seeing this error
                 if (bug_id in data):
@@ -62,3 +66,6 @@ for d in data:
     csv_writer.writerow(data[d])
 
 csv_file.close()
+
+for count in bug_count:
+    print(count)
