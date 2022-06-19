@@ -59,14 +59,15 @@ class Execution:
             (len(self.tasks) - len(self.tasks_done)) * avg_task_execution_time)))
 
         duration_str = str(timedelta(seconds=round(duration)))
-        exit_code = task.exit_code if task.exit_code is not None else "timeout"
+        exit_code = result["exit_code"] if result["exit_code"] is not None else "timeout"
+        success = not result["errors"] and result["exit_code"] == 0
         line = (
             f"{COLSTATUS}Done [{len(self.tasks_done)}/{len(self.tasks)}, {remaining_time}]: "
             f"{COLINFO}{task.file}"
             f"{COLSTATUS} [{task.tool}] in {duration_str}"
-            f"{COLRESET} with exit code: {exit_code} ({f'{COLSUCCESS}SUCCESS' if result['success'] else f'{COLERR}FAILED'}{COLRESET})"
+            f"{COLRESET} with exit code: {exit_code} ({f'{COLSUCCESS}SUCCESS' if success else f'{COLERR}FAILED'}{COLRESET})"
             )
-        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str} with exit code: {exit_code} ({'SUCCESS' if result['success'] else 'FAILED'})")
+        logs.print(line, f"[{len(self.tasks_done)}/{len(self.tasks)}] {task.file} [{task.tool}] in {duration_str} with exit code: {exit_code} ({'SUCCESS' if success else 'FAILED'})")
 
     def exec(self):
         self.start_time = time()
@@ -109,14 +110,13 @@ class Execution:
             logs.print(f"Analysis completed. \nIt took {elapsed_time}s to analyse all files.")
 
     def parse_results(self, task: 'Execution_Task', log_content: str):
-        results = {
+        result = {
             'contract': task.file,
             'tool': task.tool,
             'start': task.start_time,
             'end': task.end_time,
             'exit_code': task.exit_code,
             'duration': task.end_time - task.start_time,
-            'success': False,
             'findings': None,
             'errors': None,
             'analysis': None
@@ -130,19 +130,15 @@ class Execution:
                 with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
                     f.write(log_content)
                 parser = Execution.log_parser(task, log_content)
-                results['findings'] = parser.findings()
-                results['errors']   = parser.errors()
-                results['analysis'] = parser.analysis()
-                if task.exit_code is None:
-                    # If you change this error message, change it also in src/Parser.py:main()
-                    results['errors'].append('Docker container timed out')
-                results['success'] = not results['errors']
+                result['findings'] = parser.findings()
+                result['errors']   = parser.errors()
+                result['analysis'] = parser.analysis()
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
         
         with open(os.path.join(output_folder, 'result.json'), 'w') as f:
-            print(json.dumps(results,indent=2), file=f)
+            print(json.dumps(result,indent=2), file=f)
 
         try:
             if self.conf.sarif_output:
@@ -150,7 +146,7 @@ class Execution:
                     sarif = SarifHolder()
                 else:
                     sarif = self.sarif_cache[task.file_name]
-                sarif.addRun(parser.parseSarif(results, task.file))
+                sarif.addRun(parser.parseSarif(result, task.file))
                 self.sarif_cache[task.file_name] = sarif
 
                 with open(os.path.join(output_folder, 'result.sarif'), 'w') as sarif_file:
@@ -159,7 +155,7 @@ class Execution:
         except Exception as e:
             traceback.print_exc()
             logs.print(f"parse sarif error: {e}")
-        return results
+        return result
         
 
     @staticmethod

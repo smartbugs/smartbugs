@@ -51,6 +51,7 @@ def result2csv(csv_out, run, result):
         data['findings'] = []
     if 'errors' not in data:
         data['errors'] = []
+    data['success']  = not data['errors'] and data['exit_code'] == 0
     data['run'] = run
     data['contract'] = os.path.basename(data['contract'])
     data['findings'] = list2pgarray(data['findings'])

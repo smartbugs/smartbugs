@@ -4,19 +4,34 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
     parseLogicalLocation, isNotDuplicateLogicalLocation
 
 
+FINDINGS = (
+    "INFO:root:Could not exploit any RETURN+CALL",
+    "WARNING:root:No state-dependent critical path found, aborting",
+    "eth.sendTransaction",
+    )
+
 class TeEther(Parser.Parser):
 
-    def __init__(self, task: 'Execution_Task', output: str):
+    def __init__(self, task: "Execution_Task", output: str):
         super().__init__(task, output)
-        if output is None or not output:
-            self._errors.add('output missing')
+        if not output:
+            self._errors.add("output missing")
             return
         self._errors.update(Parser.exceptions(output))
         exploit = []
+        analysis_complete = False
         for line in self._lines:
-            if "sendTransaction" in line:
+            for indicator in FINDINGS:
+                if line.startswith(indicator):
+                    analysis_complete = True
+            if line.startswith("eth.sendTransaction"):
                 exploit.append(line)
-        self._analysis = [ { 'exploit': exploit } ]
+                self._findings.add("Ether leak")
+            if line.startswith("ERROR:root:"):
+                self._errors.add(Parser.truncate_message(line))
+        if not analysis_complete:
+            self._errors.add('analysis incomplete')
+        self._analysis = [ { 'exploit': exploit } ] if exploit else [ {} ]
     
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []

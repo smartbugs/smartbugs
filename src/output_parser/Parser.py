@@ -85,6 +85,10 @@ def str2label(s):
             sep = ch
     return ''.join(l)
 
+def truncate_message(m, length=205):
+    half_length = (length-5)//2
+    return m if len(m) <= length else m[:half_length]+' ... '+m[-half_length:]
+
 
 EXCEPTIONS = (
     ("Traceback (most recent call last):", re.compile(f"(?s:Traceback \(most recent call last\).*?)\n(?=\S)(.*)")), # Python
@@ -98,7 +102,7 @@ def exceptions(output):
         if indicator in output:
             es = re_exception.findall(output)
             if es:
-                exceptions.update({f"exception ({e})" for e in es})
+                exceptions.update({f"exception ({truncate_message(e)})" for e in es})
             else:
                 exceptions.add("exception")
     return exceptions
@@ -107,12 +111,6 @@ def exceptions(output):
 
 ################################################
 # Running parser standalone
-
-# The string below has to match the one in src/execution/execution.py
-# Currently, an explicit import is cumbersome (circularity). Dependency
-# will vanish with Smartbugs 2.0, where run information will be
-# separated from parser output
-DOCKER_TIMEOUT = 'Docker container timed out'
 
 def reparse(output_parser, log_name, json_name):
     """Parse the output of a tool for a single contract.
@@ -133,12 +131,10 @@ def reparse(output_parser, log_name, json_name):
     try:
         with open(json_name) as f:
             result_json = json.load(f)
+        if 'success' in result_json:
+            del result_json['success']
     except:
         result_json = {}
-
-    # did a docker timeout occur when originally running the tool?
-    timeout = (('errors' in result_json and DOCKER_TIMEOUT in result_json['errors']) or
-               ('exit_code' in result_json and result_json['exit_code'] is None))
 
     # dummy config
     path,_ = os.path.split(os.path.abspath(log_name))
@@ -154,13 +150,8 @@ def reparse(output_parser, log_name, json_name):
     if type(output_parser) == str:
         module = importlib.import_module(f"src.output_parser.{output_parser}")
         output_parser = getattr(module, output_parser)
-
     p = output_parser(exec_task, result_log)
-
-    # write new result.json (new parser output)
     for k,v in p.result().items():
         result_json[k] = v
-    if timeout and DOCKER_TIMEOUT not in result_json['errors']:
-        result_json['errors'].append(DOCKER_TIMEOUT)
-    result_json['success'] = result_json['errors'] == []
+
     return result_json

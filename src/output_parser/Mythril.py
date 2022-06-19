@@ -9,7 +9,7 @@ class Mythril(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if output is None or not output:
+        if not output:
             self._errors.add('output missing')
             return
         self._errors.update(Parser.exceptions(output))

@@ -52,6 +52,9 @@ def main():
                 dirs.add(path)
                 continue
 
+    if verbose:
+        print(f"{len(dirs)} results to reparse")
+
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
     mp = multiprocessing.get_context("spawn")
 

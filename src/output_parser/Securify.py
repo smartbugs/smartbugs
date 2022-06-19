@@ -14,8 +14,8 @@ class Securify(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if output is not None and 'Exception in thread "main" java.io.IOException' in output:
-            self._errors.add('exception occurred')
+        if output:
+            self._errors.update(Parser.exceptions(output))
         try:
             self._analysis = json.loads(output)
             return
