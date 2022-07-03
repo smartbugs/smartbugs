@@ -4,6 +4,8 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 
 class Solhint(Parser.Parser):
+    NAME = "solhint"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

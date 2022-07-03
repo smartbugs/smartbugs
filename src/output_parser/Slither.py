@@ -5,6 +5,8 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseAr
 
 
 class Slither(Parser.Parser):
+    NAME = "slither"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

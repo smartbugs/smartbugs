@@ -9,6 +9,8 @@ COVERAGE = re.compile('Symbolic execution finished with coverage (.*).')
 FINISHED = re.compile('Nothing to report.|======> Bug found! Need .* transactions. <======')
 
 class Pakala(Parser.Parser):
+    NAME = "pakala"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

@@ -5,6 +5,8 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 
 class Manticore(Parser.Parser):
+    NAME = "manticore"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

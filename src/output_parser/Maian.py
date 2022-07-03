@@ -57,6 +57,8 @@ ERRORS = (
 CHECK = re.compile('\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)')
 
 class Maian(Parser.Parser):
+    NAME = "maian"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

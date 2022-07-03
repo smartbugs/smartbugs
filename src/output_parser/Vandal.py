@@ -25,6 +25,8 @@ ERRORS = (
 )
 
 class Vandal(Parser.Parser):
+    NAME = "vandal"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

@@ -15,6 +15,8 @@ ERRORS = (
 
 
 class Conkas(Parser.Parser):
+    NAME = "conkas"
+    VERSION = "2022/07/03"
 
     @staticmethod
     def __parse_vuln(line: str):

@@ -31,7 +31,8 @@ class Parser:
         return {
             "findings": self.findings(),
             "errors": self.errors(),
-            "analysis": self.analysis()
+            "analysis": self.analysis(),
+            "parser": { "name": self.NAME, "version": self.VERSION }
             }
 
     def parseSarif(self, str, file_path_in_repo):

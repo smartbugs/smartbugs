@@ -4,6 +4,8 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 
 class MadMax(Gigahorse.Gigahorse):
+    NAME = "madmax"
+    VERSION = "2022/07/03"
 
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []

@@ -10,6 +10,8 @@ KEYS = (
 )
 
 class EasyFlow(Parser.Parser):
+    NAME = "easyflow"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

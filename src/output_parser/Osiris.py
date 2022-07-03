@@ -5,6 +5,8 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 
 class Osiris(Oyente.Oyente):
+    NAME = "osiris"
+    VERSION = "2022/07/03"
 
     def parseSarif(self, osiris_output_results, file_path_in_repo):
         resultsList = []

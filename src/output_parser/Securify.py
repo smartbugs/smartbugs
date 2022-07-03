@@ -11,6 +11,8 @@ from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
 
 
 class Securify(Parser.Parser):
+    NAME = "securify"
+    VERSION = "2022/07/03"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -18,25 +20,31 @@ class Securify(Parser.Parser):
             self._errors.update(Parser.exceptions(output))
         try:
             self._analysis = json.loads(output)
-            return
         except:
-            pass
-        result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
-        try:
-            with tarfile.open(result_tar, 'r') as tar:
-                try:
-                    results_json = tar.extractfile('results/results.json')
-                    self._analysis = json.loads(results_json.read())
-                    return
-                except:
-                    live_json = tar.extractfile('results/live.json')
-                    self._analysis = {
-                        f"{self._task.file}:{self._task.file_name}": {
-                            'results': json.loads(live_json.read())["patternResults"]
+            result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
+            try:
+                with tarfile.open(result_tar, 'r') as tar:
+                    try:
+                        results_json = tar.extractfile('results/results.json')
+                        self._analysis = json.loads(results_json.read())
+                    except:
+                        live_json = tar.extractfile('results/live.json')
+                        self._analysis = {
+                            f"{self._task.file}:{self._task.file_name}": json.loads(live_json.read())
                         }
-                    }
-        except Exception as e:
-            self._errors.add(f'problem accessing result in {result_tar}')
+            except Exception as e:
+                self._errors.add(f'problem accessing result in {result_tar}')
+        for contract,analysis in self._analysis.items():
+            if "finished" in analysis and not analysis["finished"]:
+                self._errors.add('analysis incomplete')
+            if "decompiled" in analysis and not analysis["decompiled"]:
+                self._errors.add('decompilation error')
+            for vuln,check in analysis["patternResults"].items():
+                if not check["completed"]:
+                    self._errors.add('analysis incomplete')
+                if check["hasViolations"]:
+                    self._findings.add(vuln)
+
 
     def parseSarif(self, securify_output_results, file_path_in_repo):
         resultsList = []

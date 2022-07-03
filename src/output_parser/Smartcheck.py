@@ -4,6 +4,8 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 
 class Smartcheck(Parser.Parser):
+    NAME = "smartcheck"
+    VERSION = "2022/07/03"
 
     @staticmethod
     def extract_result_line(line):
