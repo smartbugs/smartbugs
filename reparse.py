@@ -2,15 +2,19 @@ import os, importlib, json, argparse, multiprocessing
 import src.output_parser.Parser as Parser
 
 def reparser(taskqueue, output_parser, overwrite, verbose):
+    fetched = 0
+    skipped = 0
     while True:
         d = taskqueue.get()
         if d is None:
-            return
+            break
+        fetched += 1
 
         fn_log = f"{d}/result.log"
         fn_json = f"{d}/result.json"
         fn_jsonnew = f"{d}/result.new.json"
         if os.path.exists(fn_jsonnew) and not overwrite:
+            skipped += 1
             if verbose:
                 print(f"{fn_jsonnew} already exists, skipping")
             continue
@@ -20,6 +24,8 @@ def reparser(taskqueue, output_parser, overwrite, verbose):
         with open(fn_jsonnew, 'w') as f:
             print(json.dumps(result_json,indent=2), file=f)
 
+    if verbose:
+        print(f"{fetched} tasks fetched, {skipped} skipped")
 
 
 def main():
@@ -44,29 +50,23 @@ def main():
     module = importlib.import_module(f"src.output_parser.{parser_name}")
     output_parser = getattr(module, parser_name)
 
-    # find all dirs below 'top' that contain result.*
-    dirs = set()
-    for path,_,files in os.walk(top):
-        for f in files:
-            if f.startswith('result.'):
-                dirs.add(path)
-                continue
-
-    if verbose:
-        print(f"{len(dirs)} results to reparse")
-
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
     mp = multiprocessing.get_context("spawn")
-
     taskqueue = mp.Queue()
-    for d in dirs:
-        taskqueue.put(d)
-    for _ in range(processes):
-        taskqueue.put(None)
 
     reparsers = [ mp.Process(target=reparser, args=(taskqueue,output_parser,overwrite,verbose)) for _ in range(processes) ]
     for r in reparsers:
         r.start()
+
+    for path,_,files in os.walk(top):
+        for f in files:
+            if f.startswith('result.'):
+                taskqueue.put(path)
+                break
+
+    for _ in range(processes):
+        taskqueue.put(None)
+
     for r in reparsers:
         r.join()
 

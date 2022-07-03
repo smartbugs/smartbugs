@@ -1,8 +1,3 @@
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../..")
-
-
 import numpy,json,os,tarfile
 import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
@@ -34,6 +29,7 @@ class Securify(Parser.Parser):
                         }
             except Exception as e:
                 self._errors.add(f'problem accessing result in {result_tar}')
+                return
         for contract,analysis in self._analysis.items():
             if "finished" in analysis and not analysis["finished"]:
                 self._errors.add('analysis incomplete')
