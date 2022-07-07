@@ -4,7 +4,7 @@ import string
 
 # IMPORTANT: run from main folder
 initial_directory = "dataset"
-master_csv = open("./prioritization/parsers/data/vulnerabilities_solidifi.csv", 'w')
+master_csv = open("./prioritization/parsers/data/vulnerabilities_solidifi_huang.csv", 'w')
 master_csv_writter = csv.writer(master_csv)
 
 headers = ["Contract", "Lines", "Categories"]
@@ -80,6 +80,94 @@ def solifiCSV(filename, folder):
     bug = [filename, line, category]
     master_csv_writter.writerow(bug)
     
+def HuangDaiTXT(filename, folder):
+  # Open file
+  file = open(filename)
+  split = filename.split("Info.txt")
+  filename = split[0] + ".sol"
+
+  for txt_line in file:
+    
+    line = txt_line[13:]
+
+    category = "UNKOWN"
+    # Map HuangGai vulnerabilities to Smartbugs Vulnerabilities
+    if (folder == "contractAffectedByMiners"):
+      # Because miners could affect randomness
+      category = "bad_randomness"
+      # Because miners report time and it could be false
+      category = "time_manipulation"
+
+    elif (folder == "DosByComplexFallback"):
+      category = "denial_service"
+
+    elif (folder == "forcedToReceiveEthers"):
+      # Replaces uint256 constant with addrress(this).balance
+      category = "arithmetic"
+
+    elif (folder == "hashWithMulVarLenArg"):
+      # Has to do with array sizes
+      category = "unchecked_low_level_calls"
+
+    elif (folder == "integerOverflow"):
+      category = "arithmetic"
+
+    elif (folder == "lockedEther"):
+      category = "denial_service"
+
+    elif (folder == "nonStandarNaming"):
+      category = "unchecked_low_level_calls"
+
+    elif (folder == "NonpublicVarAccessdByPublicFunc"):
+      # It is related to acess
+      category = "access_control"
+
+    elif (folder == "preSentEther"):
+      # Replaces uint256 variable with addrress(this).balance
+      category = "arithmetic"
+
+    elif (folder == "publicFuncToExternal"):
+      # It is related to acess
+      category = "access_control"
+
+    elif (folder == "reentrancy"):
+      category = "reentrancy"
+
+    elif (folder == "shortAddressAttack"):
+      category = "short_addresses"
+
+    elif (folder == "specifyFuncVarAnyType"):
+      # Has to do with assembly code
+      category = "unchecked_low_level_calls"
+
+    elif (folder == "suicideContract"):
+      # It is a bug that allows others to destroy the contract when it is not meant to do so
+      category = "access_control"
+
+    elif (folder == "transactionOrderDependancy"):
+      category = "front_running"
+
+    elif (folder == "txOriginForAuthentication"):
+      category = "access_control"
+
+    elif (folder == "unhandledException"):
+      category = "unchecked_low_level_calls"
+
+    elif (folder == "uninitializedLocalVariables"):
+      category = "unchecked_low_level_calls"
+
+    elif (folder == "unlimitedCompilerVersions"):
+      category = "unchecked_low_level_calls"
+
+    elif (folder == "wastefulContracts"):
+      # The bug is to forcefully send ether to msg.sender, when it is meant for others
+      category = "access_control"
+
+    else:
+      print(folder)
+
+    bug = [filename, line, category]
+    master_csv_writter.writerow(bug)
 
 
 # Search all datasets
@@ -87,6 +175,7 @@ for filename1 in os.listdir(initial_directory):
   second_dir = os.path.join(initial_directory, filename1)
   # For each dataset
   if os.path.isdir(second_dir):
+    
     # SolidiFi has a different folder structure
     if filename1 == "solidiFI":
       third_dir = os.path.join(second_dir, "buggy_contracts")
@@ -97,6 +186,16 @@ for filename1 in os.listdir(initial_directory):
           if os.path.isfile(solidifi_file_path) and '.csv' in solidifi_file_path:
             solifiCSV(solidifi_file_path, solidifi_category)
 
+    elif filename1 == "huangGai":
+      # NOTE: Only checking the manual contracts as of now
+      third_dir = os.path.join(second_dir, "manualCheckDataset")
+      for huang_category in os.listdir(third_dir):
+        forth_dir = os.path.join(third_dir, huang_category)
+        for huang_file in os.listdir(forth_dir):
+            hunag_file_path = os.path.join(forth_dir, huang_file)
+            if os.path.isfile(hunag_file_path) and '.txt' in hunag_file_path:
+              som = 0
+              HuangDaiTXT(hunag_file_path, huang_category)
     # For other datasets
     else:
       for filename2 in os.listdir(second_dir):

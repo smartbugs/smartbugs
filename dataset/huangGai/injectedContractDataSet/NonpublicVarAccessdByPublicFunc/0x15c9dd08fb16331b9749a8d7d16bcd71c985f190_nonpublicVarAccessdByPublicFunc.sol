@@ -1,0 +1,532 @@
+/**
+ *Submitted for verification at Etherscan.io on 2020-03-27
+*/
+
+pragma solidity ^0.5.8;
+
+
+/**
+ * @title SafeMath
+ * @dev Unsigned math operations with safety checks that revert on error
+ */
+library SafeMath {
+    /**
+    * @dev Multiplies two unsigned integers, reverts on overflow.
+    */
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        if (a == 0) {
+            return 0;
+        }
+
+        uint256 c = a * b;
+        require(c / a == b);
+        return c;
+    }
+
+    /**
+    * @dev Integer division of two unsigned integers truncating the quotient, reverts on division by zero.
+    */
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b > 0);
+        uint256 c = a / b;
+        return c;
+    }
+
+    /**
+    * @dev Subtracts two unsigned integers, reverts on overflow (i.e. if subtrahend is greater than minuend).
+    */
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b <= a);
+        uint256 c = a - b;
+        return c;
+    }
+
+    /**
+    * @dev Adds two unsigned integers, reverts on overflow.
+    */
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        require(c >= a);
+        return c;
+    }
+
+    /**
+    * @dev Divides two unsigned integers and returns the remainder (unsigned integer modulo),
+    * reverts when dividing by zero.
+    */
+    function mod(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b != 0);
+        return a % b;
+    }
+}
+
+contract Ownable
+{
+    bool private stopped;
+    
+    address internal _owner;
+    address public _admin;
+    address private proposedOwner;
+    mapping(address => bool) private _allowed;
+
+    event Stopped();
+    event Started();
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event Allowed(address indexed _address);
+    event RemoveAllowed(address indexed _address);
+
+    constructor () internal
+    {
+        stopped = false;
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
+    }
+
+    function owner() public view returns (address)
+    {
+        return _owner;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    modifier onlyOwner()
+    {
+        require(isOwner());
+        _;
+    }
+
+    modifier onlyAllowed()
+    {
+        require(isAllowed() || isOwner());
+        _;
+    }
+
+    modifier onlyWhenNotStopped()
+    {
+        require(!isStopped());
+        _;
+    }
+
+    function isOwner() public view returns (bool)
+    {
+        return msg.sender == _owner;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function isAllowed() public view returns (bool)
+    {
+        return _allowed[msg.sender];	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function allow(address _target) external onlyOwner returns (bool)
+    {
+        _allowed[_target] = true;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        emit Allowed(_target);
+        return true;
+    }
+
+    function removeAllowed(address _target) external onlyOwner returns (bool)
+    {
+        _allowed[_target] = false;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        emit RemoveAllowed(_target);
+        return true;
+    }
+
+    function isStopped() public view returns (bool)
+    {
+        if(isOwner() || isAllowed())
+        {
+            return false;
+        }
+        else
+        {
+            return stopped;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        }
+    }
+
+    function stop() public onlyOwner
+    {
+        _stop();
+    }
+
+    function start() public onlyOwner
+    {
+        _start();
+    }
+
+    function proposeOwner(address _proposedOwner) public onlyOwner
+    {
+        require(msg.sender != _proposedOwner);
+        proposedOwner = _proposedOwner;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function claimOwnership() public
+    {
+        require(msg.sender == proposedOwner);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        emit OwnershipTransferred(_owner, proposedOwner);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        _owner = proposedOwner;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        proposedOwner = address(0);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function _stop() internal
+    {
+        emit Stopped();
+        stopped = true;
+    }
+
+    function _start() internal
+    {
+        emit Started();
+        stopped = false;
+    }
+}
+
+contract BaseToken is Ownable
+{
+    using SafeMath for uint256;
+
+    uint256 constant internal E18 = 1000000000000000000;
+    uint256 constant public decimals = 18;
+    uint256 internal totalSupply;
+
+    struct Lock {
+        uint256 amount;
+        uint256 expiresAt;
+    }
+
+    mapping (address => uint256) internal balances;
+    mapping (address => mapping ( address => uint256 )) internal approvals;
+    mapping (address => Lock[]) internal lockup;
+    mapping(address => bool) internal lockedAddresses;
+
+    
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+
+    event Locked(address _who,uint256 _index);
+    event UnlockedAll(address _who);
+    event UnlockedIndex(address _who, uint256 _index);
+    
+    event Burn(address indexed from, uint256 indexed value);
+    
+    constructor() public
+    {
+        balances[msg.sender] = totalSupply;
+    }
+
+    modifier transferParamsValidation(address _from, address _to, uint256 _value)
+    {
+        require(_from != address(0));
+        require(_to != address(0));
+        require(_value > 0);
+        require(balances[_from] >= _value);
+        require(!isLocked(_from, _value));
+        _;
+    }
+    
+    modifier canTransfer(address _sender, uint256 _value) {
+    require(!lockedAddresses[_sender]);
+    require(_sender != address(0));
+    
+
+    _;
+    }
+
+    function balanceOf(address _who) view public returns (uint256)
+    {
+        return balances[_who];	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function lockedBalanceOf(address _who) view public returns (uint256)
+    {
+        require(_who != address(0));
+
+        uint256 lockedBalance = 0;
+        if(lockup[_who].length > 0)	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        {
+            Lock[] storage locks = lockup[_who];	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+            uint256 length = locks.length;
+            for (uint i = 0; i < length; i++)
+            {
+                if (now < locks[i].expiresAt)
+                {
+                    lockedBalance = lockedBalance.add(locks[i].amount);
+                }
+            }
+        }
+
+        return lockedBalance;
+    }
+
+    function allowance(address _owner, address _spender) view external returns (uint256)
+    {
+        return approvals[_owner][_spender];	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function isLocked(address _who, uint256 _value) view public returns(bool)
+    {
+        uint256 lockedBalance = lockedBalanceOf(_who);
+        uint256 balance = balanceOf(_who);
+
+        if(lockedBalance <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return !(balance > lockedBalance && balance.sub(lockedBalance) >= _value);
+        }
+    }
+
+    function transfer(address _to, uint256 _value) external onlyWhenNotStopped canTransfer(msg.sender, _value) transferParamsValidation(msg.sender, _to, _value) returns (bool)
+    {
+        
+        _transfer(msg.sender, _to, _value);
+
+        return true;
+    }
+
+    function transferFrom(address _from, address _to, uint256 _value) external onlyWhenNotStopped transferParamsValidation(_from, _to, _value) returns (bool)
+    {
+        require(approvals[_from][msg.sender] >= _value);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        approvals[_from][msg.sender] = approvals[_from][msg.sender].sub(_value);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        _transfer(_from, _to, _value);
+
+        return true;
+    }
+    
+    // transferWithLock is only for airdrop or marketing purpose
+
+    function transferWithLock(address _to, uint256 _value, uint256 _time) onlyOwner transferParamsValidation(msg.sender, _to, _value) external returns (bool)
+    {
+        require(_time > now);
+
+        _lock(_to, _value, _time);
+        _transfer(msg.sender, _to, _value);
+
+        return true;
+    }
+    
+    function addtokenLock(address _to, uint256 _value, uint256 _time) onlyOwner transferParamsValidation(msg.sender, _to, _value) external returns (bool)
+    {
+        require(_time > now);
+
+        _lock(_to, _value, _time);
+
+
+        return true;
+    }
+    
+    // lockAddress is only for security accident prevention
+    
+    function lockAddress(address _addr, bool _locked) onlyOwner external
+    {
+        lockedAddresses[_addr] = _locked;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    // approve is for transfer authentication
+    function approve(address _spender, uint256 _value) external onlyWhenNotStopped returns (bool)
+    {
+        require(_spender != address(0));
+        require(balances[msg.sender] >= _value);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        require(msg.sender != _spender);
+
+        approvals[msg.sender][_spender] = _value;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        emit Approval(msg.sender, _spender, _value);
+
+        return true;
+    }
+
+    
+    function unlock(address _who, uint256 _index) onlyOwner external returns (bool)
+    {
+        uint256 length = lockup[_who].length;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        require(length > _index);
+
+        lockup[_who][_index] = lockup[_who][length - 1];	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        lockup[_who].length--;	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        emit UnlockedIndex(_who, _index);
+
+        return true;
+    }
+
+    function unlockAll(address _who) onlyOwner external returns (bool)
+    {
+        require(lockup[_who].length > 0);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        delete lockup[_who];	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        emit UnlockedAll(_who);
+
+        return true;
+    }
+    
+    // burn is for incubator fund or security accident prevention
+
+    function burn(uint256 _value) external
+    {
+        require(balances[msg.sender] >= _value);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+        require(_value > 0);
+
+        balances[msg.sender] = balances[msg.sender].sub(_value);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        totalSupply = totalSupply.sub(_value);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+
+        emit Burn(msg.sender, _value);
+    }
+    
+    
+
+    function _mint(address account, uint256 _value) internal 
+    {
+        require(account != address(0));
+
+        totalSupply = totalSupply.add(_value);
+        balances[account] = balances[account].add(_value);
+        emit Transfer(address(0), account, _value);
+    }
+
+   
+    function _transfer(address _from, address _to, uint256 _value) internal
+    {
+        balances[_from] = balances[_from].sub(_value);
+        balances[_to] = balances[_to].add(_value);
+        
+        
+        emit Transfer(_from, _to, _value);
+    }
+
+    function _lock(address _who, uint256 _value, uint256 _dateTime) onlyOwner internal
+    {
+        lockup[_who].push(Lock(_value, _dateTime));
+
+        emit Locked(_who, lockup[_who].length - 1);
+    }
+
+    // destruction is for token upgrade
+    function destruction() onlyOwner public
+    {
+        selfdestruct(msg.sender);
+    }
+    
+    
+}
+
+/**
+ * @title Roles
+ * @dev Library for managing addresses assigned to a Role.
+ */
+library Roles {
+    struct Role {
+        mapping (address => bool) bearer;
+    }
+
+    /**
+     * @dev give an account access to this role
+     */
+    function add(Role storage role, address account) internal {
+        require(account != address(0));
+        require(!has(role, account));
+
+        role.bearer[account] = true;
+    }
+
+    /**
+     * @dev remove an account's access to this role
+     */
+    function remove(Role storage role, address account) internal {
+        require(account != address(0));
+        require(has(role, account));
+
+        role.bearer[account] = false;
+    }
+
+    /**
+     * @dev check if an account has this role
+     * @return bool
+     */
+    function has(Role storage role, address account) internal view returns (bool) {
+        require(account != address(0));
+        return role.bearer[account];
+    }
+}
+
+contract MinterRole {
+    using Roles for Roles.Role;
+
+    event MinterAdded(address indexed account);
+    event MinterRemoved(address indexed account);
+
+    Roles.Role private _minters;
+
+    constructor () internal {
+        _addMinter(msg.sender);
+    }
+
+    modifier onlyMinter() {
+        require(isMinter(msg.sender));
+        _;
+    }
+
+    function isMinter(address account) public view returns (bool) {
+        return _minters.has(account);	//inject NONPUBLIC VAR ACCESSD BY PUBLIC FUNC
+    }
+
+    function addMinter(address account) public onlyMinter {
+        _addMinter(account);
+    }
+
+    function renounceMinter() public {
+        _removeMinter(msg.sender);
+    }
+
+    function _addMinter(address account) internal {
+        _minters.add(account);
+        emit MinterAdded(account);
+    }
+
+    function _removeMinter(address account) internal {
+        _minters.remove(account);
+        emit MinterRemoved(account);
+    }
+}
+
+/**
+ * @title ERC20Mintable
+ * @dev ERC20 minting logic
+ */
+contract ERC20Mintable is BaseToken, MinterRole {
+    /**
+     * @dev Function to mint tokens
+     * @param to The address that will receive the minted tokens.
+     * @param value The amount of tokens to mint.
+     * @return A boolean that indicates if the operation was successful.
+     */
+     
+    
+    function mint(address to, uint256 value) public onlyMinter returns (bool) {
+        _mint(to, value);
+        return true;
+    }
+}
+
+
+contract CC is BaseToken, ERC20Mintable
+{
+    using SafeMath for uint256;
+
+    string constant public name    = 'CC';
+    string constant public symbol  = 'CC';
+    string constant public version = '1.0.0';
+
+
+    constructor() public
+    {
+        totalSupply = 800000000 * E18;
+        balances[msg.sender] = totalSupply;
+    }
+
+}
