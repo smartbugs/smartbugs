@@ -24,7 +24,7 @@ solidiFI:
 
 HuangGai_Manual: 
     url: https://github.com/xf97/HuangGai
-    local_dir: dataset/huangGai/injectedContractDataSet
+    local_dir: dataset/huangGai/manualCheckDataset
     subsets: # Accessed as solidiFI/name 
         contractAffectedByMiners: contractAffectedByMiners
         DosByComplexFallback: DosByComplexFallback
@@ -48,7 +48,7 @@ HuangGai_Manual:
 
 HuangGai_Injectected: 
     url: https://github.com/xf97/HuangGai
-    local_dir: dataset/huangGai/manualCheckDataset
+    local_dir: dataset/huangGai/injectedContractDataSet
     subsets: # Accessed as solidiFI/name 
         contractAffectedByMiners: contractAffectedByMiners
         DosByComplexFallback: DosByComplexFallback
