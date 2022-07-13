@@ -7,7 +7,7 @@ from src.execution.execution_task import Execution_Task
 
 # ERRORS also for Osiris and Honeybadger
 ERRORS = (
-    ('incomplete push instruction', 'instruction error'),
+#    ('incomplete push instruction', 'instruction error'), # spurious error, resulting from disassembling meta-data at the end of the bytecode
     ('UNKNOWN INSTRUCTION', 'instruction error'),
     ('!!! SYMBOLIC EXECUTION TIMEOUT !!!', 'timeout'),
     ('CRITICAL:root:Solidity compilation failed', 'compilation failed'),
@@ -16,7 +16,7 @@ ERRORS = (
 
 class Oyente(Parser.Parser):
     NAME = "oyente"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/12"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

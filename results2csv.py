@@ -7,6 +7,7 @@ def main():
         Write key information from result.json files to stdout, in csv format.
         """)
     argparser.add_argument("-n", action='store_true', help="read result.new.json instead of result.json.")
+    argparser.add_argument("-p", "--postgres", action='store_true', help="encode lists as Postgres arrays")
     argparser.add_argument("path_to_results", help="directory containing the result files")
     argparser.add_argument("run_id", help="label identifying the run that generated the results")
     args = argparser.parse_args()
@@ -23,7 +24,7 @@ def main():
         if log_name in files:
             results.append(os.path.join(path,log_name))
     for r in sorted(results):
-        result2csv(csv_out, run_id, r)
+        result2csv(csv_out, run_id, r, args.postgres)
 
 
 def list2pgarray(l):
@@ -38,7 +39,7 @@ def list2pgarray(l):
     return a
 
 
-def result2csv(csv_out, run, result):
+def result2csv(csv_out, run, result, postgres):
     with open(result) as f:
         try:
             data = json.load(f)
@@ -54,8 +55,12 @@ def result2csv(csv_out, run, result):
     data['success']  = not data['errors'] and data['exit_code'] == 0
     data['run'] = run
     data['contract'] = os.path.basename(data['contract'])
-    data['findings'] = list2pgarray(data['findings'])
-    data['errors']   = list2pgarray(data['errors'])
+    if postgres:
+        data['findings'] = list2pgarray(data['findings'])
+        data['errors']   = list2pgarray(data['errors'])
+    else:
+        data['findings'] = ','.join(data['findings'])
+        data['errors']   = ','.join(data['errors'])
     csv_out.writerow([ data[k] for k in HEADERS ])
 
 if __name__ == '__main__':
