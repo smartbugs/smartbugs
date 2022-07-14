@@ -94,6 +94,7 @@ if __name__ == '__main__':
                  ).mkdir(parents=True, exist_ok=True)
     logs.file_path = os.path.join(
         conf.output_folder, "logs", 'SmartBugs_' + conf.execution_name + '.log')
+    logs.print(f"Settings: {conf.arguments_passed}")
 
     tasks = create_tasks(conf)
 

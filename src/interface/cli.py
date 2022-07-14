@@ -168,6 +168,7 @@ def get_config():
         mem_quota=args.mem_quota,
         tools=args.tool,
         files=args.file,
-        datasets=args.dataset)
+        datasets=args.dataset,
+        arguments_passed=vars(args))
         
     return conf

@@ -3,7 +3,7 @@ from typing import List
 
 class Execution_Configuration:
 
-    def __init__(self, output_folder: str, execution_name: str, is_bytecode: bool, skip_existing: bool, sarif_output: bool,  processes: int, aggregate_sarif: bool, unique_sarif_output: bool, timeout: int, cpu_quota: int, mem_quota: str, tools: List[str], files: List[str], datasets: List[str]):
+    def __init__(self, output_folder: str, execution_name: str, is_bytecode: bool, skip_existing: bool, sarif_output: bool,  processes: int, aggregate_sarif: bool, unique_sarif_output: bool, timeout: int, cpu_quota: int, mem_quota: str, tools: List[str], files: List[str], datasets: List[str], arguments_passed = None):
         self.output_folder = output_folder
         self.execution_name = execution_name
         self.is_bytecode = is_bytecode
@@ -16,6 +16,7 @@ class Execution_Configuration:
         self.cpu_quota = cpu_quota
         self.mem_limit = mem_quota
         self.files = files
+        self.arguments_passed = arguments_passed
 
         from src.interface.cli import DATASET_CHOICES, TOOLS_CHOICES
 
