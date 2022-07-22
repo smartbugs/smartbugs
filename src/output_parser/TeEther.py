@@ -1,40 +1,65 @@
+import re
+
 import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, MultiformatMessageString, Run
 from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicateRule, parseArtifact, \
     parseLogicalLocation, isNotDuplicateLogicalLocation
 
+ERRORS = (
+    (re.compile("Failed path due to Symbolic code index"), "Failed path due to Symbolic code index"),
+    (re.compile("Failed path due to balance of symbolic address"), "Failed path due to balance of symbolic address"),
+    (re.compile("Failed path due to b'Argument .* does not match declaration"), "Failed path due to argument not matching declaration"),
+)
 
-FINDINGS = (
-    "INFO:root:Could not exploit any RETURN+CALL",
-    "WARNING:root:No state-dependent critical path found, aborting",
-    "eth.sendTransaction",
-    )
+MESSAGES = (
+    ("INFO:root:Could not exploit any RETURN+CALL", "Could not exploit any RETURN+CALL"),
+    ("WARNING:root:No state-dependent critical path found, aborting", "No state-dependent critical path found"),
+)
 
 class TeEther(Parser.Parser):
     NAME = "teether"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: "Execution_Task", output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add("output missing")
+        self._errors.discard('EXIT_CODE_1') # there will be an exception in self._fails anyway
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        self._errors.update(Parser.exceptions(output))
+        self._fails.update(Parser.exceptions(self._lines))
+
+        # the following exceptions are also reported as errors below
+        for f in list(self._fails): # copies self._fails, so we can modify it
+            if "teether.evm.exceptions.SymbolicError:" in f:
+                self._fails.remove(f)
+
         exploit = []
-        analysis_complete = False
+        analysis_completed = False
         for line in self._lines:
-            for indicator in FINDINGS:
-                if line.startswith(indicator):
-                    analysis_complete = True
-            if line.startswith("eth.sendTransaction"):
+            if line.startswith("INFO:root:Could not exploit any RETURN+CALL"):
+                self._messages.add("Could not exploit any RETURN+CALL")
+                analysis_completed = True
+            elif line.startswith("WARNING:root:No state-dependent critical path found, aborting"):
+                self._messages.add("No state-dependent critical path found")
+                analysis_completed = True
+            elif line.startswith("eth.sendTransaction"):
                 exploit.append(line)
                 self._findings.add("Ether leak")
-            if line.startswith("ERROR:root:"):
-                self._errors.add(Parser.truncate_message(line))
-        if not analysis_complete:
-            self._errors.add('analysis incomplete')
+                analysis_completed = True
+            elif line.startswith("ERROR:root:"):
+                line = line[11:]
+                e = Parser.truncate_message(line)
+                for indicator,error in ERRORS:
+                    if indicator.match(line):
+                        e = error
+                self._errors.add(e)
+        if not analysis_completed:
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
         self._analysis = [ { 'exploit': exploit } ] if exploit else [ {} ]
-    
+
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []
         logicalLocationsList = []

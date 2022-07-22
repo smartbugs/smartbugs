@@ -5,27 +5,34 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 class EthBMC(Parser.Parser):
     NAME = "ethbmc"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        if 'Finished analysis in' not in output:
-            self._errors.add('analysis incomplete')
-        if 'stack backtrace:' in output:
-            self._errors.add('exception occurred')
+        self._fails.update(Parser.exceptions(self._lines))
+
         coverage = None
+        analysis_completed = False
         for line in self._lines:
             if "Code covered: " in line:
                 coverage = line.split("Code covered: ")[1]
-            if "Found attack, " in line:
+            elif "Found attack, " in line:
                 self._findings.add(line.split("Found attack, ")[1])
+            elif "Finished analysis in" in line:
+                analysis_completed = True
         analysis = { 'exploit': sorted(self._findings) }
         if coverage is not None:
             analysis['coverage'] = coverage
         self._analysis = [ analysis ]
+        if not analysis_completed:
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
+
     
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []

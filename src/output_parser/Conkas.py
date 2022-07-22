@@ -5,18 +5,22 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
     parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
-ERRORS = (
-        ('PHI instruction need arguments but ', 'PHI error'),
-        ('solcx.exceptions.SolcError:', 'solc error'),
-        ('CREATE2 instruction needs ', 'CREATE2 error'),
-        ('JUMPDEST instruction should not be reached', 'JUMPDEST error'),
-        ('PUSH instruction needs ', 'PUSH error'),
-)
 
+ERRORS = (
+    re.compile("([A-Z0-9]+ instruction needs return value)"),
+    re.compile("([A-Z0-9]+ instruction needs [0-9]+ arguments but [0-9]+ was given)"),
+    re.compile("([A-Z0-9]+ instruction need arguments but [0-9]+ was given)"),
+    re.compile("([A-Z0-9]+ instruction needs a concrete argument)"),
+    re.compile("([A-Z0-9]+ instruction should not be reached)"),
+    re.compile("([A-Z0-9]+ instruction is not implemented)"),
+    re.compile("(Cannot get source map runtime\. Check if solc is in your path environment variable)"),
+    re.compile("(Vulnerability module checker initialized without traces)"),
+    re.compile(".*(solcx.exceptions.SolcError:.*)")
+)
 
 class Conkas(Parser.Parser):
     NAME = "conkas"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     @staticmethod
     def __parse_vuln(line: str):
@@ -31,17 +35,23 @@ class Conkas(Parser.Parser):
             'line_number': line_number
         }
 
+    @staticmethod
+    def __skip(line):
+        return line.startswith("Analysing ") and line.endswith("...")
+
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        self._errors.update(Parser.exceptions(re.sub('Analysing .*?\.\.\.\n','',output)))
-        for indicator,error in ERRORS:
-            if indicator in output:
-                self._errors.add(error)
+        # removing spurious 'Analysing' message disrupting exception traces
+        self._fails.update(Parser.exceptions(self._lines, Conkas.__skip))
         self._analysis = []
         for line in self._lines:
+            if Parser.add_match(self._errors, line, ERRORS):
+                self._fails.discard('exception (Exception)')
+                continue
             if 'Vulnerability: ' in line:
                 issue = Conkas.__parse_vuln(line)
                 self._analysis.append(issue)

@@ -41,30 +41,21 @@ def main():
     argparser.add_argument("parser_name", help="name of Python module for parsing the output")
     args = argparser.parse_args()
 
-    overwrite = args.overwrite
-    verbose = args.verbose
-    processes = args.processes
-    top = args.path_to_output
-    parser_name = args.parser_name
-
-    module = importlib.import_module(f"src.output_parser.{parser_name}")
-    output_parser = getattr(module, parser_name)
+    module = importlib.import_module(f"src.output_parser.{args.parser_name}")
+    output_parser = getattr(module, args.parser_name)
 
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
     mp = multiprocessing.get_context("spawn")
     taskqueue = mp.Queue()
 
-    reparsers = [ mp.Process(target=reparser, args=(taskqueue,output_parser,overwrite,verbose)) for _ in range(processes) ]
+    reparsers = [ mp.Process(target=reparser, args=(taskqueue,output_parser,args.overwrite,args.verbose)) for _ in range(args.processes) ]
     for r in reparsers:
         r.start()
 
-    for path,_,files in os.walk(top):
-        for f in files:
-            if f.startswith('result.'):
-                taskqueue.put(path)
-                break
-
-    for _ in range(processes):
+    for path,_,files in os.walk(args.path_to_output):
+        if "result.json" in files:
+            taskqueue.put(path)
+    for _ in range(args.processes):
         taskqueue.put(None)
 
     for r in reparsers:

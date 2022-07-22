@@ -5,7 +5,7 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 class Smartcheck(Parser.Parser):
     NAME = "smartcheck"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     @staticmethod
     def extract_result_line(line):
@@ -18,9 +18,12 @@ class Smartcheck(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
+        self._fails.update(Parser.exceptions(self._lines))
+
         self._analysis = []
         current_error = None
         for line in self._lines:

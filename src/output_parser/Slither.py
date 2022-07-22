@@ -6,18 +6,28 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseAr
 
 class Slither(Parser.Parser):
     NAME = "slither"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
         try:
             with tarfile.open(result_tar, 'r') as tar:
-                output_file = tar.extractfile('output.json')
-                self._analysis = json.loads(output_file.read())
+                try:
+                    output_file = tar.extractfile('output.json')
+                except Exception as e:
+                    self._fails.add(f'problem extracting output.json from {result_tar}')
+                    return
+                try:
+                    self._analysis = json.loads(output_file.read())
+                except Exception as e:
+                    self._fails.add(f'problem loading json file output.json')
         except Exception as e:
-            self._errors.add(f'problem accessing {result_tar} or output.json')
+            self._fails.add(f'problem opening tar archive {result_tar}')
             return
+        for analysis in self._analysis:
+            self._findings.add(analysis["check"])
+
         
     def parseSarif(self, slither_output_results, file_path_in_repo):
         rulesList = []

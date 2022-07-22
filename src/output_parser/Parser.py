@@ -1,28 +1,53 @@
 import re, json, importlib
-from typing import List
+from typing import List, Optional
 import src.execution.execution_configuration as execution_configuration
 import src.execution.execution_task as execution_task
 import os
 
-
+DOCKER_CODES = {
+    125: "DOCKER_INVOCATION_PROBLEM",
+    126: "DOCKER_CMD_NOT_EXECUTABLE",
+    127: "DOCKER_CMD_NOT_FOUND",
+    137: "DOCKER_KILL_OOM", # container received KILL signal, manually or because out of memory
+    139: "DOCKER_SEGV", # segmentation violation
+    143: "DOCKER_TERM" # container was externally stopped
+}
 
 class Parser:
     """Base class of all output parsers."""
 
     def __init__(self, task: 'execution_task.Execution_Task', output: str):
         self._task     = task
-        self._lines    = [] if output is None else sanitized(output.splitlines())
-        self._findings = set()
-        self._errors   = set()
+        self._lines    = [] if not output else output.splitlines()
+        self._findings = set() # properties of the contract as determined by the tool
+        self._messages = set() # notifications by the tool
+        self._errors   = set() # errors detected and handled by the tool
+        self._fails    = set() # exceptions not caught by the tool, or outside events leading to abortion
         self._analysis = None
+        if task.exit_code is None:
+            self._fails.add('DOCKER_TIMEOUT')
+        elif task.exit_code == 0:
+            pass
+        elif task.exit_code in DOCKER_CODES:
+            self._fails.add(DOCKER_CODES[task.exit_code])
+        elif 128 <= task.exit_code <= 128+64:
+            self._fails.add(f"DOCKER_RECEIVED_SIGNAL_{task.exit_code-128}")
+        else:
+            # remove it for individual signals and tools, where it is not an error
+            self._errors.add(f"EXIT_CODE_{task.exit_code}")
+
 
     def findings(self) -> List[str]:
         return sorted([str2label(f) for f in self._findings])
 
+    def messages(self) -> List[str]:
+        return sorted(self._messages)
+
     def errors(self) -> List[str]:
-        # Run is considered successful if self.errors() == set(), and unsuccessful otherwise
-        # Make sure to add an error if the output is missing or incomplete
         return sorted(self._errors)
+
+    def fails(self) -> List[str]:
+        return sorted(self._fails)
 
     def analysis(self):
         return self._analysis
@@ -30,10 +55,12 @@ class Parser:
     def result(self):
         return {
             "findings": self.findings(),
+            "messages": self.messages(),
             "errors": self.errors(),
+            "fails": self.fails(),
             "analysis": self.analysis(),
             "parser": { "name": self.NAME, "version": self.VERSION }
-            }
+        }
 
     def parseSarif(self, str, file_path_in_repo):
         pass
@@ -43,26 +70,9 @@ class Parser:
 ######################################################
 # Utility functions
 
-RUBBISH = (
-    'ANTLR runtime and generated code versions disagree: ',
-    'DeprecationWarning: Python 2 support is ending!'
-    )
 ANSI = re.compile('\x1b\[[^m]*m')
-
-def is_rubbish(line):
-    for r in RUBBISH:
-        if r in line:
-            return True
-    return False
-
-def sanitized(lines):
-    """Remove rubbish and ANSI color escapes."""
-    slines = []
-    for line in lines:
-        if not is_rubbish(line):
-            slines.append(ANSI.sub('',line))
-    return slines
-
+def discard_ANSI(lines):
+    return [ ANSI.sub('',line) for line in lines ]
 
 def str2label(s):
     """Convert string to label.
@@ -91,23 +101,39 @@ def truncate_message(m, length=205):
     return m if len(m) <= length else m[:half_length]+' ... '+m[-half_length:]
 
 
-EXCEPTIONS = (
-    ("Traceback (most recent call last):", re.compile(f"(?s:Traceback \(most recent call last\).*?)\n(?=\S)(.*)")), # Python
-    ("Exception in thread", re.compile(f'Exception in thread "[^"]*" (.*)')) # Java
-    )
+TRACEBACK = "Traceback (most recent call last)" # Python
 
-def exceptions(output):
-    """Detect uncaught exceptions in output."""
+EXCEPTIONS = (
+    re.compile(".*line [0-9: ]*(Segmentation fault|Killed)"), # Shell
+    re.compile('Exception in thread "[^"]*" (.*)'), # Java
+    re.compile("thread '[^']*' panicked at '([^']*)'"), # Rust
+)
+
+def exceptions(lines, skip = lambda line: False):
     exceptions = set()
-    for indicator, re_exception in EXCEPTIONS:
-        if indicator in output:
-            es = re_exception.findall(output)
-            if es:
-                exceptions.update({f"exception ({truncate_message(e)})" for e in es})
-            else:
-                exceptions.add("exception")
+    traceback = False
+    for line in lines:
+        if skip(line):
+            pass
+        elif traceback:
+            if line and line[0] != " ":
+                exceptions.add(f"exception ({truncate_message(line)})")
+                traceback = False
+        elif line.startswith(TRACEBACK):
+            traceback = True
+        else:
+            for re_exception in EXCEPTIONS:
+                if m := re_exception.match(line):
+                    exceptions.add(f"exception ({truncate_message(m[1])})")
     return exceptions
 
+
+def add_match(matches, line, patterns):
+    for pattern in patterns:
+        if m := pattern.match(line):
+            matches.add(m[1])
+            return True
+    return False
 
 
 ################################################
@@ -135,7 +161,7 @@ def reparse(output_parser, log_name, json_name):
         if 'success' in result_json:
             del result_json['success']
     except:
-        result_json = {}
+        result_json = { }
 
     # dummy config
     path,_ = os.path.split(os.path.abspath(log_name))
@@ -146,6 +172,7 @@ def reparse(output_parser, log_name, json_name):
         output_folder, execution_name,
         None, None, None, None, None, None, None, None, None, None, None, None)
     exec_task = execution_task.Execution_Task(tool, file_name, exec_cfg)
+    exec_task.exit_code = result_json["exit_code"] if "exit_code" in result_json else None
 
     # reparse
     if type(output_parser) == str:

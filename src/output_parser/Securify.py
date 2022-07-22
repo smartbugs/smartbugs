@@ -7,12 +7,13 @@ from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
 
 class Securify(Parser.Parser):
     NAME = "securify"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if output:
-            self._errors.update(Parser.exceptions(output))
+        self._fails.update(Parser.exceptions(self._lines))
+        if self._fails:
+            self._errors.discard('EXIT_CODE_1')
         try:
             self._analysis = json.loads(output)
         except:
@@ -28,18 +29,21 @@ class Securify(Parser.Parser):
                             f"{self._task.file}:{self._task.file_name}": json.loads(live_json.read())
                         }
             except Exception as e:
-                self._errors.add(f'problem accessing result in {result_tar}')
+                if not self._fails:
+                    self._fails.add('output missing')
                 return
         for contract,analysis in self._analysis.items():
             if "finished" in analysis and not analysis["finished"]:
-                self._errors.add('analysis incomplete')
+                self._messages.add('analysis incomplete')
             if "decompiled" in analysis and not analysis["decompiled"]:
                 self._errors.add('decompilation error')
             for vuln,check in analysis["patternResults"].items():
                 if not check["completed"]:
-                    self._errors.add('analysis incomplete')
+                    self._messages.add('analysis incomplete')
                 if check["hasViolations"]:
                     self._findings.add(vuln)
+        if 'analysis incomplete' in self._messages and not self._fails:
+            self._fails.add("execution failed")
 
 
     def parseSarif(self, securify_output_results, file_path_in_repo):

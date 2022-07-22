@@ -10,14 +10,16 @@ FINISHED = re.compile('Nothing to report.|======> Bug found! Need .* transaction
 
 class Pakala(Parser.Parser):
     NAME = "pakala"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
+        self._errors.discard('EXIT_CODE_1') # there will be an exception in self._fails anyway
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        self._errors.update(Parser.exceptions(output))
+        self._fails.update(Parser.exceptions(self._lines))
         coverage = None
         finished = False
         traceback = False
@@ -29,7 +31,10 @@ class Pakala(Parser.Parser):
             if FINISHED.match(line):
                 finished = True
         if not finished:
-            self._errors.add('analysis incomplete')
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
+
         analysis = { 'vulnerabilities': sorted(self._findings) }
         if coverage is not None:
             analysis['coverage'] = coverage

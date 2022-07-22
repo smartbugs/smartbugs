@@ -18,28 +18,33 @@ class Gigahorse(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        self._errors.update(Parser.exceptions(output))
+        self._fails.update(Parser.exceptions(self._lines))
         if 'Writing results to results.json' not in output:
-            self._errors.add('analysis incomplete')
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
+        #if ' timed out' in output: # Redundant, will also be reported in result.tar
+        #    self._errors.add('timed out')
+
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
         try:
             with tarfile.open(result_tar, 'r') as tar:
                 try:
                     output_file = tar.extractfile('results.json')
                 except Exception as e:
-                    self._errors.add(f'problem extracting results.json from {result_tar}')
+                    self._fails.add(f'problem extracting results.json from {result_tar}')
                     return
                 try:
                     self._analysis = json.loads(output_file.read())
                 except Exception as e:
-                    self._errors.add(f'problem loading json file results.json')
-                    print(traceback.format_exception(type(e), e, e.__traceback__))
+                    self._fails.add(f'problem loading json file results.json')
                     return
         except Exception as e:
-            self._errors.add(f'problem opening tar archive {result_tar}')
+            self._fails.add(f'problem opening tar archive {result_tar}')
             return
         try:
             for contract in self._analysis:
@@ -49,5 +54,5 @@ class Gigahorse(Parser.Parser):
                     if finding in results and results[finding]:
                         self._findings.add(finding)
         except Exception as e:
-            self._errors.add(f'problem accessing findings in results.json')
+            self._fails.add(f'problem accessing findings in results.json')
             return

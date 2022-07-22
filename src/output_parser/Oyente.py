@@ -5,45 +5,63 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
     parseArtifact, parseLogicalLocation, isNotDuplicateLogicalLocation
 from src.execution.execution_task import Execution_Task
 
+
+MESSAGES = (
+    re.compile("(incomplete push instruction) at [0-9]+"),
+)
+
 # ERRORS also for Osiris and Honeybadger
 ERRORS = (
-#    ('incomplete push instruction', 'instruction error'), # spurious error, resulting from disassembling meta-data at the end of the bytecode
-    ('UNKNOWN INSTRUCTION', 'instruction error'),
-    ('!!! SYMBOLIC EXECUTION TIMEOUT !!!', 'timeout'),
-    ('CRITICAL:root:Solidity compilation failed', 'compilation failed'),
-    ('Exception z3.z3types.Z3Exception', 'Z3 exception')
+    re.compile("(UNKNOWN INSTRUCTION: .*)"),
+    re.compile("!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
+    re.compile("CRITICAL:root:(Solidity compilation failed)"),
+)
+
+FAILS = (
+#    re.compile("(Unexpected error: .*)"), # Secondary error
 )
 
 class Oyente(Parser.Parser):
     NAME = "oyente"
-    VERSION = "2022/07/12"
+    VERSION = "2022/07/22"
+
+    @staticmethod
+    def __skip(line):
+        return (
+            line.startswith("888")
+            or line.startswith("`88b")
+            or line.startswith("!!! ")
+            or line.startswith("UNKNOWN INSTRUCTION:")
+        )
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
-            return
-        # remove lines of Osiris logo that may interfere with exception parsing
-        self._errors.update(Parser.exceptions(re.sub("(888 |`88b|!!! ).*?\n","",output)))
-        for indicator,error in ERRORS:
-            if indicator in output:
-                self._errors.add(error)
-        (self._analysis, self._findings, analysis_completed) = Oyente.__parse(self._lines)
-        if not analysis_completed:
-            self._errors.add('analysis incomplete')
+        self._errors.discard('EXIT_CODE_1') # redundant: exit code 1 is reflected in other errors, or just indicates that a vulnerability has been found
 
-    @staticmethod
-    def __parse(lines):
-        analysis = []
-        findings = set()
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
+            return
+
+        # remove lines of Osiris logo that may interfere with exception parsing
+        self._fails.update(Parser.exceptions(self._lines, Oyente.__skip))
+
+        self._analysis = []
         analysis_completed = False
         contract = None
-        for line in lines:
+        for line in self._lines:
+            if Parser.add_match(self._messages, line, MESSAGES):
+                continue
+            if Parser.add_match(self._errors, line, ERRORS):
+                continue
+            if Parser.add_match(self._fails, line, FAILS):
+                continue
+
             fields = [ f.strip().replace('└> ','') for f in line.split(':') ]
             if (line.startswith('INFO:root:contract') or line.startswith('INFO:root:Contract')) and len(fields) >= 4:
                 # INFO:root:contract <filename>:<contract name>:
                 if contract is not None:
-                    analysis.append(contract)
+                    self._analysis.append(contract)
                 contract = {
                     'file': fields[2].replace('contract ', '').replace('Contract ',''),
                     'contract': fields[3]
@@ -66,7 +84,7 @@ class Oyente(Parser.Parser):
                     val = fields[3]
                     if val == 'True':
                         contract[key] = True
-                        findings.add(key)
+                        self._findings.add(key)
                     elif val == 'False':
                         contract[key] = False
                     else:
@@ -101,8 +119,26 @@ class Oyente(Parser.Parser):
                         'message': key
                     })
         if contract is not None:
-            analysis.append(contract)
-        return (analysis,findings,analysis_completed)
+            self._analysis.append(contract)
+
+        if not analysis_completed:
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
+
+        # Remove errors/fails issued twice, once via exception and once via print statement
+        if "SYMBOLIC EXECUTION TIMEOUT" in self._errors and "exception (Exception: timeout)" in self._fails:
+            self._fails.remove("exception (Exception: timeout)")
+        for e in list(self._fails): # list() makes a copy, so we can modify the set in the loop
+            if e == "exception (Exception: timeout)":
+                self._fails.remove(e)
+                if not "SYMBOLIC EXECUTION TIMEOUT" in self._errors:
+                    self._errors.add(e)
+            elif "UNKNOWN INSTRUCTION" in e:
+                self._fails.remove(e)
+                if not e[22:-1] in self._errors:
+                    self._errors.add(e)
+
 
     def parseSarif(self, oyente_output_results, file_path_in_repo):
         resultsList = []

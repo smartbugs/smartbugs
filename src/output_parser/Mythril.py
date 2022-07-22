@@ -7,16 +7,19 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocati
 
 class Mythril(Parser.Parser):
     NAME = "mythril"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/19"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
         if not output:
-            self._errors.add('output missing')
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        self._errors.update(Parser.exceptions(output))
+        self._fails.update(Parser.exceptions(self._lines))
         if 'aborting analysis' in output:
-            self._errors.add('analysis incomplete')
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
         try:
             # there may be a valid json object in the last line even if there was an error
             self._analysis = json.loads(self._lines[-1])
@@ -27,6 +30,7 @@ class Mythril(Parser.Parser):
                 self._findings.add(issue['title'])
         if self._analysis is not None and 'error' in self._analysis and self._analysis['error'] is not None:
             self._errors.add(self._analysis['error'].split('.')[0])
+
 
     def parseSarif(self, mythril_output_results, file_path_in_repo):
         resultsList = []

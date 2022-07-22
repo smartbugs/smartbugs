@@ -6,29 +6,32 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 class Manticore(Parser.Parser):
     NAME = "manticore"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
-            return
-        self._errors.update(Parser.exceptions(output))
-        if 'Invalid solc compilation' in output:
+        self._fails.update(Parser.exceptions(self._lines))
+        if output and 'Invalid solc compilation' in output:
             self._errors.add('solc error')
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
+        mcores = re.findall('Results in /(mcore_.+)', output)
         try:
             with tarfile.open(result_tar, 'r') as tar:
-                m = re.findall('Results in /(mcore_.+)', output)
                 self._analysis = []
-                for fout in m:
-                    output_file = tar.extractfile('results/' + fout + '/global.findings')
-                    self._analysis.append(Manticore.parseFile(output_file.read().decode('utf8')))
+                for mcore in mcores:
+                    findings_fn = f"results/{mcore}/global.findings"
+                    try:
+                        findings_file = tar.extractfile(findings_fn)
+                    except Exception as e:
+                        self._fails.add(f'problem extracting {findings_fn} from {result_tar}')
+                        return
+                    self._analysis.append(Manticore.__parseFile(findings_file.read().decode('utf8')))
         except Exception as e:
-            self._errors.add(f'problem accessing {result_tar}')
+            self._fails.add(f'problem opening tar archive {result_tar}')
+            return
 
     @staticmethod
-    def parseFile(content):
+    def __parseFile(content):
         output = []
         lines = content.splitlines()
         current_vul = None

@@ -19,29 +19,43 @@ ANALYSIS_COMPLETE = re.compile(
     f".*{re.escape('+ rm -rf facts-tmp')}",
     re.DOTALL)
 
-ERRORS = (
-    ('Error loading data: Cannot open fact file', 'internal error'),
-    ('Killed', 'exception occurred'),
+MESSAGES = (
+    re.compile("(Warning: Deprecated type declaration) used in file types.dl at line"),
+)
+
+FAILS = (
+    re.compile("Error loading data: (Cannot open fact file)"),
 )
 
 class Vandal(Parser.Parser):
     NAME = "vandal"
-    VERSION = "2022/07/03"
+    VERSION = "2022/07/22"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            self._errors.add('output missing')
+        if not self._lines:
+            if not self._fails:
+                self._fails.add('output missing')
             return
-        self._errors.update(Parser.exceptions(output))
-        if not ANALYSIS_COMPLETE.match(output):
-            self._errors.add('analysis incomplete')
-        for indicator,error in ERRORS:
-            if indicator in output:
-                self._errors.add(error)
-        for indicator,finding in FINDINGS:
-            if indicator in output:
-                self._findings.add(finding)
+        self._fails.update(Parser.exceptions(self._lines))
+        self._errors.discard('EXIT_CODE_1') # everything fine, no findings; findings => EXIT_CODE_0
+
+        for line in self._lines:
+            if Parser.add_match(self._messages, line, MESSAGES):
+                continue
+            if Parser.add_match(self._fails, line, FAILS):
+                continue
+            for indicator,finding in FINDINGS:
+                if indicator in line:
+                    self._findings.add(finding)
+                    break
+        if not ANALYSIS_COMPLETE.match(output) or 'Cannot open fact file' in self._fails:
+            self._messages.add('analysis incomplete')
+            if not self._fails and not self._errors:
+                self._fails.add('execution failed')
+        if 'Cannot open fact file' in self._fails and len(self._fails) > 1:
+            self._fails.remove('Cannot open fact file')
+
         self._analysis = sorted(self._findings)
 
 

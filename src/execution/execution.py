@@ -60,7 +60,7 @@ class Execution:
 
         duration_str = str(timedelta(seconds=round(duration)))
         exit_code = result["exit_code"] if result["exit_code"] is not None else "timeout"
-        success = not result["errors"] and result["exit_code"] == 0
+        success = not result["errors"] and not result["fails"]
         line = (
             f"{COLSTATUS}Done [{len(self.tasks_done)}/{len(self.tasks)}, {remaining_time}]: "
             f"{COLINFO}{task.file}"
@@ -117,9 +117,6 @@ class Execution:
             'end': task.end_time,
             'exit_code': task.exit_code,
             'duration': task.end_time - task.start_time,
-            'findings': None,
-            'errors': None,
-            'analysis': None
         }
         output_folder = task.result_output_path()
         if not os.path.exists(output_folder):
@@ -130,9 +127,8 @@ class Execution:
                 with open(os.path.join(output_folder, 'result.log'), 'w', encoding='utf-8') as f:
                     f.write(log_content)
                 parser = Execution.log_parser(task, log_content)
-                result['findings'] = parser.findings()
-                result['errors']   = parser.errors()
-                result['analysis'] = parser.analysis()
+                for k,v in parser.result().items():
+                    result[k] = v
         except Exception as e:
             traceback.print_exc()
             logs.print(f"Log parser error: {e}")
