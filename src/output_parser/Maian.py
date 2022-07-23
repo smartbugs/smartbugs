@@ -64,7 +64,8 @@ CHECK = re.compile('\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)')
 
 class Maian(Parser.Parser):
     NAME = "maian"
-    VERSION = "2022/07/22"
+    VERSION = "2022/07/23"
+    PORTFOLIO = { f[1] for f in FINDINGS }
 
     @staticmethod
     def __empty_check():

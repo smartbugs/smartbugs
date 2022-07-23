@@ -20,7 +20,15 @@ ERRORS = (
 
 class Conkas(Parser.Parser):
     NAME = "conkas"
-    VERSION = "2022/07/22"
+    VERSION = "2022/07/23"
+    PORTFOLIO = {
+        "Integer Overflow",
+        "Integer Underflow",
+        "Reentrancy",
+        "Time Manipulation",
+        "Transaction Ordering Dependence",
+        "Unchecked Low Level Call"
+    }
 
     @staticmethod
     def __parse_vuln(line: str):
@@ -41,6 +49,7 @@ class Conkas(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
+
         if not self._lines:
             if not self._fails:
                 self._fails.add('output missing')

@@ -7,7 +7,22 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocati
 
 class Mythril(Parser.Parser):
     NAME = "mythril"
-    VERSION = "2022/07/19"
+    VERSION = "2022/07/23"
+    PORTFOLIO = {
+        "Jump to an arbitrary instruction",
+        "Write to an arbitrary storage location",
+        "Delegatecall to user-supplied address",
+        "Dependence on tx.origin",
+        "Dependence on predictable environment variable",
+        "Unprotected Ether Withdrawal",
+        "Exception State",
+        "External Call To User-Supplied Address",
+        "Integer Arithmetic Bugs",
+        "Multiple Calls in a Single Transaction",
+        "State access after external call",
+        "Unprotected Selfdestruct",
+        "Unchecked return value from external call.",
+    }
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)

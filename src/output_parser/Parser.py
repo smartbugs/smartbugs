@@ -40,6 +40,9 @@ class Parser:
     def findings(self) -> List[str]:
         return sorted([str2label(f) for f in self._findings])
 
+    def portfolio(self) -> List[str]:
+        return sorted([str2label(f) for f in self.__class__.PORTFOLIO])
+
     def messages(self) -> List[str]:
         return sorted(self._messages)
 
@@ -59,7 +62,11 @@ class Parser:
             "errors": self.errors(),
             "fails": self.fails(),
             "analysis": self.analysis(),
-            "parser": { "name": self.NAME, "version": self.VERSION }
+            "parser": {
+                "name": self.NAME,
+                "version": self.VERSION,
+                "portfolio": sorted([str2label(f) for f in self.PORTFOLIO])
+            }
         }
 
     def parseSarif(self, str, file_path_in_repo):

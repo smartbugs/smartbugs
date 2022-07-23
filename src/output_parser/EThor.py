@@ -9,11 +9,11 @@ FINDINGS = (
 )
 
 MESSAGES = (
+    re.compile("(Integer [0-9]+ does not correspond to opcode)"),
+#    re.compile("(Encountered an unknown bytecode.*)"),
 )
 
 ERRORS = (
-    re.compile("(Integer [0-9]+ does not correspond to opcode)"),
-#    re.compile("(Encountered an unknown bytecode.*)"),
 )
 
 FAILS = (
@@ -26,7 +26,8 @@ UNSUPPORTED_OP = re.compile(".*(java.lang.UnsupportedOperationException: [^)]*)\
 
 class EThor(Parser.Parser):
     NAME = "ethor"
-    VERSION = "2022/07/22"
+    VERSION = "2022/07/23"
+    PORTFOLIO = { "secure", "insecure" }
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -36,12 +37,12 @@ class EThor(Parser.Parser):
             if not self._fails:
                 self._fails.add('output missing')
             return
-
-        exceptions = Parser.exceptions(self._lines)
+        self._fails.update(Parser.exceptions(self._lines))
         # Unsupported Ops are regarded as regular errors, not as inadvertent fails
-        unsupportedOps = { e for e in exceptions if 'UnsupportedOperationException' in e }
-        self._fails |= (exceptions - unsupportedOps)
-        self._errors |= { UNSUPPORTED_OP.match(e)[1] for e in unsupportedOps }
+        for e in list(self._fails):
+            if m := UNSUPPORTED_OP.match(e):
+                self._fails.remove(e)
+                self._errors.add(m[1])
 
         for line in self._lines:
             if Parser.add_match(self._findings, line, FINDINGS):
@@ -52,20 +53,15 @@ class EThor(Parser.Parser):
                 continue
             if Parser.add_match(self._fails, line, FAILS):
                 continue
+        if "DOCKER_SEGV" in self._fails:
+            self._fails.discard("exception (Segmentation fault)")
 
         if not self._findings:
             self._messages.add('analysis incomplete')
             if not self._fails and not self._errors:
                 self._fails.add('execution failed')
-        else:
-            for e in list(self._errors):
-                if e.endswith('does not correspond to opcode'):
-                    self._errors.remove(e)
-                    self._messages.add(e)
+        self._findings.discard("unknown")
         self._analysis = sorted(self._findings)
-
-        if "exception (Segmentation fault)" in self._fails and "DOCKER_SEGV" in self._fails:
-            self._fails.remove("exception (Segmentation fault)")
 
 
     ## TODO: Sarif

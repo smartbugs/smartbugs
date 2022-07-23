@@ -5,7 +5,17 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 class HoneyBadger(Oyente.Oyente):
     NAME = "honeybadger"
-    VERSION = "2022/07/22"
+    VERSION = "2022/07/23"
+    PORTFOLIO = {
+        "Balance disorder",
+        "Hidden transfer",
+        "Inheritance disorder",
+        "Uninitialised struct",
+        "Type overflow",
+        "Skip empty string",
+        "Hidden state update",
+        "Straw man contract"
+    }
 
     def parseSarif(self, honeybadger_output_results, file_path_in_repo):
         resultsList = []

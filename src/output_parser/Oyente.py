@@ -23,7 +23,13 @@ FAILS = (
 
 class Oyente(Parser.Parser):
     NAME = "oyente"
-    VERSION = "2022/07/22"
+    VERSION = "2022/07/23"
+    PORTFOLIO = {
+        "Callstack Depth Attack Vulnerability",
+        "Transaction-Ordering Dependence (TOD)",
+        "Timestamp Dependency",
+        "Re-Entrancy Vulnerability",
+    }
 
     @staticmethod
     def __skip(line):
@@ -43,7 +49,6 @@ class Oyente(Parser.Parser):
                 self._fails.add('output missing')
             return
 
-        # remove lines of Osiris logo that may interfere with exception parsing
         self._fails.update(Parser.exceptions(self._lines, Oyente.__skip))
 
         self._analysis = []
