@@ -16,6 +16,11 @@ DOCKER_CODES = {
 class Parser:
     """Base class of all output parsers."""
 
+    @classmethod
+    def portfolio(cls) -> List[str]:
+        '''Return the list of findings that the tool potentially detects.'''
+        return sorted([str2label(f) for f in cls.PORTFOLIO])
+
     def __init__(self, task: 'execution_task.Execution_Task', output: str):
         self._task     = task
         self._lines    = [] if not output else output.splitlines()
@@ -40,8 +45,6 @@ class Parser:
     def findings(self) -> List[str]:
         return sorted([str2label(f) for f in self._findings])
 
-    def portfolio(self) -> List[str]:
-        return sorted([str2label(f) for f in self.__class__.PORTFOLIO])
 
     def messages(self) -> List[str]:
         return sorted(self._messages)
@@ -65,7 +68,6 @@ class Parser:
             "parser": {
                 "name": self.NAME,
                 "version": self.VERSION,
-                "portfolio": sorted([str2label(f) for f in self.PORTFOLIO])
             }
         }
 
@@ -146,24 +148,31 @@ def add_match(matches, line, patterns):
 ################################################
 # Running parser standalone
 
-def reparse(output_parser, log_name, json_name):
+def reparse(log, jsn=None, parser=None):
     """Parse the output of a tool for a single contract.
 
-    Runs output_parser on log_name (typically .../result.log) and any other
-    output files in the same directory. If json_name exists (typically .../result.json),
-    it is used to initialize the dict with the parsed results, in order to keep run times.
+    Runs parser on log (typically .../result.log) and any other
+    output files in the same directory. If jsn exists (typically .../result.json),
+    it is used to initialize the dict with the parsed results, to keep run times.
     """
+
+    path,_ = os.path.split(os.path.abspath(log))
+    if not jsn:
+        jsn = os.path.join(path,"result.json")
+    path,file_name = os.path.split(path)
+    path,execution_name = os.path.split(path)
+    output_folder,tool = os.path.split(path)
 
     # read result.log (stdout of tool)
     try:
-        with open(log_name) as f:
+        with open(log) as f:
             result_log = f.read().rstrip()
     except:
         result_log = None
 
     # read result.json (old parser output)
     try:
-        with open(json_name) as f:
+        with open(jsn) as f:
             result_json = json.load(f)
         if 'success' in result_json:
             del result_json['success']
@@ -171,21 +180,26 @@ def reparse(output_parser, log_name, json_name):
         result_json = { }
 
     # dummy config
-    path,_ = os.path.split(os.path.abspath(log_name))
-    path,file_name = os.path.split(path)
-    path,execution_name = os.path.split(path)
-    output_folder,tool = os.path.split(path)
     exec_cfg = execution_configuration.Execution_Configuration(
         output_folder, execution_name,
         None, None, None, None, None, None, None, None, None, None, None, None)
     exec_task = execution_task.Execution_Task(tool, file_name, exec_cfg)
     exec_task.exit_code = result_json["exit_code"] if "exit_code" in result_json else None
 
+    if not parser:
+        if tool in result_json:
+            tool = result_json["tool"]
+        if   tool == "ethor":       parser = "EThor"
+        elif tool == "honeybadger": parser = "HoneyBadger"
+        elif tool == "madmax":      parser = "MadMax"
+        elif tool == "teether":     parser = "TeEther"
+        else:                       parser = tool.capitalize()
+
     # reparse
-    if type(output_parser) == str:
-        module = importlib.import_module(f"src.output_parser.{output_parser}")
-        output_parser = getattr(module, output_parser)
-    p = output_parser(exec_task, result_log)
+    if type(parser) == str:
+        module = importlib.import_module(f"src.output_parser.{parser}")
+        parser = getattr(module, parser)
+    p = parser(exec_task, result_log)
     for k,v in p.result().items():
         result_json[k] = v
 

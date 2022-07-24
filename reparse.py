@@ -1,7 +1,7 @@
 import os, importlib, json, argparse, multiprocessing
 import src.output_parser.Parser as Parser
 
-def reparser(taskqueue, output_parser, overwrite, verbose):
+def reparser(taskqueue, parser, overwrite, verbose):
     fetched = 0
     skipped = 0
     while True:
@@ -20,7 +20,7 @@ def reparser(taskqueue, output_parser, overwrite, verbose):
             continue
         if verbose:
             print(d)
-        result_json = Parser.reparse(output_parser, fn_log, fn_json)
+        result_json = Parser.reparse(fn_log, fn_json, parser)
         with open(fn_jsonnew, 'w') as f:
             print(json.dumps(result_json,indent=2), file=f)
 
@@ -38,17 +38,14 @@ def main():
     argparser.add_argument("-v", "--verbose", action='store_true', help="Document progress.")
     argparser.add_argument("--processes", type=int, metavar="N", default=1, help="number of parallel processes (default 1)")
     argparser.add_argument("path_to_output", help="directory containing the tool output")
-    argparser.add_argument("parser_name", help="name of Python module for parsing the output")
+    argparser.add_argument("parser", nargs='?', default=None, help="name of Python module for parsing the output. If unspecified, guess from the tool given in result.json.")
     args = argparser.parse_args()
-
-    module = importlib.import_module(f"src.output_parser.{args.parser_name}")
-    output_parser = getattr(module, args.parser_name)
 
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
     mp = multiprocessing.get_context("spawn")
     taskqueue = mp.Queue()
 
-    reparsers = [ mp.Process(target=reparser, args=(taskqueue,output_parser,args.overwrite,args.verbose)) for _ in range(args.processes) ]
+    reparsers = [ mp.Process(target=reparser, args=(taskqueue,args.parser,args.overwrite,args.verbose)) for _ in range(args.processes) ]
     for r in reparsers:
         r.start()
 
