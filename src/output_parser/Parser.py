@@ -202,5 +202,8 @@ def reparse(log, jsn=None, parser=None):
     p = parser(exec_task, result_log)
     for k,v in p.result().items():
         result_json[k] = v
-
+    if 'contract' not in result_json:
+        result_json['contract'] = file_name
+    if 'tool' not in result_json:
+        result_json['tool'] = tool
     return result_json

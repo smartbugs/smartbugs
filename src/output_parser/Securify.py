@@ -31,10 +31,10 @@ class Securify(Parser.Parser):
             try:
                 with tarfile.open(result_tar, 'r') as tar:
                     try:
-                        results_json = tar.extractfile('results/results.json')
+                        live_json = tar.extractfile('results/live.json')
                         self._analysis = json.loads(results_json.read())
                     except:
-                        live_json = tar.extractfile('results/live.json')
+                        results_json = tar.extractfile('results/results.json')
                         self._analysis = {
                             f"{self._task.file}:{self._task.file_name}": json.loads(live_json.read())
                         }
