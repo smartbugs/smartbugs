@@ -10,7 +10,7 @@ def main():
     argparser.add_argument("-p", "--postgres", action='store_true', help="encode lists as Postgres arrays")
     argparser.add_argument("-v", "--verbose", action='store_true', help="show progress")
     argparser.add_argument("path_to_results", help="directory containing the result files")
-    argparser.add_argument("dataset", help="label identifying the dataset/run")
+    argparser.add_argument("dataset", nargs='?', default=None, help="label identifying the dataset/run")
     args = argparser.parse_args()
 
     log_name = "result.new.json" if args.n else "result.json"
@@ -22,11 +22,14 @@ def main():
     for path,_,files in os.walk(args.path_to_results):
         if log_name in files:
             results.append(os.path.join(path,log_name))
+    dataset = args.dataset
     for r in sorted(results):
         if args.verbose:
             print(r, file=sys.stderr)
+        if not dataset:
+            dataset = os.path.abspath(r).split(os.sep)[-3]
         try:
-            result2csv(csv_out, args.dataset, r, args.postgres)
+            result2csv(csv_out, dataset, r, args.postgres)
         except Exception as e:
             print(f"ERROR: {e} with {r}", file=sys.stderr)
             continue
@@ -43,21 +46,19 @@ def list2pgarray(l):
     return a
 
 def data2csv(data, dataset, postgres):
+    for f in ("findings", "messages", "errors", "fails"):
+        if f not in data:
+            data[f] = []
+    if "exit_code" not in data:
+        data["exit_code"]  = -10
     csv = {
         "contract": os.path.basename(data["contract"]),
         "dataset": dataset
     }
-    csv["exit_code"] = data["exit_code"] if "exit_code" in data else -10
-    for f in ("tool", "duration"):
-        # throw an exception if f is not in data
+    for f in ("tool", "duration", "exit_code"):
         csv[f] = data[f]
     for f in ("findings", "messages", "errors", "fails"):
-        if f not in data:
-            csv[f] = []
-        elif postgres:
-            csv[f] = list2pgarray(data[f])
-        else:
-            csv[f] = ','.join(data[f])
+        csv[f] = list2pgarray(data[f]) if postgres else ','.join(data[f])
     if "parser" in data:
         csv["parser_name"] = data["parser"]["name"]
         csv["parser_version"] = data["parser"]["version"]
