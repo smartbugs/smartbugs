@@ -28,7 +28,7 @@ def main():
         try:
             result2csv(csv_out, args.dataset, r, args.postgres)
         except Exception as e:
-            print("ERROR: %s with %s" %(e, r), file=sys.stderr)
+            print(f"ERROR: {e} with {r}", file=sys.stderr)
             continue
 
 def list2pgarray(l):
@@ -47,13 +47,9 @@ def data2csv(data, dataset, postgres):
         "contract": os.path.basename(data["contract"]),
         "dataset": dataset
     }
-    if 'findings' not in data:
-        data['findings'] = []
-    if 'errors' not in data:
-        data['errors'] = []
-    if 'exit_code' not in data:
-        data['exit_code'] = -10
-    for f in ("tool", "exit_code", "duration"):
+    csv["exit_code"] = data["exit_code"] if "exit_code" in data else -10
+    for f in ("tool", "duration"):
+        # throw an exception if f is not in data
         csv[f] = data[f]
     for f in ("findings", "messages", "errors", "fails"):
         if f not in data:

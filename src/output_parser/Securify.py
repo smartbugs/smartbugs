@@ -32,12 +32,12 @@ class Securify(Parser.Parser):
                 with tarfile.open(result_tar, 'r') as tar:
                     try:
                         live_json = tar.extractfile('results/live.json')
-                        self._analysis = json.loads(results_json.read())
-                    except:
-                        results_json = tar.extractfile('results/results.json')
                         self._analysis = {
                             f"{self._task.file}:{self._task.file_name}": json.loads(live_json.read())
                         }
+                    except:
+                        results_json = tar.extractfile('results/results.json')
+                        self._analysis = json.loads(results_json.read())
             except Exception as e:
                 if not self._fails:
                     self._fails.add('output missing')
