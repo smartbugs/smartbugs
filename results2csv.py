@@ -26,10 +26,9 @@ def main():
     for r in sorted(results):
         if args.verbose:
             print(r, file=sys.stderr)
-        if not dataset:
-            dataset = os.path.abspath(r).split(os.sep)[-3]
+        dataset = args.dataset if args.dataset else os.path.abspath(r).split(os.sep)[-3]
         try:
-            result2csv(csv_out, dataset, r, args.postgres)
+            result2csv(r, dataset, args.postgres, csv_out)
         except Exception as e:
             print(f"ERROR: {e} with {r}", file=sys.stderr)
             continue
@@ -79,7 +78,7 @@ def data2csv(data, dataset, postgres):
         csv["success"] = True
     return [ csv[f] for f in FIELDS ]
 
-def result2csv(csv_out, dataset, result_fn, postgres):
+def result2csv(result_fn, dataset, postgres, csv_out):
     with open(result_fn) as f:
         try:
             data = json.load(f)

@@ -1,4 +1,4 @@
-import os,re,tarfile
+import os,tarfile
 import src.output_parser.Parser as Parser
 from sarif_om import Tool, ToolComponent, Run, MultiformatMessageString
 from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, parseRule, parseResult
@@ -6,7 +6,7 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 class Manticore(Parser.Parser):
     NAME = "manticore"
-    VERSION = "2022/07/22"
+    VERSION = "2022/08/04"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -14,18 +14,19 @@ class Manticore(Parser.Parser):
         if output and 'Invalid solc compilation' in output:
             self._errors.add('solc error')
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
-        mcores = re.findall('Results in /(mcore_.+)', output)
         try:
             with tarfile.open(result_tar, 'r') as tar:
                 self._analysis = []
-                for mcore in mcores:
-                    findings_fn = f"results/{mcore}/global.findings"
-                    try:
-                        findings_file = tar.extractfile(findings_fn)
-                    except Exception as e:
-                        self._fails.add(f'problem extracting {findings_fn} from {result_tar}')
-                        return
-                    self._analysis.append(Manticore.__parseFile(findings_file.read().decode('utf8')))
+                for f in tar.getmembers():
+                    if f.name.endswith("/global.findings"):
+                        try:
+                            findings_file = tar.extractfile(f)
+                        except Exception as e:
+                            self._fails.add(f'problem extracting {f.name} from {result_tar}')
+                            return
+                        analysis = Manticore.__parseFile(findings_file.read().decode('utf8'))
+                        self._analysis.append(analysis)
+                        self._findings.update([vul["name"] for vul in analysis])
         except Exception as e:
             self._fails.add(f'problem opening tar archive {result_tar}')
             return

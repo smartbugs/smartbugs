@@ -7,7 +7,7 @@ from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
 
 class Securify(Parser.Parser):
     NAME = "securify"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/04"
     PORTFOLIO = {
         "DAO",
         "DAOConstantGas",
@@ -24,6 +24,10 @@ class Securify(Parser.Parser):
         self._fails.update(Parser.exceptions(self._lines))
         if self._fails:
             self._errors.discard('EXIT_CODE_1')
+        # We look for the output in the following order:
+        # result.log (= output)
+        # result.tar/results.json
+        # result.tar/live.json
         try:
             self._analysis = json.loads(output)
         except:
@@ -31,29 +35,32 @@ class Securify(Parser.Parser):
             try:
                 with tarfile.open(result_tar, 'r') as tar:
                     try:
-                        live_json = tar.extractfile('results/live.json')
-                        self._analysis = {
-                            f"{self._task.file}:{self._task.file_name}": json.loads(live_json.read())
-                        }
+                        jsn = tar.extractfile('results/results.json')
+                        self._analysis = json.loads(jsn.read())
                     except:
-                        results_json = tar.extractfile('results/results.json')
-                        self._analysis = json.loads(results_json.read())
+                        jsn = tar.extractfile('results/live.json')
+                        self._analysis = json.loads(jsn.read())
             except Exception as e:
                 if not self._fails:
                     self._fails.add('output missing')
                 return
-        for contract,analysis in self._analysis.items():
-            if "finished" in analysis and not analysis["finished"]:
+        if "patternResults" in self._analysis: # live.json
+            if "finished" in self._analysis and not self._analysis["finished"]:
                 self._messages.add('analysis incomplete')
-            if "decompiled" in analysis and not analysis["decompiled"]:
+            if "decompiled" in self._analysis and not self._analysis["decompiled"]:
                 self._errors.add('decompilation error')
-            for vuln,check in analysis["patternResults"].items():
+            for vuln,check in self._analysis["patternResults"].items():
                 if not check["completed"]:
                     self._messages.add('analysis incomplete')
                 if check["hasViolations"]:
                     self._findings.add(vuln)
-        if 'analysis incomplete' in self._messages and not self._fails:
-            self._fails.add("execution failed")
+            if 'analysis incomplete' in self._messages and not self._fails:
+                self._fails.add("execution failed")
+        else: # output or result.json
+            for contract,analysis in self._analysis.items():
+                for vuln,check in analysis["results"].items():
+                    if check["violations"]:
+                        self._findings.add(vuln)
 
 
     def parseSarif(self, securify_output_results, file_path_in_repo):

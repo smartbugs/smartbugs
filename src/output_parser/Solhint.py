@@ -5,7 +5,7 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 class Solhint(Parser.Parser):
     NAME = "solhint"
-    VERSION = "2022/07/22"
+    VERSION = "2022/08/04"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
@@ -35,7 +35,7 @@ class Solhint(Parser.Parser):
                     'level': level,
                     'type': type
                 })
-                self._findings.append(type)
+                self._findings.add(type)
 
     def parseSarif(self, solhint_output_results, file_path_in_repo):
         resultsList = []
