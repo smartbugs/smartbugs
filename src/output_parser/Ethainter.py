@@ -2,7 +2,7 @@ import src.output_parser.Gigahorse as Gigahorse
 
 class Ethainter(Gigahorse.Gigahorse):
     NAME = "ethainter"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/05"
     PORTFOLIO = {
         "TaintedStoreIndex",
         "TaintedSelfdestruct",

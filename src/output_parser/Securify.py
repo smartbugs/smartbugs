@@ -7,7 +7,7 @@ from src.output_parser.SarifHolder import parseLogicalLocation, parseArtifact, \
 
 class Securify(Parser.Parser):
     NAME = "securify"
-    VERSION = "2022/08/04"
+    VERSION = "2022/08/05"
     PORTFOLIO = {
         "DAO",
         "DAOConstantGas",
@@ -20,8 +20,7 @@ class Securify(Parser.Parser):
     }
 
     def __init__(self, task: 'Execution_Task', output: str):
-        super().__init__(task, output)
-        self._fails.update(Parser.exceptions(self._lines))
+        super().__init__(task, output, False)
         if self._fails:
             self._errors.discard('EXIT_CODE_1')
         # We look for the output in the following order:
@@ -42,7 +41,7 @@ class Securify(Parser.Parser):
                         self._analysis = json.loads(jsn.read())
             except Exception as e:
                 if not self._fails:
-                    self._fails.add('output missing')
+                    self._fails.add('execution failed')
                 return
         if "patternResults" in self._analysis: # live.json
             if "finished" in self._analysis and not self._analysis["finished"]:
@@ -57,6 +56,11 @@ class Securify(Parser.Parser):
             if 'analysis incomplete' in self._messages and not self._fails:
                 self._fails.add("execution failed")
         else: # output or result.json
+            if not self._analysis:
+                self._messages.add('analysis incomplete')
+                if not self._fails:
+                    self._fails.add("execution failed")
+                return
             for contract,analysis in self._analysis.items():
                 for vuln,check in analysis["results"].items():
                     if check["violations"]:

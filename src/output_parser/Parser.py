@@ -16,19 +16,14 @@ DOCKER_CODES = {
 class Parser:
     """Base class of all output parsers."""
 
-    @classmethod
-    def portfolio(cls) -> List[str]:
-        '''Return the list of findings that the tool potentially detects.'''
-        return sorted([str2label(f) for f in cls.PORTFOLIO])
-
-    def __init__(self, task: 'execution_task.Execution_Task', output: str):
+    def __init__(self, task: 'execution_task.Execution_Task', output: str, output_expected=True, skip = lambda line: False):
         self._task     = task
         self._lines    = [] if not output else output.splitlines()
         self._findings = set() # properties of the contract as determined by the tool
         self._messages = set() # notifications by the tool
         self._errors   = set() # errors detected and handled by the tool
         self._fails    = set() # exceptions not caught by the tool, or outside events leading to abortion
-        self._analysis = None
+        self._analysis = []
         if task.exit_code is None:
             self._fails.add('DOCKER_TIMEOUT')
         elif task.exit_code == 0:
@@ -40,11 +35,18 @@ class Parser:
         else:
             # remove it for individual signals and tools, where it is not an error
             self._errors.add(f"EXIT_CODE_{task.exit_code}")
+        if self._lines:
+            self._fails.update(exceptions(self._lines, skip))
+        elif output_expected and not self._fails:
+            self._fails.add('execution failed')
 
+    @classmethod
+    def portfolio(cls) -> List[str]:
+        '''Return the list of findings that the tool potentially detects.'''
+        return sorted([str2label(f) for f in cls.PORTFOLIO])
 
     def findings(self) -> List[str]:
         return sorted([str2label(f) for f in self._findings])
-
 
     def messages(self) -> List[str]:
         return sorted(self._messages)
@@ -118,22 +120,22 @@ EXCEPTIONS = (
     re.compile("thread '[^']*' panicked at '([^']*)'"), # Rust
 )
 
-def exceptions(lines, skip = lambda line: False):
+def exceptions(lines, skip):
     exceptions = set()
     traceback = False
     for line in lines:
         if skip(line):
-            pass
-        elif traceback:
+            continue 
+        if traceback:
             if line and line[0] != " ":
-                exceptions.add(f"exception ({truncate_message(line)})")
+                exceptions.add(f"exception ({line})")
                 traceback = False
         elif line.startswith(TRACEBACK):
             traceback = True
         else:
             for re_exception in EXCEPTIONS:
                 if m := re_exception.match(line):
-                    exceptions.add(f"exception ({truncate_message(m[1])})")
+                    exceptions.add(f"exception ({m[1]})")
     return exceptions
 
 

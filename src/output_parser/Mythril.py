@@ -7,7 +7,7 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseLogicalLocati
 
 class Mythril(Parser.Parser):
     NAME = "mythril"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/06"
     PORTFOLIO = {
         "Jump to an arbitrary instruction",
         "Write to an arbitrary storage location",
@@ -26,25 +26,29 @@ class Mythril(Parser.Parser):
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not output:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
-        if 'aborting analysis' in output:
-            self._messages.add('analysis incomplete')
-            if not self._fails and not self._errors:
-                self._fails.add('execution failed')
+
+        # Mythril catches all exceptions, prints a message "please report", and then prints the traceback.
+        # So we consider all exceptions as fails (non-intended interruptions)
+        for f in list(self._fails):
+            if f.startswith("exception (mythril.laser.ethereum.transaction.transaction_models.TransactionEndSignal"):
+                self._fails.remove(f)
+                self._fails.add("exception (mythril.laser.ethereum.transaction.transaction_models.TransactionEndSignal)")
+        for line in self._lines:
+            if "Exception occurred, aborting analysis." in line:
+                self._messages.add('analysis incomplete')
+                if not self._fails and not self._errors:
+                    self._fails.add('execution failed')
+                break
         try:
             # there may be a valid json object in the last line even if there was an error
             self._analysis = json.loads(self._lines[-1])
         except:
             return
-        if self._analysis is not None and 'issues' in self._analysis and self._analysis['issues'] is not None:
-            for issue in self._analysis['issues']:
-                self._findings.add(issue['title'])
-        if self._analysis is not None and 'error' in self._analysis and self._analysis['error'] is not None:
-            self._errors.add(self._analysis['error'].split('.')[0])
+        if self._analysis:
+            if 'issues' in self._analysis and self._analysis['issues']:
+                self._findings.update([ issue['title'] for issue in self._analysis['issues']])
+            if 'error' in self._analysis and self._analysis['error']:
+                self._errors.add(self._analysis['error'].split('.')[0])
 
 
     def parseSarif(self, mythril_output_results, file_path_in_repo):

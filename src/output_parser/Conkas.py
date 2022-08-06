@@ -20,7 +20,7 @@ ERRORS = (
 
 class Conkas(Parser.Parser):
     NAME = "conkas"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/05"
     PORTFOLIO = {
         "Integer Overflow",
         "Integer Underflow",
@@ -30,42 +30,35 @@ class Conkas(Parser.Parser):
         "Unchecked Low Level Call"
     }
 
-    @staticmethod
-    def __parse_vuln(line: str):
-        vuln_type = line.split('Vulnerability: ')[1].split('.')[0]
-        maybe_in_function = line.split('Maybe in function: ')[1].split('.')[0]
-        pc = line.split('PC: ')[1].split('.')[0]
-        line_number = line.split('Line number: ')[1].split('.')[0]
-        return {
-            'vuln_type': vuln_type,
-            'maybe_in_function': maybe_in_function,
-            'pc': pc,
-            'line_number': line_number
-        }
-
-    @staticmethod
-    def __skip(line):
-        return line.startswith("Analysing ") and line.endswith("...")
-
     def __init__(self, task: 'Execution_Task', output: str):
-        super().__init__(task, output)
 
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        # removing spurious 'Analysing' message disrupting exception traces
-        self._fails.update(Parser.exceptions(self._lines, Conkas.__skip))
-        self._analysis = []
+        def skip(line):
+            # Identify lines interfering with exception parsing
+            return line.startswith("Analysing ") and line.endswith("...")
+        super().__init__(task, output, True, skip)
+        for f in list(self._fails):
+            if f.startswith("exception (KeyError: <SSABasicBlock"):
+                self._fails.remove(f)
+                self._fails.add("exception (KeyError: <SSABasicBlock ...>)")
+
         for line in self._lines:
             if Parser.add_match(self._errors, line, ERRORS):
                 self._fails.discard('exception (Exception)')
                 continue
             if 'Vulnerability: ' in line:
-                issue = Conkas.__parse_vuln(line)
-                self._analysis.append(issue)
-                self._findings.add(issue['vuln_type'])
+                vuln_type = line.split('Vulnerability: ')[1].split('.')[0]
+                maybe_in_function = line.split('Maybe in function: ')[1].split('.')[0]
+                pc = line.split('PC: ')[1].split('.')[0]
+                line_number = line.split('Line number: ')[1].split('.')[0]
+                self._analysis.append({
+                    'vuln_type': vuln_type,
+                    'maybe_in_function': maybe_in_function,
+                    'pc': pc,
+                    'line_number': line_number
+                })
+                self._findings.add(vuln_type)
     
+
     def parseSarif(self, conkas_output_results, file_path_in_repo):
         resultsList = []
         rulesList = []

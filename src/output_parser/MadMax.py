@@ -5,7 +5,7 @@ from src.output_parser.SarifHolder import parseRule, parseResult, isNotDuplicate
 
 class MadMax(Gigahorse.Gigahorse):
     NAME = "madmax"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/05"
     PORTFOLIO = {
         "OverflowLoopIterator",
         "UnboundedMassOp",

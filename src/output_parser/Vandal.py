@@ -29,16 +29,11 @@ FAILS = (
 
 class Vandal(Parser.Parser):
     NAME = "vandal"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/05"
     PORTFOLIO = { f[1] for f in FINDINGS }
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
         self._errors.discard('EXIT_CODE_1') # everything fine, no findings; findings => EXIT_CODE_0
 
         for line in self._lines:
@@ -50,7 +45,7 @@ class Vandal(Parser.Parser):
                 if indicator in line:
                     self._findings.add(finding)
                     break
-        if not ANALYSIS_COMPLETE.match(output) or 'Cannot open fact file' in self._fails:
+        if self._lines and (not ANALYSIS_COMPLETE.match(output) or 'Cannot open fact file' in self._fails):
             self._messages.add('analysis incomplete')
             if not self._fails and not self._errors:
                 self._fails.add('execution failed')

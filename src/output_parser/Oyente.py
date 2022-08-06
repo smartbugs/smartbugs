@@ -7,13 +7,13 @@ from src.execution.execution_task import Execution_Task
 
 
 MESSAGES = (
+    re.compile("!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
     re.compile("(incomplete push instruction) at [0-9]+"),
 )
 
 # ERRORS also for Osiris and Honeybadger
 ERRORS = (
     re.compile("(UNKNOWN INSTRUCTION: .*)"),
-    re.compile("!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
     re.compile("CRITICAL:root:(Solidity compilation failed)"),
 )
 
@@ -23,7 +23,7 @@ FAILS = (
 
 class Oyente(Parser.Parser):
     NAME = "oyente"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/06"
     PORTFOLIO = {
         "Callstack Depth Attack Vulnerability",
         "Transaction-Ordering Dependence (TOD)",
@@ -31,27 +31,20 @@ class Oyente(Parser.Parser):
         "Re-Entrancy Vulnerability",
     }
 
-    @staticmethod
-    def __skip(line):
-        return (
-            line.startswith("888")
-            or line.startswith("`88b")
-            or line.startswith("!!! ")
-            or line.startswith("UNKNOWN INSTRUCTION:")
-        )
 
     def __init__(self, task: 'Execution_Task', output: str):
-        super().__init__(task, output)
-        self._errors.discard('EXIT_CODE_1') # redundant: exit code 1 is reflected in other errors, or just indicates that a vulnerability has been found
 
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
+        def skip(line):
+            # Identify lines interfering with exception parsing
+            return (
+                line.startswith("888")
+                or line.startswith("`88b")
+                or line.startswith("!!! ")
+                or line.startswith("UNKNOWN INSTRUCTION:")
+            )
+        super().__init__(task, output, True, skip)
+        self._errors.discard('EXIT_CODE_1') # redundant: indicates error or vulnerability reported below
 
-        self._fails.update(Parser.exceptions(self._lines, Oyente.__skip))
-
-        self._analysis = []
         analysis_completed = False
         contract = None
         for line in self._lines:
@@ -126,20 +119,19 @@ class Oyente(Parser.Parser):
         if contract is not None:
             self._analysis.append(contract)
 
-        if not analysis_completed:
+        if self._lines and not analysis_completed:
             self._messages.add('analysis incomplete')
             if not self._fails and not self._errors:
                 self._fails.add('execution failed')
 
         # Remove errors/fails issued twice, once via exception and once via print statement
-        if "SYMBOLIC EXECUTION TIMEOUT" in self._errors and "exception (Exception: timeout)" in self._fails:
+        # Reclassify symbolic execution timeouts, as they are informative rather than an error
+        if "SYMBOLIC EXECUTION TIMEOUT" in self._messages and "exception (Exception: timeout)" in self._fails:
             self._fails.remove("exception (Exception: timeout)")
+        if "exception (Exception: timeout)" in self._fails:
+            self._messages.add("exception (Exception: timeout)")
         for e in list(self._fails): # list() makes a copy, so we can modify the set in the loop
-            if e == "exception (Exception: timeout)":
-                self._fails.remove(e)
-                if not "SYMBOLIC EXECUTION TIMEOUT" in self._errors:
-                    self._errors.add(e)
-            elif "UNKNOWN INSTRUCTION" in e:
+            if "UNKNOWN INSTRUCTION" in e:
                 self._fails.remove(e)
                 if not e[22:-1] in self._errors:
                     self._errors.add(e)

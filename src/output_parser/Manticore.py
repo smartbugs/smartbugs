@@ -6,17 +6,15 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 class Manticore(Parser.Parser):
     NAME = "manticore"
-    VERSION = "2022/08/04"
+    VERSION = "2022/08/05"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        self._fails.update(Parser.exceptions(self._lines))
         if output and 'Invalid solc compilation' in output:
             self._errors.add('solc error')
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
         try:
             with tarfile.open(result_tar, 'r') as tar:
-                self._analysis = []
                 for f in tar.getmembers():
                     if f.name.endswith("/global.findings"):
                         try:

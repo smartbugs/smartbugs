@@ -11,15 +11,10 @@ KEYS = (
 
 class EasyFlow(Parser.Parser):
     NAME = "easyflow"
-    VERSION = "2022/07/22"
+    VERSION = "2022/08/05"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
         analysis = {}
         for line in self._lines:
             for indicator,key in KEYS:
@@ -29,6 +24,7 @@ class EasyFlow(Parser.Parser):
         if 'result' in analysis:
             self._findings.add(analysis['result'])
         self._analysis = [analysis]
+
     
     def parseSarif(self, output_results, file_path_in_repo):
         resultsList = []

@@ -9,8 +9,8 @@ FINDINGS = (
 )
 
 MESSAGES = (
-    re.compile("(Integer [0-9]+ does not correspond to opcode)"),
-#    re.compile("(Encountered an unknown bytecode.*)"),
+#    re.compile("(Integer [0-9]+ does not correspond to opcode)"),
+    re.compile("(Encountered an unknown bytecode)"),
 )
 
 ERRORS = (
@@ -26,19 +26,16 @@ UNSUPPORTED_OP = re.compile(".*(java.lang.UnsupportedOperationException: [^)]*)\
 
 class EThor(Parser.Parser):
     NAME = "ethor"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/06"
     PORTFOLIO = { "secure", "insecure" }
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        self._errors.discard('EXIT_CODE_1') # redundant: exit code 1 is reflected in other errors
 
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
-        # Unsupported Ops are regarded as regular errors, not as inadvertent fails
+        self._errors.discard('EXIT_CODE_1') # redundant: exit code 1 is reflected in other errors
+        if 'DOCKER_TIMEOUT' in self._fails or 'DOCKER_KILL_OOM' in self._fails:
+            self._fails.discard('exception (Killed)')
+        # Unsupported Ops are regular, checked-for errors, not unexpected fails
         for e in list(self._fails):
             if m := UNSUPPORTED_OP.match(e):
                 self._fails.remove(e)
@@ -56,7 +53,7 @@ class EThor(Parser.Parser):
         if "DOCKER_SEGV" in self._fails:
             self._fails.discard("exception (Segmentation fault)")
 
-        if not self._findings:
+        if self._lines and not self._findings:
             self._messages.add('analysis incomplete')
             if not self._fails and not self._errors:
                 self._fails.add('execution failed')

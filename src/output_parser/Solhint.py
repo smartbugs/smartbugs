@@ -5,37 +5,33 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 class Solhint(Parser.Parser):
     NAME = "solhint"
-    VERSION = "2022/08/04"
+    VERSION = "2022/08/05"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
 
-        self._analysis = []
         for line in self._lines:
-            if ":" in line:
-                s_result = line.split(':')
-                if len(s_result) != 4:
-                    continue
-                (file, line, column, end_error) = s_result
-                if ']' not in end_error:
-                    continue
-                message = end_error[1:end_error.index('[') - 1]
-                level = end_error[end_error.index('[') + 1: end_error.index('/')]
-                type = end_error[end_error.index('/') + 1: len(end_error) - 1]
-                self._analysis.append({
-                    'file': file,
-                    'line': line,
-                    'column': column,
-                    'message': message,
-                    'level': level,
-                    'type': type
-                })
-                self._findings.add(type)
+            if not ":" in line:
+                continue
+            s_result = line.split(':')
+            if len(s_result) != 4:
+                continue
+            (file, line, column, end_error) = s_result
+            if ']' not in end_error:
+                continue
+            message = end_error[1:end_error.index('[') - 1]
+            level = end_error[end_error.index('[') + 1: end_error.index('/')]
+            type = end_error[end_error.index('/') + 1: len(end_error) - 1]
+            self._analysis.append({
+                'file': file,
+                'line': line,
+                'column': column,
+                'message': message,
+                'level': level,
+                'type': type
+            })
+            self._findings.add(type)
+
 
     def parseSarif(self, solhint_output_results, file_path_in_repo):
         resultsList = []

@@ -6,10 +6,10 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseAr
 
 class Slither(Parser.Parser):
     NAME = "slither"
-    VERSION = "2022/07/22"
+    VERSION = "2022/08/05"
 
     def __init__(self, task: 'Execution_Task', output: str):
-        super().__init__(task, output)
+        super().__init__(task, output, False)
         result_tar = os.path.join(self._task.result_output_path(), 'result.tar')
         try:
             with tarfile.open(result_tar, 'r') as tar:

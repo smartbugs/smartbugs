@@ -10,7 +10,7 @@ FINISHED = re.compile('Nothing to report.|======> Bug found! Need .* transaction
 
 class Pakala(Parser.Parser):
     NAME = "pakala"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/06"
     PORTFOLIO = {
         "delegatecall bug",
         "selfdestruct bug",
@@ -18,15 +18,19 @@ class Pakala(Parser.Parser):
     }
 
     def __init__(self, task: 'Execution_Task', output: str):
-        super().__init__(task, output)
+
+        def skip(line):
+            return (
+                line.startswith("Analyzing contract at")
+                or line.startswith("Starting symbolic execution step...")
+                or line.startswith("Symbolic execution finished with coverage")
+                or line.startswith("Outcomes: ")
+            )
+        super().__init__(task, output, True, skip)
         self._errors.discard('EXIT_CODE_1') # there will be an exception in self._fails anyway
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
+
         coverage = None
-        finished = False
+        analysis_completed = False
         traceback = False
         for line in self._lines:
             if m := COVERAGE.match(line):
@@ -34,14 +38,14 @@ class Pakala(Parser.Parser):
             if m := FINDING.match(line):
                 self._findings.add(m[1])
             if FINISHED.match(line):
-                finished = True
-        if not finished:
+                analysis_completed = True
+        if self._lines and not analysis_completed:
             self._messages.add('analysis incomplete')
             if not self._fails and not self._errors:
                 self._fails.add('execution failed')
 
         analysis = { 'vulnerabilities': sorted(self._findings) }
-        if coverage is not None:
+        if coverage:
             analysis['coverage'] = coverage
         self._analysis = [ analysis ]
     

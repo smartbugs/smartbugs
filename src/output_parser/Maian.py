@@ -64,44 +64,39 @@ CHECK = re.compile('\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)')
 
 class Maian(Parser.Parser):
     NAME = "maian"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/05"
     PORTFOLIO = { f[1] for f in FINDINGS }
 
-    @staticmethod
-    def __empty_check():
-        return {'type': None, 'file': '', 'contract': '', 'errors': set(), 'findings': set(), 'exploit': [], 'notes': set()}
-
-    @staticmethod
-    def __is_empty_check(check):
-        for v in check.values():
-            if v:
-                return False
-        return True
-
     def __init__(self, task: 'Execution_Task', output: str):
+
+        def empty_check():
+            return {
+                'type': None,
+                'file': '',
+                'contract': '',
+                'errors': set(),
+                'findings': set(),
+                'exploit': [],
+                'notes': set()
+            }
+
+        def is_empty_check(check):
+            return all( not v for v in check.values() )
+
         super().__init__(task, output)
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-
-        self._lines = Parser.discard_ANSI(self._lines)
-
-        self._fails.update(Parser.exceptions(self._lines))
-        # Remove redundant error
         if self._fails:
-            self._errors.discard("EXIT_CODE_1")
+            self._errors.discard("EXIT_CODE_1") # redundant
 
         # first pass: one entry per check
         checks = []
-        check  = Maian.__empty_check()
+        check  = empty_check()
         deployed = True
-        for line in self._lines:
+        for line in Parser.discard_ANSI(self._lines):
 
             if line.startswith('='*100):
-                if not Maian.__is_empty_check(check) and deployed:
+                if not is_empty_check(check) and deployed:
                     checks.append(check)
-                check = Maian.__empty_check()
+                check = empty_check()
                 deployed = True
                 continue
 
@@ -149,7 +144,7 @@ class Maian(Parser.Parser):
             if m := TRANSACTION.match(line):
                 check['exploit'].append(m[1])
 
-        if not Maian.__is_empty_check(check) and deployed:
+        if not is_empty_check(check) and deployed:
             checks.append(check)
 
         # second pass: one entry per contract

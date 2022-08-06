@@ -5,41 +5,28 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseArtifact, par
 
 class Smartcheck(Parser.Parser):
     NAME = "smartcheck"
-    VERSION = "2022/07/22"
-
-    @staticmethod
-    def extract_result_line(line):
-        index_split = line.index(":")
-        key = line[:index_split]
-        value = line[index_split + 1:].strip()
-        if value.isdigit():
-            value = int(value)
-        return (key, value)
+    VERSION = "2022/08/05"
 
     def __init__(self, task: 'Execution_Task', output: str):
         super().__init__(task, output)
-        if not self._lines:
-            if not self._fails:
-                self._fails.add('output missing')
-            return
-        self._fails.update(Parser.exceptions(self._lines))
 
-        self._analysis = []
         current_error = None
         for line in self._lines:
             if "ruleId: " in line:
-                if current_error is not None:
+                if current_error:
                     self._analysis.append(current_error)
-                current_error = {
-                    'name': line[line.index("ruleId: ") + 8:]
-                }
-            elif current_error is not None and ':' in line and ' :' not in line:
-                (key, value) = Smartcheck.extract_result_line(line)
+                current_error = { "name": line[line.index("ruleId: ")+8:] }
+            elif current_error and ":" in line and not " :" in line:
+                i = line.index(":")
+                key = line[:i]
+                value = line[i+1:].strip()
+                if value.isdigit():
+                    value = int(value)
                 current_error[key] = value
-        if current_error is not None:
+        if current_error:
             self._analysis.append(current_error)
-        for e in self._analysis:
-            self._findings.add(e['name'])
+        self._findings.update([e["name"] for e in self._analysis])
+
 
     def parseSarif(self, smartcheck_output_results, file_path_in_repo):
         resultsList = []

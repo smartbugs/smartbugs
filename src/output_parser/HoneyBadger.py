@@ -5,7 +5,7 @@ from src.output_parser.SarifHolder import isNotDuplicateRule, parseRule, parseRe
 
 class HoneyBadger(Oyente.Oyente):
     NAME = "honeybadger"
-    VERSION = "2022/07/23"
+    VERSION = "2022/08/06"
     PORTFOLIO = {
         "Balance disorder",
         "Hidden transfer",
