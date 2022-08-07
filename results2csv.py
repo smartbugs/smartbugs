@@ -13,25 +13,21 @@ def main():
     argparser.add_argument("dataset", nargs='?', default=None, help="label identifying the dataset/run")
     args = argparser.parse_args()
 
-    log_name = "result.new.json" if args.n else "result.json"
+    jsn_name = "result.new.json" if args.n else "result.json"
 
     csv_out = csv.writer(sys.stdout)
     csv_out.writerow(FIELDS)
 
     results = []
     for path,_,files in os.walk(args.path_to_results):
-        if log_name in files:
-            results.append(os.path.join(path,log_name))
+        if jsn_name in files:
+            results.append(os.path.join(path,jsn_name))
     dataset = args.dataset
     for r in sorted(results):
         if args.verbose:
             print(r, file=sys.stderr)
         dataset = args.dataset if args.dataset else os.path.abspath(r).split(os.sep)[-3]
-        try:
-            result2csv(r, dataset, args.postgres, csv_out)
-        except Exception as e:
-            print(f"ERROR: {e} with {r}", file=sys.stderr)
-            continue
+        result2csv(r, dataset, args.postgres, csv_out)
 
 def list2pgarray(l):
     a = '{'
@@ -48,8 +44,6 @@ def data2csv(data, dataset, postgres):
     for f in ("findings", "messages", "errors", "fails"):
         if f not in data:
             data[f] = []
-    if "exit_code" not in data:
-        data["exit_code"]  = -10
     csv = {
         "contract": os.path.basename(data["contract"]),
         "dataset": dataset
@@ -80,13 +74,7 @@ def data2csv(data, dataset, postgres):
 
 def result2csv(result_fn, dataset, postgres, csv_out):
     with open(result_fn) as f:
-        try:
-            data = json.load(f)
-        except Exception:
-            print(result_fn)
-            traceback.print_exc(file=sys.stdout)
-            sys.stdout.flush()
-            return 1
+        data = json.load(f)
     csv_out.writerow(data2csv(data, dataset, postgres))
 
 if __name__ == '__main__':

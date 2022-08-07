@@ -26,7 +26,7 @@ class Parser:
         self._analysis = []
         if task.exit_code is None:
             self._fails.add('DOCKER_TIMEOUT')
-        elif task.exit_code == 0:
+        elif task.exit_code in (0,-10): # -10 means that the exit code was not recorded
             pass
         elif task.exit_code in DOCKER_CODES:
             self._fails.add(DOCKER_CODES[task.exit_code])
@@ -179,14 +179,18 @@ def reparse(log, jsn=None, parser=None):
         if 'success' in result_json:
             del result_json['success']
     except:
-        result_json = { }
+        result_json = {
+            "duration": None
+        }
+    if "exit_code" not in result_json:
+        result_json["exit_code"] = -10 # old smartbugs output
 
     # dummy config
     exec_cfg = execution_configuration.Execution_Configuration(
         output_folder, execution_name,
         None, None, None, None, None, None, None, None, None, None, None, None)
     exec_task = execution_task.Execution_Task(tool, file_name, exec_cfg)
-    exec_task.exit_code = result_json["exit_code"] if "exit_code" in result_json else None
+    exec_task.exit_code = result_json["exit_code"]
 
     if not parser:
         if tool in result_json:
