@@ -14,7 +14,8 @@ RUN \
   wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.14-11a3a350.tar.gz && \
   tar zxvf geth-linux-amd64-1.10.14-11a3a350.tar.gz && \
   cp geth-linux-amd64-1.10.14-11a3a350/geth /usr/local/bin && \
-  chmod +x /usr/local/bin/geth
+  chmod +x /usr/local/bin/geth && \
+  rm geth-linux-amd64-1.10.14-11a3a350.tar.gz
 
 # Update pip
 RUN pip3 --no-cache-dir install --upgrade setuptools pip
