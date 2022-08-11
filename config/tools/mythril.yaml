@@ -1,7 +1,6 @@
 docker_image:
-  default: smartbugs/mythril
-  solc<5: smartbugs/mythril:0.4.25
-cmd: --execution-timeout {timeout} -xo json
+  default: smartbugs/mythril:0.23.5
+cmd: a --execution-timeout {timeout} -o json
 cmd_bytecode: analyze --execution-timeout {timeout} -o json --bin-runtime -f
 output_parser: Mythril
 info: Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities.
