@@ -95,7 +95,6 @@ def analyse_files(task: 'Execution_Task'):
             sys.exit(msg)
 
         contract_base = os.path.basename(task.file)
-        contract_name = os.path.splitext(contract_base)[0]
         working_dir = tempfile.mkdtemp()
         working_file = shutil.copy(task.file, working_dir)
 

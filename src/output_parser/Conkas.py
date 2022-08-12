@@ -20,7 +20,7 @@ ERRORS = (
 
 class Conkas(Parser.Parser):
     NAME = "conkas"
-    VERSION = "2022/08/05"
+    VERSION = "2022/08/12"
     PORTFOLIO = {
         "Integer Overflow",
         "Integer Underflow",
@@ -40,6 +40,10 @@ class Conkas(Parser.Parser):
             if f.startswith("exception (KeyError: <SSABasicBlock"):
                 self._fails.remove(f)
                 self._fails.add("exception (KeyError: <SSABasicBlock ...>)")
+            if f.startswith("exception (RecursionError: maximum recursion depth exceeded while calling a Python object)"):
+                # Normalize two types of recursion errors to the shorter one.
+                self._fails.remove(f)
+                self._fails.add("exception (RecursionError: maximum recursion depth exceeded)")
 
         for line in self._lines:
             if Parser.add_match(self._errors, line, ERRORS):

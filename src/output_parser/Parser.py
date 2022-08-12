@@ -189,7 +189,7 @@ def reparse(log, jsn=None, parser=None):
     exec_cfg = execution_configuration.Execution_Configuration(
         output_folder, execution_name,
         None, None, None, None, None, None, None, None, None, None, None, None)
-    exec_task = execution_task.Execution_Task(tool, file_name, exec_cfg)
+    exec_task = execution_task.Execution_Task(tool, file_name+".XXX", exec_cfg)
     exec_task.exit_code = result_json["exit_code"]
 
     if not parser:
