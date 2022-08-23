@@ -42,7 +42,7 @@ def aggregate(csvfilenames, tools, runs):
     return aggregated
 
 
-def report(aggregated, duration_delta, fields):
+def report(aggregated, duration_delta, fields, verbose):
     singletons = []
     homogeneous = []
     inhomogeneous = []
@@ -102,17 +102,17 @@ def report(aggregated, duration_delta, fields):
                 print(f"{run}/", end='')
             print(f"{code}", end='')
         print()
-        if diff_durations:
+        if diff_durations or verbose:
             print(f"    duration: {durations} (delta {delta})")
-        if diff_exits:
+        if diff_exits or verbose:
             print(f"    exit codes: {exit_codes}")
-        if diff_findings:
+        if diff_findings or verbose:
             print(f"    findings: {findings}")
-        if diff_messages:
+        if diff_messages or verbose:
             print(f"    messages: {messages}")
-        if diff_errors:
+        if diff_errors or verbose:
             print(f"    errors: {errors}")
-        if diff_fails:
+        if diff_fails or verbose:
             print(f"    fails: {fails}")
 
     hom_fam = len(homogeneous)
@@ -143,13 +143,16 @@ def main():
         metavar="FIELD",
         default=["exit_code","duration","findings","errors","fails"],
         choices=["exit_code","duration","findings","errors","fails","messages","all"],
-        help="fields to compare the run data on"
-    )
+        help="fields to compare the run data on")
     argparser.add_argument(
         "-s", "--spread",
         type=float,
         default=180.0,
         help="normal spread between run times (will not be reported)")
+    argparser.add_argument(
+        "-v", "--verbose",
+        action="store_true",
+        help="show also fields that are equal")
     argparser.add_argument(
         "-r", "--runs",
         nargs="+",
@@ -166,7 +169,7 @@ def main():
 
     print("Arguments passed: ", vars(args))
     aggregated = aggregate(args.run_data, args.tools, args.runs)
-    report(aggregated, args.spread, args.fields)
+    report(aggregated, args.spread, args.fields, args.verbose)
 
 
 if __name__ == '__main__':
