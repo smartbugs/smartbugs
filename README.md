@@ -20,6 +20,7 @@
 
 SmartBugs is an execution framework aiming at simplifying the execution of analysis tools on datasets of smart contracts.
 
+
 ## Features
 
 - A plugin system to easily add new analysis tools, based on Docker images;
@@ -179,11 +180,6 @@ To run it in the entire dataset, use `solidiFI` instead of `solidiFI/tx_origin`.
 
 When we use a remote dataset for the first time, we are asked to confirm the creation of the local copy.
 
-## Work that uses SmartBugs
-- [SmartBugs was used to analyze 47,587 smart contracts](https://joaoff.com/publication/2020/icse) (work published at ICSE 2020). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
-- [SmartBugs was used to evaluate a simple extension of Smartcheck](https://joaoff.com/publication/2020/ase) (work published at ASE 2020, _Tool Demo Track_)
-- ... you are more than welcome to add your own work here!
-
 ## Academic Usage
 If you use SmartBugs or any of its datasets, please cite:
 
@@ -211,6 +207,15 @@ If you use SmartBugs or any of its datasets, please cite:
 }
 ```
 
+## Work that uses SmartBugs
+- [SmartBugs was used to analyze 47,587 smart contracts](https://joaoff.com/publication/2020/icse) (work published at ICSE 2020). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
+- [SmartBugs was used to evaluate a simple extension of Smartcheck](https://joaoff.com/publication/2020/ase) (work published at ASE 2020, _Tool Demo Track_)
+- **... you are more than welcome to add your own work here!**
+
+## Support and Donate
+You can show your appreciation for the project and support future development by donating.
+
+**🙌 ETH Donations:** `0xA4FBA2908162646197aca90b84B095BE4D16Ae53` 🙌
 
 ## License
 The license in the file `LICENSE` applies to all the files in this repository,
