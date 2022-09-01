@@ -1,4 +1,4 @@
-# SmartBugs: A Framework to Analyze Solidity Smart Contracts
+# SmartBugs: A Framework to Analyze Ethereum Smart Contracts
 
 ![Smartbugs build](https://github.com/smartbugs/smartbugs/workflows/build/badge.svg)
  <a href="https://github.com/smartbugs/smartbugs/releases">
@@ -72,6 +72,8 @@ git clone https://github.com/smartbugs/smartbugs.git
 pip3 install -r requirements.txt
 ```
 
+If using Python 3.8.10 or above, use the file `requirements-3.8.10.txt`
+
 ## Usage
 
 SmartBugs provides a command-line interface that can be used as follows:
@@ -80,7 +82,7 @@ smartBugs.py [-h, --help]
               --list tools            # list all the tools available
               --list datasets         # list all the datasets available
               --dataset DATASET       # the name of the dataset to analyze (e.g. reentrancy)
-              --file FILES            # the paths to the folder(s) or the Solidity contract(s) to analyze
+              --file FILES            # the paths to the folder(s) or the contract(s) to analyze
               --tool TOOLS            # the list of tools to use for the analysis (all to use all of them) 
               --info TOOL             # show information about tool
               --bytecode              # analyze bytecode
