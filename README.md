@@ -7,6 +7,7 @@
 <a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE">
         <img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue">
 </a>
+<span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
 <br />
 <a href="#Supported-Tools">
         <img alt="Analysis tools" src="https://img.shields.io/badge/Analysis tools-19-blue">
