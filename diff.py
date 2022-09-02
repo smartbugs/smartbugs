@@ -9,7 +9,7 @@ def aggregate(csvfilenames, tools, runs):
             # parser_name,parser_version,timeout,out_of_memory,other_fails,error,success
             for run in csv.DictReader(csvfile):
                 tool = run["tool"]
-                run_id = run["dataset"]
+                run_id = run["run"] if "run" in run else run["dataset"]
                 if (tools and tool not in tools) or (runs and run_id not in runs):
                     continue
                 contract = run["contract"].split('.')
@@ -89,8 +89,10 @@ def report(aggregated, duration_delta, fields, verbose):
         if not (diff_durations or diff_exits or diff_findings
                 or diff_messages or diff_errors or diff_fails):
             homogeneous.append((family,codes))
-            continue
-        inhomogeneous.append((family,codes))
+            if not verbose:
+                continue
+        else:
+            inhomogeneous.append((family,codes))
         print(f"\n{family}")
         sep='    '
         for tool,run,code in codes:
