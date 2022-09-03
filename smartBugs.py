@@ -166,20 +166,23 @@ def exec_cmd(args: argparse.Namespace):
 
 
 if __name__ == '__main__':
-    start_time = time.time()
-    args = cli.create_parser()
-    output_folder = args.execution_name
-    log_path = os.path.join('results', 'logs')
-    pathlib.Path(log_path).mkdir(parents=True, exist_ok=True)
-    log_file = os.path.join(log_path, f'SmartBugs_{output_folder}.log')
-    logs = open(log_file, 'w')
-    exec_cmd(args)
-    elapsed_time = round(time.time() - start_time)
-    if elapsed_time > 60:
-        elapsed_time_sec = round(elapsed_time % 60)
-        elapsed_time = round(elapsed_time // 60)
-        print(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
-        logs.write(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
-    else:
-        print(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
-        logs.write(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
+    try: 
+        start_time = time.time()
+        args = cli.create_parser()
+        output_folder = args.execution_name
+        log_path = os.path.join('results', 'logs')
+        pathlib.Path(log_path).mkdir(parents=True, exist_ok=True)
+        log_file = os.path.join(log_path, f'SmartBugs_{output_folder}.log')
+        logs = open(log_file, 'w')
+        exec_cmd(args)
+        elapsed_time = round(time.time() - start_time)
+        if elapsed_time > 60:
+            elapsed_time_sec = round(elapsed_time % 60)
+            elapsed_time = round(elapsed_time // 60)
+            print(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
+            logs.write(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
+        else:
+            print(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
+            logs.write(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
+    except:
+        som = 0
