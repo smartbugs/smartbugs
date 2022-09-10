@@ -91,23 +91,26 @@ def exec_cmd(args: argparse.Namespace):
                 args.file.append(global_path)
 
     for file in args.file:
-        # analyse files
-        if os.path.basename(file).endswith('.sol'):
-            files_to_analyze.append(file)
-        # analyse dirs recursively
-        elif os.path.isdir(file):
-            if args.import_path == "FILE":
-                args.import_path = file
-            for root, dirs, files in os.walk(file):
-                for name in files:
-                    if name.endswith('.sol'):
-                        # if its running on a windows machine
-                        if os.name == 'nt':
-                            files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
-                        else:
-                            files_to_analyze.append(os.path.join(root, name))
-        else:
-            print(f'{file} is not a directory or a solidity file')
+        try:
+            # analyse files
+            if os.path.basename(file).endswith('.sol'):
+                files_to_analyze.append(file)
+            # analyse dirs recursively
+            elif os.path.isdir(file):
+                if args.import_path == "FILE":
+                    args.import_path = file
+                for root, dirs, files in os.walk(file):
+                    for name in files:
+                        if name.endswith('.sol'):
+                            # if its running on a windows machine
+                            if os.name == 'nt':
+                                files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
+                            else:
+                                files_to_analyze.append(os.path.join(root, name))
+            else:
+                print(f'{file} is not a directory or a solidity file')
+        except:
+            som = 0
 
     if args.tool == ['all']:
         args.tool = config.TOOL_CHOICES
@@ -125,18 +128,21 @@ def exec_cmd(args: argparse.Namespace):
     file_names = []
     for file in files_to_analyze:
         for tool in args.tool:
-            results_folder = os.path.join('results', tool, output_folder)
-            if not os.path.exists(results_folder):
-                os.makedirs(results_folder)
+            try:
+                results_folder = os.path.join('results', tool, output_folder)
+                if not os.path.exists(results_folder):
+                    os.makedirs(results_folder)
 
-            if args.skip_existing:
-                file_name = os.path.splitext(os.path.basename(file))[0]
-                folder = os.path.join(results_folder, file_name, 'result.json')
-                if os.path.exists(folder):
-                    continue
+                if args.skip_existing:
+                    file_name = os.path.splitext(os.path.basename(file))[0]
+                    folder = os.path.join(results_folder, file_name, 'result.json')
+                    if os.path.exists(folder):
+                        continue
 
-            tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
-                          total_execution, start_time))
+                tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
+                            total_execution, start_time))
+            except:
+                som = 0
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 
     # initialize all sarif outputs

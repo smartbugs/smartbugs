@@ -4,7 +4,7 @@ import string
 
 # IMPORTANT: run from main folder
 initial_directory = "dataset"
-master_csv = open("./prioritization/parsers/data/vulnerabilities_solidifi_huang.csv", 'w')
+master_csv = open("./prioritization/parsers/data/vulnerabilities_manual_huang_only.csv", 'w')
 master_csv_writter = csv.writer(master_csv)
 
 headers = ["Contract", "Lines", "Categories"]
@@ -88,8 +88,7 @@ def HuangDaiTXT(filename, folder):
 
   for txt_line in file:
     
-    line = txt_line[13:]
-
+    line = int(txt_line[13:])
     category = "UNKOWN"
     # Map HuangGai vulnerabilities to Smartbugs Vulnerabilities
     if (folder == "contractAffectedByMiners"):
@@ -184,10 +183,11 @@ for filename1 in os.listdir(initial_directory):
         for solidifi_file in os.listdir(forth_dir):
           solidifi_file_path = os.path.join(forth_dir, solidifi_file)
           if os.path.isfile(solidifi_file_path) and '.csv' in solidifi_file_path:
-            solifiCSV(solidifi_file_path, solidifi_category)
+            som = 0
+            #solifiCSV(solidifi_file_path, solidifi_category)
 
     elif filename1 == "huangGai":
-      # NOTE: Only checking the manual contracts as of now
+      # Manual sub-dataset
       third_dir = os.path.join(second_dir, "manualCheckDataset")
       for huang_category in os.listdir(third_dir):
         forth_dir = os.path.join(third_dir, huang_category)
@@ -196,11 +196,23 @@ for filename1 in os.listdir(initial_directory):
             if os.path.isfile(hunag_file_path) and '.txt' in hunag_file_path:
               som = 0
               HuangDaiTXT(hunag_file_path, huang_category)
+
+      # Injected sub-dataset
+      third_dir = os.path.join(second_dir, "injectedContractDataSet")
+      for huang_category in os.listdir(third_dir):
+        forth_dir = os.path.join(third_dir, huang_category)
+        for huang_file in os.listdir(forth_dir):
+            hunag_file_path = os.path.join(forth_dir, huang_file)
+            if os.path.isfile(hunag_file_path) and '.txt' in hunag_file_path:
+              som = 0
+              #HuangDaiTXT(hunag_file_path, huang_category)
+
     # For other datasets
     else:
       for filename2 in os.listdir(second_dir):
         file = os.path.join(second_dir, filename2)
         # If file is a .sol contract
         if os.path.isfile(file) and '.sol' in file:
-          makeCSV(file)
+          som = 0
+          #makeCSV(file)
 
