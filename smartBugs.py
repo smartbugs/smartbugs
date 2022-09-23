@@ -91,26 +91,23 @@ def exec_cmd(args: argparse.Namespace):
                 args.file.append(global_path)
 
     for file in args.file:
-        try:
-            # analyse files
-            if os.path.basename(file).endswith('.sol'):
-                files_to_analyze.append(file)
-            # analyse dirs recursively
-            elif os.path.isdir(file):
-                if args.import_path == "FILE":
-                    args.import_path = file
-                for root, dirs, files in os.walk(file):
-                    for name in files:
-                        if name.endswith('.sol'):
-                            # if its running on a windows machine
-                            if os.name == 'nt':
-                                files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
-                            else:
-                                files_to_analyze.append(os.path.join(root, name))
-            else:
-                print(f'{file} is not a directory or a solidity file')
-        except:
-            som = 0
+        # analyse files
+        if os.path.basename(file).endswith('.sol'):
+            files_to_analyze.append(file)
+        # analyse dirs recursively
+        elif os.path.isdir(file):
+            if args.import_path == "FILE":
+                args.import_path = file
+            for root, dirs, files in os.walk(file):
+                for name in files:
+                    if name.endswith('.sol'):
+                        # if its running on a windows machine
+                        if os.name == 'nt':
+                            files_to_analyze.append(os.path.join(root, name).replace('\\', '/'))
+                        else:
+                            files_to_analyze.append(os.path.join(root, name))
+        else:
+            print(f'{file} is not a directory or a solidity file')
 
     if args.tool == ['all']:
         args.tool = config.TOOL_CHOICES
@@ -128,21 +125,18 @@ def exec_cmd(args: argparse.Namespace):
     file_names = []
     for file in files_to_analyze:
         for tool in args.tool:
-            try:
-                results_folder = os.path.join('results', tool, output_folder)
-                if not os.path.exists(results_folder):
-                    os.makedirs(results_folder)
+            results_folder = os.path.join('results', tool, output_folder)
+            if not os.path.exists(results_folder):
+                os.makedirs(results_folder)
 
-                if args.skip_existing:
-                    file_name = os.path.splitext(os.path.basename(file))[0]
-                    folder = os.path.join(results_folder, file_name, 'result.json')
-                    if os.path.exists(folder):
-                        continue
+            if args.skip_existing:
+                file_name = os.path.splitext(os.path.basename(file))[0]
+                folder = os.path.join(results_folder, file_name, 'result.json')
+                if os.path.exists(folder):
+                    continue
 
-                tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
-                            total_execution, start_time))
-            except:
-                som = 0
+            tasks.append((tool, file, sarif_outputs, args.import_path, args.output_version, nb_task, nb_task_done,
+                        total_execution, start_time))
         file_names.append(os.path.splitext(os.path.basename(file))[0])
 
     # initialize all sarif outputs
@@ -172,23 +166,20 @@ def exec_cmd(args: argparse.Namespace):
 
 
 if __name__ == '__main__':
-    try: 
-        start_time = time.time()
-        args = cli.create_parser()
-        output_folder = args.execution_name
-        log_path = os.path.join('results', 'logs')
-        pathlib.Path(log_path).mkdir(parents=True, exist_ok=True)
-        log_file = os.path.join(log_path, f'SmartBugs_{output_folder}.log')
-        logs = open(log_file, 'w')
-        exec_cmd(args)
-        elapsed_time = round(time.time() - start_time)
-        if elapsed_time > 60:
-            elapsed_time_sec = round(elapsed_time % 60)
-            elapsed_time = round(elapsed_time // 60)
-            print(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
-            logs.write(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
-        else:
-            print(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
-            logs.write(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
-    except:
-        som = 0
+    start_time = time.time()
+    args = cli.create_parser()
+    output_folder = args.execution_name
+    log_path = os.path.join('results', 'logs')
+    pathlib.Path(log_path).mkdir(parents=True, exist_ok=True)
+    log_file = os.path.join(log_path, f'SmartBugs_{output_folder}.log')
+    logs = open(log_file, 'w')
+    exec_cmd(args)
+    elapsed_time = round(time.time() - start_time)
+    if elapsed_time > 60:
+        elapsed_time_sec = round(elapsed_time % 60)
+        elapsed_time = round(elapsed_time // 60)
+        print(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
+        logs.write(f'Analysis completed. \nIt took {elapsed_time}m {elapsed_time_sec}s to analyse all files.')
+    else:
+        print(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
+        logs.write(f'Analysis completed. \nIt took {elapsed_time}s to analyse all files.')
