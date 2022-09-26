@@ -7,11 +7,11 @@ def bugID(file, line):
     return str(file) + ":" + str(line)
 
 # Parse file
-with open('./prioritization/parsers/data/results_solidifi.sarif') as json_file:
+with open('./prioritization/parsers/data/results_all.sarif') as json_file:
     sarif = json.load(json_file)
 
 # Results file
-csv_file = open('./prioritization/parsers/data/result_solidifi.csv', 'w')
+csv_file = open('./prioritization/parsers/data/result_all.csv', 'w')
 csv_writer = csv.writer(csv_file)
 
 headers = ["bug_id"]

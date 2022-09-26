@@ -4,7 +4,7 @@ import string
 
 # IMPORTANT: run from main folder
 initial_directory = "dataset"
-master_csv = open("./prioritization/parsers/data/vulnerabilities_manual_huang_only.csv", 'w')
+master_csv = open("./prioritization/parsers/data/vulnerabilities_all.csv", 'w')
 master_csv_writter = csv.writer(master_csv)
 
 headers = ["Contract", "Lines", "Categories"]
@@ -94,8 +94,6 @@ def HuangDaiTXT(filename, folder):
     if (folder == "contractAffectedByMiners"):
       # Because miners could affect randomness
       category = "bad_randomness"
-      # Because miners report time and it could be false
-      category = "time_manipulation"
 
     elif (folder == "DosByComplexFallback"):
       category = "denial_service"
@@ -204,8 +202,7 @@ for filename1 in os.listdir(initial_directory):
         for huang_file in os.listdir(forth_dir):
             hunag_file_path = os.path.join(forth_dir, huang_file)
             if os.path.isfile(hunag_file_path) and '.txt' in hunag_file_path:
-              som = 0
-              #HuangDaiTXT(hunag_file_path, huang_category)
+              HuangDaiTXT(hunag_file_path, huang_category)
 
     # For other datasets
     else:

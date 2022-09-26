@@ -60,11 +60,11 @@ def bugID(file, line, category):
   return str(file) + ":" + str(line) + ":" + str(category)
 
 # Parse file
-with open('./prioritization/parsers/data/results_manual_huang_only.sarif') as json_file:
+with open('./prioritization/parsers/data/results_all.sarif') as json_file:
   sarif = json.load(json_file)
 
 # Results file
-csv_file = open('./prioritization/parsers/data/result_manual_huang_only.csv', 'w')
+csv_file = open('./prioritization/parsers/data/result_all.csv', 'w')
 csv_writer = csv.writer(csv_file)
 
 headers = ["bug_id"]
