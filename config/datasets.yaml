@@ -45,27 +45,3 @@ HuangGai_Manual:
         uninitializedLocalVariables: uninitializedLocalVariables
         unlimitedCompilerVersions: unlimitedCompilerVersions
         wastefulContracts: wastefulContracts
-
-HuangGai_Injectected: 
-    url: https://github.com/xf97/HuangGai
-    local_dir: dataset/huangGai/injectedContractDataSet
-    subsets: # Accessed as solidiFI/name 
-        contractAffectedByMiners: contractAffectedByMiners
-        DosByComplexFallback: DosByComplexFallback
-        forcedToReceiveEthers: forcedToReceiveEthers
-        hashWithMulVarLenArg: hashWithMulVarLenArg
-        integerOverflow: integerOverflow
-        lockedEther: lockedEther
-        nonStandarNaming: nonStandarNaming
-        NonpublicVarAccessdByPublicFunc: NonpublicVarAccessdByPublicFunc
-        preSentEther: preSentEther
-        publicFuncToExternal: publicFuncToExternal
-        reentrancy: reentrancy
-        shortAddressAttack: shortAddressAttack
-        specifyFuncVarAnyType: specifyFuncVarAnyType
-        suicideContract: suicideContract
-        transactionOrderDependancy: transactionOrderDependancy
-        txOriginForAuthentication: txOriginForAuthentication
-        unhandledException: unhandledException
-        uninitializedLocalVariables: uninitializedLocalVariables
-        unlimitedCompilerVersions: unlimitedCompilerVersions
