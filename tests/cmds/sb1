@@ -1,9 +1,0 @@
-#!/bin/bash
-# older versions of smartBugs have to be run from the SB directory,
-# otherwise the config files will not be found
-cd ..
-source venv/bin/activate
-test -e results && mv results tests.tmp/results.orig
-python smartBugs.py -t all -f "tests.tmp/$1" --processes 20
-test -e results && mv results tests.tmp
-test -e tests.tmp/results.orig && mv tests.tmp/results.orig results
