@@ -1,0 +1,7 @@
+solidity:
+    image: smartbugs/smartcheck
+    entrypoint: $BIN/run_solidity "$FILENAME" "$BIN"
+    user: 0
+    solc: yes
+    bin: scripts
+info: Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code.

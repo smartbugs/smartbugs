@@ -1,0 +1,14 @@
+#!/bin/sh
+
+FILENAME="$1"
+TIMEOUT="$2"
+#BIN="$3"
+
+if [ "$TIMEOUT" -eq 0 ]; then
+    /usr/local/bin/myth analyze -o json -f "$FILENAME"
+else
+    # TO = TIMEOUT * 80%
+    # the remaining 20% are for mythril to finish
+    TO=$(( (TIMEOUT*8+9)/10 ))
+    /usr/local/bin/myth analyze --execution-timeout "$TO" -o json -f "$FILENAME"
+fi

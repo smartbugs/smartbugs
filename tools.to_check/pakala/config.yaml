@@ -1,0 +1,6 @@
+runtime:
+    image: smartbugs/pakala
+# The following URL is SmartBugs's account, limited to 100k daily requests.
+# We advise you to create your own account and change the URL below.
+    command: /runPakala.sh https://mainnet.infura.io/v3/bbc3bacf4a964aea93ff318e210153f5 $FILENAME
+info: Pakala is a tool to search for exploitable bugs in Ethereum smart contracts and a symbolic execution engine for the Ethereum Virtual Machine.
