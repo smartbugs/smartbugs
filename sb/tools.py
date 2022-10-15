@@ -93,14 +93,17 @@ def load(ids, tools=[], seen=set()):
         toolpath = os.path.join(sb.config.TOOLS_HOME, id)
         fn = os.path.join(toolpath, "config.yaml")
         cfg = sb.io.read_yaml(fn)
-        if (collection := cfg.get("collection")):
-            load(collection, tools, seen)
+        alias = cfg.get("alias")
+        if alias:
+            load(alias, tools, seen)
             continue
         cfg["id"] = id
         cfg["path"] = toolpath
+        found = False
         for mode in ("solidity", "bytecode", "runtime"):
             if mode not in cfg:
                 continue
+            found = True
             cfg_mode = cfg.copy()
             cfg_mode["mode"] = mode
             for m in ("solidity", "bytecode", "runtime"):
@@ -112,4 +115,6 @@ def load(ids, tools=[], seen=set()):
                 else:
                     raise SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
             tools.append(Tool(cfg_mode))
+        if not found:
+            raise SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")
     return tools

@@ -17,7 +17,10 @@ QUOTE_END = re.compile("(?<!\\\\)'")
 DQUOTE_END = re.compile('(?<!\\\\)"')
 
 def remove_void(line):
-    while m := VOID_START.search(line):
+    while True:
+        m = VOID_START.search(line)
+        if not m:
+            break
         if m[0] == '//':
             return (line[:m.start()], False)
         if m[0] == '/*':
@@ -48,7 +51,8 @@ def get_pragma(prg):
             else:
                 line = line[end+2:]
         line, in_comment = remove_void(line)
-        if m := PRAGMA.search(line):
+        m = PRAGMA.search(line)
+        if m:
             return m[0]
     return None
 

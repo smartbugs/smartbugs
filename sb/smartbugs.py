@@ -10,7 +10,11 @@ def collect_files(patterns):
             # No globbing, spec is a file specifying a 'dataset'
             contracts = sb.io.read_lines(spec)
         else:
-            contracts = glob.glob(spec, root_dir=root, recursive=True)
+            # avoid root_dir=... for python < 3.10 if not needed
+            if not root:
+                contracts = glob.glob(spec, recursive=True)
+            else:
+                contracts = glob.glob(spec, root_dir=root, recursive=True)
         for relfn in contracts:
             root_relfn = os.path.join(root,relfn) if root else relfn
             absfn = os.path.normpath(os.path.abspath(root_relfn))

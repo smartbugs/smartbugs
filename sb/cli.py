@@ -18,8 +18,8 @@ def cli_args(defaults):
     parser = argparse.ArgumentParser(
         description="Automated analysis of Ethereum smart contracts",
         add_help=False,
-        prog="smartbugs",
-        exit_on_error=False)
+        prog="smartbugs")
+#        exit_on_error=False)
 
     input = parser.add_argument_group("input options")
     input.add_argument(

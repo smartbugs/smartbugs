@@ -1,4 +1,4 @@
-import yaml, json, tomllib
+import yaml, json
 from sb.exceptions import SmartBugsError
 
 def read_yaml(fn):

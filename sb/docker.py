@@ -28,9 +28,10 @@ def __run_volume(task):
     sbdir = tempfile.mkdtemp()
     sbdir_bin = os.path.join(sbdir, "bin")
     shutil.copy(task.absfn, sbdir)
-    os.mkdir(sbdir_bin)
     if task.tool.bin:
-        shutil.copytree(task.tool.bin, sbdir_bin, dirs_exist_ok=True)
+        shutil.copytree(task.tool.bin, sbdir_bin)
+    else:
+        os.mkdir(sbdir_bin)
     if task.solc_path:
         sbdir_bin_solc = os.path.join(sbdir_bin, "solc")
         shutil.copyfile(task.solc_path, sbdir_bin_solc)
@@ -42,10 +43,12 @@ def __run_args(task, sbdir):
         "detach": True
     }
     for k in ("image","user","cpu_quota","mem_limit"):
-        if (v := getattr(task.tool, k, None)) is not None:
+        v = getattr(task.tool, k, None)
+        if v is not None:
             args[k] = v
     for k in ("cpu_quota","mem_limit"):
-        if (v := getattr(task.settings, k, None)) is not None:
+        v = getattr(task.settings, k, None)
+        if v is not None:
             args[k] = v
     _,filename = os.path.split(task.absfn)
     filename = f"/sb/{filename}" # path in Linux Docker image
