@@ -1,5 +1,5 @@
 import glob, os, operator
-import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.config, sb.io
+import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.config, sb.io, sb.settings
 
 
 
@@ -86,7 +86,7 @@ def collect_tasks(files, tools, settings):
 
 
 
-def main(settings):
+def main(settings: sb.settings.Settings):
     settings.freeze()
     sb.logging.quiet = settings.quiet
     sb.logging.message(
