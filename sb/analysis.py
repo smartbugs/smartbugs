@@ -5,7 +5,8 @@ from sb.exceptions import SmartBugsError
 
 cpu = cpuinfo.get_cpu_info()
 python_version = cpu["python_version"]
-del cpu["flags"]
+if "flags" in cpu:
+    del cpu["flags"]
 del cpu["python_version"]
 SYSTEM_INFO = {
     "smartbugs": {
