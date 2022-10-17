@@ -4,10 +4,8 @@ from sb.exceptions import SmartBugsError
 
 
 cpu = cpuinfo.get_cpu_info()
-python_version = cpu["python_version"]
-if "flags" in cpu:
-    del cpu["flags"]
-del cpu["python_version"]
+cpu.pop("flags", None)
+python_version = cpu.pop("python_version", None)
 SYSTEM_INFO = {
     "smartbugs": {
         "version": sb.config.VERSION,

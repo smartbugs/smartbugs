@@ -3,8 +3,8 @@ import sb.colors
 
 def logger_process(logfn, overwrite, queue, prolog):
     log_parent_folder = os.path.dirname(logfn)
-    if len(log_parent_folder) > 0:
-        os.makedirs(os.path.dirname(logfn), exist_ok=True)
+    if log_parent_folder:
+        os.makedirs(log_parent_folder, exist_ok=True)
     mode = "w" if overwrite else "a"
     with open(logfn, mode) as logfile:
         for log in prolog:

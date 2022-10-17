@@ -1,19 +1,19 @@
-files: []
-runtime: false
-tools: []
-runid: ${YEAR}${MONTH}${DAY}_${HOUR}${MIN}
-#   vars: YEAR, MONTH, DAY, HOUR, MIN, SEC, ZONE,
-#   HOME, PID, SBVERSION, SBHOME
-overwrite: false
-processes: 1
-timeout: 0 # [s] 0/null = no timeout
-cpu-quota: 0 # 0/null = no quota
-mem-limit: 0 # "512m" or "4g"  0/null = no quota
-results: results/${TOOL}/${RUNID}/${FILEBASE}
-#   vars: all vars from "runid" above, as well as RUNID,
-#   TOOL, MODE (solidity, bytecode, runtime), ABSDIR, RELDIR,
-#   FILENAME, FILEBASE, FILEEXT (FILENAME = FILEBASE + "." + FILEEXT)
-logfile: results/logs/${RUNID}.log
-#   vars: all vars from "runid" above, as well as RUNID
-format: [] # choices: json, sarif, sarif-per-contract, sarif-summary
-quiet: false
+#files: []
+#runtime: false
+#tools: []
+#runid: ${YEAR}${MONTH}${DAY}_${HOUR}${MIN}
+##   vars: YEAR, MONTH, DAY, HOUR, MIN, SEC, ZONE,
+##   HOME, PID, SBVERSION, SBHOME
+#overwrite: false
+#processes: 1
+#timeout: 0 # [s] 0/null = no timeout
+#cpu-quota: 0 # 0/null = no quota
+#mem-limit: 0 # "512m" or "4g"  0/null = no quota
+#results: results/${TOOL}/${RUNID}/${FILEBASE}
+##   vars: all vars from "runid" above, as well as RUNID,
+##   TOOL, MODE (solidity, bytecode, runtime), ABSDIR, RELDIR,
+##   FILENAME, FILEBASE, FILEEXT (FILENAME = FILEBASE + "." + FILEEXT)
+#logfile: results/logs/${RUNID}.log
+##   vars: all vars from "runid" above, as well as RUNID
+#format: [] # choices: json, sarif, sarif-per-contract, sarif-summary
+#quiet: false

@@ -175,8 +175,8 @@ class Settings:
         for k,v in self.__dict__.items():
             if k == "frozen":
                 continue
-            elif k == "result" and v and not isinstance(v,str):
-                d[k] = self.result.template
+            elif k == "results" and v and not isinstance(v,str):
+                d[k] = self.results.template
             else:
                 d[k] = v
         return d

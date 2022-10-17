@@ -5,11 +5,6 @@ import solcx
 # load binaries for Linux in Docker images, not for host platform
 solcx.set_target_os("linux")
 
-# Cache list of available compilers once it has been loaded
-version_list = None
-
-# Cache mapping from versions to loaded compilers
-solc = {}
 
 VOID_START = re.compile('//|/\*|"|\'')
 PRAGMA = re.compile('pragma solidity.*?;')
@@ -56,24 +51,32 @@ def get_pragma(prg):
             return m[0]
     return None
 
+
+cached_version_list = None
+
 def get_solc_version(prg):
-    global version_list
-    if not version_list:
-        version_list = solcx.get_installable_solc_versions()
+    global cached_version_list
+    if not cached_version_list:
+        cached_version_list = solcx.get_installable_solc_versions()
     pragma = get_pragma(prg)
     if not pragma:
         return None
     pragma = re.sub(r">=0\.", r"^0.", pragma)
-    version = solcx.install._select_pragma_version(pragma, version_list)
+    version = solcx.install._select_pragma_version(pragma, cached_version_list)
     return version
+
+
+cached_solc_paths = {}
 
 def get_solc_path(version):
     if not version:
         return None
-    if version not in solc:
-        try:
-            solc[version] = solcx.get_executable(version)
-        except:
-            solc[version] = None
-    return solc[version]
-
+    if version in cached_solc_paths:
+        return cached_solc_paths[version]
+    try:
+        solcx.install_solc(version)
+        solc_path = solcx.get_executable(version)
+    except:
+        solc_path = None
+    cached_solc_paths[version] = solc_path
+    return solc_path

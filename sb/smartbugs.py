@@ -1,5 +1,6 @@
 import glob, os, operator
 import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.config, sb.io, sb.settings
+from sb.exceptions import SmartBugsError
 
 
 
@@ -25,7 +26,7 @@ def collect_files(patterns):
 
 
 def collect_tasks(files, tools, settings):
-    rdirs = set()
+    used_rdirs = set()
     rdir_collisions = 0
 
     def disambiguate(base):
@@ -33,13 +34,34 @@ def collect_tasks(files, tools, settings):
         cnt = 1
         rdir = base
         collision = 0
-        while rdir in rdirs:
+        while rdir in used_rdirs:
             collision = 1
             cnt += 1
             rdir = f"{base}_{cnt}"
-        rdirs.add(rdir)
+        used_rdirs.add(rdir)
         rdir_collisions += collision
         return rdir
+
+    def report_collisions():
+        if rdir_collisions > 0:
+            sb.logging.message(
+                sb.colors.warning(f"{rdir_collisions} collisions of result directories resolved."), "")
+            if rdir_collisions > len(files)*0.1:
+                sb.logging.message(
+                    "Consider using one or more of $TOOL, $MODE, $ABSDIR, $RELDIR, $FILENAME, $FILEBASE, $FILEEXT when specifying 'results' directory.")
+
+    def get_solc_path(solc_version, fn, toolid):
+        if not solc_version:
+            raise SmartBugsError(f"Cannot determine Solidity version ({fn})")
+        solc_path = sb.solidity.get_solc_path(solc_version)
+        if not solc_path:
+            raise SmartBugsError(f"Cannot load solc {solc_version} (needed for {toolid} and {fn})")
+        return solc_path
+
+    def ensure_loaded(image):
+        if not sb.docker.is_loaded(tool.image):
+            sb.logging.message(f"Loading docker image {tool.image}, may take a while ...")
+            sb.docker.load(tool.image)
 
     tasks = []
 
@@ -52,6 +74,7 @@ def collect_tasks(files, tools, settings):
 
         is_hex = absfn[-4:]==".hex"
         is_sol = absfn[-4:]==".sol"
+
         solc_version = None
         if is_sol:
             prg = sb.io.read_lines(absfn)
@@ -61,27 +84,18 @@ def collect_tasks(files, tools, settings):
             if ((is_sol and tool.mode=="solidity") or
                 (is_hex and tool.mode=="bytecode" and not settings.runtime) or
                 (is_hex and tool.mode=="runtime"  and     settings.runtime)):
+
+                # due to sorting files and tools, rdir ought to be the same
+                # when rerunning SB with the same args
                 base = settings.resultdir(tool.id,tool.mode,absfn,relfn)
                 rdir = disambiguate(base)
-                # due to sorting files and tools, rdir ought to be the same
-                # when rerunning SB with the same args 
-                solc_path = None
-                if tool.solc:
-                    solc_path = sb.solidity.get_solc_path(solc_version)
-                if not sb.docker.is_loaded(tool.image):
-                    sb.logging.message(f"Loading docker image {tool.image}, may take a while ...")
-                    sb.docker.load(tool.image)
+
+                solc_path = get_solc_path(solc_version, absfn, tool.id) if tool.solc else None
+                ensure_loaded(tool.image)
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)
                 tasks.append(task)
 
-    if rdir_collisions > 0:
-        sb.logging.message(
-            sb.colors.warning(f"{rdir_collisions} collisions of result directories resolved."),
-            "")
-        if rdir_collisions > len(files)*0.1:
-            sb.logging.message(
-                "Consider using one or more of $TOOL, $MODE, $ABSDIR, $RELDIR, $FILENAME, $FILEBASE, $FILEEXT when specifying 'results' directory.")
-
+    report_collisions()
     return tasks
 
 
