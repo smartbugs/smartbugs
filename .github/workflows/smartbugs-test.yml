@@ -1,0 +1,41 @@
+name: SmartBugs CI
+on: [push]
+jobs:
+  solidity:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tool: ["conkas", "mythril"]
+        contract: ["dataset/access_control/FibonacciBalance.sol"]
+        python-version: ["3.6.9"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: setup
+        run: ./setup-venv.sh
+      - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} --logfile test.log --results test_execution/ -f ${{ matrix.contract }};
+      - name: Results of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: cat test_execution/smartbugs.json; cat test_execution/result.log
+  # bytecode:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       tool: ["conkas", "ethainter", "mythril"]
+  #       contract: ["dataset/...hex"]
+  #       python-version: ["3.6.9"]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Set up Python ${{ matrix.python-version }}
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: setup
+  #       run: ./setup-venv.sh
+  #     - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+  #       run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} --logfile test.log --results test_execution/ -f ${{ matrix.contract }};
+  #     - name: Results of ${{matrix.tool}} on ${{ matrix.contract }}
+  #       run: cat test_execution/smartbugs.json; cat test_execution/result.log
