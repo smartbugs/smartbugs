@@ -90,6 +90,7 @@ def collect_tasks(files, tools, settings):
                 base = settings.resultdir(tool.id,tool.mode,absfn,relfn)
                 rdir = disambiguate(base)
 
+                # load resources, once and for all
                 solc_path = get_solc_path(solc_version, absfn, tool.id) if tool.solc else None
                 ensure_loaded(tool.image)
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)

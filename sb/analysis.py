@@ -1,5 +1,5 @@
 import multiprocessing, random, time, datetime, os, cpuinfo, platform
-import sb.logging, sb.colors, sb.docker, sb.config, sb.io
+import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parser
 from sb.exceptions import SmartBugsError
 
 
@@ -15,7 +15,7 @@ SYSTEM_INFO = {
     "cpu_info": cpu
 }
 
-def task_info(task, start_time, docker_args, exit_code, log, output, duration):
+def task_info(task, start_time, duration, exit_code, log, output, docker_args):
     info = {
         "contract": {
             "abs_filename": task.absfn,
@@ -39,10 +39,13 @@ def task_info(task, start_time, docker_args, exit_code, log, output, duration):
 
 def execute(task):
 
+    # create result dir if it doesn't exist
     os.makedirs(task.rdir, exist_ok=True)
     if not os.path.isdir(task.rdir):
         raise SmartBugsError(f"Cannot create result directory {task.rdir}")
 
+    # check whether result dir is empty,
+    # and if not, whether we are going to overwrite it
     task_log = os.path.join(task.rdir, sb.config.TASK_LOG)
     if os.path.exists(task_log):
         old = sb.io.read_json(task_log)
@@ -56,9 +59,11 @@ def execute(task):
         if not task.settings.overwrite:
             return 0.0
 
+    # remove any leftovers from a previous analysis
     tool_log = os.path.join(task.rdir, sb.config.TOOL_LOG)
     tool_output = os.path.join(task.rdir, sb.config.TOOL_OUTPUT)
-    for old in (task_log, tool_log, tool_output):
+    parser_output = os.path.join(task.rdir, sb.config.PARSER_OUTPUT)
+    for old in (task_log, tool_log, tool_output, parser_output):
         try:
             os.remove(old)
         except:
@@ -66,15 +71,21 @@ def execute(task):
         if os.path.exists(old):
             raise SmartBugsError(f"Cannot clear old output {old}")
 
+    # perform and time analysis
     start_time = time.time()
-    docker_args,exit_code,log,output = sb.docker.execute(task)
+    exit_code,log,output,docker_args = sb.docker.execute(task)
     duration = time.time() - start_time
 
-    sb.io.write_json(task_log, task_info(task, start_time, docker_args, exit_code, log, output, duration))
+    # write result to files
+    info = task_info(task, start_time, duration, exit_code, log, output, docker_args)
+    sb.io.write_json(task_log, info)
     if log:
         sb.io.write_txt(tool_log, log)
     if output:
         sb.io.write_bin(tool_output, output)
+    if "json" in task.settings.format:
+        parsed_result = sb.parser.parse(exit_code, log, output, info)
+        sb.io.write_json(parser_output,parsed_result)
 
     return duration
 

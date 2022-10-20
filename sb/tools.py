@@ -5,11 +5,9 @@ from sb.exceptions import SmartBugsError, InternalError
 FIELDS = ("id","path","mode","image","name","origin","version","info","parser",
     "output","bin","solc","user","cpu_quota","mem_limit","command","entrypoint")
 
-
 class Tool():
 
     def __init__(self, cfg):
-
         for k in FIELDS:
             v = cfg.get(k)
             if v is not None:
@@ -53,7 +51,11 @@ class Tool():
             raise SmartBugsError("Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
         if not self._command and not self._entrypoint:
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
-        self.bin = os.path.join(self.path,self.bin) if self.bin else None
+        if not self.parser:
+            self.parser = f"{self.id}.py"
+        self.parser = os.path.join(self.path,self.parser)
+        if self.bin:
+            self.bin = os.path.join(self.path,self.bin)
 
 
     def command(self, filename, timeout, bin):
@@ -86,6 +88,9 @@ class Tool():
 
 
 def load(ids, tools=[], seen=set()):
+    if isinstance(ids, str):
+        ids = [ids]
+
     for id in ids:
         if id in seen:
             continue
@@ -93,28 +98,29 @@ def load(ids, tools=[], seen=set()):
         toolpath = os.path.join(sb.config.TOOLS_HOME, id)
         fn = os.path.join(toolpath, "config.yaml")
         cfg = sb.io.read_yaml(fn)
+
         alias = cfg.get("alias")
         if alias:
             load(alias, tools, seen)
             continue
+
         cfg["id"] = id
         cfg["path"] = toolpath
         found = False
         for mode in ("solidity", "bytecode", "runtime"):
-            if mode not in cfg:
+            cfg_mode = cfg.get(mode)
+            if cfg_mode is None:
+                # mode not in cfg or cfg[mode] is None
                 continue
+            elif not isinstance(cfg_mode, dict):
+                raise SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
             found = True
-            cfg_mode = cfg.copy()
-            cfg_mode["mode"] = mode
+            cfg_copy = cfg.copy()
             for m in ("solidity", "bytecode", "runtime"):
-                if m in cfg_mode:
-                    del cfg_mode[m]
-            if cfg[mode]:
-                if isinstance(cfg[mode], dict):
-                    cfg_mode.update(cfg[mode])
-                else:
-                    raise SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
-            tools.append(Tool(cfg_mode))
+                cfg_copy.pop(m,None)
+            cfg_copy["mode"] = mode
+            cfg_copy.update(cfg_mode)
+            tools.append(Tool(cfg_copy))
         if not found:
             raise SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")
     return tools

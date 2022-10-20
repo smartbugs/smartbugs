@@ -29,7 +29,7 @@ def read_lines(fn):
         with open(fn, 'r', encoding='utf-8') as f:
             return f.readlines()
     except BaseException as e:
-        raise SmartBugsError(f"Error reading '{fn}'.")
+        raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
 
 def write_txt(fn, output):
     try:
@@ -38,9 +38,9 @@ def write_txt(fn, output):
                 f.write(output)
             else:
                 for line in output:
-                    print(line, file=f)
+                    f.write(f"{line}\n")
     except BaseException as e:
-        raise SmartBugsError(f"Error writing '{fn}'.")
+        raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
 
 def write_bin(fn, output):
     try:
@@ -48,5 +48,5 @@ def write_bin(fn, output):
             for chunk in output:
                 f.write(chunk)
     except BaseException as e:
-        raise SmartBugsError(f"Error writing '{fn}'.")
+        raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
 

@@ -72,7 +72,7 @@ def execute(task):
         except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError):
             # The docs say that timeout raises ReadTimeout, but sometimes it is ConnectionError
             container.stop(timeout=0)
-        logs = container.logs().decode('utf8').strip()
+        logs = container.logs().decode('utf8').splitlines()
         if task.tool.output:
             output,_ = container.get_archive(task.tool.output)
     finally:
@@ -80,4 +80,4 @@ def execute(task):
             container.stop(timeout=0)
             container.remove()
         shutil.rmtree(sbdir)
-    return args, exit_code, logs, output
+    return exit_code, logs, output, args
