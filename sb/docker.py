@@ -14,14 +14,14 @@ images_loaded = set()
 def is_loaded(image):
     try:
         return image in images_loaded or client.images.list(image)
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Docker: checking for image {image} failed.\n{e}")
 
 def load(image):
     try:
         client.images.pull(image)
         images_loaded.add(image)
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Docker: Loading image {image} failed.\n{e}")
 
 def __run_volume(task):

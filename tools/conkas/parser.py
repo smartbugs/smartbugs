@@ -3,6 +3,15 @@ import sb.parse_utils
 
 VERSION = "2022/08/12"
 
+FINDINGS = {
+    "Integer Overflow",
+    "Integer Underflow",
+    "Reentrancy",
+    "Time Manipulation",
+    "Transaction Ordering Dependence",
+    "Unchecked Low Level Call"
+}
+
 ERRORS = (
     re.compile("([A-Z0-9]+ instruction needs return value)"),
     re.compile("([A-Z0-9]+ instruction needs [0-9]+ arguments but [0-9]+ was given)"),
@@ -15,14 +24,14 @@ ERRORS = (
     re.compile(".*(solcx.exceptions.SolcError:.*)")
 )
 
-def skip(line):
-    # Identify lines interfering with exception parsing
-    return line.startswith("Analysing ") and line.endswith("...")
 
 def parse(exit_code, log, output, info):
-    findings, infos, errors, fails, analysis = sb.parse_utils.init(exit_code, log, skip=skip)
 
-    for f in list(fails):
+    findings, infos, analysis = set(), set(), []
+    cleaned_log = filter(lambda line: not(line.startswith("Analysing ") and line.endswith("...")), log)
+    errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
+
+    for f in list(fails): # iterate over a copy of 'fails' such that it can be modified
         if f.startswith("exception (KeyError: <SSABasicBlock"):
             fails.remove(f)
             fails.add("exception (KeyError: <SSABasicBlock ...>)")

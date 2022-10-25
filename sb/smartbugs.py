@@ -11,11 +11,14 @@ def collect_files(patterns):
             # No globbing, spec is a file specifying a 'dataset'
             contracts = sb.io.read_lines(spec)
         else:
-            # avoid root_dir=... for python < 3.10 if not needed
-            if not root:
-                contracts = glob.glob(spec, recursive=True)
-            else:
-                contracts = glob.glob(spec, root_dir=root, recursive=True)
+            try:
+                if root:
+                    contracts = glob.glob(spec, root_dir=root, recursive=True)
+                else:
+                    # avoid root_dir=... unless needed, for python<3.10
+                    contracts = glob.glob(spec, recursive=True)
+            except TypeError:
+                raise SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for python>=3.10")
         for relfn in contracts:
             root_relfn = os.path.join(root,relfn) if root else relfn
             absfn = os.path.normpath(os.path.abspath(root_relfn))
@@ -45,10 +48,11 @@ def collect_tasks(files, tools, settings):
     def report_collisions():
         if rdir_collisions > 0:
             sb.logging.message(
-                sb.colors.warning(f"{rdir_collisions} collisions of result directories resolved."), "")
+                sb.colors.warning(f"{rdir_collisions} collision(s) of result directories resolved."), "")
             if rdir_collisions > len(files)*0.1:
-                sb.logging.message(
-                    "Consider using one or more of $TOOL, $MODE, $ABSDIR, $RELDIR, $FILENAME, $FILEBASE, $FILEEXT when specifying 'results' directory.")
+                sb.logging.message(sb.colors.warning(
+                    "Consider using $TOOL, $MODE, $ABSDIR, $RELDIR, $FILENAME, "
+                    "$FILEBASE, $FILEEXT when specifying the 'results' directory."))
 
     def get_solc_path(solc_version, fn, toolid):
         if not solc_version:
@@ -72,8 +76,9 @@ def collect_tasks(files, tools, settings):
             continue
         last_absfn = absfn
 
-        is_hex = absfn[-4:]==".hex"
         is_sol = absfn[-4:]==".sol"
+        is_byc = absfn[-4:]==".hex" and not (absfn[-7:-4]==".rt" or settings.runtime)
+        is_rtc = absfn[-4:]==".hex" and     (absfn[-7:-4]==".rt" or settings.runtime)
 
         solc_version = None
         if is_sol:
@@ -82,17 +87,18 @@ def collect_tasks(files, tools, settings):
 
         for tool in sorted(tools, key=operator.attrgetter("id", "mode")):
             if ((is_sol and tool.mode=="solidity") or
-                (is_hex and tool.mode=="bytecode" and not settings.runtime) or
-                (is_hex and tool.mode=="runtime"  and     settings.runtime)):
+                (is_byc and tool.mode=="bytecode") or
+                (is_rtc and tool.mode=="runtime")):
 
-                # due to sorting files and tools, rdir ought to be the same
-                # when rerunning SB with the same args
+                # find unique name for result dir
+                # ought to be the same when rerunning SB with the same args, due to sorting files and tools
                 base = settings.resultdir(tool.id,tool.mode,absfn,relfn)
                 rdir = disambiguate(base)
 
-                # load resources, once and for all
+                # load resources
                 solc_path = get_solc_path(solc_version, absfn, tool.id) if tool.solc else None
                 ensure_loaded(tool.image)
+
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)
                 tasks.append(task)
 

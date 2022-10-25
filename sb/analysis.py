@@ -1,5 +1,5 @@
 import multiprocessing, random, time, datetime, os, cpuinfo, platform
-import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parser
+import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parsing
 from sb.exceptions import SmartBugsError
 
 
@@ -84,7 +84,7 @@ def execute(task):
     if output:
         sb.io.write_bin(tool_output, output)
     if "json" in task.settings.format:
-        parsed_result = sb.parser.parse(exit_code, log, output, info)
+        parsed_result = sb.parsing.parse(exit_code, log, output, info)
         sb.io.write_json(parser_output,parsed_result)
 
     return duration

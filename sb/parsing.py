@@ -30,12 +30,12 @@ def get_parser(tid, tmode, fn):
     key = (tid,tmode)
     if key not in toolparsers:
         try:
-            modulename = "tools.{tid}.{tmode}"
+            modulename = f"tools.{tid}.{tmode}"
             spec = importlib.util.spec_from_file_location(modulename, fn)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
             toolparsers[key] = module
-        except BaseException as e:
+        except Exception as e:
             raise SmartBugsError(f"Cannot load parser for {tid}/{tmode} from {fn}\n{e}")
     return toolparsers[key]
 
@@ -46,7 +46,7 @@ def parse(exit_code, log, output, info):
     toolparser = get_parser(tid, tmode, tparser)
     try:
         findings, infos, errors, fails, analysis = toolparser.parse(exit_code, log, output, info)
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Parsing the result of analysis failed\n{e}")
 
     return {
