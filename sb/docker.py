@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import docker, os, shutil, tempfile, requests
+import sb.io, io
 from sb.exceptions import SmartBugsError
 
 try:    
@@ -24,10 +25,18 @@ def load(image):
     except Exception as e:
         raise SmartBugsError(f"Docker: Loading image {image} failed.\n{e}")
 
-def __run_volume(task):
+def __docker_volume(task):
     sbdir = tempfile.mkdtemp()
     sbdir_bin = os.path.join(sbdir, "bin")
-    shutil.copy(task.absfn, sbdir)
+    if task.tool.mode in ("bytecode","runtime"):
+        # sanitize hex code
+        code = sb.io.read_lines(task.absfn)[0].strip()
+        if code.startswith("0x"):
+            code = code[2:]
+        _,filename = os.path.split(task.absfn)
+        sb.io.write_txt(os.path.join(sbdir,filename), code)
+    else:
+        shutil.copy(task.absfn, sbdir)
     if task.tool.bin:
         shutil.copytree(task.tool.bin, sbdir_bin)
     else:
@@ -37,7 +46,7 @@ def __run_volume(task):
         shutil.copyfile(task.solc_path, sbdir_bin_solc)
     return sbdir
 
-def __run_args(task, sbdir):
+def __docker_args(task, sbdir):
     args = {
         "volumes": {sbdir: {"bind": "/sb", "mode": "rw"}},
         "detach": True
@@ -58,12 +67,9 @@ def __run_args(task, sbdir):
     return args
 
 def execute(task):
-    sbdir = __run_volume(task)
-    args = __run_args(task, sbdir)
-    exit_code = None
-    logs = None
-    output = None
-    container = None
+    sbdir = __docker_volume(task)
+    args = __docker_args(task, sbdir)
+    exit_code,logs,output,container = None,None,None,None
     try:
         container = client.containers.run(**args)
         try:
@@ -72,9 +78,10 @@ def execute(task):
         except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError):
             # The docs say that timeout raises ReadTimeout, but sometimes it is ConnectionError
             container.stop(timeout=0)
-        logs = container.logs().decode('utf8').splitlines()
+        logs = container.logs().decode("utf8").splitlines()
         if task.tool.output:
             output,_ = container.get_archive(task.tool.output)
+            output = b''.join(output)
     finally:
         if container:
             container.stop(timeout=0)

@@ -27,7 +27,7 @@ def write_json(fn, output):
 def read_lines(fn):
     try:
         with open(fn, 'r', encoding='utf-8') as f:
-            return f.readlines()
+            return f.read().splitlines()
     except Exception as e:
         raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
 
@@ -42,11 +42,17 @@ def write_txt(fn, output):
     except Exception as e:
         raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
 
+def read_bin(fn):
+    try:
+        with open(fn, 'rb') as f:
+            return f.read()
+    except Exception as e:
+        raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
+
 def write_bin(fn, output):
     try:
         with open(fn, 'wb') as f:
-            for chunk in output:
-                f.write(chunk)
+            f.write(output)
     except Exception as e:
         raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
 

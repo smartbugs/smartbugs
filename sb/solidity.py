@@ -52,22 +52,26 @@ def get_pragma(prg):
     return None
 
 
-cached_version_list = None
+cached_solc_versions = None
+def ensure_solc_versions_loaded():
+    global cached_solc_versions
+    if cached_solc_versions:
+        return True
+    try:
+        cached_solc_versions = solcx.get_installable_solc_versions()
+        return True
+    except:
+        cached_solc_versions = solcx.get_installed_solc_versions()
+        return False
 
-def get_solc_version(prg):
-    global cached_version_list
-    if not cached_version_list:
-        cached_version_list = solcx.get_installable_solc_versions()
-    pragma = get_pragma(prg)
+def get_solc_version(pragma):
     if not pragma:
         return None
     pragma = re.sub(r">=0\.", r"^0.", pragma)
-    version = solcx.install._select_pragma_version(pragma, cached_version_list)
+    version = solcx.install._select_pragma_version(pragma, cached_solc_versions)
     return version
 
-
 cached_solc_paths = {}
-
 def get_solc_path(version):
     if not version:
         return None

@@ -25,7 +25,7 @@ ERRORS = (
 )
 
 
-def parse(exit_code, log, output, info):
+def parse(exit_code, log, output, task):
 
     findings, infos, analysis = set(), set(), []
     cleaned_log = filter(lambda line: not(line.startswith("Analysing ") and line.endswith("...")), log)

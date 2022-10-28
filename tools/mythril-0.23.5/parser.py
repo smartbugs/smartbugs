@@ -20,7 +20,7 @@ FINDINGS = {
 }
 
 
-def parse(exit_code, log, output, info):
+def parse(exit_code, log, output, task):
 
     findings, infos, analysis = set(), set(), None
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)

@@ -1,4 +1,4 @@
-'''To be used by the output parsers'''
+'''Utilities for the output parsers'''
 
 import re
 
@@ -14,7 +14,7 @@ DOCKER_CODES = {
 
 ANSI = re.compile('\x1b\[[^m]*m')
 def discard_ANSI(lines):
-    return [ ANSI.sub('',line) for line in lines ]
+    return ( ANSI.sub('',line) for line in lines )
 
 
 def truncate_message(m, length=205):
