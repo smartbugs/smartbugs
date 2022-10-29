@@ -24,11 +24,14 @@ ERRORS = (
     re.compile(".*(solcx.exceptions.SolcError:.*)")
 )
 
+def is_relevant(line):
+    return not(line.startswith("Analysing ") and line.endswith("..."))
+
 
 def parse(exit_code, log, output, task):
 
     findings, infos, analysis = set(), set(), []
-    cleaned_log = filter(lambda line: not(line.startswith("Analysing ") and line.endswith("...")), log)
+    cleaned_log = filter(is_relevant, log)
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
 
     for f in list(fails): # iterate over a copy of 'fails' such that it can be modified
