@@ -56,7 +56,7 @@ def collect_tasks(files, tools, settings):
     def get_solc(pragma, fn, toolid):
         if not sb.solidity.ensure_solc_versions_loaded():
             sb.logging.message(sb.colors.warning(
-                "Failed to load a recent list of solc versions; are we connected to the internet?\n"
+                "Failed to load list of solc versions; are we connected to the internet?\n"
                 "    Proceeding with locally installed versions."),
                 "")
         solc_version = sb.solidity.get_solc_version(pragma)

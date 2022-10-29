@@ -133,4 +133,5 @@ def parse(exit_code, log, output, task, FINDINGS=FINDINGS):
             if not e[22:-1] in errors:
                 errors.add(e)
 
+    assert findings.issubset(FINDINGS)
     return findings, infos, errors, fails, analysis
