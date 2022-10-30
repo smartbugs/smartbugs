@@ -25,7 +25,7 @@ ERRORS = (
 )
 
 def is_relevant(line):
-    return not(line.startswith("Analysing ") and line.endswith("..."))
+    return not (line.startswith("Analysing ") and line.endswith("..."))
 
 
 def parse(exit_code, log, output, task):
