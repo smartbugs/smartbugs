@@ -40,7 +40,7 @@ def parse(exit_code, log, output, task):
         # process contents_of_some_file
         ...
     except Exception as e:
-        fails.add("error processing name_of_some_file from docker container")
+        fails.add("error parsing results: {e}")
 
     return findings, infos, errors, fails, analysis
 
