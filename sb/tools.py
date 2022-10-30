@@ -48,7 +48,7 @@ class Tool():
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: no image specified")
         extras = set(cfg.keys()).difference(FIELDS)
         if extras:
-            raise SmartBugsError("Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
+            raise SmartBugsError(f"Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
         if not self._command and not self._entrypoint:
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
