@@ -1,7 +1,0 @@
-solidity:
-    image: smartbugs/solhint
-    entrypoint: $BIN/run_solidity "$FILENAME" "$BIN"
-    user: 0
-    solc: yes
-    bin: scripts
-info: Open source project for linting solidity code. This project provide both security and style guide validations.

@@ -4,23 +4,29 @@ import docker, os, shutil, tempfile, requests
 import sb.io, io
 from sb.exceptions import SmartBugsError
 
-try:    
-    client = docker.from_env()
-    client.info()
-except:
-    raise SmartBugsError("Docker: Cannot connect to service. Is it installed and running?")
+_client = None
+
+def client():
+    global _client
+    if not _client:
+        try:    
+            _client = docker.from_env()
+            _client.info()
+        except:
+            raise SmartBugsError("Docker: Cannot connect to service. Is it installed and running?")
+    return _client
 
 images_loaded = set()
 
 def is_loaded(image):
     try:
-        return image in images_loaded or client.images.list(image)
+        return image in images_loaded or client().images.list(image)
     except Exception as e:
         raise SmartBugsError(f"Docker: checking for image {image} failed.\n{e}")
 
 def load(image):
     try:
-        client.images.pull(image)
+        client().images.pull(image)
         images_loaded.add(image)
     except Exception as e:
         raise SmartBugsError(f"Docker: Loading image {image} failed.\n{e}")
@@ -71,7 +77,7 @@ def execute(task):
     args = __docker_args(task, sbdir)
     exit_code,logs,output,container = None,None,None,None
     try:
-        container = client.containers.run(**args)
+        container = client().containers.run(**args)
         try:
             result = container.wait(timeout=task.settings.timeout)
             exit_code = result["StatusCode"]

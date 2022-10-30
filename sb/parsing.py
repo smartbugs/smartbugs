@@ -36,7 +36,7 @@ def get_parser(tid, tmode, fn):
             spec.loader.exec_module(module)
             toolparsers[key] = module
         except Exception as e:
-            raise SmartBugsError(f"Cannot load parser for {tid}/{tmode} from {fn}\n{e}")
+            raise SmartBugsError(f"Cannot load parser for {tid}/{tmode}\n{e}")
     return toolparsers[key]
 
 
