@@ -30,6 +30,6 @@ def parse(exit_code, log, output, task):
     if current_error is not None:
         analysis.append(current_error)
 
-    findings = { result["name"] for result in analysis  }
+    findings = { result["name"] for result in analysis }
 
     return findings, infos, errors, fails, analysis
