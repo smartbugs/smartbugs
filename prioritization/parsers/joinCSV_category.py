@@ -3,15 +3,15 @@ from re import T
 from traceback import print_tb
 
 # Final file
-final_file = open('./prioritization/notebooks/final_manual_huang_only.csv', 'w')
+final_file = open('./prioritization/notebooks/final_3_tools.csv', 'w')
 final_writer = csv.writer(final_file)
 
 # Results file
-results_file = open('./prioritization/parsers/data/result_manual_huang_only.csv', 'r')
+results_file = open('./prioritization/parsers/data/result_3_tools.csv', 'r')
 results_reader = csv.reader(results_file)
 
 # Vulnerabilities file
-vulnerabilities_file = open('./prioritization/parsers/data/vulnerabilities_manual_huang_only.csv', 'r')
+vulnerabilities_file = open('./prioritization/parsers/data/vulnerabilities_all_until_manual_huang.csv', 'r')
 vulnerabilities_reader = csv.reader(vulnerabilities_file)
 
 # Join the two CSV

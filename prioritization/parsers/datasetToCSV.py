@@ -4,7 +4,7 @@ import string
 
 # IMPORTANT: run from main folder
 initial_directory = "dataset"
-master_csv = open("./prioritization/parsers/data/vulnerabilities_all.csv", 'w')
+master_csv = open("./prioritization/parsers/data/vulnerabilities_all_until_manual_huang.csv", 'w')
 master_csv_writter = csv.writer(master_csv)
 
 headers = ["Contract", "Lines", "Categories"]
@@ -196,13 +196,13 @@ for filename1 in os.listdir(initial_directory):
               HuangDaiTXT(hunag_file_path, huang_category)
 
       # Injected sub-dataset
-      third_dir = os.path.join(second_dir, "injectedContractDataSet")
-      for huang_category in os.listdir(third_dir):
-        forth_dir = os.path.join(third_dir, huang_category)
-        for huang_file in os.listdir(forth_dir):
-            hunag_file_path = os.path.join(forth_dir, huang_file)
-            if os.path.isfile(hunag_file_path) and '.txt' in hunag_file_path:
-              HuangDaiTXT(hunag_file_path, huang_category)
+      # third_dir = os.path.join(second_dir, "injectedContractDataSet")
+      # for huang_category in os.listdir(third_dir):
+      #   forth_dir = os.path.join(third_dir, huang_category)
+      #   for huang_file in os.listdir(forth_dir):
+      #       hunag_file_path = os.path.join(forth_dir, huang_file)
+      #       if os.path.isfile(hunag_file_path) and '.txt' in hunag_file_path:
+      #         HuangDaiTXT(hunag_file_path, huang_category)
 
     # For other datasets
     else:

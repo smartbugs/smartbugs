@@ -8,7 +8,8 @@ from lib2to3.pgen2 import driver
 mapping_file = open('./prioritization/parsers/vulnerabilities_mapping.csv', 'r')
 mapping_reader = csv.reader(mapping_file)
 
-tools = ["SmartCheck", "Oyente", "Maian", "Conkas", "Manticore", "HoneyBadger", "Mythril", "Osiris", "Solhint", "Securify", "Slither"]
+# Check tool order
+tools = ["SmartCheck", "Oyente", "Maian", "Conkas", "Manticore", "HoneyBadger", "Mythril", "Osiris", "Securify", "Solhint", "Slither"]
 
 # Make mapping a dictionary of dictionaries, where first key is tool, second is vulnerability name and last item is category
 mapping = {}
@@ -60,19 +61,23 @@ def bugID(file, line, category):
   return str(file) + ":" + str(line) + ":" + str(category)
 
 # Parse file
-with open('./prioritization/parsers/data/results_all.sarif') as json_file:
+with open('./prioritization/parsers/data/results_3_tools.sarif') as json_file:
   sarif = json.load(json_file)
 
 # Results file
-csv_file = open('./prioritization/parsers/data/result_all.csv', 'w')
+csv_file = open('./prioritization/parsers/data/result_3_tools.csv', 'w')
 csv_writer = csv.writer(csv_file)
 
 headers = ["bug_id"]
 
 # Headers
-for run in sarif["runs"]:
-  headers.append(str(run["tool"]["driver"]["name"]) + "_rule_id")
-  headers.append(str(run["tool"]["driver"]["name"]) + "_level")
+# for run in sarif["runs"]:
+#   headers.append(str(run["tool"]["driver"]["name"]) + "_rule_id")
+#   headers.append(str(run["tool"]["driver"]["name"]) + "_level")
+
+for tool in tools:
+  headers.append(tool + "_rule_id")
+  headers.append(tool + "_level")
 
 csv_writer.writerow(headers)
 
@@ -85,42 +90,54 @@ data = {}
 tool_id = 0
 bug_id = ""
 for run in sarif["runs"]:
-    for res in run["results"]:
-        for location in res["locations"]:
-            try:
-                category = getCategory(tool_id, res["message"]["text"])
-                local_file = location["physicalLocation"]["artifactLocation"]["uri"]
-                start_line = location["physicalLocation"]["region"]["startLine"]
+  for res in run["results"]:
 
-                bug_id = bugID(local_file, start_line, category)
-                bug_count[tool_id] += 1
+    if (tool_id >= 11):
+      break
 
-                # If is first time seeing this error
-                if (bug_id in data):
-                    old_bug = data[bug_id]
-                    old_bug[tool_id*2+1] = res["ruleId"]
-                    old_bug[tool_id*2+2] = res["level"]
-                    data[bug_id] = old_bug
-                    #print(old_bug)
-                    #print()
-                else:
-                    new_bug = [0] * len(headers)
-                    new_bug[0] = bug_id
-                    new_bug[tool_id*2+1] = res["ruleId"]
-                    new_bug[tool_id*2+2] = res["level"]
-                    data[bug_id] = new_bug
-                    #print(new_bug)
-                    #print()
-            except:
-              missing_cat = tools[tool_id] + " - " + res["message"]["text"]
-              if (missing_cat not in missing_categories):
-                missing_categories.append(missing_cat)
-              #print(missing_cat)
-              #print(res)
-              #print("")
-              som = 0
+    # Skipped tools
+    while (tool_id not in [8,9,10] and tool_id < 11):
+      print("Skipping: " + tools[tool_id])
+      tool_id += 1
+
+    print("RUNNING tool #: " + str(tool_id))
+
+    for location in res["locations"]:
+      try:
+        category = getCategory(tool_id, res["message"]["text"])
+        local_file = location["physicalLocation"]["artifactLocation"]["uri"]
+        start_line = location["physicalLocation"]["region"]["startLine"]
+
+        bug_id = bugID(local_file, start_line, category)
+        bug_count[tool_id] += 1
+
+        # If is first time seeing this error
+        if (bug_id in data):
+          old_bug = data[bug_id]
+          old_bug[tool_id*2+1] = res["ruleId"]
+          old_bug[tool_id*2+2] = res["level"]
+          data[bug_id] = old_bug
+          #print(old_bug)
+          #print()
+        else:
+          new_bug = [0] * len(headers)
+          new_bug[0] = bug_id
+          new_bug[tool_id*2+1] = res["ruleId"]
+          new_bug[tool_id*2+2] = res["level"]
+          data[bug_id] = new_bug
+          #print(new_bug)
+          #print()
+      except:
+        missing_cat = tools[tool_id] + " - " + res["message"]["text"]
+        if (missing_cat not in missing_categories):
+          missing_categories.append(missing_cat)
+        print(missing_cat)
+        #print(res)
+        #print("")
+        #som = 0
 
 
+    print("RAN: " + tools[tool_id])
     tool_id += 1
 
 # Write Data
