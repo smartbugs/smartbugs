@@ -8,6 +8,7 @@ FINDINGS = {
     "Transaction-Ordering Dependence (TOD)",
     "Timestamp Dependency",
     "Re-Entrancy Vulnerability",
+    "Integer Overflow"
 }
 
 INFOS = (
