@@ -7,5 +7,5 @@ SITE_CFG = os.path.join(HOME,"site_cfg.yaml")
 TASK_LOG = "smartbugs.json"
 TOOL_LOG    = "result.log"
 TOOL_OUTPUT = "result.tar"
-PARSER_OUTPUT = "result.json"
+PARSER_OUTPUT = "parsed_result.json"
 SARIF_OUTPUT = "result.sarif"

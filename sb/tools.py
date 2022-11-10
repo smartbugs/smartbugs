@@ -48,11 +48,11 @@ class Tool():
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: no image specified")
         extras = set(cfg.keys()).difference(FIELDS)
         if extras:
-            raise SmartBugsError("Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
+            raise SmartBugsError(f"Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
         if not self._command and not self._entrypoint:
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
-            self.parser = f"{self.id}.py"
+            self.parser = "parser.py"
         self.parser = os.path.join(self.path,self.parser)
         if self.bin:
             self.bin = os.path.join(self.path,self.bin)
@@ -108,18 +108,16 @@ def load(ids, tools=[], seen=set()):
         cfg["path"] = toolpath
         found = False
         for mode in ("solidity", "bytecode", "runtime"):
-            cfg_mode = cfg.get(mode)
-            if cfg_mode is None:
-                # mode not in cfg or cfg[mode] is None
+            if mode not in cfg:
                 continue
-            elif not isinstance(cfg_mode, dict):
-                raise SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
             found = True
             cfg_copy = cfg.copy()
             for m in ("solidity", "bytecode", "runtime"):
                 cfg_copy.pop(m,None)
             cfg_copy["mode"] = mode
-            cfg_copy.update(cfg_mode)
+            if not isinstance(cfg[mode], dict):
+                raise SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
+            cfg_copy.update(cfg[mode])
             tools.append(Tool(cfg_copy))
         if not found:
             raise SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")

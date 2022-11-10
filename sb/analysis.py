@@ -1,5 +1,5 @@
 import multiprocessing, random, time, datetime, os, cpuinfo, platform
-import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parser, sb.sarif
+import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parsing, sb.sarif
 from sb.exceptions import SmartBugsError
 
 
@@ -87,7 +87,7 @@ def execute(task):
         
     parsed_result = {}
     if "json" in task.settings.format:
-        parsed_result = sb.parser.parse(exit_code, log, output, info)
+        parsed_result = sb.parsing.parse(exit_code, log, output, info)
         sb.io.write_json(parser_output,parsed_result)
     if "sarif" in task.settings.format:
         # build sarif from json representation

@@ -9,7 +9,7 @@
 #timeout: 0 # [s] 0/null = no timeout
 #cpu-quota: 0 # 0/null = no quota
 #mem-limit: 0 # "512m" or "4g"  0/null = no quota
-#results: results/${TOOL}/${RUNID}/${FILEBASE}
+#results: results/${TOOL}/${RUNID}/${FILENAME}
 ##   vars: all vars from "runid" above, as well as RUNID,
 ##   TOOL, MODE (solidity, bytecode, runtime), ABSDIR, RELDIR,
 ##   FILENAME, FILEBASE, FILEEXT (FILENAME = FILEBASE + "." + FILEEXT)

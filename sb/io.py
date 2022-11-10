@@ -6,14 +6,14 @@ def read_yaml(fn):
         with open(fn, 'r', encoding='utf-8') as f:
             # for an empty file, return empty dict, not NoneType
             return yaml.safe_load(f) or {}
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
 
 def read_json(fn):
     try:
         with open(fn, 'r', encoding='utf-8') as f:
             return json.load(f)
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
 
 def write_json(fn, output):
@@ -21,14 +21,14 @@ def write_json(fn, output):
         j = json.dumps(output, sort_keys=True, indent=4)
         with open(fn, 'w', encoding='utf-8') as f:
             print(j, file=f)
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
 
 def read_lines(fn):
     try:
         with open(fn, 'r', encoding='utf-8') as f:
-            return f.readlines()
-    except BaseException as e:
+            return f.read().splitlines()
+    except Exception as e:
         raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
 
 def write_txt(fn, output):
@@ -39,14 +39,20 @@ def write_txt(fn, output):
             else:
                 for line in output:
                     f.write(f"{line}\n")
-    except BaseException as e:
+    except Exception as e:
         raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
+
+def read_bin(fn):
+    try:
+        with open(fn, 'rb') as f:
+            return f.read()
+    except Exception as e:
+        raise SmartBugsError(f"Error reading '{fn}'.\n{e}")
 
 def write_bin(fn, output):
     try:
         with open(fn, 'wb') as f:
-            for chunk in output:
-                f.write(chunk)
-    except BaseException as e:
+            f.write(output)
+    except Exception as e:
         raise SmartBugsError(f"Error writing '{fn}'.\n{e}")
 
