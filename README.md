@@ -22,25 +22,25 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Supported Tools
 
-| | Solidity | bytecode | runtime code |
-+-+----------+----------+--------------+
-| [Conkas](https://github.com/nveloso/conkas)                  | - [x] | -[ ] | - [x] |
-| [Ethainter](https://zenodo.org/record/3760403)               | - [ ] | -[ ] | - [x] |
-| [eThor](https://secpriv.wien/ethor)                          | - [ ] | -[ ] | - [x] |
-| [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | - [x] | -[ ] | - [x] |
-| [MadMax](https://github.com/nevillegrech/MadMax)             | - [ ] | -[ ] | - [x] |
-| [Maian](https://github.com/smartbugs/MAIAN)                  | - [x] | -[x] | - [x] |
-| [Manticore](https://github.com/trailofbits/manticore)        | - [x] | -[ ] | - [ ] |
-| [Mythril](https://github.com/ConsenSys/mythril)              | - [x] | -[x] | - [x] |
-| [Osiris](https://github.com/christoftorres/Osiris)           | - [x] | -[ ] | - [x] |
-| [Oyente](https://github.com/smartbugs/oyente)                | - [x] | -[ ] | - [x] |
-| [Pakala](https://github.com/palkeo/pakala)                   | - [ ] | -[ ] | - [x] |
-| [Securify](https://github.com/eth-sri/securify)              | - [x] | -[ ] | - [x] |
-| [Slither](https://github.com/crytic/slither)                 | - [x] | -[ ] | - [ ] |
-| [Smartcheck](https://github.com/smartdec/smartcheck)         | - [x] | -[ ] | - [ ] |
-| [Solhint](https://github.com/protofire/solhint)              | - [x] | -[ ] | - [ ] |
-| [teEther](https://github.com/nescio007/teether)              | - [ ] | -[ ] | - [x] |
-| [Vandal](https://github.com/usyd-blockchain/vandal)          | - [ ] | -[ ] | - [x] |
+|      | version | Solidity | bytecode | runtime code |
+| :--- | :--- | :---: | :---: | :--: |
+| [Conkas](https://github.com/nveloso/conkas) | #6aee098 | - [x] | -[ ] | - [x] |
+| [Ethainter](https://zenodo.org/record/3760403) |  | - [ ] | -[ ] | - [x] |
+| [eThor](https://secpriv.wien/ethor) | 2021 (CCS 2020) | - [ ] | -[ ] | - [x] |
+| [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | | - [x] | -[ ] | - [x] |
+| [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9 | - [ ] | -[ ] | - [x] |
+| [Maian](https://github.com/smartbugs/MAIAN) | #4bab09a | - [x] | -[x] | - [x] |
+| [Manticore](https://github.com/trailofbits/manticore) | 0.3.7 | - [x] | -[ ] | - [ ] |
+| [Mythril](https://github.com/ConsenSys/mythril) | 0.23.5 | - [x] | -[x] | - [x] |
+| [Osiris](https://github.com/christoftorres/Osiris) |  | - [x] | -[ ] | - [x] |
+| [Oyente](https://github.com/smartbugs/oyente) | #480e725 | - [x] | -[ ] | - [x] |
+| [Pakala](https://github.com/palkeo/pakala) | #c84ef38 v1.1.10 | - [ ] | -[ ] | - [x] |
+| [Securify](https://github.com/eth-sri/securify) |   | - [x] | -[ ] | - [x] |
+| [Slither](https://github.com/crytic/slither) |    | - [x] | -[ ] | - [ ] |
+| [Smartcheck](https://github.com/smartdec/smartcheck) |   | - [x] | -[ ] | - [ ] |
+| [Solhint](https://github.com/protofire/solhint) | 2.1.0 | - [x] | -[ ] | - [ ] |
+| [teEther](https://github.com/nescio007/teether) | #04adf56 | - [ ] | -[ ] | - [x] |
+| [Vandal](https://github.com/usyd-blockchain/vandal) | #d2b0043 | - [ ] | -[ ] | - [x] |
 
 ## Requirements
 
