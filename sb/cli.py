@@ -25,10 +25,8 @@ def cli_args(defaults):
     input.add_argument(
         "-c", "--configuration",
         metavar="FILE",
-        nargs="+",
         type=str,
-        default=[],
-        help=f"settings to be processed before command line args{fmt_default([])}")
+        help=f"settings to be processed before command line args{fmt_default(None)}")
     input.add_argument(
         "--runtime",
         action="store_true",
@@ -124,9 +122,9 @@ def cli(site_cfg=sb.config.SITE_CFG):
         settings.update(site_cfg)
     # parse command line
     cli_settings = cli_args(settings)
-    # add settings from config files specified on command line
-    for cfg in cli_settings["configuration"]:
-        settings.update(cfg)
+    # add settings from config file specified on command line
+    if cli_settings["configuration"]:
+        settings.update(cli_settings["configuration"])
     # add settings from command line
     del cli_settings["configuration"]
     for k in [ k for k,v in cli_settings.items() if v is None ]:
