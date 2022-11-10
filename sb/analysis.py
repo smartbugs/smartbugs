@@ -1,5 +1,5 @@
 import multiprocessing, random, time, datetime, os, cpuinfo, platform
-import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parser
+import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parser, sb.sarif
 from sb.exceptions import SmartBugsError
 
 
@@ -63,7 +63,8 @@ def execute(task):
     tool_log = os.path.join(task.rdir, sb.config.TOOL_LOG)
     tool_output = os.path.join(task.rdir, sb.config.TOOL_OUTPUT)
     parser_output = os.path.join(task.rdir, sb.config.PARSER_OUTPUT)
-    for old in (task_log, tool_log, tool_output, parser_output):
+    sarif_output = os.path.join(task.rdir, sb.config.SARIF_OUTPUT)
+    for old in (task_log, tool_log, tool_output, parser_output, sarif_output):
         try:
             os.remove(old)
         except:
@@ -83,9 +84,17 @@ def execute(task):
         sb.io.write_txt(tool_log, log)
     if output:
         sb.io.write_bin(tool_output, output)
+        
+    parsed_result = {}
     if "json" in task.settings.format:
         parsed_result = sb.parser.parse(exit_code, log, output, info)
         sb.io.write_json(parser_output,parsed_result)
+    if "sarif" in task.settings.format:
+        # build sarif from json representation
+        if not parsed_result:
+            parsed_result = sb.parser.parse(exit_code, log, output, info)
+        sarif_result = sb.sarif.create_sarif(info, parsed_result)
+        sb.io.write_json(sarif_output, sarif_result)       
 
     return duration
 
