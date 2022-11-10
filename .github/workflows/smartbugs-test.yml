@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tool: ["conkas", "mythril"]
-        contract: ["dataset/access_control/FibonacciBalance.sol"]
+        tool: ["all"]
+        contract: ["test2/*"]
         python-version: ["3.6.9"]
     steps:
       - uses: actions/checkout@v3
