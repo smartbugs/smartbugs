@@ -1,12 +1,12 @@
 name: SmartBugs CI
 on: [push]
 jobs:
-  smartbugs:
+  run-all-once:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         tool: ["all"]
-        contract: ["test2/*"]
+        contract: ["./github/sample/*"]
         python-version: ["3.6.9"]
     steps:
       - uses: actions/checkout@v3

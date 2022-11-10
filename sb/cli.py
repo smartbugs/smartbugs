@@ -54,7 +54,7 @@ def cli_args(defaults):
     exec.add_argument(
         "--overwrite",
         action="store_true",
-        help=f"delete old result and rerun the analysis{fmt_default('defaults.overwrite')}")
+        help=f"delete old result and rerun the analysis{fmt_default(defaults.overwrite)}")
     exec.add_argument(
         "--processes",
         type=int,
