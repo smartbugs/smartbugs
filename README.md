@@ -24,23 +24,23 @@ that analyse blockchain programs for weaknesses and other properties.
 
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
-| [Conkas](https://github.com/nveloso/conkas)          | #6aee098 | :white_check_mark   | :white_large_square | :white_check_mark   |
-| [Ethainter](https://zenodo.org/record/3760403)               |  | :white_large_square | :white_large_square | :white_check_mark   |
-| [eThor](https://secpriv.wien/ethor)           | 2021 (CCS 2020) | :white_large_square | :white_large_square | :white_check_mark   |
-| [HoneyBadger](https://github.com/christoftorres/HoneyBadger) |  | :white_check_mark   | :white_large_square | :white_check_mark   |
-| [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     | :white_large_square | :white_large_square | :white_check_mark   |
-| [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :white_check_mark   | :white_check_mark   | :white_check_mark   |
-| [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :white_check_mark   | :white_large_square | :white_large_square |
-| [Mythril](https://github.com/ConsenSys/mythril)        | 0.23.5 | :white_check_mark   | :white_check_mark   | :white_check_mark   |
-| [Osiris](https://github.com/christoftorres/Osiris)           |  | :white_check_mark   | :white_large_square | :white_check_mark   |
-| [Oyente](https://github.com/smartbugs/oyente)        | #480e725 | :white_check_mark   | :white_large_square | :white_check_mark   |
-| [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 | :white_large_square | :white_large_square | :white_check_mark   |
-| [Securify](https://github.com/eth-sri/securify)              |  | :white_check_mark   | :white_large_square | :white_check_mark   |
-| [Slither](https://github.com/crytic/slither)                 |  | :white_check_mark   | :white_large_square | :white_large_square |
-| [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :white_check_mark   | :white_large_square | :white_large_square |
-| [Solhint](https://github.com/protofire/solhint)         | 2.1.0 | :white_check_mark   | :white_large_square | :white_large_square |
-| [teEther](https://github.com/nescio007/teether)      | #04adf56 | :white_large_square | :white_large_square | :white_check_mark   |
-| [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 | :white_large_square | :white_large_square | :white_check_mark   |
+| [Conkas](https://github.com/nveloso/conkas)          | #6aee098 | :white_check_mark:   | :white_large_square: | :white_check_mark:   |
+| [Ethainter](https://zenodo.org/record/3760403)               |  | :white_large_square: | :white_large_square: | :white_check_mark:   |
+| [eThor](https://secpriv.wien/ethor)           | 2021 (CCS 2020) | :white_large_square: | :white_large_square: | :white_check_mark:   |
+| [HoneyBadger](https://github.com/christoftorres/HoneyBadger) |  | :white_check_mark:   | :white_large_square: | :white_check_mark:   |
+| [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     | :white_large_square: | :white_large_square: | :white_check_mark:   |
+| [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+| [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :white_check_mark:   | :white_large_square: | :white_large_square: |
+| [Mythril](https://github.com/ConsenSys/mythril)        | 0.23.5 | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+| [Osiris](https://github.com/christoftorres/Osiris)           |  | :white_check_mark:   | :white_large_square: | :white_check_mark:   |
+| [Oyente](https://github.com/smartbugs/oyente)        | #480e725 | :white_check_mark:   | :white_large_square: | :white_check_mark:   |
+| [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 | :white_large_square: | :white_large_square: | :white_check_mark:   |
+| [Securify](https://github.com/eth-sri/securify)              |  | :white_check_mark:   | :white_large_square: | :white_check_mark:   |
+| [Slither](https://github.com/crytic/slither)                 |  | :white_check_mark:   | :white_large_square: | :white_large_square: |
+| [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :white_check_mark:   | :white_large_square: | :white_large_square: |
+| [Solhint](https://github.com/protofire/solhint)         | 2.1.0 | :white_check_mark:   | :white_large_square: | :white_large_square: |
+| [teEther](https://github.com/nescio007/teether)      | #04adf56 | :white_large_square: | :white_large_square: | :white_check_mark:   |
+| [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 | :white_large_square: | :white_large_square: | :white_check_mark:   |
 
 ## Requirements
 
