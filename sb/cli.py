@@ -25,10 +25,8 @@ def cli_args(defaults):
     input.add_argument(
         "-c", "--configuration",
         metavar="FILE",
-        nargs="?",
         type=str,
-        default=sb.config.SITE_CFG,
-        help=f"settings to be processed before command line args{fmt_default(sb.config.SITE_CFG)}")
+        help=f"settings to be processed before command line args{fmt_default(None)}")
     input.add_argument(
         "--runtime",
         action="store_true",

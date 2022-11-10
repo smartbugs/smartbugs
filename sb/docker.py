@@ -44,7 +44,7 @@ def __docker_volume(task):
     else:
         shutil.copy(task.absfn, sbdir)
     if task.tool.bin:
-        shutil.copytree(task.tool.bin, sbdir_bin)
+        shutil.copytree(task.tool.absbin, sbdir_bin)
     else:
         os.mkdir(sbdir_bin)
     if task.solc_path:

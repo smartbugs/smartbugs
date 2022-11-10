@@ -4,31 +4,39 @@ from sb.exceptions import SmartBugsError
 
 
 cpu = cpuinfo.get_cpu_info()
-cpu.pop("flags", None)
-python_version = cpu.pop("python_version", None)
+uname = platform.uname()
 SYSTEM_INFO = {
     "smartbugs": {
         "version": sb.config.VERSION,
-        "python": python_version
+        "python": cpu.get("python_version")
     },
-    "platform": platform.uname()._asdict(),
-    "cpu_info": cpu
+    "platform": {
+        "system": uname.system,
+        "release": uname.release,
+        "version": uname.version,
+    },
+    "cpu_info": {
+        "arch_string_raw": cpu.get("arch_string_raw"),
+        "bits": cpu.get("bits"),
+        "brand_raw": cpu.get("brand_raw"),
+        "hz_actual_friendly": cpu.get("hz_actual_friendly"),
+        "hz_advertised_friendly": cpu.get("hz_advertised_friendly"),
+        "model": cpu.get("model"),
+        "stepping": cpu.get("stepping"),
+        "vendor_id_raw": cpu.get("vendor_id_raw"),
+    }
 }
 
 def task_info(task, start_time, duration, exit_code, log, output, docker_args):
     info = {
-        "contract": {
-            "abs_filename": task.absfn,
-            "filename": task.relfn},
+        "contract": task.relfn,
         "result": {
             "start": start_time,
             "duration": duration,
             "exit_code": exit_code,
             "logs": sb.config.TOOL_LOG if log else None,
             "output": sb.config.TOOL_OUTPUT if output else None},
-        "solc": {
-            "version": str(task.solc_version),
-            "path": str(task.solc_path) },
+        "solc": str(task.solc_version) if task.solc_version else None,
         "tool": task.tool.dict(),
         "docker": docker_args,
     }

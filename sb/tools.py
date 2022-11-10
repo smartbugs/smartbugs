@@ -53,9 +53,9 @@ class Tool():
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
             self.parser = "parser.py"
-        self.parser = os.path.join(self.path,self.parser)
+        self.absparser = os.path.join(self.path,self.parser)
         if self.bin:
-            self.bin = os.path.join(self.path,self.bin)
+            self.absbin = os.path.join(self.path,self.bin)
 
 
     def command(self, filename, timeout, bin):
@@ -77,6 +77,8 @@ class Tool():
                 d["command"] = self._command.template if self._command else None
             elif k == "_entrypoint":
                 d["entrypoint"] = self._entrypoint.template if self._entrypoint else None
+            elif k in ("path", "absparser", "absbin"):
+                pass
             else:
                 d[k] = v
         return d

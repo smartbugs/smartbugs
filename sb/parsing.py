@@ -42,7 +42,7 @@ def get_parser(tid, tmode, fn):
 
 def parse(exit_code, log, output, info):
     tool = info["tool"]
-    tid, tmode, tparser = tool["id"], tool["mode"], tool["parser"]
+    tid, tmode, tparser = tool["id"], tool["mode"], tool["absparser"]
     toolparser = get_parser(tid, tmode, tparser)
     try:
         findings, infos, errors, fails, analysis = toolparser.parse(exit_code, log, output, info)
