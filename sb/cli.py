@@ -27,7 +27,7 @@ def cli_args(defaults):
         metavar="FILE",
         nargs="?",
         type=str,
-        default=[sb.config.SITE_CFG],
+        default=sb.config.SITE_CFG,
         help=f"settings to be processed before command line args{fmt_default(sb.config.SITE_CFG)}")
     input.add_argument(
         "--runtime",
@@ -56,7 +56,7 @@ def cli_args(defaults):
     exec.add_argument(
         "--overwrite",
         action="store_true",
-        help=f"delete old result and rerun the analysis{fmt_default('defaults.overwrite')}")
+        help=f"delete old result and rerun the analysis{fmt_default(defaults.overwrite)}")
     exec.add_argument(
         "--processes",
         type=int,
@@ -124,9 +124,9 @@ def cli(site_cfg=sb.config.SITE_CFG):
         settings.update(site_cfg)
     # parse command line
     cli_settings = cli_args(settings)
-    # add settings from config files specified on command line
-    for cfg in cli_settings["configuration"]:
-        settings.update(cfg)
+    # add settings from config file specified on command line
+    if cli_settings["configuration"]:
+        settings.update(cli_settings["configuration"])
     # add settings from command line
     del cli_settings["configuration"]
     for k in [ k for k,v in cli_settings.items() if v is None ]:
