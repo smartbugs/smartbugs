@@ -78,10 +78,8 @@ def parse(exit_code, log, output):
         optional. References to registries like SWC or DASP
     method: str
         optional. How the tool goes about detecting the issue.
-    descr_short: str
-        optional. Short description of the issue
-    descr_long: str
-        optional. Long description of the issue
+    description: str
+        optional. Description of the issue
 
     If missing, the fields severity, classification, method, descr_short,
     descr_long will be taken from the file issues.yaml in the tools

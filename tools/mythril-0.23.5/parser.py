@@ -55,9 +55,7 @@ def parse(exit_code, log, output):
             if "tx_sequence" in issue:
                 finding["exploit"] = issue["tx_sequence"]
             if "description" in issue:
-                descr = issue["description"].split("\n")
-                finding["descr_short"] = descr[0]
-                finding["descr_long"] = " ".join(descr[1:])
+                finding["description"] = issue["description"]
             if "severity" in issue:
                 finding["severity"] = issue["severity"].lower()
             if "swc-id" in issue:

@@ -16,7 +16,7 @@ Delegatecall to user-supplied address:
     classification: SWC-112
     method: Check for invocations of delegatecall to a user-supplied address.
     descr_short: The contract delegates execution to another contract with a user-supplied address.
-    descr_long: The smart contract delegates execution to a user-supplied address.This could allow an attacker to execute arbitrary code in the context of this contract account and manipulate the state of the contract account or execute actions on its behalf.
+    descr_long: The smart contract delegates execution to a user-supplied address. This could allow an attacker to execute arbitrary code in the context of this contract account and manipulate the state of the contract account or execute actions on its behalf.
     severity: high
 
 Dependence on tx.origin:
