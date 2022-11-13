@@ -1,7 +1,7 @@
 import json
 import sb.parse_utils
 
-VERSION = "2022/08/06"
+VERSION = "2022/11/11"
 
 FINDINGS = {
     "Jump to an arbitrary instruction",
@@ -20,9 +20,9 @@ FINDINGS = {
 }
 
 
-def parse(exit_code, log, output, task):
+def parse(exit_code, log, output):
 
-    findings, infos, analysis = set(), set(), None
+    findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     # Mythril catches all exceptions, prints a message "please report", and then prints the traceback.
@@ -40,15 +40,29 @@ def parse(exit_code, log, output, task):
                 break
 
     try:
-        analysis = json.loads(log[-1])
+        result = json.loads(log[-1])
     except:
         pass
-    if analysis:
-        issues = analysis.get("issues", [])
-        findings.update([issue["title"] for issue in issues])
-        error = analysis.get("error")
+    if result:
+        error = result.get("error")
         if error:
             errors.add(error.split('.')[0])
+        for issue in result.get("issues", []):
+            finding = { "name": issue["title"] }
+            for k in ("filename", "contract", "function", "address", "lineno"):
+                if k in issue:
+                    finding[k] = issue[k]
+            if "tx_sequence" in issue:
+                finding["exploit"] = issue["tx_sequence"]
+            if "description" in issue:
+                descr = issue["description"].split("\n")
+                finding["descr_short"] = descr[0]
+                finding["descr_long"] = " ".join(descr[1:])
+            if "severity" in issue:
+                finding["severity"] = issue["severity"].lower()
+            if "swc-id" in issue:
+                finding["classification"] = f"SWC-{issue['swc-id']}"
+            findings.append(finding)
 
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails
 

@@ -11,16 +11,18 @@ def empty_sarif():
         }
     
     
-def tool_info(info, parsed_result):
-    tool = {}
-    tool["driver"] = {}
-    tool["driver"]["name"] = info["tool"]["id"]
-    tool["driver"]["version"] = info["tool"]["version"]
-    tool["driver"]["informationUri"] = info["tool"]["origin"]
+def tool_info(info, issues):
+    info_tool = info["tool"]
+    tool = {
+        "driver": {
+            "name":           info_tool["name"]    if info_tool.get("name")    else info_tool["id"],
+            "version":        info_tool["version"] if info_tool.get("version") else "unavailable",
+            "informationUri": info_tool["origin"]  if info_tool.get("origin")  else "unavailable" }
+    }
     
     rule_dict = {}
-    for issue in parsed_result["analysis"]["issues"]:
-        rule_id = issue["title"].replace(" ", "_")
+    for issue in issues:
+        rule_id = issue.get("id")
         rule_dict[rule_id] = {
             "id" : rule_id,
             "name" : issue["title"].replace(" ", "").replace("-",""),
@@ -39,45 +41,40 @@ def tool_info(info, parsed_result):
     return tool
 
 
-def issue_sarif(filename, issue):
-    return { "ruleId": issue["title"].replace(" ", "_"),
-             "message": { "text": issue["title"] },
-             "locations": [
-                            {
-                                "physicalLocation" : {
-                                    "artifactLocation" : {
-                                        "uri" : filename
-                                    },
-                                "region" : {
-                                    "startLine" : issue["lineno"],
-                                    "startColumn" : 1,
-                                    "endLine" : issue["lineno"],
-                                    "endColumn" : 1,
-                                        }
-                                }
-                            }
-                    ]
+def issue_sarif(issue):
+    return {
+        "ruleId": issue.get("id"),
+        "message": {
+            "text": issue.get("title") },
+        "locations": [
+            {   "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": issue.get("filename") },
+                    "region": {
+                        "startLine":   issue.get("lineno",1),
+                        "startColumn": issue.get("column",1),
+                        "endLine":     issue.get("lineno_end", issue.get("lineno",1)),
+                        "endColumn":   issue.get("column_end", issue.get("column",1)) } }
             }
+        ]
+    }
 
 
-def tool_results(info, parsed_result):
-    results = []
-    
-    for issue in parsed_result["analysis"]["issues"]:
-        results.append(issue_sarif(info["contract"]["filename"], issue))
-    
-    return results
+
+def tool_results(issues):
+    return [ issue_sarif(issue) for issue in issues ]
     
 
 def create_sarif(info, parsed_result):
+    issues = parsed_result("findings")
     
     result = empty_sarif()
     
     # Tool info
-    runs_dict = { "tool" : tool_info(info, parsed_result)}
+    runs_dict = { "tool" : tool_info(info, issues) }
     
     # Results info
-    results_dict = { "results" : tool_results(info, parsed_result)}
+    results_dict = { "results" : tool_results(issues) }
     
     # Merge dictionaries
     runs_dict.update(results_dict)

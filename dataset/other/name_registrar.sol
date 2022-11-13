@@ -3,6 +3,8 @@
  * @vulnerable_at_lines: 21
  */
 // A Locked Name Registrar
+
+pragma solidity ^0.4.15;
 contract NameRegistrar {
 
     bool public unlocked = false;  // registrar locked, no name updates

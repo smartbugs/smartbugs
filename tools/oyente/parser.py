@@ -1,14 +1,16 @@
 import re
 import sb.parse_utils
 
-VERSION = "2022/08/06"
+VERSION = "2022/11/11"
 
 FINDINGS = {
     "Callstack Depth Attack Vulnerability",
     "Transaction-Ordering Dependence (TOD)",
     "Timestamp Dependency",
     "Re-Entrancy Vulnerability",
-    "Integer Overflow"
+    "Integer Overflow",
+    "Integer Underflow",
+    "Parity Multisig Bug 2"
 }
 
 INFOS = (
@@ -26,6 +28,13 @@ FAILS = (
 #    re.compile("(Unexpected error: .*)"), # Secondary error
 )
 
+CONTRACT  = re.compile("^INFO:root:[Cc]ontract ([^:]*):([^:]*):")
+WEAKNESS  = re.compile("^INFO:symExec:[\s└>]*([^:]*):\s*True")
+LOCATION1 = re.compile("^INFO:symExec:([^:]*):([0-9]+):([0-9]+):\s*([^:]*):\s*(.*)\.") # Oyente
+LOCATION2 = re.compile("^([^:]*):([^:]*):([0-9]+):([0-9]+)") # Osiris
+COMPLETED = re.compile("^INFO:symExec:\s*====== Analysis Completed ======")
+
+
 def is_relevant(line):
     # Identify lines interfering with exception parsing
     return not (
@@ -36,15 +45,16 @@ def is_relevant(line):
     )
 
 
-def parse(exit_code, log, output, task, FINDINGS=FINDINGS):
+def parse(exit_code, log, output):
 
-    findings, infos, analysis = set(), set(), []
+    findings, infos = [], set()
     cleaned_log = filter(is_relevant, log)
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
     errors.discard('EXIT_CODE_1') # redundant: indicates error or vulnerability reported below
 
     analysis_completed = False
-    contract = None
+    filename,contract,weakness = None,None,None
+    weaknesses = set()
     for line in log:
         if sb.parse_utils.add_match(infos, line, INFOS):
             continue
@@ -53,70 +63,49 @@ def parse(exit_code, log, output, task, FINDINGS=FINDINGS):
         if sb.parse_utils.add_match(fails, line, FAILS):
             continue
 
-        fields = [ f.strip().replace('└> ','') for f in line.split(':') ]
-        if (line.startswith('INFO:root:contract') or line.startswith('INFO:root:Contract')) and len(fields) >= 4:
-            # INFO:root:contract <filename>:<contract name>:
-            if contract is not None:
-                analysis.append(contract)
-            contract = {
-                'file': fields[2].replace('contract ', '').replace('Contract ',''),
-                'contract': fields[3]
-            }
-            key = None
-            val = None
+        m = CONTRACT.match(line)
+        if m:
+            filename, contract = m[1], m[2]
             analysis_completed = False
-        elif line.startswith('INFO:symExec:\t'):
-            if fields[2] == '============ Results ===========':
-                # INFO:symExec:   ============ Results ===========
-                pass
-            elif fields[2] == '====== Analysis Completed ======':
-                # INFO:symExec:   ====== Analysis Completed ======
-                analysis_completed = True
-            elif len(fields) >= 4:
-                # INFO:symExec:<key>:<value>
-                if contract is None:
-                    contract = {}
-                key = fields[2]
-                val = fields[3]
-                if val == 'True':
-                    contract[key] = True
-                    findings.add(key)
-                elif val == 'False':
-                    contract[key] = False
-                else:
-                    contract[key] = val
-        elif contract is not None and 'file' in contract:
-            fn = contract['file']
-            if 'issues' not in contract:
-                contract['issues'] = []
-            if line.startswith(f"INFO:symExec:{fn}") and len(fields) >= 7:
-                # INFO:symExec:<filename>:<line>:<column>:<level>:<message>
-                contract['issues'].append({
-                    'line':    int(fields[3]),
-                    'column':  int(fields[4]),
-                    'level':   fields[5],
-                    'message': fields[6]
-                })
-            elif line.startswith(fn) and len(fields) >= 5:
-                # <filename>:<line>:<column>:<level>:<message>
-                contract['issues'].append({
-                    'line':    int(fields[1]),
-                    'column':  int(fields[2]),
-                    'level':   fields[3],
-                    'message': fields[4]
-                })
-            elif line.startswith(fn) and len(fields) >= 4:
-                # <filename>:<contract>:<line>:<column>
-                assert 'contract' in contract and contract['contract'] == fields[1]
-                assert key is not None and val == 'True'
-                contract['issues'].append({
-                    'line':    int(fields[2]),
-                    'column':  int(fields[3]),
-                    'message': key
-                })
-    if contract is not None:
-            analysis.append(contract)
+            continue
 
+        m = WEAKNESS.match(line)
+        if m:
+            weakness = m[1]
+            if weakness == "Arithmetic bugs":
+                # Osiris: superfluous, will also report a sub-category
+                continue
+            weaknesses.add((filename,contract,weakness,None,None))
+            continue
+
+        m = LOCATION1.match(line)
+        if m:
+            fn, lineno, column, severity, weakness = m[1], m[2], m[3], m[4], m[5]
+            weaknesses.discard((filename,contract,weakness,None,None))
+            weaknesses.add((filename,contract,weakness,int(lineno),int(column)))
+            continue
+
+        m = LOCATION2.match(line)
+        if m:
+            fn, ct, lineno, column = m[1], m[2], m[3], m[4]
+            assert fn == filename and ct == contract and weakness is not None
+            weaknesses.discard((filename,contract,weakness,None,None))
+            weaknesses.add((filename,contract,weakness,int(lineno),int(column)))
+            continue
+
+        m = COMPLETED.match(line)
+        if m:
+            analysis_completed = True
+            continue
+
+    for filename,contract,weakness,lineno,column in sorted(weaknesses):
+        finding = { "name": weakness }
+        if filename: finding["filename"] = filename
+        if contract: finding["contract"] = contract
+        if lineno:   finding["lineno"]   = lineno
+        if column:   finding["column"]   = column
+        findings.append(finding)
+            
     if log and not analysis_completed:
         infos.add('analysis incomplete')
         if not fails and not errors:
@@ -134,5 +123,4 @@ def parse(exit_code, log, output, task, FINDINGS=FINDINGS):
             if not e[22:-1] in errors:
                 errors.add(e)
 
-    assert findings.issubset(FINDINGS)
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails

@@ -1,6 +1,6 @@
 import tools.gigahorse.parser as gigahorse
 
-VERSION = "2022/08/05"
+VERSION = gigahorse.VERSION
 
 FINDINGS = {
     "OverflowLoopIterator",
@@ -8,5 +8,5 @@ FINDINGS = {
     "WalletGriefing"
 }
 
-def parse(exit_code, log, output, task):
-    return gigahorse.parse(exit_code, log, output, task, FINDINGS)
+def parse(exit_code, log, output):
+    return gigahorse.parse(exit_code, log, output, FINDINGS)

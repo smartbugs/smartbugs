@@ -53,7 +53,6 @@ class Tool():
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
             self.parser = "parser.py"
-        self.absparser = os.path.join(self.path,self.parser)
         if self.bin:
             self.absbin = os.path.join(self.path,self.bin)
 
@@ -77,7 +76,7 @@ class Tool():
                 d["command"] = self._command.template if self._command else None
             elif k == "_entrypoint":
                 d["entrypoint"] = self._entrypoint.template if self._entrypoint else None
-            elif k in ("path", "absparser", "absbin"):
+            elif k in ("path", "absbin"):
                 pass
             else:
                 d[k] = v

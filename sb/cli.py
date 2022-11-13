@@ -90,10 +90,10 @@ def cli_args(defaults):
     output.add_argument(
         "--format",
         metavar="FMT",
-        nargs="*",
+        nargs="?",
         type=str,
         choices=sb.settings.OUTPUT_FORMATS,
-        help=f"output format, one or more of {'/'.join(sb.settings.OUTPUT_FORMATS)}{fmt_default(defaults.format)}")
+        help=f"output format, one of {'/'.join(sb.settings.OUTPUT_FORMATS)}{fmt_default(defaults.format)}")
     exec.add_argument(
         "--quiet",
         action="store_true",

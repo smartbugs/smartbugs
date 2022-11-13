@@ -1,7 +1,7 @@
 import re
 import sb.parse_utils
 
-VERSION = "2022/08/12"
+VERSION = "2022/11/11"
 
 FINDINGS = {
     "Integer Overflow",
@@ -24,17 +24,20 @@ ERRORS = (
     re.compile(".*(solcx.exceptions.SolcError:.*)")
 )
 
+ANALYSING = re.compile("^Analysing (.*)\.\.\.$")
+VULNERABILITY = re.compile("^Vulnerability: (.*)\. Maybe in function: (.*)\. PC: 0x(.*)\. Line number: (.*)\.$")
+
+
 def is_relevant(line):
-    return not (line.startswith("Analysing ") and line.endswith("..."))
+    return not ANALYSING.match(line)
 
 
-def parse(exit_code, log, output, task):
-
-    findings, infos, analysis = set(), set(), []
+def parse(exit_code, log, output):
+    findings, infos = [], set()
     cleaned_log = filter(is_relevant, log)
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
 
-    for f in list(fails): # iterate over a copy of 'fails' such that it can be modified
+    for f in list(fails): # iterate over a copy of "fails" such that it can be modified
         if f.startswith("exception (KeyError: <SSABasicBlock"):
             fails.remove(f)
             fails.add("exception (KeyError: <SSABasicBlock ...>)")
@@ -43,22 +46,23 @@ def parse(exit_code, log, output, task):
             fails.remove(f)
             fails.add("exception (RecursionError: maximum recursion depth exceeded)")
 
+    filename,contract = None,None
     for line in log:
         if sb.parse_utils.add_match(errors, line, ERRORS):
-            fails.discard('exception (Exception)')
+            fails.discard("exception (Exception)")
             continue
-        if 'Vulnerability: ' in line:
-            vuln_type = line.split('Vulnerability: ')[1].split('.')[0]
-            maybe_in_function = line.split('Maybe in function: ')[1].split('.')[0]
-            pc = line.split('PC: ')[1].split('.')[0]
-            line_number = line.split('Line number: ')[1].split('.')[0]
-            analysis.append({
-                'vuln_type': vuln_type,
-                'maybe_in_function': maybe_in_function,
-                'pc': pc,
-                'line_number': line_number
-            })
-            findings.add(vuln_type)
+        m = ANALYSING.match(line)
+        if m:
+            filename,contract = m[1].split(":") if ":" in m[1] else (m[1],None)
+        m = VULNERABILITY.match(line)
+        if m:
+            finding = { "name": m[1] }
+            if filename: finding["filename"] = filename
+            if contract: finding["contract"] = contract
+            if m[2]:     finding["function"] = m[2]
+            if m[3]:     finding["address"]  = int(m[3],16)
+            if m[4]:     finding["lineno"]   = int(m[4])
+            findings.append(finding)
 
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails
 

@@ -29,7 +29,7 @@ SYSTEM_INFO = {
 
 def task_info(task, start_time, duration, exit_code, log, output, docker_args):
     info = {
-        "contract": task.relfn,
+        "filename": task.relfn,
         "result": {
             "start": start_time,
             "duration": duration,
@@ -93,16 +93,13 @@ def execute(task):
     if output:
         sb.io.write_bin(tool_output, output)
         
-    parsed_result = {}
-    if "json" in task.settings.format:
+    if task.settings.format:
         parsed_result = sb.parsing.parse(exit_code, log, output, info)
         sb.io.write_json(parser_output,parsed_result)
-    if "sarif" in task.settings.format:
-        # build sarif from json representation
-        if not parsed_result:
-            parsed_result = sb.parser.parse(exit_code, log, output, info)
-        sarif_result = sb.sarif.create_sarif(info, parsed_result)
-        sb.io.write_json(sarif_output, sarif_result)       
+        if task.settings.format == "sarif":
+            # build sarif from json representation
+            sarif_result = sb.sarif.create_sarif(info, parsed_result)
+            sb.io.write_json(sarif_output, sarif_result)       
 
     return duration
 
@@ -136,11 +133,14 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             return
         sb.logging.quiet = task.settings.quiet
         pre_analysis()
-        try:
-            duration = execute(task)
-        except SmartBugsError as e:
-            duration = 0
-            sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
+        duration = execute(task)
+
+        #try:
+        #    duration = execute(task)
+        #except SmartBugsError as e:
+        #    duration = 0
+        #    sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
+
         post_analysis(duration)
 
 

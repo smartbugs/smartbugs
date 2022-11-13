@@ -2,7 +2,7 @@ import os, string, time
 import sb.io, sb.logging, sb.config
 from sb.exceptions import SmartBugsError, InternalError
 
-OUTPUT_FORMATS = ("json", "sarif", "sarif-per-contract", "sarif-summary")
+OUTPUT_FORMATS = ("json", "sarif") # "sarif-per-contract", "sarif-summary"
 HOME = os.path.expanduser("~") # cross-plattform safe
 NOW = time.gmtime() # only use in main process, value may be different in sub-processes
 PID = os.getpid()   # only use in main process, value may be different in sub-processes
@@ -22,7 +22,7 @@ class Settings:
         self.mem_limit = None
         self.results = os.path.join("results","${TOOL}","${RUNID}","${FILENAME}")
         self.logfile = os.path.join("results","logs","${RUNID}.log")
-        self.format = []
+        self.format = None
         self.quiet = False
 
         
@@ -147,13 +147,11 @@ class Settings:
                     raise SmartBugsError(f"'{k}' needs to be a string (in {settings}).")
 
             elif k == "format":
-                if not isinstance(v,list):
-                    v = [v]
                 try:
-                    assert all(vi in OUTPUT_FORMATS for vi in v)
-                    setattr(self, k, list(set(v)))
+                    assert v in OUTPUT_FORMATS
+                    setattr(self, k, v)
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be one or more of {'/'.join(OUTPUT_FORMATS)} (in {settings}).")
+                    raise SmartBugsError(f"'{k}' needs to be one of {'/'.join(OUTPUT_FORMATS)} (in {settings}).")
 
             elif k == "mem_limit":
                 try:

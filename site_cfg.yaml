@@ -15,5 +15,5 @@
 ##   FILENAME, FILEBASE, FILEEXT (FILENAME = FILEBASE + "." + FILEEXT)
 #logfile: results/logs/${RUNID}.log
 ##   vars: all vars from "runid" above, as well as RUNID
-#format: [] # choices: json, sarif, sarif-per-contract, sarif-summary
+#format: null # choices: json, sarif
 #quiet: false

@@ -1,6 +1,6 @@
 import tools.oyente.parser as oyente
 
-VERSION = "2022/08/06"
+VERSION = oyente.VERSION
 
 FINDINGS = {
         "Balance disorder",
@@ -13,5 +13,5 @@ FINDINGS = {
         "Straw man contract"
 }
 
-def parse(exit_code, log, output, task):
-    return oyente.parse(exit_code, log, output, task, FINDINGS)
+def parse(exit_code, log, output):
+    return oyente.parse(exit_code, log, output)

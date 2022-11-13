@@ -1,6 +1,6 @@
 import sb.parse_utils
 
-VERSION = "2022/08/05"
+VERSION = "2022/11/11"
 
 FINDINGS = (
     "checkedCallStateUpdate",
@@ -20,8 +20,8 @@ ANALYSIS_COMPLETE = (
 DEPRECATED = "Warning: Deprecated type declaration"
 CANNOT_OPEN_FACT_FILE = "Cannot open fact file"
 
-def parse(exit_code, log, output, task):
-    findings, infos, analysis = set(), set(), None
+def parse(exit_code, log, output):
+    findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     errors.discard("EXIT_CODE_1") # = no findings; EXIT_CODE_0 = findings
 
@@ -43,7 +43,7 @@ def parse(exit_code, log, output, task):
             continue
         for finding in FINDINGS:
             if f"{finding}.csv" in line:
-                findings.add(finding)
+                findings.append({"name": finding})
                 break
 
     if log and (len(analysis_complete) < 3 or CANNOT_OPEN_FACT_FILE in fails):
@@ -52,7 +52,6 @@ def parse(exit_code, log, output, task):
             fails.add("execution failed")
     if CANNOT_OPEN_FACT_FILE in fails and len(fails) > 1:
         fails.remove(CANNOT_OPEN_FACT_FILE)
-    analysis = sorted(findings)
 
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails
 

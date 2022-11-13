@@ -1,7 +1,7 @@
 import re
 import sb.parse_utils
 
-VERSION = "2022/08/06"
+VERSION = "2022/11/11"
 
 FINDINGS = ("secure", "insecure")
 
@@ -15,8 +15,10 @@ FAILS = (
 
 UNSUPPORTED_OP = re.compile(".*(java.lang.UnsupportedOperationException: [^)]*)\)")
 
-def parse(exit_code, log, output, task):
-    findings, infos, analysis = set(), set(), None
+COMPLETED = re.compile("^(.*) (secure|insecure|unknown)$")
+
+def parse(exit_code, log, output):
+    findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     errors.discard('EXIT_CODE_1') # redundant: exit code 1 is reflected in other errors
     if 'DOCKER_TIMEOUT' in fails or 'DOCKER_KILL_OOM' in fails:
@@ -38,10 +40,12 @@ def parse(exit_code, log, output, task):
         if line.endswith(" unknown"):
             analysis_complete = True
             continue
-        for f in FINDINGS:
-            if line.endswith(f" {f}"):
-                findings.add(f)
-                analysis_complete = True
+        m = COMPLETED.match(line)
+        if m:
+            analysis_complete = True
+            if m[2] in FINDINGS:
+                findings.append({"filename": m[1], "name": m[2]})
+            continue
     if "DOCKER_SEGV" in fails:
         fails.discard("exception (Segmentation fault)")
 
@@ -49,6 +53,5 @@ def parse(exit_code, log, output, task):
         infos.add('analysis incomplete')
         if not fails and not errors:
             fails.add('execution failed')
-    analysis = sorted(findings)
 
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails

@@ -1,8 +1,10 @@
 import sb.parse_utils
 import io, tarfile, json
 
-def parse(exit_code, log, output, task, FINDINGS):
-    findings, infos, analysis = set(), set(), None
+VERSION = "2022/11/11"
+
+def parse(exit_code, log, output, FINDINGS):
+    findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     if "Writing results to results.json" not in log:
@@ -13,14 +15,19 @@ def parse(exit_code, log, output, task, FINDINGS):
     try:
         with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
             results_json=tar.extractfile("results.json").read()
-        analysis = json.loads(results_json)
-        for contract in analysis:
+        result = json.loads(results_json)
+        for contract in result:
+            filename = contract[0]
             errors.update(contract[2])
-            results = contract[3]
-            for finding in FINDINGS:
-                if results.get(finding):
-                    findings.add(finding)
+            report = contract[3]
+            for name in FINDINGS:
+                for address in report.get(name).split():
+                    findings.append({
+                        "filename": filename,
+                        "name": name,
+                        "address": int(address,16)
+                    })
     except Exception as e:
         fails.add("problem extracting results.json from docker container")
 
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails
