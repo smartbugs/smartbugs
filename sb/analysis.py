@@ -80,7 +80,7 @@ def execute(task):
         if os.path.exists(old):
             raise SmartBugsError(f"Cannot clear old output {old}")
 
-    # perform and time analysis
+    # perform analysis
     start_time = time.time()
     exit_code,log,output,docker_args = sb.docker.execute(task)
     duration = time.time() - start_time
@@ -94,11 +94,11 @@ def execute(task):
         sb.io.write_bin(tool_output, output)
         
     if task.settings.format:
-        parsed_result = sb.parsing.parse(exit_code, log, output, info)
+        parsed_result = sb.parsing.parse(info["filename"], info["tool"], exit_code, log, output)
         sb.io.write_json(parser_output,parsed_result)
         if task.settings.format == "sarif":
             # build sarif from json representation
-            sarif_result = sb.sarif.create_sarif(info, parsed_result)
+            sarif_result = sb.sarif.sarify(info["tool"], parsed_result["findings"])
             sb.io.write_json(sarif_output, sarif_result)       
 
     return duration
@@ -133,14 +133,11 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             return
         sb.logging.quiet = task.settings.quiet
         pre_analysis()
-        duration = execute(task)
-
-        #try:
-        #    duration = execute(task)
-        #except SmartBugsError as e:
-        #    duration = 0
-        #    sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
-
+        try:
+            duration = execute(task)
+        except SmartBugsError as e:
+            duration = 0
+            sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
         post_analysis(duration)
 
 

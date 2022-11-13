@@ -41,7 +41,7 @@ class Tool():
                 v = string.Template(v) if v else None
             setattr(self, k, v)
                 
-        for k in ("id", "path", "mode"):
+        for k in ("id", "mode"):
             if not getattr(self, k):
                 raise InternalError(f"Tool: Field '{k}' missing.\n{cfg}")
         if not self.image:
@@ -52,9 +52,9 @@ class Tool():
         if not self._command and not self._entrypoint:
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
-            self.parser = "parser.py"
+            self.parser = sb.config.TOOL_PARSER
         if self.bin:
-            self.absbin = os.path.join(self.path,self.bin)
+            self.absbin = os.path.join(sb.config.TOOLS_HOME,self.id,self.bin)
 
 
     def command(self, filename, timeout, bin):
@@ -76,7 +76,8 @@ class Tool():
                 d["command"] = self._command.template if self._command else None
             elif k == "_entrypoint":
                 d["entrypoint"] = self._entrypoint.template if self._entrypoint else None
-            elif k in ("path", "absbin"):
+            elif k == "absbin":
+                # We do not want to leak private information like the full path
                 pass
             else:
                 d[k] = v
@@ -97,7 +98,7 @@ def load(ids, tools=[], seen=set()):
             continue
         seen.add(id)
         toolpath = os.path.join(sb.config.TOOLS_HOME, id)
-        fn = os.path.join(toolpath, "config.yaml")
+        fn = os.path.join(toolpath, sb.config.TOOL_CONFIG)
         cfg = sb.io.read_yaml(fn)
 
         alias = cfg.get("alias")
@@ -106,7 +107,6 @@ def load(ids, tools=[], seen=set()):
             continue
 
         cfg["id"] = id
-        cfg["path"] = toolpath
         found = False
         for mode in ("solidity", "bytecode", "runtime"):
             if mode not in cfg:
@@ -123,3 +123,17 @@ def load(ids, tools=[], seen=set()):
         if not found:
             raise SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")
     return tools
+
+
+
+# the contents of tools/.../findings.yaml is cached, once per process
+info_findings = {}
+
+def info_finding(tool_id, fname):
+    if tool_id not in info_findings:
+        try:
+            fn = os.path.join(sb.config.TOOLS_HOME, tool_id, sb.config.TOOL_FINDINGS)
+            info_findings[tool_id] = sb.io.read_yaml(fn)
+        except Exception:
+            info_findings[tool_id] = {}
+    return info_findings[tool_id].get(fname, {})

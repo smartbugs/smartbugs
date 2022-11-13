@@ -17,6 +17,6 @@ jobs:
       - name: setup
         run: ./setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} --logfile test.log --results test_execution -f ${{ matrix.contract }} --format json;
+        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} --logfile test.log --results test_execution -f ${{ matrix.contract }} --format sarif;
       - name: Results of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: cat test_execution*/parsed_result.json
+        run: cat test_execution*/result.sarif
