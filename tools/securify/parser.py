@@ -14,8 +14,8 @@ FINDINGS = {
     "UnrestrictedEtherFlow"
 }
 
-def parse(exit_code, log, output, task):
-    findings, infos, analysis = set(), set(), None
+def parse(exit_code, log, output):
+    findings, infos = set(), set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log, log_expected=False)
     if fails:
         errors.discard("EXIT_CODE_1")
@@ -59,5 +59,7 @@ def parse(exit_code, log, output, task):
     if "analysis incomplete" in infos and not fails:
         fails.add("execution failed")
 
-    return findings, infos, errors, fails, analysis
+    findings = [ { "name": vuln } for vuln in findings ]
+
+    return findings, infos, errors, fails
 
