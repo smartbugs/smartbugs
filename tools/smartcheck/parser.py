@@ -2,34 +2,68 @@ import sb.parse_utils
 
 VERSION = "2022/11/14"
 
-FINDINGS = set()
+FINDINGS = {
+    "SOLIDITY_ADDRESS_HARDCODED",
+    "SOLIDITY_ARRAY_LENGTH_MANIPULATION",
+    "SOLIDITY_BALANCE_EQUALITY",
+    "SOLIDITY_BYTE_ARRAY_INSTEAD_BYTES",
+    "SOLIDITY_CONSTRUCTOR_RETURN",
+    "SOLIDITY_CALL_WITHOUT_DATA",
+    "SOLIDITY_DELETE_ON_DYNAMIC_ARRAYS",
+    "SOLIDITY_DEPRECATED_CONSTRUCTIONS",
+    "SOLIDITY_DIV_MUL",
+    "SOLIDITY_DO_WHILE_CONTINUE",
+    "SOLIDITY_DOS_WITH_THROW",
+    "SOLIDITY_ERC20_APPROVE",
+    "SOLIDITY_ERC20_FUNCTIONS_ALWAYS_RETURN_FALSE",
+    "SOLIDITY_ERC20_INDEXED",
+    "SOLIDITY_ERC20_TRANSFER_SHOULD_THROW",
+    "SOLIDITY_EXACT_TIME",
+    "SOLIDITY_EXTRA_GAS_IN_LOOPS",
+    "SOLIDITY_FUNCTION_RETURNS_TYPE_AND_NO_RETURN",
+    "SOLIDITY_FUNCTIONS_RETURNS_TYPE_AND_NO_RETURN",
+    "SOLIDITY_GAS_LIMIT_IN_LOOPS",
+    "SOLIDITY_INCORRECT_BLOCKHASH",
+    "SOLIDITY_LOCKED_MONEY",
+    "SOLIDITY_MSGVALUE_EQUALS_ZERO",
+    "SOLIDITY_OVERPOWERED_ROLE",
+    "SOLIDITY_PRAGMAS_VERSION",
+    "SOLIDITY_PRIVATE_MODIFIER_DOES_NOT_HIDE_DATA",
+    "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA",
+    "SOLIDITY_REDUNDANT_FALLBACK_REJECT",
+    "SOLIDITY_REVERT_REQUIRE",
+    "SOLIDITY_REWRITE_ON_ASSEMBLY_CALL",
+    "SOLIDITY_SAFEMATH",
+    "SOLIDITY_SEND",
+    "SOLIDITY_SHOULD_NOT_BE_PURE",
+    "SOLIDITY_SHOULD_NOT_BE_VIEW",
+    "SOLIDITY_SHOULD_RETURN_STRUCT",
+    "SOLIDITY_TRANSFER_IN_LOOP",
+    "SOLIDITY_TX_ORIGIN",
+    "SOLIDITY_UINT_CANT_BE_NEGATIVE",
+    "SOLIDITY_UNCHECKED_CALL",
+    "SOLIDITY_UNUSED_FUNCTION_SHOULD_BE_EXTERNAL",
+    "SOLIDITY_UPGRADE_TO_050",
+    "SOLIDITY_USING_INLINE_ASSEMBLY",
+    "SOLIDITY_VAR",
+    "SOLIDITY_VAR_IN_LOOP_FOR",
+    "SOLIDITY_VISIBILITY",
+    "SOLIDITY_WRONG_SIGNATURE",
+}
 
-def extract_result_line(line):
-    index_split = line.index(":")
-    key = line[:index_split]
-    value = line[index_split + 1:].strip()
-    if value.isdigit():
-        value = int(value)
-    return (key, value)
-
-def parse(exit_code, log, output, task):
-    findings, infos, analysis = set(), set(), []
+def parse(exit_code, log, output):
+    findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
-    current_error = None
     for line in log:
-        if "ruleId: " in line:
-            if current_error is not None:
-                analysis.append(current_error)
-            current_error = {
-                'name': line[line.index("ruleId: ") + 8:]
-            }
-        elif current_error is not None and ':' in line and ' :' not in line:
-            (key, value) = extract_result_line(line)
-            current_error[key] = value
-    if current_error is not None:
-        analysis.append(current_error)
+        if ": " in line:
+            k,v = line.split(": ")
+            if v.isdigit():
+                v = int(v)
+            if k.endswith("ruleId"):
+                finding = { "name": v }
+                findings.append(finding)
+            elif k in ("severity", "line", "column"):
+                finding[k] = v
 
-    findings = { result["name"] for result in analysis }
-
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails

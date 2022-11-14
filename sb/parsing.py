@@ -30,7 +30,7 @@ def parse(filename, tool, exit_code, log, output):
         raise SmartBugsError(f"Parsing of results failed\n{e}")
 
     for finding in findings:
-        # if FINDINGS is defined, ensure that the current finding is in the set
+        # if FINDINGS is defined, ensure that the current finding is in FINDINGS
         # irrelevant for SmartBugs, but may be relevant for programs further down the line
         assert not tool_parser.FINDINGS or finding["name"] in tool_parser.FINDINGS
         # check that the docker filename equals the external name (except for /sb/), before overwriting it
