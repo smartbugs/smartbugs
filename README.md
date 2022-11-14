@@ -1,17 +1,10 @@
 # SmartBugs: A Framework to Analyze Ethereum Smart Contracts
 
 ![Smartbugs build](https://github.com/smartbugs/smartbugs/workflows/build/badge.svg)
- <a href="https://github.com/smartbugs/smartbugs/releases">
-        <img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg">
-</a>
-<a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE">
-        <img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue">
-</a>
+ <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
+<a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE"><img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue"></a>
 <span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
-<br />
-<a href="#Supported-Tools">
-        <img alt="Analysis tools" src="https://img.shields.io/badge/Analysis tools-17-blue">
-</a>
+<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-17-blue"></a>
 
 
 SmartBugs is an extensible platform with a uniform interface to tools
@@ -89,9 +82,9 @@ SmartBugs provides a command-line interface. See below for examples and explanat
 ```console
 $ source venv/bin/activate # activate virtual environment
 $ ./smartbugs -h
-usage: smartbugs [-c FILE] [--runtime] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--runid ID] [--overwrite]
-                 [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM] [--results DIR] [--logfile FILE]
-                 [--format [FMT ...]] [--quiet] [--version] [-h]
+usage: smartbugs [-c FILE] [--runtime] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--runid ID]
+                 [--overwrite] [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
+                 [--quiet] [--results DIR] [--logfile FILE] [--json] [--sarif] [--version] [-h]
 
 Automated analysis of Ethereum smart contracts
 
@@ -102,8 +95,8 @@ input options:
   -t TOOL [TOOL ...], --tools TOOL [TOOL ...]
                         tools to run on the contracts [default: none]
   -f PATTERN [PATTERN ...], --files PATTERN [PATTERN ...]
-                        glob pattern specifying the files to analyse [default: none]; may be prefixed by 'DIR:'
-                        for search relative to DIR
+                        glob pattern specifying the files to analyse [default: none]; may be prefixed
+                        by 'DIR:' for search relative to DIR
 
 execution options:
   --runid ID            string identifying the run [default: ${YEAR}${MONTH}${DAY}_${HOUR}${MIN}]
@@ -112,12 +105,13 @@ execution options:
   --timeout N           timeout of each process in sec [default: none]
   --cpu-quota N         cpu quota for docker images [default: none]
   --mem-limit MEM       memory quota for docker images, like 512m or 1g [default: none]
-  --quiet               suppress output to console (stdout) [default: no]
 
 output options:
+  --quiet               suppress output to console (stdout) [default: no]
   --results DIR         folder for the results [default: results/${TOOL}/${RUNID}/${FILENAME}]
   --logfile FILE        file for log messages [default: results/logs/${RUNID}.log]
-  --format [FMT ...]    output format, one or more of json/sarif/sarif-per-contract/sarif-summary [default: none]
+  --json                parse output and write it to result.json [default: no]
+  --sarif               parse output and write it to result.json as well as result.sarif [default: no]
 
 information options:
   --version             show version number and exit

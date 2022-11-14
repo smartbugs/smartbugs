@@ -27,11 +27,12 @@ def parse(filename, tool, exit_code, log, output):
     try:
         findings,infos,errors,fails = tool_parser.parse(exit_code, log, output)
     except Exception as e:
-        raise SmartBugsError(f"Parsing the result of analysis failed\n{e}")
+        raise SmartBugsError(f"Parsing of results failed\n{e}")
 
     for finding in findings:
-        # ensure that tool_parser.FINDINGS is complete; otherwise irrelevant
-        assert finding["name"] in tool_parser.FINDINGS
+        # if FINDINGS is defined, ensure that the current finding is in the set
+        # irrelevant for SmartBugs, but may be relevant for programs further down the line
+        assert not tool_parser.FINDINGS or finding["name"] in tool_parser.FINDINGS
         # check that the docker filename equals the external name (except for /sb/), before overwriting it
         assert not finding.get("filename") or filename.endswith(finding["filename"][4:])
         finding["filename"] = filename

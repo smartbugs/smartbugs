@@ -102,7 +102,7 @@ def parse(exit_code, log, output):
         finding = { "name": weakness }
         if filename: finding["filename"] = filename
         if contract: finding["contract"] = contract
-        if lineno:   finding["lineno"]   = lineno
+        if lineno:   finding["line"]   = lineno
         if column:   finding["column"]   = column
         findings.append(finding)
             

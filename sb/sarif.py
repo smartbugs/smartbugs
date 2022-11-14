@@ -134,40 +134,32 @@ def rule_help(info_finding):
             "")
 
 
-# Crude mapping; may make sense for ranking findings
 def rule_problem_severity(info_finding):
-    severity = info_finding.get("severity", "").strip().lower()
-    return ("recommendation" if severity == "low" else
-            "warning"        if severity == "medium" else
-            "error"          if severity == "high" else
-            "")
+    return info_finding.get("level", "").strip().lower()
 
 
-# Crude mapping; may make sense for ranking findings
 def rule_security_severity(info_finding):
     severity = info_finding.get("severity", "").strip().lower()
-    return ("2.0" if severity == "low" else
-            "5.5" if severity == "medium" else
-            "8.0" if severity == "high" else
-            "")
+    try:
+        return float(severity)
+    except:
+        return ("2.0" if severity == "low" else
+                "5.5" if severity == "medium" else
+                "8.0" if severity == "high" else
+                "")
 
 
 def result_message(finding):
-    description = finding.get("description")
-    classification = finding.get("classification")
-    return (f"{description}\nClassification: {classification}" if description and classification else
-            description if description else
-            f"Classification: {classification}" if classification else
+    message = finding.get("message")
+    severity = finding.get("severity")
+    return (f"{message}\nSeverity: {severity}" if message and severity else
+            message if message else
+            f"Severity: {severity}" if severity else
             "")
 
 
-# Crude mapping; may make sense for ranking findings
 def result_level(finding):
-    severity = finding.get("severity", "").strip().lower()
-    return ("recommendation" if severity == "low" else
-            "warning"        if severity == "medium" else
-            "error"          if severity == "high" else
-            "")
+    return finding.get("level")
 
 
 def result_location_message(finding):
@@ -183,9 +175,10 @@ def result_region(finding):
     region_dict = {}
 
     # source code
-    for f,r in (("lineno","startLine"), ("column","startColumn"), ("lineno_end","endLine"), ("column_end","endColumn")):
+    for f,r in (("line","startLine"), ("column","startColumn"), ("line_end","endLine"), ("column_end","endColumn")):
         if f in finding:
             region_dict[r] = finding[f]
+
     if region_dict:
         return region_dict
     

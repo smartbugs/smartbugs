@@ -78,6 +78,10 @@ def cli_args(defaults):
 
     output = parser.add_argument_group("output options")
     output.add_argument(
+        "--quiet",
+        action="store_true",
+        help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
+    output.add_argument(
         "--results",
         type=str,
         metavar="DIR",
@@ -88,16 +92,13 @@ def cli_args(defaults):
         metavar="FILE",
         help=f"file for log messages{fmt_default(defaults.logfile)}")
     output.add_argument(
-        "--format",
-        metavar="FMT",
-        nargs="?",
-        type=str,
-        choices=sb.settings.OUTPUT_FORMATS,
-        help=f"output format, one of {'/'.join(sb.settings.OUTPUT_FORMATS)}{fmt_default(defaults.format)}")
-    exec.add_argument(
-        "--quiet",
+        "--json",
         action="store_true",
-        help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
+        help=f"parse output and write it to {sb.config.PARSER_OUTPUT}{fmt_default(defaults.json)}")
+    output.add_argument(
+        "--sarif",
+        action="store_true",
+        help=f"parse output and write it to {sb.config.PARSER_OUTPUT} as well as {sb.config.SARIF_OUTPUT}{fmt_default(defaults.sarif)}")
 
     info = parser.add_argument_group("information options")
     info.add_argument(

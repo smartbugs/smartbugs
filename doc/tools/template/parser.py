@@ -58,11 +58,11 @@ def parse(exit_code, log, output):
         optional. Name of contract within the file (for source code)
     function: str
         optional. Name/header/signature of function containing the issue
-    lineno: int
+    line: int
         optional. Line number of issue in source code, starting with 1
     column: int
         optional. Column of issue in source code, starting with 1
-    lineno_end: int
+    line_end: int
         optional. Last line of the source code, where issue occurs.
     column_end: int
         optional. Last column of the source code, where issue occurs.
@@ -72,13 +72,11 @@ def parse(exit_code, log, output):
         optional. Address of last instruction in the bytecode, where issue occurs, starting with 0
     exploit: Any
         optional. Information on a potential exploit, e.g. a list of transactions
+    level: str
+        optional. type of issue, e.g. recommendation, warning, error
     severity: str
         optional. Severity of issue, e.g. low, medium, high
-    classification: str
-        optional. References to registries like SWC or DASP
-    method: str
-        optional. How the tool goes about detecting the issue.
-    description: str
+    message: str
         optional. Description of the issue
 
     If missing, the fields severity, classification, method, descr_short,

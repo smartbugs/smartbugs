@@ -54,31 +54,31 @@ def execute(task):
 
     # check whether result dir is empty,
     # and if not, whether we are going to overwrite it
-    task_log = os.path.join(task.rdir, sb.config.TASK_LOG)
-    if os.path.exists(task_log):
-        old = sb.io.read_json(task_log)
-        old_absfn = old["contract"]["abs_filename"]
+    fn_task_log = os.path.join(task.rdir, sb.config.TASK_LOG)
+    if os.path.exists(fn_task_log):
+        old = sb.io.read_json(fn_task_log)
+        old_fn = old["filename"]
         old_toolid = old["tool"]["id"]
         old_mode = old["tool"]["mode"]
-        if task.absfn != old_absfn or task.tool.id != old_toolid or task.tool.mode != old_mode:
+        if task.relfn != old_fn or task.tool.id != old_toolid or task.tool.mode != old_mode:
             raise SmartBugsError(
                 f"Result directory {task.rdir} occupied by another task"
-                f" ({old_toolid}/{old_mode}, {old_absfn})")
+                f" ({old_toolid}/{old_mode}, {old_fn})")
         if not task.settings.overwrite:
             return 0.0
 
     # remove any leftovers from a previous analysis
-    tool_log = os.path.join(task.rdir, sb.config.TOOL_LOG)
-    tool_output = os.path.join(task.rdir, sb.config.TOOL_OUTPUT)
-    parser_output = os.path.join(task.rdir, sb.config.PARSER_OUTPUT)
-    sarif_output = os.path.join(task.rdir, sb.config.SARIF_OUTPUT)
-    for old in (task_log, tool_log, tool_output, parser_output, sarif_output):
+    fn_tool_log = os.path.join(task.rdir, sb.config.TOOL_LOG)
+    fn_tool_output = os.path.join(task.rdir, sb.config.TOOL_OUTPUT)
+    fn_parser_output = os.path.join(task.rdir, sb.config.PARSER_OUTPUT)
+    fn_sarif_output = os.path.join(task.rdir, sb.config.SARIF_OUTPUT)
+    for fn in (fn_task_log, fn_tool_log, fn_tool_output, fn_parser_output, fn_sarif_output):
         try:
-            os.remove(old)
+            os.remove(fn)
         except:
             pass
-        if os.path.exists(old):
-            raise SmartBugsError(f"Cannot clear old output {old}")
+        if os.path.exists(fn):
+            raise SmartBugsError(f"Cannot clear old output {fn}")
 
     # perform analysis
     start_time = time.time()
@@ -87,19 +87,18 @@ def execute(task):
 
     # write result to files
     info = task_info(task, start_time, duration, exit_code, log, output, docker_args)
-    sb.io.write_json(task_log, info)
+    sb.io.write_json(fn_task_log, info)
     if log:
-        sb.io.write_txt(tool_log, log)
+        sb.io.write_txt(fn_tool_log, log)
     if output:
-        sb.io.write_bin(tool_output, output)
+        sb.io.write_bin(fn_tool_output, output)
         
-    if task.settings.format:
+    if task.settings.json or task.settings.sarif:
         parsed_result = sb.parsing.parse(info["filename"], info["tool"], exit_code, log, output)
-        sb.io.write_json(parser_output,parsed_result)
-        if task.settings.format == "sarif":
-            # build sarif from json representation
+        sb.io.write_json(fn_parser_output,parsed_result)
+        if task.settings.sarif:
             sarif_result = sb.sarif.sarify(info["tool"], parsed_result["findings"])
-            sb.io.write_json(sarif_output, sarif_result)       
+            sb.io.write_json(fn_sarif_output, sarif_result)       
 
     return duration
 

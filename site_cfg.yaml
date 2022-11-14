@@ -15,5 +15,6 @@
 ##   FILENAME, FILEBASE, FILEEXT (FILENAME = FILEBASE + "." + FILEEXT)
 #logfile: results/logs/${RUNID}.log
 ##   vars: all vars from "runid" above, as well as RUNID
-#format: null # choices: json, sarif
+#json: false
+#sarif: false
 #quiet: false

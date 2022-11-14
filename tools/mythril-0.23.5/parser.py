@@ -49,17 +49,17 @@ def parse(exit_code, log, output):
             errors.add(error.split('.')[0])
         for issue in result.get("issues", []):
             finding = { "name": issue["title"] }
-            for k in ("filename", "contract", "function", "address", "lineno"):
-                if k in issue:
-                    finding[k] = issue[k]
-            if "tx_sequence" in issue:
-                finding["exploit"] = issue["tx_sequence"]
-            if "description" in issue:
-                finding["description"] = issue["description"]
-            if "severity" in issue:
-                finding["severity"] = issue["severity"].lower()
+            for i,f in ( ("filename","filename"), ("contract","contract"),
+                ("function","function"), ("address","address"), ("lineno", "line"),
+                ("tx_sequence","exploit"), ("description","message"), ("severity","everity") ):
+                if i in issue:
+                    finding[f] = issue[i]
             if "swc-id" in issue:
-                finding["classification"] = f"SWC-{issue['swc-id']}"
+                classification = f"Classification: SWC-{issue['swc-id']}"
+                if finding.get("message"):
+                    finding["message"] += f"\n{classification}"
+                else:
+                    finding["message"] = classification
             findings.append(finding)
 
     return findings, infos, errors, fails

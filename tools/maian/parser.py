@@ -76,22 +76,6 @@ ERRORS = (
 CHECK = re.compile("\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)")
 
 
-def empty_check():
-    return {
-        "type": None,
-        "filename": None,
-        "contract": None,
-        "errors": set(),
-        "findings": set(),
-        "exploit": [],
-        "infos": set()
-    }
-
-
-def is_empty_check(check):
-    return all( not v for v in check.values() )
-
-
 def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)

@@ -1,6 +1,6 @@
 import os, time
 
-VERSION = "2.0.0-pre2"
+VERSION = "2.0.0-pre3"
 HOME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 SITE_CFG = os.path.join(HOME,"site_cfg.yaml")
 TASK_LOG = "smartbugs.json"
@@ -10,5 +10,5 @@ TOOL_FINDINGS = "findings.yaml"
 TOOL_PARSER = "parser.py"
 TOOL_LOG = "result.log"
 TOOL_OUTPUT = "result.tar"
-PARSER_OUTPUT = "parsed_result.json"
+PARSER_OUTPUT = "result.json"
 SARIF_OUTPUT = "result.sarif"

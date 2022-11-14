@@ -61,7 +61,7 @@ def parse(exit_code, log, output):
             if contract: finding["contract"] = contract
             if m[2]:     finding["function"] = m[2]
             if m[3]:     finding["address"]  = int(m[3],16)
-            if m[4]:     finding["lineno"]   = int(m[4])
+            if m[4]:     finding["line"]   = int(m[4])
             findings.append(finding)
 
     return findings, infos, errors, fails
