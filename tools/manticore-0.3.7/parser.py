@@ -1,36 +1,32 @@
+import io, tarfile, yaml
 import sb.parse_utils
-import io, tarfile
 
-VERSION = "2022/08/05"
+VERSION = "2022/11/15"
 
 FINDINGS = set()
 
-
-def parse_file(contents):
-    analysis = []
-    current_vul = None
-    for line in contents.splitlines():
-        if not line:
-            continue
-        if line[0] == "-":
-            if current_vul is not None:
-                analysis.append(current_vul)
-            current_vul = {
-                "name": line[1:-2].strip(),
-                "line": -1,
-                "code": None
+def parse_file(lines):
+    findings = []
+    snippet = False
+    for line in lines:
+        if snippet:
+            snippet = False
+            l = line.split()
+            finding["line"] = int(l[0])
+            finding["code"] = c
+        elif line.startwith("  Solidity snippet:"):
+            snippet = True
+        elif line[0] == "-":
+            finding = {
+                "name": line[1:-2].strip()
             }
-        elif current_vul is not None and line[:4] == "    ":
-            index = line[4:].rindex("  ") + 4
-            current_vul["line"] = int(line[4:index])
-            current_vul["code"] = line[index:].strip()
-    if current_vul is not None:
-        analysis.append(current_vul)
-    return analysis
+            findings.append(finding)
+            continue
+    return findings
 
 
-def parse(exit_code, log, output, task):
-    findings, infos, analysis = set(), set(), []
+def parse(exit_code, log, output):
+    findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     if any("Invalid solc compilation" in line for line in log):
@@ -38,18 +34,40 @@ def parse(exit_code, log, output, task):
 
     try:
         with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
-            for f in tar.getmembers():
-                if not f.name.endswith("/global.findings"):
+            for fn in tar.getnames():
+                if not fn.endswith("/global.findings"):
                     continue
+
                 try:
-                    contents = tar.extractfile(f).read()
+                    contents = tar.extractfile(fn).read()
+                    manticore_findings = parse_file(contents)
                 except Exception as e:
-                    fails.add(f"problem extracting {f.name} from output archive")
+                    fails.add(f"problem extracting {fn} from output archive: {e}")
                     continue
-                analysis.append(parse_file(contents))
+
+                cmd = None
+                try:
+                    fn = fn.replace("/global.findings","/manticore.yml")
+                    cmd = yaml.safe_load(tar.extractfile(fn).read())
+                except Exception as e:
+                    infos.add(f"manticore.yml not found")
+
+                filename, contract = None, None
+                if isinstance(cmd,dict):
+                    cli = cmd.get("cli")
+                    if isinstance(cli,dict):
+                        contract = cli.get("contract")
+                        argv = cli.get("argv")
+                        if isinstance(argv,list) and len(argv) > 0:
+                            filename = argv[0]
+
+                for mf in manticore_findings:
+                    if filename:
+                        mf["filename"] = filename
+                    if contract:
+                        mf["contract"] = contract
+                    findings.append(mf)
     except Exception as e:
         fails.add(f"error parsing results: {e}")
 
-    findings = { vul["name"] for vuls in analysis for vul in vuls }
-
-    return findings, infos, errors, fails, analysis
+    return findings, infos, errors, fails
