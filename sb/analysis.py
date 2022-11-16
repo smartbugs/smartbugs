@@ -1,5 +1,5 @@
 import multiprocessing, random, time, datetime, os, cpuinfo, platform
-import sb.logging, sb.colors, sb.docker, sb.config, sb.io, sb.parsing, sb.sarif
+import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif
 from sb.exceptions import SmartBugsError
 
 
@@ -7,7 +7,7 @@ cpu = cpuinfo.get_cpu_info()
 uname = platform.uname()
 SYSTEM_INFO = {
     "smartbugs": {
-        "version": sb.config.VERSION,
+        "version": sb.cfg.VERSION,
         "python": cpu.get("python_version")
     },
     "platform": {
@@ -27,21 +27,23 @@ SYSTEM_INFO = {
     }
 }
 
-def task_info(task, start_time, duration, exit_code, log, output, docker_args):
-    info = {
+
+
+def task_log_dict(task, start_time, duration, exit_code, log, output, docker_args):
+    task_log = {
         "filename": task.relfn,
         "result": {
             "start": start_time,
             "duration": duration,
             "exit_code": exit_code,
-            "logs": sb.config.TOOL_LOG if log else None,
-            "output": sb.config.TOOL_OUTPUT if output else None},
+            "logs": sb.cfg.TOOL_LOG if log else None,
+            "output": sb.cfg.TOOL_OUTPUT if output else None},
         "solc": str(task.solc_version) if task.solc_version else None,
         "tool": task.tool.dict(),
         "docker": docker_args,
     }
-    info.update(SYSTEM_INFO)
-    return info
+    task_log.update(SYSTEM_INFO)
+    return task_log
 
 
 
@@ -54,7 +56,7 @@ def execute(task):
 
     # check whether result dir is empty,
     # and if not, whether we are going to overwrite it
-    fn_task_log = os.path.join(task.rdir, sb.config.TASK_LOG)
+    fn_task_log = os.path.join(task.rdir, sb.cfg.TASK_LOG)
     if os.path.exists(fn_task_log):
         old = sb.io.read_json(fn_task_log)
         old_fn = old["filename"]
@@ -68,10 +70,10 @@ def execute(task):
             return 0.0
 
     # remove any leftovers from a previous analysis
-    fn_tool_log = os.path.join(task.rdir, sb.config.TOOL_LOG)
-    fn_tool_output = os.path.join(task.rdir, sb.config.TOOL_OUTPUT)
-    fn_parser_output = os.path.join(task.rdir, sb.config.PARSER_OUTPUT)
-    fn_sarif_output = os.path.join(task.rdir, sb.config.SARIF_OUTPUT)
+    fn_tool_log = os.path.join(task.rdir, sb.cfg.TOOL_LOG)
+    fn_tool_output = os.path.join(task.rdir, sb.cfg.TOOL_OUTPUT)
+    fn_parser_output = os.path.join(task.rdir, sb.cfg.PARSER_OUTPUT)
+    fn_sarif_output = os.path.join(task.rdir, sb.cfg.SARIF_OUTPUT)
     for fn in (fn_task_log, fn_tool_log, fn_tool_output, fn_parser_output, fn_sarif_output):
         try:
             os.remove(fn)
@@ -82,22 +84,25 @@ def execute(task):
 
     # perform analysis
     start_time = time.time()
-    exit_code,log,output,docker_args = sb.docker.execute(task)
+    exit_code,tool_log,tool_output,docker_args = sb.docker.execute(task)
     duration = time.time() - start_time
 
     # write result to files
-    info = task_info(task, start_time, duration, exit_code, log, output, docker_args)
-    sb.io.write_json(fn_task_log, info)
-    if log:
-        sb.io.write_txt(fn_tool_log, log)
-    if output:
-        sb.io.write_bin(fn_tool_output, output)
+    task_log = task_log_dict(task, start_time, duration, exit_code, tool_log, tool_output, docker_args)
+    sb.io.write_json(fn_task_log, task_log)
+    if tool_log:
+        sb.io.write_txt(fn_tool_log, tool_log)
+    if tool_output:
+        sb.io.write_bin(fn_tool_output, tool_output)
         
+    # Parse output of tool
     if task.settings.json or task.settings.sarif:
-        parsed_result = sb.parsing.parse(info["filename"], info["tool"], exit_code, log, output)
+        parsed_result = sb.parsing.parse(task_log, tool_log, tool_output)
         sb.io.write_json(fn_parser_output,parsed_result)
+
+        # Format parsed result as sarif
         if task.settings.sarif:
-            sarif_result = sb.sarif.sarify(info["tool"], parsed_result["findings"])
+            sarif_result = sb.sarif.sarify(task_log["tool"], parsed_result["findings"])
             sb.io.write_json(fn_sarif_output, sarif_result)       
 
     return duration

@@ -1,5 +1,5 @@
 import os, string, time
-import sb.io, sb.logging, sb.config
+import sb.io, sb.logging, sb.cfg
 from sb.exceptions import SmartBugsError, InternalError
 
 HOME = os.path.expanduser("~") # cross-plattform safe
@@ -31,8 +31,8 @@ class Settings:
             return
         self.frozen = True
         env = {
-            'SBVERSION': sb.config.VERSION,
-            'SBHOME':    sb.config.HOME,
+            'SBVERSION': sb.cfg.VERSION,
+            'SBHOME':    sb.cfg.HOME,
             'HOME':      HOME,
             'PID':       PID,
             'YEAR':      str(NOW.tm_year).zfill(4), # year with century, four digits

@@ -1,5 +1,5 @@
 import os, string
-import sb.io, sb.config
+import sb.io, sb.cfg
 from sb.exceptions import SmartBugsError, InternalError
 
 FIELDS = ("id","path","mode","image","name","origin","version","info","parser",
@@ -52,9 +52,9 @@ class Tool():
         if not self._command and not self._entrypoint:
             raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
-            self.parser = sb.config.TOOL_PARSER
+            self.parser = sb.cfg.TOOL_PARSER
         if self.bin:
-            self.absbin = os.path.join(sb.config.TOOLS_HOME,self.id,self.bin)
+            self.absbin = os.path.join(sb.cfg.TOOLS_HOME,self.id,self.bin)
 
 
     def command(self, filename, timeout, bin):
@@ -97,8 +97,8 @@ def load(ids, tools=[], seen=set()):
         if id in seen:
             continue
         seen.add(id)
-        toolpath = os.path.join(sb.config.TOOLS_HOME, id)
-        fn = os.path.join(toolpath, sb.config.TOOL_CONFIG)
+        toolpath = os.path.join(sb.cfg.TOOLS_HOME, id)
+        fn = os.path.join(toolpath, sb.cfg.TOOL_CONFIG)
         cfg = sb.io.read_yaml(fn)
 
         alias = cfg.get("alias")
@@ -132,7 +132,7 @@ info_findings = {}
 def info_finding(tool_id, fname):
     if tool_id not in info_findings:
         try:
-            fn = os.path.join(sb.config.TOOLS_HOME, tool_id, sb.config.TOOL_FINDINGS)
+            fn = os.path.join(sb.cfg.TOOLS_HOME, tool_id, sb.cfg.TOOL_FINDINGS)
             info_findings[tool_id] = sb.io.read_yaml(fn)
         except Exception:
             info_findings[tool_id] = {}

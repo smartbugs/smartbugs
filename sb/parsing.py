@@ -1,6 +1,6 @@
-import sys, os, importlib.util
+import os, importlib.util
+import sb.cfg
 from sb.exceptions import SmartBugsError
-import sb.config, sb.io
 
 tool_parsers = {}
 
@@ -10,7 +10,7 @@ def get_parser(tool):
     if  key not in tool_parsers:
         try:
             modulename = f"tools.{tid}.{tmode}"
-            fn = os.path.join(sb.config.TOOLS_HOME, tid, tool["parser"])
+            fn = os.path.join(sb.cfg.TOOLS_HOME, tid, tool["parser"])
             spec = importlib.util.spec_from_file_location(modulename, fn)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
@@ -21,11 +21,14 @@ def get_parser(tool):
 
 
 
-def parse(filename, tool, exit_code, log, output):
-    tool_parser = get_parser(tool)
+def parse(task_log, tool_log, tool_output):
+    tool = task_log["tool"]
+    filename = task_log["filename"]
+    exit_code = task_log["result"]["exit_code"]
 
+    tool_parser = get_parser(tool)
     try:
-        findings,infos,errors,fails = tool_parser.parse(exit_code, log, output)
+        findings,infos,errors,fails = tool_parser.parse(exit_code, tool_log, tool_output)
         for finding in findings:
             # if FINDINGS is defined, ensure that the current finding is in FINDINGS
             # irrelevant for SmartBugs, but may be relevant for programs further down the line

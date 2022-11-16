@@ -1,5 +1,4 @@
-import os
-import sb.config, sb.io, sb.tools
+import sb.tools
 
 
 def sarify(tool, findings):

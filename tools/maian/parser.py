@@ -97,7 +97,7 @@ def parse(exit_code, log, output):
             continue
 
         m = CONTRACT.match(line)
-        if m and finding["filename"]:
+        if m and finding.get("filename"):
             finding["contract"] = m[1]
             continue
 

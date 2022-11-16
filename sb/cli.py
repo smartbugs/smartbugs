@@ -1,5 +1,5 @@
 import argparse, sys, os
-import sb.config, sb.colors, sb.smartbugs, sb.logging, sb.settings
+import sb.cfg, sb.colors, sb.smartbugs, sb.logging, sb.settings
 from sb.exceptions import SmartBugsError
 
 def cli_args(defaults):
@@ -94,17 +94,17 @@ def cli_args(defaults):
     output.add_argument(
         "--json",
         action="store_true",
-        help=f"parse output and write it to {sb.config.PARSER_OUTPUT}{fmt_default(defaults.json)}")
+        help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT}{fmt_default(defaults.json)}")
     output.add_argument(
         "--sarif",
         action="store_true",
-        help=f"parse output and write it to {sb.config.PARSER_OUTPUT} as well as {sb.config.SARIF_OUTPUT}{fmt_default(defaults.sarif)}")
+        help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT} as well as {sb.cfg.SARIF_OUTPUT}{fmt_default(defaults.sarif)}")
 
     info = parser.add_argument_group("information options")
     info.add_argument(
         "--version",
         action="version",
-        version=f"smartbugs {sb.config.VERSION}",
+        version=f"smartbugs {sb.cfg.VERSION}",
         help="show version number and exit")
     info.add_argument(
         "-h", "--help",
@@ -116,7 +116,7 @@ def cli_args(defaults):
 
 
 
-def cli(site_cfg=sb.config.SITE_CFG):
+def cli(site_cfg=sb.cfg.SITE_CFG):
     settings = sb.settings.Settings()
     # add site settings
     if os.path.exists(site_cfg):

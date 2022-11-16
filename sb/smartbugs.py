@@ -1,5 +1,5 @@
 import glob, os, operator
-import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.config, sb.io, sb.settings
+import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.cfg, sb.io, sb.settings
 from sb.exceptions import SmartBugsError
 
 
@@ -124,7 +124,7 @@ def main(settings: sb.settings.Settings):
     settings.freeze()
     sb.logging.quiet = settings.quiet
     sb.logging.message(
-        sb.colors.success(f"Welcome to SmartBugs {sb.config.VERSION}!"),
+        sb.colors.success(f"Welcome to SmartBugs {sb.cfg.VERSION}!"),
         f"Settings: {settings}")
     tools = sb.tools.load(settings.tools)
     files = collect_files(settings.files)
