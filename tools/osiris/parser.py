@@ -12,7 +12,7 @@ FINDINGS = {
     "Signedness bugs",
     "Callstack bug",
     "Concurrency bug",
-    "Timedependency bug",
+    "Time dependency bug",
     "Reentrancy bug",
 }
 

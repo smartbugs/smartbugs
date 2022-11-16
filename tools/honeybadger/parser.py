@@ -3,6 +3,7 @@ import tools.oyente.parser as oyente
 VERSION = oyente.VERSION
 
 FINDINGS = {
+        "Money flow",
         "Balance disorder",
         "Hidden transfer",
         "Inheritance disorder",

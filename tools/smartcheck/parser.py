@@ -56,8 +56,10 @@ def parse(exit_code, log, output):
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     for line in log:
-        if ": " in line:
-            k,v = line.split(": ")
+        i = line.find(": ")
+        if i >= 0:
+            k = line[0:i].strip()
+            v = line[i+2:].strip()
             if v.isdigit():
                 v = int(v)
             if k.endswith("ruleId"):

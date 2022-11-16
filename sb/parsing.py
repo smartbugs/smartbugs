@@ -26,16 +26,17 @@ def parse(filename, tool, exit_code, log, output):
 
     try:
         findings,infos,errors,fails = tool_parser.parse(exit_code, log, output)
+        for finding in findings:
+            # if FINDINGS is defined, ensure that the current finding is in FINDINGS
+            # irrelevant for SmartBugs, but may be relevant for programs further down the line
+            assert not tool_parser.FINDINGS or finding["name"] in tool_parser.FINDINGS
+            # check that filename within docker corresponds to filename outside, before replacing it
+            # splitting at "/" is ok, since it is a Linux path from within the docker container
+            assert not finding.get("filename") or filename.endswith(finding["filename"].split("/")[-1])
+            finding["filename"] = filename
     except Exception as e:
         raise SmartBugsError(f"Parsing of results failed\n{e}")
 
-    for finding in findings:
-        # if FINDINGS is defined, ensure that the current finding is in FINDINGS
-        # irrelevant for SmartBugs, but may be relevant for programs further down the line
-        assert not tool_parser.FINDINGS or finding["name"] in tool_parser.FINDINGS
-        # check that filename within docker corresponds to filename outside, before replacing it
-        assert not finding.get("filename") or filename.endswith(finding["filename"].split("/")[-1])
-        finding["filename"] = filename
 
     return {
         "findings": findings,

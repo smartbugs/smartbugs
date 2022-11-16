@@ -42,7 +42,7 @@ def parse(exit_code, log, output):
     try:
         result = json.loads(log[-1])
     except:
-        pass
+        result = None
     if result:
         error = result.get("error")
         if error:
@@ -51,7 +51,7 @@ def parse(exit_code, log, output):
             finding = { "name": issue["title"] }
             for i,f in ( ("filename","filename"), ("contract","contract"),
                 ("function","function"), ("address","address"), ("lineno", "line"),
-                ("tx_sequence","exploit"), ("description","message"), ("severity","everity") ):
+                ("tx_sequence","exploit"), ("description","message"), ("severity","severity") ):
                 if i in issue:
                     finding[f] = issue[i]
             if "swc-id" in issue:

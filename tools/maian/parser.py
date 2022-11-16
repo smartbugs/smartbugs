@@ -7,7 +7,7 @@ FINDINGS = (
     "No Ether leak (no send)",
     "Ether leak",
     "Ether leak (verified)",
-    "Accepts Ether",
+#    "Accepts Ether",
     "No Ether lock (Ether refused)",
     "Ether lock (Ether accepted without send)",
     "Ether lock",
@@ -43,7 +43,7 @@ MAP_FINDINGS = (
     (NOT_PRODIGAL, "No Ether leak (no send)"),
     (LEAK_FOUND, "Ether leak"),
     (PRODIGAL_CONFIRMED, "Ether leak (verified)"),
-    (CAN_RECEIVE_ETHER, "Accepts Ether"),
+#    (CAN_RECEIVE_ETHER, "Accepts Ether"),
     (CANNOT_RECEIVE_ETHER, "No Ether lock (Ether refused)"),
     (IS_GREEDY, "Ether lock (Ether accepted without send)"),
     (LOCK_FOUND, "Ether lock"),
@@ -83,36 +83,36 @@ def parse(exit_code, log, output):
         errors.discard("EXIT_CODE_1") # redundant
 
     analysis_complete = {}
+    finding = {}
     for line in sb.parse_utils.discard_ANSI(log):
         if line.startswith("="*100):
-            filename,contract,finding = None,None,None
+            if finding.get("name"):
+                findings.append(finding)
+            finding = {}
             continue
 
         m = FILENAME.match(line)
         if m:
-            filename = m[1]
+            finding["filename"] = m[1]
             continue
 
         m = CONTRACT.match(line)
-        if m and filename:
-            contract = m[1]
+        if m and finding["filename"]:
+            finding["contract"] = m[1]
             continue
 
         m = MISSING_ABI_BIN.match(line)
         if m:
             assert m[1]==m[2]
-            contract = m[1]
+            finding["contract"] = m[1]
             continue
 
         found = False
-        for indicator,finding in MAP_FINDINGS:
+        for indicator,name in MAP_FINDINGS:
             if line.startswith(indicator):
-                finding = { "name": finding }
-                if filename: finding["filename"] = filename
-                if contract: finding["contract"] = contract
-                findings.append(finding)
+                finding["name"] = name
                 found = True
-                continue
+                break
         if found:
             continue
 
@@ -121,7 +121,7 @@ def parse(exit_code, log, output):
             if line.startswith(indicator):
                 infos.add(info)
                 found = True
-                continue
+                break
         if found:
             continue
 
@@ -130,7 +130,7 @@ def parse(exit_code, log, output):
 
         m = CHECK.match(line)
         if m:
-            k = (filename,contract)
+            k = (finding.get("filename"),finding.get("contract"))
             if k not in analysis_complete:
                 analysis_complete[k] = set()
             analysis_complete[k].add(m[1])
@@ -138,11 +138,12 @@ def parse(exit_code, log, output):
 
         m = TRANSACTION.match(line)
         if m:
-            assert finding
             if "exploit" not in finding:
                 finding["exploit"] = []
             finding["exploit"].append(m[1])
             continue
+    if finding.get("name"):
+        findings.append(finding)
 
     for checks in analysis_complete.values():
         if len(checks) != 3:

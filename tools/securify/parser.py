@@ -36,7 +36,7 @@ def parse(exit_code, log, output):
                     jsn = tar.extractfile("results/live.json").read()
                     analysis = json.loads(jsn)
     except Exception:
-        pass
+        analysis = {}
 
     if not analysis:
         infos.add("analysis incomplete")
