@@ -21,4 +21,4 @@ jobs:
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: source venv/bin/activate; ./reparse results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./results2csv -x start duration -- results | diff - .github/sample.csv
+        run: source venv/bin/activate; ./results2csv -x start duration -- results | diff .github/sample.csv -
