@@ -83,7 +83,7 @@ def result_info(tool_id, finding):
 
 
 def rule_id(tool_id, fname):
-    return f"{sb.utils.str2label(tool_id)}_{str2label(fname)}"
+    return f"{sb.utils.str2label(tool_id)}_{sb.utils.str2label(fname)}"
 
 
 def rule_shortDescription(info_finding):

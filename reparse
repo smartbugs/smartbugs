@@ -56,27 +56,33 @@ def main():
         metavar="N",
         default=1,
         help="number of parallel processes (default 1)")
-    argparser.add_argument("-v", "--verbose",
+    argparser.add_argument("-v",
         action='store_true',
         help="show progress")
-    argparser.add_argument("path_to_outputs",
-        help="directory containing the tool outputs")
+    argparser.add_argument("results",
+        nargs="+",
+        metavar="DIR",
+        help="directories containing the run results")
     args = argparser.parse_args()
+
+    results = set()
+    for r in args.results:
+        for path,_,files in os.walk(r):
+            if sb.cfg.TASK_LOG in files:
+                results.add(path)
 
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
     mp = multiprocessing.get_context("spawn")
+
     taskqueue = mp.Queue()
-
-    reparsers = [ mp.Process(target=reparser, args=(taskqueue,args.sarif,args.verbose)) for _ in range(args.processes) ]
-    for r in reparsers:
-        r.start()
-
-    for path,_,files in os.walk(args.path_to_outputs):
-        if sb.cfg.TASK_LOG in files:
-            taskqueue.put(path)
+    for r in sorted(results):
+        taskqueue.put(r)
     for _ in range(args.processes):
         taskqueue.put(None)
 
+    reparsers = [ mp.Process(target=reparser, args=(taskqueue,args.sarif,args.v)) for _ in range(args.processes) ]
+    for r in reparsers:
+        r.start()
     for r in reparsers:
         r.join()
 
