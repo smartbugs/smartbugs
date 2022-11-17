@@ -17,8 +17,8 @@ jobs:
       - name: setup
         run: ./setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --github
+        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: ./reparse results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: ./results2csv results | diff - .github/sample.csv
+        run: ./results2csv -x start duration -- results | diff - .github/sample.csv
