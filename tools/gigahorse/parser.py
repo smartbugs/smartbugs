@@ -1,7 +1,7 @@
 import io, json, tarfile
 import sb.parse_utils
 
-VERSION = "2022/11/11"
+VERSION = "2022/11/17"
 
 def parse(exit_code, log, output, FINDINGS):
     findings, infos = [], set()
@@ -21,7 +21,9 @@ def parse(exit_code, log, output, FINDINGS):
             errors.update(contract[2])
             report = contract[3]
             for name in FINDINGS:
-                for address in report.get(name).split():
+                if not report.get(name):
+                    continue
+                for address in report["name"].split():
                     findings.append({
                         "filename": filename,
                         "name": name,
