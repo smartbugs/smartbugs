@@ -1,16 +1,11 @@
+#!/usr/bin/env python3
+
 import argparse, csv, os, sys
-import sb.cfg, sb.io
+import sb.cfg, sb.io, sb.utils
 
 FIELDS = (
     "filename", "basename", "toolid", "toolmode", "parser_version", "runid",
     "start", "duration", "exit_code",  "findings", "infos", "errors", "fails")
-
-INSIGNIFICANT_FINDINGS = (
-    ("maian", "Accepts_Ether"),
-    ("maian", "No_Ether_leak_no_send"),
-    ("maian", "No_Ether_lock_Ether_refused"),
-    ("maian", "Not_destructible_no_self_destruct")
-)
 
 def main():
     argparser = argparse.ArgumentParser(
@@ -37,25 +32,31 @@ def main():
         if args.verbose:
             print(r, file=sys.stderr)
         try:
-            task_log = sb.io.read_json(os.path.join(r,sb.cfg.TASK_LOG)
-            parsed_output = sb.io.read_json(os.path.join(r,sb.cfg.PARSED_OUTPUT)
+            task_log = sb.io.read_json(os.path.join(r,sb.cfg.TASK_LOG))
+            parsed_output = sb.io.read_json(os.path.join(r,sb.cfg.PARSER_OUTPUT))
         except Exception as e:
             print(f"Cannot read task log or parsed output: {e}")
             continue
         csv_out.writerow(data2csv(task_log, parsed_output, args.postgres))
 
 
-def list2pgarray(l):
-    a = '{'
-    sep = ''
+def list2postgres(l):
+    es = []
     for e in l:
-        a += f'{sep}"'
-        a += e.replace('"', r'\"')
-        a += '"'
-        sep = ', '
-    a += '}'
-    return a
-
+        if '"' in e or "," in e:
+            es.append('"'+e.replace('"','\"')+'"')
+        else:
+            es.append(e)
+    return "{" + ",".join(es) + "}"
+        
+def list2excel(l):
+    es = []
+    for e in l:
+        if '"' in e or "," in e:
+            es.append('"'+e.replace('"','""')+'"')
+        else:
+            es.append(e)
+    return ",".join(es)
 
 def data2csv(task_log, parsed_output, postgres):
     csv = {
@@ -68,12 +69,17 @@ def data2csv(task_log, parsed_output, postgres):
         "start": task_log["result"]["start"],
         "duration": task_log["result"]["duration"],
         "exit_code": task_log["result"]["exit_code"],
-        "findings": sorted({ sb.sarif.str2label(f["name"])
+        "findings": sorted({ sb.utils.str2label(f["name"])
                              for f in parsed_output["findings"]}),
         "infos": parsed_output["infos"],
         "errors": parsed_output["errors"],
         "fails": parsed_output["fails"],
     }
+    for f in ("findings", "infos", "errors", "fails"):
+        if postgres:
+            csv[f] = list2postgres(csv[f])
+        else:
+            csv[f] = list2excel(csv[f])
     return [ csv[f] for f in FIELDS ]
 
 
