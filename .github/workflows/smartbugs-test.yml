@@ -19,6 +19,6 @@ jobs:
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
         run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: ./reparse results
+        run: source venv/bin/activate; ./reparse results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: ./results2csv -x start duration -- results | diff - .github/sample.csv
+        run: source venv/bin/activate; ./results2csv -x start duration -- results | diff - .github/sample.csv
