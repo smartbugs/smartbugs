@@ -23,13 +23,27 @@ def parse(exit_code, log, output, FINDINGS):
             for name in FINDINGS:
                 if not report.get(name):
                     continue
-                for address in report["name"].split():
+                addresses = []
+                for address in report[name].split():
+                    try:
+                        addresses.append(int(address,16))
+                    except:
+                        pass
+                for address in addresses:
                     findings.append({
                         "filename": filename,
                         "name": name,
                         "address": int(address,16)
                     })
+                if not addresses:
+                    findings.append({
+                        "filename": filename,
+                        "name": name
+                    })
+
+
+ 
     except Exception as e:
-        fails.add("problem extracting results.json from docker container")
+        fails.add(f"problem extracting results.json from docker container: {e}")
 
     return findings, infos, errors, fails
