@@ -38,6 +38,7 @@ def cli_args(defaults):
             "; may be prefixed by 'DIR:' for search relative to DIR")
     input.add_argument("--runtime",
         action="store_true",
+        default=None,
         help=f"analyse the deployed, not the deployment code{fmt_default(defaults.runtime)}")
 
     exec = parser.add_argument_group("execution options")
@@ -47,6 +48,7 @@ def cli_args(defaults):
         help=f"string identifying the run{fmt_default(defaults.runid)}")
     exec.add_argument("--overwrite",
         action="store_true",
+        default=None,
         help=f"delete old result and rerun the analysis{fmt_default(defaults.overwrite)}")
     exec.add_argument("--processes",
         type=int,
@@ -68,6 +70,7 @@ def cli_args(defaults):
     output = parser.add_argument_group("output options")
     output.add_argument("--quiet",
         action="store_true",
+        default=None,
         help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
     output.add_argument("--results",
         type=str,
@@ -79,9 +82,11 @@ def cli_args(defaults):
         help=f"file for log messages{fmt_default(defaults.logfile)}")
     output.add_argument("--json",
         action="store_true",
+        default=None,
         help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT}{fmt_default(defaults.json)}")
     output.add_argument("--sarif",
         action="store_true",
+        default=None,
         help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT} as well as {sb.cfg.SARIF_OUTPUT}{fmt_default(defaults.sarif)}")
 
     info = parser.add_argument_group("information options")

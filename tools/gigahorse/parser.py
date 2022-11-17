@@ -1,5 +1,5 @@
+import io, json, tarfile
 import sb.parse_utils
-import io, tarfile, json
 
 VERSION = "2022/11/11"
 

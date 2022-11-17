@@ -1,7 +1,7 @@
 import io, tarfile, yaml
 import sb.parse_utils
 
-VERSION = "2022/11/15"
+VERSION = "2022/11/17"
 
 FINDINGS = set()
 
@@ -40,7 +40,7 @@ def parse(exit_code, log, output):
 
                 try:
                     contents = tar.extractfile(fn).read()
-                    manticore_findings = parse_file(contents)
+                    manticore_findings = parse_file(contents.splitlines())
                 except Exception as e:
                     fails.add(f"problem extracting {fn} from output archive: {e}")
                     continue
