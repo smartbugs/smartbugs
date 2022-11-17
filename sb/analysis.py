@@ -32,6 +32,7 @@ SYSTEM_INFO = {
 def task_log_dict(task, start_time, duration, exit_code, log, output, docker_args):
     task_log = {
         "filename": task.relfn,
+        "runid": task.settings.runid,
         "result": {
             "start": start_time,
             "duration": duration,

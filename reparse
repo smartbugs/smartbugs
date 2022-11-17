@@ -45,7 +45,8 @@ def reparser(taskqueue, sarif, verbose):
 
 
 def main():
-    argparser = argparse.ArgumentParser(prog="python3 reparse.py",
+    argparser = argparse.ArgumentParser(
+        prog="reparse",
         description=f"Parse the tool output ({sb.cfg.TOOL_LOG}, {sb.cfg.TOOL_OUTPUT}) into {sb.cfg.PARSER_OUTPUT}.")
     argparser.add_argument("--sarif",
         action="store_true",
@@ -58,8 +59,8 @@ def main():
     argparser.add_argument("-v", "--verbose",
         action='store_true',
         help="show progress")
-    argparser.add_argument("path_to_output",
-        help="directory containing the tool output")
+    argparser.add_argument("path_to_outputs",
+        help="directory containing the tool outputs")
     args = argparser.parse_args()
 
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
@@ -70,7 +71,7 @@ def main():
     for r in reparsers:
         r.start()
 
-    for path,_,files in os.walk(args.path_to_output):
+    for path,_,files in os.walk(args.path_to_outputs):
         if sb.cfg.TASK_LOG in files:
             taskqueue.put(path)
     for _ in range(args.processes):

@@ -1,0 +1,81 @@
+import argparse, csv, os, sys
+import sb.cfg, sb.io
+
+FIELDS = (
+    "filename", "basename", "toolid", "toolmode", "parser_version", "runid",
+    "start", "duration", "exit_code",  "findings", "infos", "errors", "fails")
+
+INSIGNIFICANT_FINDINGS = (
+    ("maian", "Accepts_Ether"),
+    ("maian", "No_Ether_leak_no_send"),
+    ("maian", "No_Ether_lock_Ether_refused"),
+    ("maian", "Not_destructible_no_self_destruct")
+)
+
+def main():
+    argparser = argparse.ArgumentParser(
+        prog="results2csv",
+        description="Write key information from runs to stdout, in csv format.")
+    argparser.add_argument("-p", "--postgres",
+        action='store_true',
+        help="encode lists as Postgres arrays")
+    argparser.add_argument("-v", "--verbose",
+        action='store_true',
+        help="show progress")
+    argparser.add_argument("path_to_outputs",
+        help="directory containing the tool outputs")
+    args = argparser.parse_args()
+
+    results = []
+    for path,_,files in os.walk(args.path_to_outputs):
+        if sb.cfg.TASK_LOG in files:
+            results.append(path)
+
+    csv_out = csv.writer(sys.stdout)
+    csv_out.writerow(FIELDS)
+    for r in sorted(results):
+        if args.verbose:
+            print(r, file=sys.stderr)
+        try:
+            task_log = sb.io.read_json(os.path.join(r,sb.cfg.TASK_LOG)
+            parsed_output = sb.io.read_json(os.path.join(r,sb.cfg.PARSED_OUTPUT)
+        except Exception as e:
+            print(f"Cannot read task log or parsed output: {e}")
+            continue
+        csv_out.writerow(data2csv(task_log, parsed_output, args.postgres))
+
+
+def list2pgarray(l):
+    a = '{'
+    sep = ''
+    for e in l:
+        a += f'{sep}"'
+        a += e.replace('"', r'\"')
+        a += '"'
+        sep = ', '
+    a += '}'
+    return a
+
+
+def data2csv(task_log, parsed_output, postgres):
+    csv = {
+        "filename": task_log["filename"],
+        "basename": os.path.basename(task_log["filename"]),
+        "toolid": task_log["tool"]["id"],
+        "toolmode": task_log["tool"]["mode"],
+        "parser_version": parsed_output["parser"]["version"],
+        "runid": task_log["runid"],
+        "start": task_log["result"]["start"],
+        "duration": task_log["result"]["duration"],
+        "exit_code": task_log["result"]["exit_code"],
+        "findings": sorted({ sb.sarif.str2label(f["name"])
+                             for f in parsed_output["findings"]}),
+        "infos": parsed_output["infos"],
+        "errors": parsed_output["errors"],
+        "fails": parsed_output["fails"],
+    }
+    return [ csv[f] for f in FIELDS ]
+
+
+if __name__ == '__main__':
+    sys.exit(main())

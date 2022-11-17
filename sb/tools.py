@@ -2,7 +2,7 @@ import os, string
 import sb.io, sb.cfg
 from sb.exceptions import SmartBugsError, InternalError
 
-FIELDS = ("id","path","mode","image","name","origin","version","info","parser",
+FIELDS = ("id","mode","image","name","origin","version","info","parser",
     "output","bin","solc","user","cpu_quota","mem_limit","command","entrypoint")
 
 class Tool():

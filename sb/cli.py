@@ -19,95 +19,77 @@ def cli_args(defaults):
         description="Automated analysis of Ethereum smart contracts",
         add_help=False,
         prog="smartbugs")
-#        exit_on_error=False)
 
     input = parser.add_argument_group("input options")
-    input.add_argument(
-        "-c", "--configuration",
+    input.add_argument("-c", "--configuration",
         metavar="FILE",
         type=str,
         help=f"settings to be processed before command line args{fmt_default(None)}")
-    input.add_argument(
-        "--runtime",
-        action="store_true",
-        help=f"analyse the deployed, not the deployment code{fmt_default(defaults.runtime)}")
-    input.add_argument(
-        "-t", "--tools",
+    input.add_argument("-t", "--tools",
         metavar="TOOL",
         nargs="+",
         type=str,
         help=f"tools to run on the contracts{fmt_default(defaults.tools)}")
-    input.add_argument(
-        "-f", "--files",
+    input.add_argument("-f", "--files",
         metavar="PATTERN",
         nargs="+",
         type=str,
         help=f"glob pattern specifying the files to analyse{fmt_default(defaults.files)}"
             "; may be prefixed by 'DIR:' for search relative to DIR")
+    input.add_argument("--runtime",
+        action="store_true",
+        help=f"analyse the deployed, not the deployment code{fmt_default(defaults.runtime)}")
 
     exec = parser.add_argument_group("execution options")
-    exec.add_argument(
-        "--runid",
+    exec.add_argument("--runid",
         type=str,
         metavar="ID",
         help=f"string identifying the run{fmt_default(defaults.runid)}")
-    exec.add_argument(
-        "--overwrite",
+    exec.add_argument("--overwrite",
         action="store_true",
         help=f"delete old result and rerun the analysis{fmt_default(defaults.overwrite)}")
-    exec.add_argument(
-        "--processes",
+    exec.add_argument("--processes",
         type=int,
         metavar="N",
         help=f"number of parallel processes{fmt_default(defaults.processes)}")
-    exec.add_argument(
-        "--timeout",
+    exec.add_argument("--timeout",
         type=int,
         metavar="N",
         help=f"timeout of each process in sec{fmt_default(defaults.timeout)}")
-    exec.add_argument(
-        "--cpu-quota",
+    exec.add_argument("--cpu-quota",
         type=int,
         metavar="N",
         help=f"cpu quota for docker images{fmt_default(defaults.cpu_quota)}")
-    exec.add_argument(
-        "--mem-limit",
+    exec.add_argument("--mem-limit",
         type=str,
         metavar="MEM",
         help=f"memory quota for docker images, like 512m or 1g{fmt_default(defaults.mem_limit)}")
 
     output = parser.add_argument_group("output options")
-    output.add_argument(
-        "--quiet",
+    output.add_argument("--quiet",
         action="store_true",
         help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
-    output.add_argument(
-        "--results",
+    output.add_argument("--results",
         type=str,
         metavar="DIR",
         help=f"folder for the results{fmt_default(defaults.results)}")
-    output.add_argument(
-        "--logfile",
+    output.add_argument("--logfile",
         type=str,
         metavar="FILE",
         help=f"file for log messages{fmt_default(defaults.logfile)}")
-    output.add_argument(
-        "--json",
+    output.add_argument("--json",
         action="store_true",
         help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT}{fmt_default(defaults.json)}")
-    output.add_argument(
-        "--sarif",
+    output.add_argument("--sarif",
         action="store_true",
         help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT} as well as {sb.cfg.SARIF_OUTPUT}{fmt_default(defaults.sarif)}")
 
     info = parser.add_argument_group("information options")
-    info.add_argument(
-        "--version",
+    info.add_argument("--version",
         action="version",
         version=f"smartbugs {sb.cfg.VERSION}",
         help="show version number and exit")
-    info.add_argument(
-        "-h", "--help",
+    info.add_argument("-h", "--help",
         action="help",
         default=argparse.SUPPRESS,
         help="show this help message and exit")
