@@ -2,6 +2,8 @@ import os, string
 import sb.io, sb.cfg
 from sb.exceptions import SmartBugsError, InternalError
 
+
+
 FIELDS = ("id","mode","image","name","origin","version","info","parser",
     "output","bin","solc","user","cpu_quota","mem_limit","command","entrypoint")
 
@@ -63,11 +65,13 @@ class Tool():
         except KeyError as e:
             raise SmartBugsError(f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}")
 
+
     def entrypoint(self, filename, timeout, bin):
         try:
             return self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin) if self._entrypoint else None
         except KeyError as e:
             raise SmartBugsError(f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}")
+
 
     def dict(self):
         d = {}
@@ -77,11 +81,12 @@ class Tool():
             elif k == "_entrypoint":
                 d["entrypoint"] = self._entrypoint.template if self._entrypoint else None
             elif k == "absbin":
-                # We do not want to leak private information like the full path
+                # We do not want to leak private information, like the full path, into log files
                 pass
             else:
                 d[k] = v
         return d
+
 
     def __str__(self):
         l = [ f"{k}: {str(v)}" for k,v in self.dict().items() ]
@@ -89,9 +94,24 @@ class Tool():
 
 
 
-def load(ids, tools=[], seen=set()):
-    if isinstance(ids, str):
-        ids = [ids]
+def load(
+    ids:   list[str],
+    tools: list[Tool] = [],
+    seen:  set[str] = set()
+    )  ->  list[Tool]:
+    """Load the specifications of the tools in ids
+
+    Parameters
+    ----------
+    ids: list of strings identifying the tools
+    tools: list of tool specifications already loaded
+    seen: list of tool ids and tool aliases already processed
+
+    Returns
+    -------
+    list of tool specifications corresponding to parameter ids
+
+    """
 
     for id in ids:
         if id in seen:

@@ -75,7 +75,7 @@ def __docker_args(task, sbdir):
 def execute(task):
     sbdir = __docker_volume(task)
     args = __docker_args(task, sbdir)
-    exit_code,logs,output,container = None,None,None,None
+    exit_code,logs,output,container = None,[],None,None
     try:
         container = client().containers.run(**args)
         try:

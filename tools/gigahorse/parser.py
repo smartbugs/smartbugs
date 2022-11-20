@@ -25,17 +25,24 @@ def parse(exit_code, log, output, FINDINGS):
                     continue
                 addresses = []
                 for address in report[name].split():
+                    address = address.lower()
+                    i = 2 if address[:2] == "0x" else 0
+                    while i < len(address):
+                        if address[i] not in "0123456789abcdef":
+                            break
+                        i += 1
                     try:
-                        addresses.append(int(address,16))
+                        addresses.append(int(address[0:i],16))
                     except:
                         pass
-                for address in addresses:
-                    findings.append({
-                        "filename": filename,
-                        "name": name,
-                        "address": int(address,16)
-                    })
-                if not addresses:
+                if addresses:
+                    for address in addresses:
+                        findings.append({
+                            "filename": filename,
+                            "name": name,
+                            "address": address
+                        })
+                else:
                     findings.append({
                         "filename": filename,
                         "name": name

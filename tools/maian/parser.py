@@ -70,7 +70,7 @@ ERRORS = (
     re.compile(".*(Incorrect final stack size)"),
     re.compile(".*(need to set the parameters)"),
     re.compile("\[-\] (.* does NOT exist)"),
-    re.compile(".*Exception: (.*)"),
+    re.compile(".*(?<!Z3)Exception: (.{,64})"),
 )
 
 CHECK = re.compile("\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)")
