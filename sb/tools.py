@@ -94,23 +94,22 @@ class Tool():
 
 
 
-def load(
-    ids:   list[str],
-    tools: list[Tool] = [],
-    seen:  set[str] = set()
-    )  ->  list[Tool]:
-    """Load the specifications of the tools in ids
+def load(ids, tools = [], seen = set()):
+    """Load tool specifications
 
     Parameters
     ----------
-    ids: list of strings identifying the tools
-    tools: list of tool specifications already loaded
-    seen: list of tool ids and tool aliases already processed
+    ids: list[str]
+        list of strings identifying the tools
+    tools: list[Tool]
+        list of tool specifications already loaded
+    seen: set[str]
+        list of tool ids and tool aliases already processed
 
     Returns
     -------
-    list of tool specifications corresponding to parameter ids
-
+    list[Tool]
+        list of tool specifications corresponding to parameter ids
     """
 
     for id in ids:
