@@ -76,10 +76,10 @@ def parse(exit_code, log, output):
             name = end_error[end_error.index("/") + 1: len(end_error) - 1]
             findings.append({
                 "filename": file,
-                "line": lineno,
-                "column": column,
+                "line": int(lineno),
+                "column": int(column),
                 "message": message,
-                "level": level,
+                "level": level.lower(),
                 "name": name
             })
 

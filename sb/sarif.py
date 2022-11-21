@@ -1,6 +1,5 @@
 import sb.tools, sb.utils
 
-
 def sarify(tool, findings):
     return {
         "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
@@ -59,15 +58,18 @@ def rule_info(tool_id, fname):
 
 
 def result_info(tool_id, finding):
+    fname = finding["name"]
+    info_finding = sb.tools.info_finding(tool_id, fname)
+
     result_dict = {
-        "ruleId": rule_id(tool_id, finding["name"]),
+        "ruleId": rule_id(tool_id, fname),
         "locations": [ { 
             "physicalLocation": {
                 "artifactLocation": {
                     "uri": finding["filename"]
     } } } ] }
 
-    v = result_message(finding)
+    v = result_message(finding, info_finding)
     if v: result_dict["message"] = { "text": v }
 
     v = result_level(finding)
@@ -126,8 +128,11 @@ def rule_security_severity(info_finding):
                 "")
 
 
-def result_message(finding):
-    message = finding.get("message")
+def result_message(finding, info_finding):
+    message = (
+        finding.get("message")
+        or info_finding.get("descr_short")
+        or finding["name"])
     severity = finding.get("severity")
     return (f"{message}\nSeverity: {severity}" if message and severity else
             message if message else
@@ -136,7 +141,8 @@ def result_message(finding):
 
 
 def result_level(finding):
-    return finding.get("level")
+    level = finding.get("level","").strip().lower()
+    return level if level in ("none", "note", "warning", "error") else None
 
 
 def result_location_message(finding):
@@ -154,7 +160,7 @@ def result_region(finding):
     # source code
     for f,r in (("line","startLine"), ("column","startColumn"), ("line_end","endLine"), ("column_end","endColumn")):
         if f in finding:
-            region_dict[r] = finding[f]
+            region_dict[r] = int(finding[f])
 
     if region_dict:
         return region_dict
@@ -163,6 +169,6 @@ def result_region(finding):
     for a,l,c in (("address","startLine","startColumn"), ("address_end","endLine","endColumn")):
         if a in finding:
             region_dict[l] = 1
-            region_dict[c] = 1 + 2*finding[a]
+            region_dict[c] = 1 + 2*int(finding[a])
     return region_dict
 
