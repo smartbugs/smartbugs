@@ -17,11 +17,11 @@ jobs:
       - name: setup
         run: ./setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github --timeout 300 --mem-limit 1g --cpu-quota 150000 --processes 2
+        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: source venv/bin/activate; ./reparse --sarif results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./results2csv -x start duration -- results | fgrep -v DOCKER_ | diff .github/samples.csv -
+        run: source venv/bin/activate; ./results2csv -x start duration -- results | diff .github/samples.csv -
       - name: Upload SARIF file for slither, mode sol
         uses: github/codeql-action/upload-sarif@v2
         with:
