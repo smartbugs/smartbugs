@@ -70,7 +70,6 @@ $ git clone https://github.com/smartbugs/smartbugs
 
 ```bash
 $ cd smartbugs
-$ git checkout sb2.0 # for the moment, until this branch becomes the main one
 $ ./setup-venv.sh
 
 ```
@@ -134,13 +133,50 @@ $ ./smartbugs -t all -f dataset/reentrancy/simple_dao.sol
 
 By default, results will be placed in the directory `results`. 
 
-## Further information
+## Further Information
 
 - Sample contracts: The subdirectory [dataset](dataset/) contains a curated
   collection of contracts with vulnerabilities. See the [README](dataset/README.md) there.
 
 - Documentation: The subdirectory [doc](doc/) contains information on
   the use of SmartBugs and on how to integrate new tools.
+
+## Academic Usage
+If you use SmartBugs or any of its datasets, please cite:
+
+- Durieux, T., Ferreira, J.F., Abreu, R. and Cruz, P., 2020. Empirical review of automated analysis tools on 47,587 Ethereum smart contracts. In Proceedings of the ACM/IEEE 42nd International Conference on Software Engineering (pp. 530-541).
+
+```
+@inproceedings{durieux2020empirical,
+  title={Empirical review of automated analysis tools on 47,587 Ethereum smart contracts},
+  author={Durieux, Thomas and Ferreira, Jo{\~a}o F. and Abreu, Rui and Cruz, Pedro},
+  booktitle={Proceedings of the ACM/IEEE 42nd International conference on software engineering},
+  pages={530--541},
+  year={2020}
+}
+```
+
+- Ferreira, J.F., Cruz, P., Durieux, T. and Abreu, R., 2020. SmartBugs: A framework to analyze solidity smart contracts. In Proceedings of the 35th IEEE/ACM International Conference on Automated Software Engineering (pp. 1349-1352).
+
+```
+@inproceedings{ferreira2020smartbugs,
+  title={SmartBugs: A framework to analyze solidity smart contracts},
+  author={Ferreira, Jo{\~a}o F and Cruz, Pedro and Durieux, Thomas and Abreu, Rui},
+  booktitle={Proceedings of the 35th IEEE/ACM International Conference on Automated Software Engineering},
+  pages={1349--1352},
+  year={2020}
+}
+```
+
+## Work that uses SmartBugs
+- [SmartBugs was used to analyze 47,587 smart contracts](https://joaoff.com/publication/2020/icse) (work published at ICSE 2020). These contracts are available in a [separate repository](https://github.com/smartbugs/smartbugs-wild). The results are also in [their own repository](https://github.com/smartbugs/smartbugs-results).
+- [SmartBugs was used to evaluate a simple extension of Smartcheck](https://joaoff.com/publication/2020/ase) (work published at ASE 2020, _Tool Demo Track_)
+- **... you are more than welcome to add your own work here!**
+
+## Support and Donate
+You can show your appreciation for the project and support future development by donating.
+
+**🙌 ETH Donations:** `0xA4FBA2908162646197aca90b84B095BE4D16Ae53` 🙌
 
 ## License
 
