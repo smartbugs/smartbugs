@@ -17,7 +17,7 @@ jobs:
       - name: setup
         run: ./setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github --processes 10
+        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github --timeout 180 --mem-limit 2g --processes 2
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: source venv/bin/activate; ./reparse --sarif results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}

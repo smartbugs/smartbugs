@@ -1,7 +1,7 @@
 import json, io, tarfile
 import sb.parse_utils
 
-VERSION = "2022/08/05"
+VERSION = "2022/11/17"
 
 FINDINGS = {
     "DAO",
