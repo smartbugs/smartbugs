@@ -99,6 +99,10 @@ def cli_args(defaults):
         default=argparse.SUPPRESS,
         help="show this help message and exit")
 
+    if len(sys.argv)==1:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
+
     return vars(parser.parse_args())
 
 
