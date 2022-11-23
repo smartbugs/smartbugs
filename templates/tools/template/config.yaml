@@ -1,0 +1,14 @@
+name: ToolName
+version: 0.3.14
+origin: https://github.com/smartbugs/smartbugs
+info: Succinct description of your tool.
+image: smartbugs/toolname:0.3.14
+user: 0
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
+bytecode:
+    entrypoint: "'$BIN/do_bytecode' '$FILENAME' '$TIMEOUT'"
+runtime:
+    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT'"
