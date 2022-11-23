@@ -5,5 +5,4 @@ image: smartbugs/ethainter:latest
 runtime:
     entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
     bin: scripts
-    user: 0
     output: /home/reviewer/gigahorse-toolchain/logic/results.json

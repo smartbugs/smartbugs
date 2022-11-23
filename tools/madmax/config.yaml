@@ -6,5 +6,4 @@ image: smartbugs/madmax:6e9a6e9
 runtime:
     entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
     bin: scripts
-    user: 0
     output: /MadMax/results.json

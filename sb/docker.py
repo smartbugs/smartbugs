@@ -55,9 +55,10 @@ def __docker_volume(task):
 def __docker_args(task, sbdir):
     args = {
         "volumes": {sbdir: {"bind": "/sb", "mode": "rw"}},
-        "detach": True
+        "detach": True,
+        "user": 0
     }
-    for k in ("image","user","cpu_quota","mem_limit"):
+    for k in ("image","cpu_quota","mem_limit"):
         v = getattr(task.tool, k, None)
         if v is not None:
             args[k] = v

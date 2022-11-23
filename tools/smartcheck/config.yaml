@@ -4,6 +4,5 @@ info: Securify automatically checks for vulnerabilities and bad coding practices
 solidity:
     image: smartbugs/smartcheck
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
-    user: 0
     solc: yes
     bin: scripts

@@ -4,7 +4,6 @@ origin: https://github.com/christoftorres/HoneyBadger
 image: smartbugs/honeybadger
 solidity:
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
-    user: 0
     solc: yes
     bin: scripts
 runtime:

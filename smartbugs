@@ -1,10 +1,7 @@
-#!/usr/bin/env python3
-"""Smartbugs: A framework to analyze smart contracts
+#!/usr/bin/env bash
 
-   http://github.com/smartbugs/smartbugs
-"""
+SB=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "$SB"
+source venv/bin/activate
+python -m sb $*
 
-import sb.cli
-
-if __name__ == "__main__":
-    sb.cli.main()

@@ -5,5 +5,4 @@ info: Pakala is a tool to search for exploitable bugs in Ethereum smart contract
 image: smartbugs/pakala:1.1.10
 runtime:
     entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
-    user: 0
     bin: scripts

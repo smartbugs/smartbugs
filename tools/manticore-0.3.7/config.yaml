@@ -6,6 +6,5 @@ image: smartbugs/manticore:0.3.7
 output: /results
 solidity:
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
-    user: 0
     solc: yes
     bin: scripts
