@@ -6,6 +6,5 @@ image: smartbugs/vandal
 runtime:
     entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
     bin: scripts
-    user: 0
     output: /results
     #    command: /runVandal.sh $FILENAME

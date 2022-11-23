@@ -4,7 +4,6 @@ info: Maian is a tool for the automated detection of buggy Ethereum smart contra
 image: smartbugs/maian:solc5.10
 version: '#4bab09a'
 bin: scripts
-user: 0
 solidity:
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
     solc: yes

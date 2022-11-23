@@ -3,7 +3,6 @@ origin: https://github.com/crytic/slither
 info: Slither is a Solidity static analysis framework written in Python 3. It runs a suite of vulnerability detectors and prints visual information about contract details. Slither enables developers to find vulnerabilities, enhance their code comphrehension, and quickly prototype custom analyses.
 image: smartbugs/slither
 output: /output.json
-user: 0
 bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"

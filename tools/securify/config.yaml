@@ -4,7 +4,6 @@ info: Securify uses formal verification, also relying on static analysis checks.
 image: smartbugs/security:usolc # includes solc 0.5.11, but we don't need it
 #image: smartbugs/securify:0.4.25 # includes solc 0.4.24, but we don't need it
 output: /results/
-user: 0
 bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"

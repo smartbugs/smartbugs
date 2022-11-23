@@ -5,7 +5,7 @@ from sb.exceptions import SmartBugsError, InternalError
 
 
 FIELDS = ("id","mode","image","name","origin","version","info","parser",
-    "output","bin","solc","user","cpu_quota","mem_limit","command","entrypoint")
+    "output","bin","solc","cpu_quota","mem_limit","command","entrypoint")
 
 class Tool():
 
@@ -18,7 +18,7 @@ class Tool():
                         v = bool(v)
                     except:
                         raise SmartBugsError(f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}")
-                elif k in ("user","cpu_quota"):
+                elif k in ("cpu_quota"):
                     try:
                         v = int(v)
                         assert v >= 0
