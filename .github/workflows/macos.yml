@@ -1,7 +1,7 @@
 name: SmartBugs@MacOS
 on: [push]
 jobs:
-  run-all-once:
+  run-sb-macos:
     runs-on: macos-latest
     #runs-on: ubuntu-latest
     strategy:
@@ -12,7 +12,7 @@ jobs:
         #python-version: ["3.10.8"]
     steps:
       - name: Install Docker
-        run: .github/unstall_docker_on_macos.sh
+        run: .github/install_docker_on_macos.sh
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4

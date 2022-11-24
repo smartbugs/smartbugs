@@ -1,7 +1,7 @@
 name: SmartBugs@Ubuntu
 on: [push]
 jobs:
-  run-all-once:
+  run-sb-ubuntu:
     runs-on: ubuntu-20.04
     #runs-on: ubuntu-latest
     strategy:
