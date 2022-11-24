@@ -127,6 +127,12 @@ def main(settings: sb.settings.Settings):
         sb.colors.success(f"Welcome to SmartBugs {sb.cfg.VERSION}!"),
         f"Settings: {settings}")
     tools = sb.tools.load(settings.tools)
+    if not tools:
+        sb.logging.message(sb.colors.warning("Warning: no tools selected!"))
     files = collect_files(settings.files)
+    if not files:
+        sb.logging.message(sb.colors.warning("Warning: no files selected!"))
     tasks = collect_tasks(files, tools, settings)
+    if not tasks:
+        raise SmartBugsError("No tasks to execute.")
     sb.analysis.run(tasks, settings)
