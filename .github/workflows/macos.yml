@@ -2,7 +2,7 @@ name: SmartBugs@MacOS
 on: [push]
 jobs:
   run-sb-macos:
-    runs-on: macos-latest
+    runs-on: macos-12
     #runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,15 +14,14 @@ jobs:
       - name: Clone SmartBugs repo
         uses: actions/checkout@v3
       - name: Install Docker
-        run: .github/install_docker_on_macos.sh
-      - name: Wait 5 minutes to let docker come up
-        run: sleep 300
-        shell: bash
+        run: brew install docker colima
+      - run: colima start
+      - run: docker info
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: setup
+      - name: Setup SmartBugs
         run: ./setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
         run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
