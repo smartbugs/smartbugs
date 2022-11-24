@@ -11,9 +11,9 @@ jobs:
         python-version: ["3.6.9"]
         #python-version: ["3.10.8"]
     steps:
+      - uses: actions/checkout@v3
       - name: Install Docker
         run: .github/install_docker_on_macos.sh
-      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
