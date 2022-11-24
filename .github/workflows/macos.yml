@@ -17,6 +17,8 @@ jobs:
         run: brew install docker colima
       - run: colima start
       - run: docker info
+      - run: sudo ln -s "$HOME/.docker/run/docker.sock" /var/run/docker.sock
+        shell: bash
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
