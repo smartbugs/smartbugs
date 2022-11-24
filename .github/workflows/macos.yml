@@ -26,7 +26,7 @@ jobs:
       - name: Setup SmartBugs
         run: ./setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
-        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
+        run: DOCKER_HOME="$HOME/.docker/run/docker.sock" ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: source venv/bin/activate; ./reparse --sarif results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
