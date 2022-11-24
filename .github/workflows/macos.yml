@@ -1,0 +1,41 @@
+name: SmartBugs CI
+on: [push]
+jobs:
+  run-all-once:
+    runs-on: macos-latest
+    #runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tool: ["mythril"]
+        contract: ["'samples/simple_dao.*'"]
+        python-version: ["3.6.9"]
+        #python-version: ["3.10.8"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: setup
+        run: ./setup-venv.sh
+      - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+        run: source venv/bin/activate; ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github
+      - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: source venv/bin/activate; ./reparse --sarif results
+      - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: source venv/bin/activate; ./results2csv -x start duration -- results | diff .github/results-macos.csv -
+      - name: Upload SARIF file for mythril-0.23.5, mode sol
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results/mythril-0.23.5/github/simple_dao.sol/result.sarif
+          category: mythril-0.23.5/sol
+      - name: Upload SARIF file for mythril-0.23.5, mode rt.hex
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results/mythril-0.23.5/github/simple_dao.rt.hex/result.sarif
+          category: mythril-0.23.5/rt.hex
+      - name: Upload SARIF file for mythril-0.23.5, mode hex
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results/mythril-0.23.5/github/simple_dao.hex/result.sarif
+          category: mythril-0.23.5/hex
