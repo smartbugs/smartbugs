@@ -11,9 +11,13 @@ jobs:
         python-version: ["3.6.9"]
         #python-version: ["3.10.8"]
     steps:
-      - uses: actions/checkout@v3
+      - name: Clone SmartBugs repo
+        uses: actions/checkout@v3
       - name: Install Docker
         run: .github/install_docker_on_macos.sh
+      - name: Wait 5 minutes to let docker come up
+        run: sleep 300
+        shell: bash
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:

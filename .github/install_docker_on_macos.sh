@@ -5,4 +5,3 @@ sudo /Applications/Docker.app/Contents/MacOS/Docker --unattended --install-privi
 open -a /Applications/Docker.app --args --unattended --accept-license
 echo "We are waiting for Docker to be up and running. It can take over 2 minutes..."
 #while ! /Applications/Docker.app/Contents/Resources/bin/docker info &>/dev/null; do sleep 1; done
-sleep 5m
