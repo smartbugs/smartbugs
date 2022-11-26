@@ -12,6 +12,9 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Features
 
+- *17 supported tools, 3 operation modes* for analysing Solidity source
+  code, deployment bytecode, and runtime code.
+
 - *A modular approach to integrating analysers.* All it takes to add
   a new tool is a Docker image encapsulating the tool and a few lines
   in a config file. To make the output accessible in a standardised
@@ -24,8 +27,11 @@ that analyse blockchain programs for weaknesses and other properties.
   of the tools to allow for an automated analysis of the results across
   tools.
 
-- *Automatic download of an appropriate Solidity compiler,* as required
-  by the contract under analysis, and injection into the Docker image.
+- *Automatic download of an appropriate Solidity compiler* matching
+  the contract under analysis, and injection into the Docker image.
+
+- *Output of results in SARIF format,* for integration into Github
+  workflows.
 
 ## Supported Tools
 
@@ -58,88 +64,88 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Installation
 
+### Unix/Linux
+
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
 2. Clone [SmartBugs's repository](https://github.com/smartbugs/smartbugs):
 
 ```bash
-$ git clone https://github.com/smartbugs/smartbugs
+git clone https://github.com/smartbugs/smartbugs
 ```
 
 3. Install Python dependencies in a virtual environment:
 
 ```bash
-$ cd smartbugs
-$ ./setup-venv.sh
+cd smartbugs
+install/setup-venv.sh
 
 ```
+
+4. Optionally, add links to the executables to the command search path.
+
+```bash
+ln -s "`pwd`/smartbugs" "$HOME/bin"
+ln -s "`pwd`/reparse" "$HOME/bin"
+ln -s "`pwd`/results2csv" "$HOME/bin"
+```
+
+### Windows
+
+Ongoing work. See [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows).
 
 ## Usage
 
-SmartBugs provides a command-line interface. See below for examples and explanations of the options.
+SmartBugs provides a command-line interface. Run it without arguments for a short description.
 
 ```console
-$ source venv/bin/activate # activate virtual environment
-$ ./smartbugs -h
-usage: smartbugs [-c FILE] [--runtime] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--runid ID]
-                 [--overwrite] [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
-                 [--quiet] [--results DIR] [--logfile FILE] [--json] [--sarif] [--version] [-h]
+./smartbugs
+usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--runtime]
+                 [--runid ID] [--overwrite] [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
+                 [--quiet] [--results DIR] [--logfile FILE] [--json] [--sarif]
+                 [--version] [-h]
+...
 
-Automated analysis of Ethereum smart contracts
-
-input options:
-  -c FILE, --configuration FILE
-                        settings to be processed before command line args [default: none]
-  --runtime             analyse the deployed, not the deployment code [default: no]
-  -t TOOL [TOOL ...], --tools TOOL [TOOL ...]
-                        tools to run on the contracts [default: none]
-  -f PATTERN [PATTERN ...], --files PATTERN [PATTERN ...]
-                        glob pattern specifying the files to analyse [default: none]; may be prefixed
-                        by 'DIR:' for search relative to DIR
-
-execution options:
-  --runid ID            string identifying the run [default: ${YEAR}${MONTH}${DAY}_${HOUR}${MIN}]
-  --overwrite           delete old result and rerun the analysis [default: no]
-  --processes N         number of parallel processes [default: 1]
-  --timeout N           timeout of each process in sec [default: none]
-  --cpu-quota N         cpu quota for docker images [default: none]
-  --mem-limit MEM       memory quota for docker images, like 512m or 1g [default: none]
-
-output options:
-  --quiet               suppress output to console (stdout) [default: no]
-  --results DIR         folder for the results [default: results/${TOOL}/${RUNID}/${FILENAME}]
-  --logfile FILE        file for log messages [default: results/logs/${RUNID}.log]
-  --json                parse output and write it to result.json [default: no]
-  --sarif               parse output and write it to result.json as well as result.sarif [default: no]
-
-information options:
-  --version             show version number and exit
-  -h, --help            show this help message and exit
 ```
+For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki).
 
-For example, we can analyse all Solidity files in `dataset/reentrancy` with
-the tool Oyente using the command
+To analyse the Solidity files provided in the `samples` directory with Oyente, use the command
 
 ```console
-$ ./smartbugs -t oyente -f dataset/reentrancy/*.sol
+./smartbugs -t oyente -f samples/*.sol
 ```
 
-To analyse a Solidity file with all tools able to handle source
-codes, we might use
+To compare the results of all tools on `simple_dao.sol`, we might use
 
 ```console
-$ ./smartbugs -t all -f dataset/reentrancy/simple_dao.sol
+./smartbugs -t all -f samples/simple_dao.sol
 ```
 
-By default, results will be placed in the directory `results`. 
+By default, results will be placed in a local directory `results`, but can be placed also elsewhere (option `--results`).
+
+### Utility programs
+
+**`reparse`** can be used to parse the analysis results anew, without rerunning the analaysis. This may be
+useful either when you forgot to specify the options `--json` or `--sarif` during analysis, or when you want to parse
+the analysis results with an updated parser.
+
+```console
+usage: reparse [-h] [--sarif] [--processes N] [-v] DIR [DIR ...]
+```
+
+**`results2csv** generates a csv file from the results, e.g.\ do load them into a database.
+```console
+usage: results2csv [-h] [-p] [-v] [-f FIELD [FIELD ...]] [-x FIELD [FIELD ...]] DIR [DIR ...]
+```
 
 ## Further Information
 
-- Sample contracts: The subdirectory [dataset](dataset/) contains a curated
-  collection of contracts with vulnerabilities. See the [README](dataset/README.md) there.
+- Sample contracts: The folder [`samples`](samples) contains selected Solidity source files
+  with the corresponding deployment and runtime bytecodes, to get aquainted with SmartBugs.
 
-- Documentation: The subdirectory [doc](doc/) contains information on
-  the use of SmartBugs and on how to integrate new tools.
+- [SB Curated](https://github.com/smartbugs/smartbugs-curated) is a curated dataset of vulnerable Solidity smart contracts.
+
+- Documentation: see the [wiki](https://github.com/smartbugs/smartbugs/wiki).
 
 ## Academic Usage
 If you use SmartBugs or any of its datasets, please cite:

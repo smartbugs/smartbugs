@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-
-import os, argparse, multiprocessing
+import os, argparse, multiprocessing, sys
 import sb.cfg, sb.io, sb.parsing, sb.sarif
 
 
@@ -63,6 +61,11 @@ def main():
         nargs="+",
         metavar="DIR",
         help="directories containing the run results")
+
+    if len(sys.argv)==1:
+        argparser.print_help(sys.stderr)
+        sys.exit(1)
+
     args = argparser.parse_args()
 
     results = set()

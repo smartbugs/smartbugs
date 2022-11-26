@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import argparse, csv, os, sys
 import sb.cfg, sb.io, sb.utils
 
@@ -35,6 +33,11 @@ def main():
         nargs="+",
         metavar="DIR",
         help="directories containing the run results")
+
+    if len(sys.argv)==1:
+        argparser.print_help(sys.stderr)
+        sys.exit(1)
+
     args = argparser.parse_args()
 
     fields = [ f for f in args.f if f not in args.x ]
