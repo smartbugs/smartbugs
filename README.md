@@ -51,7 +51,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Requirements
 
-- Unix-based system (Windows: SmartBugs has been written with portability in mind, but we didn't yet test it under Windows, sorry)
+- Unix-based system (Windows users might want to read [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows))
 - [Docker](https://docs.docker.com/install)
 - [Python3](https://www.python.org) (version 3.6 and above, 3.10+ recommended)
 
