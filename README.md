@@ -1,4 +1,4 @@
-# SmartBugs: A Framework to Analyze Ethereum Smart Contracts
+# SmartBugs: A Framework for Analysing Ethereum Smart Contracts
 
 ![Smartbugs build](https://github.com/smartbugs/smartbugs/workflows/build/badge.svg)
  <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
@@ -12,7 +12,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Features
 
-- *17 supported tools, 3 operation modes* for analysing Solidity source
+- *17 supported tools, 3 modes* for analysing Solidity source
   code, deployment bytecode, and runtime code.
 
 - *A modular approach to integrating analysers.* All it takes to add
@@ -20,7 +20,7 @@ that analyse blockchain programs for weaknesses and other properties.
   in a config file. To make the output accessible in a standardised
   format, add a small Python script.
   
-- *Parallel, randomized execution* of the tasks for the optimal use of
+- *Parallel, randomised execution* of the tasks for the optimal use of
   resources when performing a bulk analysis.
 
 - *Standardised output format.* Scripts parse and normalise the output
@@ -82,7 +82,7 @@ install/setup-venv.sh
 
 ```
 
-4. Optionally, add links to the executables to the command search path.
+4. Optionally, add the executables to the command search path, e.g. by adding links to `$HOME/bin`.
 
 ```bash
 ln -s "`pwd`/smartbugs" "$HOME/bin"
@@ -92,7 +92,7 @@ ln -s "`pwd`/results2csv" "$HOME/bin"
 
 ### Windows
 
-Ongoing work. See [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows).
+See [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows).
 
 ## Usage
 
@@ -104,48 +104,58 @@ usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--ru
                  [--runid ID] [--overwrite] [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
                  [--quiet] [--results DIR] [--logfile FILE] [--json] [--sarif]
                  [--version] [-h]
-...
 
 ```
 For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki).
 
-To analyse the Solidity files provided in the `samples` directory with Oyente, use the command
+To analyse the Solidity files in the `samples` directory with Mythril, use the command
 
 ```console
-./smartbugs -t oyente -f samples/*.sol
+./smartbugs -t mythril -f samples/*.sol
 ```
 
-To compare the results of all tools on `simple_dao.sol`, we might use
-
-```console
-./smartbugs -t all -f samples/simple_dao.sol
-```
-
-By default, results will be placed in a local directory `results`, but can be placed also elsewhere (option `--results`).
+By default, the results will be placed in a local directory `results`.
 
 ### Utility programs
 
-**`reparse`** can be used to parse the analysis results anew, without rerunning the analaysis. This may be
-useful either when you forgot to specify the options `--json` or `--sarif` during analysis, or when you want to parse
-the analysis results with an updated parser.
+**`reparse`** can be used to parse the analysis results anew, without rerunning
+the analaysis. This may be useful either when you forgot to specify the options `--json` or `--sarif` during analysis, or when you want to parse the analysis
+results with an updated parser.
 
 ```console
+./reparse
 usage: reparse [-h] [--sarif] [--processes N] [-v] DIR [DIR ...]
+...
 ```
 
-**`results2csv** generates a csv file from the results, e.g.\ do load them into a database.
+**`results2csv`** generates a csv file from the results, suitable e.g. for a database.
+
 ```console
+./results2csv
 usage: results2csv [-h] [-p] [-v] [-f FIELD [FIELD ...]] [-x FIELD [FIELD ...]] DIR [DIR ...]
+...
+```
+
+The following commands analyse `simple_dao.sol` with all available tools and write the parsed output to `results.csv`. The option `--json` tells SmartBugs to write the parsed output to json files (one per contract). `results2csv` collects the outputs in directory `results` and writes one line per analysis task to 
+
+```console
+./smartbugs -t all -f samples/simple_dao.sol --json
+./results2csv results > results.csv
 ```
 
 ## Further Information
 
-- Sample contracts: The folder [`samples`](samples) contains selected Solidity source files
-  with the corresponding deployment and runtime bytecodes, to get aquainted with SmartBugs.
+- For documentation, see the [wiki](https://github.com/smartbugs/smartbugs/wiki).
 
-- [SB Curated](https://github.com/smartbugs/smartbugs-curated) is a curated dataset of vulnerable Solidity smart contracts.
+- Sample contracts: The folder [`samples`](samples) contains a few selected
+  Solidity source files with the corresponding deployment and runtime
+  bytecodes, for first experiments.
 
-- Documentation: see the [wiki](https://github.com/smartbugs/smartbugs/wiki).
+- [SB Curated](https://github.com/smartbugs/smartbugs-curated) is a curated
+  dataset of vulnerable Solidity smart contracts.
+
+- [SmartBugs Wild Dataset](https://github.com/smartbugs/smartbugs-wild) is
+  a repository with 47,398 smart contracts extracted from the Ethereum network.
 
 ## Academic Usage
 If you use SmartBugs or any of its datasets, please cite:
