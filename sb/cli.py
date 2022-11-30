@@ -42,14 +42,6 @@ def cli_args(defaults):
         help=f"analyse the deployed, not the deployment code{fmt_default(defaults.runtime)}")
 
     exec = parser.add_argument_group("execution options")
-    exec.add_argument("--runid",
-        type=str,
-        metavar="ID",
-        help=f"string identifying the run{fmt_default(defaults.runid)}")
-    exec.add_argument("--overwrite",
-        action="store_true",
-        default=None,
-        help=f"delete old result and rerun the analysis{fmt_default(defaults.overwrite)}")
     exec.add_argument("--processes",
         type=int,
         metavar="N",
@@ -57,29 +49,33 @@ def cli_args(defaults):
     exec.add_argument("--timeout",
         type=int,
         metavar="N",
-        help=f"timeout of each process in sec{fmt_default(defaults.timeout)}")
+        help=f"timeout for each task in seconds{fmt_default(defaults.timeout)}")
     exec.add_argument("--cpu-quota",
         type=int,
         metavar="N",
-        help=f"cpu quota for docker images{fmt_default(defaults.cpu_quota)}")
+        help=f"cpu quota for docker containers{fmt_default(defaults.cpu_quota)}")
     exec.add_argument("--mem-limit",
         type=str,
         metavar="MEM",
-        help=f"memory quota for docker images, like 512m or 1g{fmt_default(defaults.mem_limit)}")
+        help=f"memory quota for docker containers, like 512m or 1g{fmt_default(defaults.mem_limit)}")
 
     output = parser.add_argument_group("output options")
-    output.add_argument("--quiet",
-        action="store_true",
-        default=None,
-        help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
+    output.add_argument("--runid",
+        type=str,
+        metavar="ID",
+        help=f"string identifying the run{fmt_default(defaults.runid)}")
     output.add_argument("--results",
         type=str,
         metavar="DIR",
         help=f"folder for the results{fmt_default(defaults.results)}")
-    output.add_argument("--logfile",
+    output.add_argument("--log",
         type=str,
         metavar="FILE",
-        help=f"file for log messages{fmt_default(defaults.logfile)}")
+        help=f"file for log messages{fmt_default(defaults.log)}")
+    output.add_argument("--overwrite",
+        action="store_true",
+        default=None,
+        help=f"delete old result and rerun the analysis{fmt_default(defaults.overwrite)}")
     output.add_argument("--json",
         action="store_true",
         default=None,
@@ -88,6 +84,10 @@ def cli_args(defaults):
         action="store_true",
         default=None,
         help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT} as well as {sb.cfg.SARIF_OUTPUT}{fmt_default(defaults.sarif)}")
+    output.add_argument("--quiet",
+        action="store_true",
+        default=None,
+        help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
 
     info = parser.add_argument_group("information options")
     info.add_argument("--version",

@@ -101,10 +101,9 @@ SmartBugs provides a command-line interface. Run it without arguments for a shor
 ```console
 ./smartbugs
 usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--runtime]
-                 [--runid ID] [--overwrite] [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
-                 [--quiet] [--results DIR] [--logfile FILE] [--json] [--sarif]
+                 [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
+                 [--runid ID] [--results DIR] [--log FILE] [--overwrite] [--json] [--sarif] [--quiet] 
                  [--version] [-h]
-
 ```
 For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki).
 

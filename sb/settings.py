@@ -20,7 +20,7 @@ class Settings:
         self.cpu_quota = None
         self.mem_limit = None
         self.results = os.path.join("results","${TOOL}","${RUNID}","${FILENAME}")
-        self.logfile = os.path.join("results","logs","${RUNID}.log")
+        self.log = os.path.join("results","logs","${RUNID}.log")
         self.json = False
         self.sarif = False
         self.quiet = False
@@ -50,7 +50,7 @@ class Settings:
             raise SmartBugsError(f"Unknown variable '{e}' in run id")
 
         try:
-            self.logfile = string.Template(self.logfile).substitute(env, RUNID=self.runid)
+            self.log = string.Template(self.log).substitute(env, RUNID=self.runid)
         except KeyError as e:
             raise SmartBugsError(f"Unknown variable '{e}' in name of log file")
 
@@ -134,7 +134,7 @@ class Settings:
                 except:
                     raise SmartBugsError(f"'{k}' needs to be a Boolean (in {settings}).")
 
-            elif k in ("results", "logfile"):
+            elif k in ("results", "log"):
                 try:
                     setattr(self, k, str(v).replace("/",os.path.sep))
                 except:

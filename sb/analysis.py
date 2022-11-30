@@ -153,7 +153,7 @@ def run(tasks, settings):
 
     # start shared logging
     logqueue = mp.Queue()
-    sb.logging.start(settings.logfile, settings.overwrite, logqueue)
+    sb.logging.start(settings.log, settings.overwrite, logqueue)
     try:
         start_time = time.time()
 
