@@ -1,0 +1,8 @@
+name: Pakala
+origin: https://github.com/palkeo/pakala
+version: "#c84ef38 v1.1.10"
+info: Pakala is a tool to search for exploitable bugs in Ethereum smart contracts and a symbolic execution engine for the Ethereum Virtual Machine.
+image: smartbugs/pakala:1.1.10
+runtime:
+    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
+    bin: scripts

@@ -1,0 +1,9 @@
+name: Solhint
+version: "2.1.0"
+origin: https://github.com/protofire/solhint
+info: Open source project for linting solidity code. This project provide both security and style guide validations.
+image: smartbugs/solhint
+solidity:
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
+    bin: scripts

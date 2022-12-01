@@ -1,0 +1,10 @@
+name: Vandal
+origin: https://github.com/usyd-blockchain/vandal
+version: "#d2b0043"
+info: Vandal is a static program analysis framework for Ethereum smart contract bytecode.
+image: smartbugs/vandal
+runtime:
+    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
+    bin: scripts
+    output: /results
+    #    command: /runVandal.sh $FILENAME

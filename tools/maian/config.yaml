@@ -1,0 +1,13 @@
+name: Maian
+origin: https://github.com/smartbugs/MAIAN
+info: Maian is a tool for the automated detection of buggy Ethereum smart contracts of type 'prodigal', 'suicidal', and 'greedy'.
+image: smartbugs/maian:solc5.10
+version: '#4bab09a'
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    solc: yes
+bytecode:
+    entrypoint: "'$BIN/do_bytecode' '$FILENAME'"
+runtime:
+    entrypoint: "'$BIN/do_runtime' '$FILENAME'"

@@ -1,0 +1,10 @@
+name: Manticore
+origin: https://github.com/trailofbits/manticore
+version: 0.3.7
+info: Manticore is a symbolic execution tool for analysis of smart contracts and binaries.
+image: smartbugs/manticore:0.3.7
+output: /results
+solidity:
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    solc: yes
+    bin: scripts
