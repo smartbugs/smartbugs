@@ -12,7 +12,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Features
 
-- *17 supported tools, 3 modes* for analysing Solidity source
+- *18 supported tools, 3 modes* for analysing Solidity source
   code, deployment bytecode, and runtime code.
 
 - *A modular approach to integrating analysers.* All it takes to add
@@ -37,6 +37,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
+| [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | heavy_check_mark: |                    |                    |
 | [Conkas](https://github.com/nveloso/conkas)          | #6aee098 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
 | [eThor](https://secpriv.wien/ethor)           | 2021 (CCS 2020) |                    |                    | :heavy_check_mark: |
