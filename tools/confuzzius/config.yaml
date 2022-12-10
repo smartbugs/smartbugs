@@ -1,0 +1,11 @@
+name: ConFuzzius
+info: A data dependency-aware hybrid fuzzer for Ethereum smart contracts
+origin: https://github.com/christoftorres/ConFuzzius
+version: "#4315fb7 v0.0.1"
+image: smartbugs/confuzzius:4315fb7
+
+solidity:
+    command: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+    output: /root/results.json
+    bin: scripts
+    solc: yes
