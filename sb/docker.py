@@ -3,6 +3,7 @@
 import docker, os, shutil, tempfile, requests
 import sb.io, io
 from sb.exceptions import SmartBugsError
+import docker.errors
 
 _client = None
 
@@ -87,8 +88,11 @@ def execute(task):
             container.stop(timeout=0)
         logs = container.logs().decode("utf8").splitlines()
         if task.tool.output:
-            output,_ = container.get_archive(task.tool.output)
-            output = b''.join(output)
+            try:
+                output,_ = container.get_archive(task.tool.output)
+                output = b''.join(output)
+            except docker.errors.NotFound:
+                pass
     finally:
         if container:
             container.stop(timeout=0)
