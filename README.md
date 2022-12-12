@@ -69,6 +69,13 @@ that analyse blockchain programs for weaknesses and other properties.
 
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
+Make sure that the user running SmartBugs is allowed to interact with the Docker daemon. Currently, this is achieved by adding the SmartBugs user to the `docker` group:
+
+```bash
+sudo usermod -a -G docker $USER
+```
+This adds the user running the `sudo` command to the `docker` group. For adding another user, replace `$USER` by the respective user-id. The group membership becomes active with the next log-in.
+
 2. Clone [SmartBugs's repository](https://github.com/smartbugs/smartbugs):
 
 ```bash
