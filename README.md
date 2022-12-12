@@ -92,10 +92,14 @@ that analyse blockchain programs for weaknesses and other properties.
 4. Optionally, add the executables to the command search path, e.g. by adding links to `$HOME/bin`.
 
    ```bash
-   ln -s "`pwd`/smartbugs" "$HOME/bin"
-   ln -s "`pwd`/reparse" "$HOME/bin"
-   ln -s "`pwd`/results2csv" "$HOME/bin"
+   ln -s "`pwd`/smartbugs" "$HOME/bin/smartbugs"
+   ln -s "`pwd`/reparse" "$HOME/bin/reparse"
+   ln -s "`pwd`/results2csv" "$HOME/bin/results2csv"
    ```
+
+   The command `which smartbugs` should now display the path to the command.
+
+
 
 ### Windows
 
