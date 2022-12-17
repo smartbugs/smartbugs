@@ -1,36 +1,11 @@
-import multiprocessing, random, time, datetime, os, cpuinfo, platform
+import multiprocessing, random, time, datetime, os
 import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif
 from sb.exceptions import SmartBugsError
 
 
-cpu = cpuinfo.get_cpu_info()
-uname = platform.uname()
-SYSTEM_INFO = {
-    "smartbugs": {
-        "version": sb.cfg.VERSION,
-        "python": cpu.get("python_version")
-    },
-    "platform": {
-        "system": uname.system,
-        "release": uname.release,
-        "version": uname.version,
-    },
-    "cpu_info": {
-        "arch_string_raw": cpu.get("arch_string_raw"),
-        "bits": cpu.get("bits"),
-        "brand_raw": cpu.get("brand_raw"),
-        "hz_actual_friendly": cpu.get("hz_actual_friendly"),
-        "hz_advertised_friendly": cpu.get("hz_advertised_friendly"),
-        "model": cpu.get("model"),
-        "stepping": cpu.get("stepping"),
-        "vendor_id_raw": cpu.get("vendor_id_raw"),
-    }
-}
-
-
 
 def task_log_dict(task, start_time, duration, exit_code, log, output, docker_args):
-    task_log = {
+    return {
         "filename": task.relfn,
         "runid": task.settings.runid,
         "result": {
@@ -42,9 +17,8 @@ def task_log_dict(task, start_time, duration, exit_code, log, output, docker_arg
         "solc": str(task.solc_version) if task.solc_version else None,
         "tool": task.tool.dict(),
         "docker": docker_args,
+        "platform": sb.cfg.PLATFORM,
     }
-    task_log.update(SYSTEM_INFO)
-    return task_log
 
 
 

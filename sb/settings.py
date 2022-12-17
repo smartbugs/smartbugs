@@ -75,9 +75,11 @@ class Settings:
 
 
     def update(self, settings):
-
         if self.frozen:
             raise InternalError("Frozen settings cannot be updated")
+        if not settings:
+            return
+
         if isinstance(settings, str):
             s = sb.io.read_yaml(settings)
         elif isinstance(settings, dict):

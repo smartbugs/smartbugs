@@ -90,10 +90,9 @@ def cli_args(defaults):
         help=f"suppress output to console (stdout){fmt_default(defaults.quiet)}")
 
     info = parser.add_argument_group("information options")
-    info.add_argument("--version",
-        action="version",
-        version=f"smartbugs {sb.cfg.VERSION}",
-        help="show version number and exit")
+    info.add_argument("-v", "--version",
+        action="store_true",
+        help="show version and exit")
     info.add_argument("-h", "--help",
         action="help",
         default=argparse.SUPPRESS,
@@ -103,34 +102,46 @@ def cli_args(defaults):
         parser.print_help(sys.stderr)
         sys.exit(1)
 
-    return vars(parser.parse_args())
+    args = vars(parser.parse_args())
+
+    if args["version"]:
+        print(f"""\
+SmartBugs {sb.cfg.VERSION}
+Python {sb.cfg.CPU.get('python_version')}
+{sb.cfg.UNAME.system} {sb.cfg.UNAME.release} {sb.cfg.UNAME.version}
+CPU {sb.cfg.CPU.get('brand_raw')}\
+""")
+        sys.exit(1)
+
+    cfg_file = args["configuration"]
+
+    del args["version"], args["configuration"]
+    for k in [ k for k,v in args.items() if v is None ]:
+        del args[k]
+
+    return cfg_file, args
 
 
 
 def cli(site_cfg=sb.cfg.SITE_CFG):
     settings = sb.settings.Settings()
-    # add site settings
-    if os.path.exists(site_cfg):
+
+    if site_cfg and os.path.exists(site_cfg):
         settings.update(site_cfg)
-    # parse command line
-    cli_settings = cli_args(settings)
-    # add settings from config file specified on command line
-    if cli_settings["configuration"]:
-        settings.update(cli_settings["configuration"])
-    # add settings from command line
-    del cli_settings["configuration"]
-    for k in [ k for k,v in cli_settings.items() if v is None ]:
-        del cli_settings[k]
+
+    cfg_file, cli_settings = cli_args(settings)
+    settings.update(cfg_file)
     settings.update(cli_settings)
+
     return settings
 
 
 
 def main():
-    try:
+#    try:
         settings = cli()
         sb.logging.message(None, f"Arguments passed: {sys.argv}")
         sb.smartbugs.main(settings)
-    except SmartBugsError as e:
-        sb.logging.message(sb.colors.error(e))
-        sys.exit(1)
+#    except SmartBugsError as e:
+#        sb.logging.message(sb.colors.error(e))
+#        sys.exit(1)
