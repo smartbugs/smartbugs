@@ -138,10 +138,10 @@ def cli(site_cfg=sb.cfg.SITE_CFG):
 
 
 def main():
-#    try:
+    try:
         settings = cli()
         sb.logging.message(None, f"Arguments passed: {sys.argv}")
         sb.smartbugs.main(settings)
-#    except SmartBugsError as e:
-#        sb.logging.message(sb.colors.error(e))
-#        sys.exit(1)
+    except SmartBugsError as e:
+        sb.logging.message(sb.colors.error(e))
+        sys.exit(1)
