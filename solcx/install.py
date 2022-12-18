@@ -126,7 +126,7 @@ def get_solcx_install_folder(solcx_binary_path: Union[Path, str] = None) -> Path
 def _get_which_solc() -> Path:
     # get the path for the currently installed `solc` version, if any
     if _get_os_name() == "windows":
-        response = subprocess.check_output(["where.exe", "solc"], encoding="utf8").strip()
+        response = subprocess.check_output(["where.exe", "solc", "/Q"], encoding="utf8").strip()
     else:
         response = subprocess.check_output(["which", "solc"], encoding="utf8").strip()
 

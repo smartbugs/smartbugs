@@ -1,12 +1,16 @@
-import colorama, re
+import colorama, re, sys
 from colorama import Fore, Style
 
 ANSIcolor = re.compile('\x1b\[[^m]*m')
 def strip(s):
     return ANSIcolor.sub('',str(s))
 
-def color(col, s):
-    return f"{col}{s}{Style.RESET_ALL}"
+if sys.platform == "win32":
+    def color(col, s):
+        return s
+else:
+    def color(col, s):
+        return f"{col}{s}{Style.RESET_ALL}"
 
 def file(s):
     return color(Fore.BLUE, s)
