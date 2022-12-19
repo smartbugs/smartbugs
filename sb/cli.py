@@ -111,7 +111,7 @@ Python {sb.cfg.CPU.get('python_version')}
 {sb.cfg.UNAME.system} {sb.cfg.UNAME.release} {sb.cfg.UNAME.version}
 CPU {sb.cfg.CPU.get('brand_raw')}\
 """)
-        sys.exit(1)
+        sys.exit(0)
 
     cfg_file = args["configuration"]
 
