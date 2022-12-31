@@ -1,5 +1,5 @@
 import os, argparse, multiprocessing, sys
-import sb.cfg, sb.io, sb.parsing, sb.sarif
+import sb.cfg, sb.io, sb.parsing, sb.sarif, sb.exceptions
 
 
 
@@ -23,7 +23,7 @@ def reparser(taskqueue, sarif, verbose):
         for fn in (fn_json, fn_sarif):
             try:
                 os.remove(fn)
-            except:
+            except Exception:
                 pass
         if os.path.exists(fn_json) or os.path.exists(fn_sarif):
             print(f"{d}: Cannot clear old parse output, skipping")
@@ -34,7 +34,11 @@ def reparser(taskqueue, sarif, verbose):
         sbj = sb.io.read_json(fn_sbj)
         log = sb.io.read_lines(fn_log) if os.path.exists(fn_log) else []
         tar = sb.io.read_bin(fn_tar) if os.path.exists(fn_tar) else None
-        parsed_result = sb.parsing.parse(sbj, log, tar)
+        try:
+            parsed_result = sb.parsing.parse(sbj, log, tar)
+        except sb.exceptions.SmartBugsError as e:
+            print(e)
+            continue
         sb.io.write_json(fn_json, parsed_result)
         if sarif:
             sarif_result = sb.sarif.sarify(sbj["tool"], parsed_result["findings"])

@@ -3,24 +3,25 @@ import json
 import tarfile
 import sb.parse_utils
 
-VERSION = "2022/12/10"
+VERSION = "2022/12/31"
 
 FINDINGS = {
+    "Arbitrary Memory Access",
     "Assertion Failure",
-    "Integer Overflow",
-    "Reentrancy",
-    "Transaction Order Dependency",
     "Block Dependency",
-    "Unhandled Exception",
-    "Unsafe Delegatecall",
+    "Integer Overflow",
     "Leaking Ether",
     "Locking Ether",
+    "Reentrancy",
+    "Transaction Order Dependency",
+    "Unhandled Exception",
     "Unprotected Selfdestruct",
+    "Unsafe Delegatecall",
 }
 
 
 def is_relevant(line):
-    # Remove logo for exception parsing
+    # Remove logo when parsing exceptions
     return line and not (
         line.startswith("     _") or
         line.startswith("    /") or
@@ -37,7 +38,10 @@ def parse(exit_code, log, output):
     for line in sb.parse_utils.discard_ANSI(log):
         msg = [ field.strip() for field in line.split(" - ") ]
         if len(msg) >= 4 and msg[2] == "ERROR":
-            errors.add(msg[3])
+            e = msg[3]
+            if e.startswith("Validation error") and e.endswith("Sender account balance cannot afford txn (ignoring for now)"):
+                e = "Validation error: Sender account balance cannot afford txn (ignoring for now)"
+            errors.add(e)
 
     if output:
         try:
