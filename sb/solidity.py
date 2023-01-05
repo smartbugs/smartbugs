@@ -68,7 +68,11 @@ def get_solc_version(pragma):
     if not pragma:
         return None
     pragma = re.sub(r">=0\.", r"^0.", pragma)
-    version = solcx.install._select_pragma_version(pragma, cached_solc_versions)
+    pragma = re.sub(r"([^0-9])([0-9]+\.[0-9]+)([^0-9.]|$)", r"\1\2.0\3", pragma)
+    try:
+        version = solcx.install._select_pragma_version(pragma, cached_solc_versions)
+    except Exception:
+        version = None
     return version
 
 cached_solc_paths = {}

@@ -37,7 +37,8 @@ def __docker_volume(task):
     sbdir_bin = os.path.join(sbdir, "bin")
     if task.tool.mode in ("bytecode","runtime"):
         # sanitize hex code
-        code = sb.io.read_lines(task.absfn)[0].strip()
+        code = sb.io.read_lines(task.absfn)
+        code = code[0].strip() if code else ""
         if code.startswith("0x"):
             code = code[2:]
         _,filename = os.path.split(task.absfn)

@@ -52,7 +52,8 @@ def collect_tasks(files, tools, settings):
             if rdir_collisions > len(files)*0.1:
                 sb.logging.message(sb.colors.warning(
                     "    Consider using more of $TOOL, $MODE, $ABSDIR, $RELDIR, $FILENAME,\n"
-                    "    $FILEBASE, $FILEEXT when specifying the 'results' directory.")) 
+                    "    $FILEBASE, $FILEEXT when specifying the 'results' directory."))
+
     def get_solc(pragma, fn, toolid):
         if not sb.solidity.ensure_solc_versions_loaded():
             sb.logging.message(sb.colors.warning(
@@ -62,7 +63,7 @@ def collect_tasks(files, tools, settings):
         solc_version = sb.solidity.get_solc_version(pragma)
         if not solc_version:
             raise SmartBugsError(
-                "Cannot determine Solidity version\n"
+                "No pragma or no suitable compiler found\n"
                 f"{fn}: {pragma}")
         solc_path = sb.solidity.get_solc_path(solc_version)
         if not solc_path:
@@ -78,6 +79,7 @@ def collect_tasks(files, tools, settings):
 
 
     tasks = []
+    excs = []
 
     last_absfn = None
     for absfn,relfn in sorted(files):
@@ -109,13 +111,19 @@ def collect_tasks(files, tools, settings):
                 # load resources
                 solc_version, solc_path = None,None
                 if tool.solc:
-                    solc_version, solc_path = get_solc(pragma, absfn, tool.id)
+                    try:
+                        solc_version, solc_path = get_solc(pragma, relfn, tool.id)
+                    except Exception as e:
+                        excs.append(e)
                 ensure_loaded(tool.image)
 
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)
                 tasks.append(task)
 
     report_collisions()
+    if excs:
+        errors = "\n".join(sorted({str(e) for e in excs}))
+        raise SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
     return tasks
 
 
@@ -129,10 +137,10 @@ def main(settings: sb.settings.Settings):
     tools = sb.tools.load(settings.tools)
     if not tools:
         sb.logging.message(sb.colors.warning("Warning: no tools selected!"))
+    sb.logging.message("Collecting files ...")
     files = collect_files(settings.files)
-    if not files:
-        sb.logging.message(sb.colors.warning("Warning: no files selected!"))
+    sb.logging.message(f"{len(files)} files to analyse")
+    sb.logging.message("Collecting tasks ...")
     tasks = collect_tasks(files, tools, settings)
-    if not tasks:
-        raise SmartBugsError("No tasks to execute.")
+    sb.logging.message(f"{len(tasks)} tasks to execute")
     sb.analysis.run(tasks, settings)
