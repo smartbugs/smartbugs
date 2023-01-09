@@ -1,6 +1,5 @@
 import glob, os, operator
-import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.cfg, sb.io, sb.settings
-from sb.exceptions import SmartBugsError
+import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.cfg, sb.io, sb.settings, sb.errors
 
 
 
@@ -18,7 +17,7 @@ def collect_files(patterns):
                     # avoid root_dir=... unless needed, for python<3.10
                     contracts = glob.glob(spec, recursive=True)
             except TypeError:
-                raise SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for python>=3.10")
+                raise sb.errors.SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for python>=3.10")
         for relfn in contracts:
             root_relfn = os.path.join(root,relfn) if root else relfn
             absfn = os.path.normpath(os.path.abspath(root_relfn))
@@ -62,12 +61,12 @@ def collect_tasks(files, tools, settings):
                 "")
         solc_version = sb.solidity.get_solc_version(pragma)
         if not solc_version:
-            raise SmartBugsError(
+            raise sb.errors.SmartBugsError(
                 "No pragma or no suitable compiler found\n"
                 f"{fn}: {pragma}")
         solc_path = sb.solidity.get_solc_path(solc_version)
         if not solc_path:
-            raise SmartBugsError(
+            raise sb.errors.SmartBugsError(
                 f"Cannot load solc {solc_version}\n"
                 f"required by {toolid} and {fn})")
         return solc_version,solc_path
@@ -123,7 +122,7 @@ def collect_tasks(files, tools, settings):
     report_collisions()
     if excs:
         errors = "\n".join(sorted({str(e) for e in excs}))
-        raise SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
+        raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
     return tasks
 
 
@@ -134,13 +133,17 @@ def main(settings: sb.settings.Settings):
     sb.logging.message(
         sb.colors.success(f"Welcome to SmartBugs {sb.cfg.VERSION}!"),
         f"Settings: {settings}")
+
     tools = sb.tools.load(settings.tools)
     if not tools:
         sb.logging.message(sb.colors.warning("Warning: no tools selected!"))
+
     sb.logging.message("Collecting files ...")
     files = collect_files(settings.files)
     sb.logging.message(f"{len(files)} files to analyse")
-    sb.logging.message("Collecting tasks ...")
+
+    sb.logging.message("Assembling tasks ...")
     tasks = collect_tasks(files, tools, settings)
     sb.logging.message(f"{len(tasks)} tasks to execute")
+
     sb.analysis.run(tasks, settings)

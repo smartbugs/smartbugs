@@ -1,6 +1,5 @@
 import os, string, time
-import sb.io, sb.logging, sb.cfg
-from sb.exceptions import SmartBugsError, InternalError
+import sb.io, sb.logging, sb.cfg, sb.errors
 
 HOME = os.path.expanduser("~") # cross-plattform safe
 NOW = time.gmtime() # only use in main process, value may be different in sub-processes
@@ -47,12 +46,12 @@ class Settings:
         try:
             self.runid = string.Template(self.runid).substitute(env)
         except KeyError as e:
-            raise SmartBugsError(f"Unknown variable '{e}' in run id")
+            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in run id")
 
         try:
             self.log = string.Template(self.log).substitute(env, RUNID=self.runid)
         except KeyError as e:
-            raise SmartBugsError(f"Unknown variable '{e}' in name of log file")
+            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in name of log file")
 
         self.results = string.Template(self.results).safe_substitute(env, RUNID=self.runid)
         self.results = string.Template(self.results)
@@ -60,7 +59,7 @@ class Settings:
 
     def resultdir(self, toolid, toolmode, absfn, relfn):
         if not self.frozen:
-            raise InternalError("Template of result directory is accessed before settings have been frozen")
+            raise sb.errors.InternalError("Template of result directory is accessed before settings have been frozen")
         absdir,filename = os.path.split(absfn)
         reldir = os.path.dirname(relfn)
         filebase,fileext = os.path.splitext(filename)
@@ -71,12 +70,12 @@ class Settings:
                 ABSDIR=absdir, RELDIR=reldir,
                 FILENAME=filename, FILEBASE=filebase, FILEEXT=fileext)
         except KeyError as e:
-            raise SmartBugsError(f"Unknown variable '{e}' in template of result dir")
+            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in template of result dir")
 
 
     def update(self, settings):
         if self.frozen:
-            raise InternalError("Frozen settings cannot be updated")
+            raise sb.errors.InternalError("Frozen settings cannot be updated")
         if not settings:
             return
 
@@ -85,7 +84,7 @@ class Settings:
         elif isinstance(settings, dict):
             s = settings
         else:
-            raise SmartBugsError(f"Settings cannot be updated by objects of type '{type(settings).__name__}'")
+            raise sb.errors.SmartBugsError(f"Settings cannot be updated by objects of type '{type(settings).__name__}'")
 
         for k,v in s.items():
             k = k.replace("-", "_")
@@ -100,7 +99,7 @@ class Settings:
                     assert v > 0
                     setattr(self, k, v)
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a positive integer (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a positive integer (in {settings}).")
 
             elif k in ("tools"):
                 if not isinstance(v,list):
@@ -108,7 +107,7 @@ class Settings:
                 try:
                     setattr(self, k, [str(vi) for vi in v])
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
 
             elif k in ("files"):
                 if not isinstance(v,list):
@@ -116,7 +115,7 @@ class Settings:
                 try:
                     patterns = [str(vi) for vi in v]
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
                 root_specs = []
                 for pattern in patterns:
                     root_spec = pattern.split(":")
@@ -125,7 +124,7 @@ class Settings:
                     elif len(root_spec) == 2:
                         root,spec = root_spec[0],root_spec[1]
                     else:
-                        raise SmartBugsError(f"File pattern {pattern} contains more than one colon (in {settings}).")
+                        raise sb.errors.SmartBugsError(f"File pattern {pattern} contains more than one colon (in {settings}).")
                     root_specs.append((root,spec))
                 setattr(self, k, root_specs)
 
@@ -134,19 +133,19 @@ class Settings:
                     assert isinstance(v, bool)
                     setattr(self, k, v)
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a Boolean (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a Boolean (in {settings}).")
 
             elif k in ("results", "log"):
                 try:
                     setattr(self, k, str(v).replace("/",os.path.sep))
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a path (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a path (in {settings}).")
 
             elif k in ("runid"):
                 try:
                     setattr(self, k, str(v))
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a string (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a string (in {settings}).")
 
             elif k == "mem_limit":
                 try:
@@ -157,10 +156,10 @@ class Settings:
                         assert int(v) > 0
                     setattr(self, k, v)
                 except:
-                    raise SmartBugsError(f"'{k}' needs to be a memory specifcation (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a memory specifcation (in {settings}).")
 
             else:
-                raise SmartBugsError(f"Invalid key '{k}' (in {settings}).")
+                raise sb.errors.SmartBugsError(f"Invalid key '{k}' (in {settings}).")
 
     
     def dict(self):

@@ -1,5 +1,5 @@
 import os, argparse, multiprocessing, sys
-import sb.cfg, sb.io, sb.parsing, sb.sarif, sb.exceptions
+import sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
 
 
 
@@ -36,7 +36,7 @@ def reparser(taskqueue, sarif, verbose):
         tar = sb.io.read_bin(fn_tar) if os.path.exists(fn_tar) else None
         try:
             parsed_result = sb.parsing.parse(sbj, log, tar)
-        except sb.exceptions.SmartBugsError as e:
+        except sb.errors.SmartBugsError as e:
             print(e)
             continue
         sb.io.write_json(fn_json, parsed_result)

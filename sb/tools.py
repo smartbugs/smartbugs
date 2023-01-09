@@ -1,6 +1,5 @@
 import os, string
-import sb.io, sb.cfg
-from sb.exceptions import SmartBugsError, InternalError
+import sb.io, sb.cfg, sb.errors
 
 
 
@@ -17,13 +16,13 @@ class Tool():
                     try:
                         v = bool(v)
                     except:
-                        raise SmartBugsError(f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}")
+                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}")
                 elif k in ("cpu_quota"):
                     try:
                         v = int(v)
                         assert v >= 0
                     except:
-                        raise SmartBugsError(f"Tool: value of attribute '{k}' is not an integer>=0.\n{cfg}")
+                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not an integer>=0.\n{cfg}")
                 elif k in ("mem_limit"):
                     try:
                         v = str(v).replace(" ","")
@@ -32,12 +31,12 @@ class Tool():
                         else:
                             assert int(v) > 0
                     except:
-                        raise SmartBugsError(f"Tool: value of attribute '{k}' is not a valid memory specifcation.\n{cfg}")
+                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a valid memory specifcation.\n{cfg}")
                 else:
                     try:
                         v = str(v)
                     except:
-                        raise SmartBugsError(f"Tool: value of attribute '{k}' is not a string.\n{cfg}")
+                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a string.\n{cfg}")
             if k in ("command","entrypoint"):
                 k = f"_{k}"
                 v = string.Template(v) if v else None
@@ -45,14 +44,14 @@ class Tool():
                 
         for k in ("id", "mode"):
             if not getattr(self, k):
-                raise InternalError(f"Tool: Field '{k}' missing.\n{cfg}")
+                raise sb.errors.InternalError(f"Tool: Field '{k}' missing.\n{cfg}")
         if not self.image:
-            raise SmartBugsError(f"Tool {self.id}/{self.mode}: no image specified")
+            raise sb.errors.SmartBugsError(f"Tool {self.id}/{self.mode}: no image specified")
         extras = set(cfg.keys()).difference(FIELDS)
         if extras:
-            raise SmartBugsError(f"Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
+            raise sb.errors.SmartBugsError(f"Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
         if not self._command and not self._entrypoint:
-            raise SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
+            raise sb.errors.SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
         if not self.parser:
             self.parser = sb.cfg.TOOL_PARSER
         if self.bin:
@@ -63,14 +62,14 @@ class Tool():
         try:
             return self._command.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin) if self._command else None
         except KeyError as e:
-            raise SmartBugsError(f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}")
+            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}")
 
 
     def entrypoint(self, filename, timeout, bin):
         try:
             return self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin) if self._entrypoint else None
         except KeyError as e:
-            raise SmartBugsError(f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}")
+            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}")
 
 
     def dict(self):
@@ -136,11 +135,11 @@ def load(ids, tools = [], seen = set()):
                 cfg_copy.pop(m,None)
             cfg_copy["mode"] = mode
             if not isinstance(cfg[mode], dict):
-                raise SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
+                raise sb.errors.SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
             cfg_copy.update(cfg[mode])
             tools.append(Tool(cfg_copy))
         if not found:
-            raise SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")
+            raise sb.errors.SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")
     return tools
 
 

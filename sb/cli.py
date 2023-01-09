@@ -1,6 +1,5 @@
 import argparse, sys, os
-import sb.cfg, sb.colors, sb.smartbugs, sb.logging, sb.settings
-from sb.exceptions import SmartBugsError
+import sb.cfg, sb.colors, sb.smartbugs, sb.logging, sb.settings, sb.errors
 
 def cli_args(defaults):
 
@@ -142,6 +141,6 @@ def main():
         settings = cli()
         sb.logging.message(None, f"Arguments passed: {sys.argv}")
         sb.smartbugs.main(settings)
-    except SmartBugsError as e:
+    except sb.errors.SmartBugsError as e:
         sb.logging.message(sb.colors.error(e))
         sys.exit(1)
