@@ -11,7 +11,7 @@ def client():
         try:    
             _client = docker.from_env()
             _client.info()
-        except:
+        except Exception:
             raise sb.errors.SmartBugsError("Docker: Cannot connect to service. Is it installed and running?")
     return _client
 
@@ -93,7 +93,6 @@ def execute(task):
     args = __docker_args(task, sbdir)
     exit_code,logs,output,container = None,[],None,None
     try:
-
         container = client().containers.run(**args)
         try:
             result = container.wait(timeout=task.settings.timeout)

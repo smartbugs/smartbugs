@@ -60,7 +60,7 @@ def ensure_solc_versions_loaded():
     try:
         cached_solc_versions = solcx.get_installable_solc_versions()
         return True
-    except:
+    except Exception:
         cached_solc_versions = solcx.get_installed_solc_versions()
         return False
 
@@ -84,7 +84,7 @@ def get_solc_path(version):
     try:
         solcx.install_solc(version)
         solc_path = solcx.get_executable(version)
-    except:
+    except Exception:
         solc_path = None
     cached_solc_paths[version] = solc_path
     return solc_path

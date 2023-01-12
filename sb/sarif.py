@@ -121,7 +121,7 @@ def rule_security_severity(info_finding):
     severity = info_finding.get("severity", "").strip().lower()
     try:
         return float(severity)
-    except:
+    except Exception:
         return ("2.0" if severity == "low" else
                 "5.5" if severity == "medium" else
                 "8.0" if severity == "high" else

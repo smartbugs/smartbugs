@@ -98,7 +98,7 @@ class Settings:
                     v = int(v)
                     assert v > 0
                     setattr(self, k, v)
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a positive integer (in {settings}).")
 
             elif k in ("tools"):
@@ -106,7 +106,7 @@ class Settings:
                     v = [v]
                 try:
                     setattr(self, k, [str(vi) for vi in v])
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
 
             elif k in ("files"):
@@ -114,7 +114,7 @@ class Settings:
                     v = [v]
                 try:
                     patterns = [str(vi) for vi in v]
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
                 root_specs = []
                 for pattern in patterns:
@@ -132,19 +132,19 @@ class Settings:
                 try:
                     assert isinstance(v, bool)
                     setattr(self, k, v)
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a Boolean (in {settings}).")
 
             elif k in ("results", "log"):
                 try:
                     setattr(self, k, str(v).replace("/",os.path.sep))
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a path (in {settings}).")
 
             elif k in ("runid"):
                 try:
                     setattr(self, k, str(v))
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a string (in {settings}).")
 
             elif k == "mem_limit":
@@ -155,7 +155,7 @@ class Settings:
                     else:
                         assert int(v) > 0
                     setattr(self, k, v)
-                except:
+                except Exception:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a memory specifcation (in {settings}).")
 
             else:

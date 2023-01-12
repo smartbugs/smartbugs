@@ -1,4 +1,4 @@
-import multiprocessing, random, time, datetime, os
+import multiprocessing, random, time, datetime, os, random
 import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
 
 
@@ -51,15 +51,25 @@ def execute(task):
     for fn in (fn_task_log, fn_tool_log, fn_tool_output, fn_parser_output, fn_sarif_output):
         try:
             os.remove(fn)
-        except:
+        except Exception:
             pass
         if os.path.exists(fn):
             raise sb.errors.SmartBugsError(f"Cannot clear old output {fn}")
 
     # perform analysis
-    start_time = time.time()
-    exit_code,tool_log,tool_output,docker_args = sb.docker.execute(task)
-    duration = time.time() - start_time
+    # Docker causes spurious connection errors
+    # try three times before giving up
+    for i in range(3):
+        try:
+            start_time = time.time()
+            exit_code,tool_log,tool_output,docker_args = sb.docker.execute(task)
+            duration = time.time() - start_time
+            break
+        except sb.errors.SmartBugsError as e:
+            if i == 2:
+                raise
+        # wait 3 to 8 minutes
+        time.sleep(random.randint(3,8)*60)
 
     # write result to files
     task_log = task_log_dict(task, start_time, duration, exit_code, tool_log, tool_output, docker_args)
@@ -93,23 +103,15 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             f"Starting task {tasks_started_value}/{tasks_total}: {sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}",
             "", logqueue)
 
-    def post_analysis(duration, timeout, no_processes):
-        with tasks_started.get_lock(), tasks_completed.get_lock(), time_completed.get_lock():
-            tasks_started_value = tasks_started.value
+    def post_analysis(duration, no_processes):
+        with tasks_completed.get_lock(), time_completed.get_lock():
             tasks_completed_value = tasks_completed.value + 1
             tasks_completed.value = tasks_completed_value
             time_completed_value = time_completed.value + duration
             time_completed.value = time_completed_value
-        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / number_of_parallel_processes
-        if timeout:
-            # pessimistic: all started but not yet completed tasks will time out
-            time_so_far = time_completed_value + (tasks_started_value - tasks_completed_value)*timeout
-            completed_tasks = tasks_started_value
-        else: # no timeout set, estimate based on completed tasks only
-            time_so_far = time_completed_value
-            completed_tasks = tasks_completed_value
+        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / number_of_processes
         remaining_tasks = tasks_total - tasks_completed_value
-        etc = time_so_far / completed_tasks * remaining_tasks / no_processes
+        etc = time_completed_value / tasks_completed_value * remaining_tasks / no_processes
         etc_fmt = datetime.timedelta(seconds=round(etc))
         duration_fmt = datetime.timedelta(seconds=round(duration))
         sb.logging.message(f"{tasks_completed_value}/{tasks_total} completed, ETC {etc_fmt}")
@@ -125,7 +127,7 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
         except sb.errors.SmartBugsError as e:
             duration = 0.0
             sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
-        post_analysis(duration, task.settings.timeout, task.settings.processes)
+        post_analysis(duration, task.settings.processes)
 
 
 

@@ -15,13 +15,13 @@ class Tool():
                 if k in ("solc"):
                     try:
                         v = bool(v)
-                    except:
+                    except Exception:
                         raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}")
                 elif k in ("cpu_quota"):
                     try:
                         v = int(v)
                         assert v >= 0
-                    except:
+                    except Exception:
                         raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not an integer>=0.\n{cfg}")
                 elif k in ("mem_limit"):
                     try:
@@ -30,12 +30,12 @@ class Tool():
                             assert int(v[:-1]) > 0
                         else:
                             assert int(v) > 0
-                    except:
+                    except Exception:
                         raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a valid memory specifcation.\n{cfg}")
                 else:
                     try:
                         v = str(v)
-                    except:
+                    except Exception:
                         raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a string.\n{cfg}")
             if k in ("command","entrypoint"):
                 k = f"_{k}"
