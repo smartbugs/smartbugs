@@ -71,7 +71,7 @@ def list2postgres(l):
     es = []
     for e in l:
         if '"' in e or "," in e or "\n" in e:
-            es.append('"'+e.replace('"','\"')+'"')
+            es.append('"'+e.replace('"','\\"')+'"')
         else:
             es.append(e)
     return "{" + ",".join(es) + "}"
