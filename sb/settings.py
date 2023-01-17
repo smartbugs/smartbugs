@@ -19,7 +19,7 @@ class Settings:
         self.timeout = None
         self.cpu_quota = None
         self.mem_limit = None
-        self.results = os.path.join("results","${TOOL}","${RUNID}","${FILENAME}")
+        self.results = os.path.join("results","${TOOL}","${RUNID}","${FILEBASE}")
         self.log = os.path.join("results","logs","${RUNID}.log")
         self.json = False
         self.sarif = False
