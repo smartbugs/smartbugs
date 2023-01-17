@@ -103,15 +103,21 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             f"Starting task {tasks_started_value}/{tasks_total}: {sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}",
             "", logqueue)
 
-    def post_analysis(duration, no_processes):
+    def post_analysis(duration, no_processes, timeout):
         with tasks_completed.get_lock(), time_completed.get_lock():
             tasks_completed_value = tasks_completed.value + 1
             tasks_completed.value = tasks_completed_value
             time_completed_value = time_completed.value + duration
             time_completed.value = time_completed_value
-        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / number_of_processes
+        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / no_processes
+        completed_tasks = tasks_completed_value
+        time_so_far = time_completed_value
         remaining_tasks = tasks_total - tasks_completed_value
-        etc = time_completed_value / tasks_completed_value * remaining_tasks / no_processes
+        if timeout:
+            # Assume that the first round of processes all ran into a timeout
+            completed_tasks += no_processes
+            time_so_far += timeout*no_processes
+        etc = time_so_far / completed_tasks * remaining_tasks / no_processes
         etc_fmt = datetime.timedelta(seconds=round(etc))
         duration_fmt = datetime.timedelta(seconds=round(duration))
         sb.logging.message(f"{tasks_completed_value}/{tasks_total} completed, ETC {etc_fmt}")
@@ -127,7 +133,7 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
         except sb.errors.SmartBugsError as e:
             duration = 0.0
             sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
-        post_analysis(duration, task.settings.processes)
+        post_analysis(duration, task.settings.processes, task.settings.timeout)
 
 
 

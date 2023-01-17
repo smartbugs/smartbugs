@@ -6,23 +6,24 @@ import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.lo
 def collect_files(patterns):
     files = []
     for root,spec in patterns:
+
         if spec.endswith(".txt"):
             # No globbing, spec is a file specifying a 'dataset'
             contracts = sb.io.read_lines(spec)
-        else:
+        elif root:
             try:
-                if root:
-                    contracts = glob.glob(spec, root_dir=root, recursive=True)
-                else:
-                    # avoid root_dir=... unless needed, for python<3.10
-                    contracts = glob.glob(spec, recursive=True)
+                contracts = glob.glob(spec, root_dir=root, recursive=True)
             except TypeError:
                 raise sb.errors.SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for python>=3.10")
+        else: # avoid root_dir, compatibility with python<3.10
+            contracts = glob.glob(spec, recursive=True)
+
         for relfn in contracts:
             root_relfn = os.path.join(root,relfn) if root else relfn
             absfn = os.path.normpath(os.path.abspath(root_relfn))
             if os.path.isfile(absfn) and absfn[-4:] in (".hex", ".sol"):
                 files.append( (absfn,relfn) )
+
     return files
 
 
@@ -54,21 +55,21 @@ def collect_tasks(files, tools, settings):
                     "    $FILEBASE, $FILEEXT when specifying the 'results' directory."))
 
     def get_solc(pragma, fn, toolid):
+        if not pragma:
+            raise sb.errors.SmartBugsError(
+                f"{fn}: no pragma, cannot determine solc version")
         if not sb.solidity.ensure_solc_versions_loaded():
             sb.logging.message(sb.colors.warning(
-                "Failed to load list of solc versions; are we connected to the internet?\n"
-                "    Proceeding with locally installed versions."),
+                "Failed to load list of solc versions; are we connected to the internet? Proceeding with local compilers"),
                 "")
         solc_version = sb.solidity.get_solc_version(pragma)
         if not solc_version:
             raise sb.errors.SmartBugsError(
-                "No pragma or no suitable compiler found\n"
-                f"{fn}: {pragma}")
+                f"{fn}: no compiler found that matches {pragma}")
         solc_path = sb.solidity.get_solc_path(solc_version)
         if not solc_path:
             raise sb.errors.SmartBugsError(
-                f"Cannot load solc {solc_version}\n"
-                f"required by {toolid} and {fn})")
+                    f"{fn}: cannot load solc {solc_version} needed by {toolid}")
         return solc_version,solc_path
 
     def ensure_loaded(image):
@@ -78,7 +79,7 @@ def collect_tasks(files, tools, settings):
 
 
     tasks = []
-    excs = []
+    exceptions = []
 
     last_absfn = None
     for absfn,relfn in sorted(files):
@@ -113,15 +114,15 @@ def collect_tasks(files, tools, settings):
                     try:
                         solc_version, solc_path = get_solc(pragma, relfn, tool.id)
                     except Exception as e:
-                        excs.append(e)
+                        exceptions.append(e)
                 ensure_loaded(tool.image)
 
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)
                 tasks.append(task)
 
     report_collisions()
-    if excs:
-        errors = "\n".join(sorted({str(e) for e in excs}))
+    if exceptions:
+        errors = "\n".join(sorted({str(e) for e in exceptions}))
         raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
     return tasks
 
