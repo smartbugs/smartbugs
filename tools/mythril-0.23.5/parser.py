@@ -1,22 +1,23 @@
 import json
 import sb.parse_utils
 
-VERSION = "2022/11/11"
+VERSION = "2023/01/19"
 
 FINDINGS = {
-    "Jump to an arbitrary instruction",
-    "Write to an arbitrary storage location",
-    "Delegatecall to user-supplied address",
-    "Dependence on tx.origin",
-    "Dependence on predictable environment variable",
-    "Unprotected Ether Withdrawal",
-    "Exception State",
-    "External Call To User-Supplied Address",
-    "Integer Arithmetic Bugs",
-    "Multiple Calls in a Single Transaction",
-    "State access after external call",
-    "Unprotected Selfdestruct",
-    "Unchecked return value from external call.",
+    "Jump to an arbitrary instruction (SWC 127)",
+    "Write to an arbitrary storage location (SWC 124)",
+    "Delegatecall to user-supplied address (SWC 112)",
+    "Dependence on tx.origin (SWC 115)",
+    "Dependence on predictable environment variable (SWC 116)",
+    "Dependence on predictable environment variable (SWC 120)",
+    "Unprotected Ether Withdrawal (SWC 105)",
+    "Exception State (SWC 110)",
+    "External Call To User-Supplied Address (SWC 107)",
+    "Integer Arithmetic Bugs (SWC 101)",
+    "Multiple Calls in a Single Transaction (SWC 113)",
+    "State access after external call (SWC 107)",
+    "Unprotected Selfdestruct (SWC 106)",
+    "Unchecked return value from external call. (SWC 104)",
 }
 
 
@@ -55,6 +56,7 @@ def parse(exit_code, log, output):
                 if i in issue:
                     finding[f] = issue[i]
             if "swc-id" in issue:
+                finding["name"] += f" (SWC {issue['swc-id']})"
                 classification = f"Classification: SWC-{issue['swc-id']}"
                 if finding.get("message"):
                     finding["message"] += f"\n{classification}"
