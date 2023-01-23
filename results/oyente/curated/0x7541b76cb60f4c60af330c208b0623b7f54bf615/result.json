@@ -1,0 +1,47 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 5,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+            "line": 76,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 5,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+            "line": 72,
+            "name": "Integer Underflow"
+        },
+        {
+            "column": 5,
+            "contract": "U_BANK",
+            "filename": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+            "line": 50,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 16,
+            "contract": "U_BANK",
+            "filename": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+            "line": 29,
+            "name": "Re-Entrancy Vulnerability"
+        },
+        {
+            "column": 9,
+            "contract": "U_BANK",
+            "filename": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+            "line": 26,
+            "name": "Timestamp Dependency"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

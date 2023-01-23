@@ -1,0 +1,30 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_TIMEOUT"
+    ],
+    "findings": [
+        {
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "line": 24,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        },
+        {
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "line": 31,
+            "message": "Classification: SWC-105",
+            "name": "Leaking Ether",
+            "severity": "High"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

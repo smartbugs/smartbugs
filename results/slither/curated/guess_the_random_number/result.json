@@ -1,0 +1,94 @@
+{
+    "errors": [
+        "EXIT_CODE_8"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "function": "guess",
+            "impact": "High",
+            "line": 22,
+            "line_end": 28,
+            "message": "GuessTheRandomNumberChallenge.guess (guess_the_random_number.sol#22-28) sends eth to arbitrary user\n\tDangerous calls:\n\t- msg.sender.transfer(2000000000000000000) (guess_the_random_number.sol#26)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "function": "guess",
+            "impact": "Medium",
+            "line": 22,
+            "line_end": 28,
+            "message": "GuessTheRandomNumberChallenge.guess (guess_the_random_number.sol#22-28) uses a dangerous strict equality:\n\t- n == answer\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "function": "isComplete",
+            "impact": "Medium",
+            "line": 22,
+            "line_end": 28,
+            "message": "GuessTheRandomNumberChallenge.guess (guess_the_random_number.sol#22-28) uses a dangerous strict equality:\n\t- n == answer\nGuessTheRandomNumberChallenge.isComplete (guess_the_random_number.sol#18-20) uses a dangerous strict equality:\n\t- address(this).balance == 0\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "impact": "Informational",
+            "line": 15,
+            "message": "Deprecated standard detected @ guess_the_random_number.sol#15:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "function": "isComplete",
+            "impact": "Informational",
+            "line": 18,
+            "line_end": 20,
+            "message": "GuessTheRandomNumberChallenge.isComplete (guess_the_random_number.sol#18-20) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "function": "guess",
+            "impact": "Informational",
+            "line": 22,
+            "line_end": 28,
+            "message": "GuessTheRandomNumberChallenge.guess (guess_the_random_number.sol#22-28) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in guess_the_random_number.sol:\n\t- pragma solidity^0.4.21 (guess_the_random_number.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "impact": "Informational",
+            "line": 12,
+            "line_end": 16,
+            "message": "Function 'GuessTheRandomNumberChallenge.GuessTheRandomNumberChallenge' (guess_the_random_number.sol#12-16) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

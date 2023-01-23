@@ -1,0 +1,129 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_PRAGMAS_VERSION\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_PRAGMAS_VERSION"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol"
+                                },
+                                "region": {
+                                    "startColumn": 15,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_UNCHECKED_CALL\nSeverity: 3"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_UNCHECKED_CALL"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_UPGRADE_TO_050\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_UPGRADE_TO_050"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol"
+                                },
+                                "region": {
+                                    "startColumn": 35,
+                                    "startLine": 12
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_UPGRADE_TO_050\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_UPGRADE_TO_050"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol"
+                                },
+                                "region": {
+                                    "startColumn": 55,
+                                    "startLine": 10
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_VISIBILITY\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_VISIBILITY"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartdec/smartcheck",
+                    "name": "Smartcheck",
+                    "rules": [
+                        {
+                            "id": "smartcheck_SOLIDITY_VISIBILITY",
+                            "name": "SOLIDITY_VISIBILITY"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_PRAGMAS_VERSION",
+                            "name": "SOLIDITY_PRAGMAS_VERSION"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_UPGRADE_TO_050",
+                            "name": "SOLIDITY_UPGRADE_TO_050"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_UNCHECKED_CALL",
+                            "name": "SOLIDITY_UNCHECKED_CALL"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

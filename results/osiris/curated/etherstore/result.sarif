@@ -1,0 +1,118 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract EtherStore"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/etherstore.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract EtherStore"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/etherstore.sol"
+                                },
+                                "region": {
+                                    "startColumn": 24,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract EtherStore"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/etherstore.sol"
+                                },
+                                "region": {
+                                    "startColumn": 17,
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy bug"
+                    },
+                    "ruleId": "osiris_Reentrancy_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract EtherStore"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/etherstore.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Time dependency bug"
+                    },
+                    "ruleId": "osiris_Time_dependency_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Time_dependency_bug",
+                            "name": "Time dependency bug"
+                        },
+                        {
+                            "id": "osiris_Reentrancy_bug",
+                            "name": "Reentrancy bug"
+                        },
+                        {
+                            "id": "osiris_Overflow_bugs",
+                            "name": "Overflow bugs"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,31 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/lotto.sol:
+/sb/lotto.sol:20:10: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+         winner.send(winAmount);
+         ^--------------------^
+/sb/lotto.sol:27:26: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+         msg.sender.send(this.balance);
+                         ^----------^
+/sb/lotto.sol:27:10: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+         msg.sender.send(this.balance);
+         ^---------------------------^
+
+INFO:root:contract /sb/lotto.sol:Lotto:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/lotto.sol:20:10: Warning: Callstack Depth Attack Vulnerability.
+         winner.send(winAmount)
+INFO:symExec:Flow1
+/sb/lotto.sol:27:10: Warning: Transaction-Ordering Dependency.
+         msg.sender.send(this.balance)
+Flow2
+/sb/lotto.sol:20:10: Warning: Transaction-Ordering Dependency.
+         winner.send(winAmount)
+INFO:symExec:	====== Analysis Completed ======

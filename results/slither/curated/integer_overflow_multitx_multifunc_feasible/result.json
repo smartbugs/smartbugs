@@ -1,0 +1,44 @@
+{
+    "errors": [
+        "EXIT_CODE_3"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowMultiTxMultiFuncFeasible",
+            "filename": "dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+            "function": "init",
+            "impact": "Informational",
+            "line": 16,
+            "line_end": 18,
+            "message": "IntegerOverflowMultiTxMultiFuncFeasible.init (integer_overflow_multitx_multifunc_feasible.sol#16-18) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowMultiTxMultiFuncFeasible",
+            "filename": "dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+            "function": "run",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 26,
+            "message": "IntegerOverflowMultiTxMultiFuncFeasible.run (integer_overflow_multitx_multifunc_feasible.sol#20-26) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",
+            "impact": "Informational",
+            "line": 10,
+            "message": "Detected issues with version pragma in integer_overflow_multitx_multifunc_feasible.sol:\n\t- pragma solidity^0.4.23 (integer_overflow_multitx_multifunc_feasible.sol#10): it allows old versions\n",
+            "name": "solc-version"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

@@ -1,0 +1,27 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/arbitrary_location_write_simple.sol:Wallet:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 79.5%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/arbitrary_location_write_simple.sol:28:10: Warning: Integer Underflow.
+         bonusCodes.length--
+Integer Underflow occurs if:
+    bonusCodes.length = 0
+INFO:symExec:/sb/arbitrary_location_write_simple.sol:33:10: Warning: Integer Overflow.
+         bonusCodes[idx]
+Integer Overflow occurs if:
+    idx = 65172046789984944052372551315450013287190840398114844924262183703489961943309
+    bonusCodes.length = 65172046789984944052372551315450013287190840398114844924262183703489961943310
+/sb/arbitrary_location_write_simple.sol:9:2: Warning: Integer Overflow.
+ contract Wallet {
+ ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    bonusCodes.length = 115792089237316195423570985008687907853269984665640564039457584007878769901566
+INFO:symExec:	====== Analysis Completed ======

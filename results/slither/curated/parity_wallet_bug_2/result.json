@@ -1,0 +1,453 @@
+{
+    "errors": [
+        "EXIT_CODE_52"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "confirm",
+            "impact": "High",
+            "line": 279,
+            "line_end": 293,
+            "message": "Reentrancy in WalletLibrary.confirm (parity_wallet_bug_2.sol#279-293):\n\tExternal calls:\n\t- ! m_txs[_h].to.call.value(m_txs[_h].value)(m_txs[_h].data) (parity_wallet_bug_2.sol#285-286)\n\tState variables written after the call(s):\n\t- m_txs (parity_wallet_bug_2.sol#290)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "execute",
+            "impact": "Medium",
+            "line": 245,
+            "message": "created in WalletLibrary.execute (parity_wallet_bug_2.sol#245) is a local variable never initialiazed\n",
+            "name": "uninitialized-local"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "confirm",
+            "impact": "Medium",
+            "line": 281,
+            "message": "created in WalletLibrary.confirm (parity_wallet_bug_2.sol#281) is a local variable never initialiazed\n",
+            "name": "uninitialized-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 234,
+            "message": "Deprecated standard detected @ parity_wallet_bug_2.sol#234:\n\t- Usage of \"suicide()\" should be replaced with \"selfdestruct()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 250,
+            "message": "Deprecated standard detected @ parity_wallet_bug_2.sol#250:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 255,
+            "message": "Deprecated standard detected @ parity_wallet_bug_2.sol#255:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 286,
+            "message": "Deprecated standard detected @ parity_wallet_bug_2.sol#286:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 221,
+            "message": "Deprecated standard detected @ parity_wallet_bug_2.sol#221:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "WalletAbi",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "isOwner",
+            "impact": "Informational",
+            "line": 59,
+            "message": "WalletAbi.isOwner (parity_wallet_bug_2.sol#59) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WalletAbi",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "confirm",
+            "impact": "Informational",
+            "line": 67,
+            "message": "WalletAbi.confirm (parity_wallet_bug_2.sol#67) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 105,
+            "line_end": 109,
+            "message": "WalletLibrary.fallback (parity_wallet_bug_2.sol#105-109) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "initWallet",
+            "impact": "Informational",
+            "line": 226,
+            "line_end": 229,
+            "message": "WalletLibrary.initWallet (parity_wallet_bug_2.sol#226-229) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 18,
+            "message": "Detected issues with version pragma in parity_wallet_bug_2.sol:\n\t- pragma solidity^0.4.9 (parity_wallet_bug_2.sol#18): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "execute",
+            "impact": "Informational",
+            "line": 241,
+            "line_end": 266,
+            "message": "Low level call in WalletLibrary.execute (parity_wallet_bug_2.sol#241-266):\n\t-! _to.call.value(_value)(_data) parity_wallet_bug_2.sol#249-250\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "function": "confirm",
+            "impact": "Informational",
+            "line": 279,
+            "line_end": 293,
+            "message": "Low level call in WalletLibrary.confirm (parity_wallet_bug_2.sol#279-293):\n\t-! m_txs[_h].to.call.value(m_txs[_h].value)(m_txs[_h].data) parity_wallet_bug_2.sol#285-286\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 113,
+            "message": "Parameter '_owners' of WalletLibrary.initMultiowned (parity_wallet_bug_2.sol#113) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 113,
+            "message": "Parameter '_required' of WalletLibrary.initMultiowned (parity_wallet_bug_2.sol#113) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 126,
+            "message": "Parameter '_operation' of WalletLibrary.revoke (parity_wallet_bug_2.sol#126) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 140,
+            "message": "Parameter '_from' of WalletLibrary.changeOwner (parity_wallet_bug_2.sol#140) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 140,
+            "message": "Parameter '_to' of WalletLibrary.changeOwner (parity_wallet_bug_2.sol#140) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 152,
+            "message": "Parameter '_owner' of WalletLibrary.addOwner (parity_wallet_bug_2.sol#152) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 166,
+            "message": "Parameter '_owner' of WalletLibrary.removeOwner (parity_wallet_bug_2.sol#166) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 178,
+            "message": "Parameter '_newRequired' of WalletLibrary.changeRequirement (parity_wallet_bug_2.sol#178) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 190,
+            "message": "Parameter '_addr' of WalletLibrary.isOwner (parity_wallet_bug_2.sol#190) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 194,
+            "message": "Parameter '_operation' of WalletLibrary.hasConfirmed (parity_wallet_bug_2.sol#194) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 194,
+            "message": "Parameter '_owner' of WalletLibrary.hasConfirmed (parity_wallet_bug_2.sol#194) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 207,
+            "message": "Parameter '_limit' of WalletLibrary.initDaylimit (parity_wallet_bug_2.sol#207) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 212,
+            "message": "Parameter '_newLimit' of WalletLibrary.setDailyLimit (parity_wallet_bug_2.sol#212) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 226,
+            "message": "Parameter '_owners' of WalletLibrary.initWallet (parity_wallet_bug_2.sol#226) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 226,
+            "message": "Parameter '_required' of WalletLibrary.initWallet (parity_wallet_bug_2.sol#226) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 226,
+            "message": "Parameter '_daylimit' of WalletLibrary.initWallet (parity_wallet_bug_2.sol#226) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 233,
+            "message": "Parameter '_to' of WalletLibrary.kill (parity_wallet_bug_2.sol#233) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 241,
+            "message": "Parameter '_to' of WalletLibrary.execute (parity_wallet_bug_2.sol#241) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 241,
+            "message": "Parameter '_value' of WalletLibrary.execute (parity_wallet_bug_2.sol#241) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 241,
+            "message": "Parameter '_data' of WalletLibrary.execute (parity_wallet_bug_2.sol#241) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 279,
+            "message": "Parameter '_h' of WalletLibrary.confirm (parity_wallet_bug_2.sol#279) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 297,
+            "message": "Parameter '_operation' of WalletLibrary.confirmAndCheck (parity_wallet_bug_2.sol#297) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 351,
+            "message": "Parameter '_value' of WalletLibrary.underLimit (parity_wallet_bug_2.sol#351) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 383,
+            "message": "Constant 'WalletLibrary._walletLibrary' (parity_wallet_bug_2.sol#383) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 386,
+            "message": "Variable 'WalletLibrary.m_required' (parity_wallet_bug_2.sol#386) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 388,
+            "message": "Variable 'WalletLibrary.m_numOwners' (parity_wallet_bug_2.sol#388) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 390,
+            "message": "Variable 'WalletLibrary.m_dailyLimit' (parity_wallet_bug_2.sol#390) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 391,
+            "message": "Variable 'WalletLibrary.m_spentToday' (parity_wallet_bug_2.sol#391) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 392,
+            "message": "Variable 'WalletLibrary.m_lastDay' (parity_wallet_bug_2.sol#392) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 395,
+            "message": "Variable 'WalletLibrary.m_owners' (parity_wallet_bug_2.sol#395) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 397,
+            "message": "Constant 'WalletLibrary.c_maxOwners' (parity_wallet_bug_2.sol#397) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 399,
+            "message": "Variable 'WalletLibrary.m_ownerIndex' (parity_wallet_bug_2.sol#399) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 401,
+            "message": "Variable 'WalletLibrary.m_pending' (parity_wallet_bug_2.sol#401) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 402,
+            "message": "Variable 'WalletLibrary.m_pendingIndex' (parity_wallet_bug_2.sol#402) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 405,
+            "message": "Variable 'WalletLibrary.m_txs' (parity_wallet_bug_2.sol#405) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 221,
+            "message": "Modifier 'WalletLibrary.only_uninitialized' (parity_wallet_bug_2.sol#221) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "impact": "Informational",
+            "line": 383,
+            "message": "WalletLibrary._walletLibrary (parity_wallet_bug_2.sol#383) is never used in WalletLibrary\n",
+            "name": "unused-state"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

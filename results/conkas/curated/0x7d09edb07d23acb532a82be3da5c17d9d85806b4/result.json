@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 3178,
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "play()",
+            "line": 210,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 3528,
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "donate()",
+            "line": 199,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 2558,
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "transferAnyERC20Token(address,address,uint256)",
+            "line": 286,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3513,
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "donate()",
+            "line": 198,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 3513,
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "donate()",
+            "line": 198,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

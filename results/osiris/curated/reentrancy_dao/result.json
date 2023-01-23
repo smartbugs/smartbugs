@@ -1,0 +1,47 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 31,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 18,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 9,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 25,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 26,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 31,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 18,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 13,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 16,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

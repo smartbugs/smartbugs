@@ -1,0 +1,84 @@
+/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_CALL_WITHOUT_DATA
+patternId: om991k
+severity: 2
+line: 94
+column: 21
+content: call.value(_wei)()
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 187b5a
+severity: 1
+line: 44
+column: 26
+content: sha3
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 44
+column: 14
+content: call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 44
+column: 14
+content: call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 94
+column: 21
+content: call.value(_wei)()
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 61
+column: 4
+content: function()payable{Deposit();}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 67
+column: 4
+content: functionDeposit()payable{if(msg.value>MinDeposit){Holders[msg.sender]+=msg.value;}}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 11
+column: 4
+content: addressnewOwner;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 12
+column: 4
+content: addressowner=msg.sender;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 38
+column: 4
+content: addressowner=msg.sender;
+
+SOLIDITY_VISIBILITY :5
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :1
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_UPGRADE_TO_050 :2
+SOLIDITY_UNCHECKED_CALL :1
+SOLIDITY_CALL_WITHOUT_DATA :1

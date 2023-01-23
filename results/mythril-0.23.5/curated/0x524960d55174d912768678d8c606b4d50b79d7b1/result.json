@@ -1,0 +1,112 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 298,
+            "contract": "Centra4",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x20fbfbd",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x1",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610261806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638a4068dd14610046575b600080fd5b34801561005257600080fd5b5061005b610075565b604051808215151515815260200191505060405180910390f35b60008060008060007396a65609a7b84e8842732deb08f56c3e21ac6f8a93506001905073aa27f8c1160886aacba64b2319d8d5469ef2af7991508373ffffffffffffffffffffffffffffffffffffffff1660405180807f7265676973746572000000000000000000000000000000000000000000000000815250602001807f43656e747261546f6b656e00000000000000000000000000000000000000000081525060200190506000604051808303816000865af1915050508373ffffffffffffffffffffffffffffffffffffffff1660405180807f7472616e7366657228616464726573732c75696e743235362900000000000000815250601901905060405180910390207c0100000000000000000000000000000000000000000000000000000000900483836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001925050506000604051808303816000875af1925050501515610229576000945061022e565b600194505b50505050905600a165627a7a72305820edc8fabe152465ad0e7bc608ae07ea9b597c4cd62de36e56485725f1efcdf68e0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x8a4068dd",
+                        "input": "0x8a4068dd",
+                        "name": "transfer()",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x8a4068dd",
+                        "input": "0x8a4068dd",
+                        "name": "transfer()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/unchecked_low_level_calls/0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+            "function": "transfer()",
+            "line": 21,
+            "message": "The return value of a message call is not checked.\nExternal calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.\nClassification: SWC-104",
+            "name": "Unchecked return value from external call.",
+            "severity": "Medium"
+        },
+        {
+            "address": 534,
+            "contract": "Centra4",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0xbc75e2d000048cb",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610261806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638a4068dd14610046575b600080fd5b34801561005257600080fd5b5061005b610075565b604051808215151515815260200191505060405180910390f35b60008060008060007396a65609a7b84e8842732deb08f56c3e21ac6f8a93506001905073aa27f8c1160886aacba64b2319d8d5469ef2af7991508373ffffffffffffffffffffffffffffffffffffffff1660405180807f7265676973746572000000000000000000000000000000000000000000000000815250602001807f43656e747261546f6b656e00000000000000000000000000000000000000000081525060200190506000604051808303816000865af1915050508373ffffffffffffffffffffffffffffffffffffffff1660405180807f7472616e7366657228616464726573732c75696e743235362900000000000000815250601901905060405180910390207c0100000000000000000000000000000000000000000000000000000000900483836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001925050506000604051808303816000875af1925050501515610229576000945061022e565b600194505b50505050905600a165627a7a72305820edc8fabe152465ad0e7bc608ae07ea9b597c4cd62de36e56485725f1efcdf68e0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x8a4068dd",
+                        "input": "0x8a4068dd",
+                        "name": "transfer()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/unchecked_low_level_calls/0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+            "function": "transfer()",
+            "line": 22,
+            "message": "Multiple calls are executed in the same transaction.\nThis call is executed following another call within the same transaction. It is possible that the call never gets executed if a prior call fails permanently. This might be caused intentionally by a malicious callee. If possible, refactor the code such that each transaction only executes one external call or make sure that all callees can be trusted (i.e. they\u2019re part of your own codebase).\nClassification: SWC-113",
+            "name": "Multiple Calls in a Single Transaction",
+            "severity": "Low"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "mythril-0.23.5",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

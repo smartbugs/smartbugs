@@ -1,0 +1,20 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "SimpleSuicide",
+            "filename": "dataset/access_control/simple_suicide.sol",
+            "line": 13,
+            "message": "Classification: SWC-106",
+            "name": "Unprotected Selfdestruct",
+            "severity": "High"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

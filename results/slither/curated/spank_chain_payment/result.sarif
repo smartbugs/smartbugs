@@ -1,0 +1,2414 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function consensusCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 546,
+                                    "startLine": 495
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) sends eth to arbitrary user\n\tDangerous calls:\n\t- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (spank_chain_payment.sol#534)\n\t- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (spank_chain_payment.sol#535)\n"
+                    },
+                    "ruleId": "slither_arbitrary_send"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function LCOpenTimeout"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],Channels[_lcID].erc20Balances[0]),CreateChannel: token transfer failure) (spank_chain_payment.sol#430)\n\tExternal calls sending eth:\n\t- Channels[_lcID].partyAddresses[0].transfer(Channels[_lcID].ethBalances[0]) (spank_chain_payment.sol#426)\n\tState variables written after the call(s):\n\t- Channels (spank_chain_payment.sol#436)\n"
+                    },
+                    "ruleId": "slither_reentrancy_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function byzantineCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 817,
+                                    "startLine": 756
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.byzantineCloseChannel (spank_chain_payment.sol#756-817):\n\tExternal calls:\n\t- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (spank_chain_payment.sol#803-806)\n\t- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (spank_chain_payment.sol#807-810)\n\tExternal calls sending eth:\n\t- channel.partyAddresses[0].transfer(ethbalanceA) (spank_chain_payment.sol#798)\n\t- channel.partyAddresses[1].transfer(ethbalanceI) (spank_chain_payment.sol#799)\n\tState variables written after the call(s):\n\t- Channels (spank_chain_payment.sol#813)\n"
+                    },
+                    "ruleId": "slither_reentrancy_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 88,
+                                    "startLine": 62
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ECTools.recoverSigner (spank_chain_payment.sol#62-88) is declared view but contains assembly code\n"
+                    },
+                    "ruleId": "slither_constant_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 135,
+                                    "startLine": 132
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ECTools.uintToBytes32 (spank_chain_payment.sol#132-135) is declared view but contains assembly code\n"
+                    },
+                    "ruleId": "slither_constant_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 834,
+                                    "startLine": 819
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel._isContained (spank_chain_payment.sol#819-834) is declared view but contains assembly code\n"
+                    },
+                    "ruleId": "slither_constant_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function LCOpenTimeout"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function _isContained"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function closeVirtualChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\nLedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) uses a dangerous strict equality:\n\t- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]\n\t- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function consensusCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\nLedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) uses a dangerous strict equality:\n\t- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]\n\t- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]\nLedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) uses a dangerous strict equality:\n\t- require(bool)(Channels[_lcID].isOpen == true)\n\t- require(bool)(totalEthDeposit == _balances[0] + _balances[1])\n\t- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])\n\t- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))\n\t- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function createChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\nLedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) uses a dangerous strict equality:\n\t- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]\n\t- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]\nLedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) uses a dangerous strict equality:\n\t- require(bool)(Channels[_lcID].isOpen == true)\n\t- require(bool)(totalEthDeposit == _balances[0] + _balances[1])\n\t- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])\n\t- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))\n\t- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))\nLedgerChannel.createChannel (spank_chain_payment.sol#380-418) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\nLedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) uses a dangerous strict equality:\n\t- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]\n\t- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]\nLedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) uses a dangerous strict equality:\n\t- require(bool)(Channels[_lcID].isOpen == true)\n\t- require(bool)(totalEthDeposit == _balances[0] + _balances[1])\n\t- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])\n\t- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))\n\t- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))\nLedgerChannel.createChannel (spank_chain_payment.sol#380-418) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)\nLedgerChannel.deposit (spank_chain_payment.sol#465-492) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel)\n\t- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])\n\t- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])\n\t- Channels[_lcID].partyAddresses[0] == recipient\n\t- Channels[_lcID].partyAddresses[1] == recipient\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function initVCstate"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\nLedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) uses a dangerous strict equality:\n\t- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]\n\t- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]\nLedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) uses a dangerous strict equality:\n\t- require(bool)(Channels[_lcID].isOpen == true)\n\t- require(bool)(totalEthDeposit == _balances[0] + _balances[1])\n\t- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])\n\t- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))\n\t- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))\nLedgerChannel.createChannel (spank_chain_payment.sol#380-418) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)\nLedgerChannel.deposit (spank_chain_payment.sol#465-492) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel)\n\t- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])\n\t- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])\n\t- Channels[_lcID].partyAddresses[0] == recipient\n\t- Channels[_lcID].partyAddresses[1] == recipient\nLedgerChannel.initVCstate (spank_chain_payment.sol#615-657) uses a dangerous strict equality:\n\t- require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true)\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function joinChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) uses a dangerous strict equality:\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)\nLedgerChannel._isContained (spank_chain_payment.sol#819-834) uses a dangerous strict equality:\n\t- cursor == _root\nLedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) uses a dangerous strict equality:\n\t- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]\n\t- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]\nLedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) uses a dangerous strict equality:\n\t- require(bool)(Channels[_lcID].isOpen == true)\n\t- require(bool)(totalEthDeposit == _balances[0] + _balances[1])\n\t- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])\n\t- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))\n\t- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))\nLedgerChannel.createChannel (spank_chain_payment.sol#380-418) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)\nLedgerChannel.deposit (spank_chain_payment.sol#465-492) uses a dangerous strict equality:\n\t- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel)\n\t- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])\n\t- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])\n\t- Channels[_lcID].partyAddresses[0] == recipient\n\t- Channels[_lcID].partyAddresses[1] == recipient\nLedgerChannel.initVCstate (spank_chain_payment.sol#615-657) uses a dangerous strict equality:\n\t- require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true)\nLedgerChannel.joinChannel (spank_chain_payment.sol#439-460) uses a dangerous strict equality:\n\t- require(bool)(Channels[_lcID].isOpen == false)\n\t- require(bool)(msg.sender == Channels[_lcID].partyAddresses[1])\n"
+                    },
+                    "ruleId": "slither_incorrect_equality"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function createChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 418,
+                                    "startLine": 380
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.createChannel (spank_chain_payment.sol#380-418):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),CreateChannel: token transfer failure) (spank_chain_payment.sol#406)\n\tState variables written after the call(s):\n\t- Channels (spank_chain_payment.sol#407)\n\t- Channels (spank_chain_payment.sol#410)\n\t- Channels (spank_chain_payment.sol#411)\n\t- Channels (spank_chain_payment.sol#414)\n\t- Channels (spank_chain_payment.sol#415)\n"
+                    },
+                    "ruleId": "slither_reentrancy_no_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 492,
+                                    "startLine": 465
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.deposit (spank_chain_payment.sol#465-492):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (spank_chain_payment.sol#473)\n\tState variables written after the call(s):\n\t- Channels (spank_chain_payment.sol#474)\n\t- Channels (spank_chain_payment.sol#487)\n"
+                    },
+                    "ruleId": "slither_reentrancy_no_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 492,
+                                    "startLine": 465
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.deposit (spank_chain_payment.sol#465-492):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (spank_chain_payment.sol#473)\n\t- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (spank_chain_payment.sol#483)\n\tState variables written after the call(s):\n\t- Channels (spank_chain_payment.sol#484)\n"
+                    },
+                    "ruleId": "slither_reentrancy_no_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function joinChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 460,
+                                    "startLine": 439
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.joinChannel (spank_chain_payment.sol#439-460):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (spank_chain_payment.sol#449)\n\tState variables written after the call(s):\n\t- Channels (spank_chain_payment.sol#450)\n\t- Channels (spank_chain_payment.sol#453)\n\t- Channels (spank_chain_payment.sol#454)\n\t- Channels (spank_chain_payment.sol#456)\n"
+                    },
+                    "ruleId": "slither_reentrancy_no_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function byzantineCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 817,
+                                    "startLine": 756
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.byzantineCloseChannel (spank_chain_payment.sol#756-817):\n\tExternal calls:\n\t- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (spank_chain_payment.sol#803-806)\n\t- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (spank_chain_payment.sol#807-810)\n\tExternal calls sending eth:\n\t- channel.partyAddresses[0].transfer(ethbalanceA) (spank_chain_payment.sol#798)\n\t- channel.partyAddresses[1].transfer(ethbalanceI) (spank_chain_payment.sol#799)\n\tState variables written after the call(s):\n\t- numChannels (spank_chain_payment.sol#814)\n"
+                    },
+                    "ruleId": "slither_reentrancy_benign"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function consensusCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 546,
+                                    "startLine": 495
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],_balances[2]),happyCloseChannel: token transfer failure) (spank_chain_payment.sol#539)\n\t- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[1],_balances[3]),happyCloseChannel: token transfer failure) (spank_chain_payment.sol#540)\n\tExternal calls sending eth:\n\t- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (spank_chain_payment.sol#534)\n\t- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (spank_chain_payment.sol#535)\n\tState variables written after the call(s):\n\t- numChannels (spank_chain_payment.sol#543)\n"
+                    },
+                    "ruleId": "slither_reentrancy_benign"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function joinChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 460,
+                                    "startLine": 439
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in LedgerChannel.joinChannel (spank_chain_payment.sol#439-460):\n\tExternal calls:\n\t- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (spank_chain_payment.sol#449)\n\tState variables written after the call(s):\n\t- numChannels (spank_chain_payment.sol#457)\n"
+                    },
+                    "ruleId": "slither_reentrancy_benign"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ECTools, function recoverSigner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 88,
+                                    "startLine": 62
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ECTools.recoverSigner uses assembly (spank_chain_payment.sol#62-88)\n\t- spank_chain_payment.sol#76-81\n"
+                    },
+                    "ruleId": "slither_assembly"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ECTools, function uintToBytes32"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 135,
+                                    "startLine": 132
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ECTools.uintToBytes32 uses assembly (spank_chain_payment.sol#132-135)\n\t- spank_chain_payment.sol#134-135\n"
+                    },
+                    "ruleId": "slither_assembly"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function _isContained"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 834,
+                                    "startLine": 819
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel._isContained uses assembly (spank_chain_payment.sol#819-834)\n\t- spank_chain_payment.sol#824-826\n"
+                    },
+                    "ruleId": "slither_assembly"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 236
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "HumanStandardToken.version should be constant (spank_chain_payment.sol#236)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 207,
+                                    "startLine": 205
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.balanceOf (spank_chain_payment.sol#205-207) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.balanceOf (spank_chain_payment.sol#28) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 34
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.transfer (spank_chain_payment.sol#34) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 192,
+                                    "startLine": 182
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.transfer (spank_chain_payment.sol#182-192) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function transferFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 203,
+                                    "startLine": 194
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.transferFrom (spank_chain_payment.sol#194-203) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function transferFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.transferFrom (spank_chain_payment.sol#41) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function approve"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 47
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.approve (spank_chain_payment.sol#47) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function approve"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 213,
+                                    "startLine": 209
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.approve (spank_chain_payment.sol#209-213) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function allowance"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 217,
+                                    "startLine": 215
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.allowance (spank_chain_payment.sol#215-217) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function allowance"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 52
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.allowance (spank_chain_payment.sol#52) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ECTools, function isSignedBy"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 95,
+                                    "startLine": 91
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ECTools.isSignedBy (spank_chain_payment.sol#91-95) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ECTools, function toEthereumSignedMessage"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 144,
+                                    "startLine": 139
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ECTools.toEthereumSignedMessage (spank_chain_payment.sol#139-144) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract HumanStandardToken, function approveAndCall"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 261,
+                                    "startLine": 252
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "HumanStandardToken.approveAndCall (spank_chain_payment.sol#252-261) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function createChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 418,
+                                    "startLine": 380
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.createChannel (spank_chain_payment.sol#380-418) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function LCOpenTimeout"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420-437) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function joinChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 460,
+                                    "startLine": 439
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.joinChannel (spank_chain_payment.sol#439-460) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 492,
+                                    "startLine": 465
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.deposit (spank_chain_payment.sol#465-492) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function consensusCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 546,
+                                    "startLine": 495
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#495-546) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function updateLCstate"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 612,
+                                    "startLine": 550
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.updateLCstate (spank_chain_payment.sol#550-612) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function initVCstate"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 657,
+                                    "startLine": 615
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.initVCstate (spank_chain_payment.sol#615-657) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function settleVC"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 723,
+                                    "startLine": 662
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.settleVC (spank_chain_payment.sol#662-723) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function closeVirtualChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 752,
+                                    "startLine": 725
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725-752) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function byzantineCloseChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 817,
+                                    "startLine": 756
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.byzantineCloseChannel (spank_chain_payment.sol#756-817) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function getChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 866,
+                                    "startLine": 837
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.getChannel (spank_chain_payment.sol#837-866) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LedgerChannel, function getVirtualChannel"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 895,
+                                    "startLine": 868
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LedgerChannel.getVirtualChannel (spank_chain_payment.sol#868-895) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 9
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in spank_chain_payment.sol:\n\t- pragma solidity^0.4.23 (spank_chain_payment.sol#9): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract HumanStandardToken, function approveAndCall"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 261,
+                                    "startLine": 252
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in HumanStandardToken.approveAndCall (spank_chain_payment.sol#252-261):\n\t-require(bool)(_spender.call(bytes4(bytes32(keccak256()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) spank_chain_payment.sol#259\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 62
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_hashedMsg' of ECTools.recoverSigner (spank_chain_payment.sol#62) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 62
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sig' of ECTools.recoverSigner (spank_chain_payment.sol#62) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 91
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_hashedMsg' of ECTools.isSignedBy (spank_chain_payment.sol#91) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 91
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sig' of ECTools.isSignedBy (spank_chain_payment.sol#91) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 91
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_addr' of ECTools.isSignedBy (spank_chain_payment.sol#91) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 98
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_hexstr' of ECTools.hexstrToBytes (spank_chain_payment.sol#98) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 116
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_char' of ECTools.parseInt16Char (spank_chain_payment.sol#116) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 139
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_msg' of ECTools.toEthereumSignedMessage (spank_chain_payment.sol#139) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 147
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_uint' of ECTools.uintToString (spank_chain_payment.sol#147) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 167
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_str' of ECTools.substring (spank_chain_payment.sol#167) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 167
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_startIndex' of ECTools.substring (spank_chain_payment.sol#167) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 167
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_endIndex' of ECTools.substring (spank_chain_payment.sol#167) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 205
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of StandardToken.balanceOf (spank_chain_payment.sol#205) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 182
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of StandardToken.transfer (spank_chain_payment.sol#182) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 182
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of StandardToken.transfer (spank_chain_payment.sol#182) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 194
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_from' of StandardToken.transferFrom (spank_chain_payment.sol#194) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 194
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of StandardToken.transferFrom (spank_chain_payment.sol#194) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 194
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of StandardToken.transferFrom (spank_chain_payment.sol#194) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 209
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of StandardToken.approve (spank_chain_payment.sol#209) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 209
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of StandardToken.approve (spank_chain_payment.sol#209) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 215
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of StandardToken.allowance (spank_chain_payment.sol#215) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 215
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of StandardToken.allowance (spank_chain_payment.sol#215) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 239
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_initialAmount' of HumanStandardToken. (spank_chain_payment.sol#239) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 240
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_tokenName' of HumanStandardToken. (spank_chain_payment.sol#240) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 241
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_decimalUnits' of HumanStandardToken. (spank_chain_payment.sol#241) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 242
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_tokenSymbol' of HumanStandardToken. (spank_chain_payment.sol#242) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 252
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of HumanStandardToken.approveAndCall (spank_chain_payment.sol#252) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 252
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of HumanStandardToken.approveAndCall (spank_chain_payment.sol#252) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 252
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_extraData' of HumanStandardToken.approveAndCall (spank_chain_payment.sol#252) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 381
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.createChannel (spank_chain_payment.sol#381) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 382
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_partyI' of LedgerChannel.createChannel (spank_chain_payment.sol#382) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 383
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_confirmTime' of LedgerChannel.createChannel (spank_chain_payment.sol#383) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 384
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_token' of LedgerChannel.createChannel (spank_chain_payment.sol#384) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 385
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_balances' of LedgerChannel.createChannel (spank_chain_payment.sol#385) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 437,
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'LedgerChannel.LCOpenTimeout' (spank_chain_payment.sol#420-437) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 420
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.LCOpenTimeout (spank_chain_payment.sol#420) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 439
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.joinChannel (spank_chain_payment.sol#439) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 439
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_balances' of LedgerChannel.joinChannel (spank_chain_payment.sol#439) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 465
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.deposit (spank_chain_payment.sol#465) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 465
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_balance' of LedgerChannel.deposit (spank_chain_payment.sol#465) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 496
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#496) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 497
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sequence' of LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#497) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 498
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_balances' of LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#498) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 499
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sigA' of LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#499) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 500
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sigI' of LedgerChannel.consensusCloseChannel (spank_chain_payment.sol#500) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 551
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.updateLCstate (spank_chain_payment.sol#551) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 553
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_VCroot' of LedgerChannel.updateLCstate (spank_chain_payment.sol#553) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 554
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sigA' of LedgerChannel.updateLCstate (spank_chain_payment.sol#554) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 555
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_sigI' of LedgerChannel.updateLCstate (spank_chain_payment.sol#555) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 616
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.initVCstate (spank_chain_payment.sol#616) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 617
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_vcID' of LedgerChannel.initVCstate (spank_chain_payment.sol#617) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 618
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_proof' of LedgerChannel.initVCstate (spank_chain_payment.sol#618) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 619
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_partyA' of LedgerChannel.initVCstate (spank_chain_payment.sol#619) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 620
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_partyB' of LedgerChannel.initVCstate (spank_chain_payment.sol#620) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 621
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_bond' of LedgerChannel.initVCstate (spank_chain_payment.sol#621) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 622
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_balances' of LedgerChannel.initVCstate (spank_chain_payment.sol#622) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 663
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.settleVC (spank_chain_payment.sol#663) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 664
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_vcID' of LedgerChannel.settleVC (spank_chain_payment.sol#664) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 666
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_partyA' of LedgerChannel.settleVC (spank_chain_payment.sol#666) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 667
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_partyB' of LedgerChannel.settleVC (spank_chain_payment.sol#667) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 725
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 725
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_vcID' of LedgerChannel.closeVirtualChannel (spank_chain_payment.sol#725) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 756
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lcID' of LedgerChannel.byzantineCloseChannel (spank_chain_payment.sol#756) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "endLine": 834,
+                                    "startLine": 819
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'LedgerChannel._isContained' (spank_chain_payment.sol#819-834) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 819
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_hash' of LedgerChannel._isContained (spank_chain_payment.sol#819) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 819
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_proof' of LedgerChannel._isContained (spank_chain_payment.sol#819) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 819
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_root' of LedgerChannel._isContained (spank_chain_payment.sol#819) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/spank_chain_payment.sol"
+                                },
+                                "region": {
+                                    "startLine": 378
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'LedgerChannel.Channels' (spank_chain_payment.sol#378) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_reentrancy_no_eth",
+                            "name": "reentrancy-no-eth"
+                        },
+                        {
+                            "id": "slither_reentrancy_eth",
+                            "name": "reentrancy-eth"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        },
+                        {
+                            "id": "slither_constant_function",
+                            "name": "constant-function"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_assembly",
+                            "name": "assembly"
+                        },
+                        {
+                            "id": "slither_incorrect_equality",
+                            "name": "incorrect-equality"
+                        },
+                        {
+                            "id": "slither_arbitrary_send",
+                            "name": "arbitrary-send"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        },
+                        {
+                            "id": "slither_reentrancy_benign",
+                            "name": "reentrancy-benign"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

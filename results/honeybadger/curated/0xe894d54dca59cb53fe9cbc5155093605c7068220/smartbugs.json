@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/0xe894d54dca59cb53fe9cbc5155093605c7068220.sol' '1800' '/sb/bin'",
+        "image": "smartbugs/honeybadger",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmp9osog1va": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/unchecked_low_level_calls/0xe894d54dca59cb53fe9cbc5155093605c7068220.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 29.721901655197144,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1673974686.0141633
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'",
+        "id": "honeybadger",
+        "image": "smartbugs/honeybadger",
+        "info": "An analysis tool to detect honeypots in Ethereum smart contracts",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "HoneyBadger",
+        "origin": "https://github.com/christoftorres/HoneyBadger",
+        "output": null,
+        "parser": "parser.py",
+        "solc": true,
+        "version": null
+    }
+}

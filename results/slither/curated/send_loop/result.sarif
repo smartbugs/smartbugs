@@ -1,0 +1,119 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Refunder, function refundAll"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/send_loop.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Refunder.refunds (send_loop.sol#13) is never initialized. It is used in:\n\t- refundAll (send_loop.sol#21-26)\n"
+                    },
+                    "ruleId": "slither_uninitialized_state"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Refunder, function refundAll"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/send_loop.sol"
+                                },
+                                "region": {
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "x in Refunder.refundAll (send_loop.sol#22) is a local variable never initialiazed\n"
+                    },
+                    "ruleId": "slither_uninitialized_local"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Refunder, function refundAll"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/send_loop.sol"
+                                },
+                                "region": {
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Refunder.refundAll has external calls inside a loop:\n\t- require(bool)(refundAddresses[x].send(refunds[refundAddresses[x]])) (send_loop.sol#24)\n"
+                    },
+                    "ruleId": "slither_calls_loop"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Refunder, function refundAll"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/send_loop.sol"
+                                },
+                                "region": {
+                                    "endLine": 26,
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Refunder.refundAll (send_loop.sol#21-26) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_uninitialized_state",
+                            "name": "uninitialized-state"
+                        },
+                        {
+                            "id": "slither_uninitialized_local",
+                            "name": "uninitialized-local"
+                        },
+                        {
+                            "id": "slither_calls_loop",
+                            "name": "calls-loop"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

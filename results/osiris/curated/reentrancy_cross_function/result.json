@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 28,
+            "contract": "Reentrancy_cross_function",
+            "filename": "dataset/reentrancy/reentrancy_cross_function.sol",
+            "line": 24,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 13,
+            "contract": "Reentrancy_cross_function",
+            "filename": "dataset/reentrancy/reentrancy_cross_function.sol",
+            "line": 16,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 28,
+            "contract": "Reentrancy_cross_function",
+            "filename": "dataset/reentrancy/reentrancy_cross_function.sol",
+            "line": 24,
+            "name": "Reentrancy bug"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

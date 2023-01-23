@@ -1,0 +1,31 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 13,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 38,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 14,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 36,
+            "name": "Integer Overflow"
+        },
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

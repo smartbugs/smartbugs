@@ -1,0 +1,20 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/reentrance.sol:Reentrance:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/reentrance.sol:14:5: Warning: Integer Overflow.
+    balances[_to] += msg.value
+Integer Overflow occurs if:
+    balances[_to] = 1
+INFO:symExec:/sb/reentrance.sol:24:10: Warning: Callstack Depth Attack Vulnerability.
+      if(msg.sender.call.value(_amount)()
+INFO:symExec:/sb/reentrance.sol:24:10: Warning: Re-Entrancy Vulnerability.
+      if(msg.sender.call.value(_amount)()
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 716,
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "function": "claimReward(uint256)",
+            "line": 31,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 554,
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "function": "0x3eb6a67e",
+            "line": 23,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 554,
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "function": "0x3eb6a67e",
+            "line": 23,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 716,
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "function": "claimReward(uint256)",
+            "line": 31,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

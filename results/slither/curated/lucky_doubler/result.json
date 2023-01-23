@@ -1,0 +1,154 @@
+{
+    "errors": [
+        "EXIT_CODE_14"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "impact": "Informational",
+            "line": 130,
+            "message": "Deprecated standard detected @ lucky_doubler.sol#130:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "impact": "Informational",
+            "line": 142,
+            "message": "Deprecated standard detected @ lucky_doubler.sol#142:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "impact": "Informational",
+            "line": 149,
+            "message": "Deprecated standard detected @ lucky_doubler.sol#149:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 53,
+            "line_end": 55,
+            "message": "LuckyDoubler.fallback (lucky_doubler.sol#53-55) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "changeOwner",
+            "impact": "Informational",
+            "line": 137,
+            "line_end": 139,
+            "message": "LuckyDoubler.changeOwner (lucky_doubler.sol#137-139) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "changeMultiplier",
+            "impact": "Informational",
+            "line": 141,
+            "line_end": 145,
+            "message": "LuckyDoubler.changeMultiplier (lucky_doubler.sol#141-145) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "changeFee",
+            "impact": "Informational",
+            "line": 147,
+            "line_end": 151,
+            "message": "LuckyDoubler.changeFee (lucky_doubler.sol#147-151) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "multiplierFactor",
+            "impact": "Informational",
+            "line": 155,
+            "line_end": 158,
+            "message": "LuckyDoubler.multiplierFactor (lucky_doubler.sol#155-158) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "currentFee",
+            "impact": "Informational",
+            "line": 160,
+            "line_end": 163,
+            "message": "LuckyDoubler.currentFee (lucky_doubler.sol#160-163) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "totalEntries",
+            "impact": "Informational",
+            "line": 165,
+            "line_end": 168,
+            "message": "LuckyDoubler.totalEntries (lucky_doubler.sol#165-168) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "userStats",
+            "impact": "Informational",
+            "line": 170,
+            "line_end": 178,
+            "message": "LuckyDoubler.userStats (lucky_doubler.sol#170-178) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "entryDetails",
+            "impact": "Informational",
+            "line": 180,
+            "line_end": 188,
+            "message": "LuckyDoubler.entryDetails (lucky_doubler.sol#180-188) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "impact": "Informational",
+            "line": 9,
+            "message": "Detected issues with version pragma in lucky_doubler.sol:\n\t- pragma solidity^0.4.0 (lucky_doubler.sol#9): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "impact": "Informational",
+            "line": 33,
+            "line_end": 35,
+            "message": "Function 'LuckyDoubler.LuckyDoubler' (lucky_doubler.sol#33-35) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

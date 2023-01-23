@@ -1,0 +1,102 @@
+INFO:Slither:Compilation warnings/errors on /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:28:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:93:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Marriage(address _owner) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:55:9: Warning: Return value of low-level calls not used.
+        _dst.call.value(_value)(_data);
+        ^----------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:17: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(sha3(marriageStatus) == sha3("Married"));
+                ^------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:17: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        require(sha3(marriageStatus) == sha3("Married"));
+                ^------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:17: Warning: The provided argument of type string storage ref is not implicitly convertible to expected type bytes memory.
+        require(sha3(marriageStatus) == sha3("Married"));
+                ^------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:41: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(sha3(marriageStatus) == sha3("Married"));
+                                        ^-------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:119:9: Warning: Invoking events without "emit" prefix is deprecated.
+        MajorEvent("Marrigage", vows, url);
+        ^--------------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:133:9: Warning: Invoking events without "emit" prefix is deprecated.
+        MajorEvent(name, description, url);
+        ^--------------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:138:28: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            owner.transfer(this.balance);
+                           ^----------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:141:9: Warning: Invoking events without "emit" prefix is deprecated.
+        MessageSent(nameFrom, text, url, msg.value);
+        ^-----------------------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:28:5: Warning: No visibility specified. Defaulting to "public". 
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:37:5: Warning: No visibility specified. Defaulting to "public". 
+    function changeOwner(address _newOwner) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:44:5: Warning: No visibility specified. Defaulting to "public". 
+    function acceptOwnership() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:53:5: Warning: No visibility specified. Defaulting to "public". 
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:93:5: Warning: No visibility specified. Defaulting to "public". 
+    function Marriage(address _owner) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:106:5: Warning: No visibility specified. Defaulting to "public". 
+    function createMarriage(
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:123:5: Warning: No visibility specified. Defaulting to "public". 
+    function setStatus(string status, string url) onlyOwner
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:130:5: Warning: No visibility specified. Defaulting to "public". 
+    function setMajorEvent(string name, string description, string url) onlyOwner areMarried
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:136:5: Warning: No visibility specified. Defaulting to "public". 
+    function sendMessage(string nameFrom, string text, string url) payable areMarried {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:Detectors:[91m
+Marriage.sendMessage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#136-142) sends eth to arbitrary user
+	Dangerous calls:
+	- owner.transfer(this.balance) (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#138)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[92m
+Deprecated standard detected @ /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#88:
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#deprecated-standards[0m
+INFO:Detectors:[92m
+Owned.changeOwner (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#37-39) should be declared external
+Owned.acceptOwnership (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#44-48) should be declared external
+Owned.execute (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#53-56) should be declared external
+Marriage.numberOfMajorEvents (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#97-99) should be declared external
+Marriage.numberOfMessages (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#101-103) should be declared external
+Marriage.createMarriage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#106-120) should be declared external
+Marriage.setStatus (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#123-127) should be declared external
+Marriage.sendMessage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#136-142) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:
+	- pragma solidity^0.4.16 (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in Owned.execute (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#53-56):
+	-_dst.call.value(_value)(_data) /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#55
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Function 'Owned.Owned' (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#28-30) is not in mixedCase
+Parameter '_newOwner' of Owned.changeOwner (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#37) is not in mixedCase
+Parameter '_dst' of Owned.execute (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#53) is not in mixedCase
+Parameter '_value' of Owned.execute (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#53) is not in mixedCase
+Parameter '_data' of Owned.execute (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#53) is not in mixedCase
+Function 'Marriage.Marriage' (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#93-95) is not in mixedCase
+Parameter '_owner' of Marriage.Marriage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#93) is not in mixedCase
+Parameter '_partner1' of Marriage.createMarriage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#107) is not in mixedCase
+Parameter '_partner2' of Marriage.createMarriage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#108) is not in mixedCase
+Parameter '_vows' of Marriage.createMarriage (/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol#109) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol analyzed (2 contracts), 22 result(s) found

@@ -1,0 +1,70 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 21,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 2,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 102,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 102,
+            "name": "Underflow bugs"
+        },
+        {
+            "column": 12,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 51,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 56,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 51,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 16,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 63,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 66,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "line": 65,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

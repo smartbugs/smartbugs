@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 3,
+            "contract": "BecToken",
+            "filename": "dataset/arithmetic/BECToken.sol",
+            "line": 261,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 5,
+            "contract": "BecToken",
+            "filename": "dataset/arithmetic/BECToken.sol",
+            "line": 289,
+            "name": "Integer Underflow"
+        },
+        {
+            "column": 3,
+            "contract": "PausableToken",
+            "filename": "dataset/arithmetic/BECToken.sol",
+            "line": 261,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,20 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/etherstore.sol:EtherStore:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/etherstore.sol:17:9: Warning: Integer Overflow.
+        balances[msg.sender] += msg.value
+Integer Overflow occurs if:
+    balances[msg.sender] = 1
+INFO:symExec:/sb/etherstore.sol:25:9: Warning: Timestamp Dependency.
+        require(now >= lastWithdrawTime[msg.sender] + 1 weeks)
+INFO:symExec:/sb/etherstore.sol:27:17: Warning: Re-Entrancy Vulnerability.
+        require(msg.sender.call.value(_weiToWithdraw)()
+INFO:symExec:	====== Analysis Completed ======

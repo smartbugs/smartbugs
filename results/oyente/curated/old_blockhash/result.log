@@ -1,0 +1,20 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/old_blockhash.sol:PredictTheBlockHashChallenge:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 89.2%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/old_blockhash.sol:38:13: Warning: Integer Overflow.
+        if (guesses[msg.sender].guess
+Integer Overflow occurs if:
+    guesses[msg.sender].block = 0
+/sb/old_blockhash.sol:28:9: Warning: Integer Overflow.
+        guesses[msg.sender].guess
+Integer Overflow occurs if:
+    guesses[msg.sender].block = 0
+INFO:symExec:	====== Analysis Completed ======

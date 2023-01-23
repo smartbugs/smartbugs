@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 1199,
+            "contract": "BlackJack",
+            "filename": "dataset/bad_randomness/blackjack.sol",
+            "function": "stand()",
+            "line": 135,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 7441,
+            "contract": "BlackJack",
+            "filename": "dataset/bad_randomness/blackjack.sol",
+            "function": "stand()",
+            "line": 21,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1236,
+            "contract": "BlackJack",
+            "filename": "dataset/bad_randomness/blackjack.sol",
+            "function": "stand()",
+            "line": 135,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1944,
+            "contract": "BlackJack",
+            "filename": "dataset/bad_randomness/blackjack.sol",
+            "function": "stand()",
+            "line": 138,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

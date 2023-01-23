@@ -1,0 +1,90 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ETH_VAULT"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol"
+                                },
+                                "region": {
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-107\nSeverity: High"
+                    },
+                    "ruleId": "confuzzius_Reentrancy"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ETH_VAULT"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol"
+                                },
+                                "region": {
+                                    "startLine": 43
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-114\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Transaction_Order_Dependency"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ETH_VAULT"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol"
+                                },
+                                "region": {
+                                    "startLine": 29
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-114\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Transaction_Order_Dependency"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Transaction_Order_Dependency",
+                            "name": "Transaction Order Dependency"
+                        },
+                        {
+                            "id": "confuzzius_Reentrancy",
+                            "name": "Reentrancy"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

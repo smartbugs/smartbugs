@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "message": "Classification: SWC-107",
+            "name": "Reentrancy",
+            "severity": "High"
+        },
+        {
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "message": "Classification: SWC-105",
+            "name": "Leaking Ether",
+            "severity": "High"
+        },
+        {
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 14,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

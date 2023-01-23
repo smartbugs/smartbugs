@@ -1,0 +1,30 @@
+INFO:Slither:Compilation warnings/errors on /sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:
+/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:13:22: Warning: This looks like an address but has an invalid checksum. If this is not used as an address, please prepend '00'. Correct checksummed address: '0x96A65609a7B84E8842732DEB08f56C3E21aC6f8a'. For more information please see https://solidity.readthedocs.io/en/develop/types.html#address-literals
+		contract_address = 0x96a65609a7b84e8842732deb08f56c3e21ac6f8a;
+		                   ^----------------------------------------^
+/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:19:8: Warning: This looks like an address but has an invalid checksum. If this is not used as an address, please prepend '00'. Correct checksummed address: '0xAa27f8C1160886aacba64B2319D8d5469ef2Af79'. For more information please see https://solidity.readthedocs.io/en/develop/types.html#address-literals
+		c2 = 0xaa27f8c1160886aacba64b2319d8d5469ef2af79;	
+		     ^----------------------------------------^
+/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:21:3: Warning: Return value of low-level calls not used.
+		contract_address.call("register", "CentraToken");
+		^----------------------------------------------^
+/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:11:2: Warning: No visibility specified. Defaulting to "public". 
+	function transfer() returns (bool) {	
+ ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:14:3: Warning: Unused local variable.
+		address c1;		
+		^--------^
+
+INFO:Detectors:[92m
+Centra4.transfer (/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol#11-25) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol:
+	- pragma solidity^0.4.13 (/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in Centra4.transfer (/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol#11-25):
+	-contract_address.call(register,CentraToken) /sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol#21
+	-! contract_address.call(bytes4(keccak256()(transfer(address,uint256))),c2,k) /sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol#22
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Slither:/sb/0x524960d55174d912768678d8c606b4d50b79d7b1.sol analyzed (1 contracts), 3 result(s) found

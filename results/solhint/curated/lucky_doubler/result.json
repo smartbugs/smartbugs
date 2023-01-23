@@ -1,0 +1,54 @@
+{
+    "errors": [
+        "EXIT_CODE_1"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "column": 2,
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "level": "error",
+            "line": 11,
+            "message": "Expected indentation of 0 spaces but found 1",
+            "name": "indent"
+        },
+        {
+            "column": 14,
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "level": "error",
+            "line": 60,
+            "message": "Expected indentation of 12 spaces but found 13",
+            "name": "indent"
+        },
+        {
+            "column": 10,
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "level": "error",
+            "line": 74,
+            "message": "Expected indentation of 12 spaces but found 9",
+            "name": "indent"
+        },
+        {
+            "column": 10,
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "level": "error",
+            "line": 75,
+            "message": "Expected indentation of 12 spaces but found 9",
+            "name": "indent"
+        },
+        {
+            "column": 17,
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "level": "error",
+            "line": 119,
+            "message": "Expected indentation of 12 spaces but found 16",
+            "name": "indent"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "solhint",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

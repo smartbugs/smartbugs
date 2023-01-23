@@ -1,0 +1,58 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "ReturnValue",
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "function": "callchecked",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 13,
+            "message": "ReturnValue.callchecked (unchecked_return_value.sol#11-13) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ReturnValue",
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "function": "callnotchecked",
+            "impact": "Informational",
+            "line": 15,
+            "line_end": 18,
+            "message": "ReturnValue.callnotchecked (unchecked_return_value.sol#15-18) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ReturnValue",
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "function": "callchecked",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 13,
+            "message": "Low level call in ReturnValue.callchecked (unchecked_return_value.sol#11-13):\n\t-require(bool)(callee.call()) unchecked_return_value.sol#12\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "ReturnValue",
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.sol",
+            "function": "callnotchecked",
+            "impact": "Informational",
+            "line": 15,
+            "line_end": 18,
+            "message": "Low level call in ReturnValue.callnotchecked (unchecked_return_value.sol#15-18):\n\t-callee.call() unchecked_return_value.sol#17\n",
+            "name": "low-level-calls"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

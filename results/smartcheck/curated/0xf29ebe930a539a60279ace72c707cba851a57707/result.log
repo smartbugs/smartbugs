@@ -1,0 +1,48 @@
+/sb/0xf29ebe930a539a60279ace72c707cba851a57707.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_ADDRESS_HARDCODED
+patternId: adc165
+severity: 1
+line: 14
+column: 25
+content: 0xC8A60C51967F4022BF9424C337e9c6F0bD220E1C
+
+ruleId: SOLIDITY_CALL_WITHOUT_DATA
+patternId: om991k
+severity: 2
+line: 16
+column: 15
+content: call.value(msg.value)()
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 16
+column: 15
+content: call.value(msg.value)()
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 16
+column: 15
+content: call.value(msg.value)()
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 91h3sa
+severity: 1
+line: 20
+column: 15
+content: public
+
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_ADDRESS_HARDCODED :1
+SOLIDITY_UPGRADE_TO_050 :2
+SOLIDITY_UNCHECKED_CALL :1
+SOLIDITY_CALL_WITHOUT_DATA :1

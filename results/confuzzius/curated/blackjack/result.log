@@ -1,0 +1,19 @@
+2023-01-18 08:40:16,603 - Main     - INFO - [1mInitializing seed to 1427655.0[0m
+
+     ______            ______                _           
+    / ____/___  ____  / ____/_  __________  (_)_  _______
+   / /   / __ \/ __ \/ /_  / / / /_  /_  / / / / / / ___/
+  / /___/ /_/ / / / / __/ / /_/ / / /_/ /_/ / /_/ (__  ) 
+  \____/\____/_/ /_/_/    \__,_/ /___/___/_/\__,_/____/  
+
+delteed file
+Traceback (most recent call last):
+  File "fuzzer/main.py", line 372, in <module>
+    main()
+  File "fuzzer/main.py", line 223, in main
+    compiler_output = compile(args.solc_version, settings.EVM_VERSION, args.source)
+  File "/root/fuzzer/utils/utils.py", line 70, in compile
+    source_code = file.read()
+  File "/usr/lib/python3.6/encodings/ascii.py", line 26, in decode
+    return codecs.ascii_decode(input, self.errors)[0]
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xd0 in position 1547: ordinal not in range(128)

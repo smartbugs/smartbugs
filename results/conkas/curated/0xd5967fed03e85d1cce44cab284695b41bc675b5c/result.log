@@ -1,0 +1,8 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0xd5967fed03e85d1cce44cab284695b41bc675b5c.sol:demo...
+Vulnerability: Reentrancy. Maybe in function: transfer(address,address,address[],uint256). PC: 0x28c. Line number: 16.
+Vulnerability: Integer Overflow. Maybe in function: transfer(address,address,address[],uint256). PC: 0x279. Line number: 16.
+If a = 32
+and b = 3618502788666131106986593281521497120414687020801267626233049500247285301240
+Vulnerability: Unchecked Low Level Call. Maybe in function: transfer(address,address,address[],uint256). PC: 0x28c. Line number: 16.

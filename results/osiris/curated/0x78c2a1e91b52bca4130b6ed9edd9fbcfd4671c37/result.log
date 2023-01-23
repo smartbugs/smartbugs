@@ -1,0 +1,39 @@
+WARNING:root:You are using solc version 0.4.26. The supported version is 0.4.21.
+INFO:root:Contract /sb/0x78c2a1e91b52bca4130b6ed9edd9fbcfd4671c37.sol:WhaleGiveaway1:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.8%
+INFO:symExec:	  Arithmetic bugs: 	 False
+INFO:symExec:	  └> Overflow bugs: 	 False
+INFO:symExec:	  └> Underflow bugs: 	 False
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/sb/0x78c2a1e91b52bca4130b6ed9edd9fbcfd4671c37.sol:WhaleGiveaway1:36:9
+Owner.transfer(this.balance)
+^
+Flow 2:
+/sb/0x78c2a1e91b52bca4130b6ed9edd9fbcfd4671c37.sol:WhaleGiveaway1:36:9
+Owner.transfer(this.balance)
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+/sb/0x78c2a1e91b52bca4130b6ed9edd9fbcfd4671c37.sol:WhaleGiveaway1:45:9
+adr.call.value(msg.value)(data)
+^
+INFO:symExec:	 --- 39.5698239803 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'
+
+

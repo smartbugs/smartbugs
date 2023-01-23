@@ -1,0 +1,40 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 20,
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "name": "SOLIDITY_CALL_WITHOUT_DATA",
+            "severity": 2
+        },
+        {
+            "column": 16,
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 7,
+            "name": "SOLIDITY_PRAGMAS_VERSION",
+            "severity": 1
+        },
+        {
+            "column": 20,
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "name": "SOLIDITY_UPGRADE_TO_050",
+            "severity": 1
+        },
+        {
+            "column": 13,
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 31,
+            "name": "SOLIDITY_UPGRADE_TO_050",
+            "severity": 1
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "smartcheck",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

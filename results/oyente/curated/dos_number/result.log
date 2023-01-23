@@ -1,0 +1,30 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/dos_number.sol:DosNumber:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 82.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/dos_number.sol:9:1: Warning: Integer Overflow.
+contract DosNumber {
+^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    numElements = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+/sb/dos_number.sol:22:19: Warning: Integer Overflow.
+            array[numElements++
+Integer Overflow occurs if:
+    numElements = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    array.length = 0
+    numbers = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/dos_number.sol:22:13: Warning: Integer Overflow.
+            array[numElements++]
+Integer Overflow occurs if:
+    numElements = 45986896800720070855560583853652814382860952201081439754268872200253066969153
+    array.length = 59555808185195935230414811276902547570640927693329663647035038398601460973568
+    numbers = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

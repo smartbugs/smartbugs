@@ -1,0 +1,185 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier, function upgrade(address)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 65
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can underflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier, function request(uint8,address,bytes4,uint256,bytes32[])"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 118
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "A call to a user-supplied address is executed.\nAn external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.\nClassification: SWC-107\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_External_Call_To_User_Supplied_Address"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier, function request(uint8,address,bytes4,uint256,bytes32[])"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 121
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Read of persistent state following external call\nThe contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.\nClassification: SWC-107\nSeverity: Medium"
+                    },
+                    "ruleId": "mythril_0_23_5_State_access_after_external_call"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier, function request(uint8,address,bytes4,uint256,bytes32[])"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 121
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Write to persistent state following external call\nThe contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.\nClassification: SWC-107\nSeverity: Medium"
+                    },
+                    "ruleId": "mythril_0_23_5_State_access_after_external_call"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier, function requests(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "An assertion violation was triggered.\nIt is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).\nClassification: SWC-110\nSeverity: Medium"
+                    },
+                    "ruleId": "mythril_0_23_5_Exception_State"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "A call to a user-supplied address is executed. An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place. Classification: SWC-107. Detection method: Search for external calls with unrestricted gas to a user-specified address."
+                            },
+                            "help": {
+                                "text": "An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place."
+                            },
+                            "id": "mythril_0_23_5_External_Call_To_User_Supplied_Address",
+                            "name": "External Call To User-Supplied Address",
+                            "properties": {
+                                "security-severity": "2.0"
+                            },
+                            "shortDescription": {
+                                "text": "A call to a user-supplied address is executed."
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "The arithmetic operator can underflow/overflow It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue. Classification: SWC-101. Detection method: For every SUB instruction, check if there is a possible state where the second operand is larger than the first one. For every ADD, MUL instruction, check if there is a possible state where the result of the operation overflows."
+                            },
+                            "help": {
+                                "text": "It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue."
+                            },
+                            "id": "mythril_0_23_5_Integer_Arithmetic_Bugs",
+                            "name": "Integer Arithmetic Bugs",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "The arithmetic operator can underflow/overflow"
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "An assertion violation was triggered. It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values). Classification: SWC-110. Detection method: Checks whether any exception states are reachable."
+                            },
+                            "help": {
+                                "text": "It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values)."
+                            },
+                            "id": "mythril_0_23_5_Exception_State",
+                            "name": "Exception State",
+                            "properties": {
+                                "security-severity": "5.5"
+                            },
+                            "shortDescription": {
+                                "text": "An assertion violation was triggered."
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "Read of/Write to persistent state following external call The contract account state is accessed after an external call to a user-defined/fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state. Classification: SWC-107. Detection method: Check whether the account state is accesses after the execution of an external call"
+                            },
+                            "help": {
+                                "text": "The contract account state is accessed after an external call to a user-defined/fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state."
+                            },
+                            "id": "mythril_0_23_5_State_access_after_external_call",
+                            "name": "State access after external call",
+                            "shortDescription": {
+                                "text": "Read of/Write to persistent state following external call"
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

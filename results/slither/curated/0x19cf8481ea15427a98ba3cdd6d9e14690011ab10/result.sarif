@@ -1,0 +1,2074 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function FundsTransfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 434,
+                                    "startLine": 431
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.FundsTransfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#431-434) sends eth to arbitrary user\n\tDangerous calls:\n\t- ! owner.send(this.balance) (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#433)\n"
+                    },
+                    "ruleId": "slither_arbitrary_send"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function sendTokenAw"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 376,
+                                    "startLine": 366
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366-376):\n\tExternal calls:\n\t- t.coinContract.transfer(receiver,amount) (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#374)\n\tState variables written after the call(s):\n\t- numTransfers (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#375)\n"
+                    },
+                    "ruleId": "slither_reentrancy_no_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function sendTokenAw"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 376,
+                                    "startLine": 366
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366-376) does not use the value returned by external calls:\n\t-t.coinContract.transfer(receiver,amount) (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#374)\n"
+                    },
+                    "ruleId": "slither_unused_return"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SafeMath, function assert"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 79,
+                                    "startLine": 75
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SafeMath.assert (function @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#75-79) shadows built-in symbol \"assert\"\n"
+                    },
+                    "ruleId": "slither_shadowing_builtin"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.totalSupply should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#18)\ndaoPOLSKAtokens.fundingEndBlock should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#383)\ndaoPOLSKAtokens.migrationAgent should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#172)\ndaoPOLSKAtokens.tokenCreationRate should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#379)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 77
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#77:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 134
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#134:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 211
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#211:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 214
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#214:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 223
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#223:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 226
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#226:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 330
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#330:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 341
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#341:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 352
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#352:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 368
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#368:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 389
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#389:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 392
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#392:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 395
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#395:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 432
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#432:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 433
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#433:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 437
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#437:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 442
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#442:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 447
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#447:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 451
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#451:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 458
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#458:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 469
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#469:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 473
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#473:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 474
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#474:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 485
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#485:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 486
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#486:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 490
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#490:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract tokenRecipient, function receiveApproval"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 9
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "tokenRecipient.receiveApproval (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#9) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract MigrationAgent, function migrateFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "MigrationAgent.migrateFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#14) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#19) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 126,
+                                    "startLine": 124
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#124-126) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function allowance"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#20) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function allowance"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 143,
+                                    "startLine": 141
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#141-143) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 112,
+                                    "startLine": 107
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#107-112) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#22) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function transferFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#23) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function transferFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 122,
+                                    "startLine": 114
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114-122) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function approve"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#24) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function approve"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 139,
+                                    "startLine": 128
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#128-139) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract StandardToken, function isToken"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 105,
+                                    "startLine": 103
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.isToken (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#103-105) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function setSupply"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 220,
+                                    "startLine": 209
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.setSupply (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#209-220) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function setotherchainstotalsupply"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 232,
+                                    "startLine": 221
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.setotherchainstotalsupply (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#221-232) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function approveAndCall"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 250,
+                                    "startLine": 242
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242-250) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function burn"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 265,
+                                    "startLine": 259
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.burn (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#259-265) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function burnFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 283,
+                                    "startLine": 275
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.burnFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#275-283) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 296,
+                                    "startLine": 285
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#285-296) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function transferFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 308,
+                                    "startLine": 298
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298-308) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 312,
+                                    "startLine": 310
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#310-312) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function allowance"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 322,
+                                    "startLine": 320
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#320-322) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 332,
+                                    "startLine": 326
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.fallback (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#326-332) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function setTokenInformation"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 347,
+                                    "startLine": 338
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.setTokenInformation (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#338-347) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function setChainsAddresses"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 358,
+                                    "startLine": 349
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.setChainsAddresses (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#349-358) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function sendTokenAw"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 376,
+                                    "startLine": 366
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366-376) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function createDaoPOLSKAtokens"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 423,
+                                    "startLine": 387
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.createDaoPOLSKAtokens (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#387-423) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract daoPOLSKAtokens, function setBonusCreationRate"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 429,
+                                    "startLine": 424
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "daoPOLSKAtokens.setBonusCreationRate (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#424-429) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 8
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol:\n\t- pragma solidity^0.4.11 (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#8): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 9
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Contract 'tokenRecipient' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#9) is not in CapWords\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 124
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of StandardToken.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#124) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 141
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of StandardToken.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#141) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 141
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of StandardToken.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#141) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 107
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of StandardToken.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#107) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 107
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of StandardToken.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#107) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 114
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_from' of StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 114
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 114
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 128
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of StandardToken.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#128) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 128
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of StandardToken.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#128) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 503,
+                                    "startLine": 151
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Contract 'daoPOLSKAtokens' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#151-503) is not in CapWords\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 184,
+                                    "startLine": 180
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Struct 'daoPOLSKAtokens.sendTokenAway' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#180-184) is not in CapWords\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 195
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Event 'daoPOLSKAtokens.receivedEther' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#195) is not in CapWords\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 242
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 242
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 242
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_extraData' of daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 259
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.burn (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#259) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 275
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_from' of daoPOLSKAtokens.burnFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#275) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 275
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.burnFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#275) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 285
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of daoPOLSKAtokens.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#285) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 285
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#285) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 298
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_from' of daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 298
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 298
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 310
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of daoPOLSKAtokens.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#310) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 314
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of daoPOLSKAtokens.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#314) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 314
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#314) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 320
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of daoPOLSKAtokens.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#320) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 320
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_spender' of daoPOLSKAtokens.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#320) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 338
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_name' of daoPOLSKAtokens.setTokenInformation (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#338) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 338
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_symbol' of daoPOLSKAtokens.setTokenInformation (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#338) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 362,
+                                    "startLine": 360
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'daoPOLSKAtokens.DAOPolskaTokenICOregulations' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#360-362) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 366
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter 'StandardTokenAddress' of daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 434,
+                                    "startLine": 431
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'daoPOLSKAtokens.FundsTransfer' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#431-434) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "endLine": 440,
+                                    "startLine": 436
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'daoPOLSKAtokens.PartialFundsTransfer' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#436-440) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 436
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter 'SubX' of daoPOLSKAtokens.PartialFundsTransfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#436) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 467
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of daoPOLSKAtokens.migrate (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#467) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 167
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'daoPOLSKAtokens.Chain1' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#167) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 168
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'daoPOLSKAtokens.Chain2' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#168) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 169
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'daoPOLSKAtokens.Chain3' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#169) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 170
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'daoPOLSKAtokens.Chain4' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#170) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 381
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'daoPOLSKAtokens.CreationRate' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#381) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 382
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'daoPOLSKAtokens.oneweek' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#382) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol"
+                                },
+                                "region": {
+                                    "startLine": 98
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "StandardToken.balancesRAW (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#98) is never used in StandardToken\n"
+                    },
+                    "ruleId": "slither_unused_state"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_arbitrary_send",
+                            "name": "arbitrary-send"
+                        },
+                        {
+                            "id": "slither_unused_state",
+                            "name": "unused-state"
+                        },
+                        {
+                            "id": "slither_unused_return",
+                            "name": "unused-return"
+                        },
+                        {
+                            "id": "slither_reentrancy_no_eth",
+                            "name": "reentrancy-no-eth"
+                        },
+                        {
+                            "id": "slither_shadowing_builtin",
+                            "name": "shadowing-builtin"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

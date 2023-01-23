@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract GuessTheRandomNumberChallenge, function guess(uint8)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/guess_the_random_number.sol"
+                                },
+                                "region": {
+                                    "startLine": 26
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/nveloso/conkas",
+                    "name": "Conkas",
+                    "rules": [
+                        {
+                            "id": "conkas_Reentrancy",
+                            "name": "Reentrancy"
+                        }
+                    ],
+                    "version": "#6aee098"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

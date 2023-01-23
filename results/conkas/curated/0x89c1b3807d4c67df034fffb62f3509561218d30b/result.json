@@ -1,0 +1,84 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 2621,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "withdraw()",
+            "line": 94,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3101,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver(uint64,bytes32,uint64,bytes32)",
+            "line": 162,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 939,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request(uint8,address,bytes4,uint256,bytes32[])",
+            "line": 100,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 5867,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request(uint8,address,bytes4,uint256,bytes32[])",
+            "line": 129,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 3101,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver(uint64,bytes32,uint64,bytes32)",
+            "line": 162,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 3101,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver(uint64,bytes32,uint64,bytes32)",
+            "line": 162,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3435,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver(uint64,bytes32,uint64,bytes32)",
+            "line": 175,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 6876,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "requests(uint256)",
+            "line": 41,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 6557,
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request(uint8,address,bytes4,uint256,bytes32[])",
+            "line": 137,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

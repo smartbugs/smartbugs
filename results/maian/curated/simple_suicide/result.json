@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "SimpleSuicide",
+            "exploit": [
+                "a56a3b5a"
+            ],
+            "filename": "dataset/access_control/simple_suicide.sol",
+            "name": "Destructible (verified)"
+        },
+        {
+            "contract": "SimpleSuicide",
+            "exploit": [
+                "a56a3b5a"
+            ],
+            "filename": "dataset/access_control/simple_suicide.sol",
+            "name": "Ether leak (verified)"
+        },
+        {
+            "contract": "SimpleSuicide",
+            "filename": "dataset/access_control/simple_suicide.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,171 @@
+{
+    "errors": [
+        "EXIT_CODE_17"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "function": "tokens_buy",
+            "impact": "Low",
+            "line": 44,
+            "message": "Delta.tokens_buy.tokens_buy (local variable @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#44) shadows:\n\t- Delta.tokens_buy (function @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#39-57)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 24,
+            "message": "Delta.c should be constant (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#24)\nDelta.owner should be constant (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#25)\nDelta.owner2 should be constant (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#26)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 48,
+            "line_end": 50,
+            "message": "Deprecated standard detected @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#48-50:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 84,
+            "message": "Deprecated standard detected @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#84:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 32,
+            "line_end": 34,
+            "message": "Delta.fallback (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#32-34) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 60,
+            "line_end": 67,
+            "message": "Delta.withdraw (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#60-67) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "function": "change_token_price",
+            "impact": "Informational",
+            "line": 70,
+            "line_end": 73,
+            "message": "Delta.change_token_price (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#70-73) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "function": "change_active",
+            "impact": "Informational",
+            "line": 76,
+            "line_end": 79,
+            "message": "Delta.change_active (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#76-79) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:\n\t- pragma solidity^0.4.23 (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "function": "tokens_buy",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 57,
+            "message": "Low level call in Delta.tokens_buy (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#39-57):\n\t-! c.call(bytes4(sha3()(transferFrom(address,address,uint256))),owner,msg.sender,tokens_buy) 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#48-50\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 57,
+            "message": "Function 'Delta.tokens_buy' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#39-57) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 60,
+            "message": "Parameter '_amount' of Delta.withdraw (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#60) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 70,
+            "line_end": 73,
+            "message": "Function 'Delta.change_token_price' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#70-73) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 70,
+            "message": "Parameter '_token_price' of Delta.change_token_price (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#70) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 76,
+            "line_end": 79,
+            "message": "Function 'Delta.change_active' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#76-79) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_active' of Delta.change_active (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "impact": "Informational",
+            "line": 29,
+            "message": "Variable 'Delta.token_price' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#29) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

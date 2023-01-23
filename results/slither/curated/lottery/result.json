@@ -1,0 +1,126 @@
+{
+    "errors": [
+        "EXIT_CODE_12"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Lottery",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "function": "makeBet",
+            "impact": "Medium",
+            "line": 34,
+            "line_end": 51,
+            "message": "Lottery.makeBet (lottery.sol#34-51) uses a dangerous strict equality:\n\t- won = (block.number % 2) == 0\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 30,
+            "message": "Deprecated standard detected @ lottery.sol#30:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 48,
+            "message": "Deprecated standard detected @ lottery.sol#48:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 55,
+            "message": "Deprecated standard detected @ lottery.sol#55:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 64,
+            "message": "Deprecated standard detected @ lottery.sol#64:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 66,
+            "message": "Deprecated standard detected @ lottery.sol#66:\n\t- Usage of \"suicide()\" should be replaced with \"selfdestruct()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lottery",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 29,
+            "line_end": 31,
+            "message": "Lottery.fallback (lottery.sol#29-31) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lottery",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "function": "makeBet",
+            "impact": "Informational",
+            "line": 34,
+            "line_end": 51,
+            "message": "Lottery.makeBet (lottery.sol#34-51) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lottery",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "function": "getBets",
+            "impact": "Informational",
+            "line": 54,
+            "line_end": 60,
+            "message": "Lottery.getBets (lottery.sol#54-60) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lottery",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "function": "destroy",
+            "impact": "Informational",
+            "line": 63,
+            "line_end": 67,
+            "message": "Lottery.destroy (lottery.sol#63-67) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 9,
+            "message": "Detected issues with version pragma in lottery.sol:\n\t- pragma solidity^0.4.0 (lottery.sol#9): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/lottery.sol",
+            "impact": "Informational",
+            "line": 24,
+            "line_end": 26,
+            "message": "Function 'Lottery.Lottery' (lottery.sol#24-26) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

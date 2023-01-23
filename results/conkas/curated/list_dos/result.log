@@ -1,0 +1,53 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/list_dos.sol:Government...
+Vulnerability: Integer Overflow. Maybe in function: getCreditorAmounts(). PC: 0xcb4. Line number: 122.
+If a = 32
+and b = 18092513943330655534932966407607485602073435104006338131165247501236426506239
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x5bc. Line number: 40.
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0xb3c. Line number: 82.
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x4d4. Line number: 37.
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x892. Line number: 70.
+Vulnerability: Integer Overflow. Maybe in function: getCreditorAddresses(). PC: 0xd6c. Line number: 118.
+If a = 32
+and b = 61514547407324228818772085785865451047049679353621549645961841504203850121212
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x54d. Line number: 39.
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x9f9. Line number: 75.
+Vulnerability: Integer Overflow. Maybe in function: getCreditorAddresses(). PC: 0x394. Line number: 117.
+If a = 32
+and b = 61514547407324228818772085785865451047049679353621549645961841504203850121215
+Vulnerability: Time Manipulation. Maybe in function: _fallthrough. PC: 0x6ce. Line number: 56.
+Vulnerability: Integer Overflow. Maybe in function: creditorAddresses(uint256). PC: 0xd1b. Line number: 16.
+If a = 87903029871075914254377627908054574944891091886930582284385770809450030037083
+and b = 27889059366240281169193357100633396668425799129108875348844347665276421932928
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x4d4. Line number: 37.
+Vulnerability: Integer Overflow. Maybe in function: totalDebt(). PC: 0xe38. Line number: 95.
+If a = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+and b = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+Vulnerability: Transaction Ordering Dependence. Maybe in function: _fallthrough. PC: 0x54d. Line number: 39.
+Vulnerability: Integer Overflow. Maybe in function: totalPayedOut(). PC: 0xc91. Line number: 101.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Time Manipulation. Maybe in function: _fallthrough. PC: 0x5e9. Line number: 43.
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x892. Line number: 70.
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x54d. Line number: 39.
+Vulnerability: Integer Underflow. Maybe in function: _fallthrough. PC: 0x4e5. Line number: 39.
+If a = 0
+and b = 1
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0xb3c. Line number: 82.
+Vulnerability: Integer Overflow. Maybe in function: getCreditorAmounts(). PC: 0x2bb. Line number: 121.
+If a = 32
+and b = 61514547407324228818772085785865451047049679353621549645961841504203850121215
+Vulnerability: Integer Overflow. Maybe in function: creditorAmounts(uint256). PC: 0xde7. Line number: 17.
+If a = 62514009886607029107290561805838585334079798074568712924583230797734656856475
+and b = 58687592110208178396428613033398443198013822561395867984925060530073507991136
+Vulnerability: Integer Overflow. Maybe in function: _fallthrough. PC: 0x49e. Line number: 35.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129638144
+and b = 43200
+Vulnerability: Time Manipulation. Maybe in function: _fallthrough. PC: 0x4a4. Line number: 35.
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x7d1. Line number: 62.
+Vulnerability: Integer Overflow. Maybe in function: _fallthrough. PC: 0xee7. Line number: 10.
+If a = 62514009886607029107290561805838585334079798074568712924583230797734656856475
+and b = 53278079350709166316280423202849322519190186591071851114874353210178472783461
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x5bc. Line number: 40.
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x7d1. Line number: 62.

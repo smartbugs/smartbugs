@@ -1,0 +1,379 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Delta, function tokens_buy"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 44
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Delta.tokens_buy.tokens_buy (local variable @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#44) shadows:\n\t- Delta.tokens_buy (function @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#39-57)\n"
+                    },
+                    "ruleId": "slither_shadowing_local"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Delta.c should be constant (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#24)\nDelta.owner should be constant (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#25)\nDelta.owner2 should be constant (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#26)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 50,
+                                    "startLine": 48
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#48-50:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 84
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#84:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Delta, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 34,
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Delta.fallback (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#32-34) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Delta, function withdraw"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 67,
+                                    "startLine": 60
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Delta.withdraw (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#60-67) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Delta, function change_token_price"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 73,
+                                    "startLine": 70
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Delta.change_token_price (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#70-73) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Delta, function change_active"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 79,
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Delta.change_active (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#76-79) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:\n\t- pragma solidity^0.4.23 (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#7): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Delta, function tokens_buy"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 57,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in Delta.tokens_buy (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#39-57):\n\t-! c.call(bytes4(sha3()(transferFrom(address,address,uint256))),owner,msg.sender,tokens_buy) 0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#48-50\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 57,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Delta.tokens_buy' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#39-57) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 60
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_amount' of Delta.withdraw (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#60) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 73,
+                                    "startLine": 70
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Delta.change_token_price' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#70-73) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 70
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_token_price' of Delta.change_token_price (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#70) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "endLine": 79,
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Delta.change_active' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#76-79) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_active' of Delta.change_active (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#76) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol"
+                                },
+                                "region": {
+                                    "startLine": 29
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'Delta.token_price' (0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol#29) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        },
+                        {
+                            "id": "slither_shadowing_local",
+                            "name": "shadowing-local"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

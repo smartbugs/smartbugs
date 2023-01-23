@@ -1,0 +1,53 @@
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/lucky_doubler.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  4557  : 0x60806040526004361061008e5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/LuckyDoubler.address [0m
+[94m[ ] Check if contract is SUICIDAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061008e576000357c0100000000000000...
+[ ] Bytecode length    : 9114
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[92m[-] The code does not contain SUICIDE instructions, hence it is not vulnerable[0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/lucky_doubler.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m...[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306  [0m..... tx[0] mined [92m Sent! [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  4557  : 0x60806040526004361061008e5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/LuckyDoubler.address [0m
+[1m[ ] The contract balance: 44  [0m[92m Positive balance[0m
+[94m[ ] Check if contract is PRODIGAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061008e576000357c0100000000000000...
+[ ] Bytecode length    : 9114
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0m111111111
+[ ][1m Search with call depth: 2   : [0m112222222221222222222122222222212222222221222222222122222222212222222221
+[ ][1m Search with call depth: 3   : [0m1122233333333323333333332333333333223333333332333333333212222333333333233333333323333333332333333333233333333321222222333333333223333333332122222233333333322333333333212222222333333333233333333321222222223333333332122
+[92m[+] No prodigal vulnerability found [0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/lucky_doubler.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  4557  : 0x60806040526004361061008e5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/LuckyDoubler.address [0m
+[94m[ ] Check if contract is GREEDY[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061008e576000357c0100000000000000...
+[ ] Bytecode length    : 9114
+[ ] Debug              : False
+[91m[-][0m [1mContract can receive Ether[0m
+
+[92m[-] No lock vulnerability found because the contract cannot receive Ether [0m

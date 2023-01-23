@@ -1,0 +1,47 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Bank",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Bank",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "Bank",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "ModifierEntrancy",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "ModifierEntrancy",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "attack",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "attack",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "ModifierEntrancy",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "function": "airDrop",
+            "impact": "Informational",
+            "line": 15,
+            "line_end": 17,
+            "message": "ModifierEntrancy.airDrop (modifier_reentrancy.sol#15-17) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "attack",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "function": "call",
+            "impact": "Informational",
+            "line": 46,
+            "line_end": 48,
+            "message": "attack.call (modifier_reentrancy.sol#46-48) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 49,
+            "message": "Contract 'attack' (modifier_reentrancy.sol#37-49) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "ModifierEntrancy.name (modifier_reentrancy.sol#11) is never used in ModifierEntrancy\n",
+            "name": "unused-state"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

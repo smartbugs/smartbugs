@@ -1,0 +1,116 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 1673,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectPercentOfFees(uint256)",
+            "line": 103,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 2014,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectFeesInEther(uint256)",
+            "line": 85,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 2237,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "participantDetails(uint256)",
+            "line": 159,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 2525,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectFeesInEther(uint256)",
+            "line": 90,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 3420,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "_fallthrough",
+            "line": 74,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1673,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectPercentOfFees(uint256)",
+            "line": 103,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 2014,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectFeesInEther(uint256)",
+            "line": 85,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 3420,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "_fallthrough",
+            "line": 74,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 1673,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectPercentOfFees(uint256)",
+            "line": 103,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 2644,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectFeesInEther(uint256)",
+            "line": 95,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 2805,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "numberOfParticipantsWaitingForPayout()",
+            "line": 153,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 2014,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "collectFeesInEther(uint256)",
+            "line": 85,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 1741,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "function": "nextPayoutWhenPyramidBalanceTotalsApproximately()",
+            "line": 141,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

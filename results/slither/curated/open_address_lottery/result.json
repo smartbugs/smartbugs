@@ -1,0 +1,98 @@
+{
+    "errors": [
+        "EXIT_CODE_9"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "OpenAddressLottery",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "function": "forceReseed",
+            "impact": "High",
+            "line": 91,
+            "message": "s in OpenAddressLottery.forceReseed (open_address_lottery.sol#91) is a storage variable never initialiazed\n",
+            "name": "uninitialized-storage"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "impact": "Informational",
+            "line": 37,
+            "message": "OpenAddressLottery.LuckyNumber should be constant (open_address_lottery.sol#37)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "impact": "Informational",
+            "line": 93,
+            "message": "Deprecated standard detected @ open_address_lottery.sol#93:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "OpenAddressLottery",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "function": "kill",
+            "impact": "Informational",
+            "line": 82,
+            "line_end": 86,
+            "message": "OpenAddressLottery.kill (open_address_lottery.sol#82-86) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "OpenAddressLottery",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "function": "forceReseed",
+            "impact": "Informational",
+            "line": 88,
+            "line_end": 98,
+            "message": "OpenAddressLottery.forceReseed (open_address_lottery.sol#88-98) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "OpenAddressLottery",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 100,
+            "line_end": 103,
+            "message": "OpenAddressLottery.fallback (open_address_lottery.sol#100-103) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "impact": "Informational",
+            "line": 6,
+            "message": "Detected issues with version pragma in open_address_lottery.sol:\n\t- pragma solidity^0.4.19 (open_address_lottery.sol#6): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "impact": "Informational",
+            "line": 41,
+            "line_end": 44,
+            "message": "Function 'OpenAddressLottery.OpenAddressLottery' (open_address_lottery.sol#41-44) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/other/open_address_lottery.sol",
+            "impact": "Informational",
+            "line": 37,
+            "message": "Variable 'OpenAddressLottery.LuckyNumber' (open_address_lottery.sol#37) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

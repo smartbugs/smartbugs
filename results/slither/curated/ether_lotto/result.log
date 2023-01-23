@@ -1,0 +1,52 @@
+INFO:Slither:Compilation warnings/errors on /sb/ether_lotto.sol:
+/sb/ether_lotto.sol:27:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function EtherLotto() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/ether_lotto.sol:43:9: Warning: Use of the "var" keyword is deprecated.
+        var random = uint(sha3(block.timestamp)) % 2;
+        ^--------^
+/sb/ether_lotto.sol:43:27: Warning: "sha3" has been deprecated in favour of "keccak256"
+        var random = uint(sha3(block.timestamp)) % 2;
+                          ^-------------------^
+/sb/ether_lotto.sol:43:27: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        var random = uint(sha3(block.timestamp)) % 2;
+                          ^-------------------^
+/sb/ether_lotto.sol:43:27: Warning: The provided argument of type uint256 is not implicitly convertible to expected type bytes memory.
+        var random = uint(sha3(block.timestamp)) % 2;
+                          ^-------------------^
+/sb/ether_lotto.sol:27:5: Warning: No visibility specified. Defaulting to "public". 
+    function EtherLotto() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/ether_lotto.sol:33:5: Warning: No visibility specified. Defaulting to "public". 
+    function play() payable {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:Detectors:[91m
+EtherLotto.play (/sb/ether_lotto.sol#33-57) sends eth to arbitrary user
+	Dangerous calls:
+	- bank.transfer(FEE_AMOUNT) (/sb/ether_lotto.sol#49)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[93m
+EtherLotto.play (/sb/ether_lotto.sol#33-57) uses a dangerous strict equality:
+	- random == 0
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#dangerous-strict-equalities[0m
+INFO:Detectors:[92m
+EtherLotto.play (/sb/ether_lotto.sol#33-57) uses timestamp for comparisons
+	Dangerous comparisons:
+	- random == 0 (/sb/ether_lotto.sol#46-56)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#block-timestamp[0m
+INFO:Detectors:[92m
+Deprecated standard detected @ /sb/ether_lotto.sol#43:
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#deprecated-standards[0m
+INFO:Detectors:[92m
+EtherLotto.play (/sb/ether_lotto.sol#33-57) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/ether_lotto.sol:
+	- pragma solidity^0.4.15 (/sb/ether_lotto.sol#8): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Function 'EtherLotto.EtherLotto' (/sb/ether_lotto.sol#27-29) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/ether_lotto.sol analyzed (1 contracts), 7 result(s) found

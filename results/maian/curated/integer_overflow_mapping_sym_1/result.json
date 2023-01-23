@@ -1,0 +1,27 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "IntegerOverflowMappingSym1",
+            "filename": "dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "IntegerOverflowMappingSym1",
+            "filename": "dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "IntegerOverflowMappingSym1",
+            "filename": "dataset/arithmetic/integer_overflow_mapping_sym_1.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

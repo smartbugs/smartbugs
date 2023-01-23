@@ -1,0 +1,517 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 38
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.owner (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#38) shadows:\n\t- Ownable.owner (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#12)\n"
+                    },
+                    "ruleId": "slither_shadowing_state"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenBank, function Deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 65,
+                                    "startLine": 61
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Contract locking ether found in 0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol:\n\tContract TokenBank has payable functions:\n\t - fallback (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#61-65)\n\t - Deposit (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#67-74)\n\t - WithdrawToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#87-101)\n\tBut does not have a function to withdraw the ether\n"
+                    },
+                    "ruleId": "slither_locked_ether"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 44
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#44:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Ownable, function changeOwner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 19,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Ownable.changeOwner (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#14-19) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Ownable, function confirmOwner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 28,
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Ownable.confirmOwner (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#21-28) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenBank, function initTokenBank"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 59,
+                                    "startLine": 54
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TokenBank.initTokenBank (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#54-59) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenBank, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 65,
+                                    "startLine": 61
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TokenBank.fallback (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#61-65) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenBank, function WitdrawTokenToHolder"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 85,
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TokenBank.WitdrawTokenToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#76-85) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenBank, function WithdrawToHolder"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 101,
+                                    "startLine": 87
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TokenBank.WithdrawToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#87-101) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenBank, function Bal"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 103
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TokenBank.Bal (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#103) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in 0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol:\n\t- pragma solidity^0.4.18 (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#7): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function WithdrawToken"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 45,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in Token.WithdrawToken (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#39-45):\n\t-token.call(bytes4(sha3()(transfer(address,uint256))),to,amount) 0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#44\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 45,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Token.WithdrawToken' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#39-45) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 74,
+                                    "startLine": 67
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'TokenBank.Deposit' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#67-74) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 85,
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'TokenBank.WitdrawTokenToHolder' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#76-85) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of TokenBank.WitdrawTokenToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#76) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_token' of TokenBank.WitdrawTokenToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#76) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_amount' of TokenBank.WitdrawTokenToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#76) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "endLine": 101,
+                                    "startLine": 87
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'TokenBank.WithdrawToHolder' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#87-101) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 87
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_addr' of TokenBank.WithdrawToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#87) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 87
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_wei' of TokenBank.WithdrawToHolder (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#87) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 103
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'TokenBank.Bal' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#103) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 50
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'TokenBank.MinDeposit' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#50) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol"
+                                },
+                                "region": {
+                                    "startLine": 51
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'TokenBank.Holders' (0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol#51) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_locked_ether",
+                            "name": "locked-ether"
+                        },
+                        {
+                            "id": "slither_shadowing_state",
+                            "name": "shadowing-state"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

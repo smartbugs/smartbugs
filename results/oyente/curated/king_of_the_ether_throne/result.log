@@ -1,0 +1,75 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/king_of_the_ether_throne.sol:
+/sb/king_of_the_ether_throne.sol:73:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function KingOfTheEtherThrone() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/king_of_the_ether_throne.sol:110:13: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+            msg.sender.send(valuePaid);
+            ^------------------------^
+/sb/king_of_the_ether_throne.sol:118:13: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+            msg.sender.send(excessPaid);
+            ^-------------------------^
+/sb/king_of_the_ether_throne.sol:132:13: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+            currentMonarch.etherAddress.send(compensation);
+            ^--------------------------------------------^
+/sb/king_of_the_ether_throne.sol:168:9: Warning: Invoking events without "emit" prefix is deprecated.
+        ThroneClaimed(currentMonarch.etherAddress, currentMonarch.name, currentClaimPrice);
+        ^--------------------------------------------------------------------------------^
+/sb/king_of_the_ether_throne.sol:174:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        wizardAddress.send(amount);
+        ^------------------------^
+/sb/king_of_the_ether_throne.sol:73:5: Warning: No visibility specified. Defaulting to "public". 
+    function KingOfTheEtherThrone() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/king_of_the_ether_throne.sol:84:5: Warning: No visibility specified. Defaulting to "public". 
+    function numberOfMonarchs() constant returns (uint n) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/king_of_the_ether_throne.sol:98:5: Warning: No visibility specified. Defaulting to "public". 
+    function() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/king_of_the_ether_throne.sol:103:5: Warning: No visibility specified. Defaulting to "public". 
+    function claimThrone(string name) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/king_of_the_ether_throne.sol:105:26: Warning: "msg.value" used in non-payable function. Do you want to add the "payable" modifier to this function?
+        uint valuePaid = msg.value;
+                         ^-------^
+/sb/king_of_the_ether_throne.sol:172:5: Warning: No visibility specified. Defaulting to "public". 
+    function sweepCommission(uint amount) onlywizard {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/king_of_the_ether_throne.sol:178:5: Warning: No visibility specified. Defaulting to "public". 
+    function transferOwnership(address newOwner) onlywizard {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 34.6%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/king_of_the_ether_throne.sol:69:5: Warning: Integer Underflow.
+    Monarch[] public pastMonarchs
+/sb/king_of_the_ether_throne.sol:66:5: Warning: Integer Underflow.
+    Monarch public currentMonarch
+INFO:symExec:/sb/king_of_the_ether_throne.sol:69:5: Warning: Integer Overflow.
+    Monarch[] public pastMonarchs
+/sb/king_of_the_ether_throne.sol:103:5: Warning: Integer Overflow.
+    function claimThrone(string name) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/king_of_the_ether_throne.sol:118:13: Warning: Callstack Depth Attack Vulnerability.
+            msg.sender.send(excessPaid)
+/sb/king_of_the_ether_throne.sol:132:13: Warning: Callstack Depth Attack Vulnerability.
+            currentMonarch.etherAddress.send(compensation)
+INFO:symExec:Flow1
+/sb/king_of_the_ether_throne.sol:110:13: Warning: Transaction-Ordering Dependency.
+            msg.sender.send(valuePaid)
+Flow2
+/sb/king_of_the_ether_throne.sol:174:9: Warning: Transaction-Ordering Dependency.
+        wizardAddress.send(amount)
+INFO:symExec:	====== Analysis Completed ======

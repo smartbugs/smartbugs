@@ -1,0 +1,28 @@
+{
+    "errors": [
+        "Unknown operation"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Wallet",
+            "exploit": [
+                "3e326048",
+                "4ddaf8f2 0000000000000000000000005a1cd1d07d9f59898c434ffc90a74ecd937feb12"
+            ],
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "name": "Ether leak (verified)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

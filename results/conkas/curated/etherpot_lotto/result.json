@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 2200,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getBuyers(uint256,address)",
+            "line": 120,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1268,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getBuyers(uint256,address)",
+            "line": 119,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 355,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "_fallthrough",
+            "line": 141,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 3157,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getDecisionBlockNumber(uint256,uint256)",
+            "line": 73,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 355,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "_fallthrough",
+            "line": 141,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

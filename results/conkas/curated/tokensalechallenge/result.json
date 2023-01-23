@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 693,
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "function": "sell(uint256)",
+            "line": 33,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 472,
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "function": "buy(uint256)",
+            "line": 25,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 672,
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "function": "sell(uint256)",
+            "line": 33,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 390,
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "function": "buy(uint256)",
+            "line": 23,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

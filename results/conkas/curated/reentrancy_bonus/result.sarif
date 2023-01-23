@@ -1,0 +1,94 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Reentrancy_bonus, function 0x7d1c54f8"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_bonus.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Reentrancy_bonus, function 0x7d1c54f8"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_bonus.sol"
+                                },
+                                "region": {
+                                    "startLine": 26
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Reentrancy_bonus, function 0x7d1c54f8"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_bonus.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Transaction Ordering Dependence"
+                    },
+                    "ruleId": "conkas_Transaction_Ordering_Dependence"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/nveloso/conkas",
+                    "name": "Conkas",
+                    "rules": [
+                        {
+                            "id": "conkas_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "conkas_Reentrancy",
+                            "name": "Reentrancy"
+                        },
+                        {
+                            "id": "conkas_Transaction_Ordering_Dependence",
+                            "name": "Transaction Ordering Dependence"
+                        }
+                    ],
+                    "version": "#6aee098"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

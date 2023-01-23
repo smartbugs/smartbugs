@@ -1,0 +1,62 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_TIMEOUT"
+    ],
+    "findings": [
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "line": 24,
+            "message": "Classification: SWC-110",
+            "name": "Assertion Failure",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "line": 32,
+            "message": "Classification: SWC-101",
+            "name": "Integer Overflow",
+            "severity": "High"
+        },
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "line": 31,
+            "message": "Classification: SWC-105",
+            "name": "Leaking Ether",
+            "severity": "High"
+        },
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "line": 25,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "line": 24,
+            "message": "Classification: SWC-101",
+            "name": "Integer Overflow",
+            "severity": "High"
+        },
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "line": 32,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

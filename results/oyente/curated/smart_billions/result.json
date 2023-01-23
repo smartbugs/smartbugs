@@ -1,0 +1,31 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 47,
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "line": 339,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 13,
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "line": 364,
+            "name": "Integer Underflow"
+        },
+        {
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

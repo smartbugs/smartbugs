@@ -1,0 +1,36 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 861,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "deposit()",
+            "line": 24,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 374,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "withdraw(uint256)",
+            "line": 30,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 705,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "0x4ddaf8f2",
+            "line": 38,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

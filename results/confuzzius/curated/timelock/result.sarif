@@ -1,0 +1,115 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-120\nSeverity: Low"
+                    },
+                    "ruleId": "confuzzius_Block_Dependency"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "confuzzius_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startLine": 16
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-114\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Transaction_Order_Dependency"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-120\nSeverity: Low"
+                    },
+                    "ruleId": "confuzzius_Block_Dependency"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Transaction_Order_Dependency",
+                            "name": "Transaction Order Dependency"
+                        },
+                        {
+                            "id": "confuzzius_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "confuzzius_Block_Dependency",
+                            "name": "Block Dependency"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

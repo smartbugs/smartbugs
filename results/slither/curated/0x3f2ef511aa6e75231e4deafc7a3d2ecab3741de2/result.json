@@ -1,0 +1,113 @@
+{
+    "errors": [
+        "EXIT_CODE_10"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "function": "redeem",
+            "impact": "High",
+            "line": 21,
+            "line_end": 29,
+            "message": "WhaleGiveaway2.redeem (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#21-29) sends eth to arbitrary user\n\tDangerous calls:\n\t- msg.sender.transfer(this.balance) (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#27)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 19,
+            "message": "WhaleGiveaway2.fallback (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#14-19) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "function": "redeem",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 29,
+            "message": "WhaleGiveaway2.redeem (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#21-29) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 31,
+            "line_end": 37,
+            "message": "WhaleGiveaway2.withdraw (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#31-37) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "function": "Command",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 46,
+            "message": "WhaleGiveaway2.Command (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#39-46) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol:\n\t- pragma solidity^0.4.19 (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "function": "Command",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 46,
+            "message": "Low level call in WhaleGiveaway2.Command (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#39-46):\n\t-adr.call.value(msg.value)(data) 0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#45\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 46,
+            "message": "Function 'WhaleGiveaway2.Command' (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#39-46) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Variable 'WhaleGiveaway2.Owner' (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#11) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "impact": "Informational",
+            "line": 12,
+            "message": "Constant 'WhaleGiveaway2.minEligibility' (0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol#12) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

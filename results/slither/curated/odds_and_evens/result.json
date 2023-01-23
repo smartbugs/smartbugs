@@ -1,0 +1,80 @@
+{
+    "errors": [
+        "EXIT_CODE_7"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "function": "andTheWinnerIs",
+            "impact": "High",
+            "line": 34,
+            "line_end": 46,
+            "message": "OddsAndEvens.andTheWinnerIs (odds_and_evens.sol#34-46) sends eth to arbitrary user\n\tDangerous calls:\n\t- res = players[0].addr.send(1800000000000000000) (odds_and_evens.sol#38)\n\t- res = players[1].addr.send(1800000000000000000) (odds_and_evens.sol#41)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "impact": "Informational",
+            "line": 26,
+            "message": "Deprecated standard detected @ odds_and_evens.sol#26:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "impact": "Informational",
+            "line": 49,
+            "message": "Deprecated standard detected @ odds_and_evens.sol#49:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "function": "play",
+            "impact": "Informational",
+            "line": 25,
+            "line_end": 32,
+            "message": "OddsAndEvens.play (odds_and_evens.sol#25-32) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "function": "getProfit",
+            "impact": "Informational",
+            "line": 48,
+            "line_end": 51,
+            "message": "OddsAndEvens.getProfit (odds_and_evens.sol#48-51) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in odds_and_evens.sol:\n\t- pragma solidity^0.4.2 (odds_and_evens.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 23,
+            "message": "Function 'OddsAndEvens.OddsAndEvens' (odds_and_evens.sol#21-23) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

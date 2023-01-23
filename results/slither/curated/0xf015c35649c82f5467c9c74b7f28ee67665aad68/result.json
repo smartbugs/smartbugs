@@ -1,0 +1,202 @@
+{
+    "errors": [
+        "EXIT_CODE_21"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "MY_BANK",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "function": "Collect",
+            "impact": "High",
+            "line": 21,
+            "line_end": 35,
+            "message": "Reentrancy in MY_BANK.Collect (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#21-35):\n\tExternal calls:\n\t- msg.sender.call.value(_am)() (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#29-33)\n\tState variables written after the call(s):\n\t- Acc (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#31)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "MY_BANK.MinSum should be constant (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#54)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "MY_BANK",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "function": "Collect",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 35,
+            "message": "MY_BANK.Collect (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#21-35) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MY_BANK",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 42,
+            "message": "MY_BANK.fallback (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#37-42) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "function": "AddMessage",
+            "impact": "Informational",
+            "line": 76,
+            "line_end": 84,
+            "message": "Log.AddMessage (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#76-84) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MY_BANK",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "function": "Collect",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 35,
+            "message": "Low level call in MY_BANK.Collect (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#21-35):\n\t-msg.sender.call.value(_am)() 0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#29-33\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 9,
+            "line_end": 59,
+            "message": "Contract 'MY_BANK' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#9-59) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 19,
+            "message": "Function 'MY_BANK.Put' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#11-19) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Parameter '_unlockTime' of MY_BANK.Put (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#11) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 35,
+            "message": "Function 'MY_BANK.Collect' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#21-35) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 21,
+            "message": "Parameter '_am' of MY_BANK.Collect (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#21) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 56,
+            "line_end": 58,
+            "message": "Function 'MY_BANK.MY_BANK' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#56-58) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 50,
+            "message": "Variable 'MY_BANK.Acc' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#50) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 52,
+            "message": "Variable 'MY_BANK.LogFile' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#52) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "Variable 'MY_BANK.MinSum' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#54) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 76,
+            "line_end": 84,
+            "message": "Function 'Log.AddMessage' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#76-84) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_adr' of Log.AddMessage (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_val' of Log.AddMessage (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_data' of Log.AddMessage (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 72,
+            "message": "Variable 'Log.History' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#72) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "impact": "Informational",
+            "line": 74,
+            "message": "Variable 'Log.LastMsg' (0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol#74) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

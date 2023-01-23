@@ -1,0 +1,54 @@
+/sb/short_address_example.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 26
+column: 5
+content: functiongetBalance(addressaddr)constantreturns(uint){returnbalances[addr];}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 17
+content: ^
+
+ruleId: SOLIDITY_TX_ORIGIN
+patternId: 12e802
+severity: 2
+line: 15
+column: 18
+content: tx.origin
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 14
+column: 5
+content: functionMyToken(){balances[tx.origin]=10000;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 18
+column: 5
+content: functionsendCoin(addressto,uintamount)returns(boolsufficient){if(balances[msg.sender]<amount)returnfalse;balances[msg.sender]-=amount;balances[to]+=amount;Transfer(msg.sender,to,amount);returntrue;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 26
+column: 5
+content: functiongetBalance(addressaddr)constantreturns(uint){returnbalances[addr];}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 10
+column: 5
+content: mapping(address=>uint)balances;
+
+SOLIDITY_VISIBILITY :4
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :1
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_TX_ORIGIN :1

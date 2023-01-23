@@ -1,0 +1,9 @@
+INFO:Detectors:[92m
+TimedCrowdsale.isSaleFinished (/sb/timed_crowdsale.sol#11-14) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= 1546300800 (/sb/timed_crowdsale.sol#13)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#block-timestamp[0m
+INFO:Detectors:[92m
+TimedCrowdsale.isSaleFinished (/sb/timed_crowdsale.sol#11-14) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Slither:/sb/timed_crowdsale.sol analyzed (1 contracts), 2 result(s) found

@@ -1,0 +1,43 @@
+INFO:Detectors:[91m
+Reentrancy in ACCURAL_DEPOSIT.Collect (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#48-61):
+	External calls:
+	- msg.sender.call.value(_am)() (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#55-59)
+	State variables written after the call(s):
+	- balances (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#57)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[92m
+ACCURAL_DEPOSIT.SetMinSum (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#20-25) should be declared external
+ACCURAL_DEPOSIT.SetLogFile (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#27-32) should be declared external
+ACCURAL_DEPOSIT.Initialized (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#34-38) should be declared external
+ACCURAL_DEPOSIT.Collect (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#48-61) should be declared external
+ACCURAL_DEPOSIT.fallback (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#63-68) should be declared external
+LogFile.AddMessage (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#88-96) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:
+	- pragma solidity^0.4.19 (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#8): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in ACCURAL_DEPOSIT.Collect (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#48-61):
+	-msg.sender.call.value(_am)() /sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#55-59
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Contract 'ACCURAL_DEPOSIT' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#10-70) is not in CapWords
+Function 'ACCURAL_DEPOSIT.SetMinSum' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#20-25) is not in mixedCase
+Parameter '_val' of ACCURAL_DEPOSIT.SetMinSum (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#20) is not in mixedCase
+Function 'ACCURAL_DEPOSIT.SetLogFile' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#27-32) is not in mixedCase
+Parameter '_log' of ACCURAL_DEPOSIT.SetLogFile (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#27) is not in mixedCase
+Function 'ACCURAL_DEPOSIT.Initialized' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#34-38) is not in mixedCase
+Function 'ACCURAL_DEPOSIT.Deposit' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#40-46) is not in mixedCase
+Function 'ACCURAL_DEPOSIT.Collect' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#48-61) is not in mixedCase
+Parameter '_am' of ACCURAL_DEPOSIT.Collect (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#48) is not in mixedCase
+Variable 'ACCURAL_DEPOSIT.MinSum' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#14) is not in mixedCase
+Variable 'ACCURAL_DEPOSIT.Log' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#16) is not in mixedCase
+Function 'LogFile.AddMessage' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#88-96) is not in mixedCase
+Parameter '_adr' of LogFile.AddMessage (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#88) is not in mixedCase
+Parameter '_val' of LogFile.AddMessage (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#88) is not in mixedCase
+Parameter '_data' of LogFile.AddMessage (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#88) is not in mixedCase
+Variable 'LogFile.History' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#84) is not in mixedCase
+Variable 'LogFile.LastMsg' (/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol#86) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol analyzed (2 contracts), 26 result(s) found

@@ -1,0 +1,57 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 26,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 74,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 18,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 85,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 18,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 95,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 18,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 103,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 18,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 85,
+            "name": "Concurrency bug"
+        },
+        {
+            "column": 18,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 103,
+            "name": "Concurrency bug"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT",
+        "incomplete push instruction"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

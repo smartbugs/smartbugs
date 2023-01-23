@@ -1,0 +1,324 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function cash"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 113,
+                                    "startLine": 89
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.cash (etherpot_lotto.sol#89-113) sends eth to arbitrary user\n\tDangerous calls:\n\t- winner.send(subpot) (etherpot_lotto.sol#109)\n"
+                    },
+                    "ruleId": "slither_arbitrary_send"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 116
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ etherpot_lotto.sol#116:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function getBlocksPerRound"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.getBlocksPerRound (etherpot_lotto.sol#20) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function getTicketPrice"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.getTicketPrice (etherpot_lotto.sol#21) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function getIsCashed"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 44,
+                                    "startLine": 40
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.getIsCashed (etherpot_lotto.sol#40-44) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function cash"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 113,
+                                    "startLine": 89
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.cash (etherpot_lotto.sol#89-113) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function getBuyers"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 121,
+                                    "startLine": 119
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.getBuyers (etherpot_lotto.sol#119-121) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function getTicketsCountByBuyer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 125,
+                                    "startLine": 123
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.getTicketsCountByBuyer (etherpot_lotto.sol#123-125) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function getPot"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 129,
+                                    "startLine": 127
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.getPot (etherpot_lotto.sol#127-129) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 160,
+                                    "startLine": 131
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.fallback (etherpot_lotto.sol#131-160) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 8
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in etherpot_lotto.sol:\n\t- pragma solidity^0.4.0 (etherpot_lotto.sol#8): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 12
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'Lotto.blocksPerRound' (etherpot_lotto.sol#12) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'Lotto.ticketPrice' (etherpot_lotto.sol#15) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/etherpot_lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'Lotto.blockReward' (etherpot_lotto.sol#18) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_arbitrary_send",
+                            "name": "arbitrary-send"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

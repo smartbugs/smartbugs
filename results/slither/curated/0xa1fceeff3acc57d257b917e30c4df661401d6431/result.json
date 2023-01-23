@@ -1,0 +1,71 @@
+{
+    "errors": [
+        "EXIT_CODE_6"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "AirDropContract",
+            "filename": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+            "function": "transfer",
+            "impact": "Low",
+            "line": 31,
+            "message": "AirDropContract.transfer has external calls inside a loop:\n\t- contract_address.call(id,msg.sender,tos[i],vs[i]) (0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#31)\n",
+            "name": "calls-loop"
+        },
+        {
+            "confidence": "High",
+            "contract": "AirDropContract",
+            "filename": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 34,
+            "message": "AirDropContract.transfer (0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#20-34) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0xa1fceeff3acc57d257b917e30c4df661401d6431.sol:\n\t- pragma solidity^0.4.18 (0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "AirDropContract",
+            "filename": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 34,
+            "message": "Low level call in AirDropContract.transfer (0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#20-34):\n\t-contract_address.call(id,msg.sender,tos[i],vs[i]) 0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#31\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 12,
+            "message": "Function 'AirDropContract.AirDropContract' (0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#11-12) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xa1fceeff3acc57d257b917e30c4df661401d6431.sol",
+            "impact": "Informational",
+            "line": 20,
+            "message": "Parameter 'contract_address' of AirDropContract.transfer (0xa1fceeff3acc57d257b917e30c4df661401d6431.sol#20) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

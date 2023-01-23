@@ -1,0 +1,127 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Line length must be no more than 120 but current length is 837."
+                    },
+                    "ruleId": "solhint_max_line_length"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol"
+                                },
+                                "region": {
+                                    "startColumn": 809,
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 12 spaces but found 808"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Line length must be no more than 120 but current length is 121."
+                    },
+                    "ruleId": "solhint_max_line_length"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Line length must be no more than 120 but current length is 1324."
+                    },
+                    "ruleId": "solhint_max_line_length"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol"
+                                },
+                                "region": {
+                                    "startColumn": 1216,
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 8 spaces but found 1215"
+                    },
+                    "ruleId": "solhint_indent"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/protofire/solhint",
+                    "name": "Solhint",
+                    "rules": [
+                        {
+                            "id": "solhint_max_line_length",
+                            "name": "max-line-length"
+                        },
+                        {
+                            "id": "solhint_indent",
+                            "name": "indent"
+                        }
+                    ],
+                    "version": "2.1.0"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

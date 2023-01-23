@@ -1,0 +1,53 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "function": "setReward",
+            "impact": "Informational",
+            "line": 18,
+            "line_end": 25,
+            "message": "EthTxOrderDependenceMinimal.setReward (eth_tx_order_dependence_minimal.sol#18-25) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "EthTxOrderDependenceMinimal",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "function": "claimReward",
+            "impact": "Informational",
+            "line": 27,
+            "line_end": 33,
+            "message": "EthTxOrderDependenceMinimal.claimReward (eth_tx_order_dependence_minimal.sol#27-33) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in eth_tx_order_dependence_minimal.sol:\n\t- pragma solidity^0.4.16 (eth_tx_order_dependence_minimal.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.sol",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 16,
+            "message": "Function 'EthTxOrderDependenceMinimal.EthTxOrderDependenceMinimal' (eth_tx_order_dependence_minimal.sol#14-16) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

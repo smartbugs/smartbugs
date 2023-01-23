@@ -1,0 +1,26 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 14,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "line": 141,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 17,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "line": 128,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

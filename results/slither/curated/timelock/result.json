@@ -1,0 +1,63 @@
+{
+    "errors": [
+        "EXIT_CODE_5"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "TimeLock",
+            "filename": "dataset/arithmetic/timelock.sol",
+            "function": "deposit",
+            "impact": "Informational",
+            "line": 15,
+            "line_end": 18,
+            "message": "TimeLock.deposit (timelock.sol#15-18) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TimeLock",
+            "filename": "dataset/arithmetic/timelock.sol",
+            "function": "increaseLockTime",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 23,
+            "message": "TimeLock.increaseLockTime (timelock.sol#20-23) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TimeLock",
+            "filename": "dataset/arithmetic/timelock.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 25,
+            "line_end": 31,
+            "message": "TimeLock.withdraw (timelock.sol#25-31) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/arithmetic/timelock.sol",
+            "impact": "Informational",
+            "line": 8,
+            "message": "Detected issues with version pragma in timelock.sol:\n\t- pragma solidity^0.4.0 (timelock.sol#8): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/arithmetic/timelock.sol",
+            "impact": "Informational",
+            "line": 20,
+            "message": "Parameter '_secondsToIncrease' of TimeLock.increaseLockTime (timelock.sol#20) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

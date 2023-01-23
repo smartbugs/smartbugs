@@ -1,0 +1,125 @@
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 187b5a
+severity: 1
+line: 88
+column: 16
+content: sha3
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 187b5a
+severity: 1
+line: 88
+column: 40
+content: sha3
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 97
+column: 4
+content: functionnumberOfMajorEvents()constantpublicreturns(uint){returnmajorEvents.length;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 101
+column: 4
+content: functionnumberOfMessages()constantpublicreturns(uint){returnmessages.length;}
+
+ruleId: SOLIDITY_OVERPOWERED_ROLE
+patternId: j83hf7
+severity: 2
+line: 123
+column: 4
+content: functionsetStatus(stringstatus,stringurl)onlyOwner{marriageStatus=status;setMajorEvent("Changed Status",status,url);}
+
+ruleId: SOLIDITY_OVERPOWERED_ROLE
+patternId: j83hf7
+severity: 2
+line: 130
+column: 4
+content: functionsetMajorEvent(stringname,stringdescription,stringurl)onlyOwnerareMarried{majorEvents.push(Event(now,name,description,url));MajorEvent(name,description,url);}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 55
+column: 13
+content: call.value(_value)(_data)
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 28
+column: 4
+content: functionOwned(){owner=msg.sender;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 37
+column: 4
+content: functionchangeOwner(address_newOwner)onlyOwner{newOwner=_newOwner;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 44
+column: 4
+content: functionacceptOwnership(){if(msg.sender==newOwner){owner=newOwner;}}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 53
+column: 4
+content: functionexecute(address_dst,uint_value,bytes_data)onlyOwner{_dst.call.value(_value)(_data);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 93
+column: 4
+content: functionMarriage(address_owner){owner=_owner;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 106
+column: 4
+content: functioncreateMarriage(string_partner1,string_partner2,string_vows,stringurl)onlyOwner{require(majorEvents.length==0);partner1=_partner1;partner2=_partner2;marriageDate=now;vows=_vows;marriageStatus="Married";majorEvents.push(Event(now,"Marriage",vows,url));MajorEvent("Marrigage",vows,url);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 123
+column: 4
+content: functionsetStatus(stringstatus,stringurl)onlyOwner{marriageStatus=status;setMajorEvent("Changed Status",status,url);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 130
+column: 4
+content: functionsetMajorEvent(stringname,stringdescription,stringurl)onlyOwnerareMarried{majorEvents.push(Event(now,name,description,url));MajorEvent(name,description,url);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 136
+column: 4
+content: functionsendMessage(stringnameFrom,stringtext,stringurl)payableareMarried{if(msg.value>0){owner.transfer(this.balance);}messages.push(Message(now,nameFrom,text,url,msg.value));MessageSent(nameFrom,text,url,msg.value);}
+
+SOLIDITY_VISIBILITY :9
+SOLIDITY_OVERPOWERED_ROLE :2
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :4
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_UNCHECKED_CALL :1

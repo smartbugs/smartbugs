@@ -1,0 +1,54 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_TIMEOUT"
+    ],
+    "findings": [
+        {
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 69,
+            "message": "Classification: SWC-110",
+            "name": "Assertion Failure",
+            "severity": "Medium"
+        },
+        {
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 110,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 174,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 174,
+            "message": "Classification: SWC-105",
+            "name": "Leaking Ether",
+            "severity": "High"
+        },
+        {
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 179,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

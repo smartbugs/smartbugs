@@ -1,0 +1,26 @@
+INFO:Slither:Compilation warnings/errors on /sb/name_registrar.sol:
+/sb/name_registrar.sol:23:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        NameRecord newRecord;
+        ^------------------^
+/sb/name_registrar.sol:23:9: Warning: Uninitialized storage pointer. Did you mean '<type> memory newRecord'?
+        NameRecord newRecord;
+        ^------------------^
+
+INFO:Detectors:[91m
+newRecord in NameRegistrar.register (/sb/name_registrar.sol#23) is a storage variable never initialiazed
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#uninitialized-storage-variables[0m
+INFO:Detectors:[92m
+NameRegistrar.unlocked should be constant (/sb/name_registrar.sol#10)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+NameRegistrar.register (/sb/name_registrar.sol#20-31) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/name_registrar.sol:
+	- pragma solidity^0.4.15 (/sb/name_registrar.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Parameter '_name' of NameRegistrar.register (/sb/name_registrar.sol#20) is not in mixedCase
+Parameter '_mappedAddress' of NameRegistrar.register (/sb/name_registrar.sol#20) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/name_registrar.sol analyzed (1 contracts), 6 result(s) found

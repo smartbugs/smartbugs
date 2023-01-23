@@ -1,0 +1,53 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "lottopollo",
+            "filename": "dataset/time_manipulation/lottopollo.sol",
+            "function": "payOut",
+            "impact": "High",
+            "line": 11,
+            "line_end": 24,
+            "message": "lottopollo.payOut (lottopollo.sol#11-24) sends eth to arbitrary user\n\tDangerous calls:\n\t- leader.send(this.balance) (lottopollo.sol#17)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "contract": "lottopollo",
+            "filename": "dataset/time_manipulation/lottopollo.sol",
+            "function": "draw",
+            "impact": "Informational",
+            "line": 29,
+            "line_end": 32,
+            "message": "lottopollo.draw (lottopollo.sol#29-32) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/lottopollo.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in lottopollo.sol:\n\t- pragma solidity^0.4.0 (lottopollo.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/lottopollo.sol",
+            "impact": "Informational",
+            "line": 8,
+            "line_end": 33,
+            "message": "Contract 'lottopollo' (lottopollo.sol#8-33) is not in CapWords\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

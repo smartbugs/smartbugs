@@ -1,0 +1,12 @@
+INFO:Slither:Compilation warnings/errors on /sb/wallet_03_wrong_constructor.sol:
+/sb/wallet_03_wrong_constructor.sol:38:22: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+         to.transfer(this.balance);
+                     ^----------^
+
+INFO:Detectors:[92m
+Wallet.initWallet (/sb/wallet_03_wrong_constructor.sol#19-21) should be declared external
+Wallet.deposit (/sb/wallet_03_wrong_constructor.sol#23-26) should be declared external
+Wallet.withdraw (/sb/wallet_03_wrong_constructor.sol#28-32) should be declared external
+Wallet.migrateTo (/sb/wallet_03_wrong_constructor.sol#36-39) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Slither:/sb/wallet_03_wrong_constructor.sol analyzed (1 contracts), 4 result(s) found

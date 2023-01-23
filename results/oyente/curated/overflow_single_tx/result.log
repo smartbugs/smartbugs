@@ -1,0 +1,42 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/overflow_single_tx.sol:
+/sb/overflow_single_tx.sol:36:9: Warning: Unused local variable.
+        uint res = count + input;
+        ^------^
+/sb/overflow_single_tx.sol:42:9: Warning: Unused local variable.
+        uint res = count * input;
+        ^------^
+/sb/overflow_single_tx.sol:48:9: Warning: Unused local variable.
+       	uint res = count - input;
+       	^------^
+/sb/overflow_single_tx.sol:34:5: Warning: Function state mutability can be restricted to view
+    function overflowlocalonly(uint256 input) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/overflow_single_tx.sol:40:5: Warning: Function state mutability can be restricted to view
+    function overflowmulocalonly(uint256 input) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/overflow_single_tx.sol:46:5: Warning: Function state mutability can be restricted to view
+    function underflowlocalonly(uint256 input) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/overflow_single_tx.sol:IntegerOverflowSingleTransaction:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 57.8%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/overflow_single_tx.sol:30:9: Warning: Integer Underflow.
+        count -= input
+Integer Underflow occurs if:
+    count = 0
+    input = 1
+INFO:symExec:/sb/overflow_single_tx.sol:36:20: Warning: Integer Overflow.
+        uint res = count + input
+Integer Overflow occurs if:
+    count = 1
+    input = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

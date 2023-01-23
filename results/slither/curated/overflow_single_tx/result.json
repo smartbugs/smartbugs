@@ -1,0 +1,88 @@
+{
+    "errors": [
+        "EXIT_CODE_7"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowSingleTransaction",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "function": "overflowaddtostate",
+            "impact": "Informational",
+            "line": 16,
+            "line_end": 19,
+            "message": "IntegerOverflowSingleTransaction.overflowaddtostate (overflow_single_tx.sol#16-19) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowSingleTransaction",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "function": "overflowmultostate",
+            "impact": "Informational",
+            "line": 22,
+            "line_end": 25,
+            "message": "IntegerOverflowSingleTransaction.overflowmultostate (overflow_single_tx.sol#22-25) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowSingleTransaction",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "function": "underflowtostate",
+            "impact": "Informational",
+            "line": 28,
+            "line_end": 31,
+            "message": "IntegerOverflowSingleTransaction.underflowtostate (overflow_single_tx.sol#28-31) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowSingleTransaction",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "function": "overflowlocalonly",
+            "impact": "Informational",
+            "line": 34,
+            "line_end": 37,
+            "message": "IntegerOverflowSingleTransaction.overflowlocalonly (overflow_single_tx.sol#34-37) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowSingleTransaction",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "function": "overflowmulocalonly",
+            "impact": "Informational",
+            "line": 40,
+            "line_end": 43,
+            "message": "IntegerOverflowSingleTransaction.overflowmulocalonly (overflow_single_tx.sol#40-43) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "IntegerOverflowSingleTransaction",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "function": "underflowlocalonly",
+            "impact": "Informational",
+            "line": 46,
+            "line_end": 49,
+            "message": "IntegerOverflowSingleTransaction.underflowlocalonly (overflow_single_tx.sol#46-49) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/arithmetic/overflow_single_tx.sol",
+            "impact": "Informational",
+            "line": 10,
+            "message": "Detected issues with version pragma in overflow_single_tx.sol:\n\t- pragma solidity^0.4.23 (overflow_single_tx.sol#10): it allows old versions\n",
+            "name": "solc-version"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

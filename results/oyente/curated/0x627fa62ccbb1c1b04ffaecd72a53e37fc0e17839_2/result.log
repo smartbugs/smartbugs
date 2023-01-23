@@ -1,0 +1,61 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:
+/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:44:27: Warning: "sha3" has been deprecated in favour of "keccak256"
+        token.call(bytes4(sha3("transfer(address,uint256)")),to,amount); 
+                          ^-------------------------------^
+/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:44:9: Warning: Return value of low-level calls not used.
+        token.call(bytes4(sha3("transfer(address,uint256)")),to,amount); 
+        ^-------------------------------------------------------------^
+/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:61:5: Warning: No visibility specified. Defaulting to "public". 
+    function()
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:67:5: Warning: No visibility specified. Defaulting to "public". 
+    function Deposit() 
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:TokenBank:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:96:17: Warning: Integer Underflow.
+                Holders[_addr]-=_wei
+Integer Underflow occurs if:
+    Holders[_addr] = 57896044618658097708646941636650613544717097621216448811677614281724547563518
+    _wei = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+    owner = 0
+INFO:symExec:/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:72:13: Warning: Integer Overflow.
+            Holders[msg.sender]+=msg.value
+Integer Overflow occurs if:
+    Holders[msg.sender] = 94971339064435679133370349063425325215963253791982476507561069026331527708154
+    MinDeposit = 71451070938105826937957492733535593933267788156774236937046247274724173250043
+INFO:symExec:/sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:94:16: Warning: Re-Entrancy Vulnerability.
+            if(_addr.call.value(_wei)()
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:Ownable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:Token:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

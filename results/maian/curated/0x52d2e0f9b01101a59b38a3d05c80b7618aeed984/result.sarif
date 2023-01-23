@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract EtherGet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x52d2e0f9b01101a59b38a3d05c80b7618aeed984.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "No Ether lock (Ether refused)"
+                    },
+                    "ruleId": "maian_No_Ether_lock_Ether_refused"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/MAIAN",
+                    "name": "Maian",
+                    "rules": [
+                        {
+                            "id": "maian_No_Ether_lock_Ether_refused",
+                            "name": "No Ether lock (Ether refused)"
+                        }
+                    ],
+                    "version": "#4bab09a"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

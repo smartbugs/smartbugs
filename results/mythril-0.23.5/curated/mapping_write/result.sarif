@@ -1,0 +1,115 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Map, function set(uint256,uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mapping_write.sol"
+                                },
+                                "region": {
+                                    "startColumn": 763,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "An assertion violation was triggered.\nIt is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values). This issue is reported for internal compiler generated code.\nClassification: SWC-110\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Exception_State"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Map, function set(uint256,uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mapping_write.sol"
+                                },
+                                "region": {
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The caller can write to arbitrary storage locations.\nIt is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract.\nClassification: SWC-124\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Write_to_an_arbitrary_storage_location"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Map, function get(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mapping_write.sol"
+                                },
+                                "region": {
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "An assertion violation was triggered.\nIt is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).\nClassification: SWC-110\nSeverity: Medium"
+                    },
+                    "ruleId": "mythril_0_23_5_Exception_State"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "The caller can write to arbitrary storage locations. It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract. Classification: SWC-124. Detection method: Search for any writes to an arbitrary storage slot"
+                            },
+                            "help": {
+                                "text": "It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract."
+                            },
+                            "id": "mythril_0_23_5_Write_to_an_arbitrary_storage_location",
+                            "name": "Write to an arbitrary storage location",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "The caller can write to arbitrary storage locations."
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "An assertion violation was triggered. It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values). Classification: SWC-110. Detection method: Checks whether any exception states are reachable."
+                            },
+                            "help": {
+                                "text": "It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values)."
+                            },
+                            "id": "mythril_0_23_5_Exception_State",
+                            "name": "Exception State",
+                            "properties": {
+                                "security-severity": "5.5"
+                            },
+                            "shortDescription": {
+                                "text": "An assertion violation was triggered."
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,84 @@
+/sb/0x3a0e9acd953ffc0dd18d63603488846a6b8b2b01.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 187b5a
+severity: 1
+line: 44
+column: 26
+content: sha3
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 103
+column: 4
+content: functionBal()publicconstantreturns(uint){returnthis.balance;}
+
+ruleId: SOLIDITY_LOCKED_MONEY
+patternId: 30281d
+severity: 3
+line: 48
+column: 0
+content: contractTokenBankisToken{uintpublicMinDeposit;mapping(address=>uint)publicHolders;functioninitTokenBank()public{owner=msg.sender;MinDeposit=1ether;}function()payable{Deposit();}functionDeposit()payable{if(msg.value>MinDeposit){Holders[msg.sender]+=msg.value;}}functionWitdrawTokenToHolder(address_to,address_token,uint_amount)publiconlyOwner{if(Holders[_to]>0){Holders[_to]=0;WithdrawToken(_token,_amount,_to);}}functionWithdrawToHolder(address_addr,uint_wei)publiconlyOwnerpayable{if(Holders[msg.sender]>0){if(Holders[_addr]>=_wei){_addr.call.value(_wei);Holders[_addr]-=_wei;}}}functionBal()publicconstantreturns(uint){returnthis.balance;}}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 44
+column: 14
+content: call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 44
+column: 14
+content: call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 61
+column: 4
+content: function()payable{Deposit();}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 67
+column: 4
+content: functionDeposit()payable{if(msg.value>MinDeposit){Holders[msg.sender]+=msg.value;}}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 11
+column: 4
+content: addressnewOwner;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 12
+column: 4
+content: addressowner=msg.sender;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 38
+column: 4
+content: addressowner=msg.sender;
+
+SOLIDITY_VISIBILITY :5
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :2
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_LOCKED_MONEY :1
+SOLIDITY_UPGRADE_TO_050 :1
+SOLIDITY_UNCHECKED_CALL :1

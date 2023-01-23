@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract DosNumber"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/dos_number.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "No Ether lock (Ether refused)"
+                    },
+                    "ruleId": "maian_No_Ether_lock_Ether_refused"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/MAIAN",
+                    "name": "Maian",
+                    "rules": [
+                        {
+                            "id": "maian_No_Ether_lock_Ether_refused",
+                            "name": "No Ether lock (Ether refused)"
+                        }
+                    ],
+                    "version": "#4bab09a"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

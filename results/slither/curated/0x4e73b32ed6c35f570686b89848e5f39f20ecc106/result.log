@@ -1,0 +1,43 @@
+INFO:Detectors:[91m
+Reentrancy in PRIVATE_ETH_CELL.Collect (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#47-60):
+	External calls:
+	- msg.sender.call.value(_am)() (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#54-58)
+	State variables written after the call(s):
+	- balances (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#56)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[92m
+PRIVATE_ETH_CELL.SetMinSum (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#19-24) should be declared external
+PRIVATE_ETH_CELL.SetLogFile (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#26-31) should be declared external
+PRIVATE_ETH_CELL.Initialized (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#33-37) should be declared external
+PRIVATE_ETH_CELL.Collect (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#47-60) should be declared external
+PRIVATE_ETH_CELL.fallback (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#62-67) should be declared external
+LogFile.AddMessage (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#87-95) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol:
+	- pragma solidity^0.4.19 (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in PRIVATE_ETH_CELL.Collect (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#47-60):
+	-msg.sender.call.value(_am)() /sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#54-58
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Contract 'PRIVATE_ETH_CELL' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#9-69) is not in CapWords
+Function 'PRIVATE_ETH_CELL.SetMinSum' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#19-24) is not in mixedCase
+Parameter '_val' of PRIVATE_ETH_CELL.SetMinSum (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#19) is not in mixedCase
+Function 'PRIVATE_ETH_CELL.SetLogFile' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#26-31) is not in mixedCase
+Parameter '_log' of PRIVATE_ETH_CELL.SetLogFile (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#26) is not in mixedCase
+Function 'PRIVATE_ETH_CELL.Initialized' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#33-37) is not in mixedCase
+Function 'PRIVATE_ETH_CELL.Deposit' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#39-45) is not in mixedCase
+Function 'PRIVATE_ETH_CELL.Collect' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#47-60) is not in mixedCase
+Parameter '_am' of PRIVATE_ETH_CELL.Collect (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#47) is not in mixedCase
+Variable 'PRIVATE_ETH_CELL.MinSum' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#13) is not in mixedCase
+Variable 'PRIVATE_ETH_CELL.Log' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#15) is not in mixedCase
+Function 'LogFile.AddMessage' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#87-95) is not in mixedCase
+Parameter '_adr' of LogFile.AddMessage (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#87) is not in mixedCase
+Parameter '_val' of LogFile.AddMessage (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#87) is not in mixedCase
+Parameter '_data' of LogFile.AddMessage (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#87) is not in mixedCase
+Variable 'LogFile.History' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#83) is not in mixedCase
+Variable 'LogFile.LastMsg' (/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol#85) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol analyzed (2 contracts), 26 result(s) found

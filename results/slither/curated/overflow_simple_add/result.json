@@ -1,0 +1,34 @@
+{
+    "errors": [
+        "EXIT_CODE_2"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Overflow_Add",
+            "filename": "dataset/arithmetic/overflow_simple_add.sol",
+            "function": "add",
+            "impact": "Informational",
+            "line": 12,
+            "line_end": 15,
+            "message": "Overflow_Add.add (overflow_simple_add.sol#12-15) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/arithmetic/overflow_simple_add.sol",
+            "impact": "Informational",
+            "line": 9,
+            "line_end": 16,
+            "message": "Contract 'Overflow_Add' (overflow_simple_add.sol#9-16) is not in CapWords\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

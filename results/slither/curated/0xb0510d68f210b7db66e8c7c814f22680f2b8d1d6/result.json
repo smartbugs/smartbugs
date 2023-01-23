@@ -1,0 +1,163 @@
+{
+    "errors": [
+        "EXIT_CODE_15"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "newPuppet",
+            "impact": "Low",
+            "line": 48,
+            "message": "Splitter.newPuppet.newPuppet (local variable @ 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#48) shadows:\n\t- Splitter.newPuppet (function @ 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#48-53)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "impact": "Informational",
+            "line": 14,
+            "message": "Splitter._addy should be constant (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#14)\nSplitter._count should be constant (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#16)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 35,
+            "line_end": 38,
+            "message": "Splitter.withdraw (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#35-38) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "getPuppetCount",
+            "impact": "Informational",
+            "line": 42,
+            "line_end": 44,
+            "message": "Splitter.getPuppetCount (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#42-44) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "setExtra",
+            "impact": "Informational",
+            "line": 57,
+            "line_end": 60,
+            "message": "Splitter.setExtra (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#57-60) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "fundPuppets",
+            "impact": "Informational",
+            "line": 65,
+            "line_end": 76,
+            "message": "Splitter.fundPuppets (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#65-76) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 80,
+            "line_end": 81,
+            "message": "Splitter.fallback (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#80-81) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Puppet",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 99,
+            "line_end": 104,
+            "message": "Puppet.fallback (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#99-104) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Puppet",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 107,
+            "line_end": 110,
+            "message": "Puppet.withdraw (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#107-110) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:\n\t- pragma solidity^0.4.23 (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "Splitter",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "fundPuppets",
+            "impact": "Informational",
+            "line": 65,
+            "line_end": 76,
+            "message": "Low level call in Splitter.fundPuppets (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#65-76):\n\t-extra[0].call.value(_share).gas(800000)() 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#69\n\t-extra[1].call.value(_share).gas(800000)() 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#71\n\t-extra[2].call.value(_share).gas(800000)() 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#73\n\t-extra[3].call.value(_share).gas(800000)() 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#75\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "Puppet",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 99,
+            "line_end": 104,
+            "message": "Low level call in Puppet.fallback (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#99-104):\n\t-target[0].call.value(msg.value).gas(600000)() 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#102\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "impact": "Informational",
+            "line": 57,
+            "message": "Parameter '_id' of Splitter.setExtra (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#57) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "impact": "Informational",
+            "line": 57,
+            "message": "Parameter '_newExtra' of Splitter.setExtra (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#57) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol",
+            "impact": "Informational",
+            "line": 14,
+            "message": "Splitter._addy (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#14) is never used in Splitter\nSplitter._count (0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol#16) is never used in Splitter\n",
+            "name": "unused-state"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

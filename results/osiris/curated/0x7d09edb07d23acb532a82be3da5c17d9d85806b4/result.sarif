@@ -1,0 +1,118 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PoCGame"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 198
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack bug"
+                    },
+                    "ruleId": "osiris_Callstack_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PoCGame"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 210
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack bug"
+                    },
+                    "ruleId": "osiris_Callstack_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PoCGame"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 199
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PoCGame"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 198
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy bug"
+                    },
+                    "ruleId": "osiris_Reentrancy_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Callstack_bug",
+                            "name": "Callstack bug"
+                        },
+                        {
+                            "id": "osiris_Reentrancy_bug",
+                            "name": "Reentrancy bug"
+                        },
+                        {
+                            "id": "osiris_Overflow_bugs",
+                            "name": "Overflow bugs"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

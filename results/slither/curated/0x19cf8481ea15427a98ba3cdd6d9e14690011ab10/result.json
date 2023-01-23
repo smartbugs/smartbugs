@@ -1,0 +1,948 @@
+{
+    "errors": [
+        "EXIT_CODE_105"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "FundsTransfer",
+            "impact": "High",
+            "line": 431,
+            "line_end": 434,
+            "message": "daoPOLSKAtokens.FundsTransfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#431-434) sends eth to arbitrary user\n\tDangerous calls:\n\t- ! owner.send(this.balance) (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#433)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "sendTokenAw",
+            "impact": "Medium",
+            "line": 366,
+            "line_end": 376,
+            "message": "Reentrancy in daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366-376):\n\tExternal calls:\n\t- t.coinContract.transfer(receiver,amount) (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#374)\n\tState variables written after the call(s):\n\t- numTransfers (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#375)\n",
+            "name": "reentrancy-no-eth"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "sendTokenAw",
+            "impact": "Medium",
+            "line": 366,
+            "line_end": 376,
+            "message": "daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366-376) does not use the value returned by external calls:\n\t-t.coinContract.transfer(receiver,amount) (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#374)\n",
+            "name": "unused-return"
+        },
+        {
+            "confidence": "High",
+            "contract": "SafeMath",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "assert",
+            "impact": "Low",
+            "line": 75,
+            "line_end": 79,
+            "message": "SafeMath.assert (function @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#75-79) shadows built-in symbol \"assert\"\n",
+            "name": "shadowing-builtin"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 18,
+            "message": "ERC20.totalSupply should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#18)\ndaoPOLSKAtokens.fundingEndBlock should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#383)\ndaoPOLSKAtokens.migrationAgent should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#172)\ndaoPOLSKAtokens.tokenCreationRate should be constant (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#379)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 77,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#77:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 134,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#134:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 211,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#211:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 214,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#214:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 223,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#223:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 226,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#226:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 330,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#330:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 341,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#341:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 352,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#352:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 368,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#368:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 389,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#389:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 392,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#392:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 395,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#395:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 432,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#432:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 433,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#433:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 437,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#437:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 442,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#442:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 447,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#447:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 451,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#451:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 458,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#458:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 469,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#469:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 473,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#473:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 474,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#474:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 485,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#485:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 486,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#486:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 490,
+            "message": "Deprecated standard detected @ 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#490:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "tokenRecipient",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "receiveApproval",
+            "impact": "Informational",
+            "line": 9,
+            "message": "tokenRecipient.receiveApproval (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#9) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MigrationAgent",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "migrateFrom",
+            "impact": "Informational",
+            "line": 14,
+            "message": "MigrationAgent.migrateFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#14) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "balanceOf",
+            "impact": "Informational",
+            "line": 19,
+            "message": "ERC20.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#19) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "balanceOf",
+            "impact": "Informational",
+            "line": 124,
+            "line_end": 126,
+            "message": "StandardToken.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#124-126) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "allowance",
+            "impact": "Informational",
+            "line": 20,
+            "message": "ERC20.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#20) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "allowance",
+            "impact": "Informational",
+            "line": 141,
+            "line_end": 143,
+            "message": "StandardToken.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#141-143) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 107,
+            "line_end": 112,
+            "message": "StandardToken.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#107-112) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 22,
+            "message": "ERC20.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#22) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transferFrom",
+            "impact": "Informational",
+            "line": 23,
+            "message": "ERC20.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#23) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transferFrom",
+            "impact": "Informational",
+            "line": 114,
+            "line_end": 122,
+            "message": "StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114-122) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "approve",
+            "impact": "Informational",
+            "line": 24,
+            "message": "ERC20.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#24) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "approve",
+            "impact": "Informational",
+            "line": 128,
+            "line_end": 139,
+            "message": "StandardToken.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#128-139) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "isToken",
+            "impact": "Informational",
+            "line": 103,
+            "line_end": 105,
+            "message": "StandardToken.isToken (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#103-105) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setSupply",
+            "impact": "Informational",
+            "line": 209,
+            "line_end": 220,
+            "message": "daoPOLSKAtokens.setSupply (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#209-220) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setotherchainstotalsupply",
+            "impact": "Informational",
+            "line": 221,
+            "line_end": 232,
+            "message": "daoPOLSKAtokens.setotherchainstotalsupply (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#221-232) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "approveAndCall",
+            "impact": "Informational",
+            "line": 242,
+            "line_end": 250,
+            "message": "daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242-250) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "burn",
+            "impact": "Informational",
+            "line": 259,
+            "line_end": 265,
+            "message": "daoPOLSKAtokens.burn (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#259-265) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "burnFrom",
+            "impact": "Informational",
+            "line": 275,
+            "line_end": 283,
+            "message": "daoPOLSKAtokens.burnFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#275-283) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 285,
+            "line_end": 296,
+            "message": "daoPOLSKAtokens.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#285-296) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transferFrom",
+            "impact": "Informational",
+            "line": 298,
+            "line_end": 308,
+            "message": "daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298-308) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "balanceOf",
+            "impact": "Informational",
+            "line": 310,
+            "line_end": 312,
+            "message": "daoPOLSKAtokens.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#310-312) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "allowance",
+            "impact": "Informational",
+            "line": 320,
+            "line_end": 322,
+            "message": "daoPOLSKAtokens.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#320-322) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 326,
+            "line_end": 332,
+            "message": "daoPOLSKAtokens.fallback (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#326-332) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setTokenInformation",
+            "impact": "Informational",
+            "line": 338,
+            "line_end": 347,
+            "message": "daoPOLSKAtokens.setTokenInformation (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#338-347) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setChainsAddresses",
+            "impact": "Informational",
+            "line": 349,
+            "line_end": 358,
+            "message": "daoPOLSKAtokens.setChainsAddresses (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#349-358) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "sendTokenAw",
+            "impact": "Informational",
+            "line": 366,
+            "line_end": 376,
+            "message": "daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366-376) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "createDaoPOLSKAtokens",
+            "impact": "Informational",
+            "line": 387,
+            "line_end": 423,
+            "message": "daoPOLSKAtokens.createDaoPOLSKAtokens (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#387-423) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setBonusCreationRate",
+            "impact": "Informational",
+            "line": 424,
+            "line_end": 429,
+            "message": "daoPOLSKAtokens.setBonusCreationRate (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#424-429) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 8,
+            "message": "Detected issues with version pragma in 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol:\n\t- pragma solidity^0.4.11 (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#8): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 9,
+            "message": "Contract 'tokenRecipient' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#9) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 124,
+            "message": "Parameter '_owner' of StandardToken.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#124) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 141,
+            "message": "Parameter '_owner' of StandardToken.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#141) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 141,
+            "message": "Parameter '_spender' of StandardToken.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#141) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 107,
+            "message": "Parameter '_to' of StandardToken.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#107) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 107,
+            "message": "Parameter '_value' of StandardToken.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#107) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 114,
+            "message": "Parameter '_from' of StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 114,
+            "message": "Parameter '_to' of StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 114,
+            "message": "Parameter '_value' of StandardToken.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#114) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 128,
+            "message": "Parameter '_spender' of StandardToken.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#128) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 128,
+            "message": "Parameter '_value' of StandardToken.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#128) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 151,
+            "line_end": 503,
+            "message": "Contract 'daoPOLSKAtokens' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#151-503) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 180,
+            "line_end": 184,
+            "message": "Struct 'daoPOLSKAtokens.sendTokenAway' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#180-184) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 195,
+            "message": "Event 'daoPOLSKAtokens.receivedEther' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#195) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 242,
+            "message": "Parameter '_spender' of daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 242,
+            "message": "Parameter '_value' of daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 242,
+            "message": "Parameter '_extraData' of daoPOLSKAtokens.approveAndCall (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#242) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 259,
+            "message": "Parameter '_value' of daoPOLSKAtokens.burn (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#259) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 275,
+            "message": "Parameter '_from' of daoPOLSKAtokens.burnFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#275) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 275,
+            "message": "Parameter '_value' of daoPOLSKAtokens.burnFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#275) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 285,
+            "message": "Parameter '_to' of daoPOLSKAtokens.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#285) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 285,
+            "message": "Parameter '_value' of daoPOLSKAtokens.transfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#285) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 298,
+            "message": "Parameter '_from' of daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 298,
+            "message": "Parameter '_to' of daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 298,
+            "message": "Parameter '_value' of daoPOLSKAtokens.transferFrom (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#298) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 310,
+            "message": "Parameter '_owner' of daoPOLSKAtokens.balanceOf (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#310) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 314,
+            "message": "Parameter '_spender' of daoPOLSKAtokens.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#314) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 314,
+            "message": "Parameter '_value' of daoPOLSKAtokens.approve (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#314) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 320,
+            "message": "Parameter '_owner' of daoPOLSKAtokens.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#320) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 320,
+            "message": "Parameter '_spender' of daoPOLSKAtokens.allowance (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#320) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 338,
+            "message": "Parameter '_name' of daoPOLSKAtokens.setTokenInformation (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#338) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 338,
+            "message": "Parameter '_symbol' of daoPOLSKAtokens.setTokenInformation (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#338) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 360,
+            "line_end": 362,
+            "message": "Function 'daoPOLSKAtokens.DAOPolskaTokenICOregulations' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#360-362) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 366,
+            "message": "Parameter 'StandardTokenAddress' of daoPOLSKAtokens.sendTokenAw (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#366) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 431,
+            "line_end": 434,
+            "message": "Function 'daoPOLSKAtokens.FundsTransfer' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#431-434) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 436,
+            "line_end": 440,
+            "message": "Function 'daoPOLSKAtokens.PartialFundsTransfer' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#436-440) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 436,
+            "message": "Parameter 'SubX' of daoPOLSKAtokens.PartialFundsTransfer (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#436) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 467,
+            "message": "Parameter '_value' of daoPOLSKAtokens.migrate (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#467) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 167,
+            "message": "Variable 'daoPOLSKAtokens.Chain1' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#167) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 168,
+            "message": "Variable 'daoPOLSKAtokens.Chain2' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#168) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 169,
+            "message": "Variable 'daoPOLSKAtokens.Chain3' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#169) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 170,
+            "message": "Variable 'daoPOLSKAtokens.Chain4' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#170) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 381,
+            "message": "Variable 'daoPOLSKAtokens.CreationRate' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#381) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 382,
+            "message": "Constant 'daoPOLSKAtokens.oneweek' (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#382) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "impact": "Informational",
+            "line": 98,
+            "message": "StandardToken.balancesRAW (0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol#98) is never used in StandardToken\n",
+            "name": "unused-state"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

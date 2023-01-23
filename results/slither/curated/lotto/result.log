@@ -1,0 +1,35 @@
+INFO:Slither:Compilation warnings/errors on /sb/lotto.sol:
+/sb/lotto.sol:20:10: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+         winner.send(winAmount);
+         ^--------------------^
+/sb/lotto.sol:27:26: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+         msg.sender.send(this.balance);
+                         ^----------^
+/sb/lotto.sol:27:10: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+         msg.sender.send(this.balance);
+         ^---------------------------^
+
+INFO:Detectors:[91m
+Lotto.withdrawLeftOver (/sb/lotto.sol#24-28) sends eth to arbitrary user
+	Dangerous calls:
+	- msg.sender.send(this.balance) (/sb/lotto.sol#27)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[91m
+Lotto.winner (/sb/lotto.sol#12) is never initialized. It is used in:
+	- sendToWinner (/sb/lotto.sol#17-22)
+Lotto.winAmount (/sb/lotto.sol#13) is never initialized. It is used in:
+	- sendToWinner (/sb/lotto.sol#17-22)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#uninitialized-state-variables[0m
+INFO:Detectors:[92m
+Lotto.winAmount should be constant (/sb/lotto.sol#13)
+Lotto.winner should be constant (/sb/lotto.sol#12)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+Lotto.sendToWinner (/sb/lotto.sol#17-22) should be declared external
+Lotto.withdrawLeftOver (/sb/lotto.sol#24-28) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/lotto.sol:
+	- pragma solidity^0.4.18 (/sb/lotto.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Slither:/sb/lotto.sol analyzed (1 contracts), 7 result(s) found

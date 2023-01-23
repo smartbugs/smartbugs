@@ -1,0 +1,70 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WhaleGiveaway2"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 36
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Concurrency bug"
+                    },
+                    "ruleId": "osiris_Concurrency_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WhaleGiveaway2"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 45
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy bug"
+                    },
+                    "ruleId": "osiris_Reentrancy_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Reentrancy_bug",
+                            "name": "Reentrancy bug"
+                        },
+                        {
+                            "id": "osiris_Concurrency_bug",
+                            "name": "Concurrency bug"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

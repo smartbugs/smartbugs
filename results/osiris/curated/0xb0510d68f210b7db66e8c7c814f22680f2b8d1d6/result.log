@@ -1,0 +1,111 @@
+WARNING:root:You are using solc version 0.4.26. The supported version is 0.4.21.
+INFO:root:Contract /sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Puppet:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.8%
+INFO:symExec:	  Arithmetic bugs: 	 False
+INFO:symExec:	  └> Overflow bugs: 	 False
+INFO:symExec:	  └> Underflow bugs: 	 False
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Puppet:102:4
+target[0].call.value(msg.value).gas(600000)()
+^
+Flow 2:
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Puppet:109:3
+master[0].transfer(address(this).balance)
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Puppet:102:4
+target[0].call.value(msg.value).gas(600000)()
+^
+INFO:symExec:	 --- 0.603057146072 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:Contract /sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:SafeMath:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 100.0%
+INFO:symExec:	  Arithmetic bugs: 	 False
+INFO:symExec:	  └> Overflow bugs: 	 False
+INFO:symExec:	  └> Underflow bugs: 	 False
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Concurrency bug: 	 False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	 --- 0.00899505615234 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:Contract /sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:
+incomplete push instruction at 3166
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 65.9%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:2:21
+n.io 
+^
+INFO:symExec:	  └> Underflow bugs: 	 False
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 True
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:102:4
+target[0].call.value(msg.value).gas(600000)()
+^
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:75:9
+extra[3].call.value(_share).gas(800000)()
+^
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:71:9
+extra[1].call.value(_share).gas(800000)()
+^
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:69:9
+extra[0].call.value(_share).gas(800000)()
+^
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:73:9
+extra[2].call.value(_share).gas(800000)()
+^
+Flow 2:
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:37:3
+owner.transfer(address(this).balance)
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:75:9
+extra[3].call.value(_share).gas(800000)()
+^
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:71:9
+extra[1].call.value(_share).gas(800000)()
+^
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:69:9
+extra[0].call.value(_share).gas(800000)()
+^
+/sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter:73:9
+extra[2].call.value(_share).gas(800000)()
+^
+INFO:symExec:	 --- 2.43867707253 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'
+
+
+
+

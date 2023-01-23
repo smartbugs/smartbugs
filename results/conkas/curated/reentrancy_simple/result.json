@@ -1,0 +1,36 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 314,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrancy_simple.sol",
+            "function": "withdrawBalance()",
+            "line": 24,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 314,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrancy_simple.sol",
+            "function": "withdrawBalance()",
+            "line": 24,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 468,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrancy_simple.sol",
+            "function": "addToBalance()",
+            "line": 17,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,27 @@
+2023-01-17 17:43:59,985: [11] m.main:INFO: Registered plugins: IntrospectionAPIPlugin, <class 'manticore.ethereum.plugins.SkipRevertBasicBlocks'>, <class 'manticore.ethereum.plugins.FilterFunctions'>
+2023-01-17 17:43:59,986: [11] m.main:INFO: Beginning analysis
+2023-01-17 17:43:59,989: [11] m.e.manticore:INFO: Starting symbolic create contract
+2023-01-17 17:44:00,840: [11] m.e.manticore:INFO: Starting symbolic transaction: 0
+2023-01-17 17:44:01,949: [11] m.c.worker:ERROR: Exception in state 0: ExpressionEvalError('__bool__ for Bool')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/dist-packages/manticore/core/worker.py", line 137, in run
+    current_state.execute()
+  File "/usr/local/lib/python3.7/dist-packages/manticore/ethereum/state.py", line 8, in execute
+    return self._platform.execute()
+  File "/usr/local/lib/python3.7/dist-packages/manticore/platforms/evm.py", line 3106, in execute
+    self.current_vm.execute()
+  File "/usr/local/lib/python3.7/dist-packages/manticore/platforms/evm.py", line 1325, in execute
+    last_pc, last_gas, instruction, arguments, fee, allocated = self._checkpoint()
+  File "/usr/local/lib/python3.7/dist-packages/manticore/platforms/evm.py", line 1210, in _checkpoint
+    fee = self._calculate_gas(*arguments)
+  File "/usr/local/lib/python3.7/dist-packages/manticore/platforms/evm.py", line 1183, in _calculate_gas
+    return current.fee + implementation(*arguments)
+  File "/usr/local/lib/python3.7/dist-packages/manticore/platforms/evm.py", line 2309, in SELFDESTRUCT_gas
+    if not self.world.account_exists(recipient) and self.world.get_balance(self.address) != 0:
+  File "/usr/local/lib/python3.7/dist-packages/manticore/core/smtlib/expression.py", line 225, in __bool__
+    raise ExpressionEvalError("__bool__ for Bool")
+manticore.core.smtlib.expression.ExpressionEvalError: __bool__ for Bool
+ 
+2023-01-17 17:44:01,969: [11] m.e.manticore:INFO: 0 alive states, 1 terminated states
+2023-01-17 17:44:02,146: [11] m.c.manticore:INFO: Results in /mcore_z_66i3ko
+2023-01-17 17:44:02,147: [11] m.c.manticore:INFO: Total time: 1.3002474308013916

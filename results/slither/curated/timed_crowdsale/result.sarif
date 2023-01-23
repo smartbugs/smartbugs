@@ -1,0 +1,70 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimedCrowdsale, function isSaleFinished"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/timed_crowdsale.sol"
+                                },
+                                "region": {
+                                    "endLine": 14,
+                                    "startLine": 11
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TimedCrowdsale.isSaleFinished (timed_crowdsale.sol#11-14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= 1546300800 (timed_crowdsale.sol#13)\n"
+                    },
+                    "ruleId": "slither_timestamp"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimedCrowdsale, function isSaleFinished"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/timed_crowdsale.sol"
+                                },
+                                "region": {
+                                    "endLine": 14,
+                                    "startLine": 11
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TimedCrowdsale.isSaleFinished (timed_crowdsale.sol#11-14) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_timestamp",
+                            "name": "timestamp"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

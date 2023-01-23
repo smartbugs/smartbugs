@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 2460,
+            "contract": "BecToken",
+            "filename": "dataset/arithmetic/BECToken.sol",
+            "function": "batchTransfer(address[],uint256)",
+            "line": 264,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1587,
+            "contract": "PausableToken",
+            "filename": "dataset/arithmetic/BECToken.sol",
+            "function": "batchTransfer(address[],uint256)",
+            "line": 264,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

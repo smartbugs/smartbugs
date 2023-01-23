@@ -1,0 +1,247 @@
+/sb/etherpot_lotto.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_ARRAY_LENGTH_MANIPULATION
+patternId: 43ba1c
+severity: 1
+line: 149
+column: 32
+content: rounds[roundIndex].buyers.length++
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 20
+column: 5
+content: functiongetBlocksPerRound()constantreturns(uint){returnblocksPerRound;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 21
+column: 5
+content: functiongetTicketPrice()constantreturns(uint){returnticketPrice;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 34
+column: 5
+content: functiongetRoundIndex()constantreturns(uint){returnblock.number/blocksPerRound;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 40
+column: 5
+content: functiongetIsCashed(uintroundIndex,uintsubpotIndex)constantreturns(bool){returnrounds[roundIndex].isCashed[subpotIndex];}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 47
+column: 5
+content: functioncalculateWinner(uintroundIndex,uintsubpotIndex)constantreturns(address){vardecisionBlockNumber=getDecisionBlockNumber(roundIndex,subpotIndex);if(decisionBlockNumber>block.number)return;vardecisionBlockHash=getHashOfBlock(decisionBlockNumber);varwinningTicketIndex=decisionBlockHash%rounds[roundIndex].ticketsCount;varticketIndex=uint256(0);for(varbuyerIndex=0;buyerIndex<rounds[roundIndex].buyers.length;buyerIndex++){varbuyer=rounds[roundIndex].buyers[buyerIndex];ticketIndex+=rounds[roundIndex].ticketsCountByBuyer[buyer];if(ticketIndex>winningTicketIndex){returnbuyer;}}}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 72
+column: 5
+content: functiongetDecisionBlockNumber(uintroundIndex,uintsubpotIndex)constantreturns(uint){return((roundIndex+1)*blocksPerRound)+subpotIndex;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 76
+column: 5
+content: functiongetSubpotsCount(uintroundIndex)constantreturns(uint){varsubpotsCount=rounds[roundIndex].pot/blockReward;if(rounds[roundIndex].pot%blockReward>0)subpotsCount++;returnsubpotsCount;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 85
+column: 5
+content: functiongetSubpot(uintroundIndex)constantreturns(uint){returnrounds[roundIndex].pot/getSubpotsCount(roundIndex);}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 115
+column: 5
+content: functiongetHashOfBlock(uintblockIndex)constantreturns(uint){returnuint(block.blockhash(blockIndex));}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 119
+column: 5
+content: functiongetBuyers(uintroundIndex,addressbuyer)constantreturns(address[]){returnrounds[roundIndex].buyers;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 123
+column: 5
+content: functiongetTicketsCountByBuyer(uintroundIndex,addressbuyer)constantreturns(uint){returnrounds[roundIndex].ticketsCountByBuyer[buyer];}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 127
+column: 5
+content: functiongetPot(uintroundIndex)constantreturns(uint){returnrounds[roundIndex].pot;}
+
+ruleId: SOLIDITY_EXTRA_GAS_IN_LOOPS
+patternId: d3j11j
+severity: 1
+line: 62
+column: 9
+content: for(varbuyerIndex=0;buyerIndex<rounds[roundIndex].buyers.length;buyerIndex++){varbuyer=rounds[roundIndex].buyers[buyerIndex];ticketIndex+=rounds[roundIndex].ticketsCountByBuyer[buyer];if(ticketIndex>winningTicketIndex){returnbuyer;}}
+
+ruleId: SOLIDITY_GAS_LIMIT_IN_LOOPS
+patternId: f6f853
+severity: 2
+line: 62
+column: 9
+content: for(varbuyerIndex=0;buyerIndex<rounds[roundIndex].buyers.length;buyerIndex++){varbuyer=rounds[roundIndex].buyers[buyerIndex];ticketIndex+=rounds[roundIndex].ticketsCountByBuyer[buyer];if(ticketIndex>winningTicketIndex){returnbuyer;}}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 8
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 109
+column: 16
+content: send(subpot)
+
+ruleId: SOLIDITY_VAR
+patternId: d28aa7
+severity: 2
+line: 60
+column: 9
+content: varticketIndex=uint256(0)
+
+ruleId: SOLIDITY_VAR
+patternId: d28aa7
+severity: 2
+line: 62
+column: 13
+content: varbuyerIndex=0
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 20
+column: 5
+content: functiongetBlocksPerRound()constantreturns(uint){returnblocksPerRound;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 21
+column: 5
+content: functiongetTicketPrice()constantreturns(uint){returnticketPrice;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 34
+column: 5
+content: functiongetRoundIndex()constantreturns(uint){returnblock.number/blocksPerRound;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 40
+column: 5
+content: functiongetIsCashed(uintroundIndex,uintsubpotIndex)constantreturns(bool){returnrounds[roundIndex].isCashed[subpotIndex];}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 47
+column: 5
+content: functioncalculateWinner(uintroundIndex,uintsubpotIndex)constantreturns(address){vardecisionBlockNumber=getDecisionBlockNumber(roundIndex,subpotIndex);if(decisionBlockNumber>block.number)return;vardecisionBlockHash=getHashOfBlock(decisionBlockNumber);varwinningTicketIndex=decisionBlockHash%rounds[roundIndex].ticketsCount;varticketIndex=uint256(0);for(varbuyerIndex=0;buyerIndex<rounds[roundIndex].buyers.length;buyerIndex++){varbuyer=rounds[roundIndex].buyers[buyerIndex];ticketIndex+=rounds[roundIndex].ticketsCountByBuyer[buyer];if(ticketIndex>winningTicketIndex){returnbuyer;}}}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 72
+column: 5
+content: functiongetDecisionBlockNumber(uintroundIndex,uintsubpotIndex)constantreturns(uint){return((roundIndex+1)*blocksPerRound)+subpotIndex;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 76
+column: 5
+content: functiongetSubpotsCount(uintroundIndex)constantreturns(uint){varsubpotsCount=rounds[roundIndex].pot/blockReward;if(rounds[roundIndex].pot%blockReward>0)subpotsCount++;returnsubpotsCount;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 85
+column: 5
+content: functiongetSubpot(uintroundIndex)constantreturns(uint){returnrounds[roundIndex].pot/getSubpotsCount(roundIndex);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 89
+column: 5
+content: functioncash(uintroundIndex,uintsubpotIndex){varsubpotsCount=getSubpotsCount(roundIndex);if(subpotIndex>=subpotsCount)return;vardecisionBlockNumber=getDecisionBlockNumber(roundIndex,subpotIndex);if(decisionBlockNumber>block.number)return;if(rounds[roundIndex].isCashed[subpotIndex])return;varwinner=calculateWinner(roundIndex,subpotIndex);varsubpot=getSubpot(roundIndex);winner.send(subpot);rounds[roundIndex].isCashed[subpotIndex]=true;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 115
+column: 5
+content: functiongetHashOfBlock(uintblockIndex)constantreturns(uint){returnuint(block.blockhash(blockIndex));}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 119
+column: 5
+content: functiongetBuyers(uintroundIndex,addressbuyer)constantreturns(address[]){returnrounds[roundIndex].buyers;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 123
+column: 5
+content: functiongetTicketsCountByBuyer(uintroundIndex,addressbuyer)constantreturns(uint){returnrounds[roundIndex].ticketsCountByBuyer[buyer];}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 127
+column: 5
+content: functiongetPot(uintroundIndex)constantreturns(uint){returnrounds[roundIndex].pot;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 131
+column: 5
+content: function(){varroundIndex=getRoundIndex();varvalue=msg.value-(msg.value%ticketPrice);if(value==0)return;if(value<msg.value){msg.sender.send(msg.value-value);}varticketsCount=value/ticketPrice;rounds[roundIndex].ticketsCount+=ticketsCount;if(rounds[roundIndex].ticketsCountByBuyer[msg.sender]==0){varbuyersLength=rounds[roundIndex].buyers.length++;rounds[roundIndex].buyers[buyersLength]=msg.sender;}rounds[roundIndex].ticketsCountByBuyer[msg.sender]+=ticketsCount;rounds[roundIndex].ticketsCount+=ticketsCount;rounds[roundIndex].pot+=value;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 31
+column: 5
+content: mapping(uint=>Round)rounds;
+
+SOLIDITY_VISIBILITY :15
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :12
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_ARRAY_LENGTH_MANIPULATION :1
+SOLIDITY_VAR :2
+SOLIDITY_EXTRA_GAS_IN_LOOPS :1
+SOLIDITY_GAS_LIMIT_IN_LOOPS :1
+SOLIDITY_UNCHECKED_CALL :1

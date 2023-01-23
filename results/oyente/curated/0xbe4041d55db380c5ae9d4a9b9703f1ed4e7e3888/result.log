@@ -1,0 +1,57 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:
+/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:28:24: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if(intitalized)throw;
+                       ^---^
+/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:35:24: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if(intitalized)throw;
+                       ^---^
+/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:49:9: Warning: Use of the "var" keyword is deprecated.
+        var acc = Acc[msg.sender];
+        ^-----^
+/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:59:9: Warning: Use of the "var" keyword is deprecated.
+        var acc = Acc[msg.sender];
+        ^-----^
+
+INFO:root:contract /sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:Log:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 21.3%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:91:5: Warning: Integer Underflow.
+    Message[] public History
+INFO:symExec:/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:95:5: Warning: Integer Overflow.
+    function AddMessage(address _adr,uint _val,string _data)
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:91:5: Warning: Integer Overflow.
+    Message[] public History
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:MONEY_BOX:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:17:5: Warning: Integer Overflow.
+    mapping (address => Holder) public Acc
+INFO:symExec:/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:60:9: Warning: Timestamp Dependency.
+        if( acc.balance>=MinSum && acc.balance>=_am && now>acc.unlockTime)
+        ^
+Spanning multiple lines.
+INFO:symExec:/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:63:16: Warning: Re-Entrancy Vulnerability.
+            if(msg.sender.call.value(_am)()
+/sb/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol:66:17: Warning: Re-Entrancy Vulnerability.
+                LogFile.AddMessage(msg.sender,_am,"Collect")
+INFO:symExec:	====== Analysis Completed ======

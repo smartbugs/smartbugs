@@ -1,0 +1,82 @@
+{
+    "errors": [
+        "EXIT_CODE_7"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "function": "withdrawFunds",
+            "impact": "High",
+            "line": 20,
+            "line_end": 30,
+            "message": "Reentrancy in EtherStore.withdrawFunds (etherstore.sol#20-30):\n\tExternal calls:\n\t- require(bool)(msg.sender.call.value(_weiToWithdraw)()) (etherstore.sol#27)\n\tState variables written after the call(s):\n\t- balances (etherstore.sol#28)\n\t- lastWithdrawTime (etherstore.sol#29)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "impact": "Informational",
+            "line": 12,
+            "message": "EtherStore.withdrawalLimit should be constant (etherstore.sol#12)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "function": "depositFunds",
+            "impact": "Informational",
+            "line": 16,
+            "line_end": 18,
+            "message": "EtherStore.depositFunds (etherstore.sol#16-18) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "function": "withdrawFunds",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 30,
+            "message": "EtherStore.withdrawFunds (etherstore.sol#20-30) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "impact": "Informational",
+            "line": 8,
+            "message": "Detected issues with version pragma in etherstore.sol:\n\t- pragma solidity^0.4.0 (etherstore.sol#8): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "function": "withdrawFunds",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 30,
+            "message": "Low level call in EtherStore.withdrawFunds (etherstore.sol#20-30):\n\t-require(bool)(msg.sender.call.value(_weiToWithdraw)()) etherstore.sol#27\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "impact": "Informational",
+            "line": 20,
+            "message": "Parameter '_weiToWithdraw' of EtherStore.withdrawFunds (etherstore.sol#20) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

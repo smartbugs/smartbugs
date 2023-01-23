@@ -1,0 +1,81 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/lottery.sol:
+/sb/lottery.sol:24:6: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+     function Lottery() {
+     ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottery.sol:30:10: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+         throw;
+         ^---^
+/sb/lottery.sol:48:18: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 throw;
+                 ^---^
+/sb/lottery.sol:55:40: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+         if(msg.sender != organizer) { throw; }
+                                       ^---^
+/sb/lottery.sol:64:40: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+         if(msg.sender != organizer) { throw; }
+                                       ^---^
+/sb/lottery.sol:58:14: Warning: Invoking events without "emit" prefix is deprecated.
+             GetBet(bets[i].betAmount, bets[i].blockNumber, bets[i].won);
+             ^---------------------------------------------------------^
+/sb/lottery.sol:66:10: Warning: "suicide" has been deprecated in favour of "selfdestruct"
+         suicide(organizer);
+         ^----------------^
+/sb/lottery.sol:24:6: Warning: No visibility specified. Defaulting to "public". 
+     function Lottery() {
+     ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottery.sol:29:6: Warning: No visibility specified. Defaulting to "public". 
+     function() {
+     ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottery.sol:34:6: Warning: No visibility specified. Defaulting to "public". 
+     function makeBet() {
+     ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottery.sol:42:24: Warning: "msg.value" used in non-payable function. Do you want to add the "payable" modifier to this function?
+         bets.push(Bet(msg.value, block.number, won));
+                       ^-------^
+/sb/lottery.sol:46:34: Warning: "msg.value" used in non-payable function. Do you want to add the "payable" modifier to this function?
+             if(!msg.sender.send(msg.value)) {
+                                 ^-------^
+/sb/lottery.sol:54:6: Warning: No visibility specified. Defaulting to "public". 
+     function getBets() {
+     ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottery.sol:63:6: Warning: No visibility specified. Defaulting to "public". 
+     function destroy() {
+     ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/lottery.sol:Lottery:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 73.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/lottery.sol:58:40: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i].blockNumber
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/sb/lottery.sol:58:61: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i].blockNumber, bets[i].won
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/sb/lottery.sol:58:21: Warning: Integer Overflow.
+             GetBet(bets[i]
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/sb/lottery.sol:58:40: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i]
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+/sb/lottery.sol:58:61: Warning: Integer Overflow.
+             GetBet(bets[i].betAmount, bets[i].blockNumber, bets[i]
+Integer Overflow occurs if:
+    bets.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    organizer = 0
+INFO:symExec:	====== Analysis Completed ======

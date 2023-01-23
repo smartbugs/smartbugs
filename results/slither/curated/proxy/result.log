@@ -1,0 +1,15 @@
+INFO:Detectors:[91m
+Proxy.forward (/sb/proxy.sol#17-20) uses delegatecall to a input-controlled function id
+	require(bool)(callee.delegatecall(_data)) (/sb/proxy.sol#19)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#controlled-delegatecall[0m
+INFO:Detectors:[92m
+Proxy.forward (/sb/proxy.sol#17-20) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Low level call in Proxy.forward (/sb/proxy.sol#17-20):
+	-require(bool)(callee.delegatecall(_data)) /sb/proxy.sol#19
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Parameter '_data' of Proxy.forward (/sb/proxy.sol#17) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/proxy.sol analyzed (1 contracts), 4 result(s) found

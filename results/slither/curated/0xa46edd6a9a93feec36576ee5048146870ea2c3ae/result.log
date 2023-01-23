@@ -1,0 +1,24 @@
+INFO:Slither:Compilation warnings/errors on /sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol:
+/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol:16:13: Warning: Return value of low-level calls not used.
+            caddress.call(id,from,_tos[i],v[i]);
+            ^---------------------------------^
+
+INFO:Detectors:[92m
+EBU.transfer has external calls inside a loop:
+	- caddress.call(id,from,_tos[i],v[i]) (/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#16)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation/_edit#calls-inside-a-loop[0m
+INFO:Detectors:[92m
+EBU.transfer (/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#11-19) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol:
+	- pragma solidity^0.4.18 (/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in EBU.transfer (/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#11-19):
+	-caddress.call(id,from,_tos[i],v[i]) /sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#16
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Parameter '_tos' of EBU.transfer (/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#11) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol analyzed (1 contracts), 5 result(s) found

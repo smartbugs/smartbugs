@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 488,
+            "contract": "FindThisHash",
+            "filename": "dataset/front_running/FindThisHash.sol",
+            "function": "solve(string)",
+            "line": 18,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 178,
+            "contract": "FindThisHash",
+            "filename": "dataset/front_running/FindThisHash.sol",
+            "function": "solve(string)",
+            "line": 14,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

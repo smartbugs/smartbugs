@@ -1,0 +1,77 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract lottopollo, function draw(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/lottopollo.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "A control flow decision is made based on The block.timestamp environment variable.\nThe block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.\nClassification: SWC-116\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Dependence_on_predictable_environment_variable"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract lottopollo, function draw(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/lottopollo.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "A control flow decision is made based on The block.timestamp environment variable.\nThe block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.\nClassification: SWC-116\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Dependence_on_predictable_environment_variable"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "A control flow decision is made based on the block variable coinbase, gaslimit, timestamp or block number. One or more of block.coinbase, block.gaslimit, block.timestamp or block.number are used to determine a control flow decision. Note that the values of these variables are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners. Classification: SWC-116 if the control flow depends on block.timestamp, and SWC-120 otherwise. Detection method: Check whether control flow decisions are influenced by block.coinbase, block.gaslimit, block.timestamp or block.number."
+                            },
+                            "help": {
+                                "text": "One or more of block.coinbase, block.gaslimit, block.timestamp or block.number are used to determine a control flow decision. Note that the values of these variables are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners."
+                            },
+                            "id": "mythril_0_23_5_Dependence_on_predictable_environment_variable",
+                            "name": "Dependence on predictable environment variable",
+                            "properties": {
+                                "security-severity": "2.0"
+                            },
+                            "shortDescription": {
+                                "text": "A control flow decision is made based on the block variable coinbase, gaslimit, timestamp or block number."
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,58 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "DosGas",
+            "filename": "dataset/denial_of_service/dos_address.sol",
+            "function": "emptyCreditors",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 20,
+            "message": "DosGas.emptyCreditors (dos_address.sol#14-20) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "DosGas",
+            "filename": "dataset/denial_of_service/dos_address.sol",
+            "function": "addCreditors",
+            "impact": "Informational",
+            "line": 22,
+            "line_end": 27,
+            "message": "DosGas.addCreditors (dos_address.sol#22-27) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "DosGas",
+            "filename": "dataset/denial_of_service/dos_address.sol",
+            "function": "iWin",
+            "impact": "Informational",
+            "line": 29,
+            "line_end": 31,
+            "message": "DosGas.iWin (dos_address.sol#29-31) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "DosGas",
+            "filename": "dataset/denial_of_service/dos_address.sol",
+            "function": "numberCreditors",
+            "impact": "Informational",
+            "line": 33,
+            "line_end": 35,
+            "message": "DosGas.numberCreditors (dos_address.sol#33-35) should be declared external\n",
+            "name": "external-function"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

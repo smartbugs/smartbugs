@@ -1,0 +1,27 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "TokenSaleChallenge",
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

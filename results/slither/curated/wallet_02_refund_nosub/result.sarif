@@ -1,0 +1,110 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_02_refund_nosub.sol"
+                                },
+                                "region": {
+                                    "endLine": 26,
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.deposit (wallet_02_refund_nosub.sol#23-26) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function withdraw"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_02_refund_nosub.sol"
+                                },
+                                "region": {
+                                    "endLine": 32,
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.withdraw (wallet_02_refund_nosub.sol#28-32) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function refund"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_02_refund_nosub.sol"
+                                },
+                                "region": {
+                                    "endLine": 37,
+                                    "startLine": 34
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.refund (wallet_02_refund_nosub.sol#34-37) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function migrateTo"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_02_refund_nosub.sol"
+                                },
+                                "region": {
+                                    "endLine": 44,
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.migrateTo (wallet_02_refund_nosub.sol#41-44) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

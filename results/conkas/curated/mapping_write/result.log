@@ -1,0 +1,10 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/mapping_write.sol:Map...
+Vulnerability: Integer Overflow. Maybe in function: get(uint256). PC: 0x28b. Line number: 24.
+If a = 80084422859880547211683076133703299733277748156566366325829078699459944778998
+and b = 35707666377435648211887908874984608119992236509074197713628505308453184860940
+Vulnerability: Integer Overflow. Maybe in function: set(uint256,uint256). PC: 0x188. Line number: 20.
+If a = 80084422859880547211683076133703299733277748156566366325829078699459944778998
+and b = 35707666377435648211887908874984608119992236509074197713628505312777008706304
+Vulnerability: Reentrancy. Maybe in function: withdraw(). PC: 0x232. Line number: 28.

@@ -1,0 +1,30 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_TIMEOUT"
+    ],
+    "findings": [
+        {
+            "contract": "Missing",
+            "filename": "dataset/access_control/incorrect_constructor_name3.sol",
+            "line": 29,
+            "message": "Classification: SWC-105",
+            "name": "Leaking Ether",
+            "severity": "High"
+        },
+        {
+            "contract": "Missing",
+            "filename": "dataset/access_control/incorrect_constructor_name3.sol",
+            "line": 20,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

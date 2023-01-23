@@ -1,0 +1,213 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/smart_billions.sol:
+/sb/smart_billions.sol:85:5: Warning: Use of the "var" keyword is deprecated.
+    var _allowance = allowed[_from][msg.sender];
+    ^------------^
+/sb/smart_billions.sol:182:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function SmartBillions() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:57:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender, owner, _value);
+        ^---------------------------------^
+/sb/smart_billions.sol:62:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender, _to, _value);
+        ^-------------------------------^
+/sb/smart_billions.sol:91:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(_from, _to, _value);
+    ^--------------------------^
+/sb/smart_billions.sol:102:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, _value);
+    ^------------------------------------^
+/sb/smart_billions.sol:318:32: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        require(_amount > 0 && this.balance >= (investBalance * 9 / 10) + walletBalance + _amount);
+                               ^----------^
+/sb/smart_billions.sol:320:33: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            require((_amount <= this.balance / 400) && coldStoreLast + 4 * 60 * 24 * 7 <= block.number);
+                                ^----------^
+/sb/smart_billions.sol:370:23: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        uint maxpay = this.balance / 2;
+                      ^----------^
+/sb/smart_billions.sol:427:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(address(0),msg.sender,senderBalance); // for etherscan
+        ^-------------------------------------------^
+/sb/smart_billions.sol:428:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(address(0),owner,ownerBalance); // for etherscan
+        ^-------------------------------------^
+/sb/smart_billions.sol:429:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(address(0),animator,animatorBalance); // for etherscan
+        ^-------------------------------------------^
+/sb/smart_billions.sol:430:9: Warning: Invoking events without "emit" prefix is deprecated.
+        LogInvestment(msg.sender,_partner,investing);
+        ^------------------------------------------^
+/sb/smart_billions.sol:440:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender,address(0),balances[msg.sender]); // for etherscan
+        ^--------------------------------------------------^
+/sb/smart_billions.sol:477:9: Warning: Invoking events without "emit" prefix is deprecated.
+        LogDividend(_who,balance,last);
+        ^----------------------------^
+/sb/smart_billions.sol:552:13: Warning: Invoking events without "emit" prefix is deprecated.
+            LogLate(msg.sender,player.blockNum,block.number);
+            ^----------------------------------------------^
+/sb/smart_billions.sol:574:17: Warning: Invoking events without "emit" prefix is deprecated.
+                LogLate(msg.sender,player.blockNum,block.number);
+                ^----------------------------------------------^
+/sb/smart_billions.sol:581:13: Warning: Invoking events without "emit" prefix is deprecated.
+            LogWin(msg.sender,uint(player.betHash),uint(hash),prize);
+            ^------------------------------------------------------^
+/sb/smart_billions.sol:584:17: Warning: Invoking events without "emit" prefix is deprecated.
+                LogRecordWin(msg.sender,prize);
+                ^----------------------------^
+/sb/smart_billions.sol:589:13: Warning: Invoking events without "emit" prefix is deprecated.
+            LogLoss(msg.sender,uint(player.betHash),uint(hash));
+            ^-------------------------------------------------^
+/sb/smart_billions.sol:618:32: Warning: "sha3" has been deprecated in favour of "keccak256"
+        return playSystem(uint(sha3(msg.sender,block.number)), address(0));
+                               ^---------------------------^
+/sb/smart_billions.sol:618:32: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        return playSystem(uint(sha3(msg.sender,block.number)), address(0));
+                               ^---------------------------^
+/sb/smart_billions.sol:626:32: Warning: "sha3" has been deprecated in favour of "keccak256"
+        return playSystem(uint(sha3(msg.sender,block.number)), _partner);
+                               ^---------------------------^
+/sb/smart_billions.sol:626:32: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        return playSystem(uint(sha3(msg.sender,block.number)), _partner);
+                               ^---------------------------^
+/sb/smart_billions.sol:660:13: Warning: Invoking events without "emit" prefix is deprecated.
+            LogBet(msg.sender,uint(bethash),hashNext,msg.value);
+            ^-------------------------------------------------^
+/sb/smart_billions.sol:25:3: Warning: No visibility specified. Defaulting to "public". 
+  function balanceOf(address who) constant returns (uint);
+  ^------------------------------------------------------^
+/sb/smart_billions.sol:26:3: Warning: No visibility specified. Defaulting to "public". 
+  function transfer(address to, uint value);
+  ^----------------------------------------^
+/sb/smart_billions.sol:32:3: Warning: No visibility specified. Defaulting to "public". 
+  function allowance(address owner, address spender) constant returns (uint);
+  ^-------------------------------------------------------------------------^
+/sb/smart_billions.sol:33:3: Warning: No visibility specified. Defaulting to "public". 
+  function transferFrom(address from, address to, uint value);
+  ^----------------------------------------------------------^
+/sb/smart_billions.sol:34:3: Warning: No visibility specified. Defaulting to "public". 
+  function approve(address spender, uint value);
+  ^--------------------------------------------^
+/sb/smart_billions.sol:51:3: Warning: No visibility specified. Defaulting to "public". 
+  function transfer(address _to, uint _value) onlyPayloadSize(2 * 32) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:70:3: Warning: No visibility specified. Defaulting to "public". 
+  function balanceOf(address _owner) constant returns (uint balance) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:84:3: Warning: No visibility specified. Defaulting to "public". 
+  function transferFrom(address _from, address _to, uint _value) onlyPayloadSize(3 * 32) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:98:3: Warning: No visibility specified. Defaulting to "public". 
+  function approve(address _spender, uint _value) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:110:3: Warning: No visibility specified. Defaulting to "public". 
+  function allowance(address _owner, address _spender) constant returns (uint remaining) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:182:5: Warning: No visibility specified. Defaulting to "public". 
+    function SmartBillions() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:523:43: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            return(betPrize(player,uint24(block.blockhash(player.blockNum))));
+                                          ^-------------^
+/sb/smart_billions.sol:560:27: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            hash = uint24(block.blockhash(player.blockNum));
+                          ^-------------^
+/sb/smart_billions.sol:700:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+        return( ( uint(block.blockhash(_lastb  )) & 0xFFFFFF )
+                       ^-------------^
+/sb/smart_billions.sol:702:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+1)) & 0xFFFFFF ) << 24 )
+                       ^-------------^
+/sb/smart_billions.sol:704:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+2)) & 0xFFFFFF ) << 48 )
+                       ^-------------^
+/sb/smart_billions.sol:706:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+3)) & 0xFFFFFF ) << 72 )
+                       ^-------------^
+/sb/smart_billions.sol:708:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+4)) & 0xFFFFFF ) << 96 )
+                       ^-------------^
+/sb/smart_billions.sol:710:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+5)) & 0xFFFFFF ) << 120 )
+                       ^-------------^
+/sb/smart_billions.sol:712:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+6)) & 0xFFFFFF ) << 144 )
+                       ^-------------^
+/sb/smart_billions.sol:714:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+7)) & 0xFFFFFF ) << 168 )
+                       ^-------------^
+/sb/smart_billions.sol:716:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+8)) & 0xFFFFFF ) << 192 )
+                       ^-------------^
+/sb/smart_billions.sol:718:24: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            | ( ( uint(block.blockhash(_lastb+9)) & 0xFFFFFF ) << 216 )
+                       ^-------------^
+/sb/smart_billions.sol:10:3: Warning: Function state mutability can be restricted to pure
+  function sub(uint a, uint b) internal returns (uint) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:14:3: Warning: Function state mutability can be restricted to pure
+  function add(uint a, uint b) internal returns (uint) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/smart_billions.sol:482:5: Warning: Function state mutability can be restricted to pure
+    function betPrize(Bet _player, uint24 _hash) constant private returns (uint) { // house fee 13.85%
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/smart_billions.sol:SafeMath:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/smart_billions.sol:SmartBillions:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 22.7%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/smart_billions.sol:364:13: Warning: Integer Underflow.
+            walletBalance -= balance
+Integer Underflow occurs if:
+    wallets[msg.sender].balance = 411376139318328889125727538933413040096072175911373566445092863
+    walletBalance = 411376139318328889125727538933413040096072175911373566445092862
+    investStart = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/smart_billions.sol:344:26: Warning: Integer Underflow.
+		        uint period = (block.number - hashFirst
+Integer Underflow occurs if:
+    investStart = 1
+    wallets[msg.sender].balance = 1000000000016384
+    hashFirst = 4194304
+/sb/smart_billions.sol:345:29: Warning: Integer Underflow.
+                if(period > dividends.length - 2
+Integer Underflow occurs if:
+    investStart = 1
+    wallets[msg.sender].balance = 1000000000016384
+    dividends.length = 1
+    hashFirst = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/smart_billions.sol:723:23: Warning: Integer Underflow.
+        uint delta = (_block - hashFirst
+Integer Underflow occurs if:
+    hashFirst = 134086920
+    investStart = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/smart_billions.sol:339:47: Warning: Integer Overflow.
+        if(investStart > 1 && block.number >= investStart + (hashesSize * 5)
+Integer Overflow occurs if:
+    investStart = 115792089237316195423570985008687907853269984665640564039457584007913129558016
+    wallets[msg.sender].balance = 1000000000622592
+INFO:symExec:Flow1
+/sb/smart_billions.sol:382:13: Warning: Transaction-Ordering Dependency.
+            msg.sender.transfer(maxpay)
+Flow2
+/sb/smart_billions.sol:372:13: Warning: Transaction-Ordering Dependency.
+            msg.sender.transfer(_amount)
+INFO:symExec:	====== Analysis Completed ======

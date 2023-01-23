@@ -1,0 +1,110 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_insecure.sol"
+                                },
+                                "region": {
+                                    "startColumn": 38,
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_CALL_WITHOUT_DATA\nSeverity: 2"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_CALL_WITHOUT_DATA"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_insecure.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_PRAGMAS_VERSION\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_PRAGMAS_VERSION"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_insecure.sol"
+                                },
+                                "region": {
+                                    "startColumn": 30,
+                                    "startLine": 12
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_insecure.sol"
+                                },
+                                "region": {
+                                    "startColumn": 38,
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_UNCHECKED_CALL\nSeverity: 3"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_UNCHECKED_CALL"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartdec/smartcheck",
+                    "name": "Smartcheck",
+                    "rules": [
+                        {
+                            "id": "smartcheck_SOLIDITY_UNCHECKED_CALL",
+                            "name": "SOLIDITY_UNCHECKED_CALL"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_PRAGMAS_VERSION",
+                            "name": "SOLIDITY_PRAGMAS_VERSION"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA",
+                            "name": "SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_CALL_WITHOUT_DATA",
+                            "name": "SOLIDITY_CALL_WITHOUT_DATA"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

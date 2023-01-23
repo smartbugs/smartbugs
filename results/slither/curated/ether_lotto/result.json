@@ -1,0 +1,83 @@
+{
+    "errors": [
+        "EXIT_CODE_7"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "EtherLotto",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "function": "play",
+            "impact": "High",
+            "line": 33,
+            "line_end": 57,
+            "message": "EtherLotto.play (ether_lotto.sol#33-57) sends eth to arbitrary user\n\tDangerous calls:\n\t- bank.transfer(FEE_AMOUNT) (ether_lotto.sol#49)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "contract": "EtherLotto",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "function": "play",
+            "impact": "Medium",
+            "line": 33,
+            "line_end": 57,
+            "message": "EtherLotto.play (ether_lotto.sol#33-57) uses a dangerous strict equality:\n\t- random == 0\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "EtherLotto",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "function": "play",
+            "impact": "Low",
+            "line": 33,
+            "line_end": 57,
+            "message": "EtherLotto.play (ether_lotto.sol#33-57) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- random == 0 (ether_lotto.sol#46-56)\n",
+            "name": "timestamp"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "impact": "Informational",
+            "line": 43,
+            "message": "Deprecated standard detected @ ether_lotto.sol#43:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "EtherLotto",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "function": "play",
+            "impact": "Informational",
+            "line": 33,
+            "line_end": 57,
+            "message": "EtherLotto.play (ether_lotto.sol#33-57) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "impact": "Informational",
+            "line": 8,
+            "message": "Detected issues with version pragma in ether_lotto.sol:\n\t- pragma solidity^0.4.15 (ether_lotto.sol#8): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/ether_lotto.sol",
+            "impact": "Informational",
+            "line": 27,
+            "line_end": 29,
+            "message": "Function 'EtherLotto.EtherLotto' (ether_lotto.sol#27-29) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

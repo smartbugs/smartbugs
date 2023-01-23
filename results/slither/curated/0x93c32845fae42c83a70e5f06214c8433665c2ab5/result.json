@@ -1,0 +1,202 @@
+{
+    "errors": [
+        "EXIT_CODE_21"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "X_WALLET",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "function": "Collect",
+            "impact": "High",
+            "line": 21,
+            "line_end": 35,
+            "message": "Reentrancy in X_WALLET.Collect (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#21-35):\n\tExternal calls:\n\t- msg.sender.call.value(_am)() (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#29-33)\n\tState variables written after the call(s):\n\t- Acc (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#31)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "X_WALLET.MinSum should be constant (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#54)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "X_WALLET",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "function": "Collect",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 35,
+            "message": "X_WALLET.Collect (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#21-35) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "X_WALLET",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 42,
+            "message": "X_WALLET.fallback (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#37-42) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "function": "AddMessage",
+            "impact": "Informational",
+            "line": 76,
+            "line_end": 84,
+            "message": "Log.AddMessage (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#76-84) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "X_WALLET",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "function": "Collect",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 35,
+            "message": "Low level call in X_WALLET.Collect (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#21-35):\n\t-msg.sender.call.value(_am)() 0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#29-33\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 9,
+            "line_end": 59,
+            "message": "Contract 'X_WALLET' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#9-59) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 19,
+            "message": "Function 'X_WALLET.Put' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#11-19) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Parameter '_unlockTime' of X_WALLET.Put (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#11) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 35,
+            "message": "Function 'X_WALLET.Collect' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#21-35) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 21,
+            "message": "Parameter '_am' of X_WALLET.Collect (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#21) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 56,
+            "line_end": 58,
+            "message": "Function 'X_WALLET.X_WALLET' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#56-58) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 50,
+            "message": "Variable 'X_WALLET.Acc' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#50) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 52,
+            "message": "Variable 'X_WALLET.LogFile' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#52) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "Variable 'X_WALLET.MinSum' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#54) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 76,
+            "line_end": 84,
+            "message": "Function 'Log.AddMessage' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#76-84) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_adr' of Log.AddMessage (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_val' of Log.AddMessage (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 76,
+            "message": "Parameter '_data' of Log.AddMessage (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#76) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 72,
+            "message": "Variable 'Log.History' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#72) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+            "impact": "Informational",
+            "line": 74,
+            "message": "Variable 'Log.LastMsg' (0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol#74) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

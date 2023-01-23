@@ -1,0 +1,153 @@
+/sb/king_of_the_ether_throne.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 84
+column: 4
+content: functionnumberOfMonarchs()constantreturns(uintn){returnpastMonarchs.length;}
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 152
+column: 32
+content: 100szabo*(rawNewClaimPrice/100szabo)
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 154
+column: 32
+content: 1finney*(rawNewClaimPrice/1finney)
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 156
+column: 32
+content: 10finney*(rawNewClaimPrice/10finney)
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 158
+column: 32
+content: 100finney*(rawNewClaimPrice/100finney)
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 160
+column: 32
+content: 1ether*(rawNewClaimPrice/1ether)
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 162
+column: 32
+content: 10ether*(rawNewClaimPrice/10ether)
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 24
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 174
+column: 22
+content: send(amount)
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 73
+column: 4
+content: functionKingOfTheEtherThrone(){wizardAddress=msg.sender;currentClaimPrice=startingClaimPrice;currentMonarch=Monarch(wizardAddress,"[Vacant]",0,block.timestamp);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 84
+column: 4
+content: functionnumberOfMonarchs()constantreturns(uintn){returnpastMonarchs.length;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 98
+column: 4
+content: function(){claimThrone(string(msg.data));}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 103
+column: 4
+content: functionclaimThrone(stringname){uintvaluePaid=msg.value;if(valuePaid<currentClaimPrice){msg.sender.send(valuePaid);return;}if(valuePaid>currentClaimPrice){uintexcessPaid=valuePaid-currentClaimPrice;msg.sender.send(excessPaid);valuePaid=valuePaid-excessPaid;}uintwizardCommission=(valuePaid*wizardCommissionFractionNum)/wizardCommissionFractionDen;uintcompensation=valuePaid-wizardCommission;if(currentMonarch.etherAddress!=wizardAddress){currentMonarch.etherAddress.send(compensation);}else{}pastMonarchs.push(currentMonarch);currentMonarch=Monarch(msg.sender,name,valuePaid,block.timestamp);uintrawNewClaimPrice=currentClaimPrice*claimPriceAdjustNum/claimPriceAdjustDen;if(rawNewClaimPrice<10finney){currentClaimPrice=rawNewClaimPrice;}elseif(rawNewClaimPrice<100finney){currentClaimPrice=100szabo*(rawNewClaimPrice/100szabo);}elseif(rawNewClaimPrice<1ether){currentClaimPrice=1finney*(rawNewClaimPrice/1finney);}elseif(rawNewClaimPrice<10ether){currentClaimPrice=10finney*(rawNewClaimPrice/10finney);}elseif(rawNewClaimPrice<100ether){currentClaimPrice=100finney*(rawNewClaimPrice/100finney);}elseif(rawNewClaimPrice<1000ether){currentClaimPrice=1ether*(rawNewClaimPrice/1ether);}elseif(rawNewClaimPrice<10000ether){currentClaimPrice=10ether*(rawNewClaimPrice/10ether);}else{currentClaimPrice=rawNewClaimPrice;}ThroneClaimed(currentMonarch.etherAddress,currentMonarch.name,currentClaimPrice);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 172
+column: 4
+content: functionsweepCommission(uintamount)onlywizard{wizardAddress.send(amount);}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 178
+column: 4
+content: functiontransferOwnership(addressnewOwner)onlywizard{wizardAddress=newOwner;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 42
+column: 4
+content: addresswizardAddress;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 48
+column: 4
+content: uintconstantstartingClaimPrice=100finney;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 53
+column: 4
+content: uintconstantclaimPriceAdjustNum=3;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 54
+column: 4
+content: uintconstantclaimPriceAdjustDen=2;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 59
+column: 4
+content: uintconstantwizardCommissionFractionNum=1;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 60
+column: 4
+content: uintconstantwizardCommissionFractionDen=100;
+
+SOLIDITY_VISIBILITY :12
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :1
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_UNCHECKED_CALL :1
+SOLIDITY_DIV_MUL :6

@@ -1,0 +1,40 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:20:24: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        Owner.transfer(this.balance);
+                       ^----------^
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:29:9: Warning: Return value of low-level calls not used.
+        adr.call.value(msg.value)(data);
+        ^-----------------------------^
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:36:23: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        if(msg.value>=this.balance)
+                      ^----------^
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:38:26: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            adr.transfer(this.balance+msg.value);
+                         ^----------^
+
+INFO:root:contract /sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:MultiplicatorX3:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 61.4%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:23:5: Warning: Integer Overflow.
+    function Command(address adr,bytes data)
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:29:9: Warning: Callstack Depth Attack Vulnerability.
+        adr.call.value(msg.value)(data)
+INFO:symExec:Flow1
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:38:13: Warning: Transaction-Ordering Dependency.
+            adr.transfer(this.balance+msg.value)
+Flow2
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:20:9: Warning: Transaction-Ordering Dependency.
+        Owner.transfer(this.balance)
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,50 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Unprotected",
+            "filename": "dataset/access_control/unprotected0.sol",
+            "function": "changeOwner",
+            "impact": "Informational",
+            "line": 25,
+            "line_end": 29,
+            "message": "Unprotected.changeOwner (unprotected0.sol#25-29) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/unprotected0.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in unprotected0.sol:\n\t- pragma solidity^0.4.15 (unprotected0.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/unprotected0.sol",
+            "impact": "Informational",
+            "line": 17,
+            "line_end": 21,
+            "message": "Function 'Unprotected.Unprotected' (unprotected0.sol#17-21) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/unprotected0.sol",
+            "impact": "Informational",
+            "line": 25,
+            "message": "Parameter '_newOwner' of Unprotected.changeOwner (unprotected0.sol#25) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

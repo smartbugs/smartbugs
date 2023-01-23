@@ -1,0 +1,33 @@
+{
+    "errors": [
+        "EXIT_CODE_2"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "SendBack",
+            "filename": "dataset/unchecked_low_level_calls/mishandled.sol",
+            "function": "withdrawBalance",
+            "impact": "Informational",
+            "line": 10,
+            "line_end": 15,
+            "message": "SendBack.withdrawBalance (mishandled.sol#10-15) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/mishandled.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in mishandled.sol:\n\t- pragma solidity^0.4.0 (mishandled.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 31,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 18,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 9,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 25,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 31,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "line": 18,
+            "name": "Re-Entrancy Vulnerability"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

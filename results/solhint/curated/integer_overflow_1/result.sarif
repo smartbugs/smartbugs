@@ -1,0 +1,163 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 0 spaces but found 1"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 9
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 0 spaces but found 1"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 6,
+                                    "startLine": 10
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 4 spaces but found 5"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 6,
+                                    "startLine": 12
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 4 spaces but found 5"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 8 spaces but found 9"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 6,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 4 spaces but found 5"
+                    },
+                    "ruleId": "solhint_indent"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_1.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 0 spaces but found 1"
+                    },
+                    "ruleId": "solhint_indent"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/protofire/solhint",
+                    "name": "Solhint",
+                    "rules": [
+                        {
+                            "id": "solhint_indent",
+                            "name": "indent"
+                        }
+                    ],
+                    "version": "2.1.0"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

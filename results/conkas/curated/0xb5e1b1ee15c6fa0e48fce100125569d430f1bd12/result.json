@@ -1,0 +1,84 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 608,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 74,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 536,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 71,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 157,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 67,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1105,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 52,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 782,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 74,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1124,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "Deposit()",
+            "line": 29,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 755,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "CashOut(uint256)",
+            "line": 43,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 860,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "Deposit()",
+            "line": 28,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 413,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "function": "CashOut(uint256)",
+            "line": 40,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

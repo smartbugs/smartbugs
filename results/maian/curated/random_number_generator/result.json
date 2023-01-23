@@ -1,0 +1,27 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "RandomNumberGenerator",
+            "filename": "dataset/bad_randomness/random_number_generator.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "RandomNumberGenerator",
+            "filename": "dataset/bad_randomness/random_number_generator.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "RandomNumberGenerator",
+            "filename": "dataset/bad_randomness/random_number_generator.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

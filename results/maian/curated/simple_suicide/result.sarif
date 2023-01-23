@@ -1,0 +1,85 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleSuicide"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/simple_suicide.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Destructible (verified)"
+                    },
+                    "ruleId": "maian_Destructible_verified"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleSuicide"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/simple_suicide.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Ether leak (verified)"
+                    },
+                    "ruleId": "maian_Ether_leak_verified"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleSuicide"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/simple_suicide.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "No Ether lock (Ether refused)"
+                    },
+                    "ruleId": "maian_No_Ether_lock_Ether_refused"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/MAIAN",
+                    "name": "Maian",
+                    "rules": [
+                        {
+                            "id": "maian_No_Ether_lock_Ether_refused",
+                            "name": "No Ether lock (Ether refused)"
+                        },
+                        {
+                            "id": "maian_Ether_leak_verified",
+                            "name": "Ether leak (verified)"
+                        },
+                        {
+                            "id": "maian_Destructible_verified",
+                            "name": "Destructible (verified)"
+                        }
+                    ],
+                    "version": "#4bab09a"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

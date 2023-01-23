@@ -1,0 +1,58 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "initWallet",
+            "impact": "Informational",
+            "line": 19,
+            "line_end": 21,
+            "message": "Wallet.initWallet (wallet_03_wrong_constructor.sol#19-21) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "deposit",
+            "impact": "Informational",
+            "line": 23,
+            "line_end": 26,
+            "message": "Wallet.deposit (wallet_03_wrong_constructor.sol#23-26) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 28,
+            "line_end": 32,
+            "message": "Wallet.withdraw (wallet_03_wrong_constructor.sol#28-32) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "function": "migrateTo",
+            "impact": "Informational",
+            "line": 36,
+            "line_end": 39,
+            "message": "Wallet.migrateTo (wallet_03_wrong_constructor.sol#36-39) should be declared external\n",
+            "name": "external-function"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

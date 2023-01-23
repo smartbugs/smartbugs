@@ -1,0 +1,176 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "startLine": 84
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20._totalSupply should be constant (ERC20.sol#84)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "endLine": 92,
+                                    "startLine": 90
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.balanceOf (ERC20.sol#90-92) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function allowance"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "endLine": 98,
+                                    "startLine": 95
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.allowance (ERC20.sol#95-98) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "endLine": 108,
+                                    "startLine": 100
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.transfer (ERC20.sol#100-108) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function approve"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "endLine": 116,
+                                    "startLine": 110
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.approve (ERC20.sol#110-116) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ERC20, function transferFrom"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "endLine": 128,
+                                    "startLine": 118
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20.transferFrom (ERC20.sol#118-128) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/ERC20.sol"
+                                },
+                                "region": {
+                                    "startLine": 84
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ERC20._totalSupply (ERC20.sol#84) is never used in ERC20\n"
+                    },
+                    "ruleId": "slither_unused_state"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_unused_state",
+                            "name": "unused-state"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

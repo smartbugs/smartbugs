@@ -1,0 +1,69 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract IntegerOverflowSingleTransaction, function 0xdef92d68"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/overflow_single_tx.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract IntegerOverflowSingleTransaction, function 0x4c4f50f3"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/overflow_single_tx.sol"
+                                },
+                                "region": {
+                                    "startLine": 30
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Underflow"
+                    },
+                    "ruleId": "conkas_Integer_Underflow"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/nveloso/conkas",
+                    "name": "Conkas",
+                    "rules": [
+                        {
+                            "id": "conkas_Integer_Underflow",
+                            "name": "Integer Underflow"
+                        },
+                        {
+                            "id": "conkas_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        }
+                    ],
+                    "version": "#6aee098"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

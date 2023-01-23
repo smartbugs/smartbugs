@@ -1,0 +1,28 @@
+{
+    "errors": [
+        "Unknown operation"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Missing",
+            "filename": "dataset/access_control/incorrect_constructor_name2.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Missing",
+            "exploit": [
+                "a8b00865",
+                "3ccfd60b"
+            ],
+            "filename": "dataset/access_control/incorrect_constructor_name2.sol",
+            "name": "Ether leak (verified)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,114 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReturnValue, function callchecked"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/unchecked_return_value.sol"
+                                },
+                                "region": {
+                                    "endLine": 13,
+                                    "startLine": 11
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ReturnValue.callchecked (unchecked_return_value.sol#11-13) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReturnValue, function callnotchecked"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/unchecked_return_value.sol"
+                                },
+                                "region": {
+                                    "endLine": 18,
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "ReturnValue.callnotchecked (unchecked_return_value.sol#15-18) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReturnValue, function callchecked"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/unchecked_return_value.sol"
+                                },
+                                "region": {
+                                    "endLine": 13,
+                                    "startLine": 11
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in ReturnValue.callchecked (unchecked_return_value.sol#11-13):\n\t-require(bool)(callee.call()) unchecked_return_value.sol#12\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReturnValue, function callnotchecked"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/unchecked_return_value.sol"
+                                },
+                                "region": {
+                                    "endLine": 18,
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in ReturnValue.callnotchecked (unchecked_return_value.sol#15-18):\n\t-callee.call() unchecked_return_value.sol#17\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

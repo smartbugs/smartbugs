@@ -1,0 +1,47 @@
+{
+    "errors": [
+        "EXIT_CODE_3"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "B",
+            "filename": "dataset/unchecked_low_level_calls/0xf29ebe930a539a60279ace72c707cba851a57707.sol",
+            "function": "go",
+            "impact": "Informational",
+            "line": 13,
+            "line_end": 18,
+            "message": "B.go (0xf29ebe930a539a60279ace72c707cba851a57707.sol#13-18) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "B",
+            "filename": "dataset/unchecked_low_level_calls/0xf29ebe930a539a60279ace72c707cba851a57707.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 21,
+            "message": "B.fallback (0xf29ebe930a539a60279ace72c707cba851a57707.sol#20-21) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "B",
+            "filename": "dataset/unchecked_low_level_calls/0xf29ebe930a539a60279ace72c707cba851a57707.sol",
+            "function": "go",
+            "impact": "Informational",
+            "line": 13,
+            "line_end": 18,
+            "message": "Low level call in B.go (0xf29ebe930a539a60279ace72c707cba851a57707.sol#13-18):\n\t-target.call.value(msg.value)() 0xf29ebe930a539a60279ace72c707cba851a57707.sol#16\n",
+            "name": "low-level-calls"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

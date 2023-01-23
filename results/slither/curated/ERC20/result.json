@@ -1,0 +1,85 @@
+{
+    "errors": [
+        "EXIT_CODE_7"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/ERC20.sol",
+            "impact": "Informational",
+            "line": 84,
+            "message": "ERC20._totalSupply should be constant (ERC20.sol#84)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "function": "balanceOf",
+            "impact": "Informational",
+            "line": 90,
+            "line_end": 92,
+            "message": "ERC20.balanceOf (ERC20.sol#90-92) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "function": "allowance",
+            "impact": "Informational",
+            "line": 95,
+            "line_end": 98,
+            "message": "ERC20.allowance (ERC20.sol#95-98) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 100,
+            "line_end": 108,
+            "message": "ERC20.transfer (ERC20.sol#100-108) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "function": "approve",
+            "impact": "Informational",
+            "line": 110,
+            "line_end": 116,
+            "message": "ERC20.approve (ERC20.sol#110-116) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "function": "transferFrom",
+            "impact": "Informational",
+            "line": 118,
+            "line_end": 128,
+            "message": "ERC20.transferFrom (ERC20.sol#118-128) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/front_running/ERC20.sol",
+            "impact": "Informational",
+            "line": 84,
+            "message": "ERC20._totalSupply (ERC20.sol#84) is never used in ERC20\n",
+            "name": "unused-state"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

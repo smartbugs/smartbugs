@@ -1,0 +1,271 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract KingOfTheEtherThrone, function claimThrone"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "endLine": 169,
+                                    "startLine": 103
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "KingOfTheEtherThrone.claimThrone (king_of_the_ether_throne.sol#103-169) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- currentMonarch.etherAddress != wizardAddress (king_of_the_ether_throne.sol#130-135)\n"
+                    },
+                    "ruleId": "slither_timestamp"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract KingOfTheEtherThrone, function numberOfMonarchs"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "endLine": 86,
+                                    "startLine": 84
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "KingOfTheEtherThrone.numberOfMonarchs (king_of_the_ether_throne.sol#84-86) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract KingOfTheEtherThrone, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "endLine": 100,
+                                    "startLine": 98
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "KingOfTheEtherThrone.fallback (king_of_the_ether_throne.sol#98-100) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract KingOfTheEtherThrone, function sweepCommission"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "endLine": 175,
+                                    "startLine": 172
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "KingOfTheEtherThrone.sweepCommission (king_of_the_ether_throne.sol#172-175) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract KingOfTheEtherThrone, function transferOwnership"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "endLine": 180,
+                                    "startLine": 178
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "KingOfTheEtherThrone.transferOwnership (king_of_the_ether_throne.sol#178-180) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in king_of_the_ether_throne.sol:\n\t- pragma solidity^0.4.0 (king_of_the_ether_throne.sol#24): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "endLine": 82,
+                                    "startLine": 73
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'KingOfTheEtherThrone.KingOfTheEtherThrone' (king_of_the_ether_throne.sol#73-82) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "startLine": 48
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'KingOfTheEtherThrone.startingClaimPrice' (king_of_the_ether_throne.sol#48) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "startLine": 53
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'KingOfTheEtherThrone.claimPriceAdjustNum' (king_of_the_ether_throne.sol#53) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "startLine": 54
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'KingOfTheEtherThrone.claimPriceAdjustDen' (king_of_the_ether_throne.sol#54) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "startLine": 59
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'KingOfTheEtherThrone.wizardCommissionFractionNum' (king_of_the_ether_throne.sol#59) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol"
+                                },
+                                "region": {
+                                    "startLine": 60
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'KingOfTheEtherThrone.wizardCommissionFractionDen' (king_of_the_ether_throne.sol#60) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_timestamp",
+                            "name": "timestamp"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

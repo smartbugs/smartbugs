@@ -1,0 +1,35 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 10,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 198,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 10,
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 189,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 10,
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 198,
+            "name": "Overflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

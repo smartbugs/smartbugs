@@ -1,0 +1,17 @@
+INFO:Slither:Compilation warnings/errors on /sb/incorrect_constructor_name3.sol:
+/sb/incorrect_constructor_name3.sol:29:23: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+       owner.transfer(this.balance);
+                      ^----------^
+/sb/incorrect_constructor_name3.sol:23:5: Warning: No visibility specified. Defaulting to "public". 
+    function () payable {}
+    ^--------------------^
+
+INFO:Detectors:[92m
+Missing.Constructor (/sb/incorrect_constructor_name3.sol#17-21) should be declared external
+Missing.fallback (/sb/incorrect_constructor_name3.sol#23) should be declared external
+Missing.withdraw (/sb/incorrect_constructor_name3.sol#25-30) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Function 'Missing.Constructor' (/sb/incorrect_constructor_name3.sol#17-21) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/incorrect_constructor_name3.sol analyzed (1 contracts), 4 result(s) found

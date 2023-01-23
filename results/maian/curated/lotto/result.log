@@ -1,0 +1,64 @@
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/lotto.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  693  : 0x60806040526004361061006d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/Lotto.address [0m
+[94m[ ] Check if contract is SUICIDAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061006d576000357c0100000000000000...
+[ ] Bytecode length    : 1386
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[92m[-] The code does not contain SUICIDE instructions, hence it is not vulnerable[0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/lotto.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306  [0m........... tx[0] mined [92m Sent! [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  693  : 0x60806040526004361061006d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/Lotto.address [0m
+[1m[ ] The contract balance: 44  [0m[92m Positive balance[0m
+[94m[ ] Check if contract is PRODIGAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061006d576000357c0100000000000000...
+[ ] Bytecode length    : 1386
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0m1111
+[ ][1m Search with call depth: 2   : [0m122221222122221222
+
+[91m[-] Leak vulnerability found! [0m
+
+    The following 2 transaction(s) will trigger the contract to leak:
+    -Tx[1] :8f1c0585
+    -Tx[2] :1846f51a
+
+    The transactions correspond to the functions:
+    -sendToWinner()
+    -withdrawLeftOver()
+
+[1m[ ] Confirming leak vulnerability on private chain ... [0m....... tx[0] mined ........ tx[1] mined 
+    [1m[91mConfirmed ! The contract is prodigal ![0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/lotto.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  693  : 0x60806040526004361061006d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/Lotto.address [0m
+[94m[ ] Check if contract is GREEDY[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061006d576000357c0100000000000000...
+[ ] Bytecode length    : 1386
+[ ] Debug              : False
+[91m[-][0m [1mContract can receive Ether[0m
+
+[92m[-] No lock vulnerability found because the contract cannot receive Ether [0m

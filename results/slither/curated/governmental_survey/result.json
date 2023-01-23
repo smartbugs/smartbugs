@@ -1,0 +1,134 @@
+{
+    "errors": [
+        "EXIT_CODE_13"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "Governmental",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "function": "resetInvestment",
+            "impact": "High",
+            "line": 30,
+            "line_end": 40,
+            "message": "Governmental.resetInvestment (governmental_survey.sol#30-40) sends eth to arbitrary user\n\tDangerous calls:\n\t- owner.send(this.balance - 1000000000000000000) (governmental_survey.sol#35)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "Governmental",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "function": "resetInvestment",
+            "impact": "Low",
+            "line": 30,
+            "line_end": 40,
+            "message": "Governmental.resetInvestment (governmental_survey.sol#30-40) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp < lastInvestmentTimestamp + ONE_MINUTE (governmental_survey.sol#31-32)\n",
+            "name": "timestamp"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 15,
+            "message": "Governmental.ONE_MINUTE should be constant (governmental_survey.sol#15)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 19,
+            "message": "Deprecated standard detected @ governmental_survey.sol#19:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 23,
+            "message": "Deprecated standard detected @ governmental_survey.sol#23:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 32,
+            "message": "Deprecated standard detected @ governmental_survey.sol#32:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 47,
+            "message": "Deprecated standard detected @ governmental_survey.sol#47:\n\t- Usage of \"msg.gas\" should be replaced with \"gasleft()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "Governmental",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "function": "invest",
+            "impact": "Informational",
+            "line": 22,
+            "line_end": 28,
+            "message": "Governmental.invest (governmental_survey.sol#22-28) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Governmental",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "function": "resetInvestment",
+            "impact": "Informational",
+            "line": 30,
+            "line_end": 40,
+            "message": "Governmental.resetInvestment (governmental_survey.sol#30-40) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Attacker",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "function": "attack",
+            "impact": "Informational",
+            "line": 45,
+            "line_end": 52,
+            "message": "Attacker.attack (governmental_survey.sol#45-52) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 8,
+            "message": "Detected issues with version pragma in governmental_survey.sol:\n\t- pragma solidity^0.4.0 (governmental_survey.sol#8): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 17,
+            "line_end": 20,
+            "message": "Function 'Governmental.Governmental' (governmental_survey.sol#17-20) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/time_manipulation/governmental_survey.sol",
+            "impact": "Informational",
+            "line": 15,
+            "message": "Variable 'Governmental.ONE_MINUTE' (governmental_survey.sol#15) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

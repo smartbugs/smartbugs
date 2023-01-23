@@ -1,0 +1,24 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/reentrancy_dao.sol:ReentrancyDAO:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/reentrancy_dao.sol:25:9: Warning: Integer Overflow.
+        credit[msg.sender] += msg.value
+Integer Overflow occurs if:
+    credit[msg.sender] = 1
+/sb/reentrancy_dao.sol:26:9: Warning: Integer Overflow.
+        balance += msg.value
+Integer Overflow occurs if:
+    balance = 1
+INFO:symExec:/sb/reentrancy_dao.sol:18:31: Warning: Callstack Depth Attack Vulnerability.
+            bool callResult = msg.sender.call.value(oCredit)()
+INFO:symExec:/sb/reentrancy_dao.sol:18:31: Warning: Re-Entrancy Vulnerability.
+            bool callResult = msg.sender.call.value(oCredit)()
+INFO:symExec:	====== Analysis Completed ======

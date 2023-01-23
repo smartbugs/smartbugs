@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 371,
+            "contract": "ModifierEntrancy",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "function": "airDrop()",
+            "line": 21,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 643,
+            "contract": "attack",
+            "filename": "dataset/reentrancy/modifier_reentrancy.sol",
+            "function": "call(address)",
+            "line": 47,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

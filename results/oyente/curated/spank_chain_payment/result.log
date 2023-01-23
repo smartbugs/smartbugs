@@ -1,0 +1,736 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/spank_chain_payment.sol:StandardToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/spank_chain_payment.sol:198:10: Warning: Integer Overflow.
+         balances[_to] += _value
+Integer Overflow occurs if:
+    _value = 88964353373763045885795690415161928411490039952130836214028735836176136306767
+    balances[_to] = 31011907737879846905537130462912155126960895589245379915617170833225066774705
+    allowed[_from][msg.sender] = 88964353373763045885795690415161928411490039952130836214028735836176136306767
+    balances[_from] = 88964353373763045885795690415161928411490039952130836214028735836176136306767
+/sb/spank_chain_payment.sol:189:10: Warning: Integer Overflow.
+         balances[_to] += _value
+Integer Overflow occurs if:
+    _value = 57938452453005874615280298637860938028508748633530783054289495821861177524225
+    balances[_to] = 66856184261385214108408597654402785422430169472278770250914080072048199204049
+    balances[msg.sender] = 57938452453005874615280298637860938028508748633530783054289495821861177524225
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/spank_chain_payment.sol:LedgerChannel:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 39.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/spank_chain_payment.sol:814:10: Warning: Integer Underflow.
+         numChannels--
+Integer Underflow occurs if:
+    numChannels = 0
+/sb/spank_chain_payment.sol:732:10: Warning: Integer Underflow.
+         Channels[_lcID].numOpenVC--
+Integer Underflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].numOpenVC = 0
+    Channels[_lcID].isOpen = 255
+INFO:symExec:/sb/spank_chain_payment.sol:433:36: Warning: Integer Overflow.
+         emit DidLCClose(_lcID, 0, Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    Channels[_lcID].LCopenTimeout = 0
+    Channels[_lcID].isOpen = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    Channels[_lcID].initialDeposit[1] = 0
+    Channels[_lcID].initialDeposit[0] = 0
+/sb/spank_chain_payment.sol:433:68: Warning: Integer Overflow.
+         emit DidLCClose(_lcID, 0, Channels[_lcID].ethBalances[0], Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    Channels[_lcID].LCopenTimeout = 0
+    Channels[_lcID].isOpen = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    Channels[_lcID].initialDeposit[1] = 0
+    Channels[_lcID].initialDeposit[0] = 0
+/sb/spank_chain_payment.sol:264:2: Warning: Integer Overflow.
+ contract LedgerChannel {
+ ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    Channels[_lcID].LCopenTimeout = 0
+    Channels[_lcID].isOpen = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    Channels[_lcID].initialDeposit[1] = 0
+    Channels[_lcID].initialDeposit[0] = 0
+/sb/spank_chain_payment.sol:377:6: Warning: Integer Overflow.
+     mapping(bytes32 => VirtualChannel) public virtualChannels
+/sb/spank_chain_payment.sol:453:10: Warning: Integer Overflow.
+         Channels[_lcID].initialDeposit
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:454:10: Warning: Integer Overflow.
+         Channels[_lcID].initialDeposit
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:454:10: Warning: Integer Overflow.
+         Channels[_lcID].initialDeposit[1]
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:456:10: Warning: Integer Overflow.
+         Channels[_lcID].isOpen
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:457:10: Warning: Integer Overflow.
+         numChannels++
+Integer Overflow occurs if:
+    numChannels = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:459:15: Warning: Integer Overflow.
+         emit DidLCJoin(_lcID, _balances[0], _balances[1])
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:450:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:450:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1]
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:454:10: Warning: Integer Overflow.
+         Channels[_lcID].initialDeposit[1]+=_balances[1]
+Integer Overflow occurs if:
+    Channels[_lcID].initialDeposit[1] = 94971339064435679133370349063425325215963253791982476507561069026331527708154
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:449:14: Warning: Integer Overflow.
+             require(Channels[_lcID].token.transferFrom(msg.sender, this, _balances[1]),"joinChannel: token transfer failure")
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:453:10: Warning: Integer Overflow.
+         Channels[_lcID].initialDeposit[0]+=_balances[0]
+Integer Overflow occurs if:
+    Channels[_lcID].initialDeposit[0] = 94971339064435679133370349063425325215963253791982476507561069026331527708154
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:445:14: Warning: Integer Overflow.
+             require(msg.value == _balances[0], "state balance does not match sent value")
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].isOpen = 0
+/sb/spank_chain_payment.sol:495:6: Warning: Integer Overflow.
+     function consensusCloseChannel(
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _sigA = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:410:10: Warning: Integer Overflow.
+         Channels[_lcID].sequence
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:411:10: Warning: Integer Overflow.
+         Channels[_lcID].confirmTime
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:414:42: Warning: Integer Overflow.
+         Channels[_lcID].LCopenTimeout = now + _confirmTime
+Integer Overflow occurs if:
+    _confirmTime = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:414:10: Warning: Integer Overflow.
+         Channels[_lcID].LCopenTimeout
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:415:10: Warning: Integer Overflow.
+         Channels[_lcID].initialDeposit
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:407:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:406:14: Warning: Integer Overflow.
+             require(Channels[_lcID].token.transferFrom(msg.sender, this, _balances[1]),"CreateChannel: token transfer failure")
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:401:14: Warning: Integer Overflow.
+             require(msg.value == _balances[0], "Eth balance does not match sent value")
+Integer Overflow occurs if:
+    _partyI = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+/sb/spank_chain_payment.sol:615:6: Warning: Integer Overflow.
+     function initVCstate(
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _proof = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:477:18: Warning: Integer Overflow.
+                 Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+    _balance = 0
+    isToken = 0
+/sb/spank_chain_payment.sol:477:18: Warning: Integer Overflow.
+                 Channels[_lcID].ethBalances[2]
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+    _balance = 0
+    isToken = 0
+/sb/spank_chain_payment.sol:477:18: Warning: Integer Overflow.
+                 Channels[_lcID].ethBalances[2] += msg.value
+Integer Overflow occurs if:
+    Channels[_lcID].ethBalances[2] = 1
+    _balance = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+    isToken = 0
+/sb/spank_chain_payment.sol:487:18: Warning: Integer Overflow.
+                 Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+    _balance = 0
+    isToken = 0
+/sb/spank_chain_payment.sol:487:18: Warning: Integer Overflow.
+                 Channels[_lcID].ethBalances[3]
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+    _balance = 0
+    isToken = 0
+/sb/spank_chain_payment.sol:487:18: Warning: Integer Overflow.
+                 Channels[_lcID].ethBalances[3] += msg.value
+Integer Overflow occurs if:
+    Channels[_lcID].ethBalances[3] = 1
+    _balance = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[1] = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+    isToken = 0
+/sb/spank_chain_payment.sol:484:18: Warning: Integer Overflow.
+                 Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    isToken = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:484:18: Warning: Integer Overflow.
+                 Channels[_lcID].erc20Balances[3]
+Integer Overflow occurs if:
+    Channels[_lcID].partyAddresses[1] = 0
+    isToken = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:484:18: Warning: Integer Overflow.
+                 Channels[_lcID].erc20Balances[3] += _balance
+Integer Overflow occurs if:
+    Channels[_lcID].erc20Balances[3] = 1
+    _balance = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[1] = 0
+    isToken = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    recipient = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:813:10: Warning: Integer Overflow.
+         channel.isOpen
+/sb/spank_chain_payment.sol:816:33: Warning: Integer Overflow.
+         emit DidLCClose(_lcID, channel.sequence
+/sb/spank_chain_payment.sol:780:40: Warning: Integer Overflow.
+             channel.erc20Balances[0]+=channel.erc20Balances
+/sb/spank_chain_payment.sol:780:40: Warning: Integer Overflow.
+             channel.erc20Balances[0]+=channel.erc20Balances[2]
+/sb/spank_chain_payment.sol:780:14: Warning: Integer Overflow.
+             channel.erc20Balances
+/sb/spank_chain_payment.sol:780:14: Warning: Integer Overflow.
+             channel.erc20Balances[0]+=channel.erc20Balances[2]
+/sb/spank_chain_payment.sol:781:40: Warning: Integer Overflow.
+             channel.erc20Balances[1]+=channel.erc20Balances
+/sb/spank_chain_payment.sol:781:40: Warning: Integer Overflow.
+             channel.erc20Balances[1]+=channel.erc20Balances[3]
+/sb/spank_chain_payment.sol:781:14: Warning: Integer Overflow.
+             channel.erc20Balances
+/sb/spank_chain_payment.sol:781:14: Warning: Integer Overflow.
+             channel.erc20Balances[1]
+/sb/spank_chain_payment.sol:781:14: Warning: Integer Overflow.
+             channel.erc20Balances[1]+=channel.erc20Balances[3]
+/sb/spank_chain_payment.sol:378:6: Warning: Integer Overflow.
+     mapping(bytes32 => Channel) public Channels
+/sb/spank_chain_payment.sol:662:6: Warning: Integer Overflow.
+     function settleVC(
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    sigA = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:550:6: Warning: Integer Overflow.
+     function updateLCstate(
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _sigA = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:732:10: Warning: Integer Overflow.
+         Channels[_lcID].numOpenVC
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:737:13: Warning: Integer Overflow.
+         if(virtualChannels[_vcID].partyA
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:743:21: Warning: Integer Overflow.
+         } else if (virtualChannels[_vcID].partyB
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:751:40: Warning: Integer Overflow.
+         emit DidVCClose(_lcID, _vcID, virtualChannels[_vcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:751:81: Warning: Integer Overflow.
+         emit DidVCClose(_lcID, _vcID, virtualChannels[_vcID].erc20Balances[0], virtualChannels[_vcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:751:81: Warning: Integer Overflow.
+         emit DidVCClose(_lcID, _vcID, virtualChannels[_vcID].erc20Balances[0], virtualChannels[_vcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:744:48: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[0] += virtualChannels[_vcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:744:48: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[0] += virtualChannels[_vcID].ethBalances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:744:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:744:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[0] += virtualChannels[_vcID].ethBalances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].ethBalances[0] = 1
+    virtualChannels[_vcID].ethBalances[1] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:745:48: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1] += virtualChannels[_vcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:745:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:745:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:745:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1] += virtualChannels[_vcID].ethBalances[0]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].ethBalances[1] = 1
+    virtualChannels[_vcID].ethBalances[0] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:747:50: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[0] += virtualChannels[_vcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:747:50: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[0] += virtualChannels[_vcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:747:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:747:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[0] += virtualChannels[_vcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].erc20Balances[0] = 1
+    virtualChannels[_vcID].erc20Balances[1] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:748:50: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1] += virtualChannels[_vcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:748:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:748:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:748:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1] += virtualChannels[_vcID].erc20Balances[0]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].erc20Balances[1] = 1
+    virtualChannels[_vcID].erc20Balances[0] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    virtualChannels[_vcID].partyB = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 1461501637330902918203684832716283019655932542975
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:738:48: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[0] += virtualChannels[_vcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:738:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:738:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[0] += virtualChannels[_vcID].ethBalances[0]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].ethBalances[0] = 1
+    virtualChannels[_vcID].ethBalances[0] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:739:48: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1] += virtualChannels[_vcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:739:48: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1] += virtualChannels[_vcID].ethBalances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:739:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:739:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:739:14: Warning: Integer Overflow.
+             Channels[_lcID].ethBalances[1] += virtualChannels[_vcID].ethBalances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].ethBalances[1] = 1
+    virtualChannels[_vcID].ethBalances[1] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:741:50: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[0] += virtualChannels[_vcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:741:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:741:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[0] += virtualChannels[_vcID].erc20Balances[0]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].erc20Balances[0] = 1
+    virtualChannels[_vcID].erc20Balances[0] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:742:50: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1] += virtualChannels[_vcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:742:50: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1] += virtualChannels[_vcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:742:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:742:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+/sb/spank_chain_payment.sol:742:14: Warning: Integer Overflow.
+             Channels[_lcID].erc20Balances[1] += virtualChannels[_vcID].erc20Balances[1]
+Integer Overflow occurs if:
+    virtualChannels[_vcID].isInSettlementState = 65280
+    virtualChannels[_vcID].updateVCtimeout = 0
+    Channels[_lcID].erc20Balances[1] = 1
+    virtualChannels[_vcID].erc20Balances[1] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    Channels[_lcID].partyAddresses[0] = 0
+    virtualChannels[_vcID].partyA = 0
+    Channels[_lcID].isOpen = 255
+INFO:symExec:Flow1
+/sb/spank_chain_payment.sol:426:14: Warning: Transaction-Ordering Dependency.
+             Channels[_lcID].partyAddresses[0].transfer(Channels[_lcID].ethBalances[0])
+Flow2
+/sb/spank_chain_payment.sol:798:14: Warning: Transaction-Ordering Dependency.
+             channel.partyAddresses[0].transfer(ethbalanceA)
+INFO:symExec:/sb/spank_chain_payment.sol:422:10: Warning: Timestamp Dependency.
+         require(now > Channels[_lcID].LCopenTimeout)
+/sb/spank_chain_payment.sol:763:10: Warning: Timestamp Dependency.
+         require(channel.updateLCtimeout < now, "LC timeout over.")
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/spank_chain_payment.sol:ECTools:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 19.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/spank_chain_payment.sol:91:6: Warning: Integer Overflow.
+     function isSignedBy(bytes32 _hashedMsg, string _sig, address _addr) public pure returns (bool) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _sig = 115792089237316195423570985008687907853269984665640564039457584007913129639932
+/sb/spank_chain_payment.sol:98:6: Warning: Integer Overflow.
+     function hexstrToBytes(string _hexstr) public pure returns (bytes) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _hexstr = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:167:6: Warning: Integer Overflow.
+     function substring(string _str, uint _startIndex, uint _endIndex) public pure returns (string) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _str = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:116:6: Warning: Integer Overflow.
+     function parseInt16Char(string _char) public pure returns (uint) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _char = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:132:6: Warning: Integer Overflow.
+     function uintToBytes32(uint _uint) public pure returns (bytes b) {
+     ^
+Spanning multiple lines.
+/sb/spank_chain_payment.sol:139:6: Warning: Integer Overflow.
+     function toEthereumSignedMessage(string _msg) public pure returns (bytes32) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _msg = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/spank_chain_payment.sol:62:6: Warning: Integer Overflow.
+     function recoverSigner(bytes32 _hashedMsg, string _sig) public pure returns (address) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _sig = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/spank_chain_payment.sol:HumanStandardToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 55.3%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/spank_chain_payment.sol:233:6: Warning: Integer Underflow.
+     string public name
+/sb/spank_chain_payment.sol:236:6: Warning: Integer Underflow.
+     string public version = 'H0.1'
+/sb/spank_chain_payment.sol:235:6: Warning: Integer Underflow.
+     string public symbol
+INFO:symExec:/sb/spank_chain_payment.sol:198:10: Warning: Integer Overflow.
+         balances[_to] += _value
+Integer Overflow occurs if:
+    balances[_to] = 31011907737879846905537130462912155126960895589245379915617170833225066774705
+    allowed[_from][msg.sender] = 88964353373763045885795690415161928411490039952130836214028735836176136306767
+    balances[_from] = 88964353373763045885795690415161928411490039952130836214028735836176136306767
+/sb/spank_chain_payment.sol:189:10: Warning: Integer Overflow.
+         balances[_to] += _value
+Integer Overflow occurs if:
+    balances[_to] = 66856184261385214108408597654402785422430169472278770250914080072048199204049
+    balances[msg.sender] = 57938452453005874615280298637860938028508748633530783054289495821861177524225
+/sb/spank_chain_payment.sol:252:6: Warning: Integer Overflow.
+     function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
+     ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _extraData = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======
