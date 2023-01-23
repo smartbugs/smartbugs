@@ -1,0 +1,20 @@
+INFO:Detectors:[91m
+Reentrancy in ReentrancyDAO.withdrawAll (/sb/reentrancy_dao.sol#13-22):
+	External calls:
+	- callResult = msg.sender.call.value(oCredit)() (/sb/reentrancy_dao.sol#18)
+	State variables written after the call(s):
+	- credit (/sb/reentrancy_dao.sol#20)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[92m
+ReentrancyDAO.withdrawAll (/sb/reentrancy_dao.sol#13-22) should be declared external
+ReentrancyDAO.deposit (/sb/reentrancy_dao.sol#24-27) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/reentrancy_dao.sol:
+	- pragma solidity^0.4.19 (/sb/reentrancy_dao.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in ReentrancyDAO.withdrawAll (/sb/reentrancy_dao.sol#13-22):
+	-callResult = msg.sender.call.value(oCredit)() /sb/reentrancy_dao.sol#18
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Slither:/sb/reentrancy_dao.sol analyzed (1 contracts), 5 result(s) found

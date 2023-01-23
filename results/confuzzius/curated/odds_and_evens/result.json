@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 16,
+            "message": "Classification: SWC-110",
+            "name": "Assertion Failure",
+            "severity": "Medium"
+        },
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 50,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 38,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 28,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        },
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 41,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

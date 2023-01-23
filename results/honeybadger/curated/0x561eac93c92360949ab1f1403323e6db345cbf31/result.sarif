@@ -1,0 +1,66 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract BANK_SAFE"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Money flow"
+                    },
+                    "ruleId": "honeybadger_Money_flow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract BANK_SAFE"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol"
+                                },
+                                "region": {
+                                    "startColumn": 17,
+                                    "startLine": 57
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Straw man contract"
+                    },
+                    "ruleId": "honeybadger_Straw_man_contract"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/HoneyBadger",
+                    "name": "HoneyBadger",
+                    "rules": [
+                        {
+                            "id": "honeybadger_Money_flow",
+                            "name": "Money flow"
+                        },
+                        {
+                            "id": "honeybadger_Straw_man_contract",
+                            "name": "Straw man contract"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

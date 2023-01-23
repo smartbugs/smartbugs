@@ -1,0 +1,333 @@
+WARNING:root:You are using solc version 0.4.26. The supported version is 0.4.21.
+INFO:root:Contract /sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:
+INFO:symExec:Running, please wait...
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 136, in propagate_taint
+    temp = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 650, in perform_taint_analysis
+    check_taint(tainted_stack, tainted_memory, tainted_storage, instruction, sink_flows, arithmetic_errors, previous_block)
+  File "/root/osiris/taintFlow.py", line 471, in check_taint
+    object = tainted_stack[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 143, in propagate_taint
+    value = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 302, in propagate_taint
+    stack_object = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 128, in propagate_taint
+    object = tainted_stack[len(instruction.data_in)-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 143, in propagate_taint
+    value = tainted_stack.pop(0)
+IndexError: pop from empty list
+Traceback (most recent call last):
+  File "/root/osiris/taintFlow.py", line 652, in perform_taint_analysis
+    propagate_taint(taint, tainted_stack, tainted_memory, tainted_storage, instruction, current_stack, previous_block, current_block, next_blocks, arithmetic_errors, sha3_list, false_positives, strings)
+  File "/root/osiris/taintFlow.py", line 425, in propagate_taint
+    if arithmetic_error["instruction"].data_in[0] == 32 or arithmetic_error["instruction"].data_in[1] == 32:
+  File "/root/osiris/z3/z3.py", line 844, in __eq__
+    a, b = _coerce_exprs(self, other)
+  File "/root/osiris/z3/z3.py", line 1012, in _coerce_exprs
+    b = s.cast(b)
+  File "/root/osiris/z3/z3.py", line 3059, in cast
+    return BitVecVal(val, self)
+  File "/root/osiris/z3/z3.py", line 3596, in BitVecVal
+    return BitVecNumRef(Z3_mk_numeral(ctx.ref(), _to_int_str(val), bv.ast), ctx)
+  File "/root/osiris/z3/z3core.py", line 2046, in Z3_mk_numeral
+    r = _elems.f(a0, _to_ascii(a1), a2)
+  File "/root/osiris/symExec.py", line 2868, in handler
+    raise Exception("timeout")
+Exception: timeout
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 38.0%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:2:21
+github.com/kierane
+^
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:138:9
+pastMonarchs.push(currentMonarch)
+^
+INFO:symExec:	  └> Underflow bugs: 	 True
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:138:9
+pastMonarchs.push(currentMonarch)
+^
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 True
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:132:13
+currentMonarch.etherAddress.send(compensation)
+^
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:174:9
+wizardAddress.send(amount)
+^
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:110:13
+msg.sender.send(valuePaid)
+^
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:132:13
+currentMonarch.etherAddress.send(compensation)
+^
+Flow 2:
+/sb/king_of_the_ether_throne.sol:KingOfTheEtherThrone:118:13
+msg.sender.send(excessPaid)
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	 --- 50.1518368721 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'
+
+
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+Unexpected error: <type 'exceptions.IndexError'>
+!!! SYMBOLIC EXECUTION TIMEOUT !!!
+Unexpected error: <type 'exceptions.Exception'>

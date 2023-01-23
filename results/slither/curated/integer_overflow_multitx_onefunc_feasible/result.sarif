@@ -1,0 +1,66 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract IntegerOverflowMultiTxOneFuncFeasible, function run"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol"
+                                },
+                                "region": {
+                                    "endLine": 23,
+                                    "startLine": 16
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "IntegerOverflowMultiTxOneFuncFeasible.run (integer_overflow_multitx_onefunc_feasible.sol#16-23) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol"
+                                },
+                                "region": {
+                                    "startLine": 10
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in integer_overflow_multitx_onefunc_feasible.sol:\n\t- pragma solidity^0.4.23 (integer_overflow_multitx_onefunc_feasible.sol#10): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

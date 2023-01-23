@@ -1,0 +1,31 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "line": 29,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 5,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "line": 23,
+            "name": "Integer Overflow"
+        },
+        {
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

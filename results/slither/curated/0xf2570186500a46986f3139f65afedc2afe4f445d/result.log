@@ -1,0 +1,34 @@
+INFO:Slither:Compilation warnings/errors on /sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:
+/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:18:30: Warning: "sha3" has been deprecated in favour of "keccak256"
+            fuck.call(bytes4(sha3("giveBlockReward()")));
+                             ^-----------------------^
+/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:18:13: Warning: Return value of low-level calls not used.
+            fuck.call(bytes4(sha3("giveBlockReward()")));
+            ^------------------------------------------^
+/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:14:5: Warning: No visibility specified. Defaulting to "public". 
+    function makeOldFucks(uint32 number) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:Detectors:[92m
+RealOldFuckMaker.makeOldFucks has external calls inside a loop:
+	- fuck.call(bytes4(sha3()(giveBlockReward()))) (/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation/_edit#calls-inside-a-loop[0m
+INFO:Detectors:[92m
+RealOldFuckMaker.fuck should be constant (/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#10)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+Deprecated standard detected @ /sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18:
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#deprecated-standards[0m
+INFO:Detectors:[92m
+RealOldFuckMaker.makeOldFucks (/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#14-20) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:
+	- pragma solidity^0.4.16 (/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in RealOldFuckMaker.makeOldFucks (/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#14-20):
+	-fuck.call(bytes4(sha3()(giveBlockReward()))) /sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Slither:/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol analyzed (1 contracts), 6 result(s) found

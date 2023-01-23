@@ -1,0 +1,83 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 103
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Line length must be no more than 120 but current length is 177."
+                    },
+                    "ruleId": "solhint_max_line_length"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 141
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Line length must be no more than 120 but current length is 131."
+                    },
+                    "ruleId": "solhint_max_line_length"
+                },
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 363
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Line length must be no more than 120 but current length is 125."
+                    },
+                    "ruleId": "solhint_max_line_length"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/protofire/solhint",
+                    "name": "Solhint",
+                    "rules": [
+                        {
+                            "id": "solhint_max_line_length",
+                            "name": "max-line-length"
+                        }
+                    ],
+                    "version": "2.1.0"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

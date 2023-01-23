@@ -1,0 +1,301 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Governmental, function resetInvestment"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "endLine": 40,
+                                    "startLine": 30
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Governmental.resetInvestment (governmental_survey.sol#30-40) sends eth to arbitrary user\n\tDangerous calls:\n\t- owner.send(this.balance - 1000000000000000000) (governmental_survey.sol#35)\n"
+                    },
+                    "ruleId": "slither_arbitrary_send"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Governmental, function resetInvestment"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "endLine": 40,
+                                    "startLine": 30
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Governmental.resetInvestment (governmental_survey.sol#30-40) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp < lastInvestmentTimestamp + ONE_MINUTE (governmental_survey.sol#31-32)\n"
+                    },
+                    "ruleId": "slither_timestamp"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Governmental.ONE_MINUTE should be constant (governmental_survey.sol#15)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ governmental_survey.sol#19:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ governmental_survey.sol#23:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ governmental_survey.sol#32:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 47
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ governmental_survey.sol#47:\n\t- Usage of \"msg.gas\" should be replaced with \"gasleft()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Governmental, function invest"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "endLine": 28,
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Governmental.invest (governmental_survey.sol#22-28) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Governmental, function resetInvestment"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "endLine": 40,
+                                    "startLine": 30
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Governmental.resetInvestment (governmental_survey.sol#30-40) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Attacker, function attack"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "endLine": 52,
+                                    "startLine": 45
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Attacker.attack (governmental_survey.sol#45-52) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 8
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in governmental_survey.sol:\n\t- pragma solidity^0.4.0 (governmental_survey.sol#8): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "endLine": 20,
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Governmental.Governmental' (governmental_survey.sol#17-20) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/governmental_survey.sol"
+                                },
+                                "region": {
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'Governmental.ONE_MINUTE' (governmental_survey.sol#15) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_timestamp",
+                            "name": "timestamp"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_arbitrary_send",
+                            "name": "arbitrary-send"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

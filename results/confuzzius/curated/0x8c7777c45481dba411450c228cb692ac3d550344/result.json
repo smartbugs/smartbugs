@@ -1,0 +1,38 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_TIMEOUT"
+    ],
+    "findings": [
+        {
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+            "line": 41,
+            "message": "Classification: SWC-107",
+            "name": "Reentrancy",
+            "severity": "High"
+        },
+        {
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+            "line": 43,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        },
+        {
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+            "line": 29,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

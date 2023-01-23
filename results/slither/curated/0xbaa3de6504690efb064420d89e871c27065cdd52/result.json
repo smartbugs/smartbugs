@@ -1,0 +1,135 @@
+{
+    "errors": [
+        "EXIT_CODE_13"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "High",
+            "line": 19,
+            "message": "VaultProxy.Owner (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#19) shadows:\n\t- Proxy.Owner (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#10)\n",
+            "name": "shadowing-state"
+        },
+        {
+            "confidence": "High",
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "transferOwner",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Proxy.transferOwner (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#11) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy",
+            "impact": "Informational",
+            "line": 12,
+            "line_end": 15,
+            "message": "Proxy.proxy (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#12-15) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 22,
+            "message": "VaultProxy.fallback (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#22) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "Vault",
+            "impact": "Informational",
+            "line": 24,
+            "line_end": 29,
+            "message": "VaultProxy.Vault (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#24-29) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 41,
+            "message": "VaultProxy.withdraw (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#37-41) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0xbaa3de6504690efb064420d89e871c27065cdd52.sol:\n\t- pragma solidity^0.4.23 (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy",
+            "impact": "Informational",
+            "line": 12,
+            "line_end": 15,
+            "message": "Low level call in Proxy.proxy (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#12-15):\n\t-target.call.value(msg.value)(data) 0xbaa3de6504690efb064420d89e871c27065cdd52.sol#14\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Parameter '_owner' of Proxy.transferOwner (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#11) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "Informational",
+            "line": 10,
+            "message": "Variable 'Proxy.Owner' (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#10) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "Informational",
+            "line": 24,
+            "line_end": 29,
+            "message": "Function 'VaultProxy.Vault' (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#24-29) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "Informational",
+            "line": 19,
+            "message": "Variable 'VaultProxy.Owner' (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#19) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "impact": "Informational",
+            "line": 20,
+            "message": "Variable 'VaultProxy.Deposits' (0xbaa3de6504690efb064420d89e871c27065cdd52.sol#20) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

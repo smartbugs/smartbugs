@@ -1,0 +1,54 @@
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  1328  : 0x60806040526004361061006d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WhaleGiveaway2.address [0m
+[94m[ ] Check if contract is SUICIDAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061006d576000357c0100000000000000...
+[ ] Bytecode length    : 2656
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[92m[-] The code does not contain SUICIDE instructions, hence it is not vulnerable[0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306  [0m... tx[0] mined [92m Sent! [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  1328  : 0x60806040526004361061006d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WhaleGiveaway2.address [0m
+[1m[ ] The contract balance: 44  [0m[92m Positive balance[0m
+[94m[ ] Check if contract is PRODIGAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061006d576000357c0100000000000000...
+[ ] Bytecode length    : 2656
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0m11111
+[ ][1m Search with call depth: 2   : [0m1112222211
+[ ][1m Search with call depth: 3   : [0m1112222211
+[92m[+] No prodigal vulnerability found [0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m...[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  1328  : 0x60806040526004361061006d5760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/WhaleGiveaway2.address [0m
+[94m[ ] Check if contract is GREEDY[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 60806040526004361061006d576000357c0100000000000000...
+[ ] Bytecode length    : 2656
+[ ] Debug              : False
+[92m[+][0m [1mContract can receive Ether[0m
+
+[ ][1m Search with call depth: 1   : [0m1
+[92m[+] No locking vulnerability found [0m

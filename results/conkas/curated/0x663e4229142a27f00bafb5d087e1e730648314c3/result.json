@@ -1,0 +1,668 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 4290,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1269,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 5044,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1343,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1926,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 3321,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1205,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3660,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1214,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 5495,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1374,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 4846,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1223,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1926,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 4072,
+            "contract": "ClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1235,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 694,
+            "contract": "ERC721Metadata",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getMetadata(uint256,string)",
+            "line": 527,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 135,
+            "contract": "ERC721Metadata",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getMetadata(uint256,string)",
+            "line": 516,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 627,
+            "contract": "ERC721Metadata",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getMetadata(uint256,string)",
+            "line": 526,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 475,
+            "contract": "ERC721Metadata",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getMetadata(uint256,string)",
+            "line": 522,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 761,
+            "contract": "ERC721Metadata",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getMetadata(uint256,string)",
+            "line": 528,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 6452,
+            "contract": "PandaAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "balanceOf(address)",
+            "line": 697,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 7647,
+            "contract": "PandaAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setGeneScienceAddress(address)",
+            "line": 819,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6299,
+            "contract": "PandaAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setSiringAuctionAddress(address)",
+            "line": 2058,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6503,
+            "contract": "PandaAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createSaleAuction(uint256,uint256,uint256,uint256)",
+            "line": 907,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7144,
+            "contract": "PandaAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawERC20Balance(address,address)",
+            "line": 2199,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3293,
+            "contract": "PandaBase",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getWizzTypeOf(uint256)",
+            "line": 385,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 14144,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "breedWithAuto(uint256,uint256)",
+            "line": 392,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 5363,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "isPregnant(uint256)",
+            "line": 907,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 5308,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "balanceOf(address)",
+            "line": 697,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 5837,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setGeneScienceAddress(address)",
+            "line": 819,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6702,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "canBreedWith(uint256,uint256)",
+            "line": 985,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 14360,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "breedWithAuto(uint256,uint256)",
+            "line": 397,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 6671,
+            "contract": "PandaBreeding",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "canBreedWith(uint256,uint256)",
+            "line": 984,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7285,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2434,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7376,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2437,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7471,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2440,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7924,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "balanceOf(address)",
+            "line": 697,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 8623,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawERC20Balance(address,address)",
+            "line": 2199,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 7347,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2436,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7246,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2433,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7442,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2439,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7771,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setSiringAuctionAddress(address)",
+            "line": 2058,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 7975,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createSaleAuction(uint256,uint256,uint256,uint256)",
+            "line": 907,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7205,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2429,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 9126,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setGeneScienceAddress(address)",
+            "line": 819,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 7214,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2432,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7413,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2438,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7310,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2435,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7542,
+            "contract": "PandaCore",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "giveBirth(uint256,uint256[2],uint256[2])",
+            "line": 2441,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 6897,
+            "contract": "PandaMinting",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "tokensOfOwner(address)",
+            "line": 697,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 8099,
+            "contract": "PandaMinting",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setGeneScienceAddress(address)",
+            "line": 819,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6744,
+            "contract": "PandaMinting",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "setSiringAuctionAddress(address)",
+            "line": 2058,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6952,
+            "contract": "PandaMinting",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "bidOnSiringAuction(uint256,uint256)",
+            "line": 907,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7596,
+            "contract": "PandaMinting",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawERC20Balance(address,address)",
+            "line": 2199,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 9064,
+            "contract": "PandaOwnership",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "transfer(address,uint256)",
+            "line": 392,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 5666,
+            "contract": "PandaOwnership",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getWizzTypeOf(uint256)",
+            "line": 385,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 4525,
+            "contract": "PandaOwnership",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "tokensOfOwner(address)",
+            "line": 697,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 2678,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createPanda(uint256,uint256)",
+            "line": 1800,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 3143,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 1926,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "surprisePanda()",
+            "line": 1818,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 6954,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1374,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1663,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "surprisePanda()",
+            "line": 1808,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 6503,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1343,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 5344,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1214,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 2619,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createPanda(uint256,uint256)",
+            "line": 1798,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 5974,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "cancelAuctionWhenPaused(uint256)",
+            "line": 1269,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 4295,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "packageCount()",
+            "line": 1825,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 2629,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createPanda(uint256,uint256)",
+            "line": 1798,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 5756,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1235,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 2668,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createPanda(uint256,uint256)",
+            "line": 1800,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 4294,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "packageCount()",
+            "line": 1825,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 3143,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 4280,
+            "contract": "SaleClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "packageCount()",
+            "line": 1824,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 3200,
+            "contract": "SaleClockAuctionERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 5719,
+            "contract": "SaleClockAuctionERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1205,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6058,
+            "contract": "SaleClockAuctionERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1214,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6423,
+            "contract": "SaleClockAuctionERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1235,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 3200,
+            "contract": "SaleClockAuctionERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 2304,
+            "contract": "SaleClockAuctionERC20",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawERC20Balance(address,address)",
+            "line": 1961,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 4274,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getAuction(uint256)",
+            "line": 1269,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 2151,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 5028,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getAuction(uint256)",
+            "line": 1343,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 3644,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1214,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 4056,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "createAuction(uint256,uint256,uint256,uint256,address)",
+            "line": 1235,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 5479,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getAuction(uint256)",
+            "line": 1374,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 4830,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getAuction(uint256)",
+            "line": 1223,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 2151,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "withdrawBalance()",
+            "line": 1496,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 5496,
+            "contract": "SiringClockAuction",
+            "filename": "dataset/unchecked_low_level_calls/0x663e4229142a27f00bafb5d087e1e730648314c3.sol",
+            "function": "getAuction(uint256)",
+            "line": 1386,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

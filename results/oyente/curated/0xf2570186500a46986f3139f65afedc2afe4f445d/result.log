@@ -1,0 +1,23 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:
+/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:18:30: Warning: "sha3" has been deprecated in favour of "keccak256"
+            fuck.call(bytes4(sha3("giveBlockReward()")));
+                             ^-----------------------^
+/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:18:13: Warning: Return value of low-level calls not used.
+            fuck.call(bytes4(sha3("giveBlockReward()")));
+            ^------------------------------------------^
+/sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:14:5: Warning: No visibility specified. Defaulting to "public". 
+    function makeOldFucks(uint32 number) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/0xf2570186500a46986f3139f65afedc2afe4f445d.sol:RealOldFuckMaker:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.4%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

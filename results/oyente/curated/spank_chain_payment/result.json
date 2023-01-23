@@ -1,0 +1,66 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 6,
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 91,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 10,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 198,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 6,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 233,
+            "name": "Integer Underflow"
+        },
+        {
+            "column": 36,
+            "contract": "LedgerChannel",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 433,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 10,
+            "contract": "LedgerChannel",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 814,
+            "name": "Integer Underflow"
+        },
+        {
+            "column": 10,
+            "contract": "LedgerChannel",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 422,
+            "name": "Timestamp Dependency"
+        },
+        {
+            "contract": "LedgerChannel",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        },
+        {
+            "column": 10,
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "line": 198,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

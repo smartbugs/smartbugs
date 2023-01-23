@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/integer_overflow_minimal.sol' '/sb/bin'",
+        "image": "smartbugs/manticore:0.3.7",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmppuiazr5j": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/arithmetic/integer_overflow_minimal.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 38.46311950683594,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": "result.tar",
+        "start": 1673977398.916442
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$BIN'",
+        "id": "manticore-0.3.7",
+        "image": "smartbugs/manticore:0.3.7",
+        "info": "Manticore is a symbolic execution tool for analysis of smart contracts and binaries.",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "Manticore",
+        "origin": "https://github.com/trailofbits/manticore",
+        "output": "/results",
+        "parser": "parser.py",
+        "solc": true,
+        "version": "0.3.7"
+    }
+}

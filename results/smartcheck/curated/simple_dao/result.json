@@ -1,0 +1,54 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 28,
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 19,
+            "name": "SOLIDITY_CALL_WITHOUT_DATA",
+            "severity": 2
+        },
+        {
+            "column": 16,
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 7,
+            "name": "SOLIDITY_PRAGMAS_VERSION",
+            "severity": 1
+        },
+        {
+            "column": 28,
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 19,
+            "name": "SOLIDITY_UPGRADE_TO_050",
+            "severity": 1
+        },
+        {
+            "column": 2,
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 12,
+            "name": "SOLIDITY_VISIBILITY",
+            "severity": 1
+        },
+        {
+            "column": 2,
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 16,
+            "name": "SOLIDITY_VISIBILITY",
+            "severity": 1
+        },
+        {
+            "column": 2,
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 24,
+            "name": "SOLIDITY_VISIBILITY",
+            "severity": 1
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "smartcheck",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

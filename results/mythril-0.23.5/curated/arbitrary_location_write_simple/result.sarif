@@ -1,0 +1,159 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function UpdateBonusCodeAt(uint256,uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "startLine": 33
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The caller can write to arbitrary storage locations.\nIt is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract.\nClassification: SWC-124\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Write_to_an_arbitrary_storage_location"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function PopBonusCode()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can underflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function PushBonusCode(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "startColumn": 943,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function PopBonusCode()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "startColumn": 1069,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation.  This issue is reported for internal compiler generated code.\nClassification: SWC-101\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function PopBonusCode()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "startColumn": 1073,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation.  This issue is reported for internal compiler generated code.\nClassification: SWC-101\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "The arithmetic operator can underflow/overflow It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue. Classification: SWC-101. Detection method: For every SUB instruction, check if there is a possible state where the second operand is larger than the first one. For every ADD, MUL instruction, check if there is a possible state where the result of the operation overflows."
+                            },
+                            "help": {
+                                "text": "It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue."
+                            },
+                            "id": "mythril_0_23_5_Integer_Arithmetic_Bugs",
+                            "name": "Integer Arithmetic Bugs",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "The arithmetic operator can underflow/overflow"
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "The caller can write to arbitrary storage locations. It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract. Classification: SWC-124. Detection method: Search for any writes to an arbitrary storage slot"
+                            },
+                            "help": {
+                                "text": "It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract."
+                            },
+                            "id": "mythril_0_23_5_Write_to_an_arbitrary_storage_location",
+                            "name": "Write to an arbitrary storage location",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "The caller can write to arbitrary storage locations."
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

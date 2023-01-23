@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PausableToken"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/BECToken.sol"
+                                },
+                                "region": {
+                                    "startColumn": 22,
+                                    "startLine": 264
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Overflow_bugs",
+                            "name": "Overflow bugs"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

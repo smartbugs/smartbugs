@@ -1,0 +1,54 @@
+/sb/ether_lotto.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 187b5a
+severity: 1
+line: 43
+column: 26
+content: sha3
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 8
+column: 17
+content: ^
+
+ruleId: SOLIDITY_VAR
+patternId: d28aa7
+severity: 2
+line: 43
+column: 8
+content: varrandom=uint(sha3(block.timestamp))%2
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 27
+column: 4
+content: functionEtherLotto(){bank=msg.sender;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 33
+column: 4
+content: functionplay()payable{assert(msg.value==TICKET_AMOUNT);pot+=msg.value;varrandom=uint(sha3(block.timestamp))%2;if(random==0){bank.transfer(FEE_AMOUNT);msg.sender.transfer(pot-FEE_AMOUNT);pot=0;}}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 15
+column: 4
+content: uintconstantTICKET_AMOUNT=10;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 18
+column: 4
+content: uintconstantFEE_AMOUNT=1;
+
+SOLIDITY_VISIBILITY :4
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :1
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_VAR :1

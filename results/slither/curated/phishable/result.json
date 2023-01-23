@@ -1,0 +1,80 @@
+{
+    "errors": [
+        "EXIT_CODE_7"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "Phishable",
+            "filename": "dataset/access_control/phishable.sol",
+            "function": "withdrawAll",
+            "impact": "High",
+            "line": 18,
+            "line_end": 22,
+            "message": "Phishable.withdrawAll (phishable.sol#18-22) sends eth to arbitrary user\n\tDangerous calls:\n\t- _recipient.transfer(this.balance) (phishable.sol#21)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "Phishable",
+            "filename": "dataset/access_control/phishable.sol",
+            "function": "withdrawAll",
+            "impact": "Medium",
+            "line": 20,
+            "message": "Phishable.withdrawAll uses tx.origin for authorization:\n\t- require(bool)(tx.origin == owner) (phishable.sol#20)\n",
+            "name": "tx-origin"
+        },
+        {
+            "confidence": "High",
+            "contract": "Phishable",
+            "filename": "dataset/access_control/phishable.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 16,
+            "message": "Phishable.fallback (phishable.sol#16) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Phishable",
+            "filename": "dataset/access_control/phishable.sol",
+            "function": "withdrawAll",
+            "impact": "Informational",
+            "line": 18,
+            "line_end": 22,
+            "message": "Phishable.withdrawAll (phishable.sol#18-22) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/phishable.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in phishable.sol:\n\t- pragma solidity^0.4.22 (phishable.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/phishable.sol",
+            "impact": "Informational",
+            "line": 12,
+            "message": "Parameter '_owner' of Phishable. (phishable.sol#12) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/phishable.sol",
+            "impact": "Informational",
+            "line": 18,
+            "message": "Parameter '_recipient' of Phishable.withdrawAll (phishable.sol#18) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

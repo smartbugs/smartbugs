@@ -1,0 +1,344 @@
+{
+    "errors": [
+        "EXIT_CODE_34"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "cancel",
+            "impact": "High",
+            "line": 196,
+            "line_end": 221,
+            "message": "Reentrancy in TownCrier.cancel (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#196-221):\n\tExternal calls:\n\t- ! msg.sender.call.value(fee - CANCELLATION_FEE)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#211-213)\n\tState variables written after the call(s):\n\t- externalCallFlag (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#214)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request",
+            "impact": "High",
+            "line": 100,
+            "line_end": 140,
+            "message": "Reentrancy in TownCrier.request (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#100-140):\n\tExternal calls:\n\t- ! msg.sender.call.value(msg.value)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#107-109)\n\tState variables written after the call(s):\n\t- externalCallFlag (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#110)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request",
+            "impact": "High",
+            "line": 100,
+            "line_end": 140,
+            "message": "Reentrancy in TownCrier.request (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#100-140):\n\tExternal calls:\n\t- ! msg.sender.call.value(msg.value)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#118-120)\n\tState variables written after the call(s):\n\t- externalCallFlag (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#121)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver",
+            "impact": "Low",
+            "line": 142,
+            "line_end": 194,
+            "message": "Reentrancy in TownCrier.deliver (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#142-194):\n\tExternal calls:\n\t- requests[requestId].requester.call.gas(2300).value(fee)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#180)\n\tState variables written after the call(s):\n\t- externalCallFlag (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#181)\n",
+            "name": "reentrancy-benign"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver",
+            "impact": "Low",
+            "line": 142,
+            "line_end": 194,
+            "message": "Reentrancy in TownCrier.deliver (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#142-194):\n\tExternal calls:\n\t- requests[requestId].requester.call.gas(2300).value(fee)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#180)\n\tExternal calls sending eth:\n\t- SGX_ADDRESS.send(fee) (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#175)\n\t- requests[requestId].requester.call.gas(2300).value(fee)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#180)\n\tState variables written after the call(s):\n\t- externalCallFlag (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#190)\n",
+            "name": "reentrancy-benign"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver",
+            "impact": "Low",
+            "line": 142,
+            "line_end": 194,
+            "message": "Reentrancy in TownCrier.deliver (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#142-194):\n\tExternal calls:\n\t- requests[requestId].requester.call.gas(2300).value(fee)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#180)\n\t- requests[requestId].callbackAddr.call.gas(callbackGas)(requests[requestId].callbackFID,requestId,error,respData) (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#192)\n\tExternal calls sending eth:\n\t- SGX_ADDRESS.send(fee) (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#175)\n\t- requests[requestId].requester.call.gas(2300).value(fee)() (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#180)\n\tState variables written after the call(s):\n\t- externalCallFlag (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#193)\n",
+            "name": "reentrancy-benign"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 95,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#95:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 102,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#102:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 108,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#108:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 119,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#119:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 129,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#129:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 185,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#185:\n\t- Usage of \"msg.gas\" should be replaced with \"gasleft()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 186,
+            "line_end": 188,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#186-188:\n\t- Usage of \"msg.gas\" should be replaced with \"gasleft()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 187,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#187:\n\t- Usage of \"msg.gas\" should be replaced with \"gasleft()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 198,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#198:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 212,
+            "message": "Deprecated standard detected @ 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#212:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 49,
+            "message": "TownCrier.fallback (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#49) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "upgrade",
+            "impact": "Informational",
+            "line": 63,
+            "line_end": 69,
+            "message": "TownCrier.upgrade (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#63-69) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "reset",
+            "impact": "Informational",
+            "line": 71,
+            "line_end": 78,
+            "message": "TownCrier.reset (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#71-78) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "suspend",
+            "impact": "Informational",
+            "line": 80,
+            "line_end": 84,
+            "message": "TownCrier.suspend (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#80-84) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "restart",
+            "impact": "Informational",
+            "line": 86,
+            "line_end": 90,
+            "message": "TownCrier.restart (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#86-90) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 92,
+            "line_end": 98,
+            "message": "TownCrier.withdraw (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#92-98) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request",
+            "impact": "Informational",
+            "line": 100,
+            "line_end": 140,
+            "message": "TownCrier.request (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#100-140) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver",
+            "impact": "Informational",
+            "line": 142,
+            "line_end": 194,
+            "message": "TownCrier.deliver (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#142-194) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "cancel",
+            "impact": "Informational",
+            "line": 196,
+            "line_end": 221,
+            "message": "TownCrier.cancel (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#196-221) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol:\n\t- pragma solidity^0.4.9 (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 92,
+            "line_end": 98,
+            "message": "Low level call in TownCrier.withdraw (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#92-98):\n\t-! requests[0].requester.call.value(this.balance)() 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#94-96\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "request",
+            "impact": "Informational",
+            "line": 100,
+            "line_end": 140,
+            "message": "Low level call in TownCrier.request (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#100-140):\n\t-! msg.sender.call.value(msg.value)() 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#107-109\n\t-! msg.sender.call.value(msg.value)() 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#118-120\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "deliver",
+            "impact": "Informational",
+            "line": 142,
+            "line_end": 194,
+            "message": "Low level call in TownCrier.deliver (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#142-194):\n\t-requests[requestId].requester.call.gas(2300).value(fee)() 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#180\n\t-requests[requestId].callbackAddr.call.gas(callbackGas)(requests[requestId].callbackFID,requestId,error,respData) 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#192\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "TownCrier",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "function": "cancel",
+            "impact": "Informational",
+            "line": 196,
+            "line_end": 221,
+            "message": "Low level call in TownCrier.cancel (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#196-221):\n\t-! msg.sender.call.value(fee - CANCELLATION_FEE)() 0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#211-213\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 51,
+            "line_end": 61,
+            "message": "Function 'TownCrier.TownCrier' (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#51-61) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 26,
+            "message": "Variable 'TownCrier.GAS_PRICE' (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#26) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 27,
+            "message": "Variable 'TownCrier.MIN_FEE' (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#27) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+            "impact": "Informational",
+            "line": 28,
+            "message": "Variable 'TownCrier.CANCELLATION_FEE' (0x89c1b3807d4c67df034fffb62f3509561218d30b.sol#28) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

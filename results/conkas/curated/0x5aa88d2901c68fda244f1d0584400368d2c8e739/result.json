@@ -1,0 +1,60 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 702,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "withdraw()",
+            "line": 20,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 987,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "Command(address,bytes)",
+            "line": 29,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 987,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "Command(address,bytes)",
+            "line": 29,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 480,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "multiplicate(address)",
+            "line": 38,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 459,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "multiplicate(address)",
+            "line": 38,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 316,
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "Command(address,bytes)",
+            "line": 23,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

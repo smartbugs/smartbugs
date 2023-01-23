@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract EthTxOrderDependenceMinimal"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/eth_tx_order_dependence_minimal.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Money flow"
+                    },
+                    "ruleId": "honeybadger_Money_flow"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/HoneyBadger",
+                    "name": "HoneyBadger",
+                    "rules": [
+                        {
+                            "id": "honeybadger_Money_flow",
+                            "name": "Money flow"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

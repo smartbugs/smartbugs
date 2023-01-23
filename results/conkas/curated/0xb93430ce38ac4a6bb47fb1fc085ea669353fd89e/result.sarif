@@ -1,0 +1,220 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log, function AddMessage(address,uint256,string)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 69
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Time Manipulation"
+                    },
+                    "ruleId": "conkas_Time_Manipulation"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log, function AddMessage(address,uint256,string)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 72
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Time Manipulation"
+                    },
+                    "ruleId": "conkas_Time_Manipulation"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log, function AddMessage(address,uint256,string)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 50
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log, function AddMessage(address,uint256,string)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 72
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log, function AddMessage(address,uint256,string)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 65
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PrivateBank, function Deposit()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 29
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PrivateBank, function CashOut(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 38
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PrivateBank, function CashOut(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PrivateBank, function Deposit()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol"
+                                },
+                                "region": {
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/nveloso/conkas",
+                    "name": "Conkas",
+                    "rules": [
+                        {
+                            "id": "conkas_Reentrancy",
+                            "name": "Reentrancy"
+                        },
+                        {
+                            "id": "conkas_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "conkas_Time_Manipulation",
+                            "name": "Time Manipulation"
+                        }
+                    ],
+                    "version": "#6aee098"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

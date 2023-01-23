@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleWallet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "startLine": 33
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-104\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Unhandled_Exception"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Unhandled_Exception",
+                            "name": "Unhandled Exception"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

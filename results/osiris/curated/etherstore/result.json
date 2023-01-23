@@ -1,0 +1,40 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "line": 17,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 24,
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "line": 25,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 17,
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "line": 27,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 9,
+            "contract": "EtherStore",
+            "filename": "dataset/reentrancy/etherstore.sol",
+            "line": 25,
+            "name": "Time dependency bug"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

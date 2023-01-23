@@ -1,0 +1,12 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol:Ownable...
+Analysing /sb/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol:Token...
+Vulnerability: Unchecked Low Level Call. Maybe in function: WithdrawToken(address,uint256,address). PC: 0x3b5. Line number: 44.
+Vulnerability: Reentrancy. Maybe in function: WithdrawToken(address,uint256,address). PC: 0x3b5. Line number: 44.
+Analysing /sb/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol:TokenBank...
+Vulnerability: Unchecked Low Level Call. Maybe in function: WitdrawTokenToHolder(address,address,uint256). PC: 0x749. Line number: 44.
+Vulnerability: Reentrancy. Maybe in function: WitdrawTokenToHolder(address,address,uint256). PC: 0x749. Line number: 44.
+Vulnerability: Integer Overflow. Maybe in function: _fallthrough. PC: 0x341. Line number: 72.
+If a = 115792089237316176086654600790017371239803617425388987230025882291241706983541
+and b = 57896044618656367037745528327997549696970875166024931798167098875003116333041

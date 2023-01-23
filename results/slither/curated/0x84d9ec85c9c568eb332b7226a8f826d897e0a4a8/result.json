@@ -1,0 +1,177 @@
+{
+    "errors": [
+        "EXIT_CODE_18"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Low",
+            "line": 87,
+            "message": "WedIndex.writeIndex.indexdate (local variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#87) shadows:\n\t- WedIndex.indexdate (state variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#67)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Low",
+            "line": 87,
+            "message": "WedIndex.writeIndex.wedaddress (local variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#87) shadows:\n\t- WedIndex.wedaddress (state variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#65)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Low",
+            "line": 87,
+            "message": "WedIndex.writeIndex.partnernames (local variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#87) shadows:\n\t- WedIndex.partnernames (state variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#66)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Low",
+            "line": 87,
+            "message": "WedIndex.writeIndex.weddingdate (local variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#87) shadows:\n\t- WedIndex.weddingdate (state variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#68)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Low",
+            "line": 87,
+            "message": "WedIndex.writeIndex.displaymultisig (local variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#87) shadows:\n\t- WedIndex.displaymultisig (state variable @ 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#69)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 69,
+            "message": "WedIndex.displaymultisig should be constant (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#69)\nWedIndex.indexdate should be constant (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#67)\nWedIndex.partnernames should be constant (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#66)\nWedIndex.wedaddress should be constant (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#65)\nWedIndex.weddingdate should be constant (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#68)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "Owned",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "function": "changeOwner",
+            "impact": "Informational",
+            "line": 38,
+            "line_end": 40,
+            "message": "Owned.changeOwner (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#38-40) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Owned",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "function": "acceptOwnership",
+            "impact": "Informational",
+            "line": 45,
+            "line_end": 49,
+            "message": "Owned.acceptOwnership (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#45-49) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Owned",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "function": "execute",
+            "impact": "Informational",
+            "line": 54,
+            "line_end": 57,
+            "message": "Owned.execute (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#54-57) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WedIndex",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "function": "numberOfIndex",
+            "impact": "Informational",
+            "line": 81,
+            "line_end": 83,
+            "message": "WedIndex.numberOfIndex (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#81-83) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "WedIndex",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "function": "writeIndex",
+            "impact": "Informational",
+            "line": 87,
+            "line_end": 90,
+            "message": "WedIndex.writeIndex (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#87-90) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:\n\t- pragma solidity^0.4.16 (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "Owned",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "function": "execute",
+            "impact": "Informational",
+            "line": 54,
+            "line_end": 57,
+            "message": "Low level call in Owned.execute (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#54-57):\n\t-_dst.call.value(_value)(_data) 0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#56\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 29,
+            "line_end": 31,
+            "message": "Function 'Owned.Owned' (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#29-31) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 38,
+            "message": "Parameter '_newOwner' of Owned.changeOwner (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#38) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "Parameter '_dst' of Owned.execute (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#54) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "Parameter '_value' of Owned.execute (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#54) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol",
+            "impact": "Informational",
+            "line": 54,
+            "message": "Parameter '_data' of Owned.execute (0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol#54) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

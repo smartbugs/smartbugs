@@ -1,0 +1,75 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/incorrect_constructor_name1.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TODAmount"
+                    },
+                    "ruleId": "securify_TODAmount"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/incorrect_constructor_name1.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TODReceiver"
+                    },
+                    "ruleId": "securify_TODReceiver"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/incorrect_constructor_name1.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "TODTransfer"
+                    },
+                    "ruleId": "securify_TODTransfer"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/eth-sri/securify",
+                    "name": "Securify",
+                    "rules": [
+                        {
+                            "id": "securify_TODReceiver",
+                            "name": "TODReceiver"
+                        },
+                        {
+                            "id": "securify_TODAmount",
+                            "name": "TODAmount"
+                        },
+                        {
+                            "id": "securify_TODTransfer",
+                            "name": "TODTransfer"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

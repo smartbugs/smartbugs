@@ -1,0 +1,53 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "MyToken",
+            "filename": "dataset/short_addresses/short_address_example.sol",
+            "function": "sendCoin",
+            "impact": "Informational",
+            "line": 18,
+            "line_end": 24,
+            "message": "MyToken.sendCoin (short_address_example.sol#18-24) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MyToken",
+            "filename": "dataset/short_addresses/short_address_example.sol",
+            "function": "getBalance",
+            "impact": "Informational",
+            "line": 26,
+            "line_end": 28,
+            "message": "MyToken.getBalance (short_address_example.sol#26-28) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/short_addresses/short_address_example.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in short_address_example.sol:\n\t- pragma solidity^0.4.11 (short_address_example.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/short_addresses/short_address_example.sol",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 16,
+            "message": "Function 'MyToken.MyToken' (short_address_example.sol#14-16) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

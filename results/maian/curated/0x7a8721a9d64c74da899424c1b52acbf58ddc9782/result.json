@@ -1,0 +1,32 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "PrivateDeposit",
+            "filename": "dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+            "name": "Not destructible (no self-destruct)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

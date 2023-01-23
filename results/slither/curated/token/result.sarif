@@ -1,0 +1,183 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function transfer"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "endLine": 25,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.transfer (token.sol#18-25) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Token, function balanceOf"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "endLine": 29,
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Token.balanceOf (token.sol#27-29) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in token.sol:\n\t- pragma solidity^0.4.18 (token.sol#7): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "endLine": 16,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Token.Token' (token.sol#14-16) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_initialSupply' of Token.Token (token.sol#14) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of Token.transfer (token.sol#18) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of Token.transfer (token.sol#18) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/token.sol"
+                                },
+                                "region": {
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of Token.balanceOf (token.sol#27) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

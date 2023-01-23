@@ -1,0 +1,17 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/integer_overflow_add.sol:IntegerOverflowAdd:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.2%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/integer_overflow_add.sol:17:9: Warning: Integer Overflow.
+        count += input
+Integer Overflow occurs if:
+    count = 1
+    input = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

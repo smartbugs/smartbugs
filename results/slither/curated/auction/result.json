@@ -1,0 +1,33 @@
+{
+    "errors": [
+        "EXIT_CODE_2"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "DosAuction",
+            "filename": "dataset/denial_of_service/auction.sol",
+            "function": "bid",
+            "impact": "Informational",
+            "line": 15,
+            "line_end": 28,
+            "message": "DosAuction.bid (auction.sol#15-28) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/denial_of_service/auction.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in auction.sol:\n\t- pragma solidity^0.4.15 (auction.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

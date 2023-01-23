@@ -1,0 +1,24 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 17,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "line": 24,
+            "name": "Integer Overflow"
+        },
+        {
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

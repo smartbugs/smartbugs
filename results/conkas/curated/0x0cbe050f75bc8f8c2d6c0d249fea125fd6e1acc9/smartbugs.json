@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9.sol' '/sb/bin'",
+        "image": "smartbugs/conkas",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmpapbalm18": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/unchecked_low_level_calls/0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 42.99453544616699,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1673972843.7443194
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$BIN'",
+        "id": "conkas",
+        "image": "smartbugs/conkas",
+        "info": "Conkas analyzes Ethereum smart contracts to find potential security issues. It uses Rattle to lift the bytecode to an intermediate representation and then applies symbolic execution.",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "Conkas",
+        "origin": "https://github.com/nveloso/conkas",
+        "output": null,
+        "parser": "parser.py",
+        "solc": true,
+        "version": "#6aee098"
+    }
+}

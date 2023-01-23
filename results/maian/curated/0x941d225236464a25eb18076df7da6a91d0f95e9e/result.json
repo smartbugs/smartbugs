@@ -1,0 +1,32 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

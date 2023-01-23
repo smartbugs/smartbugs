@@ -1,0 +1,68 @@
+WARNING:root:You are using solc version 0.4.26. The supported version is 0.4.21.
+INFO:root:Contract /sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:ACCURAL_DEPOSIT:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.9%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:ACCURAL_DEPOSIT:44:9
+balances[msg.sender]+= msg.value
+^
+INFO:symExec:	  └> Underflow bugs: 	 True
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:ACCURAL_DEPOSIT:57:17
+balances[msg.sender]-=_am
+^
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Concurrency bug: 	 False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:ACCURAL_DEPOSIT:58:17
+Log.AddMessage(msg.sender,_am,"Collect")
+^
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:ACCURAL_DEPOSIT:55:16
+msg.sender.call.value(_am)()
+^
+INFO:symExec:	 --- 3.84810590744 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:Contract /sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:LogFile:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 55.7%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:LogFile:95:9
+History.push(LastMsg)
+^
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:LogFile:3:20
+an.io 
+^
+INFO:symExec:	  └> Underflow bugs: 	 True
+/sb/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol:LogFile:95:9
+History.push(LastMsg)
+^
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Concurrency bug: 	 False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	 --- 50.7626578808 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'
+
+
+
+!!! SYMBOLIC EXECUTION TIMEOUT !!!

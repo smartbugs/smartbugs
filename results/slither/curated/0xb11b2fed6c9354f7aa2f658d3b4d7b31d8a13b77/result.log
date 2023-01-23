@@ -1,0 +1,28 @@
+INFO:Slither:Compilation warnings/errors on /sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol:
+/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol:14:9: Warning: Return value of low-level calls not used.
+        target.call.value(msg.value)(data);
+        ^--------------------------------^
+
+INFO:Detectors:[91m
+DepositProxy.Owner (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#19) shadows:
+	- Proxy.Owner (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#10)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variable-shadowing[0m
+INFO:Detectors:[92m
+Proxy.transferOwner (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#11) should be declared external
+Proxy.proxy (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#12-15) should be declared external
+DepositProxy.fallback (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#22) should be declared external
+DepositProxy.Vault (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#24-29) should be declared external
+DepositProxy.withdraw (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#37-41) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Low level call in Proxy.proxy (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#12-15):
+	-target.call.value(msg.value)(data) /sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#14
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Parameter '_owner' of Proxy.transferOwner (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#11) is not in mixedCase
+Variable 'Proxy.Owner' (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#10) is not in mixedCase
+Function 'DepositProxy.Vault' (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#24-29) is not in mixedCase
+Variable 'DepositProxy.Owner' (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#19) is not in mixedCase
+Variable 'DepositProxy.Deposits' (/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol#20) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol analyzed (2 contracts), 12 result(s) found

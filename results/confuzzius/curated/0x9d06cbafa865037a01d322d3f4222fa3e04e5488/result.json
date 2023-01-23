@@ -1,0 +1,36 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "line": 54,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "line": 65,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "line": 44,
+            "message": "Classification: SWC-110",
+            "name": "Assertion Failure",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

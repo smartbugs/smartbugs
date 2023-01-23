@@ -1,0 +1,40 @@
+INFO:Slither:Compilation warnings/errors on /sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol:
+/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol:150:9: Warning: Return value of low-level calls not used.
+        whale.call.value(donate_amount)(bytes4(keccak256("donate()")));
+        ^------------------------------------------------------------^
+
+INFO:Detectors:[91m
+FiftyFlip.sendFunds (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#323-331) sends eth to arbitrary user
+	Dangerous calls:
+	- success = paidUser.send(amount) (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#324)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[91m
+Reentrancy in FiftyFlip.wager (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#128-159):
+	External calls:
+	- whale.call.value(donate_amount)(bytes4(keccak256()(donate()))) (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#150)
+	State variables written after the call(s):
+	- bets (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#153)
+	- bets (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#154)
+	- bets (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#155)
+	- bets (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#156)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[92m
+Reentrancy in FiftyFlip.wager (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#128-159):
+	External calls:
+	- whale.call.value(donate_amount)(bytes4(keccak256()(donate()))) (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#150)
+	State variables written after the call(s):
+	- totalAmountToWhale (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#151)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities-2[0m
+INFO:Detectors:[92m
+FiftyFlip.fallback (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#110) should be declared external
+FiftyFlip.transferAnyERC20Token (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#364-370) should be declared external
+ERC20Interface.transfer (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#376) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Low level call in FiftyFlip.wager (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#128-159):
+	-whale.call.value(donate_amount)(bytes4(keccak256()(donate()))) /sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#150
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Parameter '_secretSigner' of FiftyFlip.setSecretSigner (/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol#120) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol analyzed (2 contracts), 8 result(s) found

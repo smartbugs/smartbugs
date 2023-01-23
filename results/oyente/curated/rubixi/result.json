@@ -1,0 +1,35 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 18,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 103,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 34,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 141,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 26,
+            "contract": "Rubixi",
+            "filename": "dataset/access_control/rubixi.sol",
+            "line": 153,
+            "name": "Integer Underflow"
+        }
+    ],
+    "infos": [
+        "incomplete push instruction"
+    ],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

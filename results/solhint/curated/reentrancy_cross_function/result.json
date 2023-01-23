@@ -1,0 +1,22 @@
+{
+    "errors": [
+        "EXIT_CODE_1"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "column": 2,
+            "filename": "dataset/reentrancy/reentrancy_cross_function.sol",
+            "level": "error",
+            "line": 24,
+            "message": "Line length must be no more than 120 but current length is 144.",
+            "name": "max-line-length"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "solhint",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

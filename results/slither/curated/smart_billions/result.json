@@ -1,0 +1,591 @@
+{
+    "errors": [
+        "EXIT_CODE_65"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "ERC20Basic",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "transfer",
+            "impact": "Medium",
+            "line": 21,
+            "line_end": 29,
+            "message": "ERC20Basic (smart_billions.sol#21-29) has incorrect ERC20 function interface(s):\n\t-transfer (smart_billions.sol#26)\n",
+            "name": "erc20-interface"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "approve",
+            "impact": "Medium",
+            "line": 31,
+            "line_end": 36,
+            "message": "ERC20 (smart_billions.sol#31-36) has incorrect ERC20 function interface(s):\n\t-transferFrom (smart_billions.sol#33)\n\t-approve (smart_billions.sol#34)\n",
+            "name": "erc20-interface"
+        },
+        {
+            "confidence": "High",
+            "contract": "BasicToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "transfer",
+            "impact": "Medium",
+            "line": 38,
+            "line_end": 73,
+            "message": "BasicToken (smart_billions.sol#38-73) has incorrect ERC20 function interface(s):\n\t-transfer (smart_billions.sol#51-64)\n",
+            "name": "erc20-interface"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "approve",
+            "impact": "Medium",
+            "line": 75,
+            "line_end": 113,
+            "message": "StandardToken (smart_billions.sol#75-113) has incorrect ERC20 function interface(s):\n\t-transferFrom (smart_billions.sol#84-92)\n\t-approve (smart_billions.sol#98-103)\n",
+            "name": "erc20-interface"
+        },
+        {
+            "confidence": "High",
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "addHashes",
+            "impact": "Medium",
+            "line": 672,
+            "line_end": 689,
+            "message": "SmartBillions.addHashes (smart_billions.sol#672-689) uses a dangerous strict equality:\n\t- require(bool)(hashFirst == 0 && _sadd > 0 && _sadd <= hashesSize)\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "betOf",
+            "impact": "Medium",
+            "line": 672,
+            "line_end": 689,
+            "message": "SmartBillions.addHashes (smart_billions.sol#672-689) uses a dangerous strict equality:\n\t- require(bool)(hashFirst == 0 && _sadd > 0 && _sadd <= hashesSize)\nSmartBillions.betOf (smart_billions.sol#513-535) uses a dangerous strict equality:\n\t- (player.value == 0) || (player.blockNum <= 1) || (block.number < player.blockNum) || (block.number >= player.blockNum + (10 * hashesSize))\n\t- hash == 0x1000000\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "betPrize",
+            "impact": "Medium",
+            "line": 672,
+            "line_end": 689,
+            "message": "SmartBillions.addHashes (smart_billions.sol#672-689) uses a dangerous strict equality:\n\t- require(bool)(hashFirst == 0 && _sadd > 0 && _sadd <= hashesSize)\nSmartBillions.betOf (smart_billions.sol#513-535) uses a dangerous strict equality:\n\t- (player.value == 0) || (player.blockNum <= 1) || (block.number < player.blockNum) || (block.number >= player.blockNum + (10 * hashesSize))\n\t- hash == 0x1000000\nSmartBillions.betPrize (smart_billions.sol#482-508) uses a dangerous strict equality:\n\t- (hit & 0xF) == 0\n\t- (hit & 0xF0) == 0\n\t- (hit & 0xF0) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "putHash",
+            "impact": "Medium",
+            "line": 672,
+            "line_end": 689,
+            "message": "SmartBillions.addHashes (smart_billions.sol#672-689) uses a dangerous strict equality:\n\t- require(bool)(hashFirst == 0 && _sadd > 0 && _sadd <= hashesSize)\nSmartBillions.betOf (smart_billions.sol#513-535) uses a dangerous strict equality:\n\t- (player.value == 0) || (player.blockNum <= 1) || (block.number < player.blockNum) || (block.number >= player.blockNum + (10 * hashesSize))\n\t- hash == 0x1000000\nSmartBillions.betPrize (smart_billions.sol#482-508) uses a dangerous strict equality:\n\t- (hit & 0xF) == 0\n\t- (hit & 0xF0) == 0\n\t- (hit & 0xF0) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\nSmartBillions.putHash (smart_billions.sol#735-756) uses a dangerous strict equality:\n\t- lastb == 0 || block.number <= lastb + 10\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "won",
+            "impact": "Medium",
+            "line": 672,
+            "line_end": 689,
+            "message": "SmartBillions.addHashes (smart_billions.sol#672-689) uses a dangerous strict equality:\n\t- require(bool)(hashFirst == 0 && _sadd > 0 && _sadd <= hashesSize)\nSmartBillions.betOf (smart_billions.sol#513-535) uses a dangerous strict equality:\n\t- (player.value == 0) || (player.blockNum <= 1) || (block.number < player.blockNum) || (block.number >= player.blockNum + (10 * hashesSize))\n\t- hash == 0x1000000\nSmartBillions.betPrize (smart_billions.sol#482-508) uses a dangerous strict equality:\n\t- (hit & 0xF) == 0\n\t- (hit & 0xF0) == 0\n\t- (hit & 0xF0) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF00) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF0000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\n\t- (hit & 0xF00000) == 0\nSmartBillions.putHash (smart_billions.sol#735-756) uses a dangerous strict equality:\n\t- lastb == 0 || block.number <= lastb + 10\nSmartBillions.won (smart_billions.sol#540-591) uses a dangerous strict equality:\n\t- player.blockNum == 0\n\t- (player.value == 0) || (player.blockNum == 1)\n\t- (player.value == 0) || (player.blockNum == 1)\n\t- hash == 0x1000000\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Low",
+            "line": 32,
+            "message": "ERC20.allowance.owner (local variable @ smart_billions.sol#32) shadows:\n\t- ERC20Basic.owner (state variable @ smart_billions.sol#23)\n",
+            "name": "shadowing-local"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 144,
+            "message": "SmartBillions.investBalanceMax should be constant (smart_billions.sol#144)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 523,
+            "message": "Deprecated standard detected @ smart_billions.sol#523:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 560,
+            "message": "Deprecated standard detected @ smart_billions.sol#560:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 618,
+            "message": "Deprecated standard detected @ smart_billions.sol#618:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 626,
+            "message": "Deprecated standard detected @ smart_billions.sol#626:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 700,
+            "line_end": 719,
+            "message": "Deprecated standard detected @ smart_billions.sol#700-719:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20Basic",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "balanceOf",
+            "impact": "Informational",
+            "line": 25,
+            "message": "ERC20Basic.balanceOf (smart_billions.sol#25) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "BasicToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "balanceOf",
+            "impact": "Informational",
+            "line": 70,
+            "line_end": 72,
+            "message": "BasicToken.balanceOf (smart_billions.sol#70-72) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "BasicToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 51,
+            "line_end": 64,
+            "message": "BasicToken.transfer (smart_billions.sol#51-64) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20Basic",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 26,
+            "message": "ERC20Basic.transfer (smart_billions.sol#26) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "allowance",
+            "impact": "Informational",
+            "line": 32,
+            "message": "ERC20.allowance (smart_billions.sol#32) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "allowance",
+            "impact": "Informational",
+            "line": 110,
+            "line_end": 112,
+            "message": "StandardToken.allowance (smart_billions.sol#110-112) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "transferFrom",
+            "impact": "Informational",
+            "line": 33,
+            "message": "ERC20.transferFrom (smart_billions.sol#33) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "transferFrom",
+            "impact": "Informational",
+            "line": 84,
+            "line_end": 92,
+            "message": "StandardToken.transferFrom (smart_billions.sol#84-92) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "approve",
+            "impact": "Informational",
+            "line": 34,
+            "message": "ERC20.approve (smart_billions.sol#34) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "StandardToken",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "approve",
+            "impact": "Informational",
+            "line": 98,
+            "line_end": 103,
+            "message": "StandardToken.approve (smart_billions.sol#98-103) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "SmartBillions",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "function": "playRandom",
+            "impact": "Informational",
+            "line": 625,
+            "line_end": 627,
+            "message": "SmartBillions.playRandom (smart_billions.sol#625-627) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in smart_billions.sol:\n\t- pragma solidity^0.4.13 (smart_billions.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 70,
+            "message": "Parameter '_owner' of BasicToken.balanceOf (smart_billions.sol#70) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 51,
+            "message": "Parameter '_to' of BasicToken.transfer (smart_billions.sol#51) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 51,
+            "message": "Parameter '_value' of BasicToken.transfer (smart_billions.sol#51) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 110,
+            "message": "Parameter '_owner' of StandardToken.allowance (smart_billions.sol#110) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 110,
+            "message": "Parameter '_spender' of StandardToken.allowance (smart_billions.sol#110) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 84,
+            "message": "Parameter '_from' of StandardToken.transferFrom (smart_billions.sol#84) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 84,
+            "message": "Parameter '_to' of StandardToken.transferFrom (smart_billions.sol#84) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 84,
+            "message": "Parameter '_value' of StandardToken.transferFrom (smart_billions.sol#84) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 98,
+            "message": "Parameter '_spender' of StandardToken.approve (smart_billions.sol#98) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 98,
+            "message": "Parameter '_value' of StandardToken.approve (smart_billions.sol#98) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 459,
+            "message": "Parameter '_who' of SmartBillions.commitDividend (smart_billions.sol#459) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 182,
+            "line_end": 188,
+            "message": "Function 'SmartBillions.SmartBillions' (smart_billions.sol#182-188) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 203,
+            "message": "Parameter '_owner' of SmartBillions.walletBalanceOf (smart_billions.sol#203) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 211,
+            "message": "Parameter '_owner' of SmartBillions.walletPeriodOf (smart_billions.sol#211) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 219,
+            "message": "Parameter '_owner' of SmartBillions.walletBlockOf (smart_billions.sol#219) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 227,
+            "message": "Parameter '_owner' of SmartBillions.betValueOf (smart_billions.sol#227) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 235,
+            "message": "Parameter '_owner' of SmartBillions.betHashOf (smart_billions.sol#235) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 243,
+            "message": "Parameter '_owner' of SmartBillions.betBlockNumberOf (smart_billions.sol#243) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 267,
+            "message": "Parameter '_who' of SmartBillions.changeOwner (smart_billions.sol#267) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 278,
+            "message": "Parameter '_who' of SmartBillions.changeAnimator (smart_billions.sol#278) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 289,
+            "message": "Parameter '_when' of SmartBillions.setInvestStart (smart_billions.sol#289) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 298,
+            "message": "Parameter '_maxsum' of SmartBillions.setBetMax (smart_billions.sol#298) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 316,
+            "message": "Parameter '_amount' of SmartBillions.coldStore (smart_billions.sol#316) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 369,
+            "message": "Parameter '_amount' of SmartBillions.pay (smart_billions.sol#369) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 399,
+            "message": "Parameter '_partner' of SmartBillions.invest (smart_billions.sol#399) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 482,
+            "message": "Parameter '_player' of SmartBillions.betPrize (smart_billions.sol#482) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 482,
+            "message": "Parameter '_hash' of SmartBillions.betPrize (smart_billions.sol#482) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 513,
+            "message": "Parameter '_who' of SmartBillions.betOf (smart_billions.sol#513) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 625,
+            "message": "Parameter '_partner' of SmartBillions.playRandom (smart_billions.sol#625) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 633,
+            "message": "Parameter '_hash' of SmartBillions.playSystem (smart_billions.sol#633) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 633,
+            "message": "Parameter '_partner' of SmartBillions.playSystem (smart_billions.sol#633) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 672,
+            "message": "Parameter '_sadd' of SmartBillions.addHashes (smart_billions.sol#672) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 698,
+            "message": "Parameter '_lastb' of SmartBillions.calcHashes (smart_billions.sol#698) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 698,
+            "message": "Parameter '_delta' of SmartBillions.calcHashes (smart_billions.sol#698) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 722,
+            "message": "Parameter '_block' of SmartBillions.getHash (smart_billions.sol#722) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 762,
+            "message": "Parameter '_num' of SmartBillions.putHashes (smart_billions.sol#762) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/bad_randomness/smart_billions.sol",
+            "impact": "Informational",
+            "line": 159,
+            "message": "Constant 'SmartBillions.hashesSize' (smart_billions.sol#159) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 207,
+            "contract": "Reentrancy_insecure",
+            "filename": "dataset/reentrancy/reentrancy_insecure.sol",
+            "function": "withdrawBalance()",
+            "line": 17,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 207,
+            "contract": "Reentrancy_insecure",
+            "filename": "dataset/reentrancy/reentrancy_insecure.sol",
+            "function": "withdrawBalance()",
+            "line": 17,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

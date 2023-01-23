@@ -1,0 +1,66 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Pie"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x806a6bd219f162442d992bdc4ee6eba1f2c5a707.sol"
+                                },
+                                "region": {
+                                    "startColumn": 1441,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Hidden transfer"
+                    },
+                    "ruleId": "honeybadger_Hidden_transfer"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Pie"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x806a6bd219f162442d992bdc4ee6eba1f2c5a707.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Money flow"
+                    },
+                    "ruleId": "honeybadger_Money_flow"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/HoneyBadger",
+                    "name": "HoneyBadger",
+                    "rules": [
+                        {
+                            "id": "honeybadger_Money_flow",
+                            "name": "Money flow"
+                        },
+                        {
+                            "id": "honeybadger_Hidden_transfer",
+                            "name": "Hidden transfer"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,76 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 557,
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy(address,bytes)",
+            "line": 14,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 201,
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy(address,bytes)",
+            "line": 12,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 557,
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy(address,bytes)",
+            "line": 14,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 494,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy(address,bytes)",
+            "line": 12,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1378,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "Vault()",
+            "line": 33,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1283,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy(address,bytes)",
+            "line": 14,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 1283,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "proxy(address,bytes)",
+            "line": 14,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 908,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+            "function": "withdraw(uint256)",
+            "line": 39,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

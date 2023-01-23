@@ -1,0 +1,21 @@
+
+Traceback (most recent call last):
+  File "conkas.py", line 105, in main
+    ssa = Recover(bytecode, edges=[], optimize=True)
+  File "/conkas/rattle/recover.py", line 768, in __init__
+    self.internal = InternalRecover(filedata, edges, optimize, split_functions)
+  File "/conkas/rattle/recover.py", line 37, in __init__
+    self.guarenteed_optimizations()
+  File "/conkas/rattle/recover.py", line 674, in guarenteed_optimizations
+    if reader.insn.is_push and reader.replace_uses_with(item):
+  File "/conkas/rattle/ssa.py", line 397, in replace_uses_with
+    reader.replace_argument(self.return_value, sv)
+  File "/conkas/rattle/ssa.py", line 289, in replace_argument
+    assert (self.insn.pops == len(self.arguments) or
+AssertionError
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/parity_wallet_bug_2.sol:WalletAbi...
+Nothing to analyse
+Analysing /sb/parity_wallet_bug_2.sol:WalletEvents...
+Analysing /sb/parity_wallet_bug_2.sol:WalletLibrary...

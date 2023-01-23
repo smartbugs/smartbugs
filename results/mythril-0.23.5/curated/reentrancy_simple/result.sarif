@@ -1,0 +1,90 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Reentrance, function withdrawBalance()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_simple.sol"
+                                },
+                                "region": {
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "A call to a user-supplied address is executed.\nAn external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.\nClassification: SWC-107\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_External_Call_To_User_Supplied_Address"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Reentrance, function withdrawBalance()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_simple.sol"
+                                },
+                                "region": {
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Write to persistent state following external call\nThe contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.\nClassification: SWC-107\nSeverity: Medium"
+                    },
+                    "ruleId": "mythril_0_23_5_State_access_after_external_call"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "Read of/Write to persistent state following external call The contract account state is accessed after an external call to a user-defined/fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state. Classification: SWC-107. Detection method: Check whether the account state is accesses after the execution of an external call"
+                            },
+                            "help": {
+                                "text": "The contract account state is accessed after an external call to a user-defined/fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state."
+                            },
+                            "id": "mythril_0_23_5_State_access_after_external_call",
+                            "name": "State access after external call",
+                            "shortDescription": {
+                                "text": "Read of/Write to persistent state following external call"
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "A call to a user-supplied address is executed. An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place. Classification: SWC-107. Detection method: Search for external calls with unrestricted gas to a user-specified address."
+                            },
+                            "help": {
+                                "text": "An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place."
+                            },
+                            "id": "mythril_0_23_5_External_Call_To_User_Supplied_Address",
+                            "name": "External Call To User-Supplied Address",
+                            "properties": {
+                                "security-severity": "2.0"
+                            },
+                            "shortDescription": {
+                                "text": "A call to a user-supplied address is executed."
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

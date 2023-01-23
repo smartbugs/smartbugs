@@ -1,0 +1,30 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:Owned...
+Vulnerability: Reentrancy. Maybe in function: execute(address,uint256,bytes). PC: 0x46b. Line number: 56.
+Vulnerability: Integer Overflow. Maybe in function: execute(address,uint256,bytes). PC: 0x17b. Line number: 54.
+If a = 31
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639908
+Vulnerability: Unchecked Low Level Call. Maybe in function: execute(address,uint256,bytes). PC: 0x46b. Line number: 56.
+Analysing /sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:WedIndex...
+Vulnerability: Integer Overflow. Maybe in function: writeIndex(uint256,string,string,uint256,uint256). PC: 0x127. Line number: 87.
+If a = 32
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639900
+Vulnerability: Integer Underflow. Maybe in function: writeIndex(uint256,string,string,uint256,uint256). PC: 0x66f. Line number: 88.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: execute(address,uint256,bytes). PC: 0xd1f. Line number: 56.
+Vulnerability: Integer Overflow. Maybe in function: writeIndex(uint256,string,string,uint256,uint256). PC: 0x67c. Line number: 88.
+If a = 5
+and b = 34347449999884430343377249148319002984613191109768351604530210070678109943792
+Vulnerability: Integer Overflow. Maybe in function: writeIndex(uint256,string,string,uint256,uint256). PC: 0xd9f. Line number: 62.
+If a = 57896044618658097762002306387437400037321307718481613348547635559668840923008
+and b = 57896044618658097762002306387437400037321307718481613348547635559668840923008
+Vulnerability: Integer Overflow. Maybe in function: indexarray(uint256). PC: 0xc34. Line number: 71.
+If a = 3
+and b = 19682398631916623737010132692691108534651610897632071799893242667772662005425
+Vulnerability: Unchecked Low Level Call. Maybe in function: execute(address,uint256,bytes). PC: 0xd1f. Line number: 56.
+Vulnerability: Integer Overflow. Maybe in function: execute(address,uint256,bytes). PC: 0x537. Line number: 54.
+If a = 32
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639900
+Vulnerability: Time Manipulation. Maybe in function: writeIndex(uint256,string,string,uint256,uint256). PC: 0x691. Line number: 88.

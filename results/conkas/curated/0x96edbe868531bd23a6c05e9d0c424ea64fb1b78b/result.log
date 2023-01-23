@@ -1,0 +1,25 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol:LogFile...
+Vulnerability: Integer Overflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x260. Line number: 102.
+If a = 4
+and b = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+Vulnerability: Integer Overflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x9d. Line number: 95.
+If a = 4
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639932
+Vulnerability: Time Manipulation. Maybe in function: AddMessage(address,uint256,string). PC: 0x218. Line number: 99.
+Vulnerability: Time Manipulation. Maybe in function: AddMessage(address,uint256,string). PC: 0x30e. Line number: 102.
+Vulnerability: Integer Overflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x451. Line number: 81.
+If a = 57896044618658097711785492504343953926634992332820282019728792003956564819976
+and b = 57896044618658097711785492504343953926634992332820282019728792003956564819976
+Analysing /sb/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol:PENNY_BY_PENNY...
+Vulnerability: Reentrancy. Maybe in function: Collect(uint256). PC: 0x45d. Line number: 63.
+Vulnerability: Integer Overflow. Maybe in function: _fallthrough. PC: 0x22c. Line number: 50.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Reentrancy. Maybe in function: Collect(uint256). PC: 0x579. Line number: 66.
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x34e. Line number: 52.
+Vulnerability: Integer Overflow. Maybe in function: _fallthrough. PC: 0x23b. Line number: 51.
+If a = 115792089237316195423570985008687907853269984665640559203754305549396430815232
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Time Manipulation. Maybe in function: _fallthrough. PC: 0x241. Line number: 51.

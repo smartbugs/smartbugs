@@ -1,0 +1,100 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 157,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 95,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 782,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 102,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 608,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 102,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1105,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 81,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 536,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 99,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 556,
+            "contract": "MONEY_BOX",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "_fallthrough",
+            "line": 50,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1117,
+            "contract": "MONEY_BOX",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "Collect(uint256)",
+            "line": 63,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1401,
+            "contract": "MONEY_BOX",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "Collect(uint256)",
+            "line": 66,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 846,
+            "contract": "MONEY_BOX",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "_fallthrough",
+            "line": 52,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 580,
+            "contract": "MONEY_BOX",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "_fallthrough",
+            "line": 51,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 577,
+            "contract": "MONEY_BOX",
+            "filename": "dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+            "function": "_fallthrough",
+            "line": 51,
+            "name": "Time Manipulation"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

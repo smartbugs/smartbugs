@@ -1,0 +1,11 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/wallet_04_confused_sign.sol:Wallet...
+Vulnerability: Integer Overflow. Maybe in function: deposit(). PC: 0x2f9. Line number: 24.
+If a = 115792089237316195423570985008687907851908855197956810185604085578185788449618
+and b = 1361129467683753853853498429727341281281
+Vulnerability: Integer Underflow. Maybe in function: withdraw(uint256). PC: 0x1b1. Line number: 32.
+If a = 90963
+and b = 115792089237316195423570985008687907851908855197956810185604085578185788449618
+Vulnerability: Reentrancy. Maybe in function: withdraw(uint256). PC: 0x154. Line number: 31.
+Vulnerability: Reentrancy. Maybe in function: 0x4ddaf8f2. PC: 0x25d. Line number: 39.

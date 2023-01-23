@@ -1,0 +1,271 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 294,
+            "contract": "Wallet",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x1c10c0000000004",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b5060006040519080825280602002602001820160405280156100415781602001602082028038833980820191505090505b506000908051906020019061005792919061009e565b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610110565b8280548282559060005260206000209081019282156100da579160200282015b828111156100d95782518255916020019190600101906100be565b5b5090506100e791906100eb565b5090565b61010d91905b808211156101095760008160009055506001016100f1565b5090565b90565b6102798061011f6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634f798da7146100645780637adde4ef1461009b578063f58fef8e146100b2578063fd10d655146100c9575b005b34801561007057600080fd5b5061009960048036038101908080359060200190929190803590602001909291905050506100f6565b005b3480156100a757600080fd5b506100b061012b565b005b3480156100be57600080fd5b506100c7610158565b005b3480156100d557600080fd5b506100f4600480360381019080803590602001909291905050506101cd565b005b6000805490508210151561010957600080fd5b8060008381548110151561011957fe5b90600052602060002001819055505050565b60008054905060001115151561014057600080fd5b600080548091906001900361015591906101fc565b50565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b457600080fd5b3373ffffffffffffffffffffffffffffffffffffffff16ff5b600081908060018154018082558091505090600182039060005260206000200160009091929091909150555050565b815481835581811115610223578183600052602060002091820191016102229190610228565b5b505050565b61024a91905b8082111561024657600081600090555060010161022e565b5090565b905600a165627a7a723058209f1419c02c3b4a223ef5a969f69f5d3f42b7a1214750c1492379a2d1ee6327ce0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x4f798da7d6f21326ab749d5729fcba5677c79037b459436ab7bff709c9d06d35758a88b8",
+                        "input": "0x4f798da7d6f21326ab749d5729fcba5677c79037b459436ab7bff709c9d06d35758a88b8",
+                        "name": "UpdateBonusCodeAt(uint256,uint256)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "UpdateBonusCodeAt(uint256,uint256)",
+            "line": 33,
+            "message": "The caller can write to arbitrary storage locations.\nIt is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract.\nClassification: SWC-124",
+            "name": "Write to an arbitrary storage location",
+            "severity": "High"
+        },
+        {
+            "address": 331,
+            "contract": "Wallet",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x2",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b5060006040519080825280602002602001820160405280156100415781602001602082028038833980820191505090505b506000908051906020019061005792919061009e565b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610110565b8280548282559060005260206000209081019282156100da579160200282015b828111156100d95782518255916020019190600101906100be565b5b5090506100e791906100eb565b5090565b61010d91905b808211156101095760008160009055506001016100f1565b5090565b90565b6102798061011f6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634f798da7146100645780637adde4ef1461009b578063f58fef8e146100b2578063fd10d655146100c9575b005b34801561007057600080fd5b5061009960048036038101908080359060200190929190803590602001909291905050506100f6565b005b3480156100a757600080fd5b506100b061012b565b005b3480156100be57600080fd5b506100c7610158565b005b3480156100d557600080fd5b506100f4600480360381019080803590602001909291905050506101cd565b005b6000805490508210151561010957600080fd5b8060008381548110151561011957fe5b90600052602060002001819055505050565b60008054905060001115151561014057600080fd5b600080548091906001900361015591906101fc565b50565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b457600080fd5b3373ffffffffffffffffffffffffffffffffffffffff16ff5b600081908060018154018082558091505090600182039060005260206000200160009091929091909150555050565b815481835581811115610223578183600052602060002091820191016102229190610228565b5b505050565b61024a91905b8082111561024657600081600090555060010161022e565b5090565b905600a165627a7a723058209f1419c02c3b4a223ef5a969f69f5d3f42b7a1214750c1492379a2d1ee6327ce0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "PopBonusCode()",
+            "line": 28,
+            "message": "The arithmetic operator can underflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101",
+            "name": "Integer Arithmetic Bugs",
+            "severity": "High"
+        },
+        {
+            "address": 471,
+            "contract": "Wallet",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x1",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b5060006040519080825280602002602001820160405280156100415781602001602082028038833980820191505090505b506000908051906020019061005792919061009e565b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610110565b8280548282559060005260206000209081019282156100da579160200282015b828111156100d95782518255916020019190600101906100be565b5b5090506100e791906100eb565b5090565b61010d91905b808211156101095760008160009055506001016100f1565b5090565b90565b6102798061011f6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634f798da7146100645780637adde4ef1461009b578063f58fef8e146100b2578063fd10d655146100c9575b005b34801561007057600080fd5b5061009960048036038101908080359060200190929190803590602001909291905050506100f6565b005b3480156100a757600080fd5b506100b061012b565b005b3480156100be57600080fd5b506100c7610158565b005b3480156100d557600080fd5b506100f4600480360381019080803590602001909291905050506101cd565b005b6000805490508210151561010957600080fd5b8060008381548110151561011957fe5b90600052602060002001819055505050565b60008054905060001115151561014057600080fd5b600080548091906001900361015591906101fc565b50565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b457600080fd5b3373ffffffffffffffffffffffffffffffffffffffff16ff5b600081908060018154018082558091505090600182039060005260206000200160009091929091909150555050565b815481835581811115610223578183600052602060002091820191016102229190610228565b5b505050565b61024a91905b8082111561024657600081600090555060010161022e565b5090565b905600a165627a7a723058209f1419c02c3b4a223ef5a969f69f5d3f42b7a1214750c1492379a2d1ee6327ce0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0xfd10d655",
+                        "input": "0xfd10d655",
+                        "name": "PushBonusCode(uint256)",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "PushBonusCode(uint256)",
+            "message": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101",
+            "name": "Integer Arithmetic Bugs",
+            "severity": "High"
+        },
+        {
+            "address": 534,
+            "contract": "Wallet",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b5060006040519080825280602002602001820160405280156100415781602001602082028038833980820191505090505b506000908051906020019061005792919061009e565b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610110565b8280548282559060005260206000209081019282156100da579160200282015b828111156100d95782518255916020019190600101906100be565b5b5090506100e791906100eb565b5090565b61010d91905b808211156101095760008160009055506001016100f1565b5090565b90565b6102798061011f6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634f798da7146100645780637adde4ef1461009b578063f58fef8e146100b2578063fd10d655146100c9575b005b34801561007057600080fd5b5061009960048036038101908080359060200190929190803590602001909291905050506100f6565b005b3480156100a757600080fd5b506100b061012b565b005b3480156100be57600080fd5b506100c7610158565b005b3480156100d557600080fd5b506100f4600480360381019080803590602001909291905050506101cd565b005b6000805490508210151561010957600080fd5b8060008381548110151561011957fe5b90600052602060002001819055505050565b60008054905060001115151561014057600080fd5b600080548091906001900361015591906101fc565b50565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b457600080fd5b3373ffffffffffffffffffffffffffffffffffffffff16ff5b600081908060018154018082558091505090600182039060005260206000200160009091929091909150555050565b815481835581811115610223578183600052602060002091820191016102229190610228565b5b505050565b61024a91905b8082111561024657600081600090555060010161022e565b5090565b905600a165627a7a723058209f1419c02c3b4a223ef5a969f69f5d3f42b7a1214750c1492379a2d1ee6327ce0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "PopBonusCode()",
+            "message": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation.  This issue is reported for internal compiler generated code.\nClassification: SWC-101",
+            "name": "Integer Arithmetic Bugs",
+            "severity": "Low"
+        },
+        {
+            "address": 536,
+            "contract": "Wallet",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b5060006040519080825280602002602001820160405280156100415781602001602082028038833980820191505090505b506000908051906020019061005792919061009e565b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610110565b8280548282559060005260206000209081019282156100da579160200282015b828111156100d95782518255916020019190600101906100be565b5b5090506100e791906100eb565b5090565b61010d91905b808211156101095760008160009055506001016100f1565b5090565b90565b6102798061011f6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634f798da7146100645780637adde4ef1461009b578063f58fef8e146100b2578063fd10d655146100c9575b005b34801561007057600080fd5b5061009960048036038101908080359060200190929190803590602001909291905050506100f6565b005b3480156100a757600080fd5b506100b061012b565b005b3480156100be57600080fd5b506100c7610158565b005b3480156100d557600080fd5b506100f4600480360381019080803590602001909291905050506101cd565b005b6000805490508210151561010957600080fd5b8060008381548110151561011957fe5b90600052602060002001819055505050565b60008054905060001115151561014057600080fd5b600080548091906001900361015591906101fc565b50565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101b457600080fd5b3373ffffffffffffffffffffffffffffffffffffffff16ff5b600081908060018154018082558091505090600182039060005260206000200160009091929091909150555050565b815481835581811115610223578183600052602060002091820191016102229190610228565b5b505050565b61024a91905b8082111561024657600081600090555060010161022e565b5090565b905600a165627a7a723058209f1419c02c3b4a223ef5a969f69f5d3f42b7a1214750c1492379a2d1ee6327ce0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x7adde4ef",
+                        "input": "0x7adde4ef",
+                        "name": "PopBonusCode()",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "PopBonusCode()",
+            "message": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation.  This issue is reported for internal compiler generated code.\nClassification: SWC-101",
+            "name": "Integer Arithmetic Bugs",
+            "severity": "Low"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "mythril-0.23.5",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

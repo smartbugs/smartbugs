@@ -1,0 +1,72 @@
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/wallet_04_confused_sign.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  893  : 0x6080604052600436106100575760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/Wallet.address [0m
+[94m[ ] Check if contract is SUICIDAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 608060405260043610610057576000357c0100000000000000...
+[ ] Bytecode length    : 1786
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0m1Unknown operation  at pos b5
+1
+[ ][1m Search with call depth: 2   : [0m12Unknown operation  at pos b5
+2Unknown operation  at pos b5
+122
+[ ][1m Search with call depth: 3   : [0m123Unknown operation  at pos b5
+3Unknown operation  at pos b5
+233Unknown operation  at pos b5
+1233233
+[92m[-] No suicidal vulnerability found [0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/wallet_04_confused_sign.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m..[92m ESTABLISHED [0m
+[1m[ ] Sending Ether to contract 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306  [0m...... tx[0] mined [92m Sent! [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  893  : 0x6080604052600436106100575760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/Wallet.address [0m
+[1m[ ] The contract balance: 44  [0m[92m Positive balance[0m
+[94m[ ] Check if contract is PRODIGAL[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 608060405260043610610057576000357c0100000000000000...
+[ ] Bytecode length    : 1786
+[ ] Blockchain contract: True
+[ ] Debug              : False
+
+[ ][1m Search with call depth: 1   : [0mUnknown operation  at pos b5
+
+
+[91m[-] Leak vulnerability found! [0m
+
+    The following 1 transaction(s) will trigger the contract to leak:
+    -Tx[1] :2e1a7d4d 0000000000000000000000000000000000000000000000000000000000000001
+
+    The transactions correspond to the functions:
+    -withdraw(uint256)
+
+[1m[ ] Confirming leak vulnerability on private chain ... [0m... tx[0] mined 
+    [1m[91mConfirmed ! The contract is prodigal ![0m
+
+====================================================================================================
+[1m[ ] Compiling Solidity contract from the file /sb/wallet_04_confused_sign.sol ... [0m[92m Done [0m
+[1m[ ] Connecting to PRIVATE blockchain emptychain  [0m...[92m ESTABLISHED [0m
+[1m[ ] Deploying contract [0m[92m confirmed at address: 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306 [0m
+[1m[ ] Contract code length on the blockchain : [0m [92m  893  : 0x6080604052600436106100575760... [0m
+[1m[ ] Contract address saved in file: [0m[92m./out/Wallet.address [0m
+[94m[ ] Check if contract is GREEDY[0m
+
+[ ] Contract address   : 0x9E536236ABF2288a7864C6A1AfaA4Cb98D464306
+[ ] Contract bytecode  : 608060405260043610610057576000357c0100000000000000...
+[ ] Bytecode length    : 1786
+[ ] Debug              : False
+[92m[+][0m [1mContract can receive Ether[0m
+
+[ ][1m Search with call depth: 1   : [0m1
+[92m[+] No locking vulnerability found [0m

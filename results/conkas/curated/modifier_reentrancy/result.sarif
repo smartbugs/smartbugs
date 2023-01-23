@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ModifierEntrancy, function airDrop()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/modifier_reentrancy.sol"
+                                },
+                                "region": {
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract attack, function call(address)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/modifier_reentrancy.sol"
+                                },
+                                "region": {
+                                    "startLine": 47
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/nveloso/conkas",
+                    "name": "Conkas",
+                    "rules": [
+                        {
+                            "id": "conkas_Reentrancy",
+                            "name": "Reentrancy"
+                        }
+                    ],
+                    "version": "#6aee098"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

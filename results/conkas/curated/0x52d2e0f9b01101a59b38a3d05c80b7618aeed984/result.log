@@ -1,0 +1,9 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x52d2e0f9b01101a59b38a3d05c80b7618aeed984.sol:EtherGet...
+Vulnerability: Unchecked Low Level Call. Maybe in function: getTokens(uint256,address). PC: 0x13a. Line number: 27.
+Vulnerability: Reentrancy. Maybe in function: withdrawEther(). PC: 0x397. Line number: 22.
+Vulnerability: Reentrancy. Maybe in function: withdrawTokens(address). PC: 0x2f2. Line number: 19.
+Vulnerability: Reentrancy. Maybe in function: getTokens(uint256,address). PC: 0x13a. Line number: 27.
+Analysing /sb/0x52d2e0f9b01101a59b38a3d05c80b7618aeed984.sol:Token...
+Nothing to analyse

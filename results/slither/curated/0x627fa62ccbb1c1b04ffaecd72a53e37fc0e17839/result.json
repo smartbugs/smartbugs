@@ -1,0 +1,229 @@
+{
+    "errors": [
+        "EXIT_CODE_23"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "WithdrawToHolder",
+            "impact": "High",
+            "line": 86,
+            "line_end": 99,
+            "message": "Reentrancy in TokenBank.WithdrawToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#86-99):\n\tExternal calls:\n\t- _addr.call.value(_wei)() (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#94-97)\n\tState variables written after the call(s):\n\t- Holders (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#96)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "High",
+            "line": 38,
+            "message": "Token.owner (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#38) shadows:\n\t- Ownable.owner (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#12)\n",
+            "name": "shadowing-state"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 43,
+            "message": "Deprecated standard detected @ 0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#43:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "Ownable",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "changeOwner",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 19,
+            "message": "Ownable.changeOwner (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#14-19) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Ownable",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "confirmOwner",
+            "impact": "Informational",
+            "line": 21,
+            "line_end": 28,
+            "message": "Ownable.confirmOwner (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#21-28) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "initTokenBank",
+            "impact": "Informational",
+            "line": 53,
+            "line_end": 58,
+            "message": "TokenBank.initTokenBank (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#53-58) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 60,
+            "line_end": 64,
+            "message": "TokenBank.fallback (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#60-64) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "WitdrawTokenToHolder",
+            "impact": "Informational",
+            "line": 75,
+            "line_end": 84,
+            "message": "TokenBank.WitdrawTokenToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#75-84) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "WithdrawToHolder",
+            "impact": "Informational",
+            "line": 86,
+            "line_end": 99,
+            "message": "TokenBank.WithdrawToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#86-99) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol:\n\t- pragma solidity^0.4.19 (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "Token",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "WithdrawToken",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 44,
+            "message": "Low level call in Token.WithdrawToken (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#39-44):\n\t-token.call(bytes4(sha3()(transfer(address,uint256))),to,amount) 0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#43\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "function": "WithdrawToHolder",
+            "impact": "Informational",
+            "line": 86,
+            "line_end": 99,
+            "message": "Low level call in TokenBank.WithdrawToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#86-99):\n\t-_addr.call.value(_wei)() 0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#94-97\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 39,
+            "line_end": 44,
+            "message": "Function 'Token.WithdrawToken' (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#39-44) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 66,
+            "line_end": 73,
+            "message": "Function 'TokenBank.Deposit' (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#66-73) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 75,
+            "line_end": 84,
+            "message": "Function 'TokenBank.WitdrawTokenToHolder' (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#75-84) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 75,
+            "message": "Parameter '_to' of TokenBank.WitdrawTokenToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#75) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 75,
+            "message": "Parameter '_token' of TokenBank.WitdrawTokenToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#75) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 75,
+            "message": "Parameter '_amount' of TokenBank.WitdrawTokenToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#75) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 86,
+            "line_end": 99,
+            "message": "Function 'TokenBank.WithdrawToHolder' (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#86-99) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 86,
+            "message": "Parameter '_addr' of TokenBank.WithdrawToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#86) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 86,
+            "message": "Parameter '_wei' of TokenBank.WithdrawToHolder (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#86) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 49,
+            "message": "Variable 'TokenBank.MinDeposit' (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#49) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "impact": "Informational",
+            "line": 50,
+            "message": "Variable 'TokenBank.Holders' (0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol#50) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

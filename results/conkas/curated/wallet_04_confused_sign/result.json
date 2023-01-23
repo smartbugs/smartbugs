@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 761,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "function": "deposit()",
+            "line": 24,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 433,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "function": "withdraw(uint256)",
+            "line": 32,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 340,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "function": "withdraw(uint256)",
+            "line": 31,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 605,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/wallet_04_confused_sign.sol",
+            "function": "0x4ddaf8f2",
+            "line": 39,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

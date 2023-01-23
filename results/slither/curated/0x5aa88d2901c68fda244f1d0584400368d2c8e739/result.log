@@ -1,0 +1,33 @@
+INFO:Slither:Compilation warnings/errors on /sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:20:24: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        Owner.transfer(this.balance);
+                       ^----------^
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:29:9: Warning: Return value of low-level calls not used.
+        adr.call.value(msg.value)(data);
+        ^-----------------------------^
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:36:23: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        if(msg.value>=this.balance)
+                      ^----------^
+/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:38:26: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            adr.transfer(this.balance+msg.value);
+                         ^----------^
+
+INFO:Detectors:[92m
+MultiplicatorX3.fallback (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#13) should be declared external
+MultiplicatorX3.withdraw (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#15-21) should be declared external
+MultiplicatorX3.Command (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#23-30) should be declared external
+MultiplicatorX3.multiplicate (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#32-40) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:
+	- pragma solidity^0.4.18 (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in MultiplicatorX3.Command (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#23-30):
+	-adr.call.value(msg.value)(data) /sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#29
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Function 'MultiplicatorX3.Command' (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#23-30) is not in mixedCase
+Variable 'MultiplicatorX3.Owner' (/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#11) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol analyzed (1 contracts), 8 result(s) found

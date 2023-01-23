@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 272,
+            "contract": "Freebie",
+            "filename": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+            "function": "Command(address,bytes)",
+            "line": 33,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1208,
+            "contract": "Freebie",
+            "filename": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+            "function": "Command(address,bytes)",
+            "line": 39,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1208,
+            "contract": "Freebie",
+            "filename": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+            "function": "Command(address,bytes)",
+            "line": 39,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 922,
+            "contract": "Freebie",
+            "filename": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+            "function": "GetFreebie()",
+            "line": 21,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 683,
+            "contract": "Freebie",
+            "filename": "dataset/unchecked_low_level_calls/0xe82f0742a71a02b9e9ffc142fdcb6eb1ed06fb87.sol",
+            "function": "withdraw()",
+            "line": 30,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack bug"
+                    },
+                    "ruleId": "osiris_Callstack_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Concurrency bug"
+                    },
+                    "ruleId": "osiris_Concurrency_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Concurrency bug"
+                    },
+                    "ruleId": "osiris_Concurrency_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Concurrency_bug",
+                            "name": "Concurrency bug"
+                        },
+                        {
+                            "id": "osiris_Callstack_bug",
+                            "name": "Callstack bug"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

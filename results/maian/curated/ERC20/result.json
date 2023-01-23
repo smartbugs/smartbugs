@@ -1,0 +1,42 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "ERC20",
+            "filename": "dataset/front_running/ERC20.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "SafeMath",
+            "filename": "dataset/front_running/ERC20.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "SafeMath",
+            "filename": "dataset/front_running/ERC20.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "SafeMath",
+            "filename": "dataset/front_running/ERC20.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

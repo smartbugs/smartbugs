@@ -1,0 +1,84 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 755,
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "CashOut(uint256)",
+            "line": 44,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 413,
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "CashOut(uint256)",
+            "line": 41,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1124,
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "Deposit()",
+            "line": 30,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 860,
+            "contract": "ETH_VAULT",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "Deposit()",
+            "line": 29,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 782,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 75,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1105,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 53,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 608,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 75,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 157,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 68,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 536,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 72,
+            "name": "Time Manipulation"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

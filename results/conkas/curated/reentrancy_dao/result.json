@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 407,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "function": "deposit()",
+            "line": 25,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 247,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "function": "withdrawAll()",
+            "line": 18,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 247,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "function": "withdrawAll()",
+            "line": 18,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 423,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "function": "deposit()",
+            "line": 26,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 200,
+            "contract": "ReentrancyDAO",
+            "filename": "dataset/reentrancy/reentrancy_dao.sol",
+            "function": "withdrawAll()",
+            "line": 16,
+            "name": "Integer Underflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 608,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 102,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 157,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 95,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 536,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 99,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 782,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 102,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1105,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 81,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1117,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "Collect(uint256)",
+            "line": 63,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 556,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "_fallthrough",
+            "line": 50,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1401,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "Collect(uint256)",
+            "line": 66,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 846,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "_fallthrough",
+            "line": 52,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 571,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "_fallthrough",
+            "line": 51,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 577,
+            "contract": "PENNY_BY_PENNY",
+            "filename": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+            "function": "_fallthrough",
+            "line": 51,
+            "name": "Time Manipulation"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

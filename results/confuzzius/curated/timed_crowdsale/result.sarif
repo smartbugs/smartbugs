@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimedCrowdsale"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/timed_crowdsale.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-120\nSeverity: Low"
+                    },
+                    "ruleId": "confuzzius_Block_Dependency"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Block_Dependency",
+                            "name": "Block Dependency"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

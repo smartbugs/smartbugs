@@ -1,0 +1,57 @@
+INFO:root:Contract /sb/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol:Log:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	 EVM code coverage: 	 99.9%
+INFO:symExec:	 Money flow:    	 False
+INFO:symExec:	 Balance disorder: 	 False
+INFO:symExec:	 Hidden transfer: 	 False
+INFO:symExec:	 Inheritance disorder: 	 False
+INFO:symExec:	 Uninitialised struct: 	 False
+INFO:symExec:	 Type overflow: 	 False
+INFO:symExec:	 Skip empty string: 	 False
+INFO:symExec:	 Hidden state update: 	 False
+INFO:symExec:	 Straw man contract: 	 False
+INFO:symExec:	 --- 191.357132912 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:Contract /sb/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol:WALLET:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	 EVM code coverage: 	 99.8%
+INFO:symExec:	 Money flow:    	 True
+INFO:symExec:	 Balance disorder: 	 False
+INFO:symExec:	 Hidden transfer: 	 False
+INFO:symExec:	 Inheritance disorder: 	 False
+INFO:symExec:	 Uninitialised struct: 	 False
+INFO:symExec:	 Type overflow: 	 False
+INFO:symExec:	 Skip empty string: 	 False
+INFO:symExec:	 Hidden state update: 	 False
+INFO:symExec:	 Straw man contract: 	 True
+/sb/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol:WALLET:32:17
+LogFile.AddMessage(msg.sender,_am,"Collect")
+^
+INFO:symExec:	 --- 4.83479809761 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+                       ___,,___                                   
+                 _,-='=- =-  -`''--.__,,.._                       
+              ,-;// /  - -       -   -= - '=.                     
+            ,'///    -     -   -   =  - ==-=\`.                   
+           |/// /  =    `. - =   == - =.=_,,._ `=/|               
+          ///    -   -    \  - - = ,ndDMHHMM/  \               
+        ,' - / /        / /\ =  - /MM(,,._`YQMML  `|              
+       <_,=^Kkm / / / / ///H|wnWWdMKKK#''-;. `'0\  |              
+              `''QkmmmmmnWMMM''WHMKKMM\   `--.  \> \             
+                    `'''  `->>>    ``WHMb,.    `-_<@)             
+                                      `'QMM`.                     
+                                         `>>>                     
+  _    _                        ____            _                 
+ | |  | |                      |  _ \          | |                
+ | |__| | ___  _ __   ___ _   _| |_) | __ _  __| | __ _  ___ _ __ 
+ |  __  |/ _ \| '_ \ / _ \ | | |  _ < / _` |/ _` |/ _` |/ _ \ '__|
+ | |  | | (_) | | | |  __/ |_| | |_) | (_| | (_| | (_| |  __/ |   
+ |_|  |_|\___/|_| |_|\___|\__, |____/ \__,_|\__,_|\__, |\___|_|   
+                           __/ |                   __/ |          
+                          |___/                   |___/           
+
+
+

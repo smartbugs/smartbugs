@@ -1,0 +1,151 @@
+{
+    "errors": [
+        "EXIT_CODE_14"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "cash",
+            "impact": "High",
+            "line": 89,
+            "line_end": 113,
+            "message": "Lotto.cash (etherpot_lotto.sol#89-113) sends eth to arbitrary user\n\tDangerous calls:\n\t- winner.send(subpot) (etherpot_lotto.sol#109)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "impact": "Informational",
+            "line": 116,
+            "message": "Deprecated standard detected @ etherpot_lotto.sol#116:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getBlocksPerRound",
+            "impact": "Informational",
+            "line": 20,
+            "message": "Lotto.getBlocksPerRound (etherpot_lotto.sol#20) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getTicketPrice",
+            "impact": "Informational",
+            "line": 21,
+            "message": "Lotto.getTicketPrice (etherpot_lotto.sol#21) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getIsCashed",
+            "impact": "Informational",
+            "line": 40,
+            "line_end": 44,
+            "message": "Lotto.getIsCashed (etherpot_lotto.sol#40-44) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "cash",
+            "impact": "Informational",
+            "line": 89,
+            "line_end": 113,
+            "message": "Lotto.cash (etherpot_lotto.sol#89-113) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getBuyers",
+            "impact": "Informational",
+            "line": 119,
+            "line_end": 121,
+            "message": "Lotto.getBuyers (etherpot_lotto.sol#119-121) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getTicketsCountByBuyer",
+            "impact": "Informational",
+            "line": 123,
+            "line_end": 125,
+            "message": "Lotto.getTicketsCountByBuyer (etherpot_lotto.sol#123-125) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "getPot",
+            "impact": "Informational",
+            "line": 127,
+            "line_end": 129,
+            "message": "Lotto.getPot (etherpot_lotto.sol#127-129) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 131,
+            "line_end": 160,
+            "message": "Lotto.fallback (etherpot_lotto.sol#131-160) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "impact": "Informational",
+            "line": 8,
+            "message": "Detected issues with version pragma in etherpot_lotto.sol:\n\t- pragma solidity^0.4.0 (etherpot_lotto.sol#8): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "impact": "Informational",
+            "line": 12,
+            "message": "Constant 'Lotto.blocksPerRound' (etherpot_lotto.sol#12) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "impact": "Informational",
+            "line": 15,
+            "message": "Constant 'Lotto.ticketPrice' (etherpot_lotto.sol#15) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/etherpot_lotto.sol",
+            "impact": "Informational",
+            "line": 18,
+            "message": "Constant 'Lotto.blockReward' (etherpot_lotto.sol#18) is not in UPPER_CASE_WITH_UNDERSCORES\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

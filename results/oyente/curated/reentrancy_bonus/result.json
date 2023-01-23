@@ -1,0 +1,38 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 28,
+            "contract": "Reentrancy_bonus",
+            "filename": "dataset/reentrancy/reentrancy_bonus.sol",
+            "line": 19,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 9,
+            "contract": "Reentrancy_bonus",
+            "filename": "dataset/reentrancy/reentrancy_bonus.sol",
+            "line": 26,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 28,
+            "contract": "Reentrancy_bonus",
+            "filename": "dataset/reentrancy/reentrancy_bonus.sol",
+            "line": 19,
+            "name": "Re-Entrancy Vulnerability"
+        },
+        {
+            "contract": "Reentrancy_bonus",
+            "filename": "dataset/reentrancy/reentrancy_bonus.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

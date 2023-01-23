@@ -1,0 +1,93 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract FreeEth"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xdb1c55f6926e7d847ddf8678905ad871a68199d2.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack Depth Attack Vulnerability"
+                    },
+                    "ruleId": "oyente_Callstack_Depth_Attack_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract FreeEth"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xdb1c55f6926e7d847ddf8678905ad871a68199d2.sol"
+                                },
+                                "region": {
+                                    "startColumn": 5,
+                                    "startLine": 33
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "oyente_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract FreeEth"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xdb1c55f6926e7d847ddf8678905ad871a68199d2.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Transaction-Ordering Dependence (TOD)"
+                    },
+                    "ruleId": "oyente_Transaction_Ordering_Dependence_TOD"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/oyente",
+                    "name": "Oyente",
+                    "rules": [
+                        {
+                            "id": "oyente_Callstack_Depth_Attack_Vulnerability",
+                            "name": "Callstack Depth Attack Vulnerability"
+                        },
+                        {
+                            "id": "oyente_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "oyente_Transaction_Ordering_Dependence_TOD",
+                            "name": "Transaction-Ordering Dependence (TOD)"
+                        }
+                    ],
+                    "version": "#480e725"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

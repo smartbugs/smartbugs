@@ -1,0 +1,136 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-110\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Assertion_Failure"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 65
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "confuzzius_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 74
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "confuzzius_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 75
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "confuzzius_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TownCrier"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol"
+                                },
+                                "region": {
+                                    "startLine": 211
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-107\nSeverity: High"
+                    },
+                    "ruleId": "confuzzius_Reentrancy"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Reentrancy",
+                            "name": "Reentrancy"
+                        },
+                        {
+                            "id": "confuzzius_Assertion_Failure",
+                            "name": "Assertion Failure"
+                        },
+                        {
+                            "id": "confuzzius_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

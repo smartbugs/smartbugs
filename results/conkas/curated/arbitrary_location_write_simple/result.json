@@ -1,0 +1,43 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 291,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "0x4f798da7",
+            "line": 33,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 493,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "0xfd10d655",
+            "line": 22,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 483,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "0xfd10d655",
+            "line": 22,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 471,
+            "contract": "Wallet",
+            "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+            "function": "0xfd10d655",
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

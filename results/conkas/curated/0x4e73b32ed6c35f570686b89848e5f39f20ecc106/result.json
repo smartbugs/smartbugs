@@ -1,0 +1,84 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 1105,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 73,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 536,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 91,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 157,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 87,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 782,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 94,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 608,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 94,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 517,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "_fallthrough",
+            "line": 43,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1111,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "Collect(uint256)",
+            "line": 54,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 781,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "_fallthrough",
+            "line": 44,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1453,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "function": "Collect(uint256)",
+            "line": 57,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

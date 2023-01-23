@@ -1,0 +1,63 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 21,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 2,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 74,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 74,
+            "name": "Underflow bugs"
+        },
+        {
+            "column": 13,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 28,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 16,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 40,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 43,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "Private_Bank",
+            "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+            "line": 42,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

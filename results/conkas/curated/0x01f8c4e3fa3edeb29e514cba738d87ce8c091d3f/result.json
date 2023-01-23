@@ -1,0 +1,92 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 595,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 94,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 782,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 94,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1105,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 73,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 536,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 91,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 608,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 94,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 157,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 87,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 517,
+            "contract": "PERSONAL_BANK",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "_fallthrough",
+            "line": 43,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1109,
+            "contract": "PERSONAL_BANK",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "Collect(uint256)",
+            "line": 54,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 781,
+            "contract": "PERSONAL_BANK",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "_fallthrough",
+            "line": 44,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1451,
+            "contract": "PERSONAL_BANK",
+            "filename": "dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+            "function": "Collect(uint256)",
+            "line": 57,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

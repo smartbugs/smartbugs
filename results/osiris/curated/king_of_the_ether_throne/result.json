@@ -1,0 +1,73 @@
+{
+    "errors": [],
+    "fails": [
+        "exception (IndexError: list index out of range)",
+        "exception (IndexError: pop from empty list)"
+    ],
+    "findings": [
+        {
+            "column": 13,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 110,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 13,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 132,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 9,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 174,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 13,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 118,
+            "name": "Concurrency bug"
+        },
+        {
+            "column": 13,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 132,
+            "name": "Concurrency bug"
+        },
+        {
+            "column": 21,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 2,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 138,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "KingOfTheEtherThrone",
+            "filename": "dataset/unchecked_low_level_calls/king_of_the_ether_throne.sol",
+            "line": 138,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

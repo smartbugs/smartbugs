@@ -1,0 +1,44 @@
+{
+    "errors": [
+        "EXIT_CODE_3"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Centra4",
+            "filename": "dataset/unchecked_low_level_calls/0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 25,
+            "message": "Centra4.transfer (0x524960d55174d912768678d8c606b4d50b79d7b1.sol#11-25) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x524960d55174d912768678d8c606b4d50b79d7b1.sol:\n\t- pragma solidity^0.4.13 (0x524960d55174d912768678d8c606b4d50b79d7b1.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "Centra4",
+            "filename": "dataset/unchecked_low_level_calls/0x524960d55174d912768678d8c606b4d50b79d7b1.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 25,
+            "message": "Low level call in Centra4.transfer (0x524960d55174d912768678d8c606b4d50b79d7b1.sol#11-25):\n\t-contract_address.call(register,CentraToken) 0x524960d55174d912768678d8c606b4d50b79d7b1.sol#21\n\t-! contract_address.call(bytes4(keccak256()(transfer(address,uint256))),c2,k) 0x524960d55174d912768678d8c606b4d50b79d7b1.sol#22\n",
+            "name": "low-level-calls"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

@@ -1,0 +1,77 @@
+/sb/etherbank.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_CALL_WITHOUT_DATA
+patternId: om991k
+severity: 2
+line: 21
+column: 19
+content: call.value(amountToWithdraw)()
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 21
+column: 54
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 10
+column: 4
+content: functiongetBalance(addressuser)constantreturns(uint){returnuserBalances[user];}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 21
+column: 2
+content: if(!(msg.sender.call.value(amountToWithdraw)())){throw;}
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 21
+column: 19
+content: call.value(amountToWithdraw)()
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 10
+column: 4
+content: functiongetBalance(addressuser)constantreturns(uint){returnuserBalances[user];}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 14
+column: 1
+content: functionaddToBalance(){userBalances[msg.sender]+=msg.value;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 18
+column: 1
+content: functionwithdrawBalance(){uintamountToWithdraw=userBalances[msg.sender];if(!(msg.sender.call.value(amountToWithdraw)())){throw;}userBalances[msg.sender]=0;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 9
+column: 4
+content: mapping(address=>uint)userBalances;
+
+SOLIDITY_VISIBILITY :4
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :2
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_REVERT_REQUIRE :1
+SOLIDITY_UPGRADE_TO_050 :1
+SOLIDITY_CALL_WITHOUT_DATA :1

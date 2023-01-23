@@ -1,0 +1,35 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "Marriage",
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+            "line": 55,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 5,
+            "contract": "Marriage",
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+            "line": 70,
+            "name": "Truncation bugs"
+        },
+        {
+            "column": 9,
+            "contract": "Owned",
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+            "line": 55,
+            "name": "Reentrancy bug"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

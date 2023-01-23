@@ -1,0 +1,190 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleWallet, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "endLine": 21,
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SimpleWallet.fallback (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#19-21) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleWallet, function withdrawAll"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "endLine": 25,
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SimpleWallet.withdrawAll (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#23-25) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleWallet, function sendMoney"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "endLine": 34,
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SimpleWallet.sendMoney (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#31-34) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleWallet, function sendMoney"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "endLine": 34,
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in SimpleWallet.sendMoney (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#31-34):\n\t-_target.call.value(_value)(_data) 0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#33\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of SimpleWallet.withdraw (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#27) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_target' of SimpleWallet.sendMoney (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#31) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of SimpleWallet.sendMoney (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#31) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol"
+                                },
+                                "region": {
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_data' of SimpleWallet.sendMoney (0x610495793564aed0f9c7fc48dc4c7c9151d34fd6.sol#31) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

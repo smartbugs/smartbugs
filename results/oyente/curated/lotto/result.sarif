@@ -1,0 +1,67 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack Depth Attack Vulnerability"
+                    },
+                    "ruleId": "oyente_Callstack_Depth_Attack_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Transaction-Ordering Dependence (TOD)"
+                    },
+                    "ruleId": "oyente_Transaction_Ordering_Dependence_TOD"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/oyente",
+                    "name": "Oyente",
+                    "rules": [
+                        {
+                            "id": "oyente_Transaction_Ordering_Dependence_TOD",
+                            "name": "Transaction-Ordering Dependence (TOD)"
+                        },
+                        {
+                            "id": "oyente_Callstack_Depth_Attack_Vulnerability",
+                            "name": "Callstack Depth Attack Vulnerability"
+                        }
+                    ],
+                    "version": "#480e725"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

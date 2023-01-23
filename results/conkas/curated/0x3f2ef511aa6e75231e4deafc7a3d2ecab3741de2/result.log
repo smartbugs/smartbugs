@@ -1,0 +1,10 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol:WhaleGiveaway2...
+Vulnerability: Integer Overflow. Maybe in function: Command(address,bytes). PC: 0x130. Line number: 39.
+If a = 4
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639932
+Vulnerability: Reentrancy. Maybe in function: redeem(). PC: 0x4ea. Line number: 27.
+Vulnerability: Reentrancy. Maybe in function: withdraw(). PC: 0x2e1. Line number: 36.
+Vulnerability: Reentrancy. Maybe in function: Command(address,bytes). PC: 0x40a. Line number: 45.
+Vulnerability: Unchecked Low Level Call. Maybe in function: Command(address,bytes). PC: 0x40a. Line number: 45.

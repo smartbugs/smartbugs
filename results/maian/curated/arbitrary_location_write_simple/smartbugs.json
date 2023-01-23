@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/arbitrary_location_write_simple.sol' '/sb/bin'",
+        "image": "smartbugs/maian:solc5.10",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmpamr9e01g": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/access_control/arbitrary_location_write_simple.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 76.94913840293884,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1673976586.206214
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$BIN'",
+        "id": "maian",
+        "image": "smartbugs/maian:solc5.10",
+        "info": "Maian is a tool for the automated detection of buggy Ethereum smart contracts of type 'prodigal', 'suicidal', and 'greedy'.",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "Maian",
+        "origin": "https://github.com/smartbugs/MAIAN",
+        "output": null,
+        "parser": "parser.py",
+        "solc": true,
+        "version": "#4bab09a"
+    }
+}

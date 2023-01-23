@@ -1,0 +1,71 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "oyente_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Timestamp Dependency"
+                    },
+                    "ruleId": "oyente_Timestamp_Dependency"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/oyente",
+                    "name": "Oyente",
+                    "rules": [
+                        {
+                            "id": "oyente_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "oyente_Timestamp_Dependency",
+                            "name": "Timestamp Dependency"
+                        }
+                    ],
+                    "version": "#480e725"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,27 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "GuessTheRandomNumberChallenge",
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

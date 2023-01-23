@@ -1,0 +1,97 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ETH_VAULT"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Re-Entrancy Vulnerability"
+                    },
+                    "ruleId": "oyente_Re_Entrancy_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol"
+                                },
+                                "region": {
+                                    "startColumn": 5,
+                                    "startLine": 68
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "oyente_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol"
+                                },
+                                "region": {
+                                    "startColumn": 5,
+                                    "startLine": 64
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Underflow"
+                    },
+                    "ruleId": "oyente_Integer_Underflow"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/oyente",
+                    "name": "Oyente",
+                    "rules": [
+                        {
+                            "id": "oyente_Re_Entrancy_Vulnerability",
+                            "name": "Re-Entrancy Vulnerability"
+                        },
+                        {
+                            "id": "oyente_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "oyente_Integer_Underflow",
+                            "name": "Integer Underflow"
+                        }
+                    ],
+                    "version": "#480e725"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

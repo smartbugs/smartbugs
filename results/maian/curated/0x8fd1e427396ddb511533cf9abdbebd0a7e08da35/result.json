@@ -1,0 +1,42 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Ownable",
+            "filename": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Ownable",
+            "filename": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "Ownable",
+            "filename": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "Token",
+            "filename": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Token",
+            "filename": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "TokenBank",
+            "filename": "dataset/unchecked_low_level_calls/0x8fd1e427396ddb511533cf9abdbebd0a7e08da35.sol",
+            "name": "Not destructible (no self-destruct)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

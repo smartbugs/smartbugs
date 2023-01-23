@@ -1,0 +1,40 @@
+/sb/roulette.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_EXACT_TIME
+patternId: 1955d9
+severity: 2
+line: 18
+column: 16
+content: now!=pastBlockTime
+
+ruleId: SOLIDITY_EXACT_TIME
+patternId: 1955d9
+severity: 2
+line: 21
+column: 11
+content: now%15==0
+
+ruleId: SOLIDITY_LOCKED_MONEY
+patternId: 30281d
+severity: 3
+line: 9
+column: 0
+content: contractRoulette{uintpublicpastBlockTime;constructor()publicpayable{}function()publicpayable{require(msg.value==10ether);require(now!=pastBlockTime);pastBlockTime=now;if(now%15==0){msg.sender.transfer(this.balance);}}}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 91h3sa
+severity: 1
+line: 15
+column: 16
+content: public
+
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_LOCKED_MONEY :1
+SOLIDITY_UPGRADE_TO_050 :1
+SOLIDITY_EXACT_TIME :2

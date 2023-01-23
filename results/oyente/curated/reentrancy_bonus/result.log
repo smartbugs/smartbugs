@@ -1,0 +1,32 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/reentrancy_bonus.sol:
+/sb/reentrancy_bonus.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+INFO:root:contract /sb/reentrancy_bonus.sol:Reentrancy_bonus:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/reentrancy_bonus.sol:26:9: Warning: Integer Overflow.
+        rewardsForA[recipient] += 100
+Integer Overflow occurs if:
+    rewardsForA[recipient] = 115792089237316195423570985008687907853269984665640564039457584007913129639884
+    claimedBonus[recipient] = 0
+INFO:symExec:/sb/reentrancy_bonus.sol:19:28: Warning: Callstack Depth Attack Vulnerability.
+        (bool success, ) = recipient.call.value(amountToWithdraw)("")
+INFO:symExec:Flow1
+/sb/reentrancy_bonus.sol:19:28: Warning: Transaction-Ordering Dependency.
+        (bool success, ) = recipient.call.value(amountToWithdraw)("")
+Flow2
+/sb/reentrancy_bonus.sol:19:28: Warning: Transaction-Ordering Dependency.
+        (bool success, ) = recipient.call.value(amountToWithdraw)("")
+INFO:symExec:/sb/reentrancy_bonus.sol:19:28: Warning: Re-Entrancy Vulnerability.
+        (bool success, ) = recipient.call.value(amountToWithdraw)("")
+INFO:symExec:	====== Analysis Completed ======

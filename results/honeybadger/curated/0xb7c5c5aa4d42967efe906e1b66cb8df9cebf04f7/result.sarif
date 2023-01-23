@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract keepMyEther"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xb7c5c5aa4d42967efe906e1b66cb8df9cebf04f7.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Money flow"
+                    },
+                    "ruleId": "honeybadger_Money_flow"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/HoneyBadger",
+                    "name": "HoneyBadger",
+                    "rules": [
+                        {
+                            "id": "honeybadger_Money_flow",
+                            "name": "Money flow"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,77 @@
+/sb/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_ADDRESS_HARDCODED
+patternId: adc165
+severity: 1
+line: 10
+column: 26
+content: 0x9797055B68C5DadDE6b3c7d5D80C9CFE2eecE6c9
+
+ruleId: SOLIDITY_ADDRESS_HARDCODED
+patternId: adc165
+severity: 1
+line: 11
+column: 30
+content: 0x1f844685f7Bf86eFcc0e74D8642c54A257111923
+
+ruleId: SOLIDITY_ADDRESS_HARDCODED
+patternId: adc165
+severity: 1
+line: 14
+column: 30
+content: 0x9797055B68C5DadDE6b3c7d5D80C9CFE2eecE6c9
+
+ruleId: SOLIDITY_EXTRA_GAS_IN_LOOPS
+patternId: d3j11j
+severity: 1
+line: 17
+column: 8
+content: for(uinti=0;i<_tos.length;i++){caddress.call(id,from,_tos[i],v[i]*1000000000000000000);}
+
+ruleId: SOLIDITY_GAS_LIMIT_IN_LOOPS
+patternId: f6f853
+severity: 2
+line: 17
+column: 8
+content: for(uinti=0;i<_tos.length;i++){caddress.call(id,from,_tos[i],v[i]*1000000000000000000);}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 19
+column: 21
+content: call(id,from,_tos[i],v[i]*1000000000000000000)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 19
+column: 21
+content: call(id,from,_tos[i],v[i]*1000000000000000000)
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 13
+column: 22
+content: address[]_tos
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 13
+column: 37
+content: uint[]v
+
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_EXTRA_GAS_IN_LOOPS :1
+SOLIDITY_ADDRESS_HARDCODED :3
+SOLIDITY_UPGRADE_TO_050 :3
+SOLIDITY_GAS_LIMIT_IN_LOOPS :1
+SOLIDITY_UNCHECKED_CALL :1

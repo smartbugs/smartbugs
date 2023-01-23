@@ -1,0 +1,35 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "Owned",
+            "filename": "dataset/unchecked_low_level_calls/0xec329ffc97d75fe03428ae155fc7793431487f63.sol",
+            "line": 30,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 9,
+            "contract": "TokenSender",
+            "filename": "dataset/unchecked_low_level_calls/0xec329ffc97d75fe03428ae155fc7793431487f63.sol",
+            "line": 30,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 9,
+            "contract": "TokenSender",
+            "filename": "dataset/unchecked_low_level_calls/0xec329ffc97d75fe03428ae155fc7793431487f63.sol",
+            "line": 82,
+            "name": "Overflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

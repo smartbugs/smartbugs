@@ -1,0 +1,40 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+            "line": 14,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 5,
+            "contract": "Proxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+            "line": 12,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 9,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+            "line": 14,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 13,
+            "contract": "VaultProxy",
+            "filename": "dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+            "line": 33,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

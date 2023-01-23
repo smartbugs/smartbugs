@@ -1,0 +1,27 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:root:contract /sb/mapping_write.sol:Map:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 89.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/mapping_write.sol:20:10: Warning: Integer Overflow.
+         map[key]
+Integer Overflow occurs if:
+    key = 65172046789984944052372551315450013287190840398114844924262183703489961943309
+    map.length = 65172046789984944052372551315450013287190840398114844924262183703489961943310
+/sb/mapping_write.sol:17:27: Warning: Integer Overflow.
+             map.length = key + 1
+Integer Overflow occurs if:
+    key = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    map.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/mapping_write.sol:24:17: Warning: Integer Overflow.
+         return map[key]
+Integer Overflow occurs if:
+    key = 65172046789984944052372551315450013287190840398114844924262183703489961943309
+    map[key] = 65172046789984944052372551315450013287190840398114844924262183703489961943310
+INFO:symExec:	====== Analysis Completed ======

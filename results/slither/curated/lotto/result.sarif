@@ -1,0 +1,182 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function withdrawLeftOver"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 28,
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.withdrawLeftOver (lotto.sol#24-28) sends eth to arbitrary user\n\tDangerous calls:\n\t- msg.sender.send(this.balance) (lotto.sol#27)\n"
+                    },
+                    "ruleId": "slither_arbitrary_send"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function sendToWinner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 12
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.winner (lotto.sol#12) is never initialized. It is used in:\n\t- sendToWinner (lotto.sol#17-22)\n"
+                    },
+                    "ruleId": "slither_uninitialized_state"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function sendToWinner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.winAmount (lotto.sol#13) is never initialized. It is used in:\n\t- sendToWinner (lotto.sol#17-22)\n"
+                    },
+                    "ruleId": "slither_uninitialized_state"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.winAmount should be constant (lotto.sol#13)\nLotto.winner should be constant (lotto.sol#12)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function sendToWinner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 22,
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.sendToWinner (lotto.sol#17-22) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Lotto, function withdrawLeftOver"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "endLine": 28,
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Lotto.withdrawLeftOver (lotto.sol#24-28) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/lotto.sol"
+                                },
+                                "region": {
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in lotto.sol:\n\t- pragma solidity^0.4.18 (lotto.sol#7): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_uninitialized_state",
+                            "name": "uninitialized-state"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_arbitrary_send",
+                            "name": "arbitrary-send"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

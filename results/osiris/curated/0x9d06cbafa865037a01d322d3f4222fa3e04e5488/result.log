@@ -1,0 +1,42 @@
+WARNING:root:You are using solc version 0.4.26. The supported version is 0.4.21.
+INFO:root:Contract /sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:Delta:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 76.7%
+INFO:symExec:	  Arithmetic bugs: 	 True
+INFO:symExec:	  └> Overflow bugs: 	 True
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:Delta:44:27
+msg.value*10**18
+^
+INFO:symExec:	  └> Underflow bugs: 	 False
+INFO:symExec:	  └> Division bugs: 	 False
+INFO:symExec:	  └> Modulo bugs:   	 False
+INFO:symExec:	  └> Truncation bugs: 	 False
+INFO:symExec:	  └> Signedness bugs: 	 False
+INFO:symExec:	  Callstack bug: 	 True
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:Delta:54:9
+owner2.send(sum2)
+^
+INFO:symExec:	  Concurrency bug: 	 True
+Flow 1:
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:Delta:65:11
+owner.send(balance)
+^
+Flow 2:
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:Delta:65:11
+owner.send(balance)
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	 --- 13.0287339687 seconds ---
+INFO:symExec:	====== Analysis Completed ======
+
+  .oooooo.             o8o            o8o          
+ d8P'  `Y8b            `"'            `"'          
+888      888  .oooo.o oooo  oooo d8b oooo   .oooo.o
+888      888 d88(  "8 `888  `888""8P `888  d88(  "8
+888      888 `"Y88b.   888   888      888  `"Y88b. 
+`88b    d88' o.  )88b  888   888      888  o.  )88b
+ `Y8bood8P'  8""888P' o888o d888b    o888o 8""888P'
+
+

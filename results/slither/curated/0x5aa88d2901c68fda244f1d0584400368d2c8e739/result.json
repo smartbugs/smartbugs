@@ -1,0 +1,93 @@
+{
+    "errors": [
+        "EXIT_CODE_8"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 13,
+            "message": "MultiplicatorX3.fallback (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#13) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 15,
+            "line_end": 21,
+            "message": "MultiplicatorX3.withdraw (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#15-21) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "Command",
+            "impact": "Informational",
+            "line": 23,
+            "line_end": 30,
+            "message": "MultiplicatorX3.Command (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#23-30) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "multiplicate",
+            "impact": "Informational",
+            "line": 32,
+            "line_end": 40,
+            "message": "MultiplicatorX3.multiplicate (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#32-40) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol:\n\t- pragma solidity^0.4.18 (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "MultiplicatorX3",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "function": "Command",
+            "impact": "Informational",
+            "line": 23,
+            "line_end": 30,
+            "message": "Low level call in MultiplicatorX3.Command (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#23-30):\n\t-adr.call.value(msg.value)(data) 0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#29\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "impact": "Informational",
+            "line": 23,
+            "line_end": 30,
+            "message": "Function 'MultiplicatorX3.Command' (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#23-30) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Variable 'MultiplicatorX3.Owner' (0x5aa88d2901c68fda244f1d0584400368d2c8e739.sol#11) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

@@ -1,0 +1,39 @@
+INFO:Slither:Compilation warnings/errors on /sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol:
+/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol:16:3485: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+ ... this.balance ... 
+     ^----------^
+/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol:17:33: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            msg.sender.transfer(this.balance);
+                                ^----------^
+/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol:23:24: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        Owner.transfer(this.balance);
+                       ^----------^
+/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol:29:9: Warning: Return value of low-level calls not used.
+        adr.call.value(msg.value)(data);
+        ^-----------------------------^
+
+INFO:Detectors:[91m
+HomeyJar.GetHoneyFromJar (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#14-19) sends eth to arbitrary user
+	Dangerous calls:
+	- msg.sender.transfer(this.balance) (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#17)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[92m
+HomeyJar.fallback (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#12) should be declared external
+HomeyJar.GetHoneyFromJar (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#14-19) should be declared external
+HomeyJar.withdraw (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#21-24) should be declared external
+HomeyJar.Command (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#26-30) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol:
+	- pragma solidity^0.4.19 (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in HomeyJar.Command (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#26-30):
+	-adr.call.value(msg.value)(data) /sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#29
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Function 'HomeyJar.GetHoneyFromJar' (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#14-19) is not in mixedCase
+Function 'HomeyJar.Command' (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#26-30) is not in mixedCase
+Variable 'HomeyJar.Owner' (/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol#10) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x70f9eddb3931491aab1aeafbc1e7f1ca2a012db4.sol analyzed (1 contracts), 10 result(s) found

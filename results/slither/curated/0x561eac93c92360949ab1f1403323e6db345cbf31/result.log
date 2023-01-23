@@ -1,0 +1,57 @@
+INFO:Slither:Compilation warnings/errors on /sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol:
+/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol:22:24: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if(intitalized)throw;
+                       ^---^
+/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol:29:24: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if(intitalized)throw;
+                       ^---^
+
+INFO:Detectors:[91m
+Reentrancy in BANK_SAFE.Collect (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#47-60):
+	External calls:
+	- msg.sender.call.value(_am)() (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#54-58)
+	State variables written after the call(s):
+	- balances (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#56)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[92m
+Deprecated standard detected @ /sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#22:
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected @ /sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#29:
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#deprecated-standards[0m
+INFO:Detectors:[92m
+BANK_SAFE.SetMinSum (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#19-24) should be declared external
+BANK_SAFE.SetLogFile (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#26-31) should be declared external
+BANK_SAFE.Initialized (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#33-37) should be declared external
+BANK_SAFE.Collect (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#47-60) should be declared external
+BANK_SAFE.fallback (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#62-67) should be declared external
+LogFile.AddMessage (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#87-95) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol:
+	- pragma solidity^0.4.19 (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in BANK_SAFE.Collect (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#47-60):
+	-msg.sender.call.value(_am)() /sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#54-58
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Contract 'BANK_SAFE' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#9-69) is not in CapWords
+Function 'BANK_SAFE.SetMinSum' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#19-24) is not in mixedCase
+Parameter '_val' of BANK_SAFE.SetMinSum (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#19) is not in mixedCase
+Function 'BANK_SAFE.SetLogFile' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#26-31) is not in mixedCase
+Parameter '_log' of BANK_SAFE.SetLogFile (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#26) is not in mixedCase
+Function 'BANK_SAFE.Initialized' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#33-37) is not in mixedCase
+Function 'BANK_SAFE.Deposit' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#39-45) is not in mixedCase
+Function 'BANK_SAFE.Collect' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#47-60) is not in mixedCase
+Parameter '_am' of BANK_SAFE.Collect (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#47) is not in mixedCase
+Variable 'BANK_SAFE.MinSum' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#13) is not in mixedCase
+Variable 'BANK_SAFE.Log' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#15) is not in mixedCase
+Function 'LogFile.AddMessage' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#87-95) is not in mixedCase
+Parameter '_adr' of LogFile.AddMessage (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#87) is not in mixedCase
+Parameter '_val' of LogFile.AddMessage (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#87) is not in mixedCase
+Parameter '_data' of LogFile.AddMessage (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#87) is not in mixedCase
+Variable 'LogFile.History' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#83) is not in mixedCase
+Variable 'LogFile.LastMsg' (/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol#85) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol analyzed (2 contracts), 28 result(s) found

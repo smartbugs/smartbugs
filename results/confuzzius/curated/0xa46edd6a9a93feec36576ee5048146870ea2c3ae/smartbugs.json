@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": "'/sb/bin/do_solidity' '/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol' '1800' '/sb/bin'",
+        "detach": true,
+        "entrypoint": null,
+        "image": "smartbugs/confuzzius:4315fb7",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmp4hqbmkhl": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 1825.6499264240265,
+        "exit_code": null,
+        "logs": "result.log",
+        "output": "result.tar",
+        "start": 1674031197.6726403
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'",
+        "cpu_quota": null,
+        "entrypoint": null,
+        "id": "confuzzius",
+        "image": "smartbugs/confuzzius:4315fb7",
+        "info": "A data dependency-aware hybrid fuzzer for Ethereum smart contracts",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "ConFuzzius",
+        "origin": "https://github.com/christoftorres/ConFuzzius",
+        "output": "/root/results.json",
+        "parser": "parser.py",
+        "solc": true,
+        "version": "#4315fb7 v0.0.1"
+    }
+}

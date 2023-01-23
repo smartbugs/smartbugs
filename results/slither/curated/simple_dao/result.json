@@ -1,0 +1,77 @@
+{
+    "errors": [
+        "EXIT_CODE_6"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "function": "withdraw",
+            "impact": "High",
+            "line": 16,
+            "line_end": 22,
+            "message": "Reentrancy in SimpleDAO.withdraw (simple_dao.sol#16-22):\n\tExternal calls:\n\t- res = msg.sender.call.value(amount)() (simple_dao.sol#19)\n\tState variables written after the call(s):\n\t- credit (simple_dao.sol#20)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "High",
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "function": "donate",
+            "impact": "Informational",
+            "line": 12,
+            "line_end": 14,
+            "message": "SimpleDAO.donate (simple_dao.sol#12-14) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 16,
+            "line_end": 22,
+            "message": "SimpleDAO.withdraw (simple_dao.sol#16-22) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "function": "queryCredit",
+            "impact": "Informational",
+            "line": 24,
+            "line_end": 26,
+            "message": "SimpleDAO.queryCredit (simple_dao.sol#24-26) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in simple_dao.sol:\n\t- pragma solidity^0.4.2 (simple_dao.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 16,
+            "line_end": 22,
+            "message": "Low level call in SimpleDAO.withdraw (simple_dao.sol#16-22):\n\t-res = msg.sender.call.value(amount)() simple_dao.sol#19\n",
+            "name": "low-level-calls"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function deposit"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_04_confused_sign.sol"
+                                },
+                                "region": {
+                                    "endLine": 26,
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.deposit (wallet_04_confused_sign.sol#23-26) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function withdraw"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_04_confused_sign.sol"
+                                },
+                                "region": {
+                                    "endLine": 33,
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.withdraw (wallet_04_confused_sign.sol#28-33) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function migrateTo"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_04_confused_sign.sol"
+                                },
+                                "region": {
+                                    "endLine": 40,
+                                    "startLine": 37
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.migrateTo (wallet_04_confused_sign.sol#37-40) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

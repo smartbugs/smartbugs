@@ -1,0 +1,21 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/reentrancy_insecure.sol:
+/sb/reentrancy_insecure.sol:17:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+ ... (bool success, ) = msg.sender.call.value(amountToWithdraw)("") ... 
+     ^------------------------------------------------------------^
+
+INFO:root:contract /sb/reentrancy_insecure.sol:Reentrancy_insecure:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 96.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:/sb/reentrancy_insecure.sol:17:28: Warning: Callstack Depth Attack Vulnerability.
+        (bool success, ) = msg.sender.call.value(amountToWithdraw)("")
+INFO:symExec:/sb/reentrancy_insecure.sol:17:28: Warning: Re-Entrancy Vulnerability.
+        (bool success, ) = msg.sender.call.value(amountToWithdraw)("")
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,161 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract RealOldFuckMaker, function makeOldFucks"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "RealOldFuckMaker.makeOldFucks has external calls inside a loop:\n\t- fuck.call(bytes4(sha3()(giveBlockReward()))) (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18)\n"
+                    },
+                    "ruleId": "slither_calls_loop"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol"
+                                },
+                                "region": {
+                                    "startLine": 10
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "RealOldFuckMaker.fuck should be constant (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#10)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract RealOldFuckMaker, function makeOldFucks"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol"
+                                },
+                                "region": {
+                                    "endLine": 20,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "RealOldFuckMaker.makeOldFucks (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#14-20) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol"
+                                },
+                                "region": {
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in 0xf2570186500a46986f3139f65afedc2afe4f445d.sol:\n\t- pragma solidity^0.4.16 (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#7): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract RealOldFuckMaker, function makeOldFucks"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol"
+                                },
+                                "region": {
+                                    "endLine": 20,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in RealOldFuckMaker.makeOldFucks (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#14-20):\n\t-fuck.call(bytes4(sha3()(giveBlockReward()))) 0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        },
+                        {
+                            "id": "slither_calls_loop",
+                            "name": "calls-loop"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

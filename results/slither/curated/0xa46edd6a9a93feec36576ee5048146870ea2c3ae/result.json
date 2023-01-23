@@ -1,0 +1,62 @@
+{
+    "errors": [
+        "EXIT_CODE_5"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "EBU",
+            "filename": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+            "function": "transfer",
+            "impact": "Low",
+            "line": 16,
+            "message": "EBU.transfer has external calls inside a loop:\n\t- caddress.call(id,from,_tos[i],v[i]) (0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#16)\n",
+            "name": "calls-loop"
+        },
+        {
+            "confidence": "High",
+            "contract": "EBU",
+            "filename": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 19,
+            "message": "EBU.transfer (0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#11-19) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol:\n\t- pragma solidity^0.4.18 (0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "EBU",
+            "filename": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 11,
+            "line_end": 19,
+            "message": "Low level call in EBU.transfer (0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#11-19):\n\t-caddress.call(id,from,_tos[i],v[i]) 0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#16\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol",
+            "impact": "Informational",
+            "line": 11,
+            "message": "Parameter '_tos' of EBU.transfer (0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol#11) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

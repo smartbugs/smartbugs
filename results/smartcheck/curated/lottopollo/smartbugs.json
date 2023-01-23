@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/lottopollo.sol' '/sb/bin'",
+        "image": "smartbugs/smartcheck",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmpu7nk65ck": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/time_manipulation/lottopollo.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 35.00602316856384,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1674006401.9594965
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$BIN'",
+        "id": "smartcheck",
+        "image": "smartbugs/smartcheck",
+        "info": "Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code.",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "Smartcheck",
+        "origin": "https://github.com/smartdec/smartcheck",
+        "output": null,
+        "parser": "parser.py",
+        "solc": true,
+        "version": null
+    }
+}

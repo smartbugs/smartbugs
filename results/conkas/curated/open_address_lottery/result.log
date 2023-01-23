@@ -1,0 +1,19 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/open_address_lottery.sol:OpenAddressLottery...
+Vulnerability: Integer Underflow. Maybe in function: forceReseed(). PC: 0x4b4. Line number: 93.
+If a = 0
+and b = 1
+Vulnerability: Integer Overflow. Maybe in function: forceReseed(). PC: 0x4e6. Line number: 95.
+If a = 38606859923097876322960668633342139960157838153244385186684344476536992519509
+and b = 7
+Vulnerability: Time Manipulation. Maybe in function: _fallthrough. PC: 0x56c. Line number: 73.
+Vulnerability: Integer Overflow. Maybe in function: _fallthrough. PC: 0x24a. Line number: 56.
+If a = 38603084298172299909495645680517422544379341026876765202069983763042126079122
+and b = 7
+Vulnerability: Integer Underflow. Maybe in function: _fallthrough. PC: 0x2d6. Line number: 63.
+If a = 220855883097298041197912187592864814478435487109452369765200775161577454
+and b = 115791868381433098125529787096500314988455506230153454587087818807137968062464
+Vulnerability: Integer Overflow. Maybe in function: forceReseed(). PC: 0x4da. Line number: 94.
+If a = 735095211434840054444226371811443244760581490994747080356287849822990370770
+and b = 1402903833451129734570429004634807953412381272643

@@ -1,0 +1,37 @@
+2023-01-17 17:43:33,612: [12] m.main:INFO: Registered plugins: IntrospectionAPIPlugin, <class 'manticore.ethereum.plugins.SkipRevertBasicBlocks'>, <class 'manticore.ethereum.plugins.FilterFunctions'>
+2023-01-17 17:43:33,613: [12] m.main:INFO: Beginning analysis
+2023-01-17 17:43:33,617: [12] m.e.manticore:INFO: Starting symbolic create contract
+2023-01-17 17:43:34,805: [12] m.e.manticore:INFO: Starting symbolic transaction: 0
+2023-01-17 17:43:43,358: [12] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' -> 73138091548938366139099779971772605061518111956507126412222883840269740007539
+2023-01-17 17:43:51,108: [12] m.e.manticore:INFO: 4 alive states, 1 terminated states
+2023-01-17 17:43:51,743: [12] m.e.manticore:INFO: Starting symbolic transaction: 1
+2023-01-17 17:45:41,018: [12] m.e.manticore:INFO: 16 alive states, 1 terminated states
+2023-01-17 17:45:42,185: [103] m.c.manticore:INFO: Generated testcase No. 0 - STOP(3 txs)
+2023-01-17 17:45:42,186: [103] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:42,489: [107] m.c.manticore:INFO: Generated testcase No. 2 - STOP(3 txs)
+2023-01-17 17:45:42,490: [107] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:42,551: [109] m.c.manticore:INFO: Generated testcase No. 1 - STOP(3 txs)
+2023-01-17 17:45:42,536: [106] m.c.manticore:INFO: Generated testcase No. 4 - STOP(3 txs)
+2023-01-17 17:45:42,558: [106] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:42,561: [104] m.c.manticore:INFO: Generated testcase No. 3 - STOP(3 txs)
+2023-01-17 17:45:42,563: [104] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:42,552: [109] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:42,744: [113] m.c.manticore:INFO: Generated testcase No. 5 - STOP(3 txs)
+2023-01-17 17:45:42,766: [113] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:43,145: [111] m.c.manticore:INFO: Generated testcase No. 6 - STOP(3 txs)
+2023-01-17 17:45:43,147: [111] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:51,102: [102] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:53,520: [104] m.c.manticore:INFO: Generated testcase No. 7 - STOP(3 txs)
+2023-01-17 17:45:53,575: [105] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:54,125: [106] m.c.manticore:INFO: Generated testcase No. 8 - STOP(3 txs)
+2023-01-17 17:45:55,716: [112] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:45:57,793: [102] m.c.manticore:INFO: Generated testcase No. 9 - STOP(3 txs)
+2023-01-17 17:45:59,135: [111] m.c.manticore:INFO: Generated testcase No. 10 - STOP(3 txs)
+2023-01-17 17:46:00,414: [105] m.c.manticore:INFO: Generated testcase No. 11 - STOP(3 txs)
+2023-01-17 17:46:00,631: [112] m.c.manticore:INFO: Generated testcase No. 12 - STOP(3 txs)
+2023-01-17 17:46:02,484: [109] m.c.manticore:INFO: Generated testcase No. 13 - STOP(3 txs)
+2023-01-17 17:46:04,796: [113] m.c.manticore:INFO: Generated testcase No. 14 - STOP(3 txs)
+2023-01-17 17:46:10,036: [107] m.c.manticore:INFO: Generated testcase No. 15 - STOP(3 txs)
+2023-01-17 17:46:24,079: [12] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2023-01-17 17:46:52,456: [12] m.c.manticore:INFO: Results in /mcore_lf8y70jf
+2023-01-17 17:46:52,457: [12] m.c.manticore:INFO: Total time: 180.489187002182

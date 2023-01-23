@@ -1,0 +1,38 @@
+{
+    "errors": [
+        "EXIT_CODE_1"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "column": 2,
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "level": "error",
+            "line": 103,
+            "message": "Line length must be no more than 120 but current length is 177.",
+            "name": "max-line-length"
+        },
+        {
+            "column": 2,
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "level": "error",
+            "line": 141,
+            "message": "Line length must be no more than 120 but current length is 131.",
+            "name": "max-line-length"
+        },
+        {
+            "column": 2,
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "level": "error",
+            "line": 363,
+            "message": "Line length must be no more than 120 but current length is 125.",
+            "name": "max-line-length"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "solhint",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

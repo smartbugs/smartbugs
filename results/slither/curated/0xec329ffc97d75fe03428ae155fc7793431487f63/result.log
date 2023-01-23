@@ -1,0 +1,103 @@
+INFO:Slither:Compilation warnings/errors on /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:10:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:53:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function TokenSender(address _token) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:69:21: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (next>0) throw;
+                    ^---^
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:96:77: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if ((mNext == 0 ) && ( token.balanceOf(this) != totalToDistribute)) throw;
+                                                                            ^---^
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:102:69: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                if (!token.transfer(addr, transfers[mNext].amount)) throw;
+                                                                    ^---^
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:126:5: Warning: Variable is shadowed in inline assembly by an instruction of the same name
+    function gas() internal constant returns (uint _gas) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:30:9: Warning: Return value of low-level calls not used.
+        _dst.call.value(_value)(_data);
+        ^----------------------------^
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:10:5: Warning: No visibility specified. Defaulting to "public". 
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:21:5: Warning: No visibility specified. Defaulting to "public". 
+    function changeOwner(address _newOwner) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:28:5: Warning: No visibility specified. Defaulting to "public". 
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:35:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address, uint) returns(bool);
+    ^---------------------------------------------^
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:36:5: Warning: No visibility specified. Defaulting to "public". 
+    function balanceOf(address) constant returns (uint);
+    ^--------------------------------------------------^
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:53:5: Warning: No visibility specified. Defaulting to "public". 
+    function TokenSender(address _token) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:66:5: Warning: No visibility specified. Defaulting to "public". 
+    function fill(uint[] data) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:87:5: Warning: No visibility specified. Defaulting to "public". 
+    function run() onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:116:5: Warning: No visibility specified. Defaulting to "public". 
+    function hasTerminated() constant returns (bool) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:122:5: Warning: No visibility specified. Defaulting to "public". 
+    function nTransfers() constant returns (uint) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:Detectors:[93m
+TokenSender.gas (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#126-130) is declared view but contains assembly code
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#constant-functions-changing-the-state[0m
+INFO:Detectors:[92m
+TokenSender.run has external calls inside a loop:
+	- ! token.transfer(addr,transfers[mNext].amount) (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#102)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation/_edit#calls-inside-a-loop[0m
+INFO:Detectors:[92m
+TokenSender.gas uses assembly (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#126-130)
+	- /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#127-130
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#assembly-usage[0m
+INFO:Detectors:[92m
+Deprecated standard detected @ /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#69:
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected @ /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#96:
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected @ /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#102:
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#deprecated-standards[0m
+INFO:Detectors:[92m
+Owned.changeOwner (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#21-23) should be declared external
+Owned.execute (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#28-31) should be declared external
+Token.transfer (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#35) should be declared external
+Token.balanceOf (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#36) should be declared external
+TokenSender.fill (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#66-83) should be declared external
+TokenSender.run (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#87-109) should be declared external
+TokenSender.hasTerminated (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#116-120) should be declared external
+TokenSender.nTransfers (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#122-124) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol:
+	- pragma solidity>=0.4.11 (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in Owned.execute (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#28-31):
+	-_dst.call.value(_value)(_data) /sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#30
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Function 'Owned.Owned' (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#10-12) is not in mixedCase
+Parameter '_newOwner' of Owned.changeOwner (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#21) is not in mixedCase
+Parameter '_dst' of Owned.execute (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#28) is not in mixedCase
+Parameter '_value' of Owned.execute (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#28) is not in mixedCase
+Parameter '_data' of Owned.execute (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#28) is not in mixedCase
+Parameter '' of Token.transfer (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#35) is not in mixedCase
+Parameter '_scope_0' of Token.transfer (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#35) is not in mixedCase
+Parameter '' of Token.balanceOf (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#36) is not in mixedCase
+Function 'TokenSender.TokenSender' (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#53-55) is not in mixedCase
+Parameter '_token' of TokenSender.TokenSender (/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol#53) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0xec329ffc97d75fe03428ae155fc7793431487f63.sol analyzed (3 contracts), 26 result(s) found

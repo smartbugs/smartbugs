@@ -1,0 +1,119 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Puppet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Transaction-Ordering Dependence (TOD)"
+                    },
+                    "ruleId": "oyente_Transaction_Ordering_Dependence_TOD"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Splitter"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 75
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack Depth Attack Vulnerability"
+                    },
+                    "ruleId": "oyente_Callstack_Depth_Attack_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Splitter"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol"
+                                },
+                                "region": {
+                                    "startColumn": 2,
+                                    "startLine": 12
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "oyente_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Splitter"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 71
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Re-Entrancy Vulnerability"
+                    },
+                    "ruleId": "oyente_Re_Entrancy_Vulnerability"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/oyente",
+                    "name": "Oyente",
+                    "rules": [
+                        {
+                            "id": "oyente_Transaction_Ordering_Dependence_TOD",
+                            "name": "Transaction-Ordering Dependence (TOD)"
+                        },
+                        {
+                            "id": "oyente_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "oyente_Callstack_Depth_Attack_Vulnerability",
+                            "name": "Callstack Depth Attack Vulnerability"
+                        },
+                        {
+                            "id": "oyente_Re_Entrancy_Vulnerability",
+                            "name": "Re-Entrancy Vulnerability"
+                        }
+                    ],
+                    "version": "#480e725"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

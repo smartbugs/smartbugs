@@ -1,0 +1,92 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_04_confused_sign.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Concurrency bug"
+                    },
+                    "ruleId": "osiris_Concurrency_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_04_confused_sign.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Concurrency bug"
+                    },
+                    "ruleId": "osiris_Concurrency_bug"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/wallet_04_confused_sign.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Underflow bugs"
+                    },
+                    "ruleId": "osiris_Underflow_bugs"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Concurrency_bug",
+                            "name": "Concurrency bug"
+                        },
+                        {
+                            "id": "osiris_Underflow_bugs",
+                            "name": "Underflow bugs"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

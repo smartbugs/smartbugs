@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol' '/sb/bin'",
+        "image": "smartbugs/manticore:0.3.7",
+        "user": 0,
+        "volumes": {
+            "/tmp/tmpuh1i346y": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+    "platform": {
+        "cpu": "Common KVM processor",
+        "python": "3.8.10.final.0 (64 bit)",
+        "release": "5.4.0-136-generic",
+        "smartbugs": "2.0.2",
+        "system": "Linux",
+        "version": "#153-Ubuntu SMP Thu Nov 24 15:56:58 UTC 2022"
+    },
+    "result": {
+        "duration": 1834.8168108463287,
+        "exit_code": null,
+        "logs": "result.log",
+        "output": "result.tar",
+        "start": 1673977422.4942546
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$BIN'",
+        "id": "manticore-0.3.7",
+        "image": "smartbugs/manticore:0.3.7",
+        "info": "Manticore is a symbolic execution tool for analysis of smart contracts and binaries.",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "Manticore",
+        "origin": "https://github.com/trailofbits/manticore",
+        "output": "/results",
+        "parser": "parser.py",
+        "solc": true,
+        "version": "0.3.7"
+    }
+}

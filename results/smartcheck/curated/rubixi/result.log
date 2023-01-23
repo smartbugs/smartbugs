@@ -1,0 +1,353 @@
+/sb/rubixi.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 83
+column: 41
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 93
+column: 41
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 100
+column: 57
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 113
+column: 49
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 119
+column: 32
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 125
+column: 9
+content: functioncurrentMultiplier()constantreturns(uintmultiplier,stringinfo){multiplier=pyramidMultiplier;info='This multiplier applies to you as soon as transaction is received, may be lowered to hasten payouts or increased if payouts are fast enough. Due to no float or decimals, multiplier is x100 for a fractional multiplier e.g. 250 is actually a 2.5x multiplier. Capped at 3x max and 1.2x min.';}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 130
+column: 9
+content: functioncurrentFeePercentage()constantreturns(uintfee,stringinfo){fee=feePercent;info='Shown in % form. Fee is halved(50%) for amounts equal or greater than 50 ethers. (Fee may change, but is capped to a maximum of 10%)';}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 135
+column: 9
+content: functioncurrentPyramidBalanceApproximately()constantreturns(uintpyramidBalance,stringinfo){pyramidBalance=balance/1ether;info='All balance values are measured in Ethers, note that due to no decimal placing, these values show up as integers only, within the contract itself you will get the exact decimal value you are supposed to';}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 140
+column: 9
+content: functionnextPayoutWhenPyramidBalanceTotalsApproximately()constantreturns(uintbalancePayout){balancePayout=participants[payoutOrder].payout/1ether;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 144
+column: 9
+content: functionfeesSeperateFromBalanceApproximately()constantreturns(uintfees){fees=collectedFees/1ether;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 148
+column: 9
+content: functiontotalParticipants()constantreturns(uintcount){count=participants.length;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 152
+column: 9
+content: functionnumberOfParticipantsWaitingForPayout()constantreturns(uintcount){count=participants.length-payoutOrder;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 156
+column: 9
+content: functionparticipantDetails(uintorderInPyramid)constantreturns(addressAddress,uintPayout){if(orderInPyramid<=participants.length){Address=participants[orderInPyramid].etherAddress;Payout=participants[orderInPyramid].payout/1ether;}}
+
+ruleId: SOLIDITY_DIV_MUL
+patternId: 09hhh1
+severity: 2
+line: 102
+column: 38
+content: collectedFees/100*_pcent
+
+ruleId: SOLIDITY_EXTRA_GAS_IN_LOOPS
+patternId: k4o1l4
+severity: 1
+line: 72
+column: 17
+content: while(balance>participants[payoutOrder].payout){uintpayoutToSend=participants[payoutOrder].payout;participants[payoutOrder].etherAddress.send(payoutToSend);balance-=participants[payoutOrder].payout;payoutOrder+=1;}
+
+ruleId: SOLIDITY_GAS_LIMIT_IN_LOOPS
+patternId: 17f23a
+severity: 1
+line: 72
+column: 24
+content: balance>participants[payoutOrder].payout
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 8
+column: 17
+content: ^
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 13
+column: 14
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 14
+column: 14
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 15
+column: 14
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 16
+column: 14
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 17
+column: 14
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 19
+column: 17
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 36
+column: 23
+content: private
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 83
+column: 17
+content: if(collectedFees==0)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 93
+column: 17
+content: if(collectedFees==0)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 100
+column: 17
+content: if(collectedFees==0||_pcent>100)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 113
+column: 17
+content: if(_mult>300||_mult<120)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 119
+column: 17
+content: if(_fee>10)throw;
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 74
+column: 64
+content: send(payoutToSend)
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 85
+column: 25
+content: send(collectedFees)
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 95
+column: 25
+content: send(_amt)
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 103
+column: 25
+content: send(feesToCollect)
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 23
+column: 9
+content: functionDynamicPyramid(){creator=msg.sender;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 39
+column: 9
+content: function(){init();}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 82
+column: 9
+content: functioncollectAllFees()onlyowner{if(collectedFees==0)throw;creator.send(collectedFees);collectedFees=0;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 89
+column: 9
+content: functioncollectFeesInEther(uint_amt)onlyowner{_amt*=1ether;if(_amt>collectedFees)collectAllFees();if(collectedFees==0)throw;creator.send(_amt);collectedFees-=_amt;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 99
+column: 9
+content: functioncollectPercentOfFees(uint_pcent)onlyowner{if(collectedFees==0||_pcent>100)throw;uintfeesToCollect=collectedFees/100*_pcent;creator.send(feesToCollect);collectedFees-=feesToCollect;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 108
+column: 9
+content: functionchangeOwner(address_owner)onlyowner{creator=_owner;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 112
+column: 9
+content: functionchangeMultiplier(uint_mult)onlyowner{if(_mult>300||_mult<120)throw;pyramidMultiplier=_mult;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 118
+column: 9
+content: functionchangeFeePercentage(uint_fee)onlyowner{if(_fee>10)throw;feePercent=_fee;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 125
+column: 9
+content: functioncurrentMultiplier()constantreturns(uintmultiplier,stringinfo){multiplier=pyramidMultiplier;info='This multiplier applies to you as soon as transaction is received, may be lowered to hasten payouts or increased if payouts are fast enough. Due to no float or decimals, multiplier is x100 for a fractional multiplier e.g. 250 is actually a 2.5x multiplier. Capped at 3x max and 1.2x min.';}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 130
+column: 9
+content: functioncurrentFeePercentage()constantreturns(uintfee,stringinfo){fee=feePercent;info='Shown in % form. Fee is halved(50%) for amounts equal or greater than 50 ethers. (Fee may change, but is capped to a maximum of 10%)';}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 135
+column: 9
+content: functioncurrentPyramidBalanceApproximately()constantreturns(uintpyramidBalance,stringinfo){pyramidBalance=balance/1ether;info='All balance values are measured in Ethers, note that due to no decimal placing, these values show up as integers only, within the contract itself you will get the exact decimal value you are supposed to';}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 140
+column: 9
+content: functionnextPayoutWhenPyramidBalanceTotalsApproximately()constantreturns(uintbalancePayout){balancePayout=participants[payoutOrder].payout/1ether;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 144
+column: 9
+content: functionfeesSeperateFromBalanceApproximately()constantreturns(uintfees){fees=collectedFees/1ether;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 148
+column: 9
+content: functiontotalParticipants()constantreturns(uintcount){count=participants.length;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 152
+column: 9
+content: functionnumberOfParticipantsWaitingForPayout()constantreturns(uintcount){count=participants.length-payoutOrder;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 156
+column: 9
+content: functionparticipantDetails(uintorderInPyramid)constantreturns(addressAddress,uintPayout){if(orderInPyramid<=participants.length){Address=participants[orderInPyramid].etherAddress;Payout=participants[orderInPyramid].payout/1ether;}}
+
+SOLIDITY_VISIBILITY :16
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :13
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_REVERT_REQUIRE :5
+SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA :7
+SOLIDITY_EXTRA_GAS_IN_LOOPS :1
+SOLIDITY_GAS_LIMIT_IN_LOOPS :1
+SOLIDITY_UNCHECKED_CALL :4
+SOLIDITY_DIV_MUL :1

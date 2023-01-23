@@ -1,0 +1,58 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 390,
+            "contract": "TokenSaleChallenge",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x2000000000000a101",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405260405160208061034783398101806040528101908080519060200190929190505050670de0b6b3a76400003414151561003c57600080fd5b506102fb8061004c6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806370a0823114610067578063b2fa1c9e146100be578063d96a094a146100ed578063e4849b321461010d575b600080fd5b34801561007357600080fd5b506100a8600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061013a565b6040518082815260200191505060405180910390f35b3480156100ca57600080fd5b506100d3610152565b604051808215151515815260200191505060405180910390f35b61010b6004803603810190808035906020019092919050505061017b565b005b34801561011957600080fd5b50610138600480360381019080803590602001909291905050506101e2565b005b60006020528060005260406000206000915090505481565b6000670de0b6b3a76400003073ffffffffffffffffffffffffffffffffffffffff163110905090565b670de0b6b3a764000081023414151561019357600080fd5b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555050565b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015151561022f57600080fd5b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055503373ffffffffffffffffffffffffffffffffffffffff166108fc670de0b6b3a764000083029081150290604051600060405180830381858888f193505050501580156102cb573d6000803e3d6000fd5b50505600a165627a7a72305820d231c3a570dc0c5025135ae0fcb3ffe5c2162d63b3588edd8d345ff7e3428e5a0029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0xde0b6b3a7640000"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0xd96a094a40",
+                        "input": "0xd96a094a40",
+                        "name": "buy(uint256)",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/arithmetic/tokensalechallenge.sol",
+            "function": "buy(uint256)",
+            "line": 23,
+            "message": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101",
+            "name": "Integer Arithmetic Bugs",
+            "severity": "High"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "mythril-0.23.5",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

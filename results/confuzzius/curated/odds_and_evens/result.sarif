@@ -1,0 +1,136 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OddsAndEvens"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/odds_and_evens.sol"
+                                },
+                                "region": {
+                                    "startLine": 16
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-110\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Assertion_Failure"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OddsAndEvens"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/odds_and_evens.sol"
+                                },
+                                "region": {
+                                    "startLine": 50
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-104\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Unhandled_Exception"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OddsAndEvens"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/odds_and_evens.sol"
+                                },
+                                "region": {
+                                    "startLine": 38
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-104\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Unhandled_Exception"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OddsAndEvens"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/odds_and_evens.sol"
+                                },
+                                "region": {
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-114\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Transaction_Order_Dependency"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OddsAndEvens"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/front_running/odds_and_evens.sol"
+                                },
+                                "region": {
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-104\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Unhandled_Exception"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Assertion_Failure",
+                            "name": "Assertion Failure"
+                        },
+                        {
+                            "id": "confuzzius_Unhandled_Exception",
+                            "name": "Unhandled Exception"
+                        },
+                        {
+                            "id": "confuzzius_Transaction_Order_Dependency",
+                            "name": "Transaction Order Dependency"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

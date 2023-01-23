@@ -1,0 +1,92 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 536,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 80,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 782,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 83,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 608,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 83,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 157,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 76,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1105,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 62,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 402,
+            "contract": "WALLET",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "_fallthrough",
+            "line": 17,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 388,
+            "contract": "WALLET",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "_fallthrough",
+            "line": 16,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 675,
+            "contract": "WALLET",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "_fallthrough",
+            "line": 18,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 852,
+            "contract": "WALLET",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "Collect(uint256)",
+            "line": 29,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1136,
+            "contract": "WALLET",
+            "filename": "dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+            "function": "Collect(uint256)",
+            "line": 32,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

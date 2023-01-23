@@ -1,0 +1,258 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 586,
+            "contract": "Reentrance",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x21c10000020f93b9",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0xed",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610313806100206000396000f300608060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062362a951461006357806327e235e3146100995780632e1a7d4d146100f057806370a082311461011d575b005b610097600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610174565b005b3480156100a557600080fd5b506100da600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101c3565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061011b600480360381019080803590602001909291905050506101db565b005b34801561012957600080fd5b5061015e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061029f565b6040518082815260200191505060405180910390f35b346000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555050565b60006020528060005260406000206000915090505481565b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410151561029c573373ffffffffffffffffffffffffffffffffffffffff168160405160006040518083038185875af19250505050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055505b50565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490509190505600a165627a7a72305820bf1698b409c31c8ba3021c9e48bb188f7faeba8580c0b22a2a7e874d83b176960029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x2e1a7d4d",
+                        "input": "0x2e1a7d4d",
+                        "name": "withdraw(uint256)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "function": "withdraw(uint256)",
+            "line": 24,
+            "message": "A call to a user-supplied address is executed.\nAn external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.\nClassification: SWC-107",
+            "name": "External Call To User-Supplied Address",
+            "severity": "Low"
+        },
+        {
+            "address": 586,
+            "contract": "Reentrance",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x1918",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610313806100206000396000f300608060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062362a951461006357806327e235e3146100995780632e1a7d4d146100f057806370a082311461011d575b005b610097600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610174565b005b3480156100a557600080fd5b506100da600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101c3565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061011b600480360381019080803590602001909291905050506101db565b005b34801561012957600080fd5b5061015e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061029f565b6040518082815260200191505060405180910390f35b346000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555050565b60006020528060005260406000206000915090505481565b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410151561029c573373ffffffffffffffffffffffffffffffffffffffff168160405160006040518083038185875af19250505050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055505b50565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490509190505600a165627a7a72305820bf1698b409c31c8ba3021c9e48bb188f7faeba8580c0b22a2a7e874d83b176960029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x2e1a7d4d",
+                        "input": "0x2e1a7d4d",
+                        "name": "withdraw(uint256)",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x2e1a7d4d",
+                        "input": "0x2e1a7d4d",
+                        "name": "withdraw(uint256)",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "function": "withdraw(uint256)",
+            "line": 24,
+            "message": "The return value of a message call is not checked.\nExternal calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.\nClassification: SWC-104",
+            "name": "Unchecked return value from external call.",
+            "severity": "Medium"
+        },
+        {
+            "address": 586,
+            "contract": "Reentrance",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x3",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x110e60700027040",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610313806100206000396000f300608060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062362a951461006357806327e235e3146100995780632e1a7d4d146100f057806370a082311461011d575b005b610097600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610174565b005b3480156100a557600080fd5b506100da600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101c3565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061011b600480360381019080803590602001909291905050506101db565b005b34801561012957600080fd5b5061015e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061029f565b6040518082815260200191505060405180910390f35b346000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555050565b60006020528060005260406000206000915090505481565b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410151561029c573373ffffffffffffffffffffffffffffffffffffffff168160405160006040518083038185875af19250505050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055505b50565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490509190505600a165627a7a72305820bf1698b409c31c8ba3021c9e48bb188f7faeba8580c0b22a2a7e874d83b176960029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x00362a95000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "input": "0x00362a95000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "name": "donate(address)",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x1"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x2e1a7d4d0000000000000000000000000000000000000000000000000000000000000001",
+                        "input": "0x2e1a7d4d0000000000000000000000000000000000000000000000000000000000000001",
+                        "name": "withdraw(uint256)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "function": "withdraw(uint256)",
+            "line": 24,
+            "message": "Any sender can withdraw Ether from the contract account.\nArbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.\nClassification: SWC-105",
+            "name": "Unprotected Ether Withdrawal",
+            "severity": "High"
+        },
+        {
+            "address": 659,
+            "contract": "Reentrance",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x21c10000020f90b9",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x20",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610313806100206000396000f300608060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062362a951461006357806327e235e3146100995780632e1a7d4d146100f057806370a082311461011d575b005b610097600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610174565b005b3480156100a557600080fd5b506100da600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101c3565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061011b600480360381019080803590602001909291905050506101db565b005b34801561012957600080fd5b5061015e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061029f565b6040518082815260200191505060405180910390f35b346000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555050565b60006020528060005260406000206000915090505481565b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410151561029c573373ffffffffffffffffffffffffffffffffffffffff168160405160006040518083038185875af19250505050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055505b50565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490509190505600a165627a7a72305820bf1698b409c31c8ba3021c9e48bb188f7faeba8580c0b22a2a7e874d83b176960029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x2e1a7d4d",
+                        "input": "0x2e1a7d4d",
+                        "name": "withdraw(uint256)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "function": "withdraw(uint256)",
+            "line": 27,
+            "message": "Read of persistent state following external call\nThe contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.\nClassification: SWC-107",
+            "name": "State access after external call",
+            "severity": "Medium"
+        },
+        {
+            "address": 666,
+            "contract": "Reentrance",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x21c10000020f90b9",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x20",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b50610313806100206000396000f300608060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168062362a951461006357806327e235e3146100995780632e1a7d4d146100f057806370a082311461011d575b005b610097600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610174565b005b3480156100a557600080fd5b506100da600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101c3565b6040518082815260200191505060405180910390f35b3480156100fc57600080fd5b5061011b600480360381019080803590602001909291905050506101db565b005b34801561012957600080fd5b5061015e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061029f565b6040518082815260200191505060405180910390f35b346000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555050565b60006020528060005260406000206000915090505481565b806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410151561029c573373ffffffffffffffffffffffffffffffffffffffff168160405160006040518083038185875af19250505050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055505b50565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490509190505600a165627a7a72305820bf1698b409c31c8ba3021c9e48bb188f7faeba8580c0b22a2a7e874d83b176960029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x2e1a7d4d",
+                        "input": "0x2e1a7d4d",
+                        "name": "withdraw(uint256)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "function": "withdraw(uint256)",
+            "line": 27,
+            "message": "Write to persistent state following external call\nThe contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.\nClassification: SWC-107",
+            "name": "State access after external call",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "mythril-0.23.5",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

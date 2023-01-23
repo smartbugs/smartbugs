@@ -1,0 +1,92 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 16
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 22
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TimeLock"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/timelock.sol"
+                                },
+                                "region": {
+                                    "startColumn": 10,
+                                    "startLine": 27
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Time dependency bug"
+                    },
+                    "ruleId": "osiris_Time_dependency_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Time_dependency_bug",
+                            "name": "Time dependency bug"
+                        },
+                        {
+                            "id": "osiris_Overflow_bugs",
+                            "name": "Overflow bugs"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

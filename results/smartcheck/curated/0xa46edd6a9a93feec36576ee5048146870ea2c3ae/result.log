@@ -1,0 +1,55 @@
+/sb/0xa46edd6a9a93feec36576ee5048146870ea2c3ae.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_EXTRA_GAS_IN_LOOPS
+patternId: d3j11j
+severity: 1
+line: 14
+column: 8
+content: for(uinti=0;i<_tos.length;i++){caddress.call(id,from,_tos[i],v[i]);}
+
+ruleId: SOLIDITY_GAS_LIMIT_IN_LOOPS
+patternId: f6f853
+severity: 2
+line: 14
+column: 8
+content: for(uinti=0;i<_tos.length;i++){caddress.call(id,from,_tos[i],v[i]);}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 16
+column: 21
+content: call(id,from,_tos[i],v[i])
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 16
+column: 21
+content: call(id,from,_tos[i],v[i])
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 11
+column: 52
+content: address[]_tos
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 11
+column: 67
+content: uint[]v
+
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_EXTRA_GAS_IN_LOOPS :1
+SOLIDITY_UPGRADE_TO_050 :3
+SOLIDITY_GAS_LIMIT_IN_LOOPS :1
+SOLIDITY_UNCHECKED_CALL :1

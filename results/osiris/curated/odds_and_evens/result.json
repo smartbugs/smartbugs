@@ -1,0 +1,47 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 13,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 38,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 13,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 41,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 13,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 41,
+            "name": "Concurrency bug"
+        },
+        {
+            "column": 16,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 50,
+            "name": "Concurrency bug"
+        },
+        {
+            "column": 14,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 36,
+            "name": "Overflow bugs"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

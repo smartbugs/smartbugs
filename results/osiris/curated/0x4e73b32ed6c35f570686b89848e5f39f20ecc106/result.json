@@ -1,0 +1,63 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 21,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 2,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 94,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "LogFile",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 94,
+            "name": "Underflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 43,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 16,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 54,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 57,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "PRIVATE_ETH_CELL",
+            "filename": "dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+            "line": 56,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

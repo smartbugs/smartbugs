@@ -1,0 +1,27 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "Overflow_Add",
+            "filename": "dataset/arithmetic/overflow_simple_add.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "Overflow_Add",
+            "filename": "dataset/arithmetic/overflow_simple_add.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "Overflow_Add",
+            "filename": "dataset/arithmetic/overflow_simple_add.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

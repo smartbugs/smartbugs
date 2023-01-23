@@ -1,0 +1,1018 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function confirm"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "endLine": 293,
+                                    "startLine": 279
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in WalletLibrary.confirm (parity_wallet_bug_2.sol#279-293):\n\tExternal calls:\n\t- ! m_txs[_h].to.call.value(m_txs[_h].value)(m_txs[_h].data) (parity_wallet_bug_2.sol#285-286)\n\tState variables written after the call(s):\n\t- m_txs (parity_wallet_bug_2.sol#290)\n"
+                    },
+                    "ruleId": "slither_reentrancy_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function execute"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 245
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "created in WalletLibrary.execute (parity_wallet_bug_2.sol#245) is a local variable never initialiazed\n"
+                    },
+                    "ruleId": "slither_uninitialized_local"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function confirm"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 281
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "created in WalletLibrary.confirm (parity_wallet_bug_2.sol#281) is a local variable never initialiazed\n"
+                    },
+                    "ruleId": "slither_uninitialized_local"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 234
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ parity_wallet_bug_2.sol#234:\n\t- Usage of \"suicide()\" should be replaced with \"selfdestruct()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 250
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ parity_wallet_bug_2.sol#250:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 255
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ parity_wallet_bug_2.sol#255:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 286
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ parity_wallet_bug_2.sol#286:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 221
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ parity_wallet_bug_2.sol#221:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletAbi, function isOwner"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 59
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "WalletAbi.isOwner (parity_wallet_bug_2.sol#59) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletAbi, function confirm"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 67
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "WalletAbi.confirm (parity_wallet_bug_2.sol#67) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "endLine": 109,
+                                    "startLine": 105
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "WalletLibrary.fallback (parity_wallet_bug_2.sol#105-109) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function initWallet"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "endLine": 229,
+                                    "startLine": 226
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "WalletLibrary.initWallet (parity_wallet_bug_2.sol#226-229) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in parity_wallet_bug_2.sol:\n\t- pragma solidity^0.4.9 (parity_wallet_bug_2.sol#18): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function execute"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "endLine": 266,
+                                    "startLine": 241
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in WalletLibrary.execute (parity_wallet_bug_2.sol#241-266):\n\t-! _to.call.value(_value)(_data) parity_wallet_bug_2.sol#249-250\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract WalletLibrary, function confirm"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "endLine": 293,
+                                    "startLine": 279
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in WalletLibrary.confirm (parity_wallet_bug_2.sol#279-293):\n\t-! m_txs[_h].to.call.value(m_txs[_h].value)(m_txs[_h].data) parity_wallet_bug_2.sol#285-286\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 113
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owners' of WalletLibrary.initMultiowned (parity_wallet_bug_2.sol#113) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 113
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_required' of WalletLibrary.initMultiowned (parity_wallet_bug_2.sol#113) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 126
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_operation' of WalletLibrary.revoke (parity_wallet_bug_2.sol#126) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 140
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_from' of WalletLibrary.changeOwner (parity_wallet_bug_2.sol#140) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 140
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of WalletLibrary.changeOwner (parity_wallet_bug_2.sol#140) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 152
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of WalletLibrary.addOwner (parity_wallet_bug_2.sol#152) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 166
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of WalletLibrary.removeOwner (parity_wallet_bug_2.sol#166) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 178
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_newRequired' of WalletLibrary.changeRequirement (parity_wallet_bug_2.sol#178) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 190
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_addr' of WalletLibrary.isOwner (parity_wallet_bug_2.sol#190) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 194
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_operation' of WalletLibrary.hasConfirmed (parity_wallet_bug_2.sol#194) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 194
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owner' of WalletLibrary.hasConfirmed (parity_wallet_bug_2.sol#194) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 207
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_limit' of WalletLibrary.initDaylimit (parity_wallet_bug_2.sol#207) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 212
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_newLimit' of WalletLibrary.setDailyLimit (parity_wallet_bug_2.sol#212) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 226
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_owners' of WalletLibrary.initWallet (parity_wallet_bug_2.sol#226) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 226
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_required' of WalletLibrary.initWallet (parity_wallet_bug_2.sol#226) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 226
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_daylimit' of WalletLibrary.initWallet (parity_wallet_bug_2.sol#226) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 233
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of WalletLibrary.kill (parity_wallet_bug_2.sol#233) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 241
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_to' of WalletLibrary.execute (parity_wallet_bug_2.sol#241) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 241
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of WalletLibrary.execute (parity_wallet_bug_2.sol#241) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 241
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_data' of WalletLibrary.execute (parity_wallet_bug_2.sol#241) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 279
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_h' of WalletLibrary.confirm (parity_wallet_bug_2.sol#279) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 297
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_operation' of WalletLibrary.confirmAndCheck (parity_wallet_bug_2.sol#297) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 351
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_value' of WalletLibrary.underLimit (parity_wallet_bug_2.sol#351) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 383
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'WalletLibrary._walletLibrary' (parity_wallet_bug_2.sol#383) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 386
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_required' (parity_wallet_bug_2.sol#386) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 388
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_numOwners' (parity_wallet_bug_2.sol#388) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 390
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_dailyLimit' (parity_wallet_bug_2.sol#390) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 391
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_spentToday' (parity_wallet_bug_2.sol#391) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 392
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_lastDay' (parity_wallet_bug_2.sol#392) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 395
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_owners' (parity_wallet_bug_2.sol#395) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 397
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Constant 'WalletLibrary.c_maxOwners' (parity_wallet_bug_2.sol#397) is not in UPPER_CASE_WITH_UNDERSCORES\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 399
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_ownerIndex' (parity_wallet_bug_2.sol#399) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 401
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_pending' (parity_wallet_bug_2.sol#401) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 402
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_pendingIndex' (parity_wallet_bug_2.sol#402) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 405
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'WalletLibrary.m_txs' (parity_wallet_bug_2.sol#405) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 221
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Modifier 'WalletLibrary.only_uninitialized' (parity_wallet_bug_2.sol#221) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/parity_wallet_bug_2.sol"
+                                },
+                                "region": {
+                                    "startLine": 383
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "WalletLibrary._walletLibrary (parity_wallet_bug_2.sol#383) is never used in WalletLibrary\n"
+                    },
+                    "ruleId": "slither_unused_state"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_unused_state",
+                            "name": "unused-state"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        },
+                        {
+                            "id": "slither_reentrancy_eth",
+                            "name": "reentrancy-eth"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_uninitialized_local",
+                            "name": "uninitialized-local"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

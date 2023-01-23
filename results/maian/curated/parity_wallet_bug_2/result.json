@@ -1,0 +1,45 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "WalletEvents",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "WalletEvents",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "WalletEvents",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "WalletLibrary",
+            "exploit": [
+                "e46dcfeb 0000000000000000000000000000000000000000000000000000000000000040 0000000000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000000000000000000",
+                "cbf0b0c0"
+            ],
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "name": "Destructible (verified)"
+        },
+        {
+            "contract": "WalletLibrary",
+            "exploit": [
+                "e46dcfeb 0000000000000000000000000000000000000000000000000000000000000040 0000000000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000000000000000000",
+                "cbf0b0c0 0000000000000000000000005a1cd1d07d9f59898c434ffc90a74ecd937feb12"
+            ],
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "name": "Ether leak (verified)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

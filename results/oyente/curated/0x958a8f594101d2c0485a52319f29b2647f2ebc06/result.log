@@ -1,0 +1,139 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:28:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:93:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Marriage(address _owner) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:55:9: Warning: Return value of low-level calls not used.
+        _dst.call.value(_value)(_data);
+        ^----------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:17: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(sha3(marriageStatus) == sha3("Married"));
+                ^------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:17: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        require(sha3(marriageStatus) == sha3("Married"));
+                ^------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:17: Warning: The provided argument of type string storage ref is not implicitly convertible to expected type bytes memory.
+        require(sha3(marriageStatus) == sha3("Married"));
+                ^------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:88:41: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(sha3(marriageStatus) == sha3("Married"));
+                                        ^-------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:119:9: Warning: Invoking events without "emit" prefix is deprecated.
+        MajorEvent("Marrigage", vows, url);
+        ^--------------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:133:9: Warning: Invoking events without "emit" prefix is deprecated.
+        MajorEvent(name, description, url);
+        ^--------------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:138:28: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            owner.transfer(this.balance);
+                           ^----------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:141:9: Warning: Invoking events without "emit" prefix is deprecated.
+        MessageSent(nameFrom, text, url, msg.value);
+        ^-----------------------------------------^
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:28:5: Warning: No visibility specified. Defaulting to "public". 
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:37:5: Warning: No visibility specified. Defaulting to "public". 
+    function changeOwner(address _newOwner) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:44:5: Warning: No visibility specified. Defaulting to "public". 
+    function acceptOwnership() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:53:5: Warning: No visibility specified. Defaulting to "public". 
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:93:5: Warning: No visibility specified. Defaulting to "public". 
+    function Marriage(address _owner) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:106:5: Warning: No visibility specified. Defaulting to "public". 
+    function createMarriage(
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:123:5: Warning: No visibility specified. Defaulting to "public". 
+    function setStatus(string status, string url) onlyOwner
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:130:5: Warning: No visibility specified. Defaulting to "public". 
+    function setMajorEvent(string name, string description, string url) onlyOwner areMarried
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:136:5: Warning: No visibility specified. Defaulting to "public". 
+    function sendMessage(string nameFrom, string text, string url) payable areMarried {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:Owned:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 67.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:53:5: Warning: Integer Overflow.
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:55:9: Warning: Callstack Depth Attack Vulnerability.
+        _dst.call.value(_value)(_data)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:Marriage:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 16.8%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:70:5: Warning: Integer Underflow.
+    Message[] public messages
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:69:5: Warning: Integer Underflow.
+    Event[] public majorEvents
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:64:5: Warning: Integer Underflow.
+    string public partner2
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:63:5: Warning: Integer Underflow.
+    string public partner1
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:67:5: Warning: Integer Underflow.
+    string public vows
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:66:5: Warning: Integer Underflow.
+    string public marriageStatus
+INFO:symExec:/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:70:5: Warning: Integer Overflow.
+    Message[] public messages
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:136:5: Warning: Integer Overflow.
+    function sendMessage(string nameFrom, string text, string url) payable areMarried {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    nameFrom = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:69:5: Warning: Integer Overflow.
+    Event[] public majorEvents
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:130:5: Warning: Integer Overflow.
+    function setMajorEvent(string name, string description, string url) onlyOwner areMarried
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:53:5: Warning: Integer Overflow.
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^
+Spanning multiple lines.
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:123:5: Warning: Integer Overflow.
+    function setStatus(string status, string url) onlyOwner
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    status = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:106:5: Warning: Integer Overflow.
+    function createMarriage(
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _partner1 = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol:55:9: Warning: Callstack Depth Attack Vulnerability.
+        _dst.call.value(_value)(_data)
+INFO:symExec:	====== Analysis Completed ======

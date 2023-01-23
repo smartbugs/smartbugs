@@ -1,0 +1,15 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/timelock.sol:TimeLock...
+Vulnerability: Integer Overflow. Maybe in function: deposit(). PC: 0x3aa. Line number: 17.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129443328
+and b = 604800
+Vulnerability: Integer Overflow. Maybe in function: deposit(). PC: 0x39d. Line number: 16.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Integer Overflow. Maybe in function: increaseLockTime(uint256). PC: 0x336. Line number: 22.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Transaction Ordering Dependence. Maybe in function: withdraw(). PC: 0x2d6. Line number: 30.
+Vulnerability: Time Manipulation. Maybe in function: withdraw(). PC: 0x21c. Line number: 27.
+Vulnerability: Time Manipulation. Maybe in function: deposit(). PC: 0x3ec. Line number: 17.

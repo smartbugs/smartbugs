@@ -1,0 +1,70 @@
+{
+    "errors": [
+        "EXIT_CODE_6"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "RealOldFuckMaker",
+            "filename": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+            "function": "makeOldFucks",
+            "impact": "Low",
+            "line": 18,
+            "message": "RealOldFuckMaker.makeOldFucks has external calls inside a loop:\n\t- fuck.call(bytes4(sha3()(giveBlockReward()))) (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18)\n",
+            "name": "calls-loop"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+            "impact": "Informational",
+            "line": 10,
+            "message": "RealOldFuckMaker.fuck should be constant (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#10)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+            "impact": "Informational",
+            "line": 18,
+            "message": "Deprecated standard detected @ 0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18:\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+            "name": "deprecated-standards"
+        },
+        {
+            "confidence": "High",
+            "contract": "RealOldFuckMaker",
+            "filename": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+            "function": "makeOldFucks",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 20,
+            "message": "RealOldFuckMaker.makeOldFucks (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#14-20) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0xf2570186500a46986f3139f65afedc2afe4f445d.sol:\n\t- pragma solidity^0.4.16 (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "RealOldFuckMaker",
+            "filename": "dataset/unchecked_low_level_calls/0xf2570186500a46986f3139f65afedc2afe4f445d.sol",
+            "function": "makeOldFucks",
+            "impact": "Informational",
+            "line": 14,
+            "line_end": 20,
+            "message": "Low level call in RealOldFuckMaker.makeOldFucks (0xf2570186500a46986f3139f65afedc2afe4f445d.sol#14-20):\n\t-fuck.call(bytes4(sha3()(giveBlockReward()))) 0xf2570186500a46986f3139f65afedc2afe4f445d.sol#18\n",
+            "name": "low-level-calls"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

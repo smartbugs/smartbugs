@@ -1,0 +1,129 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/roulette.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_EXACT_TIME\nSeverity: 2"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_EXACT_TIME"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/roulette.sol"
+                                },
+                                "region": {
+                                    "startColumn": 11,
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_EXACT_TIME\nSeverity: 2"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_EXACT_TIME"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/roulette.sol"
+                                },
+                                "region": {
+                                    "startColumn": 0,
+                                    "startLine": 9
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_LOCKED_MONEY\nSeverity: 3"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_LOCKED_MONEY"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/roulette.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_PRAGMAS_VERSION\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_PRAGMAS_VERSION"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/time_manipulation/roulette.sol"
+                                },
+                                "region": {
+                                    "startColumn": 16,
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "SOLIDITY_UPGRADE_TO_050\nSeverity: 1"
+                    },
+                    "ruleId": "smartcheck_SOLIDITY_UPGRADE_TO_050"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartdec/smartcheck",
+                    "name": "Smartcheck",
+                    "rules": [
+                        {
+                            "id": "smartcheck_SOLIDITY_LOCKED_MONEY",
+                            "name": "SOLIDITY_LOCKED_MONEY"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_EXACT_TIME",
+                            "name": "SOLIDITY_EXACT_TIME"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_PRAGMAS_VERSION",
+                            "name": "SOLIDITY_PRAGMAS_VERSION"
+                        },
+                        {
+                            "id": "smartcheck_SOLIDITY_UPGRADE_TO_050",
+                            "name": "SOLIDITY_UPGRADE_TO_050"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

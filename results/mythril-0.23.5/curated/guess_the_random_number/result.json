@@ -1,0 +1,66 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 269,
+            "contract": "GuessTheRandomNumberChallenge",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x41b803ad1c1848002",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x1000b80408000000",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x6080604052670de0b6b3a76400003414151561001a57600080fd5b600143034042604051808360001916600019168152602001828152602001925050506040518091039020600190046000806101000a81548160ff021916908360ff160217905550610175806100706000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634ba4c16b14610051578063b2fa1c9e14610074575b600080fd5b610072600480360381019080803560ff1690602001909291905050506100a3565b005b34801561008057600080fd5b50610089610128565b604051808215151515815260200191505060405180910390f35b670de0b6b3a7640000341415156100b957600080fd5b6000809054906101000a900460ff1660ff168160ff161415610125573373ffffffffffffffffffffffffffffffffffffffff166108fc671bc16d674ec800009081150290604051600060405180830381858888f19350505050158015610123573d6000803e3d6000fd5b505b50565b6000803073ffffffffffffffffffffffffffffffffffffffff1631149050905600a165627a7a7230582058c656b7ea9ff515530c2274e0a75cad299c432e685c51e99fb77ba642a95d540029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0xde0b6b3a7640000"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x4ba4c16b",
+                        "input": "0x4ba4c16b",
+                        "name": "guess(uint8)",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0xde0b6b3a7640000"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x4ba4c16ba4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a480",
+                        "input": "0x4ba4c16ba4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a480",
+                        "name": "guess(uint8)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0xde0b6b3a7640000"
+                    }
+                ]
+            },
+            "filename": "dataset/bad_randomness/guess_the_random_number.sol",
+            "function": "guess(uint8)",
+            "line": 26,
+            "message": "Any sender can withdraw Ether from the contract account.\nArbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.\nClassification: SWC-105",
+            "name": "Unprotected Ether Withdrawal",
+            "severity": "High"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "mythril-0.23.5",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

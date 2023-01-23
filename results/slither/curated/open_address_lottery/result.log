@@ -1,0 +1,68 @@
+INFO:Slither:Compilation warnings/errors on /sb/open_address_lottery.sol:
+/sb/open_address_lottery.sol:41:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function OpenAddressLottery() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:91:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        SeedComponents s;
+        ^--------------^
+/sb/open_address_lottery.sol:58:20: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            if(win>this.balance) //if the balance isnt sufficient...
+                   ^----------^
+/sb/open_address_lottery.sol:59:21: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+                win=this.balance; //...send everything we've got
+                    ^----------^
+/sb/open_address_lottery.sol:69:18: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        n = uint(keccak256(uint(addr), secretSeed)[0]) % 8;
+                 ^-------------------------------^
+/sb/open_address_lottery.sol:73:30: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        secretSeed = uint256(keccak256(
+                             ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:91:9: Warning: Uninitialized storage pointer. Did you mean '<type> memory s'?
+        SeedComponents s;
+        ^--------------^
+/sb/open_address_lottery.sol:41:5: Warning: No visibility specified. Defaulting to "public". 
+    function OpenAddressLottery() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:46:5: Warning: No visibility specified. Defaulting to "public". 
+    function participate() payable {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:67:5: Warning: No visibility specified. Defaulting to "public". 
+    function luckyNumberOfAddress(address addr) constant returns(uint n){
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:82:5: Warning: No visibility specified. Defaulting to "public". 
+    function kill() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:88:5: Warning: No visibility specified. Defaulting to "public". 
+    function forceReseed() { //reseed initiated by the owner - for testing purposes
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/open_address_lottery.sol:93:32: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+        s.component2 = uint256(block.blockhash(block.number - 1));
+                               ^-------------^
+/sb/open_address_lottery.sol:100:5: Warning: No visibility specified. Defaulting to "public". 
+    function () payable { //if someone sends money without any function call, just assume he wanted to participate
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:Detectors:[91m
+s in OpenAddressLottery.forceReseed (/sb/open_address_lottery.sol#91) is a storage variable never initialiazed
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#uninitialized-storage-variables[0m
+INFO:Detectors:[92m
+OpenAddressLottery.LuckyNumber should be constant (/sb/open_address_lottery.sol#37)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+Deprecated standard detected @ /sb/open_address_lottery.sol#93:
+	- Usage of "block.blockhash()" should be replaced with "blockhash()"
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#deprecated-standards[0m
+INFO:Detectors:[92m
+OpenAddressLottery.kill (/sb/open_address_lottery.sol#82-86) should be declared external
+OpenAddressLottery.forceReseed (/sb/open_address_lottery.sol#88-98) should be declared external
+OpenAddressLottery.fallback (/sb/open_address_lottery.sol#100-103) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/open_address_lottery.sol:
+	- pragma solidity^0.4.19 (/sb/open_address_lottery.sol#6): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Function 'OpenAddressLottery.OpenAddressLottery' (/sb/open_address_lottery.sol#41-44) is not in mixedCase
+Variable 'OpenAddressLottery.LuckyNumber' (/sb/open_address_lottery.sol#37) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/open_address_lottery.sol analyzed (1 contracts), 9 result(s) found

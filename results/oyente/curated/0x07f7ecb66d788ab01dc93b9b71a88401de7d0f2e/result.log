@@ -1,0 +1,35 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:
+/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:201:9: Warning: Return value of low-level calls not used.
+        whale.call.value(amount)(bytes4(keccak256("donate()")));
+        ^-----------------------------------------------------^
+/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:213:9: Warning: Return value of low-level calls not used.
+        whale.call.value(amount)(bytes4(keccak256("donate()")));
+        ^-----------------------------------------------------^
+
+INFO:root:contract /sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:PoCGame:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 81.8%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:153:45: Warning: Integer Underflow.
+            uint256 winningNumber = uint256(keccak256(abi.encodePacked(blockhash(blockNumber),  msg.sender))
+Integer Underflow occurs if:
+    timestamps[msg.sender] = 0
+    wagers[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    openToPublic = 255
+INFO:symExec:/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:202:9: Warning: Integer Overflow.
+        totalDonated += amount
+Integer Overflow occurs if:
+    totalDonated = 66856184261385214108408597654402785422430169472278770250914080072048199204049
+    openToPublic = 255
+INFO:symExec:/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:213:9: Warning: Callstack Depth Attack Vulnerability.
+        whale.call.value(amount)(bytes4(keccak256("donate()")))
+/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol:201:9: Warning: Callstack Depth Attack Vulnerability.
+        whale.call.value(amount)(bytes4(keccak256("donate()")))
+INFO:symExec:	====== Analysis Completed ======

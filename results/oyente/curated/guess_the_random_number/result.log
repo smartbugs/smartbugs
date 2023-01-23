@@ -1,0 +1,23 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/guess_the_random_number.sol:
+/sb/guess_the_random_number.sol:12:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function GuessTheRandomNumberChallenge() public payable {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/guess_the_random_number.sol:15:24: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        answer = uint8(keccak256(block.blockhash(block.number - 1), now));
+                       ^-----------------------------------------------^
+/sb/guess_the_random_number.sol:15:34: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+        answer = uint8(keccak256(block.blockhash(block.number - 1), now));
+                                 ^-------------^
+
+INFO:root:contract /sb/guess_the_random_number.sol:GuessTheRandomNumberChallenge:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 95.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

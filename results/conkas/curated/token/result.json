@@ -1,0 +1,36 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 469,
+            "contract": "Token",
+            "filename": "dataset/arithmetic/token.sol",
+            "function": "transfer(address,uint256)",
+            "line": 20,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 551,
+            "contract": "Token",
+            "filename": "dataset/arithmetic/token.sol",
+            "function": "transfer(address,uint256)",
+            "line": 22,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 627,
+            "contract": "Token",
+            "filename": "dataset/arithmetic/token.sol",
+            "function": "transfer(address,uint256)",
+            "line": 23,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

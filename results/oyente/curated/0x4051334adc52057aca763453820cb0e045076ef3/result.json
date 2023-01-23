@@ -1,0 +1,26 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 13,
+            "contract": "airdrop",
+            "filename": "dataset/unchecked_low_level_calls/0x4051334adc52057aca763453820cb0e045076ef3.sol",
+            "line": 16,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 5,
+            "contract": "airdrop",
+            "filename": "dataset/unchecked_low_level_calls/0x4051334adc52057aca763453820cb0e045076ef3.sol",
+            "line": 11,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

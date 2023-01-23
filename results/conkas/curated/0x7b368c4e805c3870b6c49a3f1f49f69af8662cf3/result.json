@@ -1,0 +1,92 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 536,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 80,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 1105,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 62,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 782,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 83,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 608,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 83,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 157,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "AddMessage(address,uint256,string)",
+            "line": 76,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 388,
+            "contract": "W_WALLET",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "_fallthrough",
+            "line": 16,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1136,
+            "contract": "W_WALLET",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "Collect(uint256)",
+            "line": 32,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 402,
+            "contract": "W_WALLET",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "_fallthrough",
+            "line": 17,
+            "name": "Time Manipulation"
+        },
+        {
+            "address": 852,
+            "contract": "W_WALLET",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "Collect(uint256)",
+            "line": 29,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 675,
+            "contract": "W_WALLET",
+            "filename": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+            "function": "_fallthrough",
+            "line": 18,
+            "name": "Reentrancy"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

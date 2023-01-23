@@ -1,0 +1,94 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleDAO, function withdraw(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/simple_dao.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Unchecked Low Level Call"
+                    },
+                    "ruleId": "conkas_Unchecked_Low_Level_Call"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleDAO, function donate(address)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/simple_dao.sol"
+                                },
+                                "region": {
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "conkas_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract SimpleDAO, function withdraw(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/simple_dao.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy"
+                    },
+                    "ruleId": "conkas_Reentrancy"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/nveloso/conkas",
+                    "name": "Conkas",
+                    "rules": [
+                        {
+                            "id": "conkas_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "conkas_Unchecked_Low_Level_Call",
+                            "name": "Unchecked Low Level Call"
+                        },
+                        {
+                            "id": "conkas_Reentrancy",
+                            "name": "Reentrancy"
+                        }
+                    ],
+                    "version": "#6aee098"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

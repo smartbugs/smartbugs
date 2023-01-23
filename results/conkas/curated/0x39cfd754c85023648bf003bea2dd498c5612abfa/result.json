@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 949,
+            "contract": "Token",
+            "filename": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+            "function": "WithdrawToken(address,uint256,address)",
+            "line": 44,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 949,
+            "contract": "Token",
+            "filename": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+            "function": "WithdrawToken(address,uint256,address)",
+            "line": 44,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 778,
+            "contract": "TokenBank",
+            "filename": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+            "function": "_fallthrough",
+            "line": 72,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1779,
+            "contract": "TokenBank",
+            "filename": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+            "function": "WithdrawToken(address,uint256,address)",
+            "line": 44,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1779,
+            "contract": "TokenBank",
+            "filename": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.sol",
+            "function": "WithdrawToken(address,uint256,address)",
+            "line": 44,
+            "name": "Unchecked Low Level Call"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

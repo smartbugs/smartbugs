@@ -1,0 +1,220 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OpenAddressLottery, function forceReseed"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "startLine": 91
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "s in OpenAddressLottery.forceReseed (open_address_lottery.sol#91) is a storage variable never initialiazed\n"
+                    },
+                    "ruleId": "slither_uninitialized_storage"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "startLine": 37
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "OpenAddressLottery.LuckyNumber should be constant (open_address_lottery.sol#37)\n"
+                    },
+                    "ruleId": "slither_constable_states"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "startLine": 93
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ open_address_lottery.sol#93:\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OpenAddressLottery, function kill"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "endLine": 86,
+                                    "startLine": 82
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "OpenAddressLottery.kill (open_address_lottery.sol#82-86) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OpenAddressLottery, function forceReseed"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "endLine": 98,
+                                    "startLine": 88
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "OpenAddressLottery.forceReseed (open_address_lottery.sol#88-98) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract OpenAddressLottery, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "endLine": 103,
+                                    "startLine": 100
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "OpenAddressLottery.fallback (open_address_lottery.sol#100-103) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "startLine": 6
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in open_address_lottery.sol:\n\t- pragma solidity^0.4.19 (open_address_lottery.sol#6): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "endLine": 44,
+                                    "startLine": 41
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'OpenAddressLottery.OpenAddressLottery' (open_address_lottery.sol#41-44) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/other/open_address_lottery.sol"
+                                },
+                                "region": {
+                                    "startLine": 37
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'OpenAddressLottery.LuckyNumber' (open_address_lottery.sol#37) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_uninitialized_storage",
+                            "name": "uninitialized-storage"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_constable_states",
+                            "name": "constable-states"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

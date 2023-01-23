@@ -1,0 +1,105 @@
+/sb/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 54
+column: 12
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 57
+column: 9
+content: private
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 148
+column: 8
+content: if(blockNumber<block.number){timestamps[msg.sender]=0;wagers[msg.sender]=0;uint256winningNumber=uint256(keccak256(abi.encodePacked(blockhash(blockNumber),msg.sender)))%difficulty+1;if(winningNumber==difficulty/2){payout(msg.sender);}else{loseWager(betLimit/2);}}else{revert();}
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 201
+column: 14
+content: call.value(amount)(bytes4(keccak256("donate()")))
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 213
+column: 14
+content: call.value(amount)(bytes4(keccak256("donate()")))
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 91h3sa
+severity: 1
+line: 115
+column: 15
+content: public
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 55
+column: 4
+content: uint256betLimit;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 56
+column: 4
+content: uintdifficulty;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 58
+column: 4
+content: addressowner;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 59
+column: 4
+content: mapping(address=>uint256)timestamps;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 60
+column: 4
+content: mapping(address=>uint256)wagers;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 61
+column: 4
+content: boolopenToPublic;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 62
+column: 4
+content: uint256totalDonated;
+
+SOLIDITY_VISIBILITY :7
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_REVERT_REQUIRE :1
+SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA :2
+SOLIDITY_UPGRADE_TO_050 :1
+SOLIDITY_UNCHECKED_CALL :2

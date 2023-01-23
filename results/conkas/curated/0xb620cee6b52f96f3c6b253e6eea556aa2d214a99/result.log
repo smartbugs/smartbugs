@@ -1,0 +1,35 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0xb620cee6b52f96f3c6b253e6eea556aa2d214a99.sol:DrainMe...
+Vulnerability: Reentrancy. Maybe in function: winPrize(). PC: 0xc6a. Line number: 133.
+Vulnerability: Reentrancy. Maybe in function: manipulateSecret(). PC: 0xa5d. Line number: 81.
+Vulnerability: Integer Overflow. Maybe in function: becomePlayer(). PC: 0x89d. Line number: .
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Integer Underflow. Maybe in function: becomePlayer(). PC: 0x8a9. Line number: 73.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Integer Overflow. Maybe in function: balance(uint256). PC: 0x873. Line number: 28.
+If a = 110349606679412691172957834289542550319383271247755660854362242977991410020067
+and b = 5442482557903521520372584222048954001805077392062486652625154927157007089692
+Vulnerability: Integer Overflow. Maybe in function: setSeed(uint256,uint256). PC: 0x722. Line number: 110.
+If a = 75276140696391174450305814049576319106646922510300487059720162673006384432776
+and b = 40515948540925020973265170959111588746623062155340076979737421334906745207160
+Vulnerability: Unchecked Low Level Call. Maybe in function: callFirstTarget(). PC: 0x5ea. Line number: 100.
+Vulnerability: Unchecked Low Level Call. Maybe in function: callSecondTarget(). PC: 0x6a9. Line number: 106.
+Vulnerability: Integer Overflow. Maybe in function: becomePlayer(). PC: 0x8b3. Line number: 73.
+If a = 62514009886607029107290561805838585334079798074568712924583230797734656856475
+and b = 53278079350709166316280423202849322519190186591071851114874353210178472783461
+Vulnerability: Integer Overflow. Maybe in function: seed(uint256). PC: 0xb93. Line number: 27.
+If a = 75276140696391174450305814049576319106646922510300487059720162673006384432776
+and b = 40515948540925020973265170959111588746623062155340076979737421334906745207160
+Vulnerability: Unchecked Low Level Call. Maybe in function: winPrize(). PC: 0xc6a. Line number: 133.
+Vulnerability: Integer Overflow. Maybe in function: guessSeed(uint256). PC: 0xd02. Line number: 118.
+If a = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+and b = 3168897565402303656351914274162016988655952530325088919120062594116413963102
+Vulnerability: Reentrancy. Maybe in function: claimPrize(). PC: 0xb3b. Line number: 137.
+Vulnerability: Reentrancy. Maybe in function: callFirstTarget(). PC: 0x5ea. Line number: 100.
+Vulnerability: Integer Underflow. Maybe in function: manipulateSecret(). PC: 0xe4f. Line number: 86.
+If a = 0
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: callSecondTarget(). PC: 0x6a9. Line number: 106.

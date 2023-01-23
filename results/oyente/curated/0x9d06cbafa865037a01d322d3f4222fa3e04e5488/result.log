@@ -1,0 +1,62 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:84:13: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+            throw;
+            ^---^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:44:9: Warning: This declaration shadows an existing declaration.
+        uint tokens_buy = msg.value*10**18/token_price;
+        ^-------------^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:39:5: The shadowed declaration is here:
+    function tokens_buy() payable returns (bool) {         
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:25:25: Warning: This looks like an address but has an invalid checksum. If this is not used as an address, please prepend '00'. Correct checksummed address: '0x788C45Dd60aE4dBE5055b5Ac02384D5dc84677b0'. For more information please see https://solidity.readthedocs.io/en/develop/types.html#address-literals
+	address public owner = 0x788c45dd60ae4dbe5055b5ac02384d5dc84677b0;	
+	                       ^----------------------------------------^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:48:27: Warning: "sha3" has been deprecated in favour of "keccak256"
+        if(!c.call(bytes4(sha3("transferFrom(address,address,uint256)")),owner, msg.sender,tokens_buy)){
+                          ^-------------------------------------------^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:54:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        owner2.send(sum2);
+        ^---------------^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:62:21: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+          balance = this.balance;
+                    ^----------^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:65:11: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+          owner.send(balance);
+          ^-----------------^
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:32:2: Warning: No visibility specified. Defaulting to "public". 
+	function() payable {        
+ ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:39:5: Warning: No visibility specified. Defaulting to "public". 
+    function tokens_buy() payable returns (bool) {         
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:60:7: Warning: No visibility specified. Defaulting to "public". 
+      function withdraw(uint256 _amount) onlyOwner returns (bool result) {
+      ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:70:7: Warning: No visibility specified. Defaulting to "public". 
+      function change_token_price(uint256 _token_price) onlyOwner returns (bool result) {
+      ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:76:7: Warning: No visibility specified. Defaulting to "public". 
+      function change_active(uint256 _active) onlyOwner returns (bool result) {
+      ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:contract /sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:Delta:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 76.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:54:9: Warning: Callstack Depth Attack Vulnerability.
+        owner2.send(sum2)
+INFO:symExec:Flow1
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:65:11: Warning: Transaction-Ordering Dependency.
+          owner.send(balance)
+Flow2
+/sb/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol:65:11: Warning: Transaction-Ordering Dependency.
+          owner.send(balance)
+INFO:symExec:	====== Analysis Completed ======

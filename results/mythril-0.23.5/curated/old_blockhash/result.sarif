@@ -1,0 +1,151 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PredictTheBlockHashChallenge, function settle()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "startLine": 33
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "A control flow decision is made based on The block.number environment variable.\nThe block.number environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.\nClassification: SWC-120\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Dependence_on_predictable_environment_variable"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PredictTheBlockHashChallenge, function settle()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "startLine": 38
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "A control flow decision is made based on The block hash of a previous block.\nThe block hash of a previous block is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.\nClassification: SWC-120\nSeverity: Low"
+                    },
+                    "ruleId": "mythril_0_23_5_Dependence_on_predictable_environment_variable"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PredictTheBlockHashChallenge, function settle()"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Any sender can withdraw Ether from the contract account.\nArbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.\nClassification: SWC-105\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Unprotected_Ether_Withdrawal"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PredictTheBlockHashChallenge, function lockInGuess(bytes32)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "startLine": 29
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "The arithmetic operator can underflow/overflow It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue. Classification: SWC-101. Detection method: For every SUB instruction, check if there is a possible state where the second operand is larger than the first one. For every ADD, MUL instruction, check if there is a possible state where the result of the operation overflows."
+                            },
+                            "help": {
+                                "text": "It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue."
+                            },
+                            "id": "mythril_0_23_5_Integer_Arithmetic_Bugs",
+                            "name": "Integer Arithmetic Bugs",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "The arithmetic operator can underflow/overflow"
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "A control flow decision is made based on the block variable coinbase, gaslimit, timestamp or block number. One or more of block.coinbase, block.gaslimit, block.timestamp or block.number are used to determine a control flow decision. Note that the values of these variables are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners. Classification: SWC-116 if the control flow depends on block.timestamp, and SWC-120 otherwise. Detection method: Check whether control flow decisions are influenced by block.coinbase, block.gaslimit, block.timestamp or block.number."
+                            },
+                            "help": {
+                                "text": "One or more of block.coinbase, block.gaslimit, block.timestamp or block.number are used to determine a control flow decision. Note that the values of these variables are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners."
+                            },
+                            "id": "mythril_0_23_5_Dependence_on_predictable_environment_variable",
+                            "name": "Dependence on predictable environment variable",
+                            "properties": {
+                                "security-severity": "2.0"
+                            },
+                            "shortDescription": {
+                                "text": "A control flow decision is made based on the block variable coinbase, gaslimit, timestamp or block number."
+                            }
+                        },
+                        {
+                            "fullDescription": {
+                                "text": "Any sender can withdraw Ether from the contract account. Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds. Classification: SWC-105. Detection method: Search for cases where Ether can be withdrawn to a user-specified address.  An issue is reported if there is a valid end state where the attacker has successfully increased their Ether balance."
+                            },
+                            "help": {
+                                "text": "Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds."
+                            },
+                            "id": "mythril_0_23_5_Unprotected_Ether_Withdrawal",
+                            "name": "Unprotected Ether Withdrawal",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "Any sender can withdraw Ether from the contract account."
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

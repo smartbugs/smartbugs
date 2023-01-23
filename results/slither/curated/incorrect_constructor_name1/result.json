@@ -1,0 +1,55 @@
+{
+    "errors": [
+        "EXIT_CODE_4"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "High",
+            "contract": "Missing",
+            "filename": "dataset/access_control/incorrect_constructor_name1.sol",
+            "function": "IamMissing",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 24,
+            "message": "Missing.IamMissing (incorrect_constructor_name1.sol#20-24) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Missing",
+            "filename": "dataset/access_control/incorrect_constructor_name1.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 26,
+            "message": "Missing.fallback (incorrect_constructor_name1.sol#26) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Missing",
+            "filename": "dataset/access_control/incorrect_constructor_name1.sol",
+            "function": "withdraw",
+            "impact": "Informational",
+            "line": 28,
+            "line_end": 33,
+            "message": "Missing.withdraw (incorrect_constructor_name1.sol#28-33) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/access_control/incorrect_constructor_name1.sol",
+            "impact": "Informational",
+            "line": 20,
+            "line_end": 24,
+            "message": "Function 'Missing.IamMissing' (incorrect_constructor_name1.sol#20-24) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

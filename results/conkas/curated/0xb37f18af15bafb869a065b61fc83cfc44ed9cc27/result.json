@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 868,
+            "contract": "SimpleWallet",
+            "filename": "dataset/unchecked_low_level_calls/0xb37f18af15bafb869a065b61fc83cfc44ed9cc27.sol",
+            "function": "sendMoney(address,uint256)",
+            "line": 33,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 122,
+            "contract": "SimpleWallet",
+            "filename": "dataset/unchecked_low_level_calls/0xb37f18af15bafb869a065b61fc83cfc44ed9cc27.sol",
+            "function": "_fallthrough",
+            "line": 20,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 543,
+            "contract": "SimpleWallet",
+            "filename": "dataset/unchecked_low_level_calls/0xb37f18af15bafb869a065b61fc83cfc44ed9cc27.sol",
+            "function": "withdrawAll()",
+            "line": 28,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 868,
+            "contract": "SimpleWallet",
+            "filename": "dataset/unchecked_low_level_calls/0xb37f18af15bafb869a065b61fc83cfc44ed9cc27.sol",
+            "function": "sendMoney(address,uint256)",
+            "line": 33,
+            "name": "Unchecked Low Level Call"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

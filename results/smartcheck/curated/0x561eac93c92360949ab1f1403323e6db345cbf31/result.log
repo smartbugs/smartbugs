@@ -1,0 +1,91 @@
+/sb/0x561eac93c92360949ab1f1403323e6db345cbf31.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_CALL_WITHOUT_DATA
+patternId: om991k
+severity: 2
+line: 54
+column: 26
+content: call.value(_am)()
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 22
+column: 23
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 29
+column: 23
+content: throw
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 7
+column: 16
+content: ^
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 22
+column: 8
+content: if(intitalized)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 29
+column: 8
+content: if(intitalized)throw;
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 83k1no
+severity: 1
+line: 54
+column: 26
+content: call.value(_am)()
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 91h3sa
+severity: 1
+line: 63
+column: 4
+content: public
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 341gim
+severity: 1
+line: 87
+column: 47
+content: string_data
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 15
+column: 4
+content: LogFileLog;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 17
+column: 4
+content: boolintitalized;
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: b51ce0
+severity: 1
+line: 85
+column: 4
+content: MessageLastMsg;
+
+SOLIDITY_VISIBILITY :3
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :2
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_REVERT_REQUIRE :2
+SOLIDITY_UPGRADE_TO_050 :3
+SOLIDITY_CALL_WITHOUT_DATA :1

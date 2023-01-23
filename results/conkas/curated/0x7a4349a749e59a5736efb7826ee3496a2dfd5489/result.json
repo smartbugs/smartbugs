@@ -1,0 +1,52 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 1208,
+            "contract": "WhaleGiveaway1",
+            "filename": "dataset/unchecked_low_level_calls/0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+            "function": "Command(address,bytes)",
+            "line": 44,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1208,
+            "contract": "WhaleGiveaway1",
+            "filename": "dataset/unchecked_low_level_calls/0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+            "function": "Command(address,bytes)",
+            "line": 44,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 922,
+            "contract": "WhaleGiveaway1",
+            "filename": "dataset/unchecked_low_level_calls/0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+            "function": "GetFreebie()",
+            "line": 26,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 683,
+            "contract": "WhaleGiveaway1",
+            "filename": "dataset/unchecked_low_level_calls/0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+            "function": "withdraw()",
+            "line": 35,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 272,
+            "contract": "WhaleGiveaway1",
+            "filename": "dataset/unchecked_low_level_calls/0x7a4349a749e59a5736efb7826ee3496a2dfd5489.sol",
+            "function": "Command(address,bytes)",
+            "line": 38,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

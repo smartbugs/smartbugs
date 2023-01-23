@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 18,
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 19,
+            "name": "Callstack Depth Attack Vulnerability"
+        },
+        {
+            "column": 5,
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 13,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 18,
+            "contract": "SimpleDAO",
+            "filename": "dataset/reentrancy/simple_dao.sol",
+            "line": 19,
+            "name": "Re-Entrancy Vulnerability"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

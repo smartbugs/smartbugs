@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 16,
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "line": 44,
+            "name": "Re-Entrancy Vulnerability"
+        },
+        {
+            "column": 5,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "line": 71,
+            "name": "Integer Overflow"
+        },
+        {
+            "column": 5,
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "line": 67,
+            "name": "Integer Underflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

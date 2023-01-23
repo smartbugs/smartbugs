@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "line": 316,
+            "name": "Truncation bugs"
+        },
+        {
+            "column": 22,
+            "contract": "WalletLibrary",
+            "filename": "dataset/access_control/parity_wallet_bug_2.sol",
+            "line": 169,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

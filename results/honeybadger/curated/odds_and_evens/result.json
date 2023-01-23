@@ -1,0 +1,24 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "name": "Money flow"
+        },
+        {
+            "column": 5,
+            "contract": "OddsAndEvens",
+            "filename": "dataset/front_running/odds_and_evens.sol",
+            "line": 29,
+            "name": "Uninitialised struct"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "honeybadger",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

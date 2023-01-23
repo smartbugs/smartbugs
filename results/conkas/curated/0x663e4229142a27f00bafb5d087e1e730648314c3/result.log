@@ -1,0 +1,189 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:ClockAuction...
+Vulnerability: Time Manipulation. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x10c2. Line number: 1269.
+Vulnerability: Time Manipulation. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x13b4. Line number: 1343.
+Vulnerability: Unchecked Low Level Call. Maybe in function: withdrawBalance(). PC: 0x786. Line number: 1496.
+Vulnerability: Reentrancy. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0xcf9. Line number: 1205.
+Vulnerability: Reentrancy. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0xe4c. Line number: 1214.
+Vulnerability: Time Manipulation. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x1577. Line number: 1374.
+Vulnerability: Reentrancy. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x12ee. Line number: 1223.
+Vulnerability: Reentrancy. Maybe in function: withdrawBalance(). PC: 0x786. Line number: 1496.
+Vulnerability: Time Manipulation. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0xfe8. Line number: 1235.
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:ClockAuctionBase...
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:ERC20...
+Nothing to analyse
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:ERC721...
+Nothing to analyse
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:ERC721Metadata...
+Vulnerability: Integer Overflow. Maybe in function: getMetadata(uint256,string). PC: 0x2b6. Line number: 527.
+If a = 64
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639681
+Vulnerability: Integer Overflow. Maybe in function: getMetadata(uint256,string). PC: 0x87. Line number: 516.
+If a = 32
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639873
+Vulnerability: Integer Overflow. Maybe in function: getMetadata(uint256,string). PC: 0x273. Line number: 526.
+If a = 32
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639713
+Vulnerability: Integer Overflow. Maybe in function: getMetadata(uint256,string). PC: 0x1db. Line number: 522.
+If a = 32
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639713
+Vulnerability: Integer Overflow. Maybe in function: getMetadata(uint256,string). PC: 0x2f9. Line number: 528.
+If a = 96
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639649
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:GeneScienceInterface...
+Nothing to analyse
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:Ownable...
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaAccessControl...
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaAuction...
+Vulnerability: Integer Underflow. Maybe in function: balanceOf(address). PC: 0x1934. Line number: 697.
+If a = 0
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: setGeneScienceAddress(address). PC: 0x1ddf. Line number: 819.
+Vulnerability: Reentrancy. Maybe in function: setSiringAuctionAddress(address). PC: 0x189b. Line number: 2058.
+Vulnerability: Integer Overflow. Maybe in function: createSaleAuction(uint256,uint256,uint256,uint256). PC: 0x1967. Line number: 907.
+If a = 3
+and b = 57896044618658097711785300942401345690527697539441888231080839661566291869694
+Vulnerability: Reentrancy. Maybe in function: withdrawERC20Balance(address,address). PC: 0x1be8. Line number: 2199.
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaBase...
+Vulnerability: Integer Overflow. Maybe in function: getWizzTypeOf(uint256). PC: 0xcdd. Line number: 385.
+If a = 1
+and b = 90700042338519137273469046992162468151054343828873735019550863116911001495677
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaBreeding...
+Vulnerability: Integer Overflow. Maybe in function: breedWithAuto(uint256,uint256). PC: 0x3740. Line number: 392.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Integer Overflow. Maybe in function: isPregnant(uint256). PC: 0x14f3. Line number: 907.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Underflow. Maybe in function: balanceOf(address). PC: 0x14bc. Line number: 697.
+If a = 0
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: setGeneScienceAddress(address). PC: 0x16cd. Line number: 819.
+Vulnerability: Integer Overflow. Maybe in function: canBreedWith(uint256,uint256). PC: 0x1a2e. Line number: 985.
+If a = 57896044618658097711785492504343953926634992332820282019728792003956571111424
+and b = 75276140696391174450305814049576319106646922510300487059720162673006384432776
+Vulnerability: Integer Underflow. Maybe in function: breedWithAuto(uint256,uint256). PC: 0x3818. Line number: 397.
+If a = 0
+and b = 1
+Vulnerability: Integer Overflow. Maybe in function: canBreedWith(uint256,uint256). PC: 0x1a0f. Line number: 984.
+If a = 13569385457497991651199724805705614201555076355047966404816951685480204730368
+and b = 75276140696391174450305814049576319106646922510300487059720162673006384432776
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaCore...
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1c75. Line number: 2434.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1cd0. Line number: 2437.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1d2f. Line number: 2440.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Underflow. Maybe in function: balanceOf(address). PC: 0x1ef4. Line number: 697.
+If a = 0
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: withdrawERC20Balance(address,address). PC: 0x21af. Line number: 2199.
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1cb3. Line number: 2436.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1c4e. Line number: 2433.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1d12. Line number: 2439.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Reentrancy. Maybe in function: setSiringAuctionAddress(address). PC: 0x1e5b. Line number: 2058.
+Vulnerability: Integer Overflow. Maybe in function: createSaleAuction(uint256,uint256,uint256,uint256). PC: 0x1f27. Line number: 907.
+If a = 3
+and b = 57896044618658097711785109380458737454420402746063495651358706933805193625598
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1c25. Line number: 2429.
+If a = 3
+and b = 57895989404687323387177113311681638823496438514210884793326887674028700467198
+Vulnerability: Reentrancy. Maybe in function: setGeneScienceAddress(address). PC: 0x23a6. Line number: 819.
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1c2e. Line number: 2432.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1cf5. Line number: 2438.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1c8e. Line number: 2435.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Integer Overflow. Maybe in function: giveBirth(uint256,uint256[2],uint256[2]). PC: 0x1d76. Line number: 2441.
+If a = 1
+and b = 90700042338519137273469046992162468151054343828873735019550863116911001495677
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaMinting...
+Vulnerability: Integer Underflow. Maybe in function: tokensOfOwner(address). PC: 0x1af1. Line number: 697.
+If a = 0
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: setGeneScienceAddress(address). PC: 0x1fa3. Line number: 819.
+Vulnerability: Reentrancy. Maybe in function: setSiringAuctionAddress(address). PC: 0x1a58. Line number: 2058.
+Vulnerability: Integer Overflow. Maybe in function: bidOnSiringAuction(uint256,uint256). PC: 0x1b28. Line number: 907.
+If a = 2
+and b = 13505316180308340324421723653037196248874354051780025659912473778302248402386
+Vulnerability: Reentrancy. Maybe in function: withdrawERC20Balance(address,address). PC: 0x1dac. Line number: 2199.
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:PandaOwnership...
+Vulnerability: Integer Overflow. Maybe in function: transfer(address,uint256). PC: 0x2368. Line number: 392.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Integer Overflow. Maybe in function: getWizzTypeOf(uint256). PC: 0x1622. Line number: 385.
+If a = 110398034100151263925981628863482360030768535421368849002594367135215476477695
+and b = 75276140696391174450305814049576319106646922510300487059720162673006384432776
+Vulnerability: Integer Underflow. Maybe in function: tokensOfOwner(address). PC: 0x11ad. Line number: 697.
+If a = 0
+and b = 1
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:Pausable...
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:SaleClockAuction...
+Vulnerability: Integer Overflow. Maybe in function: createPanda(uint256,uint256). PC: 0xa76. Line number: 1800.
+If a = 101051993584849178915136821395265346177868384823507754984078593667947067386055
+and b = 28948022309329048855892746252171976963317496166410141009864396001978282409984
+Vulnerability: Unchecked Low Level Call. Maybe in function: withdrawBalance(). PC: 0xc47. Line number: 1496.
+Vulnerability: Integer Overflow. Maybe in function: surprisePanda(). PC: 0x786. Line number: 1818.
+If a = 1
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+Vulnerability: Time Manipulation. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x1b2a. Line number: 1374.
+Vulnerability: Integer Underflow. Maybe in function: surprisePanda(). PC: 0x67f. Line number: 1808.
+If a = 0
+and b = 1
+Vulnerability: Time Manipulation. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x1967. Line number: 1343.
+Vulnerability: Reentrancy. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0x14e0. Line number: 1214.
+Vulnerability: Integer Underflow. Maybe in function: createPanda(uint256,uint256). PC: 0xa3b. Line number: 1798.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Time Manipulation. Maybe in function: cancelAuctionWhenPaused(uint256). PC: 0x1756. Line number: 1269.
+Vulnerability: Integer Underflow. Maybe in function: packageCount(). PC: 0x10c7. Line number: 1825.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Integer Overflow. Maybe in function: createPanda(uint256,uint256). PC: 0xa45. Line number: 1798.
+If a = 660301456019777184113296434797620819555017468543624515662331739614079884729
+and b = 115131787781296418239457688573890287033714967197096939523795252268299049755207
+Vulnerability: Time Manipulation. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0x167c. Line number: 1235.
+Vulnerability: Integer Underflow. Maybe in function: createPanda(uint256,uint256). PC: 0xa6c. Line number: 1800.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Integer Overflow. Maybe in function: packageCount(). PC: 0x10c6. Line number: 1825.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Reentrancy. Maybe in function: withdrawBalance(). PC: 0xc47. Line number: 1496.
+Vulnerability: Integer Underflow. Maybe in function: packageCount(). PC: 0x10b8. Line number: 1824.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:SaleClockAuctionERC20...
+Vulnerability: Unchecked Low Level Call. Maybe in function: withdrawBalance(). PC: 0xc80. Line number: 1496.
+Vulnerability: Reentrancy. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0x1657. Line number: 1205.
+Vulnerability: Reentrancy. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0x17aa. Line number: 1214.
+Vulnerability: Time Manipulation. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0x1917. Line number: 1235.
+Vulnerability: Reentrancy. Maybe in function: withdrawBalance(). PC: 0xc80. Line number: 1496.
+Vulnerability: Reentrancy. Maybe in function: withdrawERC20Balance(address,address). PC: 0x900. Line number: 1961.
+Analysing /sb/0x663e4229142a27f00bafb5d087e1e730648314c3.sol:SiringClockAuction...
+Vulnerability: Time Manipulation. Maybe in function: getAuction(uint256). PC: 0x10b2. Line number: 1269.
+Vulnerability: Unchecked Low Level Call. Maybe in function: withdrawBalance(). PC: 0x867. Line number: 1496.
+Vulnerability: Time Manipulation. Maybe in function: getAuction(uint256). PC: 0x13a4. Line number: 1343.
+Vulnerability: Reentrancy. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0xe3c. Line number: 1214.
+Vulnerability: Time Manipulation. Maybe in function: createAuction(uint256,uint256,uint256,uint256,address). PC: 0xfd8. Line number: 1235.
+Vulnerability: Time Manipulation. Maybe in function: getAuction(uint256). PC: 0x1567. Line number: 1374.
+Vulnerability: Reentrancy. Maybe in function: getAuction(uint256). PC: 0x12de. Line number: 1223.
+Vulnerability: Reentrancy. Maybe in function: withdrawBalance(). PC: 0x867. Line number: 1496.
+Vulnerability: Integer Overflow. Maybe in function: getAuction(uint256). PC: 0x1578. Line number: 1386.
+If a = 13328266068188974594319073864473921990389277161952587909170749464818904859648
+and b = 28207656143244938220

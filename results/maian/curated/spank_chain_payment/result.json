@@ -1,0 +1,49 @@
+{
+    "errors": [
+        "when sending a str, it must be a hex string. Got: '0x60806040526"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "Ether lock"
+        },
+        {
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

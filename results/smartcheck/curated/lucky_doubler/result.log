@@ -1,0 +1,233 @@
+/sb/lucky_doubler.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_ADDRESS_HARDCODED
+patternId: c67a09
+severity: 1
+line: 172
+column: 38
+content: 0x0
+
+ruleId: SOLIDITY_ARRAY_LENGTH_MANIPULATION
+patternId: 872bdd
+severity: 1
+line: 111
+column: 12
+content: unpaidEntries.length--
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 142
+column: 40
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 149
+column: 12
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 127
+column: 4
+content: functionrand(uintmax)constantprivatereturns(uint256result){uint256factor=FACTOR*100/max;uint256lastBlockNumber=block.number-1;uint256hashVal=uint256(block.blockhash(lastBlockNumber));returnuint256((uint256(hashVal)/factor))%max;}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 155
+column: 4
+content: functionmultiplierFactor()constantreturns(uintfactor,stringinfo){factor=multiplier;info='The current multiplier applied to all deposits. Min 110%, max 150%.';}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 160
+column: 4
+content: functioncurrentFee()constantreturns(uintfeePercentage,stringinfo){feePercentage=fee;info='The fee percentage applied to all deposits. It can change to speed payouts (max 5%).';}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 165
+column: 4
+content: functiontotalEntries()constantreturns(uintcount,stringinfo){count=entries.length;info='The number of deposits.';}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 170
+column: 4
+content: functionuserStats(addressuser)constantreturns(uintdeposits,uintpayouts,stringinfo){if(users[user].id!=address(0x0)){deposits=users[user].deposits;payouts=users[user].payoutsReceived;info='Users stats: total deposits, payouts received.';}}
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 28fa69
+severity: 1
+line: 180
+column: 4
+content: functionentryDetails(uintindex)constantreturns(addressuser,uintpayout,boolpaid,stringinfo){if(index<entries.length){user=entries[index].entryAddress;payout=entries[index].payout/1finney;paid=entries[index].paid;info='Entry info: user address, expected payout in Finneys, payout status.';}}
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 9
+column: 16
+content: ^
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 21
+column: 12
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 24
+column: 9
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 25
+column: 9
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 26
+column: 9
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 28
+column: 30
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 29
+column: 12
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 30
+column: 11
+content: private
+
+ruleId: SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA
+patternId: 5616b2
+severity: 1
+line: 125
+column: 21
+content: private
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 142
+column: 8
+content: if(multi<110||multi>150)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 148
+column: 8
+content: if(fee>5)throw;
+
+ruleId: SOLIDITY_UPGRADE_TO_050
+patternId: 441gim
+severity: 1
+line: 95
+column: 8
+content: EntrytheEntry=entries[unpaidEntries[index]]
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 33
+column: 4
+content: functionLuckyDoubler(){owner=msg.sender;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 53
+column: 4
+content: function(){init();}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 137
+column: 4
+content: functionchangeOwner(addressnewOwner)onlyowner{owner=newOwner;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 141
+column: 4
+content: functionchangeMultiplier(uintmulti)onlyowner{if(multi<110||multi>150)throw;multiplier=multi;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 147
+column: 4
+content: functionchangeFee(uintnewFee)onlyowner{if(fee>5)throw;fee=newFee;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 155
+column: 4
+content: functionmultiplierFactor()constantreturns(uintfactor,stringinfo){factor=multiplier;info='The current multiplier applied to all deposits. Min 110%, max 150%.';}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 160
+column: 4
+content: functioncurrentFee()constantreturns(uintfeePercentage,stringinfo){feePercentage=fee;info='The fee percentage applied to all deposits. It can change to speed payouts (max 5%).';}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 165
+column: 4
+content: functiontotalEntries()constantreturns(uintcount,stringinfo){count=entries.length;info='The number of deposits.';}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 170
+column: 4
+content: functionuserStats(addressuser)constantreturns(uintdeposits,uintpayouts,stringinfo){if(users[user].id!=address(0x0)){deposits=users[user].deposits;payouts=users[user].payoutsReceived;info='Users stats: total deposits, payouts received.';}}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 180
+column: 4
+content: functionentryDetails(uintindex)constantreturns(addressuser,uintpayout,boolpaid,stringinfo){if(index<entries.length){user=entries[index].entryAddress;payout=entries[index].payout/1finney;paid=entries[index].paid;info='Entry info: user address, expected payout in Finneys, payout status.';}}
+
+SOLIDITY_VISIBILITY :10
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :8
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_ARRAY_LENGTH_MANIPULATION :1
+SOLIDITY_REVERT_REQUIRE :2
+SOLIDITY_PRIVATE_MODIFIER_DONT_HIDE_DATA :8
+SOLIDITY_ADDRESS_HARDCODED :1
+SOLIDITY_UPGRADE_TO_050 :1

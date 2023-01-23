@@ -1,0 +1,24 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 3470,
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "line": 26,
+            "name": "Hidden transfer"
+        },
+        {
+            "contract": "WhaleGiveaway2",
+            "filename": "dataset/unchecked_low_level_calls/0x3f2ef511aa6e75231e4deafc7a3d2ecab3741de2.sol",
+            "name": "Money flow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "honeybadger",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

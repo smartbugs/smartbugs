@@ -1,0 +1,84 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 1276,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 60,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 2615,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "entryDetails(uint256)",
+            "line": 185,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 2868,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 74,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 4316,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 119,
+            "name": "Transaction Ordering Dependence"
+        },
+        {
+            "address": 2868,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 74,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 4316,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 119,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 1276,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 60,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3924,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 102,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 3924,
+            "contract": "LuckyDoubler",
+            "filename": "dataset/bad_randomness/lucky_doubler.sol",
+            "function": "_fallthrough",
+            "line": 102,
+            "name": "Unchecked Low Level Call"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

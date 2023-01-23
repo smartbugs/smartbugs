@@ -1,0 +1,294 @@
+{
+    "errors": [
+        "EXIT_CODE_27"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "payout",
+            "impact": "High",
+            "line": 182,
+            "line_end": 189,
+            "message": "PoCGame.payout (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#182-189) sends eth to arbitrary user\n\tDangerous calls:\n\t- winner.transfer(ethToTransfer) (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#187)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "loseWager",
+            "impact": "High",
+            "line": 206,
+            "line_end": 213,
+            "message": "PoCGame.loseWager (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#206-213) sends eth to arbitrary user\n\tDangerous calls:\n\t- whale.call.value(amount)(bytes4(keccak256()(donate()))) (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#210)\n",
+            "name": "arbitrary-send"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "play",
+            "impact": "Medium",
+            "line": 138,
+            "line_end": 166,
+            "message": "PoCGame.play (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#138-166) uses a dangerous strict equality:\n\t- winningNumber == difficulty / 2\n",
+            "name": "incorrect-equality"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "donateToWhale",
+            "impact": "Low",
+            "line": 194,
+            "line_end": 201,
+            "message": "Reentrancy in PoCGame.donateToWhale (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#194-201):\n\tExternal calls:\n\t- whale.call.value(amount)(bytes4(keccak256()(donate()))) (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#198)\n\tState variables written after the call(s):\n\t- totalDonated (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#199)\n",
+            "name": "reentrancy-benign"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "loseWager",
+            "impact": "Low",
+            "line": 206,
+            "line_end": 213,
+            "message": "Reentrancy in PoCGame.loseWager (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#206-213):\n\tExternal calls:\n\t- whale.call.value(amount)(bytes4(keccak256()(donate()))) (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#210)\n\tState variables written after the call(s):\n\t- totalDonated (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#211)\n",
+            "name": "reentrancy-benign"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "impact": "Informational",
+            "line": 57,
+            "message": "PoCGame.randomSeed should be constant (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#57)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "OpenToThePublic",
+            "impact": "Informational",
+            "line": 83,
+            "line_end": 88,
+            "message": "PoCGame.OpenToThePublic (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#83-88) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "AdjustBetAmounts",
+            "impact": "Informational",
+            "line": 93,
+            "line_end": 100,
+            "message": "PoCGame.AdjustBetAmounts (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#93-100) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "AdjustDifficulty",
+            "impact": "Informational",
+            "line": 105,
+            "line_end": 112,
+            "message": "PoCGame.AdjustDifficulty (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#105-112) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 115,
+            "message": "PoCGame.fallback (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#115) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "wager",
+            "impact": "Informational",
+            "line": 120,
+            "line_end": 133,
+            "message": "PoCGame.wager (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#120-133) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "play",
+            "impact": "Informational",
+            "line": 138,
+            "line_end": 166,
+            "message": "PoCGame.play (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#138-166) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "donate",
+            "impact": "Informational",
+            "line": 171,
+            "line_end": 177,
+            "message": "PoCGame.donate (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#171-177) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "ethBalance",
+            "impact": "Informational",
+            "line": 219,
+            "line_end": 225,
+            "message": "PoCGame.ethBalance (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#219-225) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "currentDifficulty",
+            "impact": "Informational",
+            "line": 231,
+            "line_end": 237,
+            "message": "PoCGame.currentDifficulty (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#231-237) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "currentBetLimit",
+            "impact": "Informational",
+            "line": 243,
+            "line_end": 249,
+            "message": "PoCGame.currentBetLimit (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#243-249) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "hasPlayerWagered",
+            "impact": "Informational",
+            "line": 251,
+            "line_end": 265,
+            "message": "PoCGame.hasPlayerWagered (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#251-265) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "winnersPot",
+            "impact": "Informational",
+            "line": 270,
+            "line_end": 276,
+            "message": "PoCGame.winnersPot (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#270-276) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "transferAnyERC20Token",
+            "impact": "Informational",
+            "line": 281,
+            "line_end": 287,
+            "message": "PoCGame.transferAnyERC20Token (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#281-287) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ERC20Interface",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "transfer",
+            "impact": "Informational",
+            "line": 293,
+            "message": "ERC20Interface.transfer (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#293) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol:\n\t- pragma solidity^0.4.21 (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "donateToWhale",
+            "impact": "Informational",
+            "line": 194,
+            "line_end": 201,
+            "message": "Low level call in PoCGame.donateToWhale (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#194-201):\n\t-whale.call.value(amount)(bytes4(keccak256()(donate()))) 0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#198\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "contract": "PoCGame",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "function": "loseWager",
+            "impact": "Informational",
+            "line": 206,
+            "line_end": 213,
+            "message": "Low level call in PoCGame.loseWager (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#206-213):\n\t-whale.call.value(amount)(bytes4(keccak256()(donate()))) 0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#210\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "impact": "Informational",
+            "line": 83,
+            "line_end": 88,
+            "message": "Function 'PoCGame.OpenToThePublic' (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#83-88) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "impact": "Informational",
+            "line": 93,
+            "line_end": 100,
+            "message": "Function 'PoCGame.AdjustBetAmounts' (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#93-100) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "impact": "Informational",
+            "line": 105,
+            "line_end": 112,
+            "message": "Function 'PoCGame.AdjustDifficulty' (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#105-112) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/unchecked_low_level_calls/0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol",
+            "impact": "Informational",
+            "line": 57,
+            "message": "PoCGame.randomSeed (0x7d09edb07d23acb532a82be3da5c17d9d85806b4.sol#57) is never used in PoCGame\n",
+            "name": "unused-state"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

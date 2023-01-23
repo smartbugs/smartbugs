@@ -1,0 +1,29 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Puppet...
+Vulnerability: Unchecked Low Level Call. Maybe in function: _fallthrough. PC: 0x11d. Line number: 102.
+Vulnerability: Reentrancy. Maybe in function: withdraw(). PC: 0x331. Line number: 109.
+Vulnerability: Reentrancy. Maybe in function: _fallthrough. PC: 0x11d. Line number: 102.
+Analysing /sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:SafeMath...
+Analysing /sb/0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6.sol:Splitter...
+Vulnerability: Integer Overflow. Maybe in function: 0xa46e3e9. PC: 0x2ca. Line number: 12.
+If a = 80084422859880547211683076133703299733277748156566366325829078699459944778998
+and b = 35707666377435648211887908874984608119992236509074197713628505308453184860940
+Vulnerability: Unchecked Low Level Call. Maybe in function: fundPuppets(). PC: 0x48f. Line number: 73.
+Vulnerability: Reentrancy. Maybe in function: fundPuppets(). PC: 0x48f. Line number: 73.
+Vulnerability: Reentrancy. Maybe in function: fundPuppets(). PC: 0x4f8. Line number: 75.
+Vulnerability: Integer Underflow. Maybe in function: newPuppet(). PC: 0x76e. Line number: 51.
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Integer Overflow. Maybe in function: newPuppet(). PC: 0x778. Line number: 51.
+If a = 80084422859880547211683076133703299733277748156566366325829078699459944778998
+and b = 35707666443789808353456824352639373777157635364980957672996880526244954767360
+Vulnerability: Unchecked Low Level Call. Maybe in function: fundPuppets(). PC: 0x426. Line number: 71.
+Vulnerability: Reentrancy. Maybe in function: fundPuppets(). PC: 0x426. Line number: 71.
+Vulnerability: Integer Overflow. Maybe in function: newPuppet(). PC: 0x762. Line number: .
+If a = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+and b = 1
+Vulnerability: Unchecked Low Level Call. Maybe in function: fundPuppets(). PC: 0x3bd. Line number: 69.
+Vulnerability: Reentrancy. Maybe in function: withdraw(). PC: 0x5c3. Line number: 37.
+Vulnerability: Reentrancy. Maybe in function: fundPuppets(). PC: 0x3bd. Line number: 69.
+Vulnerability: Unchecked Low Level Call. Maybe in function: fundPuppets(). PC: 0x4f8. Line number: 75.

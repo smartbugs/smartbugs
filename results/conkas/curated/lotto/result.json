@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 434,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/lotto.sol",
+            "function": "0x1846f51a",
+            "line": 27,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 553,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/lotto.sol",
+            "function": "0x8f1c0585",
+            "line": 20,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 553,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/lotto.sol",
+            "function": "0x8f1c0585",
+            "line": 20,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 434,
+            "contract": "Lotto",
+            "filename": "dataset/unchecked_low_level_calls/lotto.sol",
+            "function": "0x1846f51a",
+            "line": 27,
+            "name": "Unchecked Low Level Call"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,8 @@
+INFO:Detectors:[92m
+PredictTheBlockHashChallenge.lockInGuess (/sb/old_blockhash.sol#24-30) should be declared external
+PredictTheBlockHashChallenge.settle (/sb/old_blockhash.sol#32-41) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Struct 'PredictTheBlockHashChallenge.guess' (/sb/old_blockhash.sol#13-16) is not in CapWords
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/old_blockhash.sol analyzed (1 contracts), 3 result(s) found

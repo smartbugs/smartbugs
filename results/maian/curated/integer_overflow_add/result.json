@@ -1,0 +1,27 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "IntegerOverflowAdd",
+            "filename": "dataset/arithmetic/integer_overflow_add.sol",
+            "name": "Not destructible (no self-destruct)"
+        },
+        {
+            "contract": "IntegerOverflowAdd",
+            "filename": "dataset/arithmetic/integer_overflow_add.sol",
+            "name": "No Ether leak (no send)"
+        },
+        {
+            "contract": "IntegerOverflowAdd",
+            "filename": "dataset/arithmetic/integer_overflow_add.sol",
+            "name": "No Ether lock (Ether refused)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

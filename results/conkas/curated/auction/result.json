@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 244,
+            "contract": "DosAuction",
+            "filename": "dataset/denial_of_service/auction.sol",
+            "function": "bid()",
+            "line": 23,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 244,
+            "contract": "DosAuction",
+            "filename": "dataset/denial_of_service/auction.sol",
+            "function": "bid()",
+            "line": 23,
+            "name": "Transaction Ordering Dependence"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

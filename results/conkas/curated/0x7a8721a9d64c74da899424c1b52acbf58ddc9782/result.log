@@ -1,0 +1,26 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol:Log...
+Vulnerability: Time Manipulation. Maybe in function: AddMessage(address,uint256,string). PC: 0x218. Line number: 83.
+Vulnerability: Integer Underflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x253. Line number: 86.
+If a = If(k!60285,
+   115792089237316195423570985008687907853269984665640564039457584007913129639934,
+   115792089237316195423570985008687907853269984665640564039457584007913129639935)
+and b = 1
+Vulnerability: Time Manipulation. Maybe in function: AddMessage(address,uint256,string). PC: 0x30e. Line number: 86.
+Vulnerability: Integer Overflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x451. Line number: 64.
+If a = 57896044618658097711785492504343953926634992332820282019728792003956564819976
+and b = 57896044618658097711785492504343953926634992332820282019728792003956564819976
+Vulnerability: Integer Overflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x260. Line number: 86.
+If a = 4
+and b = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+Vulnerability: Integer Overflow. Maybe in function: AddMessage(address,uint256,string). PC: 0x9d. Line number: 79.
+If a = 4
+and b = 115792089237316195423570985008687907853269984665640564039457584007913129639932
+Analysing /sb/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol:PrivateDeposit...
+Vulnerability: Integer Overflow. Maybe in function: Deposit(). PC: 0x4e0. Line number: 42.
+If a = 114887463533404724603177035802057435904817873681285094496055998048408076251489
+and b = 107636323186297271395159567544460461087678515890994912314775518752800697646667
+Vulnerability: Reentrancy. Maybe in function: Deposit(). PC: 0x5e8. Line number: 43.
+Vulnerability: Reentrancy. Maybe in function: CashOut(uint256). PC: 0x320. Line number: 52.
+Vulnerability: Reentrancy. Maybe in function: CashOut(uint256). PC: 0x476. Line number: 55.

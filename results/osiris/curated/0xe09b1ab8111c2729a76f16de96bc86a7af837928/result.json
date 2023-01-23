@@ -1,0 +1,70 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 24,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 324,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 43,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 103,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 144,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 145,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 146,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 37,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 286,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 9,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 150,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 20,
+            "contract": "FiftyFlip",
+            "filename": "dataset/unchecked_low_level_calls/0xe09b1ab8111c2729a76f16de96bc86a7af837928.sol",
+            "line": 287,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [
+        "SYMBOLIC EXECUTION TIMEOUT"
+    ],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

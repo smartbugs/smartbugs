@@ -1,0 +1,118 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract MyContract, function sendTo"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mycontract.sol"
+                                },
+                                "region": {
+                                    "endLine": 22,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "MyContract.sendTo (mycontract.sol#18-22) sends eth to arbitrary user\n\tDangerous calls:\n\t- receiver.transfer(amount) (mycontract.sol#21)\n"
+                    },
+                    "ruleId": "slither_arbitrary_send"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract MyContract, function sendTo"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mycontract.sol"
+                                },
+                                "region": {
+                                    "startLine": 20
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "MyContract.sendTo uses tx.origin for authorization:\n\t- require(bool)(tx.origin == owner) (mycontract.sol#20)\n"
+                    },
+                    "ruleId": "slither_tx_origin"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract MyContract, function sendTo"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mycontract.sol"
+                                },
+                                "region": {
+                                    "endLine": 22,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "MyContract.sendTo (mycontract.sol#18-22) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/mycontract.sol"
+                                },
+                                "region": {
+                                    "endLine": 16,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'MyContract.MyContract' (mycontract.sol#14-16) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_arbitrary_send",
+                            "name": "arbitrary-send"
+                        },
+                        {
+                            "id": "slither_tx_origin",
+                            "name": "tx-origin"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,621 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function Collect"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 69,
+                                    "startLine": 55
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy in PENNY_BY_PENNY.Collect (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#55-69):\n\tExternal calls:\n\t- msg.sender.call.value(_am)() (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#63-67)\n\tState variables written after the call(s):\n\t- Acc (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#65)\n"
+                    },
+                    "ruleId": "slither_reentrancy_eth"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 28
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#28:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 35
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Deprecated standard detected @ 0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#35:\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n"
+                    },
+                    "ruleId": "slither_deprecated_standards"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function SetMinSum"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 30,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PENNY_BY_PENNY.SetMinSum (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#25-30) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function SetLogFile"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 37,
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PENNY_BY_PENNY.SetLogFile (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#32-37) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function Initialized"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 43,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PENNY_BY_PENNY.Initialized (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#39-43) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function Collect"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 69,
+                                    "startLine": 55
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PENNY_BY_PENNY.Collect (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#55-69) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 76,
+                                    "startLine": 71
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PENNY_BY_PENNY.fallback (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#71-76) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract LogFile, function AddMessage"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 103,
+                                    "startLine": 95
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "LogFile.AddMessage (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#95-103) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 7
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Detected issues with version pragma in 0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol:\n\t- pragma solidity^0.4.19 (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#7): it allows old versions\n"
+                    },
+                    "ruleId": "slither_solc_version"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PENNY_BY_PENNY, function Collect"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 69,
+                                    "startLine": 55
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Low level call in PENNY_BY_PENNY.Collect (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#55-69):\n\t-msg.sender.call.value(_am)() 0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#63-67\n"
+                    },
+                    "ruleId": "slither_low_level_calls"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 78,
+                                    "startLine": 9
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Contract 'PENNY_BY_PENNY' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#9-78) is not in CapWords\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 30,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'PENNY_BY_PENNY.SetMinSum' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#25-30) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_val' of PENNY_BY_PENNY.SetMinSum (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#25) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 37,
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'PENNY_BY_PENNY.SetLogFile' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#32-37) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_log' of PENNY_BY_PENNY.SetLogFile (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#32) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 43,
+                                    "startLine": 39
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'PENNY_BY_PENNY.Initialized' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#39-43) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 53,
+                                    "startLine": 45
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'PENNY_BY_PENNY.Put' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#45-53) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 45
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_lockTime' of PENNY_BY_PENNY.Put (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#45) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 69,
+                                    "startLine": 55
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'PENNY_BY_PENNY.Collect' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#55-69) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 55
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_am' of PENNY_BY_PENNY.Collect (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#55) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'PENNY_BY_PENNY.Acc' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#17) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 19
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'PENNY_BY_PENNY.MinSum' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#19) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'PENNY_BY_PENNY.Log' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#21) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "endLine": 103,
+                                    "startLine": 95
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'LogFile.AddMessage' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#95-103) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 95
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_adr' of LogFile.AddMessage (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#95) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 95
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_val' of LogFile.AddMessage (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#95) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 95
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Parameter '_data' of LogFile.AddMessage (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#95) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 91
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'LogFile.History' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#91) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol"
+                                },
+                                "region": {
+                                    "startLine": 93
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Variable 'LogFile.LastMsg' (0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol#93) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_reentrancy_eth",
+                            "name": "reentrancy-eth"
+                        },
+                        {
+                            "id": "slither_solc_version",
+                            "name": "solc-version"
+                        },
+                        {
+                            "id": "slither_low_level_calls",
+                            "name": "low-level-calls"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_deprecated_standards",
+                            "name": "deprecated-standards"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

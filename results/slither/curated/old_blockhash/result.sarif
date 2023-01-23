@@ -1,0 +1,89 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PredictTheBlockHashChallenge, function lockInGuess"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "endLine": 30,
+                                    "startLine": 24
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PredictTheBlockHashChallenge.lockInGuess (old_blockhash.sol#24-30) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract PredictTheBlockHashChallenge, function settle"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "endLine": 41,
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "PredictTheBlockHashChallenge.settle (old_blockhash.sol#32-41) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/old_blockhash.sol"
+                                },
+                                "region": {
+                                    "endLine": 16,
+                                    "startLine": 13
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Struct 'PredictTheBlockHashChallenge.guess' (old_blockhash.sol#13-16) is not in CapWords\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        },
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

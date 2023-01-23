@@ -1,0 +1,25 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol:
+/sb/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol:19:13: Warning: Return value of low-level calls not used.
+            caddress.call(id,from,_tos[i],v[i]*1000000000000000000);
+            ^-----------------------------------------------------^
+
+INFO:root:contract /sb/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol:EBU:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 34.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol:13:5: Warning: Integer Overflow.
+    function transfer(address[] _tos,uint[] v)public returns (bool){
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _tos = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/0x4a66ad0bca2d700f11e1f2fc2c106f7d3264504c.sol:19:13: Warning: Callstack Depth Attack Vulnerability.
+            caddress.call(id,from,_tos[i],v[i]*1000000000000000000)
+INFO:symExec:	====== Analysis Completed ======

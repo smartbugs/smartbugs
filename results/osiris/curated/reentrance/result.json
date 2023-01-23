@@ -1,0 +1,40 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 10,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 5,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 14,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 10,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 24,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 7,
+            "contract": "Reentrance",
+            "filename": "dataset/reentrancy/reentrance.sol",
+            "line": 27,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

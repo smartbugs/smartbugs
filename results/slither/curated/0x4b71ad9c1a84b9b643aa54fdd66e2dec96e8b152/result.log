@@ -1,0 +1,21 @@
+INFO:Slither:Compilation warnings/errors on /sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol:
+/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol:17:13: Warning: Return value of low-level calls not used.
+            caddress.call(id,from,_tos[i],v);
+            ^------------------------------^
+
+INFO:Detectors:[92m
+airPort.transfer has external calls inside a loop:
+	- caddress.call(id,from,_tos[i],v) (/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol#17)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation/_edit#calls-inside-a-loop[0m
+INFO:Detectors:[92m
+airPort.transfer (/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol#12-20) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Low level call in airPort.transfer (/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol#12-20):
+	-caddress.call(id,from,_tos[i],v) /sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol#17
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Contract 'airPort' (/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol#10-21) is not in CapWords
+Parameter '_tos' of airPort.transfer (/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol#12) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol analyzed (1 contracts), 5 result(s) found

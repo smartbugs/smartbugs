@@ -1,0 +1,88 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenSaleChallenge"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/tokensalechallenge.sol"
+                                },
+                                "region": {
+                                    "startColumn": 30,
+                                    "startLine": 23
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenSaleChallenge"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/tokensalechallenge.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract TokenSaleChallenge"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/tokensalechallenge.sol"
+                                },
+                                "region": {
+                                    "startColumn": 29,
+                                    "startLine": 33
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Overflow bugs"
+                    },
+                    "ruleId": "osiris_Overflow_bugs"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/Osiris",
+                    "name": "Osiris",
+                    "rules": [
+                        {
+                            "id": "osiris_Overflow_bugs",
+                            "name": "Overflow bugs"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

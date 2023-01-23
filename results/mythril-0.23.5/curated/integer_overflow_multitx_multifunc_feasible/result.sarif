@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract IntegerOverflowMultiTxMultiFuncFeasible, function run(uint256)"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol"
+                                },
+                                "region": {
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "The arithmetic operator can underflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. \nClassification: SWC-101\nSeverity: High"
+                    },
+                    "ruleId": "mythril_0_23_5_Integer_Arithmetic_Bugs"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/ConsenSys/mythril",
+                    "name": "Mythril",
+                    "rules": [
+                        {
+                            "fullDescription": {
+                                "text": "The arithmetic operator can underflow/overflow It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue. Classification: SWC-101. Detection method: For every SUB instruction, check if there is a possible state where the second operand is larger than the first one. For every ADD, MUL instruction, check if there is a possible state where the result of the operation overflows."
+                            },
+                            "help": {
+                                "text": "It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue."
+                            },
+                            "id": "mythril_0_23_5_Integer_Arithmetic_Bugs",
+                            "name": "Integer Arithmetic Bugs",
+                            "properties": {
+                                "security-severity": "8.0"
+                            },
+                            "shortDescription": {
+                                "text": "The arithmetic operator can underflow/overflow"
+                            }
+                        }
+                    ],
+                    "version": "0.23.5"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

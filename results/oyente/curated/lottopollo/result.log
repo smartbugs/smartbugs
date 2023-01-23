@@ -1,0 +1,39 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/lottopollo.sol:
+/sb/lottopollo.sol:14:7: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      msg.sender.send( msg.value );
+      ^--------------------------^
+/sb/lottopollo.sol:16:12: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+      if ( this.balance > 0 ) {
+           ^----------^
+/sb/lottopollo.sol:17:22: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        leader.send( this.balance );
+                     ^----------^
+/sb/lottopollo.sol:17:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        leader.send( this.balance );
+        ^-------------------------^
+/sb/lottopollo.sol:25:3: Warning: No visibility specified. Defaulting to "public". 
+  function randomGen() constant returns (uint randomNumber) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottopollo.sol:29:3: Warning: No visibility specified. Defaulting to "public". 
+  function draw(uint seed){
+  ^ (Relevant source part starts here and spans across multiple lines).
+/sb/lottopollo.sol:29:17: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+  function draw(uint seed){
+                ^-------^
+
+INFO:root:contract /sb/lottopollo.sol:lottopollo:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 57.6%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/lottopollo.sol:14:7: Warning: Callstack Depth Attack Vulnerability.
+      msg.sender.send( msg.value )
+/sb/lottopollo.sol:17:9: Warning: Callstack Depth Attack Vulnerability.
+        leader.send( this.balance )
+INFO:symExec:	====== Analysis Completed ======

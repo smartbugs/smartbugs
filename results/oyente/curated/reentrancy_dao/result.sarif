@@ -1,0 +1,97 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReentrancyDAO"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_dao.sol"
+                                },
+                                "region": {
+                                    "startColumn": 31,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Callstack Depth Attack Vulnerability"
+                    },
+                    "ruleId": "oyente_Callstack_Depth_Attack_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReentrancyDAO"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_dao.sol"
+                                },
+                                "region": {
+                                    "startColumn": 9,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Integer Overflow"
+                    },
+                    "ruleId": "oyente_Integer_Overflow"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract ReentrancyDAO"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/reentrancy_dao.sol"
+                                },
+                                "region": {
+                                    "startColumn": 31,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Re-Entrancy Vulnerability"
+                    },
+                    "ruleId": "oyente_Re_Entrancy_Vulnerability"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/smartbugs/oyente",
+                    "name": "Oyente",
+                    "rules": [
+                        {
+                            "id": "oyente_Callstack_Depth_Attack_Vulnerability",
+                            "name": "Callstack Depth Attack Vulnerability"
+                        },
+                        {
+                            "id": "oyente_Integer_Overflow",
+                            "name": "Integer Overflow"
+                        },
+                        {
+                            "id": "oyente_Re_Entrancy_Vulnerability",
+                            "name": "Re-Entrancy Vulnerability"
+                        }
+                    ],
+                    "version": "#480e725"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

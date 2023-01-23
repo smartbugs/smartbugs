@@ -1,0 +1,323 @@
+INFO:Detectors:[91m
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) sends eth to arbitrary user
+	Dangerous calls:
+	- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (/sb/spank_chain_payment.sol#534)
+	- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (/sb/spank_chain_payment.sol#535)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[91m
+Reentrancy in LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],Channels[_lcID].erc20Balances[0]),CreateChannel: token transfer failure) (/sb/spank_chain_payment.sol#430)
+	External calls sending eth:
+	- Channels[_lcID].partyAddresses[0].transfer(Channels[_lcID].ethBalances[0]) (/sb/spank_chain_payment.sol#426)
+	State variables written after the call(s):
+	- Channels (/sb/spank_chain_payment.sol#436)
+Reentrancy in LedgerChannel.byzantineCloseChannel (/sb/spank_chain_payment.sol#756-817):
+	External calls:
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (/sb/spank_chain_payment.sol#803-806)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (/sb/spank_chain_payment.sol#807-810)
+	External calls sending eth:
+	- channel.partyAddresses[0].transfer(ethbalanceA) (/sb/spank_chain_payment.sol#798)
+	- channel.partyAddresses[1].transfer(ethbalanceI) (/sb/spank_chain_payment.sol#799)
+	State variables written after the call(s):
+	- Channels (/sb/spank_chain_payment.sol#813)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities[0m
+INFO:Detectors:[93m
+ECTools.recoverSigner (/sb/spank_chain_payment.sol#62-88) is declared view but contains assembly code
+ECTools.uintToBytes32 (/sb/spank_chain_payment.sol#132-135) is declared view but contains assembly code
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) is declared view but contains assembly code
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#constant-functions-changing-the-state[0m
+INFO:Detectors:[93m
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) uses a dangerous strict equality:
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) uses a dangerous strict equality:
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == true)
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1])
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])
+	- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))
+	- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) uses a dangerous strict equality:
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == true)
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1])
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])
+	- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))
+	- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))
+LedgerChannel.createChannel (/sb/spank_chain_payment.sol#380-418) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) uses a dangerous strict equality:
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == true)
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1])
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])
+	- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))
+	- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))
+LedgerChannel.createChannel (/sb/spank_chain_payment.sol#380-418) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)
+LedgerChannel.deposit (/sb/spank_chain_payment.sol#465-492) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel)
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])
+	- Channels[_lcID].partyAddresses[0] == recipient
+	- Channels[_lcID].partyAddresses[1] == recipient
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) uses a dangerous strict equality:
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == true)
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1])
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])
+	- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))
+	- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))
+LedgerChannel.createChannel (/sb/spank_chain_payment.sol#380-418) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)
+LedgerChannel.deposit (/sb/spank_chain_payment.sol#465-492) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel)
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])
+	- Channels[_lcID].partyAddresses[0] == recipient
+	- Channels[_lcID].partyAddresses[1] == recipient
+LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#615-657) uses a dangerous strict equality:
+	- require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true)
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false)
+LedgerChannel._isContained (/sb/spank_chain_payment.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) uses a dangerous strict equality:
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0]
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0]
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == true)
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1])
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3])
+	- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA))
+	- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI))
+LedgerChannel.createChannel (/sb/spank_chain_payment.sol#380-418) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.)
+LedgerChannel.deposit (/sb/spank_chain_payment.sol#465-492) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel)
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1])
+	- Channels[_lcID].partyAddresses[0] == recipient
+	- Channels[_lcID].partyAddresses[1] == recipient
+LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#615-657) uses a dangerous strict equality:
+	- require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true)
+LedgerChannel.joinChannel (/sb/spank_chain_payment.sol#439-460) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == false)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[1])
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#dangerous-strict-equalities[0m
+INFO:Detectors:[93m
+Reentrancy in LedgerChannel.createChannel (/sb/spank_chain_payment.sol#380-418):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),CreateChannel: token transfer failure) (/sb/spank_chain_payment.sol#406)
+	State variables written after the call(s):
+	- Channels (/sb/spank_chain_payment.sol#407)
+	- Channels (/sb/spank_chain_payment.sol#410)
+	- Channels (/sb/spank_chain_payment.sol#411)
+	- Channels (/sb/spank_chain_payment.sol#414)
+	- Channels (/sb/spank_chain_payment.sol#415)
+Reentrancy in LedgerChannel.deposit (/sb/spank_chain_payment.sol#465-492):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (/sb/spank_chain_payment.sol#473)
+	State variables written after the call(s):
+	- Channels (/sb/spank_chain_payment.sol#474)
+	- Channels (/sb/spank_chain_payment.sol#487)
+Reentrancy in LedgerChannel.deposit (/sb/spank_chain_payment.sol#465-492):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (/sb/spank_chain_payment.sol#473)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (/sb/spank_chain_payment.sol#483)
+	State variables written after the call(s):
+	- Channels (/sb/spank_chain_payment.sol#484)
+Reentrancy in LedgerChannel.joinChannel (/sb/spank_chain_payment.sol#439-460):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (/sb/spank_chain_payment.sol#449)
+	State variables written after the call(s):
+	- Channels (/sb/spank_chain_payment.sol#450)
+	- Channels (/sb/spank_chain_payment.sol#453)
+	- Channels (/sb/spank_chain_payment.sol#454)
+	- Channels (/sb/spank_chain_payment.sol#456)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities-1[0m
+INFO:Detectors:[92m
+Reentrancy in LedgerChannel.byzantineCloseChannel (/sb/spank_chain_payment.sol#756-817):
+	External calls:
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (/sb/spank_chain_payment.sol#803-806)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (/sb/spank_chain_payment.sol#807-810)
+	External calls sending eth:
+	- channel.partyAddresses[0].transfer(ethbalanceA) (/sb/spank_chain_payment.sol#798)
+	- channel.partyAddresses[1].transfer(ethbalanceI) (/sb/spank_chain_payment.sol#799)
+	State variables written after the call(s):
+	- numChannels (/sb/spank_chain_payment.sol#814)
+Reentrancy in LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],_balances[2]),happyCloseChannel: token transfer failure) (/sb/spank_chain_payment.sol#539)
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[1],_balances[3]),happyCloseChannel: token transfer failure) (/sb/spank_chain_payment.sol#540)
+	External calls sending eth:
+	- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (/sb/spank_chain_payment.sol#534)
+	- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (/sb/spank_chain_payment.sol#535)
+	State variables written after the call(s):
+	- numChannels (/sb/spank_chain_payment.sol#543)
+Reentrancy in LedgerChannel.joinChannel (/sb/spank_chain_payment.sol#439-460):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (/sb/spank_chain_payment.sol#449)
+	State variables written after the call(s):
+	- numChannels (/sb/spank_chain_payment.sol#457)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#reentrancy-vulnerabilities-2[0m
+INFO:Detectors:[92m
+ECTools.recoverSigner uses assembly (/sb/spank_chain_payment.sol#62-88)
+	- /sb/spank_chain_payment.sol#76-81
+ECTools.uintToBytes32 uses assembly (/sb/spank_chain_payment.sol#132-135)
+	- /sb/spank_chain_payment.sol#134-135
+LedgerChannel._isContained uses assembly (/sb/spank_chain_payment.sol#819-834)
+	- /sb/spank_chain_payment.sol#824-826
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#assembly-usage[0m
+INFO:Detectors:[92m
+HumanStandardToken.version should be constant (/sb/spank_chain_payment.sol#236)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#state-variables-that-could-be-declared-constant[0m
+INFO:Detectors:[92m
+StandardToken.balanceOf (/sb/spank_chain_payment.sol#205-207) should be declared external
+Token.balanceOf (/sb/spank_chain_payment.sol#28) should be declared external
+Token.transfer (/sb/spank_chain_payment.sol#34) should be declared external
+StandardToken.transfer (/sb/spank_chain_payment.sol#182-192) should be declared external
+StandardToken.transferFrom (/sb/spank_chain_payment.sol#194-203) should be declared external
+Token.transferFrom (/sb/spank_chain_payment.sol#41) should be declared external
+Token.approve (/sb/spank_chain_payment.sol#47) should be declared external
+StandardToken.approve (/sb/spank_chain_payment.sol#209-213) should be declared external
+StandardToken.allowance (/sb/spank_chain_payment.sol#215-217) should be declared external
+Token.allowance (/sb/spank_chain_payment.sol#52) should be declared external
+ECTools.isSignedBy (/sb/spank_chain_payment.sol#91-95) should be declared external
+ECTools.toEthereumSignedMessage (/sb/spank_chain_payment.sol#139-144) should be declared external
+HumanStandardToken.approveAndCall (/sb/spank_chain_payment.sol#252-261) should be declared external
+LedgerChannel.createChannel (/sb/spank_chain_payment.sol#380-418) should be declared external
+LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420-437) should be declared external
+LedgerChannel.joinChannel (/sb/spank_chain_payment.sol#439-460) should be declared external
+LedgerChannel.deposit (/sb/spank_chain_payment.sol#465-492) should be declared external
+LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#495-546) should be declared external
+LedgerChannel.updateLCstate (/sb/spank_chain_payment.sol#550-612) should be declared external
+LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#615-657) should be declared external
+LedgerChannel.settleVC (/sb/spank_chain_payment.sol#662-723) should be declared external
+LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725-752) should be declared external
+LedgerChannel.byzantineCloseChannel (/sb/spank_chain_payment.sol#756-817) should be declared external
+LedgerChannel.getChannel (/sb/spank_chain_payment.sol#837-866) should be declared external
+LedgerChannel.getVirtualChannel (/sb/spank_chain_payment.sol#868-895) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/spank_chain_payment.sol:
+	- pragma solidity^0.4.23 (/sb/spank_chain_payment.sol#9): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in HumanStandardToken.approveAndCall (/sb/spank_chain_payment.sol#252-261):
+	-require(bool)(_spender.call(bytes4(bytes32(keccak256()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) /sb/spank_chain_payment.sol#259
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Parameter '_hashedMsg' of ECTools.recoverSigner (/sb/spank_chain_payment.sol#62) is not in mixedCase
+Parameter '_sig' of ECTools.recoverSigner (/sb/spank_chain_payment.sol#62) is not in mixedCase
+Parameter '_hashedMsg' of ECTools.isSignedBy (/sb/spank_chain_payment.sol#91) is not in mixedCase
+Parameter '_sig' of ECTools.isSignedBy (/sb/spank_chain_payment.sol#91) is not in mixedCase
+Parameter '_addr' of ECTools.isSignedBy (/sb/spank_chain_payment.sol#91) is not in mixedCase
+Parameter '_hexstr' of ECTools.hexstrToBytes (/sb/spank_chain_payment.sol#98) is not in mixedCase
+Parameter '_char' of ECTools.parseInt16Char (/sb/spank_chain_payment.sol#116) is not in mixedCase
+Parameter '_msg' of ECTools.toEthereumSignedMessage (/sb/spank_chain_payment.sol#139) is not in mixedCase
+Parameter '_uint' of ECTools.uintToString (/sb/spank_chain_payment.sol#147) is not in mixedCase
+Parameter '_str' of ECTools.substring (/sb/spank_chain_payment.sol#167) is not in mixedCase
+Parameter '_startIndex' of ECTools.substring (/sb/spank_chain_payment.sol#167) is not in mixedCase
+Parameter '_endIndex' of ECTools.substring (/sb/spank_chain_payment.sol#167) is not in mixedCase
+Parameter '_owner' of StandardToken.balanceOf (/sb/spank_chain_payment.sol#205) is not in mixedCase
+Parameter '_to' of StandardToken.transfer (/sb/spank_chain_payment.sol#182) is not in mixedCase
+Parameter '_value' of StandardToken.transfer (/sb/spank_chain_payment.sol#182) is not in mixedCase
+Parameter '_from' of StandardToken.transferFrom (/sb/spank_chain_payment.sol#194) is not in mixedCase
+Parameter '_to' of StandardToken.transferFrom (/sb/spank_chain_payment.sol#194) is not in mixedCase
+Parameter '_value' of StandardToken.transferFrom (/sb/spank_chain_payment.sol#194) is not in mixedCase
+Parameter '_spender' of StandardToken.approve (/sb/spank_chain_payment.sol#209) is not in mixedCase
+Parameter '_value' of StandardToken.approve (/sb/spank_chain_payment.sol#209) is not in mixedCase
+Parameter '_owner' of StandardToken.allowance (/sb/spank_chain_payment.sol#215) is not in mixedCase
+Parameter '_spender' of StandardToken.allowance (/sb/spank_chain_payment.sol#215) is not in mixedCase
+Parameter '_initialAmount' of HumanStandardToken. (/sb/spank_chain_payment.sol#239) is not in mixedCase
+Parameter '_tokenName' of HumanStandardToken. (/sb/spank_chain_payment.sol#240) is not in mixedCase
+Parameter '_decimalUnits' of HumanStandardToken. (/sb/spank_chain_payment.sol#241) is not in mixedCase
+Parameter '_tokenSymbol' of HumanStandardToken. (/sb/spank_chain_payment.sol#242) is not in mixedCase
+Parameter '_spender' of HumanStandardToken.approveAndCall (/sb/spank_chain_payment.sol#252) is not in mixedCase
+Parameter '_value' of HumanStandardToken.approveAndCall (/sb/spank_chain_payment.sol#252) is not in mixedCase
+Parameter '_extraData' of HumanStandardToken.approveAndCall (/sb/spank_chain_payment.sol#252) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.createChannel (/sb/spank_chain_payment.sol#381) is not in mixedCase
+Parameter '_partyI' of LedgerChannel.createChannel (/sb/spank_chain_payment.sol#382) is not in mixedCase
+Parameter '_confirmTime' of LedgerChannel.createChannel (/sb/spank_chain_payment.sol#383) is not in mixedCase
+Parameter '_token' of LedgerChannel.createChannel (/sb/spank_chain_payment.sol#384) is not in mixedCase
+Parameter '_balances' of LedgerChannel.createChannel (/sb/spank_chain_payment.sol#385) is not in mixedCase
+Function 'LedgerChannel.LCOpenTimeout' (/sb/spank_chain_payment.sol#420-437) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.LCOpenTimeout (/sb/spank_chain_payment.sol#420) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.joinChannel (/sb/spank_chain_payment.sol#439) is not in mixedCase
+Parameter '_balances' of LedgerChannel.joinChannel (/sb/spank_chain_payment.sol#439) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.deposit (/sb/spank_chain_payment.sol#465) is not in mixedCase
+Parameter '_balance' of LedgerChannel.deposit (/sb/spank_chain_payment.sol#465) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#496) is not in mixedCase
+Parameter '_sequence' of LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#497) is not in mixedCase
+Parameter '_balances' of LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#498) is not in mixedCase
+Parameter '_sigA' of LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#499) is not in mixedCase
+Parameter '_sigI' of LedgerChannel.consensusCloseChannel (/sb/spank_chain_payment.sol#500) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.updateLCstate (/sb/spank_chain_payment.sol#551) is not in mixedCase
+Parameter '_VCroot' of LedgerChannel.updateLCstate (/sb/spank_chain_payment.sol#553) is not in mixedCase
+Parameter '_sigA' of LedgerChannel.updateLCstate (/sb/spank_chain_payment.sol#554) is not in mixedCase
+Parameter '_sigI' of LedgerChannel.updateLCstate (/sb/spank_chain_payment.sol#555) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#616) is not in mixedCase
+Parameter '_vcID' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#617) is not in mixedCase
+Parameter '_proof' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#618) is not in mixedCase
+Parameter '_partyA' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#619) is not in mixedCase
+Parameter '_partyB' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#620) is not in mixedCase
+Parameter '_bond' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#621) is not in mixedCase
+Parameter '_balances' of LedgerChannel.initVCstate (/sb/spank_chain_payment.sol#622) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.settleVC (/sb/spank_chain_payment.sol#663) is not in mixedCase
+Parameter '_vcID' of LedgerChannel.settleVC (/sb/spank_chain_payment.sol#664) is not in mixedCase
+Parameter '_partyA' of LedgerChannel.settleVC (/sb/spank_chain_payment.sol#666) is not in mixedCase
+Parameter '_partyB' of LedgerChannel.settleVC (/sb/spank_chain_payment.sol#667) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725) is not in mixedCase
+Parameter '_vcID' of LedgerChannel.closeVirtualChannel (/sb/spank_chain_payment.sol#725) is not in mixedCase
+Parameter '_lcID' of LedgerChannel.byzantineCloseChannel (/sb/spank_chain_payment.sol#756) is not in mixedCase
+Function 'LedgerChannel._isContained' (/sb/spank_chain_payment.sol#819-834) is not in mixedCase
+Parameter '_hash' of LedgerChannel._isContained (/sb/spank_chain_payment.sol#819) is not in mixedCase
+Parameter '_proof' of LedgerChannel._isContained (/sb/spank_chain_payment.sol#819) is not in mixedCase
+Parameter '_root' of LedgerChannel._isContained (/sb/spank_chain_payment.sol#819) is not in mixedCase
+Variable 'LedgerChannel.Channels' (/sb/spank_chain_payment.sol#378) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/spank_chain_payment.sol analyzed (5 contracts), 120 result(s) found

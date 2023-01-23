@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Log"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol"
+                                },
+                                "region": {
+                                    "startLine": 72
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Classification: SWC-110\nSeverity: Medium"
+                    },
+                    "ruleId": "confuzzius_Assertion_Failure"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/christoftorres/ConFuzzius",
+                    "name": "ConFuzzius",
+                    "rules": [
+                        {
+                            "id": "confuzzius_Assertion_Failure",
+                            "name": "Assertion Failure"
+                        }
+                    ],
+                    "version": "#4315fb7 v0.0.1"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 13,
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": 71,
+            "name": "Overflow bugs"
+        },
+        {
+            "column": 16,
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": 94,
+            "name": "Reentrancy bug"
+        },
+        {
+            "column": 17,
+            "contract": "TokenBank",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": 96,
+            "name": "Underflow bugs"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

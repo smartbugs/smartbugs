@@ -1,0 +1,22 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "contract": "MultiOwnable",
+            "filename": "dataset/access_control/multiowned_vulnerable.sol",
+            "name": "No Ether lock (Ether refused)"
+        },
+        {
+            "contract": "TestContract",
+            "filename": "dataset/access_control/multiowned_vulnerable.sol",
+            "name": "Not destructible (no self-destruct)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "maian",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

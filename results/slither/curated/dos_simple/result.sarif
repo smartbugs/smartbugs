@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract DosOneFunc, function ifillArray"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/dos_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 26,
+                                    "startLine": 14
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "DosOneFunc.ifillArray (dos_simple.sol#14-26) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

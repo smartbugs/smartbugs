@@ -1,0 +1,30 @@
+{
+    "errors": [
+        "EXIT_CODE_1"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "column": 2,
+            "filename": "dataset/access_control/phishable.sol",
+            "level": "error",
+            "line": 7,
+            "message": "Expected indentation of 0 spaces but found 1",
+            "name": "indent"
+        },
+        {
+            "column": 2,
+            "filename": "dataset/access_control/phishable.sol",
+            "level": "error",
+            "line": 9,
+            "message": "Expected indentation of 0 spaces but found 1",
+            "name": "indent"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "solhint",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

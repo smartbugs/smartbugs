@@ -1,0 +1,24 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 13,
+            "contract": "Ethraffle_v4b",
+            "filename": "dataset/bad_randomness/etheraffle.sol",
+            "line": 81,
+            "name": "Integer Overflow"
+        },
+        {
+            "contract": "Ethraffle_v4b",
+            "filename": "dataset/bad_randomness/etheraffle.sol",
+            "name": "Transaction-Ordering Dependence (TOD)"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "oyente",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,124 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 2496,
+            "contract": "StandardToken",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transfer(address,uint256)",
+            "line": 50,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 6938,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "migrate(uint256)",
+            "line": 478,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 6555,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "PartialFundsTransfer(uint256)",
+            "line": 439,
+            "name": "Unchecked Low Level Call"
+        },
+        {
+            "address": 6702,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "FundsTransfer()",
+            "line": 433,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 5274,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transferFrom(address,address,uint256)",
+            "line": 302,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 7587,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "finalize()",
+            "line": 465,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6555,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "PartialFundsTransfer(uint256)",
+            "line": 439,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 6534,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "PartialFundsTransfer(uint256)",
+            "line": 439,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 6086,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setBonusCreationRate(uint256)",
+            "line": 427,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 6262,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "burn(uint256)",
+            "line": 262,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 6922,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "migrate(uint256)",
+            "line": 477,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 5197,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "transferFrom(address,address,uint256)",
+            "line": 300,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 758,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "_fallthrough",
+            "line": 329,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 2119,
+            "contract": "daoPOLSKAtokens",
+            "filename": "dataset/unchecked_low_level_calls/0x19cf8481ea15427a98ba3cdd6d9e14690011ab10.sol",
+            "function": "setTokenInformation(string,string)",
+            "line": 338,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

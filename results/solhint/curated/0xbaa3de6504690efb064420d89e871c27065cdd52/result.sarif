@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol"
+                                },
+                                "region": {
+                                    "startColumn": 56,
+                                    "startLine": 10
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Expected indentation of 4 spaces but found 55"
+                    },
+                    "ruleId": "solhint_indent"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/protofire/solhint",
+                    "name": "Solhint",
+                    "rules": [
+                        {
+                            "id": "solhint_indent",
+                            "name": "indent"
+                        }
+                    ],
+                    "version": "2.1.0"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

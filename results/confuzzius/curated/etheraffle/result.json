@@ -1,0 +1,46 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_TIMEOUT"
+    ],
+    "findings": [
+        {
+            "contract": "Ethraffle_v4b",
+            "filename": "dataset/bad_randomness/etheraffle.sol",
+            "line": 83,
+            "message": "Classification: SWC-101",
+            "name": "Integer Overflow",
+            "severity": "High"
+        },
+        {
+            "contract": "Ethraffle_v4b",
+            "filename": "dataset/bad_randomness/etheraffle.sol",
+            "line": 81,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Ethraffle_v4b",
+            "filename": "dataset/bad_randomness/etheraffle.sol",
+            "line": 158,
+            "message": "Classification: SWC-114",
+            "name": "Transaction Order Dependency",
+            "severity": "Medium"
+        },
+        {
+            "contract": "Ethraffle_v4b",
+            "filename": "dataset/bad_randomness/etheraffle.sol",
+            "line": 150,
+            "message": "Classification: SWC-104",
+            "name": "Unhandled Exception",
+            "severity": "Medium"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "confuzzius",
+        "mode": "solidity",
+        "version": "2022/12/10"
+    }
+}

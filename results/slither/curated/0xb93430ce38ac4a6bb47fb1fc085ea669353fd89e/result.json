@@ -1,0 +1,203 @@
+{
+    "errors": [
+        "EXIT_CODE_21"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "PrivateBank",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "function": "CashOut",
+            "impact": "High",
+            "line": 33,
+            "line_end": 44,
+            "message": "Reentrancy in PrivateBank.CashOut (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#33-44):\n\tExternal calls:\n\t- msg.sender.call.value(_am)() (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#38-42)\n\tState variables written after the call(s):\n\t- balances (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#40)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 13,
+            "message": "PrivateBank.MinDeposit should be constant (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#13)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "PrivateBank",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "function": "Deposit",
+            "impact": "Informational",
+            "line": 22,
+            "line_end": 31,
+            "message": "PrivateBank.Deposit (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#22-31) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PrivateBank",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "function": "CashOut",
+            "impact": "Informational",
+            "line": 33,
+            "line_end": 44,
+            "message": "PrivateBank.CashOut (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#33-44) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "PrivateBank",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 46,
+            "message": "PrivateBank.fallback (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#46) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "function": "AddMessage",
+            "impact": "Informational",
+            "line": 65,
+            "line_end": 73,
+            "message": "Log.AddMessage (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#65-73) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol:\n\t- pragma solidity^0.4.19 (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "PrivateBank",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "function": "CashOut",
+            "impact": "Informational",
+            "line": 33,
+            "line_end": 44,
+            "message": "Low level call in PrivateBank.CashOut (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#33-44):\n\t-msg.sender.call.value(_am)() 0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#38-42\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 17,
+            "line_end": 20,
+            "message": "Function 'PrivateBank.PrivateBank' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#17-20) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 17,
+            "message": "Parameter '_lib' of PrivateBank.PrivateBank (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#17) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 22,
+            "line_end": 31,
+            "message": "Function 'PrivateBank.Deposit' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#22-31) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 33,
+            "line_end": 44,
+            "message": "Function 'PrivateBank.CashOut' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#33-44) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 33,
+            "message": "Parameter '_am' of PrivateBank.CashOut (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#33) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 13,
+            "message": "Variable 'PrivateBank.MinDeposit' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#13) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 15,
+            "message": "Variable 'PrivateBank.TransferLog' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#15) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 65,
+            "line_end": 73,
+            "message": "Function 'Log.AddMessage' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#65-73) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 65,
+            "message": "Parameter '_adr' of Log.AddMessage (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#65) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 65,
+            "message": "Parameter '_val' of Log.AddMessage (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#65) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 65,
+            "message": "Parameter '_data' of Log.AddMessage (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#65) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 61,
+            "message": "Variable 'Log.History' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#61) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+            "impact": "Informational",
+            "line": 63,
+            "message": "Variable 'Log.LastMsg' (0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol#63) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

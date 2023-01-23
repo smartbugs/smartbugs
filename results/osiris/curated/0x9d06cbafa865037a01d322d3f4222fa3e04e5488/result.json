@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": 9,
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "line": 54,
+            "name": "Callstack bug"
+        },
+        {
+            "column": 11,
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "line": 65,
+            "name": "Concurrency bug"
+        },
+        {
+            "column": 27,
+            "contract": "Delta",
+            "filename": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.sol",
+            "line": 44,
+            "name": "Overflow bugs"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "osiris",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

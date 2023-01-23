@@ -1,0 +1,39 @@
+INFO:Slither:Compilation warnings/errors on /sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol:
+/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol:25:3485: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+ ... this.balance ... 
+     ^----------^
+/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol:26:33: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            msg.sender.transfer(this.balance);
+                                ^----------^
+/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol:35:24: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        Owner.transfer(this.balance);
+                       ^----------^
+/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol:44:9: Warning: Return value of low-level calls not used.
+        adr.call.value(msg.value)(data);
+        ^-----------------------------^
+
+INFO:Detectors:[91m
+Honey.GetFreebie (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#20-28) sends eth to arbitrary user
+	Dangerous calls:
+	- msg.sender.transfer(this.balance) (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#26)
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#functions-that-send-ether-to-arbitrary-destinations[0m
+INFO:Detectors:[92m
+Honey.fallback (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#13-18) should be declared external
+Honey.GetFreebie (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#20-28) should be declared external
+Honey.withdraw (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#30-36) should be declared external
+Honey.Command (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#38-45) should be declared external
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#public-function-that-could-be-declared-as-external[0m
+INFO:Detectors:[92m
+Detected issues with version pragma in /sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol:
+	- pragma solidity^0.4.19 (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#7): it allows old versions
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#incorrect-version-of-solidity[0m
+INFO:Detectors:[92m
+Low level call in Honey.Command (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#38-45):
+	-adr.call.value(msg.value)(data) /sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#44
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#low-level-calls[0m
+INFO:Detectors:[92m
+Function 'Honey.GetFreebie' (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#20-28) is not in mixedCase
+Function 'Honey.Command' (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#38-45) is not in mixedCase
+Variable 'Honey.Owner' (/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol#11) is not in mixedCase
+Reference: https://github.com/trailofbits/slither/wiki/Detectors-Documentation#conformance-to-solidity-naming-conventions[0m
+INFO:Slither:/sb/0xe4eabdca81e31d9acbc4af76b30f532b6ed7f3bf.sol analyzed (1 contracts), 10 result(s) found

@@ -1,0 +1,223 @@
+{
+    "errors": [
+        "EXIT_CODE_23"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "confidence": "Medium",
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "CashOut",
+            "impact": "High",
+            "line": 37,
+            "line_end": 50,
+            "message": "Reentrancy in ETH_FUND.CashOut (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#37-50):\n\tExternal calls:\n\t- msg.sender.call.value(_am)() (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#44-48)\n\tState variables written after the call(s):\n\t- balances (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#46)\n",
+            "name": "reentrancy-eth"
+        },
+        {
+            "confidence": "Medium",
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "Deposit",
+            "impact": "Low",
+            "line": 25,
+            "line_end": 35,
+            "message": "Reentrancy in ETH_FUND.Deposit (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#25-35):\n\tExternal calls:\n\t- TransferLog.AddMessage(msg.sender,msg.value,Deposit) (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#32)\n\tState variables written after the call(s):\n\t- lastBlock (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#33)\n",
+            "name": "reentrancy-benign"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 13,
+            "message": "ETH_FUND.MinDeposit should be constant (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#13)\n",
+            "name": "constable-states"
+        },
+        {
+            "confidence": "High",
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "Deposit",
+            "impact": "Informational",
+            "line": 25,
+            "line_end": 35,
+            "message": "ETH_FUND.Deposit (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#25-35) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "CashOut",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 50,
+            "message": "ETH_FUND.CashOut (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#37-50) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "fallback",
+            "impact": "Informational",
+            "line": 52,
+            "message": "ETH_FUND.fallback (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#52) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "contract": "Log",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "AddMessage",
+            "impact": "Informational",
+            "line": 71,
+            "line_end": 79,
+            "message": "Log.AddMessage (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#71-79) should be declared external\n",
+            "name": "external-function"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 7,
+            "message": "Detected issues with version pragma in 0x941d225236464a25eb18076df7da6a91d0f95e9e.sol:\n\t- pragma solidity^0.4.19 (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#7): it allows old versions\n",
+            "name": "solc-version"
+        },
+        {
+            "confidence": "High",
+            "contract": "ETH_FUND",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "function": "CashOut",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 50,
+            "message": "Low level call in ETH_FUND.CashOut (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#37-50):\n\t-msg.sender.call.value(_am)() 0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#44-48\n",
+            "name": "low-level-calls"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 9,
+            "line_end": 54,
+            "message": "Contract 'ETH_FUND' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#9-54) is not in CapWords\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 19,
+            "line_end": 23,
+            "message": "Function 'ETH_FUND.ETH_FUND' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#19-23) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 19,
+            "message": "Parameter '_log' of ETH_FUND.ETH_FUND (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#19) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 25,
+            "line_end": 35,
+            "message": "Function 'ETH_FUND.Deposit' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#25-35) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 37,
+            "line_end": 50,
+            "message": "Function 'ETH_FUND.CashOut' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#37-50) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 37,
+            "message": "Parameter '_am' of ETH_FUND.CashOut (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#37) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 13,
+            "message": "Variable 'ETH_FUND.MinDeposit' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#13) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 15,
+            "message": "Variable 'ETH_FUND.TransferLog' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#15) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 71,
+            "line_end": 79,
+            "message": "Function 'Log.AddMessage' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#71-79) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 71,
+            "message": "Parameter '_adr' of Log.AddMessage (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#71) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 71,
+            "message": "Parameter '_val' of Log.AddMessage (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#71) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 71,
+            "message": "Parameter '_data' of Log.AddMessage (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#71) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 67,
+            "message": "Variable 'Log.History' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#67) is not in mixedCase\n",
+            "name": "naming-convention"
+        },
+        {
+            "confidence": "High",
+            "filename": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+            "impact": "Informational",
+            "line": 69,
+            "message": "Variable 'Log.LastMsg' (0x941d225236464a25eb18076df7da6a91d0f95e9e.sol#69) is not in mixedCase\n",
+            "name": "naming-convention"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "slither",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

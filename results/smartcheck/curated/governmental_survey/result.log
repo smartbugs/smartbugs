@@ -1,0 +1,97 @@
+/sb/governmental_survey.sol
+jar:file:/usr/local/lib/node_modules/@smartdec/smartcheck/jdeploy-bundle/smartcheck-2.0-jar-with-dependencies.jar!/solidity-rules.xmlruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 19
+column: 27
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 23
+column: 29
+content: throw
+
+ruleId: SOLIDITY_DEPRECATED_CONSTRUCTIONS
+patternId: 49bd2a
+severity: 1
+line: 32
+column: 6
+content: throw
+
+ruleId: SOLIDITY_PRAGMAS_VERSION
+patternId: 23fc32
+severity: 1
+line: 8
+column: 16
+content: ^
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 19
+column: 4
+content: if(msg.value<1ether)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 23
+column: 4
+content: if(msg.value<jackpot/2)throw;
+
+ruleId: SOLIDITY_REVERT_REQUIRE
+patternId: c56b12
+severity: 1
+line: 31
+column: 4
+content: if(block.timestamp<lastInvestmentTimestamp+ONE_MINUTE)throw;
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 34
+column: 17
+content: send(jackpot)
+
+ruleId: SOLIDITY_UNCHECKED_CALL
+patternId: f39eed
+severity: 3
+line: 35
+column: 10
+content: send(this.balance-1ether)
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 17
+column: 2
+content: functionGovernmental(){owner=msg.sender;if(msg.value<1ether)throw;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 22
+column: 2
+content: functioninvest(){if(msg.value<jackpot/2)throw;lastInvestor=msg.sender;jackpot+=msg.value/2;lastInvestmentTimestamp=block.timestamp;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 30
+column: 2
+content: functionresetInvestment(){if(block.timestamp<lastInvestmentTimestamp+ONE_MINUTE)throw;lastInvestor.send(jackpot);owner.send(this.balance-1ether);lastInvestor=0;jackpot=1ether;lastInvestmentTimestamp=0;}
+
+ruleId: SOLIDITY_VISIBILITY
+patternId: 910067
+severity: 1
+line: 45
+column: 2
+content: functionattack(addresstarget,uintcount){if(0<=count&&count<1023){this.attack.gas(msg.gas-2000)(target,count+1);}else{Governmental(target).resetInvestment();}}
+
+SOLIDITY_VISIBILITY :4
+SOLIDITY_DEPRECATED_CONSTRUCTIONS :3
+SOLIDITY_PRAGMAS_VERSION :1
+SOLIDITY_REVERT_REQUIRE :3
+SOLIDITY_UNCHECKED_CALL :2

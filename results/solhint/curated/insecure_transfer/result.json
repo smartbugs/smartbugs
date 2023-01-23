@@ -1,0 +1,30 @@
+{
+    "errors": [
+        "EXIT_CODE_1"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "column": 2,
+            "filename": "dataset/arithmetic/insecure_transfer.sol",
+            "level": "error",
+            "line": 2,
+            "message": "Line length must be no more than 120 but current length is 134.",
+            "name": "max-line-length"
+        },
+        {
+            "column": 1,
+            "filename": "dataset/arithmetic/insecure_transfer.sol",
+            "level": "error",
+            "line": 19,
+            "message": "Expected indentation of 4 spaces but found 0",
+            "name": "indent"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "solhint",
+        "mode": "solidity",
+        "version": "2022/11/14"
+    }
+}

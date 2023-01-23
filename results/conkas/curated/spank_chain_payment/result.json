@@ -1,0 +1,94 @@
+{
+    "errors": [],
+    "fails": [
+        "exception (binascii.Error: Non-hexadecimal digit found)"
+    ],
+    "findings": [
+        {
+            "address": 5035,
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "toEthereumSignedMessage(string)",
+            "line": 159,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 1076,
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "toEthereumSignedMessage(string)",
+            "line": 139,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 4947,
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "toEthereumSignedMessage(string)",
+            "line": 155,
+            "name": "Integer Underflow"
+        },
+        {
+            "address": 805,
+            "contract": "ECTools",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "parseInt16Char(string)",
+            "line": 116,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 3077,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "transfer(address,uint256)",
+            "line": 189,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 2108,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "transferFrom(address,address,uint256)",
+            "line": 198,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 3838,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "approveAndCall(address,uint256,bytes)",
+            "line": 259,
+            "name": "Reentrancy"
+        },
+        {
+            "address": 1202,
+            "contract": "HumanStandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "approveAndCall(address,uint256,bytes)",
+            "line": 252,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1243,
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "transferFrom(address,address,uint256)",
+            "line": 198,
+            "name": "Integer Overflow"
+        },
+        {
+            "address": 1877,
+            "contract": "StandardToken",
+            "filename": "dataset/reentrancy/spank_chain_payment.sol",
+            "function": "transfer(address,uint256)",
+            "line": 189,
+            "name": "Integer Overflow"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "conkas",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,112 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 355,
+            "contract": "Phishable",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "",
+                        "input": "0x608060405234801561001057600080fd5b5060405160208061027883398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506101f5806100836000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b1461004e578063fa09e630146100a5575b005b34801561005a57600080fd5b506100636100e8565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b157600080fd5b506100e6600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061010d565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163273ffffffffffffffffffffffffffffffffffffffff1614151561016857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f193505050501580156101c5573d6000803e3d6000fd5b50505600a165627a7a72305820be2ecd8a750399f210c87fecc83a04b5e65445066d5ac16776029b987b5187910029",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0xfa09e630",
+                        "input": "0xfa09e630",
+                        "name": "withdrawAll(address)",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/phishable.sol",
+            "function": "withdrawAll(address)",
+            "line": 20,
+            "message": "Use of tx.origin as a part of authorization control.\nThe tx.origin environment variable has been found to influence a control flow decision. Note that using tx.origin as a security control might cause a situation where a user inadvertently authorizes a smart contract to perform an action on their behalf. It is recommended to use msg.sender instead.\nClassification: SWC-115",
+            "name": "Dependence on tx.origin",
+            "severity": "Low"
+        },
+        {
+            "address": 431,
+            "contract": "Phishable",
+            "exploit": {
+                "initialState": {
+                    "accounts": {
+                        "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe": {
+                            "balance": "0x50000000000003",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        },
+                        "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {
+                            "balance": "0x0",
+                            "code": "",
+                            "nonce": 0,
+                            "storage": "{}"
+                        }
+                    }
+                },
+                "steps": [
+                    {
+                        "address": "",
+                        "calldata": "5b5b5b5b5b5b5b5b5b5b5b5bdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "input": "0x608060405234801561001057600080fd5b5060405160208061027883398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506101f5806100836000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b1461004e578063fa09e630146100a5575b005b34801561005a57600080fd5b506100636100e8565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b157600080fd5b506100e6600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061010d565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163273ffffffffffffffffffffffffffffffffffffffff1614151561016857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f193505050501580156101c5573d6000803e3d6000fd5b50505600a165627a7a72305820be2ecd8a750399f210c87fecc83a04b5e65445066d5ac16776029b987b51879100295b5b5b5b5b5b5b5b5b5b5b5bdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "name": "unknown",
+                        "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe",
+                        "value": "0x0"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0x08088000",
+                        "input": "0x08088000",
+                        "name": "unknown",
+                        "origin": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "value": "0x1"
+                    },
+                    {
+                        "address": "0x901d12ebe1b195e5aa8748e62bd7734ae19b51f",
+                        "calldata": "0xfa09e6305b5b5b5b5b5b5b5b5b5b5b5bdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "input": "0xfa09e6305b5b5b5b5b5b5b5b5b5b5b5bdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "name": "withdrawAll(address)",
+                        "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+                        "value": "0x0"
+                    }
+                ]
+            },
+            "filename": "dataset/access_control/phishable.sol",
+            "function": "withdrawAll(address)",
+            "line": 21,
+            "message": "Any sender can withdraw Ether from the contract account.\nArbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.\nClassification: SWC-105",
+            "name": "Unprotected Ether Withdrawal",
+            "severity": "High"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "mythril-0.23.5",
+        "mode": "solidity",
+        "version": "2022/11/11"
+    }
+}

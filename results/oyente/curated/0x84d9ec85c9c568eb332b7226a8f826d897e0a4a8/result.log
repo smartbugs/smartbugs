@@ -1,0 +1,115 @@
+WARNING:root:You are using solc version 0.4.26, The latest supported version is 0.4.19
+INFO:CryticCompile:Compilation warnings/errors on /sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:29:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:25: Warning: This declaration shadows an existing declaration.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+                        ^------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:67:5: The shadowed declaration is here:
+    uint public indexdate;
+    ^-------------------^
+
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:41: Warning: This declaration shadows an existing declaration.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+                                        ^---------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:65:5: The shadowed declaration is here:
+    string public wedaddress;
+    ^----------------------^
+
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:60: Warning: This declaration shadows an existing declaration.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+                                                           ^-----------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:66:5: The shadowed declaration is here:
+    string public partnernames;
+    ^------------------------^
+
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:81: Warning: This declaration shadows an existing declaration.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+                                                                                ^--------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:68:5: The shadowed declaration is here:
+    uint public weddingdate;
+    ^---------------------^
+
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:99: Warning: This declaration shadows an existing declaration.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+                                                                                                  ^------------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:69:5: The shadowed declaration is here:
+    uint public displaymultisig;
+    ^-------------------------^
+
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:56:9: Warning: Return value of low-level calls not used.
+        _dst.call.value(_value)(_data);
+        ^----------------------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:89:9: Warning: Invoking events without "emit" prefix is deprecated.
+        IndexWritten(now, wedaddress, partnernames, weddingdate, displaymultisig);
+        ^-----------------------------------------------------------------------^
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:29:5: Warning: No visibility specified. Defaulting to "public". 
+    function Owned() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:38:5: Warning: No visibility specified. Defaulting to "public". 
+    function changeOwner(address _newOwner) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:45:5: Warning: No visibility specified. Defaulting to "public". 
+    function acceptOwnership() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:54:5: Warning: No visibility specified. Defaulting to "public". 
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:5: Warning: No visibility specified. Defaulting to "public". 
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:25: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+                        ^------------^
+
+INFO:root:contract /sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:WedIndex:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 31.8%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:66:5: Warning: Integer Underflow.
+    string public partnernames
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:65:5: Warning: Integer Underflow.
+    string public wedaddress
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:71:5: Warning: Integer Underflow.
+    IndexArray[] public indexarray
+INFO:symExec:/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:87:5: Warning: Integer Overflow.
+    function writeIndex(uint indexdate, string wedaddress, string partnernames, uint weddingdate, uint displaymultisig) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    wedaddress = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:71:5: Warning: Integer Overflow.
+    IndexArray[] public indexarray
+/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:54:5: Warning: Integer Overflow.
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^
+Spanning multiple lines.
+INFO:symExec:/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:56:9: Warning: Callstack Depth Attack Vulnerability.
+        _dst.call.value(_value)(_data)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract /sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:Owned:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 67.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:54:5: Warning: Integer Overflow.
+    function execute(address _dst, uint _value, bytes _data) onlyOwner {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:/sb/0x84d9ec85c9c568eb332b7226a8f826d897e0a4a8.sol:56:9: Warning: Callstack Depth Attack Vulnerability.
+        _dst.call.value(_value)(_data)
+INFO:symExec:	====== Analysis Completed ======

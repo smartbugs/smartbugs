@@ -1,0 +1,8 @@
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+ANTLR runtime and generated code versions disagree: 4.9.2!=4.7.2
+Analysing /sb/wallet_03_wrong_constructor.sol:Wallet...
+Vulnerability: Integer Overflow. Maybe in function: deposit(). PC: 0x35d. Line number: 24.
+If a = 115792089237316195423570985008687907851908855197956810185604085578185788449618
+and b = 1361129467683753853853498429727341281281
+Vulnerability: Reentrancy. Maybe in function: withdraw(uint256). PC: 0x176. Line number: 30.
+Vulnerability: Reentrancy. Maybe in function: 0x4ddaf8f2. PC: 0x2c1. Line number: 38.

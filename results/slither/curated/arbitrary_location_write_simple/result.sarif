@@ -1,0 +1,212 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function fallback"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 19,
+                                    "startLine": 18
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.fallback (arbitrary_location_write_simple.sol#18-19) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function PushBonusCode"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 23,
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.PushBonusCode (arbitrary_location_write_simple.sol#21-23) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function PopBonusCode"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 29,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.PopBonusCode (arbitrary_location_write_simple.sol#25-29) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function UpdateBonusCodeAt"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 34,
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.UpdateBonusCodeAt (arbitrary_location_write_simple.sol#31-34) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "message": {
+                                "text": "contract Wallet, function Destroy"
+                            },
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 39,
+                                    "startLine": 36
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Wallet.Destroy (arbitrary_location_write_simple.sol#36-39) should be declared external\n"
+                    },
+                    "ruleId": "slither_external_function"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 23,
+                                    "startLine": 21
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Wallet.PushBonusCode' (arbitrary_location_write_simple.sol#21-23) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 29,
+                                    "startLine": 25
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Wallet.PopBonusCode' (arbitrary_location_write_simple.sol#25-29) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 34,
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Wallet.UpdateBonusCodeAt' (arbitrary_location_write_simple.sol#31-34) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/arbitrary_location_write_simple.sol"
+                                },
+                                "region": {
+                                    "endLine": 39,
+                                    "startLine": 36
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Function 'Wallet.Destroy' (arbitrary_location_write_simple.sol#36-39) is not in mixedCase\n"
+                    },
+                    "ruleId": "slither_naming_convention"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/crytic/slither",
+                    "name": "Slither",
+                    "rules": [
+                        {
+                            "id": "slither_external_function",
+                            "name": "external-function"
+                        },
+                        {
+                            "id": "slither_naming_convention",
+                            "name": "naming-convention"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}
