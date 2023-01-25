@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/etherstore.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 1185,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "checkedCallStateUpdate"
+                    },
+                    "ruleId": "vandal_checkedCallStateUpdate"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/etherstore.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 1185,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "reentrantCall"
+                    },
+                    "ruleId": "vandal_reentrantCall"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/usyd-blockchain/vandal",
+                    "name": "Vandal",
+                    "rules": [
+                        {
+                            "id": "vandal_checkedCallStateUpdate",
+                            "name": "checkedCallStateUpdate"
+                        },
+                        {
+                            "id": "vandal_reentrantCall",
+                            "name": "reentrantCall"
+                        }
+                    ],
+                    "version": "#d2b0043"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

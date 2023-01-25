@@ -1,0 +1,84 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Found 1 CALL instructions
+INFO:root:Finished all paths
+INFO:root:CALL: (  663)  297:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f9->104->1c4->211->297
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 4 RETURN and STOP instructions
+INFO:root:End: (  248)   f8:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->e1->15d->175->f7->f8
+[ORIGIN_1 = 4660,
+ CALLER_1 = 4660,
+ CALLDATASIZE_1 = 36,
+ CALLDATA_1 = Store(Store(Store(Store(Store(K(BitVec(256),
+                                        0),
+                                        3,
+                                        74),
+                                      0,
+                                      217),
+                                4,
+                                128),
+                          2,
+                          9),
+                    1,
+                    106),
+ CALLDATASIZE_0 = 36,
+ CALLER_0 = 4660,
+ CALLDATA_0 = Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(...,
+                                        ...,
+                                        ...),
+                                        26,
+                                        172),
+                                        31,
+                                        1),
+                                        7,
+                                        250),
+                                        20,
+                                        243),
+                                        30,
+                                        30),
+                                        22,
+                                        77),
+                                        12,
+                                        166),
+                                        2,
+                                        155),
+                                        28,
+                                        99),
+                                        25,
+                                        162),
+                                        16,
+                                        111),
+                                        23,
+                                        97),
+                                        15,
+                                        241),
+                                        27,
+                                        166),
+                                        29,
+                                        37),
+                                        11,
+                                        206),
+                                      6,
+                                      8),
+                                21,
+                                109),
+                          9,
+                          162),
+                    1,
+                    132),
+ CALLVALUE_1 = 0,
+ BALANCE_1 = 28823037677449248769,
+ CALLVALUE_0 = 0,
+ ORIGIN_0 = 4660,
+ SHA3_4c_0 = 110336139452806081405069343840860127994419505884627922841905626668596794748105]
+0: 0->d->41->4c->e1->15d->175->f7->f8
+1: 0->d->41->4c->57->f9->104->1c4->211->297
+[{'origin': 4660, 'caller': 4660, 'value': 0, 'payload': b'\xd9j\tJ\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'}, {'caller': 4660, 'value': 0, 'origin': 4660, 'payload': b'\xe4\x84\x9b2\x00\x00\x08\xfa%\xa2\x86\xce\xa6"(\xf1oQ\x95\xbd\xf3mMa\xd7\xa2\xac\xa6c%\x1e\x01\x03 \x00\x0c'}]
+eth.sendTransaction({from:"0x0000000000000000000000000000000000001234", data:"0xd96a094a8000000000000000000000000000000000000000000000000000000000000000", to:"0x4000000000000000000000000000000000000000", gasPrice:0})
+eth.sendTransaction({from:"0x0000000000000000000000000000000000001234", data:"0xe4849b32000008fa25a286cea62228f16f5195bdf36d4d61d7a2aca663251e010320000c", to:"0x4000000000000000000000000000000000000000", gasPrice:0})

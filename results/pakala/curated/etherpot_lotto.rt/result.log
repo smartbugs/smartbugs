@@ -1,0 +1,34 @@
+INFO [01-25|09:07:19.270] Starting Geth in ephemeral dev mode... 
+INFO [01-25|09:07:19.913] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [01-25|09:07:19.915] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [01-25|09:07:20.197] Set global gas cap                       cap=50,000,000
+INFO [01-25|09:07:51.141] Using developer account                  address=0x3743376E2ce69104fce9F3e3F727Cc875c9D185e
+INFO [01-25|09:07:51.190] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [01-25|09:07:51.212] Writing custom genesis block 
+INFO [01-25|09:07:51.456] Persisted trie from memory database      nodes=12 size=1.82KiB time=1.66675ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [01-25|09:07:51.568] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, MergeFork: <nil>, Engine: clique}"
+INFO [01-25|09:07:51.630] Initialising Ethereum protocol           network=1337 dbversion=<nil>
+INFO [01-25|09:07:51.761] Loaded most recent local header          number=0 hash=aced99..d5cdc8 td=1 age=53y10mo2d
+INFO [01-25|09:07:51.807] Loaded most recent local full block      number=0 hash=aced99..d5cdc8 td=1 age=53y10mo2d
+INFO [01-25|09:07:51.816] Loaded most recent local fast block      number=0 hash=aced99..d5cdc8 td=1 age=53y10mo2d
+WARN [01-25|09:07:51.838] Failed to load snapshot, regenerating    err="missing or corrupted snapshot"
+INFO [01-25|09:07:51.897] Rebuilding state snapshot 
+INFO [01-25|09:07:54.210] Stored checkpoint snapshot to disk       number=0 hash=aced99..d5cdc8
+INFO [01-25|09:07:54.212] Resuming state snapshot generation       root=5b1450..0781fc accounts=0 slots=0 storage=0.00B elapsed=2.314s
+INFO [01-25|09:07:54.296] Gasprice oracle is ignoring threshold set threshold=2
+WARN [01-25|09:07:54.323] Error reading unclean shutdown markers   error="not found"
+INFO [01-25|09:07:54.409] Starting peer-to-peer node               instance=Geth/v1.10.14-stable-11a3a350/linux-amd64/go1.17.5
+WARN [01-25|09:07:54.410] P2P server will be useless, neither dialing nor listening 
+INFO [01-25|09:07:54.545] Generated state snapshot                 accounts=10 slots=0 storage=412.00B elapsed=2.647s
+INFO [01-25|09:07:57.243] New local node record                    seq=1,674,637,674,777 id=0cabd84cacba7b17 ip=127.0.0.1 udp=0 tcp=0
+INFO [01-25|09:07:57.285] Started P2P networking                   self=enode://f423f77dd0639befddbfc882940918783a01f1f5066a08c036f219ec8b1d4d2e8c26fb303fc14ef43699e907f8f5da7ed26c72c0c9d850a1c558506be187bd77@127.0.0.1:0
+INFO [01-25|09:07:57.415] IPC endpoint opened                      url=/tmp/geth.ipc
+INFO [01-25|09:07:57.419] HTTP server started                      endpoint=127.0.0.1:8545 prefix= cors= vhosts=localhost
+INFO [01-25|09:07:57.422] Transaction pool price threshold updated price=1,000,000,000
+WARN [01-25|09:07:57.478] Failed to get free disk space            path= err="failed to call Statfs: no such file or directory"
+INFO [01-25|09:07:57.478] Updated mining threads                   threads=0
+INFO [01-25|09:07:57.478] Transaction pool price threshold updated price=1
+INFO [01-25|09:07:57.479] Etherbase automatically configured       address=0x3743376E2ce69104fce9F3e3F727Cc875c9D185e
+INFO [01-25|09:07:57.482] Commit new mining work                   number=1 sealhash=45c45d..c4b278 uncles=0 txs=0 gas=0 fees=0 elapsed=3.119ms
+WARN [01-25|09:07:57.556] Block sealing failed                     err="sealing paused while waiting for transactions"
+Killed

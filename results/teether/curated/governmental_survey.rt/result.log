@@ -1,0 +1,33 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Found 2 CALL instructions
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:CALL: (  531)  213:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->b->84->8a->1a0->1b9->213
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+1461501637330902918203684832716283019655932542975 &
+UDiv(STORAGE_1[1], 1) (83_1)
+INFO:root:CALL: (  655)  28f:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->b->84->8a->1a0->1b9->28f
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 7 RETURN and STOP instructions
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+1461501637330902918203684832716283019655932542975 &
+UDiv(STORAGE_2[1], 1) (83_2)
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+1461501637330902918203684832716283019655932542975 &
+UDiv(STORAGE_2[0], 1) (130_2)
+INFO:root:End: (  151)   97:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->b->84->8a->1a0->1b9->2df->96->97
+INFO:root:End: (  375)  177:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->b->39->44->4f->5a->65->164->16a->33f->34e->35a->38f->3ab->176->177
+INFO:root:All ends: [<teether.evm.results.SymbolicResult object at 0x4006c8bca0>, <teether.evm.results.SymbolicResult object at 0x4006cb0970>]
+INFO:root:Could not exploit any RETURN+CALL

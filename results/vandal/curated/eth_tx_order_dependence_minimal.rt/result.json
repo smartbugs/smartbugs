@@ -1,0 +1,29 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 530,
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 686,
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 686,
+            "filename": "dataset/front_running/eth_tx_order_dependence_minimal.rt.hex",
+            "name": "unsecuredValueSend"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                {
+                    "caller": "0xcafebabefffffffff0202fffffffff7cff7247c9",
+                    "data": "8a3c44a500000000000000000000000000000000000000000000000000000000",
+                    "value": 0
+                },
+                {
+                    "caller": "0xcafebabefffffffff0202fffffffff7cff7247c9",
+                    "data": "3ccfd60b00000000000000000000000000000000000000000000000000000000",
+                    "value": 0
+                }
+            ],
+            "filename": "dataset/access_control/incorrect_constructor_name3.rt.hex",
+            "name": "call bug"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "pakala",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 2692,
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 4616,
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 4616,
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.rt.hex",
+            "name": "uncheckedCall"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

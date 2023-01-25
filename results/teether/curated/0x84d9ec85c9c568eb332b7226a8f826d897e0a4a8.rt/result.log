@@ -1,0 +1,51 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:53 paths that ended prematurely due to branches: 983: 17, 9b5: 11, a07: 6, 9d2: 11, 472: 2, 95c: 2, 9a7: 2, 987: 2
+INFO:root:119 paths that ended prematurely due to branches: 983: 26, 9b5: 30, a07: 16, 472: 6, 9d2: 30, 8d8: 1, 95c: 10
+INFO:root:91 paths that ended prematurely due to branches: 983: 27, 9b5: 18, a07: 12, 4e2: 6, 9d2: 22, 95c: 6
+INFO:root:133 paths that ended prematurely due to branches: 983: 41, 9b5: 26, 977: 10, 9db: 10, 9a7: 18, 9d2: 16, a07: 4, 965: 6, 987: 2
+INFO:root:39 paths that ended prematurely due to branches: 983: 8, a07: 4, 9b5: 9, 4e2: 3, 472: 2, 9d2: 10, 95c: 3
+INFO:root:139 paths that ended prematurely due to branches: 983: 41, 9b5: 32, a07: 12, 9d2: 32, 4e2: 6, 472: 4, 9a7: 4, 95c: 6, 987: 2
+INFO:root:121 paths that ended prematurely due to branches: 983: 18, 9b5: 30, a07: 16, 4e2: 10, 472: 6, 9d2: 30, 8d8: 1, 95c: 10
+INFO:root:91 paths that ended prematurely due to branches: 983: 27, 9b5: 18, a07: 12, 4e2: 6, 9d2: 22, 95c: 6
+INFO:root:Found 1 CALL instructions
+INFO:root:Finished all paths
+INFO:root:CALL: ( 2228)  8b4:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->8d->98->3d0->3db->821->83c->85a->872->89f->8b4
+INFO:root:CALL: ( 2228)  8b4:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->8d->98->3d0->3db->821->83c->85a->872->886->89f->8b4
+INFO:root:CALL: ( 2228)  8b4:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->8d->98->3d0->3db->821->83c->85a->863->85a->872->89f->8b4
+INFO:root:CALL: ( 2228)  8b4:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->8d->98->3d0->3db->821->83c->85a->863->85a->872->886->89f->8b4
+INFO:root:CALL: ( 2228)  8b4:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->8d->98->3d0->3db->821->83c->85a->863->85a->863->85a->872->89f->8b4
+INFO:root:CALL: ( 2228)  8b4:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->8d->98->3d0->3db->821->83c->85a->863->85a->863->85a->872->886->89f->8b4
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 5 RETURN and STOP instructions
+INFO:root:End: (  398)  18e:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->40->4b->56->61->6c->23f->24a->746->75e->78d->18d->18e
+INFO:root:End: (  398)  18e:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->82->281->28c->79e->7b9->18d->18e
+INFO:root:All ends: [<teether.evm.results.SymbolicResult object at 0x4006cc56d0>, <teether.evm.results.SymbolicResult object at 0x4006da6d60>]
+INFO:root:Could not exploit any RETURN+CALL

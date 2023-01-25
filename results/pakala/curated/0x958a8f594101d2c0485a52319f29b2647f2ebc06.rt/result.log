@@ -1,0 +1,89 @@
+INFO [01-25|09:07:17.745] Starting Geth in ephemeral dev mode... 
+INFO [01-25|09:07:18.256] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [01-25|09:07:18.284] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [01-25|09:07:18.521] Set global gas cap                       cap=50,000,000
+INFO [01-25|09:07:53.045] Using developer account                  address=0x158A116340472e924a811732D8a070C281d46764
+INFO [01-25|09:07:53.199] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [01-25|09:07:53.350] Writing custom genesis block 
+INFO [01-25|09:07:53.444] Persisted trie from memory database      nodes=12 size=1.82KiB time=16.047333ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [01-25|09:07:54.842] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, MergeFork: <nil>, Engine: clique}"
+INFO [01-25|09:07:54.946] Initialising Ethereum protocol           network=1337 dbversion=<nil>
+INFO [01-25|09:07:55.062] Loaded most recent local header          number=0 hash=e52602..a908d8 td=1 age=53y10mo2d
+INFO [01-25|09:07:55.064] Loaded most recent local full block      number=0 hash=e52602..a908d8 td=1 age=53y10mo2d
+INFO [01-25|09:07:55.068] Loaded most recent local fast block      number=0 hash=e52602..a908d8 td=1 age=53y10mo2d
+WARN [01-25|09:07:55.112] Failed to load snapshot, regenerating    err="missing or corrupted snapshot"
+INFO [01-25|09:07:55.113] Rebuilding state snapshot 
+INFO [01-25|09:07:55.115] Resuming state snapshot generation       root=786d05..f6bc3b accounts=0 slots=0 storage=0.00B elapsed=2.005ms
+INFO [01-25|09:07:55.282] Generated state snapshot                 accounts=10 slots=0 storage=412.00B elapsed=31.642ms
+INFO [01-25|09:07:55.637] Gasprice oracle is ignoring threshold set threshold=2
+WARN [01-25|09:07:55.765] Error reading unclean shutdown markers   error="not found"
+INFO [01-25|09:07:55.718] Stored checkpoint snapshot to disk       number=0 hash=e52602..a908d8
+INFO [01-25|09:07:55.796] Starting peer-to-peer node               instance=Geth/v1.10.14-stable-11a3a350/linux-amd64/go1.17.5
+WARN [01-25|09:07:55.916] P2P server will be useless, neither dialing nor listening 
+INFO [01-25|09:07:58.682] New local node record                    seq=1,674,637,677,060 id=efaa64916239f68c ip=127.0.0.1 udp=0 tcp=0
+INFO [01-25|09:07:58.719] Started P2P networking                   self=enode://b11078d8ed08aab94125c564d9dd07d84d996e4ec5f4cd7e96b88855c38df0df22d7eb068cd0ece0509a83f0f34217db00015ec340608e8edab322765424f8db@127.0.0.1:0
+INFO [01-25|09:07:59.071] IPC endpoint opened                      url=/tmp/geth.ipc
+INFO [01-25|09:07:59.223] HTTP server started                      endpoint=127.0.0.1:8545 prefix= cors= vhosts=localhost
+INFO [01-25|09:07:59.355] Transaction pool price threshold updated price=1,000,000,000
+INFO [01-25|09:07:59.381] Updated mining threads                   threads=0
+WARN [01-25|09:07:59.378] Failed to get free disk space            path= err="failed to call Statfs: no such file or directory"
+INFO [01-25|09:07:59.388] Transaction pool price threshold updated price=1
+INFO [01-25|09:07:59.504] Etherbase automatically configured       address=0x158A116340472e924a811732D8a070C281d46764
+INFO [01-25|09:07:59.512] Commit new mining work                   number=1 sealhash=7e2457..9fbc92 uncles=0 txs=0 gas=0 fees=0 elapsed=2.597ms
+WARN [01-25|09:07:59.521] Block sealing failed                     err="sealing paused while waiting for transactions"
+2023-01-25 09:12:22 976d75f258f2 pakala.sm[20] WARNING Fuzzer got used (forced concretization). We will lose accuracy and risk state explosion.
+2023-01-25 09:12:37 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 1%. Queue size 11. Got 0 outcomes.
+2023-01-25 09:13:31 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 3%. Queue size 22. Got 0 outcomes.
+2023-01-25 09:14:10 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 7%. Queue size 26. Got 1 outcomes.
+2023-01-25 09:15:00 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 12%. Queue size 31. Got 2 outcomes.
+2023-01-25 09:15:20 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 13%. Queue size 39. Got 2 outcomes.
+2023-01-25 09:15:30 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 14%. Queue size 40. Got 2 outcomes.
+2023-01-25 09:15:52 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 15%. Queue size 42. Got 2 outcomes.
+2023-01-25 09:16:06 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 15%. Queue size 43. Got 2 outcomes.
+2023-01-25 09:16:19 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 18%. Queue size 50. Got 3 outcomes.
+2023-01-25 09:16:42 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 19%. Queue size 50. Got 3 outcomes.
+2023-01-25 09:16:52 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 19%. Queue size 51. Got 3 outcomes.
+2023-01-25 09:17:12 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 19%. Queue size 63. Got 3 outcomes.
+2023-01-25 09:18:06 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 20%. Queue size 103. Got 3 outcomes.
+2023-01-25 09:18:21 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 21%. Queue size 103. Got 3 outcomes.
+2023-01-25 09:18:33 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 21%. Queue size 114. Got 3 outcomes.
+2023-01-25 09:18:47 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 21%. Queue size 122. Got 3 outcomes.
+2023-01-25 09:18:59 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 22%. Queue size 123. Got 3 outcomes.
+2023-01-25 09:19:15 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 23%. Queue size 123. Got 3 outcomes.
+2023-01-25 09:20:49 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 23%. Queue size 124. Got 3 outcomes.
+2023-01-25 09:21:01 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 23%. Queue size 125. Got 3 outcomes.
+2023-01-25 09:21:14 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 24%. Queue size 127. Got 3 outcomes.
+2023-01-25 09:21:23 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 24%. Queue size 128. Got 3 outcomes.
+2023-01-25 09:21:40 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 24%. Queue size 129. Got 4 outcomes.
+2023-01-25 09:21:52 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 24%. Queue size 130. Got 4 outcomes.
+2023-01-25 09:22:11 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 26%. Queue size 130. Got 5 outcomes.
+2023-01-25 09:22:27 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 28%. Queue size 131. Got 6 outcomes.
+2023-01-25 09:22:41 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 28%. Queue size 133. Got 6 outcomes.
+2023-01-25 09:22:58 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 29%. Queue size 134. Got 6 outcomes.
+2023-01-25 09:23:16 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 29%. Queue size 134. Got 6 outcomes.
+2023-01-25 09:23:41 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 30%. Queue size 136. Got 6 outcomes.
+2023-01-25 09:24:40 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 30%. Queue size 139. Got 6 outcomes.
+2023-01-25 09:25:38 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 31%. Queue size 142. Got 6 outcomes.
+2023-01-25 09:26:07 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 31%. Queue size 143. Got 6 outcomes.
+2023-01-25 09:26:44 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 31%. Queue size 144. Got 6 outcomes.
+2023-01-25 09:26:52 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 31%. Queue size 144. Got 7 outcomes.
+2023-01-25 09:27:16 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 32%. Queue size 146. Got 7 outcomes.
+2023-01-25 09:27:31 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 32%. Queue size 147. Got 7 outcomes.
+2023-01-25 09:27:41 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 33%. Queue size 147. Got 8 outcomes.
+2023-01-25 09:27:52 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 33%. Queue size 147. Got 8 outcomes.
+2023-01-25 09:28:28 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 33%. Queue size 149. Got 8 outcomes.
+2023-01-25 09:28:52 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 34%. Queue size 159. Got 9 outcomes.
+2023-01-25 09:29:08 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 35%. Queue size 167. Got 9 outcomes.
+2023-01-25 09:30:25 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 35%. Queue size 207. Got 10 outcomes.
+2023-01-25 09:31:06 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 35%. Queue size 219. Got 11 outcomes.
+2023-01-25 09:31:42 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 35%. Queue size 220. Got 12 outcomes.
+2023-01-25 09:32:06 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 36%. Queue size 222. Got 12 outcomes.
+2023-01-25 09:32:10 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 36%. Queue size 220. Got 15 outcomes.
+2023-01-25 09:32:55 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 36%. Queue size 230. Got 15 outcomes.
+2023-01-25 09:33:22 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 36%. Queue size 230. Got 15 outcomes.
+2023-01-25 09:34:59 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 36%. Queue size 234. Got 15 outcomes.
+2023-01-25 09:35:06 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 37%. Queue size 235. Got 15 outcomes.
+2023-01-25 09:35:17 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 37%. Queue size 237. Got 15 outcomes.
+2023-01-25 09:35:39 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 37%. Queue size 238. Got 15 outcomes.
+2023-01-25 09:35:45 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 37%. Queue size 239. Got 15 outcomes.
+2023-01-25 09:36:54 976d75f258f2 pakala.sm[20] INFO_INTERACTIVE Coverage now 37%. Queue size 243. Got 15 outcomes.

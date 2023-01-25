@@ -1,0 +1,34 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 374,
+            "filename": "dataset/access_control/wallet_02_refund_nosub.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 639,
+            "filename": "dataset/access_control/wallet_02_refund_nosub.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 776,
+            "filename": "dataset/access_control/wallet_02_refund_nosub.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 776,
+            "filename": "dataset/access_control/wallet_02_refund_nosub.rt.hex",
+            "name": "unsecuredValueSend"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

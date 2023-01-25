@@ -1,0 +1,551 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Found 1 CALL instructions
+INFO:root:Finished all paths
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:Found 1 SELFDESTRUCT instructions
+INFO:root:Finished all paths
+INFO:root:SELFDESTRUCT: ( 1054)  41e:	ff	-1 +0 = -1	SELFDESTRUCT
+INFO:root:Path: 0->d->41->124->12f->3ab->406->41e
+INFO:root:Found 5 RETURN and STOP instructions
+ERROR:root:Failed path due to symbolic blockhash index
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 614, in run_symbolic
+    raise SymbolicError('symbolic blockhash index')
+teether.evm.exceptions.SymbolicError: symbolic blockhash index
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+ERROR:root:Failed path due to b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 465, in run_symbolic
+    stk.append(z3.If(s0 == s1, z3.BitVecVal(1, 256), z3.BitVecVal(0, 256)))
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3.py", line 1010, in __eq__
+    return BoolRef(Z3_mk_eq(self.ctx_ref(), a.as_ast(), b.as_ast()), self.ctx)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1762, in Z3_mk_eq
+    _elems.Check(a0)
+  File "/usr/local/lib/python3.8/site-packages/z3_solver-4.8.15.0-py3.8-linux-x86_64.egg/z3/z3core.py", line 1455, in Check
+    raise self.Exception(self.get_error_message(ctx, err))
+z3.z3types.Z3Exception: b'Sorts (_ BitVec 232) and (_ BitVec 256) are incompatible'
+INFO:root:All ends: []
+INFO:root:Could not exploit any RETURN+CALL

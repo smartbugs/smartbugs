@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/simple_suicide.rt.hex"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "selfdestruct bug"
+                    },
+                    "ruleId": "pakala_selfdestruct_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/palkeo/pakala",
+                    "name": "Pakala",
+                    "rules": [
+                        {
+                            "id": "pakala_selfdestruct_bug",
+                            "name": "selfdestruct bug"
+                        }
+                    ],
+                    "version": "#c84ef38 v1.1.10"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

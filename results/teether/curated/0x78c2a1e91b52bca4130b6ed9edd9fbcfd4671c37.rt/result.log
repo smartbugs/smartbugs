@@ -1,0 +1,46 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Found 4 CALL instructions
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:CALL: (  722)  2d2:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->6f->172->20f->26a->2d2
+INFO:root:CALL: (  722)  2d2:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->6f->172->1bb->20f->26a->2d2
+INFO:root:CALL: ( 1146)  47a:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->62->168->401->413->47a
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+1461501637330902918203684832716283019655932542975 &
+UDiv(STORAGE_3[0], 1) (88_3)
+INFO:root:CALL: ( 1233)  4d1:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->62->168->401->413->48a->4d1
+INFO:root:CALL: ( 1016)  3f8:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f7->315->370->39b->3b6->3e3->3f8
+INFO:root:CALL: ( 1016)  3f8:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f7->315->370->39b->3b6->3ca->3e3->3f8
+INFO:root:CALL: ( 1016)  3f8:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f7->315->370->39b->3a4->39b->3b6->3e3->3f8
+INFO:root:CALL: ( 1016)  3f8:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f7->315->370->39b->3a4->39b->3b6->3ca->3e3->3f8
+INFO:root:CALL: ( 1016)  3f8:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f7->315->370->39b->3a4->39b->3a4->39b->3b6->3e3->3f8
+INFO:root:CALL: ( 1016)  3f8:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->f7->315->370->39b->3a4->39b->3a4->39b->3b6->3ca->3e3->3f8
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 6 RETURN and STOP instructions
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+1461501637330902918203684832716283019655932542975 &
+UDiv(Concat(Extract(255, 160, STORAGE_10[0]),
+            698670862888103124090043688033161627232733560907),
+     1) (115_10)
+INFO:root:End: (  120)   78:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->6f->172->1bb->20f->26a->2e2->77->78
+INFO:root:All ends: [<teether.evm.results.SymbolicResult object at 0x400676ac70>]
+INFO:root:Could not exploit any RETURN+CALL

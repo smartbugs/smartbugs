@@ -1,0 +1,108 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:8 paths that ended prematurely due to branches: 23b: 2, 1e1: 1, 1f9: 1, 2e3: 1, 2cb: 1, 218: 1, 126: 1
+INFO:root:Found 2 CALL instructions
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+ERROR:root:Failed path due to unsupported operand type(s) for &: 'float' and 'int'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 473, in run_symbolic
+    stk.append(stk.pop() & stk.pop())
+TypeError: unsupported operand type(s) for &: 'float' and 'int'
+ERROR:root:Failed path due to unsupported operand type(s) for &: 'float' and 'int'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 473, in run_symbolic
+    stk.append(stk.pop() & stk.pop())
+TypeError: unsupported operand type(s) for &: 'float' and 'int'
+INFO:root:CALL: (  978)  3d2:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->27->32->3d->48->53->5e->69->74->163->37d->395->3b4->3d2
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 2 RETURN and STOP instructions
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->7f->17a->185->1a3->87->88
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->ae->b9->1ab->87->88
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->3d->e9->f4->240->258->280->87->88
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->3d->48->108->113->283->29b->87->88
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->c1->cc->1e1->1f9->218->2cb->23b->87->88
+ERROR:root:Failed path due to unsupported operand type(s) for &: 'float' and 'int'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 473, in run_symbolic
+    stk.append(stk.pop() & stk.pop())
+TypeError: unsupported operand type(s) for &: 'float' and 'int'
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->3d->48->53->5e->7f->17a->185->1a3->87->88
+ERROR:root:Failed path due to unsupported operand type(s) for &: 'float' and 'int'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 473, in run_symbolic
+    stk.append(stk.pop() & stk.pop())
+TypeError: unsupported operand type(s) for &: 'float' and 'int'
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->c1->cc->1e1->1f9->218->2cb->23b->23b->87->88
+ERROR:root:Failed path due to unsupported operand type(s) for &: 'float' and 'int'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 473, in run_symbolic
+    stk.append(stk.pop() & stk.pop())
+TypeError: unsupported operand type(s) for &: 'float' and 'int'
+INFO:root:Bad path: 0, d, 27, 32, c1, cc, 1e1, 1f9, 218, 2cb, 23b, 23b, 87, 23b
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->3d->48->53->5e->69->74->7f->17a->185->1a3->87->88
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(Concat(...,
+                                        ...),
+                                        ...[...]),
+                                        CALLDATA_15[18]),
+                                        CALLDATA_15[19]),
+                                        CALLDATA_15[20]),
+                                        CALLDATA_15[21]),
+                                        CALLDATA_15[22]),
+                                        CALLDATA_15[23]),
+                                        CALLDATA_15[24]),
+                                        CALLDATA_15[25]),
+                                        CALLDATA_15[26]),
+                                        CALLDATA_15[27]),
+                                        CALLDATA_15[28]),
+                                        CALLDATA_15[29]),
+                                        CALLDATA_15[30]),
+                                   CALLDATA_15[31]),
+                            CALLDATA_15[32]),
+                     CALLDATA_15[33]),
+              CALLDATA_15[34]),
+       CALLDATA_15[35]) &
+1461501637330902918203684832716283019655932542975 (138_15)
+INFO:root:End: (  136)   88:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->27->32->3d->48->53->5e->69->74->163->37d->395->3b4->3dc->3fb->87->88
+INFO:root:All ends: [<teether.evm.results.SymbolicResult object at 0x40066510d0>, <teether.evm.results.SymbolicResult object at 0x4006bb5df0>, <teether.evm.results.SymbolicResult object at 0x40067640d0>, <teether.evm.results.SymbolicResult object at 0x4006764df0>, <teether.evm.results.SymbolicResult object at 0x400676c610>, <teether.evm.results.SymbolicResult object at 0x400676c340>, <teether.evm.results.SymbolicResult object at 0x400676c220>, <teether.evm.results.SymbolicResult object at 0x400676d310>, <teether.evm.results.SymbolicResult object at 0x40069a3dc0>]
+INFO:root:Could not exploit any RETURN+CALL

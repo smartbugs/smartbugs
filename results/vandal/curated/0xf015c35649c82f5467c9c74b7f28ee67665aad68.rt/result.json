@@ -1,0 +1,39 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 557,
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 458,
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 557,
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 458,
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 798,
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.rt.hex",
+            "name": "uncheckedCall"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

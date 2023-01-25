@@ -1,0 +1,39 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 403,
+            "filename": "dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.rt.hex",
+            "name": "originUsed"
+        },
+        {
+            "address": 762,
+            "filename": "dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 522,
+            "filename": "dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 762,
+            "filename": "dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 522,
+            "filename": "dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.rt.hex",
+            "name": "unsecuredValueSend"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

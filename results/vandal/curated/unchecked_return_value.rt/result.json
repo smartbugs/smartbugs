@@ -1,0 +1,34 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 255,
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 312,
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.rt.hex",
+            "name": "reentrantCall"
+        },
+        {
+            "address": 255,
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 312,
+            "filename": "dataset/unchecked_low_level_calls/unchecked_return_value.rt.hex",
+            "name": "uncheckedCall"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

@@ -1,0 +1,97 @@
+INFO [01-25|09:07:18.924] Starting Geth in ephemeral dev mode... 
+INFO [01-25|09:07:19.591] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [01-25|09:07:19.644] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [01-25|09:07:20.190] Set global gas cap                       cap=50,000,000
+INFO [01-25|09:07:52.278] Using developer account                  address=0x68635B6429Ee2f69173435bEF25DA4D6B949Ac79
+INFO [01-25|09:07:52.330] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [01-25|09:07:52.387] Writing custom genesis block 
+INFO [01-25|09:07:54.651] Persisted trie from memory database      nodes=12 size=1.82KiB time=2.1145ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [01-25|09:07:54.992] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, MergeFork: <nil>, Engine: clique}"
+INFO [01-25|09:07:55.155] Initialising Ethereum protocol           network=1337 dbversion=<nil>
+INFO [01-25|09:07:55.523] Loaded most recent local header          number=0 hash=9e5231..ccce44 td=1 age=53y10mo2d
+INFO [01-25|09:07:55.570] Loaded most recent local full block      number=0 hash=9e5231..ccce44 td=1 age=53y10mo2d
+INFO [01-25|09:07:55.570] Loaded most recent local fast block      number=0 hash=9e5231..ccce44 td=1 age=53y10mo2d
+WARN [01-25|09:07:55.576] Failed to load snapshot, regenerating    err="missing or corrupted snapshot"
+INFO [01-25|09:07:55.577] Rebuilding state snapshot 
+INFO [01-25|09:07:55.578] Resuming state snapshot generation       root=c22a0f..2201b2 accounts=0 slots=0 storage=0.00B elapsed=1.689ms
+INFO [01-25|09:07:55.645] Generated state snapshot                 accounts=10 slots=0 storage=412.00B elapsed=67.861ms
+INFO [01-25|09:07:55.701] Stored checkpoint snapshot to disk       number=0 hash=9e5231..ccce44
+INFO [01-25|09:07:55.785] Gasprice oracle is ignoring threshold set threshold=2
+WARN [01-25|09:07:56.612] Error reading unclean shutdown markers   error="not found"
+INFO [01-25|09:07:56.705] Starting peer-to-peer node               instance=Geth/v1.10.14-stable-11a3a350/linux-amd64/go1.17.5
+WARN [01-25|09:07:56.717] P2P server will be useless, neither dialing nor listening 
+INFO [01-25|09:07:57.387] New local node record                    seq=1,674,637,677,056 id=7fa33c3d38cf7faa ip=127.0.0.1 udp=0 tcp=0
+INFO [01-25|09:07:57.391] Started P2P networking                   self=enode://3bf365116911349a154a60ac9a99e7040b12a8f40e89a1b70d6333625f76f940658b483d1963212b3a4b77a09a37c918028300f3cc0d5ce6ac940167d9dcff5d@127.0.0.1:0
+INFO [01-25|09:07:58.548] IPC endpoint opened                      url=/tmp/geth.ipc
+INFO [01-25|09:07:58.554] HTTP server started                      endpoint=127.0.0.1:8545 prefix= cors= vhosts=localhost
+INFO [01-25|09:07:58.557] Transaction pool price threshold updated price=1,000,000,000
+INFO [01-25|09:07:58.561] Updated mining threads                   threads=0
+INFO [01-25|09:07:58.561] Transaction pool price threshold updated price=1
+INFO [01-25|09:07:58.562] Etherbase automatically configured       address=0x68635B6429Ee2f69173435bEF25DA4D6B949Ac79
+WARN [01-25|09:07:58.561] Failed to get free disk space            path= err="failed to call Statfs: no such file or directory"
+WARN [01-25|09:07:58.566] Block sealing failed                     err="sealing paused while waiting for transactions"
+INFO [01-25|09:07:58.566] Commit new mining work                   number=1 sealhash=0d2eca..612e46 uncles=0 txs=0 gas=0 fees=0 elapsed=2.389ms
+2023-01-25 09:12:49 5715342be29b pakala.sm[21] INFO Analysis finished with 7 outcomes (3 interesting, 0 unfinished), coverage is 96%
+2023-01-25 09:13:09 5715342be29b pakala.recursive_analyzer[21] INFO_INTERACTIVE Now scanning paths of length 1.
+WARN [01-25|09:13:11.641] Served parity_listStorageKeys            conn=127.0.0.1:56252 reqid=1 duration=8.3205ms err="the method parity_listStorageKeys does not exist/is not available"
+2023-01-25 09:13:11 5715342be29b pakala.analyzer[21] WARNING Cannot list storage keys (ValueError). We will lose a bit of accuracy. Try to use a node that supports the parity_listStorageKeys RPC. 
+2023-01-25 09:13:13 5715342be29b pakala.analyzer[21] INFO Loaded 10 storage slots from the contract (non-exhaustive). 0 non-zero.
+2023-01-25 09:13:18 5715342be29b pakala.recursive_analyzer[21] INFO_INTERACTIVE Now scanning paths of length 2.
+2023-01-25 09:13:25 5715342be29b pakala.analyzer[21] INFO Found call bug.
+Analyzing contract at 0xDEADBEEF00000000000000000000000000000000 with balance 1.337000 ether.
+Starting symbolic execution step...
+Symbolic execution finished with coverage 96%.
+Outcomes: 3 interesting. 7 total and 0 unfinished paths.
+
+Starting analysis step...
+Path:
+
+Transaction 1, symbolic state:
+{
+"selfdestruct_to": None,
+"calls": [],
+"storage_written": {<BV256 0x0>: <BV256 0x1 | 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00 & storage[<BV256 0x0>]_128_256>},
+"storage_read": {<BV256 0x0>: <BV256 storage[<BV256 0x0>]_128_256>, <BV256 0x1>: <BV256 storage[<BV256 0x1>]_129_256>},
+"env": {'balance': <BV256 0x128dfa6a90b28000>,
+ 'caller': <BV256 0xcafebabefffffffff0202fffffffff7cff7247c9>,
+ 'value': <BV256 value_119_256>},
+"solver": {'constraints': [<Bool 0x4 <= calldata_size_123_256>,
+                 <Bool calldata[0]_127_256[255:224] == 0x8f1c0585>,
+                 <Bool value_119_256 == 0x0>,
+                 <Bool storage[<BV256 0x0>]_128_256[7:0] == 0>],
+ 'hashes': {}},
+}
+
+Transaction 1, example solution:
+{'caller': '0xcafebabefffffffff0202fffffffff7cff7247c9',
+ 'data': '8f1c058500000000000000000000000000000000000000000000000000000000',
+ 'value': 0}
+
+
+Transaction 2, symbolic state:
+{'calls': [[<BV256 0x0>,
+            <BV256 0x60>,
+            <BV256 0x0>,
+            <BV256 0x60>,
+            <BV256 0x128dfa6a90b28000>,
+            <BV256 0xcafebabefffffffff0202fffffffff7cff7247c9>,
+            <BV256 0x0>]],
+ 'env': {'balance': <BV256 0x128dfa6a90b28000>,
+         'caller': <BV256 0xcafebabefffffffff0202fffffffff7cff7247c9>,
+         'value': <BV256 value_31_256>},
+ 'selfdestruct_to': None,
+ 'solver': {'constraints': [<Bool 0x4 <= calldata_size_35_256>,
+                            <Bool calldata[0]_39_256[255:224] == 0x1846f51a>,
+                            <Bool value_31_256 == 0x0>,
+                            <Bool !storage[<BV256 0x0>]_40_256[7:0] == 0>],
+            'hashes': {}},
+ 'storage_read': {<BV256 0x0>: <BV256 storage[<BV256 0x0>]_40_256>},
+ 'storage_written': {}}
+
+Transaction 2, example solution:
+{'caller': '0xcafebabefffffffff0202fffffffff7cff7247c9',
+ 'data': '1846f51a00000000000000000000000000000000000000000000000000000000',
+ 'value': 0}
+
+
+======> Bug found! Need 2 transactions. <======

@@ -1,0 +1,50 @@
+INFO [01-25|09:07:16.906] Starting Geth in ephemeral dev mode... 
+INFO [01-25|09:07:17.692] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [01-25|09:07:17.694] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [01-25|09:07:18.305] Set global gas cap                       cap=50,000,000
+INFO [01-25|09:07:52.409] Using developer account                  address=0x5A4630f33f04edea7bB9428270cBE2464c75c7B1
+INFO [01-25|09:07:52.412] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [01-25|09:07:52.414] Writing custom genesis block 
+INFO [01-25|09:07:52.951] Persisted trie from memory database      nodes=12 size=1.82KiB time=1.733542ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [01-25|09:07:52.996] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, MergeFork: <nil>, Engine: clique}"
+INFO [01-25|09:07:53.023] Initialising Ethereum protocol           network=1337 dbversion=<nil>
+INFO [01-25|09:07:53.272] Loaded most recent local header          number=0 hash=1d5577..57a520 td=1 age=53y10mo2d
+INFO [01-25|09:07:53.292] Loaded most recent local full block      number=0 hash=1d5577..57a520 td=1 age=53y10mo2d
+INFO [01-25|09:07:53.293] Loaded most recent local fast block      number=0 hash=1d5577..57a520 td=1 age=53y10mo2d
+WARN [01-25|09:07:53.308] Failed to load snapshot, regenerating    err="missing or corrupted snapshot"
+INFO [01-25|09:07:53.309] Rebuilding state snapshot 
+INFO [01-25|09:07:53.462] Resuming state snapshot generation       root=7978ee..6f330d accounts=0 slots=0 storage=0.00B elapsed=152.829ms
+INFO [01-25|09:07:54.036] Generated state snapshot                 accounts=10 slots=0 storage=412.00B elapsed=726.961ms
+INFO [01-25|09:07:54.241] Stored checkpoint snapshot to disk       number=0 hash=1d5577..57a520
+INFO [01-25|09:07:54.262] Gasprice oracle is ignoring threshold set threshold=2
+WARN [01-25|09:07:54.271] Error reading unclean shutdown markers   error="not found"
+INFO [01-25|09:07:54.324] Starting peer-to-peer node               instance=Geth/v1.10.14-stable-11a3a350/linux-amd64/go1.17.5
+WARN [01-25|09:07:54.336] P2P server will be useless, neither dialing nor listening 
+INFO [01-25|09:07:55.917] IPC endpoint opened                      url=/tmp/geth.ipc
+INFO [01-25|09:07:56.066] HTTP server started                      endpoint=127.0.0.1:8545 prefix= cors= vhosts=localhost
+INFO [01-25|09:07:56.139] Transaction pool price threshold updated price=1,000,000,000
+INFO [01-25|09:07:56.140] Updated mining threads                   threads=0
+INFO [01-25|09:07:56.140] Transaction pool price threshold updated price=1
+INFO [01-25|09:07:56.140] Etherbase automatically configured       address=0x5A4630f33f04edea7bB9428270cBE2464c75c7B1
+INFO [01-25|09:07:56.143] Commit new mining work                   number=1 sealhash=499428..3b6012 uncles=0 txs=0 gas=0 fees=0 elapsed=1.702ms
+WARN [01-25|09:07:56.144] Block sealing failed                     err="sealing paused while waiting for transactions"
+WARN [01-25|09:07:56.144] Failed to get free disk space            path= err="failed to call Statfs: no such file or directory"
+INFO [01-25|09:07:56.267] New local node record                    seq=1,674,637,674,627 id=0dc141336857df15 ip=127.0.0.1 udp=0 tcp=0
+INFO [01-25|09:07:56.292] Started P2P networking                   self=enode://dc46403c0fa3481ed89dc60a784112701c60ef1ce254484bfeb3b59767aa5ed3de34adae6430487111eea6e6fd5b7bb2d5377d06f23629672a709f50953fa9fe@127.0.0.1:0
+2023-01-25 09:11:33 aff20bfa3e85 pakala.sm[20] INFO_INTERACTIVE Coverage now 1%. Queue size 2. Got 0 outcomes.
+2023-01-25 09:13:19 aff20bfa3e85 pakala.sm[20] INFO Analysis finished with 11 outcomes (3 interesting, 0 unfinished), coverage is 96%
+2023-01-25 09:13:52 aff20bfa3e85 pakala.recursive_analyzer[20] INFO_INTERACTIVE Now scanning paths of length 1.
+WARN [01-25|09:13:55.046] Served parity_listStorageKeys            conn=127.0.0.1:56146 reqid=1 duration="334.458µs" err="the method parity_listStorageKeys does not exist/is not available"
+2023-01-25 09:13:55 aff20bfa3e85 pakala.analyzer[20] WARNING Cannot list storage keys (ValueError). We will lose a bit of accuracy. Try to use a node that supports the parity_listStorageKeys RPC. 
+2023-01-25 09:13:56 aff20bfa3e85 pakala.analyzer[20] INFO Loaded 10 storage slots from the contract (non-exhaustive). 0 non-zero.
+2023-01-25 09:14:09 aff20bfa3e85 pakala.recursive_analyzer[20] INFO_INTERACTIVE Now scanning paths of length 2.
+2023-01-25 09:14:57 aff20bfa3e85 pakala.recursive_analyzer[20] INFO_INTERACTIVE Now scanning paths of length 3.
+2023-01-25 09:17:52 aff20bfa3e85 pakala.recursive_analyzer[20] INFO_INTERACTIVE Now scanning paths of length 4.
+2023-01-25 09:35:34 aff20bfa3e85 pakala.recursive_analyzer[20] INFO_INTERACTIVE Now scanning paths of length 5.
+Analyzing contract at 0xDEADBEEF00000000000000000000000000000000 with balance 1.337000 ether.
+Starting symbolic execution step...
+Symbolic execution finished with coverage 96%.
+Outcomes: 3 interesting. 11 total and 0 unfinished paths.
+
+Starting analysis step...
+Nothing to report.

