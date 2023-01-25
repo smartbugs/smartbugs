@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": "9",
+            "column_end": "41",
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+            "line": "55",
+            "line_end": "55",
+            "name": "Missing Check of Return Value from external Call"
+        },
+        {
+            "column": "5",
+            "column_end": "7",
+            "filename": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol",
+            "line": "37",
+            "line_end": "39",
+            "name": "Non constructor function insufficiently restricts writes to to access control variables"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "ccc",
+        "mode": "solidity",
+        "version": ""
+    }
+}

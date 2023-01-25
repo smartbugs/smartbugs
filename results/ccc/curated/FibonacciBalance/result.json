@@ -1,0 +1,36 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": "17",
+            "column_end": "56",
+            "filename": "dataset/access_control/FibonacciBalance.sol",
+            "line": "38",
+            "line_end": "38",
+            "name": "No whitelisting of calls proxied to another contract"
+        },
+        {
+            "column": "50",
+            "column_end": "55",
+            "filename": "dataset/access_control/FibonacciBalance.sol",
+            "line": "60",
+            "line_end": "60",
+            "name": "Result of expression can be over- or under-flown by external entity"
+        },
+        {
+            "column": "31",
+            "column_end": "36",
+            "filename": "dataset/access_control/FibonacciBalance.sol",
+            "line": "60",
+            "line_end": "60",
+            "name": "Result of expression can be over- or under-flown by external entity"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "ccc",
+        "mode": "solidity",
+        "version": ""
+    }
+}
