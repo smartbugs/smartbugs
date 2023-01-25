@@ -10,7 +10,14 @@ FINDINGS: set[str]  = {
     "Missing Check of Return Value from external Call",
     "Reentrancy Vulnerability",
     "Result of expression can be over- or under-flown by external entity",
-    "Access control enforcement through transactions origin is vulnerable to phishing attacks "
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",
+    "Missing Access Control to Selfdestruct",
+    "Operation may lead to a denial of essential contract function.",
+    "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution.",
+    "No whitelisting of calls proxied to another contract",
+    "Write to uninitialized variable might unintentionally write to storage.",
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",
+    "Time Manipulation Vulnerability"
 }
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
