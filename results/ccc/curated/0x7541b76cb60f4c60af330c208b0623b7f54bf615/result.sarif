@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol"
+                                },
+                                "region": {
+                                    "endColumn": 37,
+                                    "endLine": 76,
+                                    "startColumn": 25,
+                                    "startLine": 76
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Message padding vulnerability found at ether transfer."
+                    },
+                    "ruleId": "ccc_Message_padding_vulnerability_found_at_ether_transfer"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol"
+                                },
+                                "region": {
+                                    "endColumn": 44,
+                                    "endLine": 29,
+                                    "startColumn": 16,
+                                    "startLine": 29
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy Vulnerability"
+                    },
+                    "ruleId": "ccc_Reentrancy_Vulnerability"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/Fraunhofer-AISEC/cpg-contract-checker",
+                    "name": "CCC",
+                    "rules": [
+                        {
+                            "id": "ccc_Message_padding_vulnerability_found_at_ether_transfer",
+                            "name": "Message padding vulnerability found at ether transfer."
+                        },
+                        {
+                            "id": "ccc_Reentrancy_Vulnerability",
+                            "name": "Reentrancy Vulnerability"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

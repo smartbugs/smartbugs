@@ -1,0 +1,114 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol"
+                                },
+                                "region": {
+                                    "endColumn": 37,
+                                    "endLine": 71,
+                                    "startColumn": 25,
+                                    "startLine": 71
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Message padding vulnerability found at ether transfer."
+                    },
+                    "ruleId": "ccc_Message_padding_vulnerability_found_at_ether_transfer"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol"
+                                },
+                                "region": {
+                                    "endColumn": 44,
+                                    "endLine": 44,
+                                    "startColumn": 16,
+                                    "startLine": 44
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy Vulnerability"
+                    },
+                    "ruleId": "ccc_Reentrancy_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol"
+                                },
+                                "region": {
+                                    "endColumn": 69,
+                                    "endLine": 32,
+                                    "startColumn": 13,
+                                    "startLine": 32
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Reentrancy Vulnerability"
+                    },
+                    "ruleId": "ccc_Reentrancy_Vulnerability"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol"
+                                },
+                                "region": {
+                                    "endColumn": 46,
+                                    "endLine": 31,
+                                    "startColumn": 13,
+                                    "startLine": 31
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Result of expression can be over- or under-flown by external entity"
+                    },
+                    "ruleId": "ccc_Result_of_expression_can_be_over_or_under_flown_by_external_entity"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/Fraunhofer-AISEC/cpg-contract-checker",
+                    "name": "CCC",
+                    "rules": [
+                        {
+                            "id": "ccc_Result_of_expression_can_be_over_or_under_flown_by_external_entity",
+                            "name": "Result of expression can be over- or under-flown by external entity"
+                        },
+                        {
+                            "id": "ccc_Message_padding_vulnerability_found_at_ether_transfer",
+                            "name": "Message padding vulnerability found at ether transfer."
+                        },
+                        {
+                            "id": "ccc_Reentrancy_Vulnerability",
+                            "name": "Reentrancy Vulnerability"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}
