@@ -5432,3 +5432,406 @@ Starting task 143/143: solhint and dataset/unchecked_low_level_calls/0x70f9eddb3
 Starting task 124/143: solhint and dataset/unchecked_low_level_calls/0xd5967fed03e85d1cce44cab284695b41bc675b5c.sol
 Starting task 134/143: solhint and dataset/denial_of_service/dos_number.sol
 Analysis completed in 0:00:04.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol', 'dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol', 'dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol', 'dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol', 'dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', 'dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol', 'dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', 'dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', 'dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', 'dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol', 'dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol', 'dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol', 'dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol', 'dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol', 'dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol', 'dataset/reentrancy/etherbank.sol', 'dataset/reentrancy/etherstore.sol', 'dataset/reentrancy/modifier_reentrancy.sol', 'dataset/reentrancy/reentrance.sol', 'dataset/reentrancy/reentrancy_bonus.sol', 'dataset/reentrancy/reentrancy_cross_function.sol', 'dataset/reentrancy/reentrancy_dao.sol', 'dataset/reentrancy/reentrancy_insecure.sol', 'dataset/reentrancy/reentrancy_simple.sol', 'dataset/reentrancy/simple_dao.sol', 'dataset/reentrancy/spank_chain_payment.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol'), (None, 'dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol'), (None, 'dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol'), (None, 'dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol'), (None, 'dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol'), (None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol'), (None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol'), (None, 'dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol'), (None, 'dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol'), (None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol'), (None, 'dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol'), (None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol'), (None, 'dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol'), (None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol'), (None, 'dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol'), (None, 'dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol'), (None, 'dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol'), (None, 'dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol'), (None, 'dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol'), (None, 'dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol'), (None, 'dataset/reentrancy/etherbank.sol'), (None, 'dataset/reentrancy/etherstore.sol'), (None, 'dataset/reentrancy/modifier_reentrancy.sol'), (None, 'dataset/reentrancy/reentrance.sol'), (None, 'dataset/reentrancy/reentrancy_bonus.sol'), (None, 'dataset/reentrancy/reentrancy_cross_function.sol'), (None, 'dataset/reentrancy/reentrancy_dao.sol'), (None, 'dataset/reentrancy/reentrancy_insecure.sol'), (None, 'dataset/reentrancy/reentrancy_simple.sol'), (None, 'dataset/reentrancy/simple_dao.sol'), (None, 'dataset/reentrancy/spank_chain_payment.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/31: ccc and dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol
+Starting task 2/31: ccc and dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol
+Starting task 3/31: ccc and dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol
+Starting task 4/31: ccc and dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol
+Starting task 5/31: ccc and dataset/reentrancy/reentrancy_dao.sol
+Starting task 7/31: ccc and dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol
+Starting task 6/31: ccc and dataset/reentrancy/modifier_reentrancy.sol
+Starting task 8/31: ccc and dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol
+Starting task 9/31: ccc and dataset/reentrancy/reentrancy_cross_function.sol
+Starting task 10/31: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Starting task 11/31: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Starting task 12/31: ccc and dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol
+Starting task 14/31: ccc and dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol
+Starting task 13/31: ccc and dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol
+Starting task 17/31: ccc and dataset/reentrancy/reentrance.sol
+Starting task 15/31: ccc and dataset/reentrancy/reentrancy_bonus.sol
+Starting task 16/31: ccc and dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol
+Starting task 20/31: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Starting task 19/31: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Starting task 21/31: ccc and dataset/reentrancy/etherbank.sol
+Starting task 18/31: ccc and dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol
+Starting task 22/31: ccc and dataset/reentrancy/simple_dao.sol
+Starting task 24/31: ccc and dataset/reentrancy/reentrancy_simple.sol
+Starting task 23/31: ccc and dataset/reentrancy/etherstore.sol
+Starting task 25/31: ccc and dataset/reentrancy/spank_chain_payment.sol
+Starting task 26/31: ccc and dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol
+Starting task 27/31: ccc and dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol
+Starting task 29/31: ccc and dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol
+Starting task 28/31: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Starting task 30/31: ccc and dataset/reentrancy/reentrancy_insecure.sol
+Starting task 31/31: ccc and dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol with ccc failed.
+Parsing of results failed
+
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol with ccc failed.
+Parsing of results failed
+
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol with ccc failed.
+Parsing of results failed
+
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol with ccc failed.
+Parsing of results failed
+
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/reentrance.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/reentrance.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/reentrance.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Analysis completed in 0:00:15.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/1: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Analysis completed in 0:00:03.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol', 'dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol', 'dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol', 'dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol', 'dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', 'dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol', 'dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', 'dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', 'dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', 'dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol', 'dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol', 'dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol', 'dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol', 'dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol', 'dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol', 'dataset/reentrancy/etherbank.sol', 'dataset/reentrancy/etherstore.sol', 'dataset/reentrancy/modifier_reentrancy.sol', 'dataset/reentrancy/reentrance.sol', 'dataset/reentrancy/reentrancy_bonus.sol', 'dataset/reentrancy/reentrancy_cross_function.sol', 'dataset/reentrancy/reentrancy_dao.sol', 'dataset/reentrancy/reentrancy_insecure.sol', 'dataset/reentrancy/reentrancy_simple.sol', 'dataset/reentrancy/simple_dao.sol', 'dataset/reentrancy/spank_chain_payment.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol'), (None, 'dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol'), (None, 'dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol'), (None, 'dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol'), (None, 'dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol'), (None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol'), (None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol'), (None, 'dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol'), (None, 'dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol'), (None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol'), (None, 'dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol'), (None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol'), (None, 'dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol'), (None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol'), (None, 'dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol'), (None, 'dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol'), (None, 'dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol'), (None, 'dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol'), (None, 'dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol'), (None, 'dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol'), (None, 'dataset/reentrancy/etherbank.sol'), (None, 'dataset/reentrancy/etherstore.sol'), (None, 'dataset/reentrancy/modifier_reentrancy.sol'), (None, 'dataset/reentrancy/reentrance.sol'), (None, 'dataset/reentrancy/reentrancy_bonus.sol'), (None, 'dataset/reentrancy/reentrancy_cross_function.sol'), (None, 'dataset/reentrancy/reentrancy_dao.sol'), (None, 'dataset/reentrancy/reentrancy_insecure.sol'), (None, 'dataset/reentrancy/reentrancy_simple.sol'), (None, 'dataset/reentrancy/simple_dao.sol'), (None, 'dataset/reentrancy/spank_chain_payment.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/31: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Starting task 2/31: ccc and dataset/reentrancy/etherstore.sol
+Starting task 3/31: ccc and dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol
+Starting task 4/31: ccc and dataset/reentrancy/reentrance.sol
+Starting task 6/31: ccc and dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol
+Starting task 5/31: ccc and dataset/reentrancy/modifier_reentrancy.sol
+Starting task 7/31: ccc and dataset/reentrancy/reentrancy_cross_function.sol
+Starting task 8/31: ccc and dataset/reentrancy/simple_dao.sol
+Starting task 9/31: ccc and dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol
+Starting task 10/31: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Starting task 11/31: ccc and dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol
+Starting task 12/31: ccc and dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol
+Starting task 13/31: ccc and dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol
+Starting task 15/31: ccc and dataset/reentrancy/etherbank.sol
+Starting task 14/31: ccc and dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol
+Starting task 16/31: ccc and dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol
+Starting task 17/31: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Starting task 18/31: ccc and dataset/reentrancy/reentrancy_insecure.sol
+Starting task 19/31: ccc and dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol
+Starting task 20/31: ccc and dataset/reentrancy/reentrancy_simple.sol
+Starting task 21/31: ccc and dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol
+Starting task 22/31: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Starting task 23/31: ccc and dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol
+Starting task 24/31: ccc and dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol
+Starting task 25/31: ccc and dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol
+Starting task 26/31: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Starting task 27/31: ccc and dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol
+Starting task 28/31: ccc and dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol
+Starting task 29/31: ccc and dataset/reentrancy/reentrancy_dao.sol
+Starting task 30/31: ccc and dataset/reentrancy/reentrancy_bonus.sol
+Starting task 31/31: ccc and dataset/reentrancy/spank_chain_payment.sol
+Analysis of /Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol with ccc failed.
+Parsing of results failed
+
+Analysis completed in 0:30:09.
+Arguments passed: ['/Users/christof/Git/cpg-contract-checker/evaluation/smartbugs_v2/sb/__main__.py', '-t', 'ccc', '-f', 'dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol', 'dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol', 'dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol', 'dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol', 'dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol', 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol', 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol', 'dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol', 'dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol', 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol', 'dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol', 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol', 'dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol', 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol', 'dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol', 'dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol', 'dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol', 'dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol', 'dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol', 'dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol', 'dataset/reentrancy/etherbank.sol', 'dataset/reentrancy/etherstore.sol', 'dataset/reentrancy/modifier_reentrancy.sol', 'dataset/reentrancy/reentrance.sol', 'dataset/reentrancy/reentrancy_bonus.sol', 'dataset/reentrancy/reentrancy_cross_function.sol', 'dataset/reentrancy/reentrancy_dao.sol', 'dataset/reentrancy/reentrancy_insecure.sol', 'dataset/reentrancy/reentrancy_simple.sol', 'dataset/reentrancy/simple_dao.sol', 'dataset/reentrancy/spank_chain_payment.sol', '--runid', 'curated', '--sarif', '--processes', '112', '--timeout', '1800']
+Settings: {files: [(None, 'dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol'), (None, 'dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol'), (None, 'dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol'), (None, 'dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol'), (None, 'dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol'), (None, 'dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol'), (None, 'dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol'), (None, 'dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol'), (None, 'dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol'), (None, 'dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol'), (None, 'dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol'), (None, 'dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol'), (None, 'dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol'), (None, 'dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol'), (None, 'dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol'), (None, 'dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol'), (None, 'dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol'), (None, 'dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol'), (None, 'dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol'), (None, 'dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol'), (None, 'dataset/reentrancy/etherbank.sol'), (None, 'dataset/reentrancy/etherstore.sol'), (None, 'dataset/reentrancy/modifier_reentrancy.sol'), (None, 'dataset/reentrancy/reentrance.sol'), (None, 'dataset/reentrancy/reentrancy_bonus.sol'), (None, 'dataset/reentrancy/reentrancy_cross_function.sol'), (None, 'dataset/reentrancy/reentrancy_dao.sol'), (None, 'dataset/reentrancy/reentrancy_insecure.sol'), (None, 'dataset/reentrancy/reentrancy_simple.sol'), (None, 'dataset/reentrancy/simple_dao.sol'), (None, 'dataset/reentrancy/spank_chain_payment.sol')], runtime: False, tools: ['ccc'], runid: curated, overwrite: False, processes: 112, timeout: 1800, cpu_quota: None, mem_limit: None, results: results/${TOOL}/curated/${FILEBASE}, log: results/logs/curated.log, json: False, sarif: True, quiet: False}
+Starting task 1/31: ccc and dataset/reentrancy/reentrancy_simple.sol
+Starting task 2/31: ccc and dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol
+Starting task 3/31: ccc and dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol
+Starting task 4/31: ccc and dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol
+Starting task 6/31: ccc and dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol
+Starting task 7/31: ccc and dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol
+Starting task 8/31: ccc and dataset/reentrancy/simple_dao.sol
+Starting task 9/31: ccc and dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol
+Starting task 5/31: ccc and dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol
+Starting task 10/31: ccc and dataset/reentrancy/reentrance.sol
+Starting task 12/31: ccc and dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol
+Starting task 13/31: ccc and dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol
+Starting task 11/31: ccc and dataset/reentrancy/spank_chain_payment.sol
+Starting task 15/31: ccc and dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol
+Starting task 16/31: ccc and dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol
+Starting task 17/31: ccc and dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol
+Starting task 14/31: ccc and dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+Starting task 25/31: ccc and dataset/reentrancy/etherstore.sol
+Starting task 23/31: ccc and dataset/reentrancy/modifier_reentrancy.sol
+Starting task 24/31: ccc and dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol
+Starting task 27/31: ccc and dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol
+Starting task 18/31: ccc and dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol
+Starting task 19/31: ccc and dataset/reentrancy/reentrancy_bonus.sol
+Starting task 20/31: ccc and dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol
+Starting task 21/31: ccc and dataset/reentrancy/etherbank.sol
+Starting task 22/31: ccc and dataset/reentrancy/reentrancy_insecure.sol
+Starting task 26/31: ccc and dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol
+Starting task 28/31: ccc and dataset/reentrancy/reentrancy_cross_function.sol
+Starting task 29/31: ccc and dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol
+Starting task 31/31: ccc and dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol
+Starting task 30/31: ccc and dataset/reentrancy/reentrancy_dao.sol
+Analysis completed in 0:00:16.

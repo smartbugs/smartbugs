@@ -1,0 +1,60 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": "31",
+            "column_end": "44",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": "86",
+            "line_end": "86",
+            "name": "Message padding vulnerability found at ether transfer."
+        },
+        {
+            "column": "16",
+            "column_end": "40",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": "94",
+            "line_end": "94",
+            "name": "Message padding vulnerability found at ether transfer."
+        },
+        {
+            "column": "9",
+            "column_end": "75",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": "43",
+            "line_end": "43",
+            "name": "Missing Check of Return Value from external Call"
+        },
+        {
+            "column": "5",
+            "column_end": "6",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": "53",
+            "line_end": "59",
+            "name": "Non constructor function insufficiently restricts writes to to access control variables"
+        },
+        {
+            "column": "16",
+            "column_end": "40",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": "94",
+            "line_end": "94",
+            "name": "Reentrancy Vulnerability"
+        },
+        {
+            "column": "13",
+            "column_end": "45",
+            "filename": "dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+            "line": "71",
+            "line_end": "71",
+            "name": "Result of expression can be over- or under-flown by external entity"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "ccc",
+        "mode": "solidity",
+        "version": ""
+    }
+}

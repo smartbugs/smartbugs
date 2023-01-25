@@ -5,9 +5,12 @@ VERSION: str = ""
 """identify the version of the parser, e.g. '2022/08/15'"""
 
 FINDINGS: set[str]  = {
+    "Message padding vulnerability found at ether transfer.",
+    "Non constructor function insufficiently restricts writes to to access control variables",
     "Missing Check of Return Value from external Call",
     "Reentrancy Vulnerability",
-    "Result of expression can be over- or under-flown by external entity"
+    "Result of expression can be over- or under-flown by external entity",
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks "
 }
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 

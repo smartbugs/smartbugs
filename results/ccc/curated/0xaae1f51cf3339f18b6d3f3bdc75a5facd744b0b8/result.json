@@ -1,0 +1,44 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": "25",
+            "column_end": "37",
+            "filename": "dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+            "line": "86",
+            "line_end": "86",
+            "name": "Message padding vulnerability found at ether transfer."
+        },
+        {
+            "column": "16",
+            "column_end": "44",
+            "filename": "dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+            "line": "54",
+            "line_end": "54",
+            "name": "Reentrancy Vulnerability"
+        },
+        {
+            "column": "9",
+            "column_end": "53",
+            "filename": "dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+            "line": "44",
+            "line_end": "44",
+            "name": "Reentrancy Vulnerability"
+        },
+        {
+            "column": "9",
+            "column_end": "43",
+            "filename": "dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+            "line": "43",
+            "line_end": "43",
+            "name": "Result of expression can be over- or under-flown by external entity"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "ccc",
+        "mode": "solidity",
+        "version": ""
+    }
+}
