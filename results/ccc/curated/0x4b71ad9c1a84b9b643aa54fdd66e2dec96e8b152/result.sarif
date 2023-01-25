@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol"
+                                },
+                                "region": {
+                                    "endColumn": 47,
+                                    "endLine": 17,
+                                    "startColumn": 13,
+                                    "startLine": 17
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Missing Check of Return Value from external Call"
+                    },
+                    "ruleId": "ccc_Missing_Check_of_Return_Value_from_external_Call"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x4b71ad9c1a84b9b643aa54fdd66e2dec96e8b152.sol"
+                                },
+                                "region": {
+                                    "endColumn": 11,
+                                    "endLine": 18,
+                                    "startColumn": 9,
+                                    "startLine": 15
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution."
+                    },
+                    "ruleId": "ccc_An_expensive_operation_in_a_loop_with_a_user_controlled_or_often_repeated_condition_can_exhaust_gas_and_deny_reliable_execution"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/Fraunhofer-AISEC/cpg-contract-checker",
+                    "name": "CCC",
+                    "rules": [
+                        {
+                            "id": "ccc_Missing_Check_of_Return_Value_from_external_Call",
+                            "name": "Missing Check of Return Value from external Call"
+                        },
+                        {
+                            "id": "ccc_An_expensive_operation_in_a_loop_with_a_user_controlled_or_often_repeated_condition_can_exhaust_gas_and_deny_reliable_execution",
+                            "name": "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution."
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

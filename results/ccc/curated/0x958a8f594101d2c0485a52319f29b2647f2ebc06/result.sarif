@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol"
+                                },
+                                "region": {
+                                    "endColumn": 41,
+                                    "endLine": 55,
+                                    "startColumn": 9,
+                                    "startLine": 55
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Missing Check of Return Value from external Call"
+                    },
+                    "ruleId": "ccc_Missing_Check_of_Return_Value_from_external_Call"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x958a8f594101d2c0485a52319f29b2647f2ebc06.sol"
+                                },
+                                "region": {
+                                    "endColumn": 7,
+                                    "endLine": 39,
+                                    "startColumn": 5,
+                                    "startLine": 37
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "Non constructor function insufficiently restricts writes to to access control variables"
+                    },
+                    "ruleId": "ccc_Non_constructor_function_insufficiently_restricts_writes_to_to_access_control_variables"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/Fraunhofer-AISEC/cpg-contract-checker",
+                    "name": "CCC",
+                    "rules": [
+                        {
+                            "id": "ccc_Non_constructor_function_insufficiently_restricts_writes_to_to_access_control_variables",
+                            "name": "Non constructor function insufficiently restricts writes to to access control variables"
+                        },
+                        {
+                            "id": "ccc_Missing_Check_of_Return_Value_from_external_Call",
+                            "name": "Missing Check of Return Value from external Call"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,20 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "column": "9",
+            "column_end": "11",
+            "filename": "dataset/denial_of_service/dos_number.sol",
+            "line": "18",
+            "line_end": "23",
+            "name": "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution."
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "ccc",
+        "mode": "solidity",
+        "version": ""
+    }
+}
