@@ -1,0 +1,39 @@
+INFO [01-25|09:07:10.678] Starting Geth in ephemeral dev mode... 
+INFO [01-25|09:07:11.411] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [01-25|09:07:11.413] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [01-25|09:07:11.425] Set global gas cap                       cap=50,000,000
+INFO [01-25|09:07:45.327] Using developer account                  address=0x30f2e74Ee18222ebFb4df47a205DC3d6EaAc91fd
+INFO [01-25|09:07:45.448] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [01-25|09:07:45.562] Writing custom genesis block 
+INFO [01-25|09:07:45.886] Persisted trie from memory database      nodes=13 size=1.90KiB time=1.644375ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [01-25|09:07:45.997] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, MergeFork: <nil>, Engine: clique}"
+INFO [01-25|09:07:46.105] Initialising Ethereum protocol           network=1337 dbversion=<nil>
+INFO [01-25|09:07:46.155] Loaded most recent local header          number=0 hash=6d4f30..ea571b td=1 age=53y10mo2d
+INFO [01-25|09:07:46.355] Loaded most recent local full block      number=0 hash=6d4f30..ea571b td=1 age=53y10mo2d
+INFO [01-25|09:07:46.375] Loaded most recent local fast block      number=0 hash=6d4f30..ea571b td=1 age=53y10mo2d
+WARN [01-25|09:07:46.391] Failed to load snapshot, regenerating    err="missing or corrupted snapshot"
+INFO [01-25|09:07:46.537] Rebuilding state snapshot 
+INFO [01-25|09:07:46.540] Resuming state snapshot generation       root=9ad0f7..c926de accounts=0 slots=0 storage=0.00B elapsed=2.226ms
+INFO [01-25|09:07:46.639] Generated state snapshot                 accounts=10 slots=0 storage=412.00B elapsed=101.871ms
+INFO [01-25|09:07:46.891] Gasprice oracle is ignoring threshold set threshold=2
+WARN [01-25|09:07:47.022] Error reading unclean shutdown markers   error="not found"
+INFO [01-25|09:07:47.093] Starting peer-to-peer node               instance=Geth/v1.10.14-stable-11a3a350/linux-amd64/go1.17.5
+WARN [01-25|09:07:47.132] P2P server will be useless, neither dialing nor listening 
+INFO [01-25|09:07:47.211] Stored checkpoint snapshot to disk       number=0 hash=6d4f30..ea571b
+INFO [01-25|09:07:48.261] IPC endpoint opened                      url=/tmp/geth.ipc
+INFO [01-25|09:07:48.364] New local node record                    seq=1,674,637,667,913 id=27bc7cd8fb4ea350 ip=127.0.0.1 udp=0 tcp=0
+INFO [01-25|09:07:48.548] Started P2P networking                   self=enode://ec5045fb88fe4a3f63ff13dea03aaf49af66e42a295a84d3e130b441ec83b53558dca2f883ca65d9f29ee8e53eeb4f0a93b10b94e016e09abc885b2ae0de311b@127.0.0.1:0
+INFO [01-25|09:07:48.584] HTTP server started                      endpoint=127.0.0.1:8545 prefix= cors= vhosts=localhost
+INFO [01-25|09:07:48.645] Transaction pool price threshold updated price=1,000,000,000
+INFO [01-25|09:07:48.645] Updated mining threads                   threads=0
+INFO [01-25|09:07:48.860] Transaction pool price threshold updated price=1
+INFO [01-25|09:07:48.890] Etherbase automatically configured       address=0x30f2e74Ee18222ebFb4df47a205DC3d6EaAc91fd
+WARN [01-25|09:07:48.928] Block sealing failed                     err="sealing paused while waiting for transactions"
+INFO [01-25|09:07:48.932] Commit new mining work                   number=1 sealhash=8de743..f14052 uncles=0 txs=0 gas=0 fees=0 elapsed=5.800ms
+WARN [01-25|09:07:49.061] Failed to get free disk space            path= err="failed to call Statfs: no such file or directory"
+2023-01-25 09:14:21 080d792c7092 pakala.sm[20] INFO_INTERACTIVE Coverage now 34%. Queue size 12. Got 8 outcomes.
+2023-01-25 09:21:10 080d792c7092 pakala.sm[20] INFO_INTERACTIVE Coverage now 38%. Queue size 13. Got 9 outcomes.
+2023-01-25 09:21:29 080d792c7092 pakala.sm[20] INFO_INTERACTIVE Coverage now 43%. Queue size 11. Got 11 outcomes.
+2023-01-25 09:21:42 080d792c7092 pakala.sm[20] INFO_INTERACTIVE Coverage now 46%. Queue size 13. Got 11 outcomes.
+2023-01-25 09:22:03 080d792c7092 pakala.sm[20] WARNING Fuzzer got used (forced concretization). We will lose accuracy and risk state explosion.
+Killed

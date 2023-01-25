@@ -1,0 +1,47 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:5 paths that ended prematurely due to branches: 1ba: 2, 313: 1, 18b: 1, 302: 1
+INFO:root:Found 2 CALL instructions
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:CALL: (  522)  20a:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->8c->98->1bc->1d0->1ee->1f4->20a
+INFO:root:CALL: (  522)  20a:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->8c->98->1bc->1d0->1da->1ee->1f4->20a
+INFO:root:CALL: (  762)  2fa:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->129->286->2a4->2bc->2e9->2fa
+INFO:root:CALL: (  762)  2fa:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->129->286->2a4->2bc->2d0->2e9->2fa
+INFO:root:CALL: (  762)  2fa:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->129->286->2a4->2ad->2a4->2bc->2e9->2fa
+INFO:root:CALL: (  762)  2fa:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->129->286->2a4->2ad->2a4->2bc->2d0->2e9->2fa
+INFO:root:CALL: (  762)  2fa:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->129->286->2a4->2ad->2a4->2ad->2a4->2bc->2e9->2fa
+INFO:root:CALL: (  762)  2fa:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->40->4b->56->61->6c->129->286->2a4->2ad->2a4->2ad->2a4->2bc->2d0->2e9->2fa
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 3 RETURN and STOP instructions
+INFO:root:End: (  131)   83:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->84->18b->194->302->1ba->82->83
+INFO:root:End: (  131)   83:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->84->18b->194->302->313->1ba->82->83
+INFO:root:Bad path: 0, d, 84, 18b, 194, 302, 313, 1ba, 82, 1ba
+INFO:root:End: (  131)   83:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->84->18b->194->302->1ba->1ba->82->83
+INFO:root:Bad path: 0, d, 84, 18b, 194, 302, 313, 1ba, 82, 1ba
+INFO:root:Bad path: 0, d, 84, 18b, 194, 302, 1ba, 1ba, 82, 1ba
+INFO:root:End: (  131)   83:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->40->4b->56->d7->e3->237->24b->82->83
+INFO:root:End: (  131)   83:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->40->4b->56->61->6c->77->183->302->313->82->83
+INFO:root:All ends: [<teether.evm.results.SymbolicResult object at 0x40068e43a0>, <teether.evm.results.SymbolicResult object at 0x40069f8970>, <teether.evm.results.SymbolicResult object at 0x40069f83a0>, <teether.evm.results.SymbolicResult object at 0x40069fa5b0>, <teether.evm.results.SymbolicResult object at 0x4006a08460>]
+INFO:root:Could not exploit any RETURN+CALL

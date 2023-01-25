@@ -1,0 +1,24 @@
+{
+    "errors": [],
+    "fails": [
+        "DOCKER_KILL_OOM"
+    ],
+    "findings": [
+        {
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "name": "MissingInputValidation"
+        },
+        {
+            "filename": "dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+            "name": "DAO"
+        }
+    ],
+    "infos": [
+        "analysis incomplete"
+    ],
+    "parser": {
+        "id": "securify",
+        "mode": "solidity",
+        "version": "2022/11/17"
+    }
+}

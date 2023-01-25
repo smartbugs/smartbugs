@@ -1,0 +1,29 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "address": 340,
+            "filename": "dataset/access_control/wallet_04_confused_sign.rt.hex",
+            "name": "checkedCallStateUpdate"
+        },
+        {
+            "address": 605,
+            "filename": "dataset/access_control/wallet_04_confused_sign.rt.hex",
+            "name": "uncheckedCall"
+        },
+        {
+            "address": 869,
+            "filename": "dataset/access_control/wallet_04_confused_sign.rt.hex",
+            "name": "uncheckedCall"
+        }
+    ],
+    "infos": [
+        "Warning: Deprecated type declaration"
+    ],
+    "parser": {
+        "id": "vandal",
+        "mode": "runtime",
+        "version": "2022/11/17"
+    }
+}

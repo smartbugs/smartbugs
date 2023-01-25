@@ -1,0 +1,42 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/auction.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 473,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "checkedCallStateUpdate"
+                    },
+                    "ruleId": "vandal_checkedCallStateUpdate"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/usyd-blockchain/vandal",
+                    "name": "Vandal",
+                    "rules": [
+                        {
+                            "id": "vandal_checkedCallStateUpdate",
+                            "name": "checkedCallStateUpdate"
+                        }
+                    ],
+                    "version": "#d2b0043"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": "'/sb/0xb620cee6b52f96f3c6b253e6eea556aa2d214a99.rt.hex' 0x1234 0x1000 +1000",
+        "detach": true,
+        "entrypoint": null,
+        "image": "smartbugs/teether:04adf56",
+        "user": 0,
+        "volumes": {
+            "/var/folders/hf/8g_qqfzx561_2kglmh9_mpd00000gn/T/tmp6q_xkon8": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/unchecked_low_level_calls/0xb620cee6b52f96f3c6b253e6eea556aa2d214a99.rt.hex",
+    "platform": {
+        "cpu": "Apple M1 Pro",
+        "python": "3.9.6.final.0 (64 bit)",
+        "release": "21.6.0",
+        "smartbugs": "2.0.2",
+        "system": "Darwin",
+        "version": "Darwin Kernel Version 21.6.0: Mon Aug 22 20:19:52 PDT 2022; root:xnu-8020.140.49~2/RELEASE_ARM64_T6000"
+    },
+    "result": {
+        "duration": 8.446873903274536,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1674647482.3281112
+    },
+    "runid": "curated",
+    "solc": null,
+    "tool": {
+        "bin": null,
+        "command": "'$FILENAME' 0x1234 0x1000 +1000",
+        "cpu_quota": null,
+        "entrypoint": null,
+        "id": "teether",
+        "image": "smartbugs/teether:04adf56",
+        "info": "Analysis and automatic exploitation framework for Ethereum smart contracts.",
+        "mem_limit": null,
+        "mode": "runtime",
+        "name": "teEther",
+        "origin": "https://github.com/nescio007/teether",
+        "output": null,
+        "parser": "parser.py",
+        "solc": null,
+        "version": "#04adf56"
+    }
+}

@@ -1,0 +1,154 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:2 paths that ended prematurely due to branches: 1d21: 1, 3073: 1
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:2 paths that ended prematurely due to branches: 1d21: 1, 3073: 1
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Found 7 CALL instructions
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:CALL: ( 6311) 18a7:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->731->73c->17e0->183c->18a7
+INFO:root:CALL: ( 6458) 193a:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->754->75f->18b0->18d1->193a
+INFO:root:CALL: ( 7334) 1ca6:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->78c->797->1b8b->1ba2->1c3e->1ca6
+INFO:root:CALL: ( 8806) 2266:	f1	-7 +1 = -6	CALL
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->112->11d->128->133->985->990->20c9->20e6->2101->2193->2266
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:No SELFDESTRUCT instructions
+INFO:root:Found 50 RETURN and STOP instructions
+INFO:root:End: (  836)  344:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->251->267->343->344
+INFO:root:End: ( 1068)  42c:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->3d3->3de->10a5->413->42c
+ERROR:root:Failed path due to exponentiation with symbolic exponent currently not supported :-/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 412, in run_symbolic
+    raise SymbolicError('exponentiation with symbolic exponent currently not supported :-/')
+teether.evm.exceptions.SymbolicError: exponentiation with symbolic exponent currently not supported :-/
+INFO:root:End: ( 1543)  607:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->58f->59a->1203->12d0->135b->1361->14f7->5ee->607
+INFO:root:End: ( 1543)  607:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->58f->59a->1203->124f->12d0->12d7->135b->1361->14f7->5ee->607
+INFO:root:End: ( 1543)  607:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->58f->59a->1203->12d0->12d7->135b->1361->14f7->5ee->607
+INFO:root:End: ( 1543)  607:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->58f->59a->1203->124f->12d0->135b->1361->14f7->5ee->607
+ERROR:root:Failed path due to exponentiation with symbolic exponent currently not supported :-/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 90, in get_constraints
+    yield ins, path, self.run_symbolic(path, inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/project.py", line 67, in run_symbolic
+    return run_symbolic(self.prg, path, self.code, inclusive=inclusive)
+  File "/usr/local/lib/python3.8/site-packages/teether-0.1.10-py3.8.egg/teether/evm/evm.py", line 412, in run_symbolic
+    raise SymbolicError('exponentiation with symbolic exponent currently not supported :-/')
+teether.evm.exceptions.SymbolicError: exponentiation with symbolic exponent currently not supported :-/
+INFO:root:End: ( 1781)  6f5:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->6d3->6de->166e->16c5->16d9->6f4->6f5
+INFO:root:End: ( 1840)  730:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->6f6->701->16dc->172c->717->730
+INFO:root:End: ( 1952)  7a0:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->78c->797->1b8b->1ba2->1cad->79f->7a0
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+1461501637330902918203684832716283019655932542975 &
+UDiv(STORAGE_15[2], 1) (242_15)
+INFO:root:End: ( 1952)  7a0:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->78c->797->1b8b->1ba2->1c3e->1cad->79f->7a0
+INFO:root:Calling contract 1461501637330902918203684832716283019655932542975 &
+CALLER_16 (310_16)
+INFO:root:End: ( 2457)  999:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->112->11d->128->133->985->990->20c9->20e6->2101->2193->2276->998->999
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1deb->1e6e->83f->840
+INFO:root:End: ( 2624)  a40:	f3	-2 +0 = -2	RETURN
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->112->11d->128->133->13e->149->9e7->9f2->22c3->2313->239e->a27->a40
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1deb->1e28->1e30->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30a6->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1deb->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1da5->1dad->1deb->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30a6->309d->30b5->30b9->3093->1d38->1deb->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3058->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1deb->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3058->3086->3097->309d->30b5->30b9->3093->1d38->1deb->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3058->3067->306a->3085->3086->3097->309d->30b5->30b9->3093->1d38->1deb->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1da5->1dad->1deb->1e28->1e30->1e6e->83f->840
+INFO:root:End: ( 2112)  840:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->62->6d->78->83->8e->99->a4->af->ba->c5->d0->db->e6->f1->fc->107->7a1->7ac->1caf->1d0b->3017->3048->3086->3097->309d->30b5->30b9->3093->1d21->3017->3048->3086->3097->309d->30b5->30b9->3093->1d38->1da5->1dc0->1dce->1de2->1deb->1e6e->83f->840

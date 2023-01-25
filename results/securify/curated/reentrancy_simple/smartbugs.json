@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_solidity' '/sb/reentrancy_simple.sol' '/sb/bin'",
+        "image": "smartbugs/security:usolc",
+        "user": 0,
+        "volumes": {
+            "/var/folders/hf/8g_qqfzx561_2kglmh9_mpd00000gn/T/tmpuzevg7jh": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/reentrancy/reentrancy_simple.sol",
+    "platform": {
+        "cpu": "Apple M1 Pro",
+        "python": "3.9.6.final.0 (64 bit)",
+        "release": "21.6.0",
+        "smartbugs": "2.0.2",
+        "system": "Darwin",
+        "version": "Darwin Kernel Version 21.6.0: Mon Aug 22 20:19:52 PDT 2022; root:xnu-8020.140.49~2/RELEASE_ARM64_T6000"
+    },
+    "result": {
+        "duration": 127.33696103096008,
+        "exit_code": 137,
+        "logs": "result.log",
+        "output": "result.tar",
+        "start": 1674639711.214402
+    },
+    "runid": "curated",
+    "solc": "0.4.26",
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_solidity' '$FILENAME' '$BIN'",
+        "id": "securify",
+        "image": "smartbugs/security:usolc",
+        "info": "Securify uses formal verification, also relying on static analysis checks. Securify's analysis consists of two steps. First, it symbolically analyzes the contract's dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not.",
+        "mem_limit": null,
+        "mode": "solidity",
+        "name": "Securify",
+        "origin": "https://github.com/eth-sri/securify",
+        "output": "/results/",
+        "parser": "parser.py",
+        "solc": true,
+        "version": null
+    }
+}

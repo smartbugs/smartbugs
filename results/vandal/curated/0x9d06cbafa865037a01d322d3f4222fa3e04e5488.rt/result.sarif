@@ -1,0 +1,103 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 2441,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "reentrantCall"
+                    },
+                    "ruleId": "vandal_reentrantCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 3375,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 2441,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x9d06cbafa865037a01d322d3f4222fa3e04e5488.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 2679,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/usyd-blockchain/vandal",
+                    "name": "Vandal",
+                    "rules": [
+                        {
+                            "id": "vandal_reentrantCall",
+                            "name": "reentrantCall"
+                        },
+                        {
+                            "id": "vandal_uncheckedCall",
+                            "name": "uncheckedCall"
+                        }
+                    ],
+                    "version": "#d2b0043"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": "ethor-with-reconstruction '/sb/0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9.rt.hex' --prune-strategy=aggressive --predicate-inlining-strategy=linear --preanalysis",
+        "detach": true,
+        "entrypoint": null,
+        "image": "smartbugs/ethor:rmvi20q",
+        "user": 0,
+        "volumes": {
+            "/var/folders/hf/8g_qqfzx561_2kglmh9_mpd00000gn/T/tmprze4_9v9": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/unchecked_low_level_calls/0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9.rt.hex",
+    "platform": {
+        "cpu": "Apple M1 Pro",
+        "python": "3.9.6.final.0 (64 bit)",
+        "release": "21.6.0",
+        "smartbugs": "2.0.2",
+        "system": "Darwin",
+        "version": "Darwin Kernel Version 21.6.0: Mon Aug 22 20:19:52 PDT 2022; root:xnu-8020.140.49~2/RELEASE_ARM64_T6000"
+    },
+    "result": {
+        "duration": 749.083153963089,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1674634761.756972
+    },
+    "runid": "curated",
+    "solc": null,
+    "tool": {
+        "bin": null,
+        "command": "ethor-with-reconstruction '$FILENAME' --prune-strategy=aggressive --predicate-inlining-strategy=linear --preanalysis",
+        "cpu_quota": null,
+        "entrypoint": null,
+        "id": "ethor",
+        "image": "smartbugs/ethor:rmvi20q",
+        "info": "eThor is a sound static analyzer for EVM smart contracts based on HoRSt.",
+        "mem_limit": null,
+        "mode": "runtime",
+        "name": "eThor",
+        "origin": "https://secpriv.wien/ethor",
+        "output": null,
+        "parser": "parser.py",
+        "solc": null,
+        "version": "2021 (CCS 2020)"
+    }
+}

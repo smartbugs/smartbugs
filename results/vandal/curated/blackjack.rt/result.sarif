@@ -1,0 +1,160 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 15567,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 16477,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 16629,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 17939,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 18405,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 18785,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/bad_randomness/blackjack.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 16477,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "unsecuredValueSend"
+                    },
+                    "ruleId": "vandal_unsecuredValueSend"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/usyd-blockchain/vandal",
+                    "name": "Vandal",
+                    "rules": [
+                        {
+                            "id": "vandal_unsecuredValueSend",
+                            "name": "unsecuredValueSend"
+                        },
+                        {
+                            "id": "vandal_uncheckedCall",
+                            "name": "uncheckedCall"
+                        }
+                    ],
+                    "version": "#d2b0043"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

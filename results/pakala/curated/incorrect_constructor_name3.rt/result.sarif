@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/access_control/incorrect_constructor_name3.rt.hex"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "call bug"
+                    },
+                    "ruleId": "pakala_call_bug"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/palkeo/pakala",
+                    "name": "Pakala",
+                    "rules": [
+                        {
+                            "id": "pakala_call_bug",
+                            "name": "call bug"
+                        }
+                    ],
+                    "version": "#c84ef38 v1.1.10"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

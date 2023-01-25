@@ -1,0 +1,194 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 1249,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 1575,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 2039,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 2303,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 2531,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 4301,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 4659,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 5379,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/denial_of_service/list_dos.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 6013,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/usyd-blockchain/vandal",
+                    "name": "Vandal",
+                    "rules": [
+                        {
+                            "id": "vandal_uncheckedCall",
+                            "name": "uncheckedCall"
+                        }
+                    ],
+                    "version": "#d2b0043"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

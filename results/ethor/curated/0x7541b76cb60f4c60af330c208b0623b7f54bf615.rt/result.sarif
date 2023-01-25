@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.rt.hex"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "insecure"
+                    },
+                    "ruleId": "ethor_insecure"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://secpriv.wien/ethor",
+                    "name": "eThor",
+                    "rules": [
+                        {
+                            "id": "ethor_insecure",
+                            "name": "insecure"
+                        }
+                    ],
+                    "version": "2021 (CCS 2020)"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

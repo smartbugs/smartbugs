@@ -1,0 +1,37 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x4051334adc52057aca763453820cb0e045076ef3.sol"
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "UnhandledException"
+                    },
+                    "ruleId": "securify_UnhandledException"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/eth-sri/securify",
+                    "name": "Securify",
+                    "rules": [
+                        {
+                            "id": "securify_UnhandledException",
+                            "name": "UnhandledException"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

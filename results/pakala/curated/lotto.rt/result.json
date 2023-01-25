@@ -1,0 +1,28 @@
+{
+    "errors": [],
+    "fails": [],
+    "findings": [
+        {
+            "exploit": [
+                {
+                    "caller": "0xcafebabefffffffff0202fffffffff7cff7247c9",
+                    "data": "8f1c058500000000000000000000000000000000000000000000000000000000",
+                    "value": 0
+                },
+                {
+                    "caller": "0xcafebabefffffffff0202fffffffff7cff7247c9",
+                    "data": "1846f51a00000000000000000000000000000000000000000000000000000000",
+                    "value": 0
+                }
+            ],
+            "filename": "dataset/unchecked_low_level_calls/lotto.rt.hex",
+            "name": "call bug"
+        }
+    ],
+    "infos": [],
+    "parser": {
+        "id": "pakala",
+        "mode": "runtime",
+        "version": "2022/11/11"
+    }
+}

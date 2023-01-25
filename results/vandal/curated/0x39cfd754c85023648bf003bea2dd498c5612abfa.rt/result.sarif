@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+        {
+            "results": [
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 3449,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "reentrantCall"
+                    },
+                    "ruleId": "vandal_reentrantCall"
+                },
+                {
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "dataset/unchecked_low_level_calls/0x39cfd754c85023648bf003bea2dd498c5612abfa.rt.hex"
+                                },
+                                "region": {
+                                    "startColumn": 3449,
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "message": {
+                        "text": "uncheckedCall"
+                    },
+                    "ruleId": "vandal_uncheckedCall"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "informationUri": "https://github.com/usyd-blockchain/vandal",
+                    "name": "Vandal",
+                    "rules": [
+                        {
+                            "id": "vandal_uncheckedCall",
+                            "name": "uncheckedCall"
+                        },
+                        {
+                            "id": "vandal_reentrantCall",
+                            "name": "reentrantCall"
+                        }
+                    ],
+                    "version": "#d2b0043"
+                }
+            }
+        }
+    ],
+    "version": "2.1.0"
+}

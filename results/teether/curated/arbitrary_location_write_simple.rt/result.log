@@ -1,0 +1,102 @@
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:Finished all paths
+INFO:root:No CALL instructions
+INFO:root:No DELEGATECALL instructions
+INFO:root:No CALLCODE instructions
+INFO:root:Found 1 SELFDESTRUCT instructions
+INFO:root:Finished all paths
+INFO:root:SELFDESTRUCT: (  460)  1cc:	ff	-1 +0 = -1	SELFDESTRUCT
+INFO:root:Path: 0->d->41->4c->b2->be->158->1b4->1cc
+INFO:root:Found 5 RETURN and STOP instructions
+INFO:root:End: (  154)   9a:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->64->70->f6->109->119->99->9a
+INFO:root:End: (  177)   b1:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->9b->a7->12b->140->1fc->223->155->b0->b1
+INFO:root:End: (  245)   f5:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->4c->57->c9->d5->1cd->f4->f5
+INFO:root:End: (  177)   b1:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->9b->a7->12b->140->1fc->20a->228->22e->246->24a->222->223->155->b0->b1
+INFO:root:End: (  177)   b1:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->9b->a7->12b->140->1fc->20a->228->22e->237->22e->246->24a->222->223->155->b0->b1
+INFO:root:End: (  177)   b1:	00	-0 +0 = 0	STOP
+INFO:root:Path: 0->d->41->9b->a7->12b->140->1fc->20a->228->22e->237->22e->237->22e->246->24a->222->223->155->b0->b1
+INFO:root:All ends: [<teether.evm.results.SymbolicResult object at 0x400684d250>, <teether.evm.results.SymbolicResult object at 0x4006c78cd0>, <teether.evm.results.SymbolicResult object at 0x4006c94790>, <teether.evm.results.SymbolicResult object at 0x4006c94940>, <teether.evm.results.SymbolicResult object at 0x4006c97460>, <teether.evm.results.SymbolicResult object at 0x4006c97a30>]
+[CALLVALUE_0 = 0,
+ CALLVALUE_1 = 0,
+ CALLVALUE_8 = 0,
+ CALLER_0 = 4660,
+ CALLDATASIZE_8 = 32,
+ CALLER_1 = 4096,
+ CALLDATASIZE_1 = 68,
+ CALLDATASIZE_0 = 32,
+ CALLER_8 = 4096,
+ CALLDATA_8 = Store(Store(Store(K(BitVec(256), 228), 1, 221),
+                          3,
+                          239),
+                    0,
+                    122),
+ CALLDATA_1 = Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(Store(...,
+                                        ...,
+                                        ...),
+                                        2,
+                                        141),
+                                        48,
+                                        0),
+                                        49,
+                                        0),
+                                        50,
+                                        0),
+                                        51,
+                                        0),
+                                        52,
+                                        0),
+                                        53,
+                                        0),
+                                        54,
+                                        0),
+                                        55,
+                                        0),
+                                        56,
+                                        0),
+                                        57,
+                                        0),
+                                        58,
+                                        0),
+                                        59,
+                                        0),
+                                        60,
+                                        0),
+                                        61,
+                                        0),
+                                        62,
+                                        0),
+                                      63,
+                                      0),
+                                64,
+                                0),
+                          65,
+                          0),
+                    66,
+                    18),
+ CALLDATA_0 = Store(Store(Store(K(BitVec(256), 239), 3, 142),
+                          0,
+                          245),
+                    1,
+                    143),
+ ORIGIN_0 = 4660,
+ ORIGIN_1 = 4660,
+ ORIGIN_8 = 4660]
+0: 0->d->41->9b->a7->12b->140->1fc->223->155->b0->b1
+1: 0->d->64->70->f6->109->119->99->9a
+2: 0->d->41->4c->b2->be->158->1b4->1cc
+[{'value': 0, 'caller': 4096, 'origin': 4660, 'payload': b'z\xdd\xe4\xef\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4\xe4'}, {'value': 0, 'caller': 4096, 'origin': 4660, 'payload': b'Oy\x8d\xa7\xd6\xf2\x13&\xabt\x9dW)\xfc\xbaVw\xc7\x907\xb4YCj\xb7\xbf\xf7\t\xc9\xd0l\xe9\xf1\x0c\x1a\x9eyyyyyyyyyyyy\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x124'}, {'value': 0, 'caller': 4660, 'origin': 4660, 'payload': b'\xf5\x8f\xef\x8e\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef'}]
+eth.sendTransaction({from:"0x0000000000000000000000000000000000001234", data:"0x7adde4efe4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4", to:"0x0000000000000000000000000000000000001000", gasPrice:0})
+eth.sendTransaction({from:"0x0000000000000000000000000000000000001234", data:"0x4f798da7d6f21326ab749d5729fcba5677c79037b459436ab7bff709c9d06ce9f10c1a9e7979797979797979797979790000000000000000000000000000000000001234", to:"0x0000000000000000000000000000000000001000", gasPrice:0})
+eth.sendTransaction({from:"0x0000000000000000000000000000000000001234", data:"0xf58fef8eefefefefefefefefefefefefefefefefefefefefefefefefefefefef", to:"0x4000000000000000000000000000000000000000", gasPrice:0})

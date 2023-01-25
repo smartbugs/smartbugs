@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_runtime' '/sb/integer_overflow_1.rt.hex' '1800' '/sb/bin'",
+        "image": "smartbugs/pakala:1.1.10",
+        "user": 0,
+        "volumes": {
+            "/var/folders/hf/8g_qqfzx561_2kglmh9_mpd00000gn/T/tmpnk1lpmvc": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/arithmetic/integer_overflow_1.rt.hex",
+    "platform": {
+        "cpu": "Apple M1 Pro",
+        "python": "3.9.6.final.0 (64 bit)",
+        "release": "21.6.0",
+        "smartbugs": "2.0.2",
+        "system": "Darwin",
+        "version": "Darwin Kernel Version 21.6.0: Mon Aug 22 20:19:52 PDT 2022; root:xnu-8020.140.49~2/RELEASE_ARM64_T6000"
+    },
+    "result": {
+        "duration": 323.70665216445923,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": null,
+        "start": 1674637613.2386198
+    },
+    "runid": "curated",
+    "solc": null,
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'",
+        "id": "pakala",
+        "image": "smartbugs/pakala:1.1.10",
+        "info": "Pakala is a tool to search for exploitable bugs in Ethereum smart contracts and a symbolic execution engine for the Ethereum Virtual Machine.",
+        "mem_limit": null,
+        "mode": "runtime",
+        "name": "Pakala",
+        "origin": "https://github.com/palkeo/pakala",
+        "output": null,
+        "parser": "parser.py",
+        "solc": null,
+        "version": "#c84ef38 v1.1.10"
+    }
+}

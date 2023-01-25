@@ -1,0 +1,50 @@
+{
+    "docker": {
+        "command": null,
+        "detach": true,
+        "entrypoint": "'/sb/bin/do_runtime' '/sb/smart_billions.rt.hex' '1800' '/sb/bin'",
+        "image": "smartbugs/vandal",
+        "user": 0,
+        "volumes": {
+            "/var/folders/hf/8g_qqfzx561_2kglmh9_mpd00000gn/T/tmpje3z8rsv": {
+                "bind": "/sb",
+                "mode": "rw"
+            }
+        }
+    },
+    "filename": "dataset/bad_randomness/smart_billions.rt.hex",
+    "platform": {
+        "cpu": "Apple M1 Pro",
+        "python": "3.9.6.final.0 (64 bit)",
+        "release": "21.6.0",
+        "smartbugs": "2.0.2",
+        "system": "Darwin",
+        "version": "Darwin Kernel Version 21.6.0: Mon Aug 22 20:19:52 PDT 2022; root:xnu-8020.140.49~2/RELEASE_ARM64_T6000"
+    },
+    "result": {
+        "duration": 134.01778411865234,
+        "exit_code": 0,
+        "logs": "result.log",
+        "output": "result.tar",
+        "start": 1674657318.884713
+    },
+    "runid": "curated",
+    "solc": null,
+    "tool": {
+        "bin": "scripts",
+        "command": null,
+        "cpu_quota": null,
+        "entrypoint": "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'",
+        "id": "vandal",
+        "image": "smartbugs/vandal",
+        "info": "Vandal is a static program analysis framework for Ethereum smart contract bytecode.",
+        "mem_limit": null,
+        "mode": "runtime",
+        "name": "Vandal",
+        "origin": "https://github.com/usyd-blockchain/vandal",
+        "output": "/results",
+        "parser": "parser.py",
+        "solc": null,
+        "version": "#d2b0043"
+    }
+}
