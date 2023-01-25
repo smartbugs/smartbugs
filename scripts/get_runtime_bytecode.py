@@ -10,6 +10,12 @@ from web3 import Web3
 
 PROVIDER = Web3.HTTPProvider("https://mainnet.infura.io/v3/59bd984e502449f081d26eba3c624a32")
 
+class colors:
+    INFO = "\033[94m"
+    OK = "\033[92m"
+    FAIL = "\033[91m"
+    END = "\033[0m"
+
 def main(folder):
     w3 = Web3(PROVIDER)
     for path, subdirs, files in os.walk(folder):
@@ -33,6 +39,7 @@ def main(folder):
                         source_lines = f.readlines()
                         for line in source_lines:
                             if line.strip().startswith("pragma solidity"):
+                                print("Pragma:", line.strip())
                                 version = line.strip().replace("pragma solidity", "").replace("^", "").replace(" ", "").replace(";", "")
                                 subprocess.run(["solc-select", "install", version])
                                 subprocess.run(["solc-select", "use", version])
@@ -47,8 +54,25 @@ def main(folder):
                                                 if len(runtime) < len(contract.split("Binary of the runtime part:")[1].strip().replace(" ", "")):
                                                     runtime = contract.split("Binary of the runtime part:")[1].strip().replace(" ", "")
                                 except Exception as e:
-                                    print(e)
-                                    print("Error: Could not compile", os.path.join(path, name), "using solc version", version)
+                                    if version.startswith("0.4"):
+                                        subprocess.run(["solc-select", "install", "0.4.26"])
+                                        subprocess.run(["solc-select", "use", "0.4.26"])
+                                        try:
+                                            out = subprocess.check_output(["solc", "--bin-runtime", os.path.join(path, name)]).decode("utf-8")
+                                            if len(out.split("Binary of the runtime part:")) == 2:
+                                                runtime = out.split("Binary of the runtime part:")[1].strip().replace(" ", "")
+                                            else:
+                                                contracts = out.split("\n\n")
+                                                for contract in contracts:
+                                                    if len(contract.split("Binary of the runtime part:")) == 2:
+                                                        if len(runtime) < len(contract.split("Binary of the runtime part:")[1].strip().replace(" ", "")):
+                                                            runtime = contract.split("Binary of the runtime part:")[1].strip().replace(" ", "")
+                                        except Exception as e:
+                                            print(e)
+                                            print(colors.FAIL+"Error: Could not compile", os.path.join(path, name), "using solc version", version, colors.END)
+                                    else:
+                                        print(e)
+                                        print(colors.FAIL+"Error: Could not compile", os.path.join(path, name), "using solc version", version, colors.END)
                                 if runtime != "":
                                     print("Retrieved runtime bytecode through compilation:", os.path.join(path, name))
                                     with open(os.path.join(path, name.replace(".sol", ".rt.hex")), "w") as f:
