@@ -80,7 +80,7 @@ def parse(exit_code, log, output):
         optional. Description of the issue
 
     If missing, the fields severity, classification, method, descr_short,
-    descr_long will be taken from the file issues.yaml in the tools
+    descr_long will be taken from the file findings.yaml in the tools
     directory (if it exists), with "name" serving as the key.
     """
 
