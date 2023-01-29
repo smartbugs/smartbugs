@@ -4,7 +4,7 @@
  <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
 <a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE"><img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue"></a>
 <span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
-<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-18-blue"></a>
+<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-19-blue"></a>
 
 
 SmartBugs is an extensible platform with a uniform interface to tools
@@ -12,7 +12,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Features
 
-- *18 supported tools, 3 modes* for analysing Solidity source
+- *19 supported tools, 3 modes* for analysing Solidity source
   code, deployment bytecode, and runtime code.
 
 - *A modular approach to integrating analysers.* All it takes to add
