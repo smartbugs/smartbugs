@@ -70,12 +70,12 @@ that analyse blockchain programs for weaknesses and other properties.
 
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
-   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon. Currently, this is achieved by adding the SmartBugs user to the `docker` group:
+   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon. Currently, this is achieved by adding the user to the `docker` group:
 
    ```bash
    sudo usermod -a -G docker $USER
    ```
-   This adds the user running the `sudo` command to the `docker` group. For adding another user, replace `$USER` by the respective user-id. The group membership becomes active with the next log-in.
+   For adding another user, replace `$USER` by the respective user-id. The group membership becomes active with the next log-in.
 
 2. Clone [SmartBugs's repository](https://github.com/smartbugs/smartbugs):
 
@@ -116,21 +116,22 @@ usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--ru
                  [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
                  [--runid ID] [--results DIR] [--log FILE] [--overwrite] [--json] [--sarif] [--quiet] 
                  [--version] [-h]
+...
 ```
 For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki).
 
-To analyse the Solidity files in the `samples` directory with Mythril, use the command
+**Example:** To analyse the Solidity files in the `samples` directory with Mythril, use the command
 
 ```console
 ./smartbugs -t mythril -f samples/*.sol
 ```
 
-By default, the results will be placed in a local directory `results`.
+By default, the results are placed in a local directory `results`.
 
 ### Utility programs
 
 **`reparse`** can be used to parse the analysis results anew, without rerunning
-the analaysis. This may be useful either when you forgot to specify the options `--json` or `--sarif` during analysis, or when you want to parse the analysis
+the analyses. This may be useful either when you forgot to specify the option `--json` or `--sarif` during analysis, or when you want to parse the analysis
 results with an updated parser.
 
 ```console
