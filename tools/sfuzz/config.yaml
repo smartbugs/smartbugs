@@ -1,0 +1,10 @@
+name: sFuzz
+info: An Efficient Adaptive Fuzzer for Solidity Smart Contracts
+origin: https://github.com/duytai/sFuzz
+image: sfuzz/ethfuzzer:latest
+
+solidity:
+    command: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+    output: /home/contracts
+    bin: scripts
+    solc: yes

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+FILENAME="$1"
+TIMEOUT="$2"
+BIN="$3"
+
+export PATH="$BIN:$PATH"
+chmod +x "$BIN/solc"
+
+mkdir -p /home/contracts
+
+count=0
+for contract in $(python3 "$BIN"/printContractNames.py "$FILENAME"); do
+  echo "Extract contract $contract from $FILENAME"
+  cp "$FILENAME" "/home/contracts/$contract.sol"
+  count=$((count + 1))
+done
+
+echo "Extracted $count contract(s) from $FILENAME"
+
+# Fuzz each contract at least 10 seconds
+to=$(((TIMEOUT - (2 * count)) / count))
+if [ "$TIMEOUT" -eq 0 ] || [ $to -lt 10 ]; then
+  cd /home/ && ./fuzzer -g -r 1 -d 120 && chmod +x fuzzMe && ./fuzzMe
+else
+  cd /home/ && ./fuzzer -g -r 1 -d $to && chmod +x fuzzMe && ./fuzzMe
+fi
