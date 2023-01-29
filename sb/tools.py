@@ -154,4 +154,5 @@ def info_finding(tool_id, fname):
             info_findings[tool_id] = sb.io.read_yaml(fn)
         except Exception:
             info_findings[tool_id] = {}
-    return info_findings[tool_id].get(fname, {})
+    info = info_findings[tool_id].get(fname)
+    return {} if info is None else info

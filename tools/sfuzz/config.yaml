@@ -1,7 +1,8 @@
 name: sFuzz
+version: #48934c0 (2019-03-01)
 info: An Efficient Adaptive Fuzzer for Solidity Smart Contracts
 origin: https://github.com/duytai/sFuzz
-image: sfuzz/ethfuzzer:latest
+image: smartbugs/sfuzz:48934c0
 
 solidity:
     command: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
