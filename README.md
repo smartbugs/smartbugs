@@ -1,6 +1,6 @@
 # SmartBugs: A Framework for Analysing Ethereum Smart Contracts
 
-![Smartbugs build](https://github.com/smartbugs/smartbugs/actions/workflows/ubuntu.yml/badge.svg)
+![SmartBugs tests](https://github.com/smartbugs/smartbugs/actions/workflows/ubuntu.yml/badge.svg)
  <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
 <a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE"><img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue"></a>
 <span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
