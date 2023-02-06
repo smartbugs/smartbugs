@@ -73,7 +73,6 @@ def execute(task):
 
     # write result to files
     task_log = task_log_dict(task, start_time, duration, exit_code, tool_log, tool_output, docker_args)
-    sb.io.write_json(fn_task_log, task_log)
     if tool_log:
         sb.io.write_txt(fn_tool_log, tool_log)
     if tool_output:
@@ -87,7 +86,10 @@ def execute(task):
         # Format parsed result as sarif
         if task.settings.sarif:
             sarif_result = sb.sarif.sarify(task_log["tool"], parsed_result["findings"])
-            sb.io.write_json(fn_sarif_output, sarif_result)       
+            sb.io.write_json(fn_sarif_output, sarif_result)
+
+    # Write to fn_task_log last, to indicate that this task is done
+    sb.io.write_json(fn_task_log, task_log)
 
     return duration
 
