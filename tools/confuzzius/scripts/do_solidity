@@ -9,9 +9,15 @@ chmod +x "$BIN/solc"
 
 touch /root/results.json
 
-if [ "$TIMEOUT" -lt 20 ]; then
+count=0
+for _ in $(python3 "$BIN"/printContractNames.py "$FILENAME"); do
+  count=$((count + 1))
+done
+
+# Fuzz each contract at least 10 seconds
+to=$(((TIMEOUT - (10 * count)) / count))
+if [ "$TIMEOUT" -eq 0 ] || [ $to -lt 10 ]; then
   python3 fuzzer/main.py -s "$FILENAME" --evm byzantium --results results.json --seed 1427655
 else
-  TO=$((TIMEOUT - 10))
-  python3 fuzzer/main.py -s "$FILENAME" --evm byzantium --results results.json --seed 1427655 --timeout $TO
+  python3 fuzzer/main.py -s "$FILENAME" --evm byzantium --results results.json --seed 1427655 --timeout $to
 fi
