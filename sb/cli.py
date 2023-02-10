@@ -35,6 +35,10 @@ def cli_args(defaults):
         type=str,
         help=f"glob pattern specifying the files to analyse{fmt_default(defaults.files)}"
             "; may be prefixed by 'DIR:' for search relative to DIR")
+    input.add_argument("--single",
+        action="store_true",
+        default=None,
+        help=f"if the Solidity file contains a contract named like the file, analyse this contract only{fmt_default('all contracts')}")
     input.add_argument("--runtime",
         action="store_true",
         default=None,

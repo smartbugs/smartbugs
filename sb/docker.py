@@ -82,8 +82,9 @@ def __docker_args(task, sbdir):
             args[k] = v
     filename = f"/sb/{os.path.split(task.absfn)[1]}" # path in Linux Docker image
     timeout = task.settings.timeout or "0"
-    args['command'] = task.tool.command(filename, timeout, "/sb/bin")
-    args['entrypoint'] = task.tool.entrypoint(filename, timeout, "/sb/bin")
+    single = 1 if task.settings.single else 0
+    args['command'] = task.tool.command(filename, timeout, "/sb/bin", single)
+    args['entrypoint'] = task.tool.entrypoint(filename, timeout, "/sb/bin", single)
     return args
 
 

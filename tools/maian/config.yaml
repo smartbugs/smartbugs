@@ -5,7 +5,7 @@ image: smartbugs/maian:solc5.10
 version: '#4bab09a'
 bin: scripts
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN' '$SINGLE'"
     solc: yes
 bytecode:
     entrypoint: "'$BIN/do_bytecode' '$FILENAME'"

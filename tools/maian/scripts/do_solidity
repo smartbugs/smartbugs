@@ -2,12 +2,20 @@
 
 FILENAME="$1"
 BIN="$2"
+SINGLE="$3"
 
 export PATH="$BIN:$PATH"
 chmod +x $BIN/solc
 
-for CONTRACT in `python3 $BIN/printContractNames.py "$FILENAME"`; do
-    cd /MAIAN/tool; 
+CONTRACT="${FILENAME%.sol}"
+CONTRACT="${CONTRACT##*/}"
+CONTRACTS=$(python3 "$BIN"/printContractNames.py "$FILENAME")
+if [ "$SINGLE" -eq 1 ] && (echo "$CONTRACTS" | grep -q "$CONTRACT"); then
+    CONTRACTS="$CONTRACT"
+fi
+
+cd /MAIAN/tool; 
+for CONTRACT in $CONTRACTS; do
     for c in 0 1 2; do
         python3 maian.py -c "$c" -s "$FILENAME" "$CONTRACT"
     done

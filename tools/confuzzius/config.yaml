@@ -5,7 +5,7 @@ version: "#4315fb7 v0.0.1"
 image: smartbugs/confuzzius:4315fb7
 
 solidity:
-    command: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+    command: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN' '$SINGLE'" 
     output: /root/results.json
     bin: scripts
     solc: yes

@@ -10,6 +10,7 @@ class Settings:
     def __init__(self):
         self.frozen = False
         self.files = []
+        self.single = False
         self.runtime = False
         self.tools = []
         self.runid = "${YEAR}${MONTH}${DAY}_${HOUR}${MIN}"
@@ -127,7 +128,7 @@ class Settings:
                     root_specs.append((root,spec))
                 setattr(self, k, root_specs)
 
-            elif k in ("runtime", "overwrite", "quiet", "json", "sarif"):
+            elif k in ("single", "runtime", "overwrite", "quiet", "json", "sarif"):
                 try:
                     assert isinstance(v, bool)
                     setattr(self, k, v)

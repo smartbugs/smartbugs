@@ -1,7 +1,7 @@
 import json
 import sb.parse_utils
 
-VERSION = "2023/01/19"
+VERSION = "2023/01/20"
 
 FINDINGS = {
     "Jump to an arbitrary instruction (SWC 127)",
@@ -25,6 +25,7 @@ def parse(exit_code, log, output):
 
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
+    errors.discard("EXIT_CODE_1") # exit code = 1 just means that a weakness has been found
 
     # Mythril catches all exceptions, prints a message "please report", and then prints the traceback.
     # So we consider all exceptions as fails (= non-intended interruptions)
