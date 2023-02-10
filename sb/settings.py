@@ -78,12 +78,11 @@ class Settings:
             raise sb.errors.InternalError("Frozen settings cannot be updated")
         if not settings:
             return
-
         if isinstance(settings, str):
             s = sb.io.read_yaml(settings)
-        elif isinstance(settings, dict):
-            s = settings
         else:
+            s = settings
+        if not isinstance(s, dict):
             raise sb.errors.SmartBugsError(f"Settings cannot be updated by objects of type '{type(settings).__name__}'")
 
         for k,v in s.items():
