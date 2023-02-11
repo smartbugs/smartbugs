@@ -89,10 +89,13 @@ def collect_tasks(files, tools, settings):
         is_byc = absfn[-4:]==".hex" and not (absfn[-7:-4]==".rt" or settings.runtime)
         is_rtc = absfn[-4:]==".hex" and     (absfn[-7:-4]==".rt" or settings.runtime)
 
-        pragma = None
+        contract = os.path.basename(absfn)[:-4]
+        pragma,contractnames = None,[]
         if is_sol:
             prg = sb.io.read_lines(absfn)
-            pragma = sb.solidity.get_pragma(prg)
+            pragma,contractnames = sb.solidity.get_pragma_contractnames(prg)
+            if settings.main and contract not in contractnames:
+                exceptions.append(f"Contract '{contract}' not found in {absfn}")
 
         for tool in sorted(tools, key=operator.attrgetter("id", "mode")):
             if ((is_sol and tool.mode=="solidity") or

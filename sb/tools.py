@@ -58,16 +58,16 @@ class Tool():
             self.absbin = os.path.join(sb.cfg.TOOLS_HOME,self.id,self.bin)
 
 
-    def command(self, filename, timeout, bin, single):
+    def command(self, filename, timeout, bin, main):
         try:
-            return self._command.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, SINGLE=single) if self._command else None
+            return self._command.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main) if self._command else None
         except KeyError as e:
             raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}")
 
 
-    def entrypoint(self, filename, timeout, bin, single):
+    def entrypoint(self, filename, timeout, bin, main):
         try:
-            return self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, SINGLE=single) if self._entrypoint else None
+            return self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main) if self._entrypoint else None
         except KeyError as e:
             raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}")
 

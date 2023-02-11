@@ -1,10 +1,11 @@
 name: HoneyBadger
+version: "#e2faeb5"
 info: An analysis tool to detect honeypots in Ethereum smart contracts
-origin: https://github.com/christoftorres/HoneyBadger
-image: smartbugs/honeybadger
+origin: https://github.com/smartbugs/HoneyBadger
+image: smartbugs/honeybadger:e2faeb5
+bin: scripts
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
     solc: yes
-    bin: scripts
 runtime:
-    command: "python honeybadger/honeybadger.py -glt 250 -t 1000 -ll 20 -b -s '$FILENAME'"
+    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT'"
