@@ -1,11 +1,11 @@
 name: Conkas
-origin: https://github.com/nveloso/conkas
-version: "#6aee098"
+origin: https://github.com/smartbugs/conkas
+version: "#4e0f256"
 info: Conkas analyzes Ethereum smart contracts to find potential security issues. It uses Rattle to lift the bytecode to an intermediate representation and then applies symbolic execution.
-image: smartbugs/conkas
+image: smartbugs/conkas:4e0f256
 bin: scripts
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN' '$MAIN'"
     solc: yes
 runtime:
-    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_runtime' '$FILENAME'"

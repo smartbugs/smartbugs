@@ -38,7 +38,7 @@ that analyse blockchain programs for weaknesses and other properties.
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
 | [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | :heavy_check_mark: |                    |                    |
-| [Conkas](https://github.com/nveloso/conkas)          | #6aee098 | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
 | [eThor](https://secpriv.wien/ethor)           | 2021 (CCS 2020) |                    |                    | :heavy_check_mark: |
 | [HoneyBadger](https://github.com/smartbugs/HoneyBadger) | #e2faeb5 | :heavy_check_mark: |                    | :heavy_check_mark: |
@@ -50,7 +50,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [Oyente](https://github.com/smartbugs/oyente)        | #480e725 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 |                    |                    | :heavy_check_mark: |
 | [Securify](https://github.com/eth-sri/securify)              |  | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [sFuzz](https://github.com/duytai/sFuzz)              | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
+| [sFuzz](https://github.com/duytai/sFuzz) | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
 | [Slither](https://github.com/crytic/slither)                 |  | :heavy_check_mark: |                    |                    |
 | [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :heavy_check_mark: |                    |                    |
 | [Solhint](https://github.com/protofire/solhint)         | 2.1.0 | :heavy_check_mark: |                    |                    |

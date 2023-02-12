@@ -6,15 +6,15 @@ import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.lo
 def collect_files(patterns):
     files = []
     for root,spec in patterns:
-
         if spec.endswith(".sbd"):
-            # No globbing, spec is a file specifying a 'dataset'
-            contracts = sb.io.read_lines(spec)
+            contracts = []
+            for sbdfile in glob.glob(spec, recursive=True):
+            	contracts.extend(sb.io.read_lines(sbdfile))
         elif root:
             try:
                 contracts = glob.glob(spec, root_dir=root, recursive=True)
             except TypeError:
-                raise sb.errors.SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for python>=3.10")
+                raise sb.errors.SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for Python>=3.10")
         else: # avoid root_dir, compatibility with python<3.10
             contracts = glob.glob(spec, recursive=True)
 
@@ -23,7 +23,6 @@ def collect_files(patterns):
             absfn = os.path.normpath(os.path.abspath(root_relfn))
             if os.path.isfile(absfn) and absfn[-4:] in (".hex", ".sol"):
                 files.append( (absfn,relfn) )
-
     return files
 
 
