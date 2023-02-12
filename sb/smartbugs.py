@@ -7,7 +7,7 @@ def collect_files(patterns):
     files = []
     for root,spec in patterns:
 
-        if spec.endswith(".txt"):
+        if spec.endswith(".sbd"):
             # No globbing, spec is a file specifying a 'dataset'
             contracts = sb.io.read_lines(spec)
         elif root:
