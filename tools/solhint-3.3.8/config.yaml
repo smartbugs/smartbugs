@@ -2,7 +2,7 @@ name: Solhint
 version: "3.3.8"
 origin: https://github.com/protofire/solhint
 info: Open source project for linting solidity code. This project provide both security and style guide validations.
-image: smartbugs/solhint
+image: smartbugs/solhint:3.3.8
 solidity:
     entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
     solc: yes
