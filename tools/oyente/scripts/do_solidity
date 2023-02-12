@@ -22,5 +22,13 @@ if [ "$MAIN" -eq 1 ]; then
     fi
 fi
 
+OPT_TIMEOUT=""
+if [ "$TIMEOUT" -gt 0 ]; then
+    # TO = TIMEOUT * 80%
+    # the remaining 20% are for honeybadger to finish
+    TO=$(( (TIMEOUT*8+9)/10 ))
+    OPT_TIMEOUT="-glt $TO"
+fi
+
 cd /oyente
-/oyente/oyente/oyente.py -s "$FILENAME" $OPT_CONTRACT
+/oyente/oyente/oyente.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT
