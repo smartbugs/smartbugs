@@ -53,7 +53,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [sFuzz](https://github.com/duytai/sFuzz) | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
 | [Slither](https://github.com/crytic/slither)                 |  | :heavy_check_mark: |                    |                    |
 | [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :heavy_check_mark: |                    |                    |
-| [Solhint](https://github.com/protofire/solhint)         | 2.1.0 | :heavy_check_mark: |                    |                    |
+| [Solhint](https://github.com/protofire/solhint)         | 3.3.8 | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
 
