@@ -1,7 +1,7 @@
 import re
 import sb.parse_utils
 
-VERSION = "2022/11/11"
+VERSION = "2023/02/13"
 
 FINDINGS = {
     "Callstack Depth Attack Vulnerability",
@@ -14,12 +14,12 @@ FINDINGS = {
 }
 
 INFOS = (
-    re.compile("!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
     re.compile("(incomplete push instruction) at [0-9]+"),
 )
 
 # ERRORS also for Osiris and Honeybadger
 ERRORS = (
+    re.compile("!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
     re.compile("(UNKNOWN INSTRUCTION: .*)"),
     re.compile("CRITICAL:root:(Solidity compilation failed)"),
 )
