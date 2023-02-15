@@ -5,7 +5,5 @@
 # as a reference for comparing the results of the workflow with
 
 rm -rf results/github
-./smartbugs -t all -f 'samples/SimpleDAO.*' --runid github --json --main
-./results2csv -x start duration -- results/*/github \
-    | sed 's/,Transaction_Order_Dependency//' \
-    > .github/results-ubuntu.csv
+./smartbugs -t all -f 'samples/SimpleDAO.*' --runid github --json --main --timeout 300
+./results2csv -x start duration -- results/*/github > .github/results-ubuntu.csv

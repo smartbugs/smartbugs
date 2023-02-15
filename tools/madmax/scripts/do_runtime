@@ -2,7 +2,14 @@
 
 FILENAME="$1"
 TIMEOUT="$2"
-BIN="$3"
+
+OPT_TIMEOUT=""
+if [ "$TIMEOUT" -gt 0 ]; then
+    # TO = TIMEOUT * 80%
+    # the remaining 20% are for madmax to finish
+    TO=$(( (TIMEOUT*8+9)/10 ))
+    OPT_TIMEOUT="-T $TO"
+fi
 
 cd /MadMax
-python3 gigahorse-toolchain/gigahorse.py --reuse_datalog_bin --rerun_clients --restart -C madmax.dl "${FILENAME}"
+python3 gigahorse-toolchain/gigahorse.py --reuse_datalog_bin --rerun_clients --restart $OPT_TIMEOUT -C madmax.dl "${FILENAME}"

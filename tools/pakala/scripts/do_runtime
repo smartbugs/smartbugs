@@ -2,7 +2,6 @@
 
 FILENAME="$1"
 TIMEOUT="$2"
-BIN="$3"
 
 geth --dev --http --http.api eth,web3,personal,net &
 sleep 2

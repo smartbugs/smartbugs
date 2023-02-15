@@ -3,6 +3,6 @@ origin: https://zenodo.org/record/3760403
 info: "Ethainter is a smart contract security analyzer for composite vulnerabilities. See the paper (Brent et al.: Ethainter: A Smart Contract Security Analyzer for Composite Vulnerabilities; In 41st ACM SIGPLAN Conference on Programming Language Design and Implementation, 2020)."
 image: smartbugs/ethainter:latest
 runtime:
-    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
+    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT'"
     bin: scripts
     output: /home/reviewer/gigahorse-toolchain/logic/results.json

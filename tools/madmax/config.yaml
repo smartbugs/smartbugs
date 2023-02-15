@@ -4,6 +4,6 @@ version: "#6e9a6e9"
 info: Madmax consists of a series of analyses and queries that find gas-focused vulnerabilities in Ethereum smart contracts.
 image: smartbugs/madmax:6e9a6e9
 runtime:
-    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT' '$BIN'"
+    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT'"
     bin: scripts
     output: /MadMax/results.json
