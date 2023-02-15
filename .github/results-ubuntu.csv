@@ -1,5 +1,5 @@
 filename,basename,toolid,toolmode,parser_version,runid,exit_code,findings,infos,errors,fails
-samples/SimpleDAO.sol,SimpleDAO.sol,confuzzius,solidity,2022/12/31,github,0,"Reentrancy,Unhandled_Exception",,,
+samples/SimpleDAO.sol,SimpleDAO.sol,confuzzius,solidity,2022/12/31,github,0,"Leaking_Ether,Reentrancy,Transaction_Order_Dependency,Unhandled_Exception",,,
 samples/SimpleDAO.rt.hex,SimpleDAO.rt.hex,conkas,runtime,2022/11/11,github,0,"Integer_Overflow,Integer_Underflow,Reentrancy,Unchecked_Low_Level_Call",,,
 samples/SimpleDAO.sol,SimpleDAO.sol,conkas,solidity,2022/11/11,github,0,"Integer_Overflow,Reentrancy,Unchecked_Low_Level_Call",,,
 samples/SimpleDAO.rt.hex,SimpleDAO.rt.hex,ethainter,runtime,2022/11/17,github,0,,,,

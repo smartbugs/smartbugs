@@ -26,7 +26,7 @@ jobs:
       - name: Install Smartbugs' dependencies
         run: install/setup-venv.sh
       - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
-        run: ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github --main --timeout 300
+        run: ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github --main --timeout 360
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: ./reparse --sarif results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
