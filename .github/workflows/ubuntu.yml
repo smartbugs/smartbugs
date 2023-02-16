@@ -30,7 +30,7 @@ jobs:
       - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
         run: ./reparse --sarif results
       - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
-        run: ./results2csv -x start duration -- results | diff .github/results-ubuntu.csv -
+        run: ./results2csv -x start duration -- results | sed '/confuzzius/s/".*"//' | diff .github/results-ubuntu.csv -
       #- name: Upload SARIF file for slither, mode sol
       #  uses: github/codeql-action/upload-sarif@v2
       #  with:

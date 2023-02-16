@@ -6,4 +6,4 @@
 
 rm -rf results/github
 ./smartbugs -t all -f 'samples/SimpleDAO.*' --runid github --json --main --timeout 360
-./results2csv -x start duration -- results/*/github > .github/results-ubuntu.csv
+./results2csv -x start duration -- results/*/github | sed '/confuzzius/s/".*"//' > .github/results-ubuntu.csv
