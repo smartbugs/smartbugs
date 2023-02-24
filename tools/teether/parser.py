@@ -1,6 +1,6 @@
 import sb.parse_utils
 
-VERSION = "2022/11/11"
+VERSION = "2023/02/24"
 
 FINDINGS = { "Ether leak" }
 
@@ -13,7 +13,8 @@ def parse(exit_code, log, output):
     for f in list(fails):         # make a copy of fails, so we can modify it
         if f.startswith("exception (teether.evm.exceptions."): # reported as error below
             fails.remove(f)
-        elif f.startswith('exception (z3.z3types.Z3Exception: b"Argument '):
+        elif (f.startswith('exception (z3.z3types.Z3Exception: b"Argument ') or
+            f.startswith("exception (z3.z3types.Z3Exception: b'Argument ")):
             fails.remove(f)
             fails.add("exception (z3.z3types.Z3Exception: Argument does not match function declaration")
 
