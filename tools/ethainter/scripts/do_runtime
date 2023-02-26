@@ -5,10 +5,9 @@ TIMEOUT="$2"
 SB=$(dirname "$FILENAME")
 
 OPT_TIMEOUT=""
-if [ "$TIMEOUT" -gt 0 ]; then
-    # TO = TIMEOUT * 80%
-    # the remaining 20% are for ethainter to finish
-    TO=$(( (TIMEOUT*8+9)/10 ))
+if [ "$TIMEOUT" -ge 170 ]; then
+    # reserve 50s for Ethainter to finish after timeout
+    TO=$((TIMEOUT-50))
     OPT_TIMEOUT="-T $TO"
 fi
 
