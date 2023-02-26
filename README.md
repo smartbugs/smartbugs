@@ -123,8 +123,10 @@ For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki/T
 **Example:** To analyse the Solidity files in the `samples` directory with Mythril, use the command
 
 ```console
-./smartbugs -t mythril -f samples/*.sol
+./smartbugs -t mythril -f samples/*.sol --processes 2 --mem-limit 4g --timeout 600
 ```
+
+The options tell SmartBugs to run two processes in parallel, with a memory limit of 4GB and max. 10 minutes computation time per task.
 
 By default, the results are placed in the local directory `results`.
 
