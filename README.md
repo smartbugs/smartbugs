@@ -127,7 +127,6 @@ For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki/T
 ```
 
 The options tell SmartBugs to run two processes in parallel, with a memory limit of 4GB and max. 10 minutes computation time per task.
-
 By default, the results are placed in the local directory `results`.
 
 ### Utility programs
