@@ -5,19 +5,19 @@ VERSION: str = ""
 """identify the version of the parser, e.g. '2022/08/15'"""
 
 FINDINGS: set[str]  = {
-    "Message padding vulnerability found at ether transfer.",
-    "Non constructor function insufficiently restricts writes to to access control variables",
-    "Missing Check of Return Value from external Call",
     "Reentrancy Vulnerability",
-    "Result of expression can be over- or under-flown by external entity",
-    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",
-    "Missing Access Control to Selfdestruct",
-    "Operation may lead to a denial of essential contract function.",
-    "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution.",
     "No whitelisting of calls proxied to another contract",
+    "Non constructor function insufficiently restricts writes to to access control variables",
+    "Missing Access Control to Selfdestruct",
+    "Missing Check of Return Value from external Call",
+    "Message padding vulnerability found at ether transfer.",
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks",
+    "Result of expression can be over- or under-flown by external entity",
     "Write to uninitialized variable might unintentionally write to storage.",
-    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",
-    "Time Manipulation Vulnerability"
+    "Operation may lead to a denial of essential contract function.",
+    "Miners can manipulate program execution by selecting when to include the timestamp",
+    "A miner can use others input to gain a benefit himself.",
+    "A deterministic or predictable value may be used as bad random number."
 }
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
