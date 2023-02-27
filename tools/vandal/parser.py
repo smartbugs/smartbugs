@@ -1,16 +1,25 @@
 import io, os, tarfile
 import sb.parse_utils
 
-VERSION = "2023/02/26"
+VERSION = "2023/02/27"
 
 FINDINGS = (
-    "checkedCallStateUpdate",
-    "destroyable",
-    "originUsed",
-    "reentrantCall",
-    "unsecuredValueSend",
-    "uncheckedCall"
+    "CheckedCallStateUpdate",
+    "Destroyable",
+    "OriginUsed",
+    "ReentrantCall",
+    "UnsecuredValueSend",
+    "UncheckedCall"
 )
+
+MAP_FINDINGS = {
+    "checkedCallStateUpdate.csv": "CheckedCallStateUpdate",
+    "destroyable.csv": "Destroyable",
+    "originUsed.csv":  "OriginUsed",
+    "reentrantCall.csv": "ReentrantCall",
+    "unsecuredValueSend.csv": "UnsecuredValueSend",
+    "uncheckedCall.csv": "UncheckedCall"
+}
 
 ANALYSIS_COMPLETE = (
     "+ /vandal/bin/decompile",
@@ -52,23 +61,26 @@ def parse(exit_code, log, output):
                 for fn in tar.getnames():
                     if not fn.endswith(".csv"):
                         continue
-                    name = os.path.basename(fn)[:-4]
+                    indicator = os.path.basename(fn)
                     try:
                         contents = tar.extractfile(fn).read()
                     except Exception as e:
                         fails.add(f"problem extracting {fn} from output archive: {e}")
                         continue
                     for line in contents.splitlines():
-                        finding = { "name": name, "address": int(line.strip(),16) }
+                        finding = {
+                            "name": MAP_FINDINGS[indicator],
+                            "address": int(line.strip(),16)
+                        }
                         findings.append(finding)
         except Exception as e:
             fails.add(f"error parsing results: {e}")
     else:
         # parsing result of old Smartbugs
         for line in log:
-            for finding in FINDINGS:
-                if f"{finding}.csv" in line:
-                    findings.append({"name": finding})
+            for indicator in MAP_FINDINGS:
+                if indicator in line:
+                    findings.append({"name": MAP_FINDINGS[indicator]})
                     break
 
     return findings, infos, errors, fails
