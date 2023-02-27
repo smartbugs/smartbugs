@@ -1,7 +1,7 @@
 import re
 import sb.parse_utils
 
-VERSION = "2023/02/13"
+VERSION = "2023/02/27"
 
 FINDINGS = {
     "Callstack Depth Attack Vulnerability",
@@ -113,10 +113,10 @@ def parse(exit_code, log, output):
 
     # Remove errors/fails issued twice, once via exception and once via print statement
     # Reclassify symbolic execution timeouts, as they are informative rather than an error
-    if "SYMBOLIC EXECUTION TIMEOUT" in infos and "exception (Exception: timeout)" in fails:
+    if "SYMBOLIC EXECUTION TIMEOUT" in errors and "exception (Exception: timeout)" in fails:
         fails.remove("exception (Exception: timeout)")
-    if "exception (Exception: timeout)" in fails:
-        infos.add("exception (Exception: timeout)")
+    #if "exception (Exception: timeout)" in fails:
+    #    infos.add("exception (Exception: timeout)")
     for e in list(fails): # list() makes a copy, so we can modify the set in the loop
         if "UNKNOWN INSTRUCTION" in e:
             fails.remove(e)
