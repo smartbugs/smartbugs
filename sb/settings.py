@@ -118,6 +118,10 @@ class Settings:
                     raise sb.errors.SmartBugsError(f"'{k}' needs to be a string or a list of strings (in {settings}).")
                 root_specs = []
                 for pattern in patterns:
+                    try:
+                        pattern = string.Template(pattern).substitute(HOME=HOME)
+                    except KeyError as e:
+                        raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in file specification")
                     root_spec = pattern.split(":")
                     if len(root_spec) == 1:
                         root,spec = None,root_spec[0]
