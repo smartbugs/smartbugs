@@ -6,7 +6,7 @@ import tarfile
 
 import sb.parse_utils
 
-VERSION = "2023/01/27"
+VERSION = "2023/03/02"
 
 FINDINGS = {
     "Block Number Dependency",
@@ -77,7 +77,7 @@ def vulnerabilities(stats):
     if results[-9] >= 1:
         vs["Freezing Ether"] = "freezing_ether.json"
     if results[-10] >= 1:
-        vs["Dangerous Delegate Call"] = "dangerous_delegate_call.json"
+        vs["Dangerous Delegate Call"] = "dangerous_delegatecall.json"
     if results[-11] >= 1:
         vs["Block Number Dependency"] = "block_number_dependency.json"
     if results[-12] >= 1:
