@@ -64,7 +64,7 @@ def errors_fails(exit_code, log, log_expected=True):
         fails.add('DOCKER_TIMEOUT')
     elif exit_code == 0:
         pass
-    elif exit_code == 16:
+    elif exit_code == 127:
         fails.add("SmartBugs was invoked with option 'main', but the filename did not match any contract")
     elif exit_code in DOCKER_CODES:
         fails.add(DOCKER_CODES[exit_code])

@@ -18,7 +18,7 @@ if [ "$MAIN" -eq 1 ]; then
         OPT_CONTRACT=":$CONTRACT"
     else
         echo "Contract '$CONTRACT' not found in $FILENAME"
-        exit 16
+        exit 127
     fi
 fi
 

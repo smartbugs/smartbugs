@@ -16,7 +16,7 @@ def parse(exit_code, log, output):
         elif (f.startswith('exception (z3.z3types.Z3Exception: b"Argument ') or
             f.startswith("exception (z3.z3types.Z3Exception: b'Argument ")):
             fails.remove(f)
-            fails.add("exception (z3.z3types.Z3Exception: Argument does not match function declaration")
+            fails.add("exception (z3.z3types.Z3Exception: Argument does not match function declaration)")
 
     exploit = []
     analysis_completed = False
