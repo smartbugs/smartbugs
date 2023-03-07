@@ -1,8 +1,8 @@
 name: HoneyBadger
-version: "#e2faeb5"
+version: "#ff30c9a"
 info: An analysis tool to detect honeypots in Ethereum smart contracts
-origin: https://github.com/smartbugs/HoneyBadger
-image: smartbugs/honeybadger:e2faeb5
+origin: https://github.com/christoftorres/HoneyBadger
+image: smartbugs/honeybadger:ff30c9a
 bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
