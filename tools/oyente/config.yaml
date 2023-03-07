@@ -5,7 +5,7 @@ info: Oyente runs on symbolic execution, determines which inputs cause which pro
 image: smartbugs/oyente:480e725
 bin: scripts
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
     solc: yes
 runtime:
-    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$TIMEOUT'"
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT'"

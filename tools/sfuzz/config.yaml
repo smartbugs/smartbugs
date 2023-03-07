@@ -5,7 +5,7 @@ origin: https://github.com/duytai/sFuzz
 image: smartbugs/sfuzz:48934c0
 
 solidity:
-    command: "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    command: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
     output: /home/contracts
     bin: scripts
     solc: yes

@@ -5,7 +5,7 @@ info: Conkas analyzes Ethereum smart contracts to find potential security issues
 image: smartbugs/conkas:4e0f256
 bin: scripts
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN' '$MAIN'"
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN' '$MAIN'"
     solc: yes
 runtime:
-    entrypoint: "'$BIN/do_runtime' '$FILENAME'"
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME'"

@@ -3,6 +3,6 @@ origin: https://github.com/smartdec/smartcheck
 info: Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code.
 solidity:
     image: smartbugs/smartcheck
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"
     solc: yes
     bin: scripts
