@@ -1,7 +1,7 @@
 import sb.parse_utils # for sb.parse_utils.init(...)
 import io, tarfile    # if the output parameter is used
 
-VERSION: str = ""
+VERSION: str = "2023/03/08"
 """identify the version of the parser, e.g. '2022/08/15'"""
 
 FINDINGS: set[str]  = {
@@ -11,13 +11,14 @@ FINDINGS: set[str]  = {
     "Missing Access Control to Selfdestruct",
     "Missing Check of Return Value from external Call",
     "Message padding vulnerability found at ether transfer.",
-    "Access control enforcement through transactions origin is vulnerable to phishing attacks",
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",
     "Result of expression can be over- or under-flown by external entity",
     "Write to uninitialized variable might unintentionally write to storage.",
     "Operation may lead to a denial of essential contract function.",
     "Miners can manipulate program execution by selecting when to include the timestamp",
     "A miner can use others input to gain a benefit himself.",
-    "A deterministic or predictable value may be used as bad random number."
+    "A deterministic or predictable value may be used as bad random number.",
+    "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution."
 }
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
