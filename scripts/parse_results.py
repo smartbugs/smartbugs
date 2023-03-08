@@ -310,14 +310,13 @@ for tool in sorted(duration_stat):
 
 print("\nTotal: %s" % timedelta(seconds=(round(total_duration))))
 
-
 print("\n# Accuracy\n")
 
 total_precision = []
 index_vulnerability = 1
 line = '|  Category           |'
 for tool in sorted(tools):
-    line += ' {:^11} |'.format(tool.title())
+    line += ' {:^11} |'.format(tool.title().split("-")[0])
 line += ' {:^11} |'.format('Total')
 print(line)
 
@@ -345,7 +344,6 @@ for category in categories:
                     total_category_precision.append(vuln)
         total_tools[tool] += found
         expected = count_vulnerabilities[category]
-
         total_identified = 0
         if tool in tool_stat and category in tool_stat[tool]:
             total_identified = tool_stat[tool][category]
@@ -365,7 +363,7 @@ print(line)
 print("\n# False Positives/False Negatives\n")
 line = '| Category            |'
 for tool in sorted(tools):
-    line += ' {:^11} |'.format(tool.title())
+    line += ' {:^11} |'.format(tool.title().split("-")[0])
 line += ' {:^11} |'.format('Total')
 print(line)
 line = "| ------------------- |"
@@ -430,7 +428,7 @@ print(line)
 print("\n# Nb Detected Vulnerabilities\n")
 line = '| Category            |'
 for tool in sorted(tools):
-    line += ' {:^11} |'.format(tool.title())
+    line += ' {:^11} |'.format(tool.title().split("-")[0])
 line += ' {:^11} |'.format('Total')
 print(line)
 
@@ -466,7 +464,7 @@ line += " {:11} |".format(total)
 print(line)
 
 
-print("\n# Combine tools ")
+print("\n# Combine Tools\n")
 
 tool_ability = {}
 for category in categories:
@@ -479,7 +477,7 @@ for category in categories:
 
 line = '| {:11} |'.format('')
 for tool_a in sorted(tools):
-    line += ' {:^11} |'.format(tool_a.title())
+    line += ' {:^11} |'.format(tool_a.title().split("-")[0])
 print(line)
 line = '| {:-<11} |'.format('-')
 for tool_a in sorted(tools):
@@ -487,7 +485,7 @@ for tool_a in sorted(tools):
 print(line)
 
 for tool_a in sorted(tools):
-    line = '| {:11} |'.format(tool_a.title())
+    line = '| {:11} |'.format(tool_a.title().split("-")[0])
 
     if tool_a not in tool_ability:
         continue
