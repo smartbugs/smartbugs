@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "bin/gen_exploit.py", line 106, in <module>
-    main(config['code'], config['target-address'], config['shellcode-address'], config['target_amount'],
-  File "bin/gen_exploit.py", line 27, in main
-    code = bytes.fromhex(inbuffer)
-ValueError: non-hexadecimal number found in fromhex() arg at position 15470

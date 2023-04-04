@@ -1,8 +1,0 @@
-Exception in thread "main" java.lang.NumberFormatException: For input string: "__../"
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.math.BigInteger.<init>(BigInteger.java:470)
-	at secpriv.Lexer.parsePushWithArguments(Lexer.java:387)
-	at secpriv.Lexer.parseOpcodeInstance(Lexer.java:394)
-	at secpriv.Lexer.lex(Lexer.java:426)
-	at secpriv.Main.main(Main.java:37)
