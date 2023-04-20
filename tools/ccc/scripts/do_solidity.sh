@@ -1,18 +1,11 @@
 #!/bin/sh
 
 # in config.yaml,
-# - set "entrypoint" to "'$BIN/do_solidity' '$FILENAME' '$TIMEOUT' '$BIN'"
+# - set "entrypoint" to "'$BIN/do_solidity' '$FILENAME'"
 # - set "bin" to "scripts" to add the scripts directory to the mounted volume
-# - set "user" to "0" (probably needed, to be able to execute the scripts"
 
 FILENAME="$1"
 # full path of file (within docker container) to analyse, e.g. /sb/my_contract.sol
-
-TIMEOUT="$2"
-# external timeout in seconds; TIMEOUT=0: no external timeout set
-
-BIN="$3"
-# directory with scripts and programs supplied from the outside, typically /sb/bin
 
 # Startup Neo4j
 neo4j start

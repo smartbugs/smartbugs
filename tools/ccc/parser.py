@@ -1,24 +1,24 @@
 import sb.parse_utils # for sb.parse_utils.init(...)
 import io, tarfile    # if the output parameter is used
 
-VERSION: str = "2023/03/08"
+VERSION: str = "2023/04/18"
 """identify the version of the parser, e.g. '2022/08/15'"""
 
 FINDINGS: set[str]  = {
-    "Reentrancy Vulnerability",
-    "No whitelisting of calls proxied to another contract",
-    "Non constructor function insufficiently restricts writes to to access control variables",
-    "Missing Access Control to Selfdestruct",
-    "Missing Check of Return Value from external Call",
-    "Message padding vulnerability found at ether transfer.",
-    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",
-    "Result of expression can be over- or under-flown by external entity",
-    "Write to uninitialized variable might unintentionally write to storage.",
-    "Operation may lead to a denial of essential contract function.",
-    "Miners can manipulate program execution by selecting when to include the timestamp",
-    "A miner can use others input to gain a benefit himself.",
-    "A deterministic or predictable value may be used as bad random number.",
-    "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution."
+    "Reentrancy Vulnerability", # ReentrancyCheck
+    "No whitelisting of calls proxied to another contract", # DefaultProxyDelegateCheck
+    "Non constructor function insufficiently restricts writes to to access control variables", # AccessControlLogicCheck
+    "Missing Access Control to Selfdestruct", # AccessControlSelfdestructCheck
+    "Missing Check of Return Value from external Call", # CallReturnCheck
+    "Message padding vulnerability found at ether transfer.", # AddressPaddingCheck
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks ", # TXOriginCheck
+    "Result of expression can be over- or under-flown by external entity", # OverUnderflowCheck
+    "Write to uninitialized variable might unintentionally write to storage.", # LocalWriteToStorageCheck
+    "Operation may lead to a denial of essential contract function.", # DOSCheck
+    "Miners can manipulate program execution by selecting when to include the timestamp", # TimeManipulationCheck
+    "A miner can use others input to gain a benefit himself.", # FrontRunningCheck
+    "A deterministic or predictable value may be used as bad random number.", # BadRandomnessCheck
+    "An expensive operation in a loop with a user controlled or often repeated condition can exhaust gas and deny reliable execution." # DOSThroughExhaustionCheck
 }
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
@@ -48,7 +48,7 @@ def parse(exit_code, log, output):
     for line in log:
         # analyse stdout/stderr of the Docker run
         if line.startswith("File:"):
-            current_contract = line[5:].strip()
+            current_contract = line[5:].strip() # removes "File:"
         elif current_contract is not None:
             if line.startswith('- '):
                 # parse each line
