@@ -1,9 +1,9 @@
 name: semgrep # optional
-version: 0.3.14 # version number, commit id, ... (optional)
+version: 1.25.0 # version number, commit id, ... (optional)
 origin: https://github.com/Decurity/semgrep-smart-contracts # optional
 info: Find patterns of vulnerabilities in smart contracts based on actual DeFi exploits as well as gas optimization rules that can be used as a part of the CI pipeline.
  # optional
-image: smartbugs/semgrep:0.3.14 # id of Docker image (mandatory)
+image: smartbugs/toolname:1.25.0 # id of Docker image (mandatory)
 bin: scripts # folder with programs that will be accessible in the Docker container
 # add the section below if the tool is able to analyse Solidity source code
 solidity:
