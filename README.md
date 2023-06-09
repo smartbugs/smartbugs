@@ -56,6 +56,8 @@ that analyse blockchain programs for weaknesses and other properties.
 | [Solhint](https://github.com/protofire/solhint)         | 3.3.8 | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
+| [EF/CF](https://github.com/uni-due-syssec/ef-cf)  | #d2b0043 |                    |                    | :heavy_check_mark: |
+
 
 ## Requirements
 
