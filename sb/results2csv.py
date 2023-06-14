@@ -56,12 +56,12 @@ def main():
         try:
             task_log = sb.io.read_json(os.path.join(r,sb.cfg.TASK_LOG))
         except Exception as e:
-            print(f"Cannot read task log: {e}")
+            print(f"Cannot read task log: {e}", file=sys.stderr)
             continue
         try:
             parser_output = sb.io.read_json(os.path.join(r,sb.cfg.PARSER_OUTPUT))
         except Exception as e:
-            print(f"Cannot read parsed output; use 'reparse' to generate it.\n{e}")
+            print(f"Cannot read parsed output; use 'reparse' to generate it.\n{e}", file=sys.stderr)
             continue
         csv_out.writerow(data2csv(task_log, parser_output, args.p, fields))
 
@@ -71,7 +71,7 @@ def list2postgres(l):
     es = []
     for e in l:
         if '"' in e or "," in e or "\n" in e:
-            es.append('"'+e.replace('"','\"')+'"')
+            es.append('"'+e.replace('"','\\"')+'"')
         else:
             es.append(e)
     return "{" + ",".join(es) + "}"

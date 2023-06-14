@@ -1,24 +1,23 @@
 import glob, os, operator
-import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.cfg, sb.io, sb.settings
-from sb.exceptions import SmartBugsError
+import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.cfg, sb.io, sb.settings, sb.errors
 
 
 
 def collect_files(patterns):
     files = []
     for root,spec in patterns:
-        if spec.endswith(".txt"):
-            # No globbing, spec is a file specifying a 'dataset'
-            contracts = sb.io.read_lines(spec)
-        else:
+        if spec.endswith(".sbd"):
+            contracts = []
+            for sbdfile in glob.glob(spec, recursive=True):
+            	contracts.extend(sb.io.read_lines(sbdfile))
+        elif root:
             try:
-                if root:
-                    contracts = glob.glob(spec, root_dir=root, recursive=True)
-                else:
-                    # avoid root_dir=... unless needed, for python<3.10
-                    contracts = glob.glob(spec, recursive=True)
+                contracts = glob.glob(spec, root_dir=root, recursive=True)
             except TypeError:
-                raise SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for python>=3.10")
+                raise sb.errors.SmartBugsError(f"{root}:{spec}: colons in file patterns only supported for Python>=3.10")
+        else: # avoid root_dir, compatibility with python<3.10
+            contracts = glob.glob(spec, recursive=True)
+
         for relfn in contracts:
             root_relfn = os.path.join(root,relfn) if root else relfn
             absfn = os.path.normpath(os.path.abspath(root_relfn))
@@ -52,23 +51,21 @@ def collect_tasks(files, tools, settings):
             if rdir_collisions > len(files)*0.1:
                 sb.logging.message(sb.colors.warning(
                     "    Consider using more of $TOOL, $MODE, $ABSDIR, $RELDIR, $FILENAME,\n"
-                    "    $FILEBASE, $FILEEXT when specifying the 'results' directory.")) 
+                    "    $FILEBASE, $FILEEXT when specifying the 'results' directory."))
+
     def get_solc(pragma, fn, toolid):
+        if not pragma:
+            raise sb.errors.SmartBugsError(f"{fn}: no pragma, cannot determine solc version")
         if not sb.solidity.ensure_solc_versions_loaded():
             sb.logging.message(sb.colors.warning(
-                "Failed to load list of solc versions; are we connected to the internet?\n"
-                "    Proceeding with locally installed versions."),
+                "Failed to load list of solc versions; are we connected to the internet? Proceeding with local compilers"),
                 "")
         solc_version = sb.solidity.get_solc_version(pragma)
         if not solc_version:
-            raise SmartBugsError(
-                "Cannot determine Solidity version\n"
-                f"{fn}: {pragma}")
+            raise sb.errors.SmartBugsError(f"{fn}: no compiler found that matches {pragma}")
         solc_path = sb.solidity.get_solc_path(solc_version)
         if not solc_path:
-            raise SmartBugsError(
-                f"Cannot load solc {solc_version}\n"
-                f"required by {toolid} and {fn})")
+            raise sb.errors.SmartBugsError(f"{fn}: cannot load solc {solc_version} needed by {toolid}")
         return solc_version,solc_path
 
     def ensure_loaded(image):
@@ -78,6 +75,7 @@ def collect_tasks(files, tools, settings):
 
 
     tasks = []
+    exceptions = []
 
     last_absfn = None
     for absfn,relfn in sorted(files):
@@ -90,10 +88,13 @@ def collect_tasks(files, tools, settings):
         is_byc = absfn[-4:]==".hex" and not (absfn[-7:-4]==".rt" or settings.runtime)
         is_rtc = absfn[-4:]==".hex" and     (absfn[-7:-4]==".rt" or settings.runtime)
 
-        pragma = None
+        contract = os.path.basename(absfn)[:-4]
+        pragma,contractnames = None,[]
         if is_sol:
             prg = sb.io.read_lines(absfn)
-            pragma = sb.solidity.get_pragma(prg)
+            pragma,contractnames = sb.solidity.get_pragma_contractnames(prg)
+            if settings.main and contract not in contractnames:
+                exceptions.append(f"Contract '{contract}' not found in {absfn}")
 
         for tool in sorted(tools, key=operator.attrgetter("id", "mode")):
             if ((is_sol and tool.mode=="solidity") or
@@ -109,13 +110,19 @@ def collect_tasks(files, tools, settings):
                 # load resources
                 solc_version, solc_path = None,None
                 if tool.solc:
-                    solc_version, solc_path = get_solc(pragma, absfn, tool.id)
+                    try:
+                        solc_version, solc_path = get_solc(pragma, relfn, tool.id)
+                    except Exception as e:
+                        exceptions.append(e)
                 ensure_loaded(tool.image)
 
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)
                 tasks.append(task)
 
     report_collisions()
+    if exceptions:
+        errors = "\n".join(sorted({str(e) for e in exceptions}))
+        raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
     return tasks
 
 
@@ -126,13 +133,17 @@ def main(settings: sb.settings.Settings):
     sb.logging.message(
         sb.colors.success(f"Welcome to SmartBugs {sb.cfg.VERSION}!"),
         f"Settings: {settings}")
+
     tools = sb.tools.load(settings.tools)
     if not tools:
         sb.logging.message(sb.colors.warning("Warning: no tools selected!"))
+
+    sb.logging.message("Collecting files ...")
     files = collect_files(settings.files)
-    if not files:
-        sb.logging.message(sb.colors.warning("Warning: no files selected!"))
+    sb.logging.message(f"{len(files)} files to analyse")
+
+    sb.logging.message("Assembling tasks ...")
     tasks = collect_tasks(files, tools, settings)
-    if not tasks:
-        raise SmartBugsError("No tasks to execute.")
+    sb.logging.message(f"{len(tasks)} tasks to execute")
+
     sb.analysis.run(tasks, settings)

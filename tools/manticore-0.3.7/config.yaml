@@ -5,6 +5,6 @@ info: Manticore is a symbolic execution tool for analysis of smart contracts and
 image: smartbugs/manticore:0.3.7
 output: /results
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"
     solc: yes
     bin: scripts

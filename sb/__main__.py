@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Smartbugs: A framework to analyze smart contracts
+"""SmartBugs: A framework to analyze smart contracts
 
    http://github.com/smartbugs/smartbugs
 """

@@ -1,7 +1,7 @@
 import re, ast
 import sb.parse_utils
 
-VERSION = "2022/11/11"
+VERSION = "2023/02/27"
     
 FINDINGS = {
     "delegatecall bug",
@@ -36,10 +36,13 @@ def parse(exit_code, log, output):
                 tx_dict += line
             else:
                 in_tx = False
-                tx = ast.literal_eval(tx_dict)
-                if not "exploit" in finding:
-                    finding["exploit"] = []
-                finding["exploit"].append(tx)
+                try:
+                    tx = ast.literal_eval(tx_dict)
+                    if not "exploit" in finding:
+                        finding["exploit"] = []
+                    finding["exploit"].append(tx)
+                except Exception:
+                    pass
 
         m = TRANSACTION.match(line)
         if m:

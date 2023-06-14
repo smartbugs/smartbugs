@@ -1,10 +1,10 @@
 # SmartBugs: A Framework for Analysing Ethereum Smart Contracts
 
-![Smartbugs build](https://github.com/smartbugs/smartbugs/workflows/build/badge.svg)
+![SmartBugs tests](https://github.com/smartbugs/smartbugs/actions/workflows/ubuntu.yml/badge.svg)
  <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
 <a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE"><img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue"></a>
 <span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
-<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-18-blue"></a>
+<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-19-blue"></a>
 
 
 SmartBugs is an extensible platform with a uniform interface to tools
@@ -38,21 +38,22 @@ that analyse blockchain programs for weaknesses and other properties.
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
 | [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | :heavy_check_mark: |                    |                    |
-| [Conkas](https://github.com/nveloso/conkas)          | #6aee098 | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
 | [eThor](https://secpriv.wien/ethor)           | 2021 (CCS 2020) |                    |                    | :heavy_check_mark: |
-| [HoneyBadger](https://github.com/christoftorres/HoneyBadger) |  | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :heavy_check_mark: |                    |                    |
-| [Mythril](https://github.com/ConsenSys/mythril)        | 0.23.5 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Osiris](https://github.com/christoftorres/Osiris)           |  | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Mythril](https://github.com/ConsenSys/mythril)       | 0.23.15 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Oyente](https://github.com/smartbugs/oyente)        | #480e725 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 |                    |                    | :heavy_check_mark: |
 | [Securify](https://github.com/eth-sri/securify)              |  | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [sFuzz](https://github.com/duytai/sFuzz) | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
 | [Slither](https://github.com/crytic/slither)                 |  | :heavy_check_mark: |                    |                    |
 | [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :heavy_check_mark: |                    |                    |
-| [Solhint](https://github.com/protofire/solhint)         | 2.1.0 | :heavy_check_mark: |                    |                    |
+| [Solhint](https://github.com/protofire/solhint)         | 3.3.8 | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
 | CCC                                                  |          | :heavy_check_mark: |                    |                    |
@@ -70,12 +71,12 @@ that analyse blockchain programs for weaknesses and other properties.
 
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
-   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon. Currently, this is achieved by adding the SmartBugs user to the `docker` group:
+   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon. Currently, this is achieved by adding the user to the `docker` group:
 
    ```bash
    sudo usermod -a -G docker $USER
    ```
-   This adds the user running the `sudo` command to the `docker` group. For adding another user, replace `$USER` by the respective user-id. The group membership becomes active with the next log-in.
+   For adding another user, replace `$USER` by the respective user-id. The group membership becomes active with the next log-in.
 
 2. Clone [SmartBugs's repository](https://github.com/smartbugs/smartbugs):
 
@@ -112,26 +113,27 @@ SmartBugs provides a command-line interface. Run it without arguments for a shor
 
 ```console
 ./smartbugs
-usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--runtime]
+usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--main] [--runtime]
                  [--processes N] [--timeout N] [--cpu-quota N] [--mem-limit MEM]
                  [--runid ID] [--results DIR] [--log FILE] [--overwrite] [--json] [--sarif] [--quiet] 
                  [--version] [-h]
+...
 ```
-For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki).
+For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki/The-command-line-interface).
 
-To analyse the Solidity files in the `samples` directory with Mythril, use the command
+**Example:** To analyse the Solidity files in the `samples` directory with Mythril, use the command
 
 ```console
-./smartbugs -t mythril -f samples/*.sol
+./smartbugs -t mythril -f samples/*.sol --processes 2 --mem-limit 4g --timeout 600
 ```
 
-By default, the results will be placed in a local directory `results`.
+The options tell SmartBugs to run two processes in parallel, with a memory limit of 4GB and max. 10 minutes computation time per task.
+By default, the results are placed in the local directory `results`.
 
 ### Utility programs
 
-**`reparse`** can be used to parse the analysis results anew, without rerunning
-the analaysis. This may be useful either when you forgot to specify the options `--json` or `--sarif` during analysis, or when you want to parse the analysis
-results with an updated parser.
+**`reparse`** can be used to parse analysis results and extract relevant information, without rerunning the analysis.
+This may be useful either when you forgot to specify the option `--json` or `--sarif` during analysis, or when you want to parse old analysis results with an updated parser.
 
 ```console
 ./reparse
@@ -147,11 +149,15 @@ usage: results2csv [-h] [-p] [-v] [-f FIELD [FIELD ...]] [-x FIELD [FIELD ...]] 
 ...
 ```
 
-The following commands analyse `simple_dao.sol` with all available tools and write the parsed output to `results.csv`. The option `--json` tells SmartBugs to write the parsed output to json files (one per contract). `results2csv` collects the outputs in directory `results` and writes one line per analysis task to 
+The following commands analyse `SimpleDAO.sol` with all available tools and write the parsed output to `results.csv`.
+`reparse` is necessary in this example, since `smartbugs` is called without the options `--json` and `--sarif`, so SmartBugs doesn't parse during the analysis.
+`results2csv` collects the outputs in the folder `results` and writes for each analysed contract one line of comma-separated values to standard output (redirected to `results.csv`).
+The option `-p` tells `results2csv` to format the lists of findings, errors etc. as Postgres arrays; without the option, the csv file is suitable for spreadsheet programs.
 
 ```console
-./smartbugs -t all -f samples/simple_dao.sol --json
-./results2csv results > results.csv
+./smartbugs -t all -f samples/SimpleDAO.sol
+./reparse results
+./results2csv -p results > results.csv
 ```
 
 ## Further Information
@@ -207,6 +213,6 @@ You can show your appreciation for the project and support future development by
 
 ## License
 The [license](LICENSE) applies to all files in the repository,
-with the exception of the smart contracts in the `dataset` folder. 
+with the exception of the smart contracts in the `samples` folder.
 The files there were obtained from [Etherscan](http://etherscan.io)
 and retain their original licenses.

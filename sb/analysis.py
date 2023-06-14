@@ -1,6 +1,5 @@
-import multiprocessing, random, time, datetime, os
-import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif
-from sb.exceptions import SmartBugsError
+import multiprocessing, random, time, datetime, os, random
+import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
 
 
 
@@ -27,7 +26,7 @@ def execute(task):
     # create result dir if it doesn't exist
     os.makedirs(task.rdir, exist_ok=True)
     if not os.path.isdir(task.rdir):
-        raise SmartBugsError(f"Cannot create result directory {task.rdir}")
+        raise sb.errors.SmartBugsError(f"Cannot create result directory {task.rdir}")
 
     # check whether result dir is empty,
     # and if not, whether we are going to overwrite it
@@ -38,7 +37,7 @@ def execute(task):
         old_toolid = old["tool"]["id"]
         old_mode = old["tool"]["mode"]
         if task.relfn != old_fn or task.tool.id != old_toolid or task.tool.mode != old_mode:
-            raise SmartBugsError(
+            raise sb.errors.SmartBugsError(
                 f"Result directory {task.rdir} occupied by another task"
                 f" ({old_toolid}/{old_mode}, {old_fn})")
         if not task.settings.overwrite:
@@ -52,19 +51,28 @@ def execute(task):
     for fn in (fn_task_log, fn_tool_log, fn_tool_output, fn_parser_output, fn_sarif_output):
         try:
             os.remove(fn)
-        except:
+        except Exception:
             pass
         if os.path.exists(fn):
-            raise SmartBugsError(f"Cannot clear old output {fn}")
+            raise sb.errors.SmartBugsError(f"Cannot clear old output {fn}")
 
     # perform analysis
-    start_time = time.time()
-    exit_code,tool_log,tool_output,docker_args = sb.docker.execute(task)
-    duration = time.time() - start_time
+    # Docker causes spurious connection errors
+    # try three times before giving up
+    for i in range(3):
+        try:
+            start_time = time.time()
+            exit_code,tool_log,tool_output,docker_args = sb.docker.execute(task)
+            duration = time.time() - start_time
+            break
+        except sb.errors.SmartBugsError as e:
+            if i == 2:
+                raise
+        # wait 3 to 8 minutes
+        time.sleep(random.randint(3,8)*60)
 
     # write result to files
     task_log = task_log_dict(task, start_time, duration, exit_code, tool_log, tool_output, docker_args)
-    sb.io.write_json(fn_task_log, task_log)
     if tool_log:
         sb.io.write_txt(fn_tool_log, tool_log)
     if tool_output:
@@ -78,7 +86,10 @@ def execute(task):
         # Format parsed result as sarif
         if task.settings.sarif:
             sarif_result = sb.sarif.sarify(task_log["tool"], parsed_result["findings"])
-            sb.io.write_json(fn_sarif_output, sarif_result)       
+            sb.io.write_json(fn_sarif_output, sarif_result)
+
+    # Write to fn_task_log last, to indicate that this task is done
+    sb.io.write_json(fn_task_log, task_log)
 
     return duration
 
@@ -88,23 +99,30 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
         
     def pre_analysis():
         with tasks_started.get_lock():
-            tasks_started.value += 1
-            started = tasks_started.value
+            tasks_started_value = tasks_started.value + 1
+            tasks_started.value = tasks_started_value
         sb.logging.message(
-            f"Starting task {started}/{tasks_total}: {sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}",
+            f"Starting task {tasks_started_value}/{tasks_total}: {sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}",
             "", logqueue)
 
-    def post_analysis(duration):
+    def post_analysis(duration, no_processes, timeout):
         with tasks_completed.get_lock(), time_completed.get_lock():
-            tasks_completed.value += 1
-            time_completed.value += duration
-            elapsed = time_completed.value
-            completed = tasks_completed.value
-        # estimated time to completion = avg.time per task * remaining tasks / no.processes
-        etc = elapsed / completed * (tasks_total-completed) / task.settings.processes
+            tasks_completed_value = tasks_completed.value + 1
+            tasks_completed.value = tasks_completed_value
+            time_completed_value = time_completed.value + duration
+            time_completed.value = time_completed_value
+        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / no_processes
+        completed_tasks = tasks_completed_value
+        time_so_far = time_completed_value
+        remaining_tasks = tasks_total - tasks_completed_value
+        if timeout:
+            # Assume that the first round of processes all ran into a timeout
+            completed_tasks += no_processes
+            time_so_far += timeout*no_processes
+        etc = time_so_far / completed_tasks * remaining_tasks / no_processes
         etc_fmt = datetime.timedelta(seconds=round(etc))
         duration_fmt = datetime.timedelta(seconds=round(duration))
-        sb.logging.message(f"{completed}/{tasks_total} completed, ETC {etc_fmt}")
+        sb.logging.message(f"{tasks_completed_value}/{tasks_total} completed, ETC {etc_fmt}")
 
     while True:
         task = taskqueue.get()
@@ -114,10 +132,10 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
         pre_analysis()
         try:
             duration = execute(task)
-        except SmartBugsError as e:
-            duration = 0
+        except sb.errors.SmartBugsError as e:
+            duration = 0.0
             sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
-        post_analysis(duration)
+        post_analysis(duration, task.settings.processes, task.settings.timeout)
 
 
 

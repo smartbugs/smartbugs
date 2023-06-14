@@ -1,6 +1,5 @@
 import argparse, sys, os
-import sb.cfg, sb.colors, sb.smartbugs, sb.logging, sb.settings
-from sb.exceptions import SmartBugsError
+import sb.cfg, sb.colors, sb.smartbugs, sb.logging, sb.settings, sb.errors
 
 def cli_args(defaults):
 
@@ -36,6 +35,10 @@ def cli_args(defaults):
         type=str,
         help=f"glob pattern specifying the files to analyse{fmt_default(defaults.files)}"
             "; may be prefixed by 'DIR:' for search relative to DIR")
+    input.add_argument("--main",
+        action="store_true",
+        default=None,
+        help=f"if the Solidity file contains a contract named like the file, analyse this contract only{fmt_default('all contracts')}")
     input.add_argument("--runtime",
         action="store_true",
         default=None,
@@ -142,6 +145,6 @@ def main():
         settings = cli()
         sb.logging.message(None, f"Arguments passed: {sys.argv}")
         sb.smartbugs.main(settings)
-    except SmartBugsError as e:
+    except sb.errors.SmartBugsError as e:
         sb.logging.message(sb.colors.error(e))
         sys.exit(1)

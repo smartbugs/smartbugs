@@ -6,7 +6,7 @@ image: smartbugs/security:usolc # includes solc 0.5.11, but we don't need it
 output: /results/
 bin: scripts
 solidity:
-    entrypoint: "'$BIN/do_solidity' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"
     solc: yes
 runtime:
-    entrypoint: "'$BIN/do_runtime' '$FILENAME' '$BIN'"
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$BIN'"

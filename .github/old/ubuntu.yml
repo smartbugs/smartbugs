@@ -1,0 +1,169 @@
+name: SmartBugs tests # name displayed in badge
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+jobs:
+  run-sb-ubuntu:
+    runs-on: ubuntu-20.04
+    #runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tool: ["all"]
+        contract: ["'samples/SimpleDAO.*'"]
+        python-version: ["3.6.9"]
+        #python-version: ["3.10.8"]
+    steps:
+      - name: Clone SmartBugs
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Smartbugs' dependencies
+        run: install/setup-venv.sh
+      - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+        run: ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github --main --timeout 360
+      - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./reparse --sarif results
+      - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./results2csv -x start duration -- results | sed '/confuzzius/s/".*"//' | diff .github/results-ubuntu.csv -
+      #- name: Upload SARIF file for slither, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/slither/github/SimpleDAO.sol/result.sarif
+      #    category: slither/sol
+      #- name: Upload SARIF file for smartcheck, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/smartcheck/github/SimpleDAO.sol/result.sarif
+      #    category: smartcheck/sol
+      #- name: Upload SARIF file for honeybadger, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/honeybadger/github/SimpleDAO.sol/result.sarif
+      #    category: honeybadger/sol
+      #- name: Upload SARIF file for honeybadger, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/honeybadger/github/SimpleDAO.rt.hex/result.sarif
+      #    category: honeybadger/rt.hex
+      #- name: Upload SARIF file for conkas, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/conkas/github/SimpleDAO.sol/result.sarif
+      #    category: conkas/sol
+      #- name: Upload SARIF file for conkas, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/conkas/github/SimpleDAO.rt.hex/result.sarif
+      #    category: conkas/rt.hex
+      # like osiris
+      #- name: Upload SARIF file for oyente, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/oyente/github/SimpleDAO.sol/result.sarif
+      #    category: oyente/sol
+      #- name: Upload SARIF file for oyente, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/oyente/github/SimpleDAO.rt.hex/result.sarif
+      #    category: oyente/rt.hex
+      #- name: Upload SARIF file for maian, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/maian/github/SimpleDAO.sol/result.sarif
+      #    category: maian/sol
+      #- name: Upload SARIF file for maian, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/maian/github/SimpleDAO.rt.hex/result.sarif
+      #    category: maian/rt.hex
+      #- name: Upload SARIF file for maian, mode hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/maian/github/SimpleDAO.hex/result.sarif
+      #    category: maian/hex
+      # like Ethainter
+      #- name: Upload SARIF file for madmax, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/madmax/github/SimpleDAO.rt.hex/result.sarif
+      #    category: madmax/rt.hex
+      #- name: Upload SARIF file for pakala, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/pakala/github/SimpleDAO.rt.hex/result.sarif
+      #    category: pakala/rt.hex
+      #- name: Upload SARIF file for ethainter, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/ethainter/github/SimpleDAO.rt.hex/result.sarif
+      #    category: ethainter/rt.hex
+      # like Maian
+      #- name: Upload SARIF file for vandal, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/vandal/github/SimpleDAO.rt.hex/result.sarif
+      #    category: vandal/rt.hex
+      # like Ethainter
+      #- name: Upload SARIF file for teether, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/teether/github/SimpleDAO.rt.hex/result.sarif
+      #    category: teether/rt.hex
+      #- name: Upload SARIF file for osiris, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/osiris/github/SimpleDAO.sol/result.sarif
+      #    category: osiris/sol
+      #- name: Upload SARIF file for osiris, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/osiris/github/SimpleDAO.rt.hex/result.sarif
+      #    category: osiris/rt.hex
+      #- name: Upload SARIF file for solhint, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/solhint/github/SimpleDAO.sol/result.sarif
+      #    category: solhint/sol
+      # like Maian
+      #- name: Upload SARIF file for securify, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/securify/github/SimpleDAO.sol/result.sarif
+      #    category: securify/sol
+      #- name: Upload SARIF file for securify, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/securify/github/SimpleDAO.rt.hex/result.sarif
+      #    category: securify/rt.hex
+      #- name: Upload SARIF file for ethor, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/ethor/github/SimpleDAO.rt.hex/result.sarif
+      #    category: ethor/rt.hex
+      #- name: Upload SARIF file for mythril-0.23.5, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/mythril-0.23.5/github/SimpleDAO.sol/result.sarif
+      #    category: mythril-0.23.5/sol
+      #- name: Upload SARIF file for mythril-0.23.5, mode rt.hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/mythril-0.23.5/github/SimpleDAO.rt.hex/result.sarif
+      #    category: mythril-0.23.5/rt.hex
+      #- name: Upload SARIF file for mythril-0.23.5, mode hex
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/mythril-0.23.5/github/SimpleDAO.hex/result.sarif
+      #    category: mythril-0.23.5/hex
+      # like Ethainter
+      #- name: Upload SARIF file for manticore-0.3.7, mode sol
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: results/manticore-0.3.7/github/SimpleDAO.sol/result.sarif
+      #    category: manticore-0.3.7/sol
