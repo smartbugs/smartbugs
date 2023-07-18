@@ -54,35 +54,6 @@ FINDINGS = [
     "rigoblock-missing-access-control"
 ]
 
-# def parse_file(file):
-    # findings = []
-    # for i, line in enumerate(file):
-    #     # analyse stdout/stderr of the Docker run
-        
-    #     line = line.strip()
-
-    #     if line.startswith('/'):
-    #         current_finding = {'filename': line}
-    #     elif 'solidity.performance.' in line:
-    #         name = line.split('solidity.performance.')[1].split(' ')[0]
-    #         message = file[i+1].strip()
-    #         current_finding= {
-    #             **current_finding,
-    #             'name': name,
-    #             'message': message
-    #         }
-            
-    #     elif re.search(r'\d+┆', line):
-    #         line_location = line.strip().split('┆', 1)
-    #         if len(line_location) > 0:
-    #             cline_number = int(line_location[0])
-    #             current_finding = {
-    #             **current_finding,
-    #             'line': cline_number
-    #             }
-        
-    #         findings.append(current_finding.copy())
-    # return findings
 
 
 def parse(exit_code, log, output):
