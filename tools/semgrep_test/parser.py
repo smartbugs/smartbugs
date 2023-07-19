@@ -1,7 +1,7 @@
 import sb.parse_utils, sb.cfg# for sb.parse_utils.init(...) 
 import re
 
-VERSION: str = "2023/06/12"
+VERSION: str = "Latest"
 
 FINDINGS = [
     "unnecessary-checked-arithmetic-in-loop",
@@ -54,35 +54,40 @@ FINDINGS = [
     "rigoblock-missing-access-control"
 ]
 
-
+def message_lines(log_iterator):
+    message_lines = []
+    while True:
+        next_line = next(log_iterator, '').strip()
+        if not next_line:
+            break
+        message_lines.append(next_line)
+    return ' '.join(message_lines)
 
 def parse(exit_code, log, output):
     
     findings, infos = [], set()
     finding = {}
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
-    # Parses the output for common Python/Java/shell exceptions (returned in 'fails')
-    # file = sb.cfg.TOOL_LOG
-    # print(log)
+    log_iterator = iter(log)
+    
 
-    for line in log:
+    
+    for line in log_iterator:
 
         line = line.strip()
 
         if line.startswith('/'):
-            finding = {'filename': line}
-            print(finding["filename"])
-        elif 'solidity.performance.' in line:
-            finding = {'name': line.split('solidity.performance.')[1].split(' ')[0]}
-            # finding = {'message' : line[1+i].strip()}
-            print(finding["name"])
-        elif 'solidity.best-practice.' in line:
-            name = line.split('solidity.best-practice.')[1].split(' ')[0]
-            finding = {'name': name}
-        elif 'solidity.security.' in line:
-            name = line.split('solidity.security.')[1].split(' ')[0]
-            finding = {'name': name}
-            
+            filename = line.split("/")
+            filename = '/'.join(filename[-2:])
+            finding = {'filename': filename}
+
+        elif re.search(r'solidity\.(performance|best-practice|security)\.', line):
+            match = re.search(r'solidity\.(performance|best-practice|security)\.(\S+)', line)
+            category = match.group(1)
+            name = match.group(2)
+            finding = {'name': name, 'category': category}
+            finding['message'] = message_lines(log_iterator)
+
             
         elif re.search(r'\d+┆', line):
             line_location = line.strip().split('┆', 1)
@@ -92,22 +97,7 @@ def parse(exit_code, log, output):
         
             findings.append(finding.copy())
 
-    # file = sb.cfg.TASK_LOG
     
     return findings, infos, errors, fails
         
         
-
-
-    # try:
-    #     with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
-
-    #         # access specific file
-    #         contents_of_some_file = tar.extractfile("name_of_some_file").read()
-
-    #         # iterate over all files:
-    #         for f in tar.getmembers():
-    #             contents_of_f = tar.extractfile(f).read()
-    # except Exception as e:
-    #     fails.add(f"error parsing results: {e}")
-
