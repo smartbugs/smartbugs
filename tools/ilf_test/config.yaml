@@ -1,0 +1,10 @@
+name: ILF 
+version: 20a1c15 
+origin: https://github.com/eth-sri/ilf
+info: ILF is an Imitation Learning based Fuzzer for smart contracts. The fuzzing policy, which is used to generate transactions, is represented by an ensemble of neural networks and is learned from thousands of high-quality sequences of transactions generated using symbolic execution. ILF can be used to fuzz any Ethereum smart contract and outputs the coverage and a vulnerability report.
+image: stamp9/ilf:sb_test 
+bin: scripts # folder with programs that will be accessible in the Docker container
+# add the section below if the tool is able to analyse Solidity source code
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
