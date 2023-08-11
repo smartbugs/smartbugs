@@ -1,10 +1,9 @@
 name: semgrep 
 version: latest 
-origin: https://semgrep.dev/ # optional
+origin: https://semgrep.dev/ 
 info: Find patterns of vulnerabilities in smart contracts based on actual DeFi exploits as well as gas optimization rules that can be used as a part of the CI pipeline.
-image: stamp9/semgrep-sb-test-3:latest # id of Docker image (mandatory)
-bin: scripts # folder with programs that will be accessible in the Docker container
-# add the section below if the tool is able to analyse Solidity source code
+image: stamp9/semgrep-sb-test-3:latest
+bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
     solc: yes
