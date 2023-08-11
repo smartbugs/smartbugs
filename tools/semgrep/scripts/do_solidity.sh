@@ -7,5 +7,4 @@ BIN="$3"
 export PATH="$BIN:$PATH"
 chmod +x "$BIN/solc"
 
-# semgrep --config ./solidity "$FILENAME" --json --output ./results.json
 semgrep --config ./solidity "$FILENAME" 
