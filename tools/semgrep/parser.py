@@ -1,7 +1,7 @@
 import sb.parse_utils, sb.cfg# for sb.parse_utils.init(...) 
 import re
 
-VERSION: str = "Latest"
+VERSION: str = "2023/08/21"
 
 FINDINGS = [
     "unnecessary-checked-arithmetic-in-loop",
@@ -76,16 +76,17 @@ def parse(exit_code, log, output):
 
         line = line.strip()
 
-        if line.startswith('/'):
-            filename = line.split("/")
-            filename = '/'.join(filename[-2:])
-            finding = {'filename': filename}
+        # if line.startswith('/'):
+        #     filename = line.split("/")
+        #     filename = '/'.join(filename[-2:])
+        #     finding = {'filename': filename}
 
-        elif re.search(r'solidity\.(performance|best-practice|security)\.', line):
+        if re.search(r'solidity\.(performance|best-practice|security)\.', line):
             match = re.search(r'solidity\.(performance|best-practice|security)\.(\S+)', line)
             category = match.group(1)
             name = match.group(2)
-            finding = {'name': name, 'category': category}
+            finding['name'] = name
+            finding['category'] = category
             finding['message'] = message_lines(log_iterator)
 
             
