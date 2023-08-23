@@ -1,5 +1,5 @@
 Delegatecall to user-supplied address (SWC 112):
-    classification: SWC-112, DASP-10
+    classification: SWC-112
     method: Check for invocations of delegatecall to a user-supplied address.
     descr_short: The contract delegates execution to another contract with a user-supplied address.
     descr_long: The smart contract delegates execution to a user-supplied address. This could allow an attacker to execute arbitrary code in the context of this contract account and manipulate the state of the contract account or execute actions on its behalf.
@@ -27,7 +27,7 @@ Dependence on tx.origin (SWC 115):
     descr_short: Use of tx.origin as a part of authorization control.
 
 Exception State (SWC 110):
-    classification: SWC-110, DASP-10
+    classification: SWC-110
     method: Checks whether any exception states are reachable.
     descr_long: It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
     severity: medium
@@ -48,7 +48,7 @@ Integer Arithmetic Bugs (SWC 101):
     severity: high
 
 Jump to an arbitrary instruction (SWC 127):
-    classification: SWC-127, DASP-10
+    classification: SWC-127
     method: Search for jumps to arbitrary locations in the bytecode
     severity: high
     descr_short: The caller can redirect execution to arbitrary bytecode locations.
