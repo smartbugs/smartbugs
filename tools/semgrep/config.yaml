@@ -1,0 +1,12 @@
+name: semgrep 
+version: latest 
+origin: https://semgrep.dev/ 
+info: Find patterns of vulnerabilities in smart contracts based on actual DeFi exploits as well as gas optimization rules that can be used as a part of the CI pipeline.
+image: stamp9/semgrep-sb-test-3:latest
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
+    bin: scripts
+
+    

@@ -1,0 +1,116 @@
+abiencoderv2-array: {}
+arbitrary-send:
+    classification: SWC-105, DASP-2
+arbitrary-send-erc20: {}
+arbitrary-send-erc20-permit: {}
+arbitrary-send-eth: {}
+array-by-reference: {}
+assembly:
+    classification: SWC-0, DASP-10
+assert-state-change: {}
+backdoor: {}
+boolean-cst: {}
+boolean-equal: {}
+calls-loop:
+    classification: SWC-113, DASP-5
+complex-function: {}
+constable-states:
+    classification: SWC-0, DASP-10
+constant-function:
+    classification: SWC-0, DASP-10
+constant-function-asm: {}
+constant-function-state: {}
+controlled-array-length: {}
+controlled-delegatecall:
+    classification: SWC-106, DASP-2
+costly-loop: {}
+dead-code: {}
+delegatecall-loop: {}
+deprecated-standards:
+    classification: SWC-0, DASP-10
+divide-before-multiply: {}
+domain-separator-collision: {}
+enum-conversion: {}
+erc20-indexed:
+    classification: SWC-0, DASP-10
+erc20-interface:
+    classification: SWC-0, DASP-10
+erc721-interface: {}
+events-access: {}
+events-maths: {}
+external-function:
+    classification: SWC-0, DASP-10
+function-init-state: {}
+incorrect-equality:
+    classification: SWC-0, DASP-10
+incorrect-modifier: {}
+incorrect-shift: {}
+incorrect-unary: {}
+locked-ether:
+    classification: SWC-997, DASP-5
+low-level-calls:
+    classification: SWC-104, DASP-4
+mapping-deletion: {}
+missing-inheritance: {}
+missing-zero-check: {}
+msg-value-loop: {}
+multiple-constructors: {}
+name-reused: {}
+naming-convention:
+    classification: SWC-0, DASP-10
+pragma:
+    classification: SWC-103, DASP-10
+protected-vars: {}
+public-mappings-nested: {}
+redundant-statements: {}
+reentrancy-benign:
+    classification: SWC-107, DASP-1
+reentrancy-eth:
+    classification: SWC-107, DASP-1
+reentrancy-events: {}
+reentrancy-no-eth:
+    classification: SWC-107, DASP-1
+reentrancy-unlimited-gas: {}
+reused-constructor: {}
+rtlo: {}
+shadowing-abstract:
+    classification: SWC-119, DASP-10
+shadowing-builtin:
+    classification: SWC-0, DASP-10
+shadowing-local:
+    classification: SWC-119, DASP-10
+shadowing-state:
+    classification: SWC-119, DASP-10
+similar-names: {}
+solc-version:
+    classification: SWC-102, DASP-10
+storage-array: {}
+suicidal:
+    classification: SWC-106, DASP-2
+tautology: {}
+timestamp:
+    classification: SWC-116, DASP-8
+token-reentrancy: {}
+too-many-digits: {}
+tx-origin:
+    classification: SWC-115, DASP-2
+unchecked-lowlevel: {}
+unchecked-send: {}
+unchecked-transfer: {}
+unimplemented-functions: {}
+uninitialized-fptr-cst: {}
+uninitialized-local:
+    classification: SWC-0, DASP-10
+uninitialized-state:
+    classification: SWC-109, DASP-10
+uninitialized-storage:
+    classification: SWC-109, DASP-10
+unprotected-upgrade: {}
+unused-return:
+    classification: SWC-104, DASP-4
+unused-state:
+    classification: SWC-131, DASP-10
+variable-scope: {}
+void-cst: {}
+weak-prng: {}
+write-after-write: {}

@@ -70,7 +70,7 @@ def main():
 def list2postgres(l):
     es = []
     for e in l:
-        if '"' in e or "," in e or "\n" in e:
+        if any (ch in e for ch in ('"', ",", "\n", "{", "}")):
             es.append('"'+e.replace('"','\\"')+'"')
         else:
             es.append(e)
@@ -79,7 +79,7 @@ def list2postgres(l):
 def list2excel(l):
     es = []
     for e in l:
-        if '"' in e or "," in e or "\n" in e:
+        if any (ch in e for ch in ('"', ",", "\n")):
             es.append('"'+e.replace('"','""')+'"')
         else:
             es.append(e)
