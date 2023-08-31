@@ -1,0 +1,72 @@
+unnecessary-checked-arithmetic-in-loop:{}
+proxy-storage-collision:
+    classification: SWC-124, DASP-2	
+erc20-public-burn:{}
+non-payable-constructor:{}
+use-prefix-increment-not-postfix:{}
+balancer-readonly-reentrancy-getrate:
+    classification: SWC-107, DASP-1
+erc777-reentrancy:
+    classification: SWC-107, DASP-1
+use-short-revert-string:{}
+init-variables-with-default-value:{}
+unrestricted-transferownership:
+    classification:  , DASP-2
+erc20-public-transfer:{}
+openzeppelin-ecdsa-recover-malleable:
+    classification: SWC-117
+erc721-reentrancy:
+    classification: SWC-107, DASP-1
+erc677-reentrancy:
+    classification: SWC-107, DASP-1
+array-length-outside-loop:{}
+no-slippage-check:{}
+basic-arithmetic-underflow:
+    classification: SWC-101, DASP-3
+oracle-price-update-not-restricted:
+    classification: DASP-2
+use-multiple-require:{}
+compound-borrowfresh-reentrancy:
+    classification: SWC-107, DASP-1
+use-prefix-decrement-not-postfix:{}
+use-nested-if:{}
+gearbox-tokens-path-confusion:{}
+redacted-cartel-custom-approval-bug:{}
+erc721-arbitrary-transferfrom:{}
+balancer-readonly-reentrancy-getpooltokens:
+    classification: SWC-107, DASP-1
+incorrect-use-of-blockhash:{}
+curve-readonly-reentrancy:
+    classification: SWC-107, DASP-1
+sense-missing-oracle-access-control:
+    classification: DASP-2
+encode-packed-collision:
+    classification: SWC-133, DASP-1
+uniswap-callback-not-protected:
+    classification: DASP-2
+keeper-network-oracle-manipulation:
+    classification: SWC-101, DASP-3
+tecra-coin-burnfrom-bug:{}
+use-ownable2step:{}
+state-variable-read-in-a-loop:{}
+use-abi-encodecall-instead-of-encodewithselector:{}
+delegatecall-to-arbitrary-address:
+    classification: SWC-112, DASP-10
+arbitrary-low-level-call:
+    classification: SWC-112, DASP-10
+
+superfluid-ctx-injection:{}
+non-optimal-variables-swap:{}
+use-custom-error-not-require:{}
+inefficient-state-variable-increment:{}
+compound-sweeptoken-not-restricted:
+    classification: SWC-105, DASP-2
+accessible-selfdestruct:
+    classification: SWC-106, DASP-2
+no-bidi-characters:
+    classification: SWC-130
+basic-oracle-manipulation:
+    classification: SWC-101, DASP-3
+msg-value-multicall:{}
+rigoblock-missing-access-control:
+    classification: DASP-2
