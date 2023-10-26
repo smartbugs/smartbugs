@@ -135,7 +135,7 @@ def parse(exit_code, log, output):
         for element in elements:
             if element.get("type") == "function":
                 finding["function"] = element["name"]
-                finding["contract"] = element["contract"]["name"]
+                finding["contract"] = element["name"]
                 break
         findings.append(finding)
 
