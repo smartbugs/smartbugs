@@ -64,7 +64,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ### Requirements
 
-- Linux, MacOS or Windows (not yet tested on other Unixes)
+- Linux, MacOS or Windows; other Unixes probably as well
 - [Docker](https://docs.docker.com/install)
 - [Python3](https://www.python.org) (version 3.6 and above, 3.10+ recommended)
 
@@ -72,7 +72,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
-   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon. Currently, this is achieved by adding the user to the `docker` group:
+   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon, by adding the user to the `docker` group:
 
    ```bash
    sudo usermod -a -G docker $USER
@@ -212,7 +212,6 @@ If you use SmartBugs or any of the datasets above, you may want to cite one of t
 
 - **SmartBugs Wild Dataset:**
   <a href="https://arxiv.org/abs/1910.10601">Durieux, T., Ferreira, J.F., Abreu, R. and Cruz, P.: "Empirical review of automated analysis tools on 47,587 Ethereum smart contracts:, in *Proceedings of the ACM/IEEE 42nd International Conference on Software Engineering (ICSE 2020)*, pages 530-541, 2020.</a>
-
 The paper analyzes the contracts in the [wild
 dataset](https://github.com/smartbugs/smartbugs-wild) using [SmartBugs
 v1.0](https://github.com/smartbugs/smartbugs/releases/tag/v1.0.0). The
@@ -230,7 +229,7 @@ repository](https://github.com/smartbugs/smartbugs-results).
 ```
 
 - **Skelcodes:**
-  <a href=https://arxiv.org/abs/2303.10517">Monika di Angelo, Thomas Durieux, João F. Ferreira, Gernot Salzer: "Evolution of Automated Weakness Detection in Ethereum Bytecode: a Comprehensive Study", in *Empirical Software Engineering*, Springer, 2023, to appear.</a>
+  <a href="https://arxiv.org/abs/2303.10517">Monika di Angelo, Thomas Durieux, João F. Ferreira, Gernot Salzer: "Evolution of Automated Weakness Detection in Ethereum Bytecode: a Comprehensive Study", in *Empirical Software Engineering*, Springer, 2023, to appear.</a>
 ```
 @article{diAngeloEtAl2023EMSE,
   title = {Evolution of Automated Weakness Detection in {Ethereum} Bytecode: a Comprehensive Study},
@@ -239,7 +238,7 @@ repository](https://github.com/smartbugs/smartbugs-results).
   year={2023),
   note={to appear}
 }
-
+```
 
 ## Support and Donate
 You can show your appreciation for the project and support future development by donating.
