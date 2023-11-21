@@ -40,7 +40,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | :heavy_check_mark: |                    |                    |
 | [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
-| [eThor](https://secpriv.wien/ethor)           | 2021 (CCS 2020) |                    |                    | :heavy_check_mark: |
+| [eThor](https://secpriv.wien/ethor)           | 2023 |                    |                    | :heavy_check_mark: |
 | [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -170,6 +170,12 @@ The option `-p` tells `results2csv` to format the lists of findings, errors etc.
 - 143 contracts: [SB
   Curated](https://github.com/smartbugs/smartbugs-curated) is a
   curated dataset of vulnerable Solidity smart contracts.
+
+- 3103/2529/2473 contracts as source/deployment/runtime code:
+  [Consolidated Ground Truth (CGT)](https://github.com/gsalzer/cgt)
+  is a unified and consolidated ground truth with 20,455 manually
+  checked assessments (positive and negative) of security-related
+  properties.
 
 - 47,398 contracts: [SmartBugs Wild
   Dataset](https://github.com/smartbugs/smartbugs-wild) is a

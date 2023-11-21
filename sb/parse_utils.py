@@ -22,7 +22,7 @@ def truncate_message(m, length=205):
     return m if len(m) <= length else m[:half_length]+' ... '+m[-half_length:]
 
 
-TRACEBACK = "Traceback (most recent call last)" # Python
+TRACEBACK = "Traceback (most recent call last):" # Python
 
 EXCEPTIONS = (
     re.compile(".*line [0-9: ]*(Segmentation fault|Killed)"), # Shell
@@ -38,7 +38,7 @@ def exceptions(lines):
             if line and line[0] != " ":
                 exceptions.add(f"exception ({line})")
                 traceback = False
-        elif line.startswith(TRACEBACK):
+        elif line.endswith(TRACEBACK):
             traceback = True
         else:
             for re_exception in EXCEPTIONS:

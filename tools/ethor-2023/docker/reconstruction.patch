@@ -1,0 +1,43 @@
+--- script/evm-abstract-semantics-light.dl	2022-01-10 15:47:55.076241068 +0100
++++ evm-abstract-semantics-light-new.dl	2022-01-10 15:47:31.367928794 +0100
+@@ -42,6 +42,7 @@
+ .decl BALANCE(pc: number)
+ .decl CALLDATALOAD(pc: number)
+ .decl EXTCODESIZE(pc: number)
++.decl EXTCODEHASH(pc: number)
+ .decl BLOCKHASH(pc: number)
+ .decl MLOAD(pc: number)
+ .decl SLOAD(pc: number)
+@@ -148,7 +149,7 @@ BINOP(pc) :- GT(pc).
+ BINOP(pc) :- SLT(pc).
+ BINOP(pc) :- SGT(pc).
+ BINOP(pc) :- EQ(pc).
+-BINOP(pc) :- AND(pc).
++//BINOP(pc) :- AND(pc).
+ BINOP(pc) :- OR(pc).
+ BINOP(pc) :- XOR(pc).
+ BINOP(pc) :- BYTE(pc).
+@@ -180,6 +181,7 @@ POPZEROPUSHONE(pc) :- GAS(pc).
+ POPONEPUSHONE(pc) :- BALANCE(pc).
+ POPONEPUSHONE(pc) :- CALLDATALOAD(pc).
+ POPONEPUSHONE(pc) :- EXTCODESIZE(pc).
++POPONEPUSHONE(pc) :- EXTCODEHASH(pc).
+ POPONEPUSHONE(pc) :- BLOCKHASH(pc).
+ POPONEPUSHONE(pc) :- MLOAD(pc).
+ POPONEPUSHONE(pc) :- SLOAD(pc).
+@@ -257,6 +259,15 @@ State(pc + 1, [value2, [value3, [value4, [value5, [value6, [value7, [value8, [va
+ // POP
+ State(pc + 1, stack) :- State(pc, [_,stack]), POP(pc).
+ 
++State(pc + 1, ["T",stack]) :- State(pc, ["T", [_,stack]]), AND(pc).
++
++State(pc + 1, ["T",stack]) :- State(pc, [_, ["T",stack]]), AND(pc).
++
++State(pc + 1, [X ,stack]) :- State(pc, [X, ["4294967295",stack]]), AND(pc).
++State(pc + 1, [X ,stack]) :- State(pc, ["4294967295", [X,stack]]), AND(pc).
++
++State(pc + 1, ["T" ,stack]) :- State(pc, [Y, [X, stack]]), AND(pc), Y != "4294967295", X !=  "4294967295".
++
+ State(pc + 1, ["T",stack]) :- State(pc, [_, [_,stack]]), BINOP(pc).
+ 
+ State(pc + 1, ["T",stack]) :- State(pc, [_,stack]), UNOP(pc).
