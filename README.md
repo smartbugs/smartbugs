@@ -200,7 +200,7 @@ If you use SmartBugs or any of the datasets above, you may want to cite one of t
   title = {{SmartBugs} 2.0: An Execution Framework for Weakness Detection in {Ethereum} Smart Contracts},
   author={di Angelo, Monika and Durieux, Thomas and Ferreira, Jo{\~a}o F. and Salzer, Gernot},
   booktitle={Proceedings of the 38th IEEE/ACM International Conference on Automated Software Engineering (ASE 2023)},
-  year={2023),
+  year={2023},
   note={to appear}
 }
 ```
