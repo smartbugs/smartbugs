@@ -1,0 +1,15 @@
+name: EF/CF Framework
+version: latest
+origin: https://github.com/uni-due-syssec/efcf
+info: The EF/CF framework analyses EVM bytecode and solidity source code using fuzzing to detect a variety of security vulnerabilities.
+image: ghcr.io/uni-due-syssec/efcf-framework
+bin: scripts
+alias:
+    - efcf
+solidity:
+  entrypoint: "'$BIN/analyze_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+  output: /root/results.json
+  solc: yes
+bytecode:
+  entrypoint: "'$BIN/analyze_bytecode.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+  output: /root/results.json
