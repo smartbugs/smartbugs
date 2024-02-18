@@ -10,4 +10,4 @@ done
 SB=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
 source "$SB/venv/bin/activate"
-PYTHONPATH="$SB:$PYTHONPATH" python -m sb $*
+PYTHONPATH="$SB:$PYTHONPATH" python -m sb "$@"
