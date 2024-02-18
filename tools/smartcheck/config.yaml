@@ -1,6 +1,6 @@
 name: Smartcheck
 origin: https://github.com/smartdec/smartcheck
-info: Securify automatically checks for vulnerabilities and bad coding practices. It runs lexical and syntactical analysis on Solidity source code.
+info: SmartCheck is an extensible static analysis tool for discovering vulnerabilities and other code issues in Ethereum smart contracts written in the Solidity programming language.
 solidity:
     image: smartbugs/smartcheck
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"

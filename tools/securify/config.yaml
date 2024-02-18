@@ -1,7 +1,7 @@
 name: Securify
 origin: https://github.com/eth-sri/securify
 info: Securify uses formal verification, also relying on static analysis checks. Securify's analysis consists of two steps. First, it symbolically analyzes the contract's dependency graph to extract precise semantic information from the code. Then, it checks compliance and violation patterns that capture sufficient conditions for proving if a property holds or not.
-image: smartbugs/security:usolc # includes solc 0.5.11, but we don't need it
+image: smartbugs/securify:usolc # includes solc 0.5.11, but we don't need it
 #image: smartbugs/securify:0.4.25 # includes solc 0.4.24, but we don't need it
 output: /results/
 bin: scripts
