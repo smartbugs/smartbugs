@@ -95,3 +95,26 @@ Write to an arbitrary storage location (SWC 124):
     severity: high
     descr_short: The caller can write to arbitrary storage locations.
     descr_long: It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract.
+
+Transaction Order Dependence (SWC 114):
+    classification: SWC-114, DASP-7
+    method: Search for calls whose value depends on balance or storage.
+    severity: medium
+    descr_short: The value of the call is dependent on balance or storage write.
+    descr_long: The value of the call is dependent on balance or storage write. This can lead to race conditions. An attacker may be able to run a transaction after our transaction, which can change the value of the call.
+
+requirement violation (SWC 123):
+    classification: SWC-123
+    method: Checks whether any requirements violate in a call.
+    severity: medium
+    descr_short: A requirement was violated in a nested call and the call was reverted as a result.
+    descr_long: Make sure valid inputs are provided to the nested call (for instance, via passed arguments).
+
+Strict Ether balance check (SWC 132):
+    classification: SWC-132
+    method: Checks for strict equality checks with contract balance.
+    severity: low
+    descr_short: Use of strict ether balance checking.
+    descr_long: Ether can be forcefully sent to this contract. This may make the contract unusable.
+
+

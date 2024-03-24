@@ -1,7 +1,7 @@
 import json
 import sb.parse_utils
 
-VERSION = "2023/01/20"
+VERSION = "2024/03/24"
 
 FINDINGS = {
     "Jump to an arbitrary instruction (SWC 127)",
@@ -18,6 +18,9 @@ FINDINGS = {
     "State access after external call (SWC 107)",
     "Unprotected Selfdestruct (SWC 106)",
     "Unchecked return value from external call. (SWC 104)",
+    "Transaction Order Dependence (SWC 114)",
+    "requirement violation (SWC 123)",
+    "Strict Ether balance check (SWC 132)"
 }
 
 
