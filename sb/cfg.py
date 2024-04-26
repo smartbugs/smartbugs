@@ -1,6 +1,6 @@
 import os, time, cpuinfo, platform
 
-VERSION = "2.0.8"
+VERSION = "2.0.9"
 HOME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 SITE_CFG = os.path.join(HOME,"site_cfg.yaml")
 TASK_LOG = "smartbugs.json"
