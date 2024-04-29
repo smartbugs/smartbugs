@@ -89,6 +89,10 @@ FINDINGS = {
     "void-cst",
     "weak-prng",
     "write-after-write",
+    "cache-array-length",
+    "cyclomatic-complexity",
+    "immutable-states",
+    "return-bomb"
 }
 
 LOCATION = re.compile("/sb/(.*?)#([0-9-]*)")
