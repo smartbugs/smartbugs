@@ -77,8 +77,12 @@ def execute(task):
         sb.io.write_txt(fn_tool_log, tool_log)
     if tool_output:
         sb.io.write_bin(fn_tool_output, tool_output)
+
+    # Write fn_task_log, to indicate that this task is done
+    sb.io.write_json(fn_task_log, task_log)
         
     # Parse output of tool
+    # If parsing fails, run the reparse script; no need to redo the analysis
     if task.settings.json or task.settings.sarif:
         parsed_result = sb.parsing.parse(task_log, tool_log, tool_output)
         sb.io.write_json(fn_parser_output,parsed_result)
@@ -87,9 +91,6 @@ def execute(task):
         if task.settings.sarif:
             sarif_result = sb.sarif.sarify(task_log["tool"], parsed_result["findings"])
             sb.io.write_json(fn_sarif_output, sarif_result)
-
-    # Write to fn_task_log last, to indicate that this task is done
-    sb.io.write_json(fn_task_log, task_log)
 
     return duration
 
@@ -134,7 +135,7 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             duration = execute(task)
         except sb.errors.SmartBugsError as e:
             duration = 0.0
-            sb.logging.message(sb.colors.error(f"Analysis of {task.absfn} with {task.tool.id} failed.\n{e}"), "", logqueue)
+            sb.logging.message(sb.colors.error(f"While analyzing {task.absfn} with {task.tool.id}:\n{e}"), "", logqueue)
         post_analysis(duration, task.settings.processes, task.settings.timeout)
 
 
