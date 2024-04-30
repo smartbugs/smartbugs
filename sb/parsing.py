@@ -38,7 +38,8 @@ def parse(task_log, tool_log, tool_output):
             assert not finding.get("filename") or filename.endswith(finding["filename"].split("/")[-1])
             finding["filename"] = filename
     except Exception as e:
-        raise sb.errors.SmartBugsError(f"Parsing of results failed\n{e}")
+        raise
+        # raise sb.errors.SmartBugsError(f"Parsing of results failed\n{e}")
 
 
     return {
