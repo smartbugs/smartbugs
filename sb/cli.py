@@ -100,25 +100,33 @@ def cli_args(defaults):
         action="help",
         default=argparse.SUPPRESS,
         help="show this help message and exit")
+    info.add_argument("--debug",
+        action="store_true",
+        help="print debugging infos")
 
     if len(sys.argv)==1:
         parser.print_help(sys.stderr)
         sys.exit(1)
 
     args = vars(parser.parse_args())
+    sb.cfg.DEBUG = args["debug"]
 
-    if args["version"]:
-        print(f"""\
-SmartBugs {sb.cfg.VERSION}
-Python {sb.cfg.CPU.get('python_version')}
-{sb.cfg.UNAME.system} {sb.cfg.UNAME.release} {sb.cfg.UNAME.version}
-CPU {sb.cfg.CPU.get('brand_raw')}\
-""")
-        sys.exit(0)
+    if args["version"] or sb.cfg.DEBUG:
+        print(
+            f"SmartBugs {sb.cfg.VERSION}\n"
+            f"Python {sb.cfg.CPU.get('python_version')}\n"
+            f"{sb.cfg.UNAME.system} {sb.cfg.UNAME.release} {sb.cfg.UNAME.version}\n"
+            f"CPU {sb.cfg.CPU.get('brand_raw')}")
+        if args["version"]:
+            sys.exit(0)
+        for module in sys.modules.values():
+            if hasattr(module, "__version__"):
+                print(module.__name__, module.__version__)
+
 
     cfg_file = args["configuration"]
 
-    del args["version"], args["configuration"]
+    del args["version"], args["configuration"], args["debug"]
     for k in [ k for k,v in args.items() if v is None ]:
         del args[k]
 

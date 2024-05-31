@@ -1,5 +1,5 @@
-import docker, os, shutil, tempfile, requests
-import sb.io, sb.errors
+import docker, os, shutil, tempfile, requests, traceback
+import sb.io, sb.errors, sb.cfg
 
 
 
@@ -12,12 +12,13 @@ def client():
             _client = docker.from_env()
             _client.info()
         except Exception:
-            raise sb.errors.SmartBugsError("Docker: Cannot connect to service. Is it installed and running?")
+            details = f"\n{traceback.format_exc()}" if sb.cfg.DEBUG else ""
+            raise sb.errors.SmartBugsError(f"Docker: Cannot connect to service. Is it installed and running?{details}")
     return _client
 
+
+
 images_loaded = set()
-
-
 
 def is_loaded(image):
     if image in images_loaded:
