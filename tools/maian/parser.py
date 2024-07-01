@@ -17,9 +17,9 @@ FINDINGS = (
 )
 
 
-FILENAME            = re.compile("\[ \] Compiling Solidity contract from the file (.*/.*) \.\.\.")
-MISSING_ABI_BIN     = re.compile("\[-\] Some of the files is missing or empty: \|(.*)\.abi\|=[0-9]+  \|(.*)\.bin\|=[0-9]+")
-CONTRACT            = re.compile("\[ \] Contract address saved in file: (?:.*/)?(.*)\.address")
+FILENAME            = re.compile("\\[ \\] Compiling Solidity contract from the file (.*/.*) \\.\\.\\.")
+MISSING_ABI_BIN     = re.compile("\\[-\\] Some of the files is missing or empty: \\|(.*)\\.abi\\|=[0-9]+  \\|(.*)\\.bin\\|=[0-9]+")
+CONTRACT            = re.compile("\\[ \\] Contract address saved in file: (?:.*/)?(.*)\\.address")
 CANNOT_DEPLOY       = "[-] Cannot deploy the contract" # no bincode, e.g. interfaces in the source code
 NOT_PRODIGAL        = "[+] The code does not have CALL/SUICIDE, hence it is not prodigal"
 LEAK_FOUND          = "[-] Leak vulnerability found!"
@@ -37,7 +37,7 @@ SD_VULN_FOUND       = "[-] Suicidal vulnerability found!"
 CANNOT_CONFIRM_SDV  = "[ ] Confirming suicide vulnerability on private chain ...     Cannot confirm the suicide vulnerability"
 SD_VULN_CONFIRMED   = "    Confirmed ! The contract is suicidal !"
 SD_VULN_NOT_FOUND   = "[-] No suicidal vulnerability found"
-TRANSACTION         = re.compile("    -Tx\[.+\] :([0-9a-z ]+)")
+TRANSACTION         = re.compile("    -Tx\\[.+\\] :([0-9a-z ]+)")
 
 MAP_FINDINGS = (
     (NOT_PRODIGAL, "No Ether leak (no send)"),
@@ -62,18 +62,18 @@ INFOS = (
 )
 
 ERRORS = (
-    re.compile("\[-\] (Cannot compile the contract)"),
+    re.compile("\\[-\\] (Cannot compile the contract)"),
     re.compile(".*(Unknown operation)"),
     re.compile(".*(Some addresses are larger)"),
     re.compile(".*(did not process.*)"),
     re.compile(".*(In SLOAD the list at address)"),
     re.compile(".*(Incorrect final stack size)"),
     re.compile(".*(need to set the parameters)"),
-    re.compile("\[-\] (.* does NOT exist)"),
+    re.compile("\\[-\\] (.* does NOT exist)"),
     re.compile(".*(?<!Z3)Exception: (.{,64})"),
 )
 
-CHECK = re.compile("\[ \] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)")
+CHECK = re.compile("\\[ \\] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)")
 
 
 def parse(exit_code, log, output):

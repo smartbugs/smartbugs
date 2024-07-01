@@ -9,7 +9,7 @@ FINDINGS = {
     "call bug"
 }
 
-FINDING = re.compile(".*pakala\.analyzer\[.*\] INFO Found (.* bug)\.")
+FINDING = re.compile(".*pakala\\.analyzer\\[.*\\] INFO Found (.* bug)\\.")
 COVERAGE = re.compile("Symbolic execution finished with coverage (.*).")
 FINISHED = re.compile("Nothing to report.|======> Bug found! Need .* transactions. <======")
 TRANSACTION = re.compile("Transaction [0-9]+, example solution:")

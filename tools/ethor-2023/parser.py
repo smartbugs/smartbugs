@@ -13,7 +13,7 @@ FAILS = (
     re.compile(".*(Undefined relation [a-zA-Z0-9]+) in file .*dl at line"),
 )
 
-UNSUPPORTED_OP = re.compile(".*(java.lang.UnsupportedOperationException: [^)]*)\)")
+UNSUPPORTED_OP = re.compile(".*(java.lang.UnsupportedOperationException: [^)]*)\\)")
 
 COMPLETED = re.compile("^(.*) (secure|insecure|unknown)$")
 

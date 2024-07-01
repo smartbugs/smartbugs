@@ -7,7 +7,7 @@ solcx.set_target_os("linux")
 
 
 
-VOID_START = re.compile("//|/\*|\"|'")
+VOID_START = re.compile("//|/\\*|\"|'")
 QUOTE_END = re.compile("(?<!\\\\)'")
 DQUOTE_END = re.compile('(?<!\\\\)"')
 

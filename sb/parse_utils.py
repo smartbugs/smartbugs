@@ -12,7 +12,7 @@ DOCKER_CODES = {
 }
 
 
-ANSI = re.compile('\x1b\[[^m]*m')
+ANSI = re.compile("\x1b\\[[^m]*m")
 def discard_ANSI(lines):
     return ( ANSI.sub('',line) for line in lines )
 

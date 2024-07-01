@@ -1,7 +1,7 @@
 import colorama, re, sys
 from colorama import Fore, Style
 
-ANSIcolor = re.compile('\x1b\[[^m]*m')
+ANSIcolor = re.compile("\x1b\\[[^m]*m")
 def strip(s):
     return ANSIcolor.sub('',str(s))
 
