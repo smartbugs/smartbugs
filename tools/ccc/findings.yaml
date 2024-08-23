@@ -1,0 +1,27 @@
+# Copyright (c) 2024, Fraunhofer AISEC. All rights reserved.
+A deterministic or predictable value may be used as bad random number.:
+    classification: DASP-6
+A miner can use others input to gain a benefit himself.:
+    classification: DASP-7
+Access control enforcement through transactions origin is vulnerable to phishing attacks :
+    classification: DASP-2
+Message padding vulnerability found at ether transfer.:
+    classification: DASP-9
+Miners can manipulate program execution by selecting when to include the timestamp:
+    classification: DASP-8
+Missing Access Control to Selfdestruct:
+    classification: DASP-2
+Missing Check of Return Value from external Call:
+    classification: DASP-4
+No whitelisting of calls proxied to another contract:
+    classification: DASP-2
+Non constructor function insufficiently restricts writes to to access control variables:
+    classification: DASP-2
+Operation may lead to a denial of essential contract function.:
+    classification: DASP-5
+Reentrancy Vulnerability:
+    classification: DASP-1
+Result of expression can be over- or under-flown by external entity:
+    classification: DASP-3
+Write to uninitialized variable might unintentionally write to storage.:
+    classification: DASP-10
