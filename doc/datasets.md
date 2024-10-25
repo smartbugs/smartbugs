@@ -1,6 +1,6 @@
 # Smart Contract Data for Analysis
 
-See the notes on [academic usage](doc/academia.md) for information on how
+See the notes on [academic usage](academia.md) for information on how
 to cite the datasets.
 
 - 10 contracts: The folder

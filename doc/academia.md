@@ -9,13 +9,13 @@ SmartBugs or one of the datasets.
 
 ```bibtex
 @inproceedings{diAngeloEtAl2023ASE,
-   author={di Angelo, Monika and Durieux, Thomas and Ferreira, Jo{\~a}o F. and Salzer, Gernot},
-   booktitle = {38th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
-title = {{SmartBugs} 2.0: An Execution Framework for Weakness Detection in Ethereum Smart Contracts},
-year = {2023},
-pages = {2102-2105},
-doi = {10.1109/ASE56229.2023.00060},
-publisher = {IEEE Computer Society}
+  author={di Angelo, Monika and Durieux, Thomas and Ferreira, Jo{\~a}o F. and Salzer, Gernot},
+  booktitle = {38th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+  title = {{SmartBugs} 2.0: An Execution Framework for Weakness Detection in Ethereum Smart Contracts},
+  year = {2023},
+  pages = {2102-2105},
+  doi = {10.1109/ASE56229.2023.00060},
+  publisher = {IEEE Computer Society}
 }
 ```
 
@@ -58,16 +58,15 @@ repository](https://github.com/smartbugs/smartbugs-results).
 
 ```bibtex
 @article{diAngeloEtAl2024EMSE,
-author = {di Angelo, Monika and Durieux, Thomas and Ferreira, Jo\~{a}o F. and Salzer, Gernot},
-title = {Evolution of automated weakness detection in {Ethereum} bytecode: a comprehensive study},
-year = {2024},
-publisher = {Kluwer Academic Publishers},
-volume = {29},
-number = {2},
-doi = {10.1007/s10664-023-10414-8},
-journal = {Empirical Softw. Eng.},
-month = feb,
-numpages = {44}
+  author = {di Angelo, Monika and Durieux, Thomas and Ferreira, Jo\~{a}o F. and Salzer, Gernot},
+  title = {Evolution of automated weakness detection in {Ethereum} bytecode: a comprehensive study},
+  year = {2024},
+  publisher = {Kluwer Academic Publishers},
+  volume = {29},
+  number = {2},
+  doi = {10.1007/s10664-023-10414-8},
+  journal = {Empirical Softw. Eng.},
+  numpages = {44}
 }
 ```
 
@@ -77,13 +76,13 @@ numpages = {44}
 
 ```bibtex
 @inproceedings{diAngeloEtAl2023WTSC,
-author = {di Angelo, Monika and Salzer, Gernot},
-title = {Consolidation of Ground Truth Sets for Weakness Detection in Smart Contracts},
-year = {2023},
-publisher = {Springer-Verlag},
-doi = {10.1007/978-3-031-48806-1_28},
-booktitle = {Financial Cryptography and Data Security. FC 2023 International Workshops: Voting, CoDecFin, DeFi, WTSC, Bol, Bra\v{c}, Croatia, May 5, 2023, Revised Selected Papers},
-pages = {439-–455},
-numpages = {17}
+  author = {di Angelo, Monika and Salzer, Gernot},
+  title = {Consolidation of Ground Truth Sets for Weakness Detection in Smart Contracts},
+  year = {2023},
+  publisher = {Springer-Verlag},
+  doi = {10.1007/978-3-031-48806-1_28},
+  booktitle = {Financial Cryptography and Data Security. FC 2023 International Workshops: Voting, CoDecFin, DeFi, WTSC, Bol, Bra\v{c}, Croatia, May 5, 2023, Revised Selected Papers},
+  pages = {439-–455},
+  numpages = {17}
 }
 ```
