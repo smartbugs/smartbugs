@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Linux, MacOS or Windows; other Unixes probably as well
+- Linux, MacOS or Windows
 - [Docker](https://docs.docker.com/install)
 - [Python3](https://www.python.org) (version 3.6 and above, 3.10+ recommended)
 
@@ -10,12 +10,14 @@
 
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
-   Make sure that the user running SmartBugs is allowed to interact with the Docker daemon, by adding the user to the `docker` group:
+   Make sure that the user running SmartBugs has permission to interact with the Docker daemon, by adding the user to the `docker` group:
 
-   ```bash
-   sudo usermod -a -G docker $USER
    ```
-   For adding another user, replace `$USER` by the respective user-id. The group membership becomes active with the next log-in.
+   bash sudo usermod -a -G docker $USER
+   ```
+
+   For adding someone else, replace `$USER` by the respective
+   user-id. The group membership becomes active with the next log-in.
 
 2. Clone [SmartBugs's repository](https://github.com/smartbugs/smartbugs):
 

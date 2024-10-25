@@ -34,10 +34,10 @@ that analyse blockchain programs for weaknesses and other properties.
 - *Output of results in SARIF format,* for integration into Github
   workflows.
 
-- *Platform independent:* SmartBugs has been tested with Linux, MacOS
-  and Windows, and probably runs on most Unix versions.
+- *Platform independence:* SmartBugs has been tested with Linux, MacOS
+  and Windows.
 
-### Supported Tools
+## Supported Tools
 
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
@@ -66,7 +66,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Installation
 
-SmartBugs has been tested with Linux, MacOS or Windows. It requires
+SmartBugs has been tested with Linux, MacOS or Windows. It depends on
 Docker and Python.  For details, see the [installation
 instructions](doc/installation.md).
 
@@ -87,7 +87,7 @@ As an example, the following commands analyse the sample data in the `samples` f
 
 For details, see the [usage notes](doc/usage.md) and the [SmartBugs wiki](https://github.com/smartbugs/smartbugs/wiki).
 
-## Smart Contract Data for Analysis
+## Smart Contract Datasets
 
 See our [information on available datasets](doc/datasets.md) if you
 are looking for datasets to run SmartBugs on. The number of contracts

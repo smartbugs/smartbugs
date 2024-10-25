@@ -1,7 +1,7 @@
 # Usage
 
 SmartBugs provides a command-line interface. Run it without arguments for a short description.
-For details, see the [SmartBugs wiki](https://github.com/smartbugs/smartbugs/wiki).
+For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki/The-command-line-interface).
 
 
 ```console
@@ -12,7 +12,6 @@ usage: smartbugs [-c FILE] [-t TOOL [TOOL ...]] [-f PATTERN [PATTERN ...]] [--ma
                  [--version] [-h]
 ...
 ```
-For details, see [SmartBugs' wiki](https://github.com/smartbugs/smartbugs/wiki/The-command-line-interface).
 
 **Example:** To analyse the Solidity files in the `samples` directory with Mythril, use the command
 

@@ -3,9 +3,10 @@
 See the notes on [academic usage](doc/academia.md) for information on how
 to cite the datasets.
 
-- 10 contracts: The folder [`samples`](samples) contains a few
-  selected Solidity source files with the corresponding deployment and
-  runtime bytecodes, to test the installation.
+- 10 contracts: The folder
+  [`samples`](https://github.com/smartbugs/smartbugs/tree/master/samples)
+  contains a few selected Solidity source files with the corresponding
+  deployment and runtime bytecodes, to test the installation.
 
 - 143 contracts: [SB
   Curated](https://github.com/smartbugs/smartbugs-curated) is a
