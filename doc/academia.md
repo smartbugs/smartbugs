@@ -72,7 +72,7 @@ repository](https://github.com/smartbugs/smartbugs-results).
 
 ## [Consolidated Ground Truth (CGT)](https://github.com/gsalzer/cgt)
 
-  <a href="https://doi.org/10.1007/978-3-031-48806-1_28">Monika di Angelo, Gernot Salzer: "Consolidation of Ground Truth Sets for Weakness Detection in Smart Contracts", in *Financial Cryptography and Data Security. FC 2023 International Workshops: Voting, CoDecFin, DeFi, WTSC*, pages 429-455, 2023.</a>
+  <a href="https://doi.org/10.1007/978-3-031-48806-1_28">Monika di Angelo, Gernot Salzer: "Consolidation of Ground Truth Sets for Weakness Detection in Smart Contracts", in *Financial Cryptography and Data Security. FC 2023 International Workshops: Voting, CoDecFin, DeFi, WTSC*, pages 439-455, 2023.</a>
 
 ```bibtex
 @inproceedings{diAngeloEtAl2023WTSC,

@@ -6,7 +6,7 @@
 - [Docker](https://docs.docker.com/install)
 - [Python3](https://www.python.org) (version 3.6 and above, 3.10+ recommended)
 
-## Unix/Linux
+## Linux/MacOS/Unix
 
 1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
 
