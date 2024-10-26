@@ -1,6 +1,6 @@
 # Academic Usage: How to Cite
 
-Here is some bibliographic information on papers that used
+Here is some bibliographic information on papers that present
 SmartBugs or one of the datasets.
 
 ## SmartBugs 2.0
