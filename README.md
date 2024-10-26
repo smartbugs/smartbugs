@@ -14,7 +14,7 @@ that analyse blockchain programs for weaknesses and other properties.
 - *20 supported tools, 3 modes* for analysing Solidity source
   code, deployment bytecode, and runtime code.
 
-- *A modular approach to integrating analysers.* All it takes to add
+- *Modular integration of analysers.* All it takes to add
   a new tool is a Docker image encapsulating the tool and a few lines
   in a config file. To make the output accessible in a standardised
   format, add a small Python script.
@@ -66,7 +66,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Installation
 
-SmartBugs has been tested with Linux, MacOS or Windows. It depends on
+SmartBugs has been tested with Linux, MacOS and Windows. It depends on
 Docker and Python.  For details, see the [installation
 instructions](doc/installation.md).
 
@@ -77,10 +77,10 @@ utilities allow the user to reparse analysis results at any time after
 the analysis and to extract the data into a form suitable for a
 database.
 
-As an example, the following commands analyse the sample data in the `samples` folder with all available tools and write the parsed output to `results.csv`.
+As an example, the following commands analyse the contracts in the `samples` folder with all available tools and write the parsed output to `results.csv`.
 
 ```console
-./smartbugs -t all -f samples/*
+./smartbugs -t all -f samples/* --timeout 600
 ./reparse results
 ./results2csv -p results > results.csv
 ```
@@ -90,10 +90,10 @@ For details, see the [usage notes](doc/usage.md) and the [SmartBugs wiki](https:
 ## Smart Contract Datasets
 
 See our [information on available datasets](doc/datasets.md) if you
-are looking for datasets to run SmartBugs on. The number of contracts
+are looking for input data. The number of contracts
 in these datasets ranges from 10 to 250,000.
 
-## Academic Usage: How to Cite
+## Academia: How to Cite
 
 If you use SmartBugs or one of the datasets above, you may want to cite
 your sources. See the [list of publications](doc/academia.md) for details.
