@@ -12,8 +12,8 @@
 
    Make sure that the user running SmartBugs has permission to interact with the Docker daemon, by adding the user to the `docker` group:
 
-   ```
-   bash sudo usermod -a -G docker $USER
+   ```bash
+   sudo usermod -a -G docker $USER
    ```
 
    For adding someone else, replace `$USER` by the respective
