@@ -9,6 +9,10 @@
 SmartBugs is an extensible platform with a uniform interface to tools
 that analyse blockchain programs for weaknesses and other properties.
 
+## About the Fork
+
+Please switch to [mltools branch](https://github.com/stephan-klein/smartbugs/tree/mltools)
+
 ## Features
 
 - *20 supported tools, 3 modes* for analysing Solidity source
