@@ -1,7 +1,7 @@
 import re
 import sb.parse_utils
 
-VERSION = "2023/02/27"
+VERSION = "2025/06/04"
 
 FINDINGS = {
     "Callstack Depth Attack Vulnerability",
@@ -14,25 +14,26 @@ FINDINGS = {
 }
 
 INFOS = (
-    re.compile("(incomplete push instruction) at [0-9]+"),
+    re.compile(r"^INFO:symExec:\s*(EVM Code Coverage: [0-9]+(?:\.[0-9]+)?%)$"),
+    re.compile(r"(incomplete push instruction) at [0-9]+"),
 )
 
 # ERRORS also for Osiris and Honeybadger
 ERRORS = (
-    re.compile("!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
-    re.compile("(UNKNOWN INSTRUCTION: .*)"),
-    re.compile("CRITICAL:root:(Solidity compilation failed)"),
+    re.compile(r"!!! (SYMBOLIC EXECUTION TIMEOUT) !!!"),
+    re.compile(r"(UNKNOWN INSTRUCTION: .*)"),
+    re.compile(r"CRITICAL:root:(Solidity compilation failed)"),
 )
 
 FAILS = (
 #    re.compile("(Unexpected error: .*)"), # Secondary error
 )
 
-CONTRACT  = re.compile("^INFO:root:[Cc]ontract ([^:]*):([^:]*):")
-WEAKNESS  = re.compile("^INFO:symExec:[\s└>]*([^:]*):\s*True")
-LOCATION1 = re.compile("^INFO:symExec:([^:]*):([0-9]+):([0-9]+):\s*([^:]*):\s*(.*)\.") # Oyente
-LOCATION2 = re.compile("^([^:]*):([^:]*):([0-9]+):([0-9]+)") # Osiris
-COMPLETED = re.compile("^INFO:symExec:\s*====== Analysis Completed ======")
+CONTRACT  = re.compile(r"^INFO:root:[Cc]ontract ([^:]*):([^:]*):")
+WEAKNESS  = re.compile(r"^INFO:symExec:[\s└>]*([^:]*):\s*True")
+LOCATION1 = re.compile(r"^INFO:symExec:([^:]*):([0-9]+):([0-9]+):\s*([^:]*):\s*(.*)\.") # Oyente
+LOCATION2 = re.compile(r"^([^:]*):([^:]*):([0-9]+):([0-9]+)") # Osiris
+COMPLETED = re.compile(r"^INFO:symExec:\s*====== Analysis Completed ======")
 
 
 def is_relevant(line):
@@ -56,7 +57,7 @@ def parse(exit_code, log, output):
     filename,contract,weakness = None,None,None
     weaknesses = set()
     for line in log:
-        if sb.parse_utils.add_match(infos, line, INFOS):
+        if sb.parse_utils.add_match(infos, re.sub(r"[ \t]+", " ", line).strip(), INFOS):
             continue
         if sb.parse_utils.add_match(errors, line, ERRORS):
             continue
