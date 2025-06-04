@@ -1,0 +1,11 @@
+name: Oyente+
+version: "#7f4021a"
+origin: https://github.com/smartbugs/oyente
+info: Oyente+ runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness.
+image: ghcr.io/zariliv/oyente:latest
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    solc: yes
+runtime:
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT'"

@@ -9,7 +9,7 @@ def collect_files(patterns):
         if spec.endswith(".sbd"):
             contracts = []
             for sbdfile in glob.glob(spec, recursive=True):
-            	contracts.extend(sb.io.read_lines(sbdfile))
+                contracts.extend(sb.io.read_lines(sbdfile))
         elif root:
             try:
                 contracts = glob.glob(spec, root_dir=root, recursive=True)
