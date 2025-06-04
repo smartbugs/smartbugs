@@ -122,7 +122,11 @@ def collect_tasks(files, tools, settings):
     report_collisions()
     if exceptions:
         errors = "\n".join(sorted({str(e) for e in exceptions}))
-        raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
+        if settings.continue_on_errors:
+            sb.logging.message(sb.colors.warning(f"Warning: {len(exceptions)} error(s) while collecting tasks, continuing ..."), "")
+            sb.logging.message(errors)
+        else:
+            raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
     return tasks
 
 
