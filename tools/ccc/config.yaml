@@ -1,0 +1,9 @@
+# Copyright (c) 2024, Fraunhofer AISEC. All rights reserved.
+name: CCC
+#version: 0.3.14 # version number, commit id, ... (optional)
+origin: https://github.com/Fraunhofer-AISEC/cpg-contract-checker
+info: CPG Contract Checker (CCC) analyses potentially incomplete Solidity source code to detect vulnerabilities according to the DASP Top 10. Developed by Fraunhofer AISEC.
+image: ghcr.io/fraunhofer-aisec/cpg-contract-checker:imc-24
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME'"
