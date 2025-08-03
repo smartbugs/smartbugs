@@ -64,7 +64,7 @@ def cli_args(defaults):
     exec.add_argument("--continue-on-errors",
         action="store_true",
         default=False,
-        help="continue with the next task if an error occurs, instead of stopping the analysis")
+        help="continue with the execution phase, skipping tasks with composition errors")
 
     output = parser.add_argument_group("output options")
     output.add_argument("--runid",
