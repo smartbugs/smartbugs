@@ -14,7 +14,6 @@ FINDINGS = {
 }
 
 INFOS = (
-    re.compile(r"^INFO:symExec:\s*(EVM Code Coverage: [0-9]+(?:\.[0-9]+)?%)$"),
     re.compile(r"(incomplete push instruction) at [0-9]+"),
 )
 
@@ -34,7 +33,7 @@ WEAKNESS  = re.compile(r"^INFO:symExec:[\s└>]*([^:]*):\s*True")
 LOCATION1 = re.compile(r"^INFO:symExec:([^:]*):([0-9]+):([0-9]+):\s*([^:]*):\s*(.*)\.") # Oyente
 LOCATION2 = re.compile(r"^([^:]*):([^:]*):([0-9]+):([0-9]+)") # Osiris
 COMPLETED = re.compile(r"^INFO:symExec:\s*====== Analysis Completed ======")
-
+COVERAGE  = re.compile(r"^INFO:symExec:\s*EVM Code Coverage:\s+([0-9]+(?:\.[0-9]+)?%)$")
 
 def is_relevant(line):
     # Identify lines interfering with exception parsing
@@ -92,6 +91,13 @@ def parse(exit_code, log, output):
             assert fn == filename and ct == contract and weakness is not None
             weaknesses.discard((filename,contract,weakness,None,None))
             weaknesses.add((filename,contract,weakness,int(lineno),int(column)))
+            continue
+
+        m = COVERAGE.match(line)
+        if m:
+            coverage = m[1]
+            info = f"coverage {contract+' ' if contract else ''}{coverage}"
+            infos.add(info)
             continue
 
         m = COMPLETED.match(line)
