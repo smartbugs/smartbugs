@@ -1,7 +1,7 @@
 import re
 import sb.parse_utils
 
-VERSION = "2022/11/11"
+VERSION = "2025/08/07"
 
 FINDINGS = {
     "Integer Overflow",
@@ -19,13 +19,13 @@ ERRORS = (
     re.compile("([A-Z0-9]+ instruction needs a concrete argument)"),
     re.compile("([A-Z0-9]+ instruction should not be reached)"),
     re.compile("([A-Z0-9]+ instruction is not implemented)"),
-    re.compile("(Cannot get source map runtime\. Check if solc is in your path environment variable)"),
+    re.compile(r"(Cannot get source map runtime\. Check if solc is in your path environment variable)"),
     re.compile("(Vulnerability module checker initialized without traces)"),
     re.compile(".*(solcx.exceptions.SolcError:.*)")
 )
 
-ANALYSING = re.compile("^Analysing (.*)\.\.\.$")
-VULNERABILITY = re.compile("^Vulnerability: (.*)\. Maybe in function: (.*)\. PC: 0x(.*)\. Line number: (.*)\.$")
+ANALYSING = re.compile(r"^Analysing (.*)\.\.\.$")
+VULNERABILITY = re.compile(r"^Vulnerability: (.*)\. Maybe in function: (.*)\. PC: 0x(.*)\. Line number: (.*)\.$")
 
 
 def is_relevant(line):
