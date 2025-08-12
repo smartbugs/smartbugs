@@ -1,0 +1,8 @@
+name: Securify2
+origin: https://github.com/eth-sri/securify2
+info: Securify 2.0 is a security scanner for Ethereum smart contracts. It implements context-sensitive static analysis written in Datalog and analyzes contracts written in Solidity (>= 0.5.8) for 37 weaknesses.
+image: smartbugs/securify2:1913dfe
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"
+    solc: yes
