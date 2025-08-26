@@ -52,7 +52,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [Mythril](https://github.com/ConsenSys/mythril)  <sup>[2]</sup> | 0.24.7 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Oyente](https://github.com/smartbugs/oyente) <sup>[1]</sup> | #480e725 | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [Oyente+](https://github.com/smartbugs/oyente_plus) <sup>[1]</sup> | #9257d1b | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Oyente+](https://github.com/smartbugs/oyente_plus) <sup>[1]</sup> | 1.0.0 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 |                    |                    | :heavy_check_mark: |
 | [Securify](https://github.com/eth-sri/securify)              |  | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Securify2](https://github.com/eth-sri/securify2)              |  | :heavy_check_mark: |                    | |
@@ -66,10 +66,11 @@ that analyse blockchain programs for weaknesses and other properties.
 
 **Notes:**
 
-**[1]** The original version of Oyente is limited to outdated EVM versions
+**[1]** Oyente is limited to outdated EVM versions
 (corresponding roughly to Solidity 0.4.x), as it doesn't handle EVM
 operations introduced after its release. Oyente+ extends Oyente by such
-operations without adding detectors for further weaknesses.
+operations, without adding detectors for further weaknesses.
+Oyente+ is still maintained and handles also recent EVM versions.
 
 **[2]** Older versions available, see the [tools](tools/) folder.
 

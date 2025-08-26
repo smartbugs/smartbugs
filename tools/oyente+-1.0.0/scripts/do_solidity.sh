@@ -31,4 +31,4 @@ if [ "$TIMEOUT" -gt 0 ]; then
 fi
 
 cd /oyente
-/oyente/oyente/oyente.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT
+/oyente/oyente.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT
