@@ -41,6 +41,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
+| [CCC (CPG Contract Checker)](https://github.com/Fraunhofer-AISEC/cpg-contract-checker) | # c531ae3 (IMC-24) | :heavy_check_mark: |                    |                    |
 | [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | :heavy_check_mark: |                    |                    |
 | [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
