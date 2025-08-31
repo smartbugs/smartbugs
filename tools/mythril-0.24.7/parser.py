@@ -1,7 +1,7 @@
 import json
 import sb.parse_utils
 
-VERSION = "2024/03/24"
+VERSION = "2025/08/29"
 
 FINDINGS = {
     "Jump to an arbitrary instruction (SWC 127)",
@@ -66,6 +66,12 @@ def parse(exit_code, log, output):
                     finding["message"] += f"\n{classification}"
                 else:
                     finding["message"] = classification
+
+            # Workaround for issue https://github.com/ConsenSysDiligence/mythril/issues/1810
+            if finding.get("filename", "").endswith("#utility.yul"):
+                finding.pop("filename", None)
+                finding.pop("line", None)
+
             findings.append(finding)
 
     return findings, infos, errors, fails

@@ -11,4 +11,4 @@ To run a tool (here Mythril) on all samples, use a command like
 ./smartbugs -t mythril -f samples:**/* --results 'results/${TOOL}/${RELDIR}/${FILENAME}' --timeout 300 --processes 4 --mem-limit 2g
 ```
 The pattern `**/*` picks all files in all subfolders of `samples`. The colon after `samples` acts like a slash, but indicates that the part before the colon, `samples`, should not be part of `RELDIR`.
-The costum value for `--results` ensures that there are no name clashes for contracts with the same name for different Solidity versions. The default value of `--results` does not use `RELDIR` as distinguishing feature, therefore SmartBugs has to append numbers to `FILENAME` to resolve name clashes.
+The costum value for `--results` ensures that there are no name clashes for contracts with the same name for different Solidity versions. The default value of `--results` does not use `RELDIR` as distinguishing feature, therefore SmartBugs would append numbers to `FILENAME` to resolve name clashes.

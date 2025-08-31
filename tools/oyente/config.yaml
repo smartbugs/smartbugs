@@ -1,7 +1,7 @@
 name: Oyente
 version: "#480e725"
 origin: https://github.com/smartbugs/oyente
-info: Oyente runs on symbolic execution, determines which inputs cause which program branches to execute, to find potential security vulnerabilities. Oyente works directly with EVM bytecode without access high level representation and does not provide soundness nor completeness.
+info: Oyente uses symbolic execution to determine, which inputs cause which program branches to execute, in order to find potential security vulnerabilities. The image is based on commit `480e725` of https://github.com/smartbugs/oyente, a fork of the original repo with fixes to make the Dockerfile compatible with the current version of CryticCompile.
 image: smartbugs/oyente:480e725
 bin: scripts
 solidity:
