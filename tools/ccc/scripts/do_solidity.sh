@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# Copyright (c) 2024, Fraunhofer AISEC. All rights reserved.
-
-# in ../config.yaml,
-# - set "bin" to "scripts" to add the scripts directory to the mounted volume
-# - set "solidity.entrypoint" to "'$BIN/do_solidity.sh' '$FILENAME'"
-
 # full path to file (within docker container) to analyse, e.g. /sb/my_contract.sol
 FILENAME="$1"
 
