@@ -63,7 +63,7 @@ def cli_args(defaults):
         help=f"memory quota for docker containers, like 512m or 1g{fmt_default(defaults.mem_limit)}")
     exec.add_argument("--continue-on-errors",
         action="store_true",
-        default=False,
+        default=None,
         help="continue with the execution phase, skipping tasks with composition errors")
 
     output = parser.add_argument_group("output options")
