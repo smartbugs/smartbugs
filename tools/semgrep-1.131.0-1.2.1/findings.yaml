@@ -1,0 +1,82 @@
+accessible-selfdestruct:
+    classification: SWC-106, DASP-2
+arbitrary-low-level-call:
+    classification: SWC-112, DASP-10
+array-length-outside-loop: {}
+bad-transferfrom-access-control: {}
+balancer-readonly-reentrancy-getpooltokens:
+    classification: SWC-107, DASP-1
+balancer-readonly-reentrancy-getrate:
+    classification: SWC-107, DASP-1
+basic-arithmetic-underflow:
+    classification: SWC-101, DASP-3
+basic-oracle-manipulation:
+    classification: SWC-101, DASP-3
+compound-borrowfresh-reentrancy:
+    classification: SWC-107, DASP-1
+compound-precision-loss: {}
+compound-sweeptoken-not-restricted:
+    classification: SWC-105, DASP-2
+curve-readonly-reentrancy:
+    classification: SWC-107, DASP-1
+delegatecall-to-arbitrary-address:
+    classification: SWC-112, DASP-10
+encode-packed-collision:
+    classification: SWC-133, DASP-1
+erc20-public-burn: {}
+erc20-public-transfer: {}
+erc677-reentrancy:
+    classification: SWC-107, DASP-1
+erc721-arbitrary-transferfrom: {}
+erc721-reentrancy:
+    classification: SWC-107, DASP-1
+erc777-reentrancy:
+    classification: SWC-107, DASP-1
+exact-balance-check:
+    classification: SWC-132
+gearbox-tokens-path-confusion: {}
+incorrect-use-of-blockhash: {}
+inefficient-state-variable-increment: {}
+init-variables-with-default-value: {}
+keeper-network-oracle-manipulation:
+    classification: SWC-101, DASP-3
+missing-assignment: {}
+msg-value-multicall: {}
+no-bidi-characters:
+    classification: SWC-130
+non-optimal-variables-swap: {}
+non-payable-constructor: {}
+no-slippage-check: {}
+olympus-dao-staking-incorrect-call-order: {}
+openzeppelin-ecdsa-recover-malleable:
+    classification: SWC-117
+oracle-price-update-not-restricted:
+    classification: DASP-2
+oracle-uses-curve-spot-price: {}
+proxy-storage-collision:
+    classification: SWC-124, DASP-2	
+public-transfer-fees-supporting-tax-tokens: {}
+redacted-cartel-custom-approval-bug: {}
+rigoblock-missing-access-control:
+    classification: DASP-2
+sense-missing-oracle-access-control:
+    classification: DASP-2
+state-variable-read-in-a-loop: {}
+superfluid-ctx-injection: {}
+tecra-coin-burnfrom-bug: {}
+thirdweb-vulnerability: {}
+uniswap-callback-not-protected:
+    classification: DASP-2
+uniswap-v4-callback-not-protected:
+    classification: DASP-2
+unnecessary-checked-arithmetic-in-loop: {}
+unrestricted-transferownership:
+    classification: DASP-2
+use-abi-encodecall-instead-of-encodewithselector: {}
+use-custom-error-not-require: {}
+use-multiple-require: {}
+use-nested-if: {}
+use-ownable2step: {}
+use-prefix-decrement-not-postfix: {}
+use-prefix-increment-not-postfix: {}
+use-short-revert-string: {}

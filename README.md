@@ -3,7 +3,7 @@
 <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
 <a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE"><img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue"></a>
 <span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
-<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-20-blue"></a>
+<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-22-blue"></a>
 
 
 SmartBugs is an extensible platform with a uniform interface to tools
@@ -20,7 +20,7 @@ that analyse blockchain programs for weaknesses and other properties.
 
 ## Features
 
-- *20 supported tools, 3 modes* for analysing Solidity source
+- *22 supported tools, 3 modes* for analysing Solidity source
   code, deployment bytecode, and runtime code.
 
 - *Modular integration of analysers.* All it takes to add
@@ -50,28 +50,38 @@ that analyse blockchain programs for weaknesses and other properties.
 
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
+| [CCC (CPG Contract Checker)](https://github.com/Fraunhofer-AISEC/cpg-contract-checker) | #c531ae3 (IMC-24) | :heavy_check_mark: |                    |                    |
 | [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | :heavy_check_mark: |                    |                    |
 | [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
-| [eThor](https://secpriv.wien/ethor)           | 2023 |                    |                    | :heavy_check_mark: |
+| [eThor](https://secpriv.wien/ethor) <sup>[2]</sup>  | 2023 |                    |                    | :heavy_check_mark: |
 | [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :heavy_check_mark: |                    |                    |
-| [Mythril](https://github.com/ConsenSys/mythril)       | 0.24.7 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Mythril](https://github.com/ConsenSys/mythril)  <sup>[2]</sup> | 0.24.7 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [Oyente](https://github.com/smartbugs/oyente)        | #480e725 | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Oyente+](https://github.com/smartbugs/oyente_plus) <sup>[1]</sup> | #060ca34 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 |                    |                    | :heavy_check_mark: |
 | [Securify](https://github.com/eth-sri/securify)              |  | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [Semgrep](https://github.com/Decurity/semgrep-smart-contracts)  | #c3a9f40 | :heavy_check_mark: |                    |                    |
+| [Securify2](https://github.com/eth-sri/securify2)              |  | :heavy_check_mark: |                    | |
+| [Semgrep](https://github.com/Decurity/semgrep-smart-contracts)/[Decurity](https://github.com/Decurity/semgrep-smart-contracts) <sup>[2]</sup>  | 1.131.0/1.2.1 | :heavy_check_mark: |                    |                    |
 | [sFuzz](https://github.com/duytai/sFuzz) | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
-| [Slither](https://github.com/crytic/slither)  | 0.10.4 | :heavy_check_mark: |                    |                    |
+| [Slither](https://github.com/crytic/slither) <sup>[2]</sup>  | 0.11.3 | :heavy_check_mark: |                    |                    |
 | [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :heavy_check_mark: |                    |                    |
-| [Solhint](https://github.com/protofire/solhint)         | 3.3.8 | :heavy_check_mark: |                    |                    |
+| [Solhint](https://github.com/protofire/solhint) <sup>[2]</sup> | 6.0.0 | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
 
+**Notes:**
 
+**[1]** `oyente+` is an update of the now unmaintained [Oyente](https://github.com/smartbugs/oyente) tool, available in SmartBugs as `oyente`. Oyente is limited to outdated EVM versions
+(corresponding roughly to Solidity 0.4.x), as it doesn't handle EVM
+operations introduced after its release. Oyente+ extends Oyente by such
+operations, without adding detectors for further weaknesses.
+Oyente+ is maintained and handles recent EVM versions.
+
+**[2]** Older versions available, see the [tools](tools/) folder.
 
 ## Installation
 

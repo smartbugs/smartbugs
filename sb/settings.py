@@ -19,6 +19,7 @@ class Settings:
         self.timeout = None
         self.cpu_quota = None
         self.mem_limit = None
+        self.continue_on_errors = False
         self.results = os.path.join("results","${TOOL}","${RUNID}","${FILENAME}")
         self.log = os.path.join("results","logs","${RUNID}.log")
         self.json = False
@@ -132,7 +133,7 @@ class Settings:
                     root_specs.append((root,spec))
                 setattr(self, k, root_specs)
 
-            elif k in ("main", "runtime", "overwrite", "quiet", "json", "sarif"):
+            elif k in ("main", "runtime", "overwrite", "quiet", "json", "sarif", "continue_on_errors"):
                 try:
                     assert isinstance(v, bool)
                     setattr(self, k, v)

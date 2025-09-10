@@ -1,0 +1,10 @@
+name: semgrep 
+version: semgrep 1.131.0, Decurity SC rules 1.2.1
+origin: https://github.com/semgrep/semgrep, https://github.com/Decurity/semgrep-smart-contracts
+info: Find patterns of vulnerabilities in smart contracts based on actual DeFi exploits as well as gas optimization rules that can be used as a part of the CI pipeline.
+image: smartbugs/semgrep:1.131.0-1.2.1
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
+    bin: scripts

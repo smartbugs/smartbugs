@@ -1,0 +1,22 @@
+/*
+ * @source: https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-104#unchecked-return-valuesol
+ * Upgraded from Solidity 0.4 to 0.7, vulnerability may no longer exist
+ * @author: -
+ * @vulnerable_at_lines: 20
+ */
+
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.7.0;
+
+contract ReturnValue {
+
+  function callchecked(address callee) public {
+    (bool success,) = callee.call("");
+    require(success);
+  }
+
+  function callnotchecked(address callee) public {
+     // <yes> <report> UNCHECKED_LL_CALLS
+    callee.call("");
+  }
+}

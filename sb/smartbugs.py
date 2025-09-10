@@ -9,7 +9,7 @@ def collect_files(patterns):
         if spec.endswith(".sbd"):
             contracts = []
             for sbdfile in glob.glob(spec, recursive=True):
-            	contracts.extend(sb.io.read_lines(sbdfile))
+                contracts.extend(sb.io.read_lines(sbdfile))
         elif root:
             try:
                 contracts = glob.glob(spec, root_dir=root, recursive=True)
@@ -122,7 +122,11 @@ def collect_tasks(files, tools, settings):
     report_collisions()
     if exceptions:
         errors = "\n".join(sorted({str(e) for e in exceptions}))
-        raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
+        if settings.continue_on_errors:
+            sb.logging.message(sb.colors.warning(f"Warning: {len(exceptions)} error(s) while collecting tasks, continuing ..."), "")
+            sb.logging.message(errors)
+        else:
+            raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
     return tasks
 
 

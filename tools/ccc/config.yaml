@@ -1,0 +1,8 @@
+name: CCC
+version: "#c531ae3 (imc-24)"
+origin: https://github.com/Fraunhofer-AISEC/cpg-contract-checker
+info: CPG Contract Checker (CCC) analyses potentially incomplete Solidity source code to detect vulnerabilities according to the DASP Top 10. Developed by Fraunhofer AISEC.
+image: smartbugs/cpg-contract-checker:imc-24
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"

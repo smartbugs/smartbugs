@@ -1,0 +1,11 @@
+name: Oyente+
+version: "060ca34"
+origin: https://github.com/smartbugs/oyente_plus
+info: Oyente uses symbolic execution to determine, which inputs cause which program branches to execute, in order to find potential security vulnerabilities. Oyente+ is an update of Oyente implementing instructions that were added to the EVM after the release of the original version of Oyente.
+image: smartbugs/oyente_plus:060ca34
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    solc: yes
+runtime:
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT'"

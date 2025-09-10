@@ -1,0 +1,198 @@
+Transaction Order Affects Ether Amount: # 1
+    classification: SWC-114
+    severity: CRITICAL
+    descr_short: The amount of ether transferred must not be influenced by other transactions.
+
+Transaction Order Affects Ether Receiver: # 2
+    classification: SWC-114
+    severity: CRITICAL
+    descr_short: The receiver of ether transfers must not be influenced by other transactions.
+
+Transaction Order Affects Execution of Ether Transfer: #3
+    classification: SWC-114
+    severity: CRITICAL
+    descr_short: Ether transfers whose execution can be manipulated by other transactions must be inspected for unintended behavior.
+
+Unrestricted write to storage: #4
+    classification: SWC-124
+    severity: CRITICAL
+    descr_short: Contract fields that can be modified by any user must be inspected.
+
+Right-to-left-override pattern: #5
+    classification: SWC-130
+    severity: CRITICAL
+    descr_short: The Right-To-Left-Override (U+202E) character was used in the source code.
+
+State Variable Shadowing: #6
+    classification: SWC-119
+    severity: HIGH
+    descr_short: State variables in inherited contract should not be named identically to inherited variables.
+
+Unrestricted call to selfdestruct: #7
+    classification: SWC-106
+    severity: CRITICAL
+    descr_short: Calls to selfdestruct that can be triggered by any user must be inspected.
+    
+Uninitialized State Variable: #8 #9
+    classification: SWC-109
+    severity: HIGH
+    descr_short: State variables should be explicitly initialized.
+
+Delegatecall or callcode to unrestricted address: #10
+    classification: SWC-112
+    severity: HIGH
+    descr_short: The address of a delegatecall or callcode must be approved by the contract owner.
+    
+Gas-dependent Reentrancy: #11 DAO
+    classification: SWC-107
+    severity: CRITICAL
+    descr_short: Calls into external contracts that receive all remaining gas and are followed by state changes may be reentrant.
+
+Reentrancy with constant gas: #11 DAO
+    classification: SWC-107
+    severity: CRITICAL
+    descr_short: Ether transfers (such as send and transfer) that are followed by state changes may be reentrant.
+    
+Incorrect ERC20 Interface: #12
+    severity: MEDIUM
+    descr_short: Incorrect signature for ERC20 interface functions.
+
+Incorrect ERC721 Interface: #13
+    severity: MEDIUM
+    descr_short: Incorrect signature for ERC721 interface functions.
+
+Dangerous Strict Equalities: #14
+    classification: SWC-132
+    severity: MEDIUM
+    descr_short: Strict equalities that use account balance, timestamps and block numbers should be avoided.
+    
+Locked Ether: # 15
+    severity: MEDIUM
+    descr_short: Contracts that may receive ether must also allow users to extract the deposited ether from the contract.
+
+No-Ether-Involved Reentrancy: #16
+    classification: SWC-107
+    severity: MEDIUM
+    descr_short: Reentrancy that involves no ether
+
+Possibly unsafe usage of tx-origin: #17
+    classification: SWC-115
+    severity: HIGH
+    descr_short: The return value of statements that may return error values must be explicitly checked.
+    
+Unhandled Exception: #18
+    severity: HIGH
+    descr_short: The return value of statements that may return error values must be explicitly checked.
+
+Unrestricted Ether Flow: #19 
+    classification: SWC-105
+    severity: CRITICAL
+    descr_short: The execution of ether flows should be restricted to an authorized set of users.
+    
+Arbitrary Send: #19
+    classification: SWC-105
+    severity: HIGH
+    descr_short: Unauthorized users can withdraw funds that are not theirs.
+
+Uninitialized Local Variables: #20
+    classification: SWC-109
+    severity: INFO
+    descr_short: A variable is declared but never initialized.
+
+Unused Return Pattern: #21
+    classification: SWC-104
+    severity: MEDIUM
+    descr_short: The value returned by an external function call is never used.
+    
+Shadowed Builtin: #22
+    severity: MEDIUM
+    descr_short: A declaration shadows one of Solidity's builtin symbols.
+
+Shadowed Local Variable: #23
+    severity: MEDIUM
+    descr_short: A local variable declarations shadows a declaration from outer scopes.
+
+Call to Default Constructor: #24
+    severity: LOW
+    descr_short: A call to the constructor might be a call to a normal function instead.
+
+External call in loop: #25
+    classification: SWC-104
+    severity: HIGH
+    descr_short: If a single call in the loop fails or reverts, it will cause all other calls to fail as well.
+    
+Benign Reentrancy: #26
+    classification: SWC-107
+    severity: LOW
+    descr_short: Reentrancy is equivalent with two consecutive calls of the function.
+
+Usage of block timestamp: #27
+    classification: SWC-116
+    severity: LOW
+    descr_short: Returned value relies on block timestamp.
+    
+Assembly Usage: #28
+    severity: INFO
+    descr_short: Usage of assembly in Solidity code is discouraged.
+     
+ERC20 Indexed Pattern: #29
+    severity: LOW
+    descr_short: Events defined by ERC20 specification should use the 'indexed' keyword.
+
+Low Level Calls: #30
+    severity: INFO
+    descr_short: Usage of <address>.call should be avoided
+
+Solidity Naming Convention: #31
+    severity: INFO
+    descr_short: A declaration does not adhere to Solidity's naming convention.
+
+Solidity pragma directives: #32
+    classification: SWC-103
+    severity: LOW
+    descr_short: Avoid complex solidity version pragma statements.
+
+Unused State Variable: #33
+    severity: INFO
+    descr_short: Unused state variables should be removed.
+
+Too Many Digit Literals: #34
+    severity: INFO
+    descr_short: Contract contains a numeric literal with too many digits.
+
+Constable State Variables: #35
+    severity: INFO
+    descr_short: State variables that do not change should be declared as constants.
+
+External Calls of Functions: #36
+    severity: LOW
+    descr_short: A public function that is never called within the contract should be marked as external.
+
+State variables default visibility: #37
+    classification: SWC-108
+    severity: INFO
+    descr_short: Visibility of state variables should be stated explicitly
+
+Repeated Call to Untrusted Contract:
+    severity: HIGH
+    descr_short: Repeated call to an untrusted contract may result in different values.
+
+Dos gas limit pattern:
+    severity: MEDIUM
+    descr_short: Behavior that can lead to denial of service due to block gas limit.
+
+Unused variables pattern:
+    severity: INFO
+    descr_short: Variables that are not used should be eliminated.
+
+Taint Analysis for PASS Project:
+    severity: CRITICAL
+    descr_short: A sink call is considered Tainted if its argument depends on msg.value or msg.sender or its execution depends on msg.value or msg.sender.
+
+Multiplication after division:
+    severity: MEDIUM
+    descr_short: Information might be lost due to division before multiplication.
+
+Missing Input Validation:
+    severity: MEDIUM
+    descr_short: Method arguments must be sanitized before they are used in computations.

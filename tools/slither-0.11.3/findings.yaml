@@ -1,0 +1,322 @@
+abiencoderv2-array:
+    severity: high
+    confidence: high
+arbitrary-send-erc20:
+    severity: high
+    confidence: high
+arbitrary-send-erc20-permit:
+    severity: high
+    confidence: medium
+arbitrary-send-eth:
+    severity: high
+    confidence: medium
+    classification: SWC-105, DASP-2
+array-by-reference:
+    severity: high
+    confidence: high
+assembly:
+    severity: informational
+    confidence: high
+assert-state-change:
+    severity: informational
+    confidence: high
+boolean-cst:
+    severity: medium
+    confidence: medium
+boolean-equal:
+    severity: informational
+    confidence: high
+cache-array-length:
+    severity: optimization
+    confidence: high
+calls-loop:
+    severity: low
+    confidence: medium
+    classification: SWC-113, DASP-5
+chainlink-feed-registry:
+    severity: low
+    confidence: high
+chronicle-unchecked-price:
+    severity: medium
+    confidence: medium
+codex:
+    severity: high
+    confidence: low
+constable-states:
+    severity: optimization
+    confidence: high
+constant-function-asm:
+    severity: medium
+    confidence: medium
+constant-function-state:
+    severity: medium
+    confidence: medium
+controlled-array-length:
+    severity: high
+    confidence: medium
+controlled-delegatecall:
+    severity: high
+    confidence: medium
+    classification: SWC-106, DASP-2
+costly-loop:
+    severity: informational
+    confidence: medium
+cyclomatic-complexity:
+    severity: informational
+    confidence: high
+dead-code:
+    severity: informational
+    confidence: medium
+delegatecall-loop:
+    severity: high
+    confidence: medium
+deprecated-standards:
+    severity: informational
+    confidence: high
+divide-before-multiply:
+    severity: medium
+    confidence: medium
+domain-separator-collision:
+    severity: medium
+    confidence: high
+encode-packed-collision:
+    severity: high
+    confidence: high
+enum-conversion:
+    severity: medium
+    confidence: high
+erc20-indexed:
+    severity: informational
+    confidence: high
+erc20-interface:
+    severity: medium
+    confidence: high
+erc721-interface:
+    severity: medium
+    confidence: high
+events-access:
+    severity: low
+    confidence: medium
+events-maths:
+    severity: low
+    confidence: medium
+external-function:
+    severity: optimization
+    confidence: high
+function-init-state:
+    severity: informational
+    confidence: high
+gelato-unprotected-randomness:
+    severity: medium
+    confidence: medium
+immutable-states:
+    severity: optimization
+    confidence: high
+incorrect-equality:
+    severity: medium
+    confidence: high
+incorrect-exp:
+    severity: high
+    confidence: medium
+incorrect-modifier:
+    severity: low
+    confidence: high
+incorrect-return:
+    severity: high
+    confidence: medium
+incorrect-shift:
+    severity: high
+    confidence: high
+incorrect-unary:
+    severity: low
+    confidence: medium
+incorrect-using-for:
+    severity: informational
+    confidence: high
+locked-ether:
+    severity: medium
+    confidence: high
+    classification: DASP-5
+low-level-calls:
+    severity: informational
+    confidence: high
+    classification: SWC-104, DASP-4
+mapping-deletion:
+    severity: medium
+    confidence: high
+missing-inheritance:
+    severity: informational
+    confidence: high
+missing-zero-check:
+    severity: low
+    confidence: medium
+msg-value-loop:
+    severity: high
+    confidence: medium
+multiple-constructors:
+    severity: high
+    confidence: high
+name-reused:
+    severity: high
+    confidence: high
+naming-convention:
+    severity: informational
+    confidence: high
+optimism-deprecation:
+    severity: low
+    confidence: high
+out-of-order-retryable:
+    severity: medium
+    confidence: medium
+pragma:
+    severity: informational
+    confidence: high
+    classification: SWC-103
+protected-vars:
+    severity: high
+    confidence: high
+public-mappings-nested:
+    severity: high
+    confidence: high
+pyth-deprecated-functions:
+    severity: medium
+    confidence: high
+pyth-unchecked-confidence:
+    severity: medium
+    confidence: high
+pyth-unchecked-publishtime:
+    severity: medium
+    confidence: high
+redundant-statements:
+    severity: informational
+    confidence: high
+reentrancy-benign:
+    severity: low
+    confidence: medium
+    classification: SWC-107, DASP-1
+reentrancy-eth:
+    severity: high
+    confidence: medium
+    classification: SWC-107, DASP-1
+reentrancy-events:
+    severity: low
+    confidence: medium
+reentrancy-no-eth:
+    severity: medium
+    confidence: medium
+    classification: SWC-107, DASP-1
+reentrancy-unlimited-gas:
+    severity: informational
+    confidence: medium
+return-bomb:
+    severity: low
+    confidence: medium
+return-leave:
+    severity: high
+    confidence: medium
+reused-constructor:
+    severity: medium
+    confidence: medium
+rtlo:
+    severity: high
+    confidence: high
+shadowing-abstract:
+    severity: medium
+    confidence: high
+    classification: SWC-119
+shadowing-builtin:
+    severity: low
+    confidence: high
+shadowing-local:
+    severity: low
+    confidence: high
+    classification: SWC-119
+shadowing-state:
+    severity: high
+    confidence: high
+    classification: SWC-119
+solc-version:
+    severity: informational
+    confidence: high
+    classification: SWC-102
+storage-array:
+    severity: high
+    confidence: medium
+suicidal:
+    severity: high
+    confidence: high
+    classification: SWC-106, DASP-2
+tautological-compare:
+    severity: medium
+    confidence: high
+tautology:
+    severity: medium
+    confidence: high
+timestamp:
+    severity: low
+    confidence: medium
+token-reentrancy:
+    severity: medium
+    confidence: medium
+too-many-digits:
+    severity: informational
+    confidence: medium
+tx-origin:
+    severity: medium
+    confidence: medium
+    classification: SWC-115, DASP-2
+unchecked-lowlevel:
+    severity: medium
+    confidence: medium
+unchecked-send:
+    severity: medium
+    confidence: medium
+unchecked-transfer:
+    severity: high
+    confidence: medium
+unimplemented-functions:
+    severity: informational
+    confidence: high
+uninitialized-fptr-cst:
+    severity: low
+    confidence: high
+uninitialized-local:
+    severity: medium
+    confidence: medium
+uninitialized-state:
+    severity: high
+    confidence: high
+    classification: SWC-109
+uninitialized-storage:
+    severity: high
+    confidence: high
+    classification: SWC-109
+unprotected-upgrade:
+    severity: high
+    confidence: high
+unused-import:
+    severity: informational
+    confidence: high
+unused-return:
+    severity: medium
+    confidence: medium
+    classification: SWC-104, DASP-4
+unused-state:
+    severity: informational
+    confidence: high
+    classification: SWC-131
+variable-scope:
+    severity: low
+    confidence: high
+var-read-using-this:
+    severity: optimization
+    confidence: high
+void-cst:
+    severity: low
+    confidence: high
+weak-prng:
+    severity: high
+    confidence: medium
+write-after-write:
+    severity: medium
+    confidence: high
