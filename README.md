@@ -52,7 +52,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [Mando](https://github.com/stephan-klein/ge-sc-machine) | v0.1 | :heavy_check_mark: |                    |                    |
 | [Mando HGT](https://github.com/stephan-klein/ge-sc-machine/tree/hgt) | v0.1-hgt | :heavy_check_mark: |                    |                    |
 | [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :heavy_check_mark: |                    |                    |
-| [Mythril](https://github.com/ConsenSys/mythril)  <sup>[2]</sup> | 0.24.7 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Mythril](https://github.com/ConsenSys/mythril)  <sup>[2]</sup> | 0.24.8 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Oyente+](https://github.com/smartbugs/oyente_plus) <sup>[1]</sup> | #060ca34 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 |                    |                    | :heavy_check_mark: |
