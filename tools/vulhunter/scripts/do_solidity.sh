@@ -20,6 +20,8 @@ if [ -z "$SOLC_VERSION" ]; then
     exit 1
 fi
 
+# To decrease runtime, add parameter --detectors with a comma-separated list of detectors with the following possible values:
+#   reentrancy-eth,controlled-array-length,suicidal,controlled-delegatecall,arbitrary-send,incorrect-equality,integer-overflow,unchecked-lowlevel,tx-origin,locked-ether,unchecked-send,costly-loop,erc721-interface,erc20-interface,timestamp,block-other-parameters,calls-loop,low-level-calls,erc20-indexed,erc20-throw,hardcoded,array-instead-bytes,unused-state,costly-operations-loop,external-function,send-transfer,boolean-equal,boolean-cst,uninitialized-state,tod
 CMD="python3 /app/main/main.py --contract $FILENAME --solc-version $SOLC_VERSION --filetype solidity --model-dir models --instance-len 20 --report /app/output.pdf"
 
 echo "Executing $CMD"
