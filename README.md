@@ -49,6 +49,8 @@ that analyse blockchain programs for weaknesses and other properties.
 | [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Mando](https://github.com/stephan-klein/ge-sc-machine) | v0.1 | :heavy_check_mark: |                    |                    |
+| [Mando HGT](https://github.com/stephan-klein/ge-sc-machine/tree/hgt) | v0.1-hgt | :heavy_check_mark: |                    |                    |
 | [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :heavy_check_mark: |                    |                    |
 | [Mythril](https://github.com/ConsenSys/mythril)  <sup>[2]</sup> | 0.24.8 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
@@ -63,6 +65,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [Solhint](https://github.com/protofire/solhint) <sup>[2]</sup> | 6.0.0 | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
+| [VulHunter](https://github.com/stephan-klein/VulHunter) | v0.1 | :heavy_check_mark: | :heavy_check_mark: |                    |
 
 **Notes:**
 

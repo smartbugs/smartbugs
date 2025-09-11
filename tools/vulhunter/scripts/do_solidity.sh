@@ -1,0 +1,26 @@
+#!/bin/sh
+
+FILENAME="$1"
+TIMEOUT="$2"
+BIN="$3"
+MAIN="$4"
+
+# export PATH="$BIN:$PATH"
+chmod +x "$BIN/solc"
+export SOLC_BIN="$BIN/solc"
+
+# Extract Solidity compiler version with error checking
+if ! SOLC_OUTPUT=$("$BIN/solc" --version); then
+    echo "Error: Failed to execute solc" >&2
+    exit 1
+fi
+SOLC_VERSION=$(echo "$SOLC_OUTPUT" | grep "Version:" | sed -E 's/Version: ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+if [ -z "$SOLC_VERSION" ]; then
+    echo "Error: Failed to extract solc version" >&2
+    exit 1
+fi
+
+CMD="python3 /app/main/main.py --contract $FILENAME --solc-version $SOLC_VERSION --filetype solidity --model-dir models --instance-len 20 --report /app/output.pdf"
+
+echo "Executing $CMD"
+$CMD
