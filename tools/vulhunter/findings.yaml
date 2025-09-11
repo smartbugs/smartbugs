@@ -1,0 +1,122 @@
+reentrancy-eth:
+  classification: SWC-107, DASP-1
+  severity: High
+
+controlled-array-length:
+  severity: High
+
+suicidal:
+  classification: SWC-106, DASP-2
+  severity: High
+
+controlled-delegatecall:
+  classification: SWC-112, DASP-2
+  severity: High
+
+arbitrary-send:
+  classification: SWC-105, DASP-2
+  severity: High
+
+tod:
+  classification: SWC-114, DASP-7
+  severity: High
+
+uninitialized-state:
+  classification: SWC-109
+  severity: High
+
+parity-multisig-bug:
+  classification:
+  severity: High
+
+incorrect-equality:
+  classification: SWC-132, DASP-5
+  severity: Medium
+
+integer-overflow:
+  classification: SWC-101, DASP-3
+  severity: Medium
+
+unchecked-lowlevel:
+  classification: SWC-104, DASP-4
+  severity: Medium
+
+tx-origin:
+  classification: SWC-115, DASP-2
+  severity: Medium
+
+locked-ether:
+  classification: DASP-5
+  severity: Medium
+
+unchecked-send:
+  classification: SWC-104, DASP-4
+  severity: Medium
+
+boolean-cst:
+  classification:
+  severity: Medium
+
+erc721-interface:
+  classification:
+  severity: Medium
+
+erc20-interface:
+  classification:
+  severity: Medium
+
+costly-loop:
+  classification: SWC-128, DASP-5
+  severity: Low
+
+timestamp:
+  classification: SWC-116, DASP-8
+  severity: Low
+
+block-other-parameters:
+  classification: SWC-116, DASP-6
+  severity: Low
+
+calls-loop:
+  classification: SWC-113, DASP-5
+  severity: Low
+
+low-level-calls:
+  classification:
+  severity: Info
+
+erc20-indexed:
+  classification:
+  severity: Info
+
+erc20-throw:
+  classification:
+  severity: Info
+
+hardcoded:
+  classification:
+  severity: Info
+
+array-instead-bytes:
+  classification:
+  severity: Opt
+
+unused-state:
+  classification:
+  severity: Opt
+
+costly-operations-loop:
+  classification:
+  severity: Opt
+
+send-transfer:
+  classification:
+  severity: Opt
+
+boolean-equal:
+  classification:
+  severity: Opt
+
+external-function:
+  classification:
+  severity: Opt
