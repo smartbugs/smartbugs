@@ -9,15 +9,6 @@
 SmartBugs is an extensible platform with a uniform interface to tools
 that analyse blockchain programs for weaknesses and other properties.
 
-## About the Fork
-
-1. Updated existing tools
-- Slither from 0.10.4 to 0.11.3 - Changes in `findings.yaml` and `parser.py` according to added/removed vulnerability types as listed in https://github.com/crytic/slither/blob/0.11.3/README.md. Requires slither docker image published under smartbugs/slither:0.11.3
-- Mythril from 0.24.7 to 0.24.8 - No changes in integration. Directly uses mythril's public docker image under mythril/myth:0.24.8.
-- Solhint from 3.3.8 to 5.1.0 - Changes in `parser.py` according to added/removed vulnerability types as listed in https://github.com/protofire/solhint/tree/v5.1.0/docs/rules. Dockerfile included in `docker` subdirectory.
-
-2. Added ML-Based Tools MANDO and VulHunter as part of Master Thesis "Machine Learning for Vulnerability Detection in Smart Contracts A Comparison of Approaches" in [mltools branch](https://github.com/stephan-klein/smartbugs/tree/mltools)
-
 ## Features
 
 - *22 supported tools, 3 modes* for analysing Solidity source
@@ -58,6 +49,8 @@ that analyse blockchain programs for weaknesses and other properties.
 | [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Mando](https://github.com/stephan-klein/ge-sc-machine) | v0.1 | :heavy_check_mark: |                    |                    |
+| [Mando HGT](https://github.com/stephan-klein/ge-sc-machine/tree/hgt) | v0.1-hgt | :heavy_check_mark: |                    |                    |
 | [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :heavy_check_mark: |                    |                    |
 | [Mythril](https://github.com/ConsenSys/mythril)  <sup>[2]</sup> | 0.24.7 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
@@ -72,6 +65,7 @@ that analyse blockchain programs for weaknesses and other properties.
 | [Solhint](https://github.com/protofire/solhint) <sup>[2]</sup> | 6.0.0 | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
+| [VulHunter](https://github.com/stephan-klein/VulHunter) | v0.1 | :heavy_check_mark: | :heavy_check_mark: |                    |
 
 **Notes:**
 
