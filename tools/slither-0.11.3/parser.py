@@ -1,7 +1,7 @@
 import io, tarfile, json, re
 import sb.parse_utils
 
-VERSION = "2025/08/07"
+VERSION = "2025/09/14"
 
 FINDINGS = {
     "abiencoderv2-array",
@@ -11,6 +11,7 @@ FINDINGS = {
     "array-by-reference",
     "assembly",
     "assert-state-change",
+    "backdoor",
     "boolean-cst",
     "boolean-equal",
     "cache-array-length",

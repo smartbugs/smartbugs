@@ -6,7 +6,5 @@ image: smartbugs/semgrep:c3a9f40
 bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
-    solc: yes
-    bin: scripts
 
     

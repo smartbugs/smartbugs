@@ -1,8 +1,7 @@
 import sb.parse_utils # for sb.parse_utils.init(...)
 import io, tarfile    # if the output parameter is used
 
-VERSION: str = "2024/08/23"
-"""identify the version of the parser, e.g. '2022/08/15'"""
+VERSION: str = "2025/09/19"
 
 FINDINGS: set[str]  = {
     "Reentrancy Vulnerability", # ReentrancyCheck
@@ -19,7 +18,6 @@ FINDINGS: set[str]  = {
     "A miner can use others input to gain a benefit himself.", # FrontRunningCheck
     "A deterministic or predictable value may be used as bad random number.", # BadRandomnessCheck
 }
-"""set of strings: all possible findings, of which 'findings' below will be a subset"""
 
 
 def parse(exit_code, log, output):
@@ -46,7 +44,12 @@ def parse(exit_code, log, output):
 
     for line in log:
         # analyse stdout/stderr of the Docker run
-        if line.startswith("File:"):
+        if " ERROR de.fraunhofer.aisec.cpg" in line:
+            info = line.split(": ")[-1]
+            if info.endswith(". Falling back to the default (current) scope"):
+                info = info[:-45]
+            infos.add(info)
+        elif line.startswith("File:"):
             current_contract = line[5:].strip() # removes "File:"
         elif current_contract is not None:
             if line.startswith('- '):

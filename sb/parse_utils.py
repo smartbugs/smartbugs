@@ -27,6 +27,7 @@ TRACEBACK = "Traceback (most recent call last):" # Python
 EXCEPTIONS = (
     re.compile(".*line [0-9: ]*(Segmentation fault|Killed)"), # Shell
     re.compile('Exception in thread "[^"]*" (.*)'), # Java
+    re.compile(r"^(?:[a-zA-Z0-9]+\.)+[a-zA-Z0-9]*Exception: (.*)$"), # Java
     re.compile("thread '[^']*' panicked at '([^']*)'"), # Rust
 )
 
@@ -42,8 +43,7 @@ def exceptions(lines):
             traceback = True
         else:
             for re_exception in EXCEPTIONS:
-                m = re_exception.match(line)
-                if m:
+                if (m := re_exception.match(line)):
                     exceptions.add(f"exception ({m[1]})")
     return exceptions
 

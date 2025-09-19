@@ -107,26 +107,27 @@ def collect_tasks(files, tools, settings):
                 base = settings.resultdir(tool.id,tool.mode,absfn,relfn)
                 rdir = disambiguate(base)
 
-                # load resources
-                solc_version, solc_path = None,None
+                # load Solidity compiler if requested
+                solc_version, solc_path = None, None
                 if tool.solc:
                     try:
                         solc_version, solc_path = get_solc(pragma, relfn, tool.id)
                     except Exception as e:
                         exceptions.append(e)
-                ensure_loaded(tool.image)
+                        continue
 
+                ensure_loaded(tool.image)
                 task = sb.tasks.Task(absfn,relfn,rdir,solc_version,solc_path,tool,settings)
                 tasks.append(task)
 
     report_collisions()
     if exceptions:
-        errors = "\n".join(sorted({str(e) for e in exceptions}))
+        errors = sorted({str(e) for e in exceptions})
         if settings.continue_on_errors:
-            sb.logging.message(sb.colors.warning(f"Warning: {len(exceptions)} error(s) while collecting tasks, continuing ..."), "")
-            sb.logging.message(errors)
+            sb.logging.message(sb.colors.warning(f"Warning: {len(errors)} error(s) while collecting tasks, continuing ..."), "")
+            sb.logging.message("\n".join(errors), "")
         else:
-            raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{errors}")
+            raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{'\n'.join(errors)}")
     return tasks
 
 

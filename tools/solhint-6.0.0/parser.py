@@ -1,6 +1,7 @@
+import re
 import sb.parse_utils
 
-VERSION = "2025/08/06"
+VERSION = "2025/09/14"
 
 FINDINGS = {
     "avoid-call-value",
@@ -68,29 +69,29 @@ FINDINGS = {
     "visibility-modifier-order",
 }
 
+
+REPORT = re.compile(r"""
+    ^(?P<filename>[^:]*)
+    :(?P<line>\d+)
+    :(?P<column>\d+)
+    :\s*(?P<message>.*?)
+    \s*\[(?P<level>[^\[/\]]*)/
+    (?P<name>[^\[/\]]*)\]$
+""", re.VERBOSE)
+
+
 def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     errors.discard("EXIT_CODE_1")
 
     for line in log:
-        if ":" in line:
-            s_result = line.split(":")
-            if len(s_result) != 4:
-                continue
-            (file, lineno, column, end_error) = s_result
-            if "]" not in end_error:
-                continue
-            message = end_error[1:end_error.index("[") - 1]
-            level = end_error[end_error.index("[") + 1: end_error.index("/")]
-            name = end_error[end_error.index("/") + 1: len(end_error) - 1]
-            findings.append({
-                "filename": file,
-                "line": int(lineno),
-                "column": int(column),
-                "message": message,
-                "level": level.lower(),
-                "name": name
-            })
+        match = REPORT.match(line)
+        if match:
+            finding = match.groupdict()
+            finding["line"] = int(finding["line"])
+            finding["column"] = int(finding["column"])
+            finding["level"] = finding["level"].lower()
+            findings.append(finding)
 
     return findings, infos, errors, fails

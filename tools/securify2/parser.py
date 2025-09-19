@@ -1,7 +1,7 @@
 import sb.parse_utils
 import re
 
-VERSION: str = "2025-06-11"
+VERSION: str = "2025-09-12"
 
 FINDINGS: set[str]  = {
     "Transaction Order Affects Ether Amount", # 1
@@ -50,6 +50,17 @@ FINDINGS: set[str]  = {
     "Missing Input Validation",
 }
 
+FIELDS = {
+    "Severity": "severity",
+    "Pattern": "name",
+    "Description": "message",
+    "Type": "type",
+    "Contract": "contract",
+    "Line": "line",
+    "Source": "source",
+    "Traceback (most recent call last)": "traceback"
+}
+
 
 def parse(exit_code, log, output):
     """
@@ -70,33 +81,34 @@ def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
-    finding = {}
+    finding, last_key = {}, None
     for line in sb.parse_utils.discard_ANSI(log):
-        if   line.startswith("Severity:    "):
-            finding["severity"] = line[13:].strip()
-        elif line.startswith("Pattern:     "):
-            finding["name"] = line[13:].strip()
-        elif line.startswith("Description: "):
-            finding["message"] = line[13:].strip()
-        elif line.startswith("             "):
-            finding["message"] += " " + line[13:].strip()
-        elif line.startswith("Type:        "):
-            finding["type"] = line[13:].strip()
-        elif line.startswith("Contract:    "):
-            finding["contract"] = line[13:].strip()
-        elif line.startswith("Line:        "):
-            finding["line"] = int(line[13:].strip())
-        elif line.startswith("Source:"):
-            finding["source"] = []
-        elif line.startswith(">"):
+        parts = line.split(":")
+        key = FIELDS.get(parts[0], None)
+        if key and len(parts) > 1:
+            val = parts[1].strip()
+            if key == "line":
+                finding[key] = int(val)
+            elif key == "source":
+                finding[key] = []
+            elif key == "traceback":
+                break
+            else:
+                finding[key] = val
+            last_key = key
+        elif line.startswith("             ") and last_key == "message":
+            finding["message"] += " " + val
+        elif line.startswith(">") and last_key == "source":
             finding["source"].append(line)
         else:
             if finding:
                 findings.append(finding)
-                finding = {}
+                finding, last_key = {}, None
             if line.strip():
                 infos.add(line)
 
+    if finding:
+        findings.append(finding)
     return findings, infos, errors, fails
     """
     findings is a list of issues. Each issue is a dict with the following fields.
