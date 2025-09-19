@@ -1,0 +1,16 @@
+name: Vulhunter
+version: 0.1
+origin: https://github.com/stephan-klein/VulHunter
+info: VulHunter is a method that can effectively detect bytecode/opcode paths that trigger vulnerabilities without manual pre-defined patterns. It extracts the instances by traversing the Control Flow Graph built from contract opcodes. Based on the hybrid Bag-instance/self-model attention and multi-instance learning (MIL) mechanisms, it reasons the instance labels and designs an optional classifier to automatically capture the subtle features of both normal and defective contracts, thereby identifying the vulnerable instances
+image: deet0x/vulhunter:0.1 # id of Docker image (mandatory)
+output: /app/output.json
+bin: scripts # folder with programs that will be accessible in the Docker container
+# add the section below if the tool is able to analyse Solidity source code
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    solc: yes
+bytecode:
+    entrypoint: "'$BIN/do_bytecode.sh' '$FILENAME' '$TIMEOUT'"
+
+# runtime:
+#     entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT'"
