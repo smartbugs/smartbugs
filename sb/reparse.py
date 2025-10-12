@@ -2,6 +2,7 @@ import argparse
 import multiprocessing
 import os
 import sys
+from typing import TYPE_CHECKING
 
 import sb.cfg
 import sb.errors
@@ -10,7 +11,11 @@ import sb.parsing
 import sb.sarif
 
 
-def reparser(taskqueue, sarif, verbose):
+if TYPE_CHECKING:
+    from multiprocessing.queues import Queue
+
+
+def reparser(taskqueue: "Queue[str | None]", sarif: bool, verbose: bool) -> None:
     while True:
         d = taskqueue.get()
         if d is None:
@@ -55,7 +60,7 @@ def reparser(taskqueue, sarif, verbose):
             sb.io.write_json(fn_sarif, sarif_result)
 
 
-def main():
+def main() -> None:
     argparser = argparse.ArgumentParser(
         prog="reparse",
         description=(

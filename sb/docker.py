@@ -2,7 +2,7 @@ import os
 import shutil
 import tempfile
 import traceback
-from typing import Any, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 import docker
 import docker.models.containers
@@ -11,7 +11,10 @@ import requests
 import sb.cfg
 import sb.errors
 import sb.io
-import sb.tasks
+
+
+if TYPE_CHECKING:
+    import sb.tasks
 
 
 _client: Optional[docker.DockerClient] = None
@@ -55,7 +58,7 @@ def load(image: str) -> None:
     images_loaded.add(image)
 
 
-def __docker_volume(task: sb.tasks.Task) -> str:
+def __docker_volume(task: "sb.tasks.Task") -> str:
     sbdir = tempfile.mkdtemp()
     sbdir_bin = os.path.join(sbdir, "bin")
     if task.tool.mode in ("bytecode", "runtime"):
@@ -78,7 +81,7 @@ def __docker_volume(task: sb.tasks.Task) -> str:
     return sbdir
 
 
-def __docker_args(task: sb.tasks.Task, sbdir: str) -> dict[str, Any]:
+def __docker_args(task: "sb.tasks.Task", sbdir: str) -> dict[str, Any]:
     args = {"volumes": {sbdir: {"bind": "/sb", "mode": "rw"}}, "detach": True, "user": 0}
     for k in ("image", "cpu_quota", "mem_limit"):
         v = getattr(task.tool, k, None)
@@ -97,7 +100,7 @@ def __docker_args(task: sb.tasks.Task, sbdir: str) -> dict[str, Any]:
 
 
 def execute(
-    task: sb.tasks.Task,
+    task: "sb.tasks.Task",
 ) -> tuple[Optional[int], list[str], Optional[bytes], dict[str, Any]]:
     sbdir = __docker_volume(task)
     args = __docker_args(task, sbdir)

@@ -136,7 +136,7 @@ def analyser(
     time_completed: "Synchronized[float]",  # type: ignore[type-arg]
 ) -> None:
 
-    def pre_analysis():
+    def pre_analysis() -> None:
         with tasks_started.get_lock():
             tasks_started_value = tasks_started.value + 1
             tasks_started.value = tasks_started_value
@@ -149,7 +149,7 @@ def analyser(
             logqueue,
         )
 
-    def post_analysis(duration, no_processes, timeout):
+    def post_analysis(duration: float, no_processes: int, timeout: Optional[int]) -> None:
         with tasks_completed.get_lock(), time_completed.get_lock():
             tasks_completed_value = tasks_completed.value + 1
             tasks_completed.value = tasks_completed_value

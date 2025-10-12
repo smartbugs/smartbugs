@@ -47,7 +47,7 @@ def collect_tasks(
     used_rdirs = set()
     rdir_collisions = 0
 
-    def disambiguate(base):
+    def disambiguate(base: str) -> str:
         nonlocal rdir_collisions
         cnt = 1
         rdir = base
@@ -60,7 +60,7 @@ def collect_tasks(
         rdir_collisions += collision
         return rdir
 
-    def report_collisions():
+    def report_collisions() -> None:
         if rdir_collisions > 0:
             sb.logging.message(
                 sb.colors.warning(
@@ -76,7 +76,7 @@ def collect_tasks(
                     )
                 )
 
-    def get_solc(pragma, fn, toolid):
+    def get_solc(pragma: Optional[str], fn: str, toolid: str) -> tuple[str, str]:
         if not pragma:
             raise sb.errors.SmartBugsError(f"{fn}: no pragma, cannot determine solc version")
         if not sb.solidity.ensure_solc_versions_loaded():
@@ -98,7 +98,7 @@ def collect_tasks(
             )
         return solc_version, solc_path
 
-    def ensure_loaded(image):
+    def ensure_loaded(image: str) -> None:
         if not sb.docker.is_loaded(image):
             sb.logging.message(f"Loading docker image {image}, may take a while ...")
             sb.docker.load(image)

@@ -83,7 +83,7 @@ def result_info(tool_id: str, finding: dict[str, Any]) -> dict[str, Any]:
         result_dict["level"] = level
 
     region = result_region(finding)
-    if region:
+    if region is not None:
         result_dict["locations"][0]["physicalLocation"]["region"] = region
 
     loc_msg = result_location_message(finding)
@@ -165,8 +165,8 @@ def result_location_message(finding: dict[str, Any]) -> str:
     )
 
 
-def result_region(finding: dict[str, Any]) -> dict[str, int]:
-    region_dict = {}
+def result_region(finding: dict[str, Any]) -> Optional[dict[str, int]]:
+    region_dict: dict[str, int] = {}
 
     # source code
     for f, r in (
@@ -189,4 +189,4 @@ def result_region(finding: dict[str, Any]) -> dict[str, int]:
         if addr in finding:
             region_dict[line_key] = 1
             region_dict[col_key] = 1 + 2 * int(finding[addr])
-    return region_dict
+    return region_dict if region_dict else None

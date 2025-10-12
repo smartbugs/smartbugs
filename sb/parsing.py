@@ -1,15 +1,18 @@
 import importlib.util
 import os
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import sb.cfg
 import sb.errors
 
 
-tool_parsers: dict[tuple[str, str], Any] = {}
+if TYPE_CHECKING:
+    from types import ModuleType
+
+tool_parsers: dict[tuple[str, str], "ModuleType"] = {}
 
 
-def get_parser(tool: dict[str, Any]) -> Any:
+def get_parser(tool: dict[str, Any]) -> "ModuleType":
     tid, tmode = tool["id"], tool["mode"]
     key = (tid, tmode)
     if key not in tool_parsers:

@@ -1,16 +1,20 @@
 import re
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import solcx
+
+
+if TYPE_CHECKING:
+    from solcx.install import Version
 
 
 # load binaries for Linux in Docker images, not for host platform
 solcx.set_target_os("linux")
 
 
-VOID_START = re.compile("//|/\\*|\"|'")
-QUOTE_END = re.compile("(?<!\\\\)'")
-DQUOTE_END = re.compile('(?<!\\\\)"')
+VOID_START: re.Pattern[str] = re.compile("//|/\\*|\"|'")
+QUOTE_END: re.Pattern[str] = re.compile("(?<!\\\\)'")
+DQUOTE_END: re.Pattern[str] = re.compile('(?<!\\\\)"')
 
 
 def remove_comments_strings(prg: list[str]) -> str:
@@ -42,8 +46,8 @@ def remove_comments_strings(prg: list[str]) -> str:
     return done
 
 
-PRAGMA = re.compile("pragma solidity.*?;")
-RE_CONTRACT_NAMES = re.compile(r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)")
+PRAGMA: re.Pattern[str] = re.compile("pragma solidity.*?;")
+RE_CONTRACT_NAMES: re.Pattern[str] = re.compile(r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)")
 
 
 def get_pragma_contractnames(prg: list[str]) -> tuple[Optional[str], list[str]]:
@@ -54,7 +58,7 @@ def get_pragma_contractnames(prg: list[str]) -> tuple[Optional[str], list[str]]:
     return pragma, contractnames
 
 
-cached_solc_versions = None
+cached_solc_versions: Optional[list["Version"]] = None
 
 
 def ensure_solc_versions_loaded() -> bool:

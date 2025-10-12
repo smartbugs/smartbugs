@@ -1,5 +1,15 @@
-import argparse, csv, os, sys
-import sb.cfg, sb.io, sb.utils
+import argparse
+import csv
+import os
+import sys
+from typing import TYPE_CHECKING, Any, Optional
+
+import sb.cfg
+import sb.io
+import sb.utils
+
+if TYPE_CHECKING:
+    from typing import Sequence
 
 FIELDS = (
     "filename",
@@ -18,7 +28,7 @@ FIELDS = (
 )
 
 
-def main():
+def main() -> None:
     argparser = argparse.ArgumentParser(
         prog="results2csv", description="Write key information from runs to stdout, in csv format."
     )
@@ -82,7 +92,7 @@ def main():
         csv_out.writerow(data2csv(task_log, parser_output, args.p, fields))
 
 
-def list2postgres(l):
+def list2postgres(l: "Sequence[str]") -> str:
     es = []
     for e in l:
         if any(ch in e for ch in ('"', ",", "\n", "{", "}")):
@@ -92,7 +102,7 @@ def list2postgres(l):
     return "{" + ",".join(es) + "}"
 
 
-def list2excel(l):
+def list2excel(l: "Sequence[str]") -> str:
     es = []
     for e in l:
         if any(ch in e for ch in ('"', ",", "\n")):
@@ -102,7 +112,9 @@ def list2excel(l):
     return ",".join(es)
 
 
-def data2csv(task_log, parser_output, postgres, fields):
+def data2csv(
+    task_log: dict[str, Any], parser_output: dict[str, Any], postgres: bool, fields: list[str]
+) -> list[Any]:
     csv = {
         "filename": task_log["filename"],
         "basename": os.path.basename(task_log["filename"]),
@@ -127,4 +139,4 @@ def data2csv(task_log, parser_output, postgres, fields):
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

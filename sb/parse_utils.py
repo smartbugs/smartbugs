@@ -6,7 +6,7 @@ from re import Pattern
 from typing import Optional
 
 
-DOCKER_CODES = {
+DOCKER_CODES: dict[int, str] = {
     125: "DOCKER_INVOCATION_PROBLEM",
     126: "DOCKER_CMD_NOT_EXECUTABLE",
     127: "DOCKER_CMD_NOT_FOUND",
@@ -16,7 +16,7 @@ DOCKER_CODES = {
 }
 
 
-ANSI = re.compile("\x1b\\[[^m]*m")
+ANSI: Pattern[str] = re.compile("\x1b\\[[^m]*m")
 
 
 def discard_ansi(lines: Iterable[str]) -> Generator[str, None, None]:
@@ -28,9 +28,9 @@ def truncate_message(m: str, length: int = 205) -> str:
     return m if len(m) <= length else m[:half_length] + " ... " + m[-half_length:]
 
 
-TRACEBACK = "Traceback (most recent call last):"  # Python
+TRACEBACK: str = "Traceback (most recent call last):"  # Python
 
-EXCEPTIONS = (
+EXCEPTIONS: tuple[Pattern[str], ...] = (
     re.compile(".*line [0-9: ]*(Segmentation fault|Killed)"),  # Shell
     re.compile('Exception in thread "[^"]*" (.*)'),  # Java
     re.compile(r"^(?:[a-zA-Z0-9]+\.)+[a-zA-Z0-9]*Exception: (.*)$"),  # Java

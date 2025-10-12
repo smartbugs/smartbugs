@@ -93,7 +93,7 @@ class Tool:
                         )
             if k in ("command", "entrypoint"):
                 k = f"_{k}"
-                v = string.Template(v) if v else None
+                v = string.Template(str(v)) if v else None
             setattr(self, k, v)
 
         for k in ("id", "mode"):
@@ -112,7 +112,7 @@ class Tool:
             )
         if not self.parser:
             self.parser = sb.cfg.TOOL_PARSER
-        if self.bin:
+        if self.bin and self.id:
             self.absbin = os.path.join(sb.cfg.TOOLS_HOME, self.id, self.bin)
 
     def command(self, filename: str, timeout: int, bin: str, main: str) -> Optional[str]:
@@ -153,7 +153,7 @@ class Tool:
                 d[k] = v
         return d
 
-    def __str__(self):
+    def __str__(self) -> str:
         items = [f"{k}: {str(v)}" for k, v in self.dict().items()]
         return f"{{{', '.join(items)}}}"
 

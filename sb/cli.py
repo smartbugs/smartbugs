@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+from typing import TYPE_CHECKING, Any, Optional
 
 import sb.cfg
 import sb.colors
@@ -10,9 +11,13 @@ import sb.settings
 import sb.smartbugs
 
 
-def cli_args(defaults):
+if TYPE_CHECKING:
+    from sb.settings import Settings
 
-    def fmt_default(defval):
+
+def cli_args(defaults: "Settings") -> tuple[Optional[str], dict[str, Any]]:
+
+    def fmt_default(defval: Any) -> str:
         formatted = (
             "yes"
             if isinstance(defval, bool) and defval
@@ -204,7 +209,7 @@ def cli_args(defaults):
     return cfg_file, args
 
 
-def cli(site_cfg=sb.cfg.SITE_CFG):
+def cli(site_cfg: Optional[str] = sb.cfg.SITE_CFG) -> "Settings":
     settings = sb.settings.Settings()
 
     if site_cfg and os.path.exists(site_cfg):
@@ -217,7 +222,7 @@ def cli(site_cfg=sb.cfg.SITE_CFG):
     return settings
 
 
-def main():
+def main() -> None:
     try:
         settings = cli()
         sb.logging.message(None, f"Arguments passed: {sys.argv}")
