@@ -91,14 +91,17 @@ ERRORS = (
 CHECK = re.compile("\\[ \\] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)")
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     if fails:
         errors.discard("EXIT_CODE_1")  # redundant
 
-    analysis_complete = {}
-    finding = {}
+    analysis_complete: dict = {}
+    finding: dict = {}
     for line in sb.parse_utils.discard_ansi(log):
         if line.startswith("=" * 100):
             if finding.get("name"):

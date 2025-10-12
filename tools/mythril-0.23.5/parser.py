@@ -23,7 +23,9 @@ FINDINGS = {
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
 
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)

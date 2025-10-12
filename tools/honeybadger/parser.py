@@ -16,5 +16,7 @@ FINDINGS = {
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
     return oyente.parse(exit_code, log, output)

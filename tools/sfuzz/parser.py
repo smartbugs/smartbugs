@@ -3,6 +3,7 @@ import json
 import os
 import re
 import tarfile
+from typing import IO
 
 import sb.parse_utils
 
@@ -24,8 +25,11 @@ FINDINGS = {
 STATS_FILENAME = "stats.csv"
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     if output:
@@ -55,14 +59,14 @@ def parse(exit_code, log, output):
     return findings, infos, errors, fails
 
 
-def vulnerabilities(stats):
-    vs = {}
+def vulnerabilities(stats: IO[bytes]) -> dict[str, str]:
+    vs: dict[str, str] = {}
 
     # Skip to last line
-    line = ""
+    line: bytes = b""
     for line in stats:
         pass
-    if line == "":
+    if line == b"":
         return vs
     last = re.sub("['b\\n]", "", line.decode("utf-8"))
     results = list(map(float, last.split(",")))

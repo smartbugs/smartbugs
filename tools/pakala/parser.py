@@ -14,7 +14,7 @@ FINISHED = re.compile("Nothing to report.|======> Bug found! Need .* transaction
 TRANSACTION = re.compile("Transaction [0-9]+, example solution:")
 
 
-def is_relevant(line):
+def is_relevant(line: str) -> bool:
     return not (
         line.startswith("Analyzing contract at")
         or line.startswith("Starting symbolic execution step...")
@@ -23,9 +23,12 @@ def is_relevant(line):
     )
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
-    cleaned_log = filter(is_relevant, log)
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
+    cleaned_log = list(filter(is_relevant, log))
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
     errors.discard("EXIT_CODE_1")  # there will be an exception in fails anyway
 

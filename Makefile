@@ -146,7 +146,7 @@ typecheck:
 		exit 1; \
 	fi
 	@echo "Type checking with Mypy..."
-	@$(VENV_ACTIVATE) && $(MYPY) $(SRC_DIR) \
+	@$(VENV_ACTIVATE) && $(MYPY) $(SRC_DIR) $(TOOLS_DIR) \
 		--ignore-missing-imports \
 		--exclude solcx \
 		--no-strict-optional \

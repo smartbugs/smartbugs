@@ -41,7 +41,9 @@ quiet = False
 
 
 def message(
-    con: Optional[str] = None, log: Optional[str] = None, queue: Optional["Queue[Optional[str]]"] = None
+    con: Optional[str] = None,
+    log: Optional[str] = None,
+    queue: Optional["Queue[Optional[str]]"] = None,
 ) -> None:
     if con and log == "":
         log = sb.colors.strip(con)

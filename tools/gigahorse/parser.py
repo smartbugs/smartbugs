@@ -8,7 +8,9 @@ import sb.parse_utils
 VERSION = "2022/11/17"
 
 
-def parse(exit_code, log, output, findings):
+def parse(
+    exit_code: int, log: list[str], output: bytes, findings: set[str]
+) -> tuple[list[dict], set[str], set[str], set[str]]:
     findings_list, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 

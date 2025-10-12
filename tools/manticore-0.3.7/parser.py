@@ -8,13 +8,13 @@ import sb.parse_utils
 
 VERSION = "2022/11/17"
 
-FINDINGS = set()
+FINDINGS: set[str] = set()
 
 
-def parse_file(lines):
-    findings = []
+def parse_file(lines: list[bytes]) -> list[dict]:
+    findings: list[dict] = []
     snippet = False
-    finding = None
+    finding: dict = {}
     for line in lines:
         if snippet:
             snippet = False
@@ -22,17 +22,20 @@ def parse_file(lines):
             if finding and parts:
                 finding["line"] = int(parts[0])
                 finding["code"] = line
-        elif line.startswith("  Solidity snippet:"):
+        elif line.startswith(b"  Solidity snippet:"):
             snippet = True
-        elif line[0] == "-":
-            finding = {"name": line[1:-2].strip()}
+        elif line[0:1] == b"-":
+            finding = {"name": line[1:-2].strip().decode("utf-8", errors="ignore")}
             findings.append(finding)
             continue
     return findings
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     if any("Invalid solc compilation" in line for line in log):

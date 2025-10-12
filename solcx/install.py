@@ -53,7 +53,7 @@ _default_solc_binary = None
 _target_os = None
 
 
-def set_target_os(platform: Optional[str] = None):
+def set_target_os(platform: Optional[str] = None) -> None:
     """
     Set the target platform for the solc binaries. If unset, it defaults to the current os.
     """

@@ -1,19 +1,22 @@
 import io
 import tarfile  # if the output parameter is used
+from typing import Optional
 
 import sb.parse_utils  # for sb.parse_utils.init(...)
 
 
 # import ...            # any further imports
 
-VERSION: str = ...
+VERSION: str = "YYYY/MM/DD"
 """identify the version of the parser, e.g. '2022/08/15'"""
 
-FINDINGS: set[str] = ...
+FINDINGS: set[str] = set()
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: Optional[int], log: list[str], output: bytes
+) -> tuple[list[dict[str, object]], set[str], set[str], set[str]]:
     """
     Analyse the result of the tool tun.
 
@@ -29,7 +32,8 @@ def parse(exit_code, log, output):
       analysis contains any analysis results worth reporting
     """
 
-    findings, infos = [], set()
+    findings: list[dict[str, object]] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     # Parses the output for common Python/Java/shell exceptions (returned in 'fails')
 

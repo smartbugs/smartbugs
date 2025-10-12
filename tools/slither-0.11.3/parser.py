@@ -116,8 +116,11 @@ FINDINGS = {
 LOCATION = re.compile("/sb/(.*?)#([0-9-]*)")
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     errors.discard("EXIT_CODE_255")  # this code seems to be returned in any case
 

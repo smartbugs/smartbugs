@@ -47,7 +47,9 @@ def remove_comments_strings(prg: list[str]) -> str:
 
 
 PRAGMA: re.Pattern[str] = re.compile("pragma solidity.*?;")
-RE_CONTRACT_NAMES: re.Pattern[str] = re.compile(r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)")
+RE_CONTRACT_NAMES: re.Pattern[str] = re.compile(
+    r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)"
+)
 
 
 def get_pragma_contractnames(prg: list[str]) -> tuple[Optional[str], list[str]]:

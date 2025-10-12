@@ -22,20 +22,26 @@ FINDINGS = {
 }
 
 
-def is_relevant(line):
+def is_relevant(line: str) -> bool:
     # Remove logo when parsing exceptions
-    return line and not (
-        line.startswith("     _")
-        or line.startswith("    /")
-        or line.startswith("   /")
-        or line.startswith("  /")
-        or line.startswith("  \\")
+    return bool(
+        line
+        and not (
+            line.startswith("     _")
+            or line.startswith("    /")
+            or line.startswith("   /")
+            or line.startswith("  /")
+            or line.startswith("  \\")
+        )
     )
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
-    cleaned_log = filter(is_relevant, log)
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
+    cleaned_log = list(filter(is_relevant, log))
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
 
     for line in sb.parse_utils.discard_ansi(log):

@@ -36,7 +36,7 @@ COMPLETED = re.compile(r"^INFO:symExec:\s*====== Analysis Completed ======")
 COVERAGE = re.compile(r"^INFO:symExec:\s*EVM Code Coverage:\s+([0-9]+(?:\.[0-9]+)?%)$")
 
 
-def is_relevant(line):
+def is_relevant(line: str) -> bool:
     # Identify lines interfering with exception parsing
     return not (
         line.startswith("888")
@@ -46,22 +46,25 @@ def is_relevant(line):
     )
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
 
-    findings, infos = [], set()
-    cleaned_log = filter(is_relevant, log)
+    findings: list[dict] = []
+    infos: set[str] = set()
+    cleaned_log = list(filter(is_relevant, log))
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
     errors.discard("EXIT_CODE_1")  # redundant: indicates error or vulnerability reported below
 
     analysis_completed = False
     filename, contract, weakness = None, None, None
-    weaknesses = set()
+    weaknesses: set = set()
     for line in log:
-        if sb.parse_utils.add_match(infos, re.sub(r"[ \t]+", " ", line).strip(), INFOS):
+        if sb.parse_utils.add_match(infos, re.sub(r"[ \t]+", " ", line).strip(), list(INFOS)):
             continue
-        if sb.parse_utils.add_match(errors, line, ERRORS):
+        if sb.parse_utils.add_match(errors, line, list(ERRORS)):
             continue
-        if sb.parse_utils.add_match(fails, line, FAILS):
+        if sb.parse_utils.add_match(fails, line, list(FAILS)):
             continue
 
         m = CONTRACT.match(line)

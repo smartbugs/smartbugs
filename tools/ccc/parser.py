@@ -20,7 +20,9 @@ FINDINGS: set[str] = {
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
     """
     Analyse the result of the tool tun.
 
@@ -36,7 +38,8 @@ def parse(exit_code, log, output):
       analysis contains any analysis results worth reporting
     """
 
-    findings, infos = [], set()
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     # Parses the output for common Python/Java/shell exceptions (returned in 'fails')
 
@@ -109,7 +112,7 @@ def parse(exit_code, log, output):
     """
 
 
-def parse_location(coded_location):
+def parse_location(coded_location: str) -> dict:
     index = coded_location.rfind(" ")
 
     file = coded_location[:index].strip()

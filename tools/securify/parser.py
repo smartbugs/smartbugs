@@ -19,8 +19,11 @@ FINDINGS = {
 }
 
 
-def parse(exit_code, log, output):
-    findings, infos = set(), set()
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings_set: set[str] = set()
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log, log_expected=False)
     if fails:
         errors.discard("EXIT_CODE_1")
@@ -31,7 +34,7 @@ def parse(exit_code, log, output):
     # - output:results/live.json
     try:
         try:
-            analysis = json.loads(log)
+            analysis = json.loads("\n".join(log))
         except (json.JSONDecodeError, TypeError):
             with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
                 try:
@@ -54,16 +57,16 @@ def parse(exit_code, log, output):
             if not check["completed"]:
                 infos.add("analysis incomplete")
             if check["hasViolations"]:
-                findings.add(vuln)
+                findings_set.add(vuln)
     else:  # log or result.json
         for contract, analysis in analysis.items():
             for vuln, check in analysis["results"].items():
                 if check["violations"]:
-                    findings.add(vuln)
+                    findings_set.add(vuln)
 
     if "analysis incomplete" in infos and not fails:
         fails.add("execution failed")
 
-    findings = [{"name": vuln} for vuln in findings]
+    findings = [{"name": vuln} for vuln in findings_set]
 
     return findings, infos, errors, fails

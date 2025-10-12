@@ -34,13 +34,16 @@ VULNERABILITY = re.compile(
 )
 
 
-def is_relevant(line):
+def is_relevant(line: str) -> bool:
     return not ANALYSING.match(line)
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
-    cleaned_log = filter(is_relevant, log)
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
+    cleaned_log = list(filter(is_relevant, log))
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
 
     for f in list(fails):  # iterate over a copy of "fails" such that it can be modified
@@ -56,7 +59,7 @@ def parse(exit_code, log, output):
 
     filename, contract = None, None
     for line in log:
-        if sb.parse_utils.add_match(errors, line, ERRORS):
+        if sb.parse_utils.add_match(errors, line, list(ERRORS)):
             fails.discard("exception (Exception)")
             continue
         m = ANALYSING.match(line)

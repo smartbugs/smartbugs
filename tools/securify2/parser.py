@@ -62,7 +62,9 @@ FIELDS = {
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
     """
     Analyse the result of the tool tun.
 
@@ -78,10 +80,12 @@ def parse(exit_code, log, output):
       analysis contains any analysis results worth reporting
     """
 
-    findings, infos = [], set()
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
-    finding, last_key = {}, None
+    finding: dict = {}
+    last_key: str = ""
     for line in sb.parse_utils.discard_ansi(log):
         parts = line.split(":")
         key = FIELDS.get(parts[0], None)
@@ -98,7 +102,11 @@ def parse(exit_code, log, output):
             last_key = key
         elif line.startswith("             ") and last_key == "message":
             finding["message"] += " " + val
-        elif line.startswith(">") and last_key == "source":
+        elif (
+            line.startswith(">")
+            and last_key == "source"
+            and isinstance(finding.get("source"), list)
+        ):
             finding["source"].append(line)
         else:
             if finding:

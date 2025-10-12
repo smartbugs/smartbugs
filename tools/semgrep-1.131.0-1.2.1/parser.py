@@ -1,4 +1,5 @@
 import re
+from collections.abc import Iterator
 
 import sb.cfg  # for sb.parse_utils.init(...)
 import sb.parse_utils
@@ -67,20 +68,23 @@ FINDINGS = [
 ]
 
 
-def message_lines(log_iterator):
-    message_lines = []
+def message_lines(log_iterator: Iterator[str]) -> str:
+    msg_lines: list[str] = []
     while True:
         next_line = next(log_iterator, "").strip()
         if not next_line:
             break
-        message_lines.append(next_line)
-    return " ".join(message_lines)
+        msg_lines.append(next_line)
+    return " ".join(msg_lines)
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
 
-    findings, infos = [], set()
-    finding = {}
+    findings: list[dict] = []
+    infos: set[str] = set()
+    finding: dict = {}
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     log_iterator = iter(log)
 
