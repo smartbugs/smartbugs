@@ -1,5 +1,10 @@
-import io, tarfile, json, re
+import io
+import json
+import re
+import tarfile
+
 import sb.parse_utils
+
 
 VERSION = "2024/04/30"
 

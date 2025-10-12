@@ -1,5 +1,8 @@
-import re, ast
+import ast
+import re
+
 import sb.parse_utils
+
 
 VERSION = "2023/02/27"
 
@@ -28,6 +31,8 @@ def parse(exit_code, log, output):
 
     analysis_completed = False
     in_tx = False
+    tx_dict = ""
+    finding = None
     for line in log:
         if in_tx:
             if line:
@@ -36,9 +41,10 @@ def parse(exit_code, log, output):
                 in_tx = False
                 try:
                     tx = ast.literal_eval(tx_dict)
-                    if not "exploit" in finding:
+                    if finding and "exploit" not in finding:
                         finding["exploit"] = []
-                    finding["exploit"].append(tx)
+                    if finding:
+                        finding["exploit"].append(tx)
                 except Exception:
                     pass
 

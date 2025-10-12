@@ -1,5 +1,10 @@
-import io, tarfile, yaml
+import io
+import tarfile
+
+import yaml
+
 import sb.parse_utils
+
 
 VERSION = "2022/11/17"
 
@@ -9,13 +14,15 @@ FINDINGS = set()
 def parse_file(lines):
     findings = []
     snippet = False
+    finding = None
     for line in lines:
         if snippet:
             snippet = False
-            l = line.split()
-            finding["line"] = int(l[0])
-            finding["code"] = c
-        elif line.startwith("  Solidity snippet:"):
+            parts = line.split()
+            if finding and parts:
+                finding["line"] = int(parts[0])
+                finding["code"] = line
+        elif line.startswith("  Solidity snippet:"):
             snippet = True
         elif line[0] == "-":
             finding = {"name": line[1:-2].strip()}
@@ -48,8 +55,8 @@ def parse(exit_code, log, output):
                 try:
                     fn = fn.replace("/global.findings", "/manticore.yml")
                     cmd = yaml.safe_load(tar.extractfile(fn).read())
-                except Exception as e:
-                    infos.add(f"manticore.yml not found")
+                except Exception:
+                    infos.add("manticore.yml not found")
 
                 filename, contract = None, None
                 if isinstance(cmd, dict):

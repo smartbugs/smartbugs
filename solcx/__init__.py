@@ -8,8 +8,8 @@ from solcx.install import (
     import_installed_solc,
     install_solc,
     install_solc_pragma,
-    set_target_os,
     set_solc_version,
     set_solc_version_pragma,
+    set_target_os,
 )
 from solcx.main import compile_files, compile_source, compile_standard, get_solc_version, link_code

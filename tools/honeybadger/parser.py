@@ -1,5 +1,6 @@
 import tools.oyente.parser as oyente
 
+
 VERSION = oyente.VERSION
 
 FINDINGS = {

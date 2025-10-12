@@ -6,6 +6,7 @@ import tarfile
 
 import sb.parse_utils
 
+
 VERSION = "2023/03/02"
 
 FINDINGS = {

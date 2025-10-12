@@ -1,5 +1,8 @@
-import sb.parse_utils, sb.cfg  # for sb.parse_utils.init(...)
 import re
+
+import sb.cfg  # for sb.parse_utils.init(...)
+import sb.parse_utils
+
 
 VERSION: str = "2023/08/21"
 

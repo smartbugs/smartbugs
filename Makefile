@@ -115,7 +115,7 @@ format:
 			--line-length 100 \
 			--exclude '/(\.git|\.mypy_cache|\.pytest_cache|\.venv|venv|__pycache__|solcx)/'; \
 	else \
-		$(VENV_ACTIVATE) && $(BLACK) $(SRC_DIR) \
+		$(VENV_ACTIVATE) && $(BLACK) $(SRC_DIR) $(TOOLS_DIR) \
 			--line-length 100 \
 			--exclude '/(\.git|\.mypy_cache|\.pytest_cache|\.venv|venv|__pycache__|solcx)/'; \
 	fi
@@ -133,7 +133,7 @@ lint:
 			--exclude solcx \
 			--line-length 100; \
 	else \
-		$(VENV_ACTIVATE) && $(RUFF) check $(SRC_DIR) \
+		$(VENV_ACTIVATE) && $(RUFF) check $(SRC_DIR) $(TOOLS_DIR) \
 			--exclude solcx \
 			--line-length 100; \
 	fi

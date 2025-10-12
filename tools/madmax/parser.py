@@ -1,5 +1,6 @@
 import tools.gigahorse.parser as gigahorse
 
+
 VERSION = gigahorse.VERSION
 
 FINDINGS = {"OverflowLoopIterator", "UnboundedMassOp", "WalletGriefing"}

@@ -1,5 +1,9 @@
-import json, io, tarfile
+import io
+import json
+import tarfile
+
 import sb.parse_utils
+
 
 VERSION = "2022/11/17"
 
@@ -28,12 +32,12 @@ def parse(exit_code, log, output):
     try:
         try:
             analysis = json.loads(log)
-        except:
+        except (json.JSONDecodeError, TypeError):
             with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
                 try:
                     jsn = tar.extractfile("results/results.json").read()
                     analysis = json.loads(jsn)
-                except:
+                except (KeyError, json.JSONDecodeError, TypeError):
                     jsn = tar.extractfile("results/live.json").read()
                     analysis = json.loads(jsn)
     except Exception:

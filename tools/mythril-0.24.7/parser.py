@@ -1,5 +1,7 @@
 import json
+
 import sb.parse_utils
+
 
 VERSION = "2025/08/29"
 
@@ -50,7 +52,7 @@ def parse(exit_code, log, output):
 
     try:
         result = json.loads(log[-1])
-    except:
+    except (json.JSONDecodeError, IndexError):
         result = None
     if result:
         error = result.get("error")

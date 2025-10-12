@@ -1,11 +1,15 @@
-import io, json, tarfile
+import io
+import json
+import tarfile
+
 import sb.parse_utils
+
 
 VERSION = "2022/11/17"
 
 
-def parse(exit_code, log, output, FINDINGS):
-    findings, infos = [], set()
+def parse(exit_code, log, output, findings):
+    findings_list, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     if "Writing results to results.json" not in log:
@@ -21,7 +25,7 @@ def parse(exit_code, log, output, FINDINGS):
             filename = contract[0]
             errors.update(contract[2])
             report = contract[3]
-            for name in FINDINGS:
+            for name in findings:
                 if not report.get(name):
                     continue
                 addresses = []
@@ -34,15 +38,17 @@ def parse(exit_code, log, output, FINDINGS):
                         i += 1
                     try:
                         addresses.append(int(address[0:i], 16))
-                    except:
+                    except ValueError:
                         pass
                 if addresses:
                     for address in addresses:
-                        findings.append({"filename": filename, "name": name, "address": address})
+                        findings_list.append(
+                            {"filename": filename, "name": name, "address": address}
+                        )
                 else:
-                    findings.append({"filename": filename, "name": name})
+                    findings_list.append({"filename": filename, "name": name})
 
     except Exception as e:
         fails.add(f"problem extracting results.json from docker container: {e}")
 
-    return findings, infos, errors, fails
+    return findings_list, infos, errors, fails

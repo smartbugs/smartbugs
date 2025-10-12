@@ -1,5 +1,7 @@
 import re
+
 import sb.parse_utils
+
 
 VERSION = "2025/06/04"
 
@@ -79,7 +81,7 @@ def parse(exit_code, log, output):
 
         m = LOCATION1.match(line)
         if m:
-            fn, lineno, column, severity, weakness = m[1], m[2], m[3], m[4], m[5]
+            fn, lineno, column, _, weakness = m[1], m[2], m[3], m[4], m[5]
             weaknesses.discard((filename, contract, weakness, None, None))
             weaknesses.add((filename, contract, weakness, int(lineno), int(column)))
             continue
@@ -130,7 +132,7 @@ def parse(exit_code, log, output):
     for e in list(fails):  # list() makes a copy, so we can modify the set in the loop
         if "UNKNOWN INSTRUCTION" in e:
             fails.remove(e)
-            if not e[22:-1] in errors:
+            if e[22:-1] not in errors:
                 errors.add(e)
 
     return findings, infos, errors, fails

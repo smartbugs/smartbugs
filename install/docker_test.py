@@ -2,6 +2,7 @@
 
 import docker
 
+
 print("get handle to communicate with docker")
 client = docker.from_env()
 
@@ -28,6 +29,6 @@ container.stop()
 try:
     container.kill()
     print("container shouldn't have been running anymore")
-except:
+except Exception:
     pass
 container.remove()

@@ -1,11 +1,15 @@
-import sb.parse_utils # for sb.parse_utils.init(...)
-import io, tarfile    # if the output parameter is used
-import ...            # any further imports
+import io
+import tarfile  # if the output parameter is used
+
+import sb.parse_utils  # for sb.parse_utils.init(...)
+
+
+# import ...            # any further imports
 
 VERSION: str = ...
 """identify the version of the parser, e.g. '2022/08/15'"""
 
-FINDINGS: set[str]  = ...
+FINDINGS: set[str] = ...
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
 
@@ -37,11 +41,11 @@ def parse(exit_code, log, output):
         with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
 
             # access specific file
-            contents_of_some_file = tar.extractfile("name_of_some_file").read()
+            _contents_of_some_file = tar.extractfile("name_of_some_file").read()
 
             # iterate over all files:
             for f in tar.getmembers():
-                contents_of_f = tar.extractfile(f).read()
+                _contents_of_f = tar.extractfile(f).read()
     except Exception as e:
         fails.add(f"error parsing results: {e}")
 
@@ -83,4 +87,3 @@ def parse(exit_code, log, output):
     descr_long will be taken from the file findings.yaml in the tools
     directory (if it exists), with "name" serving as the key.
     """
-
