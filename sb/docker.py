@@ -1,5 +1,14 @@
-import docker, os, shutil, tempfile, requests, traceback
-import sb.io, sb.errors, sb.cfg
+import os
+import shutil
+import tempfile
+import traceback
+
+import docker
+import requests
+
+import sb.cfg
+import sb.errors
+import sb.io
 
 
 _client = None

@@ -1,5 +1,18 @@
-import glob, os, operator
-import sb.tools, sb.solidity, sb.tasks, sb.docker, sb.analysis, sb.colors, sb.logging, sb.cfg, sb.io, sb.settings, sb.errors
+import glob
+import operator
+import os
+
+import sb.analysis
+import sb.cfg
+import sb.colors
+import sb.docker
+import sb.errors
+import sb.io
+import sb.logging
+import sb.settings
+import sb.solidity
+import sb.tasks
+import sb.tools
 
 
 def collect_files(patterns):
@@ -66,7 +79,9 @@ def collect_tasks(files, tools, settings):
         if not sb.solidity.ensure_solc_versions_loaded():
             sb.logging.message(
                 sb.colors.warning(
-                    "Failed to load list of solc versions; are we connected to the internet? Proceeding with local compilers"
+                    "Failed to load list of solc versions; "
+                    "are we connected to the internet? "
+                    "Proceeding with local compilers"
                 ),
                 "",
             )
@@ -126,7 +141,7 @@ def collect_tasks(files, tools, settings):
                     try:
                         solc_version, solc_path = get_solc(pragma, relfn, tool.id)
                     except Exception as e:
-                        exceptions.append(e)
+                        exceptions.append(str(e))
                         continue
 
                 ensure_loaded(tool.image)
@@ -145,7 +160,8 @@ def collect_tasks(files, tools, settings):
             )
             sb.logging.message("\n".join(errors), "")
         else:
-            raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{'\n'.join(errors)}")
+            error_msg = "\n".join(errors)
+            raise sb.errors.SmartBugsError(f"Error(s) while collecting tasks:\n{error_msg}")
     return tasks
 
 

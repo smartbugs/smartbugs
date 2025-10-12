@@ -1,5 +1,13 @@
-import os, argparse, multiprocessing, sys
-import sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
+import argparse
+import multiprocessing
+import os
+import sys
+
+import sb.cfg
+import sb.errors
+import sb.io
+import sb.parsing
+import sb.sarif
 
 
 def reparser(taskqueue, sarif, verbose):
@@ -47,7 +55,10 @@ def reparser(taskqueue, sarif, verbose):
 def main():
     argparser = argparse.ArgumentParser(
         prog="reparse",
-        description=f"Parse the tool output ({sb.cfg.TOOL_LOG}, {sb.cfg.TOOL_OUTPUT}) into {sb.cfg.PARSER_OUTPUT}.",
+        description=(
+            f"Parse the tool output ({sb.cfg.TOOL_LOG}, {sb.cfg.TOOL_OUTPUT}) "
+            f"into {sb.cfg.PARSER_OUTPUT}."
+        ),
     )
     argparser.add_argument(
         "--sarif",

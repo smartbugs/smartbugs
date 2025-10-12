@@ -5,7 +5,7 @@ def str2label(s):
     - trailing characters that are neither letters nor digits ("other chars") are removed
     - sequences of other chars within the string are replaced by a single underscore
     """
-    l = ""
+    label = ""
     separator = False
     has_started = False
     for c in s:
@@ -13,8 +13,8 @@ def str2label(s):
             has_started = True
             if separator:
                 separator = False
-                l += "_"
-            l += c
+                label += "_"
+            label += c
         else:
             separator = has_started
-    return l
+    return label

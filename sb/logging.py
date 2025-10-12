@@ -1,4 +1,7 @@
-import multiprocessing, threading, os, sys, time, re
+import os
+import threading
+from typing import Optional
+
 import sb.colors
 
 
@@ -17,7 +20,8 @@ def logger_process(logfn, overwrite, queue, prolog):
             print(log, file=logfile)
 
 
-__prolog = []
+__prolog: list[str] = []
+logger: Optional[threading.Thread] = None
 
 
 def start(logfn, append, queue):

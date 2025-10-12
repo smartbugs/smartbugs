@@ -23,11 +23,12 @@ FINDINGS = {
 def is_relevant(line):
     # Remove logo when parsing exceptions
     return line and not (
-        line.startswith("     _") or
-        line.startswith("    /") or
-        line.startswith("   /") or
-        line.startswith("  /") or
-        line.startswith("  \\") )
+        line.startswith("     _")
+        or line.startswith("    /")
+        or line.startswith("   /")
+        or line.startswith("  /")
+        or line.startswith("  \\")
+    )
 
 
 def parse(exit_code, log, output):
@@ -35,11 +36,13 @@ def parse(exit_code, log, output):
     cleaned_log = filter(is_relevant, log)
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
 
-    for line in sb.parse_utils.discard_ANSI(log):
-        msg = [ field.strip() for field in line.split(" - ") ]
+    for line in sb.parse_utils.discard_ansi(log):
+        msg = [field.strip() for field in line.split(" - ")]
         if len(msg) >= 4 and msg[2] == "ERROR":
             e = msg[3]
-            if e.startswith("Validation error") and e.endswith("Sender account balance cannot afford txn (ignoring for now)"):
+            if e.startswith("Validation error") and e.endswith(
+                "Sender account balance cannot afford txn (ignoring for now)"
+            ):
                 e = "Validation error: Sender account balance cannot afford txn (ignoring for now)"
             errors.add(e)
 
@@ -50,14 +53,15 @@ def parse(exit_code, log, output):
                 results = json.load(file)
 
                 for contract, data in results.items():
-                    for errs in data['errors'].values():
+                    for errs in data["errors"].values():
                         for issue in errs:
                             finding = {
                                 "contract": contract,
                                 "name": issue["type"],
                                 "severity": issue["severity"],
                                 "line": issue["line"],
-                                "message": f"Classification: SWC-{issue['swc_id']}" }
+                                "message": f"Classification: SWC-{issue['swc_id']}",
+                            }
                             findings.append(finding)
         except Exception as e:
             fails.add(f"error parsing results: {e}")

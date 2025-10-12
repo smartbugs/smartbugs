@@ -1,5 +1,9 @@
-import os, string
-import sb.io, sb.cfg, sb.errors
+import os
+import string
+
+import sb.cfg
+import sb.errors
+import sb.io
 
 
 FIELDS = (
@@ -22,6 +26,13 @@ FIELDS = (
 
 
 class Tool:
+    """Tool configuration with dynamically set attributes from FIELDS.
+
+    Attributes are set dynamically via setattr() based on FIELDS tuple.
+    This includes: id, mode, image, name, origin, version, info, parser,
+    output, bin, solc, cpu_quota, mem_limit, plus _command and _entrypoint
+    (Template objects for command/entrypoint).
+    """
 
     def __init__(self, cfg):
         for k in FIELDS:
@@ -51,7 +62,8 @@ class Tool:
                             assert int(v) > 0
                     except Exception:
                         raise sb.errors.SmartBugsError(
-                            f"Tool: value of attribute '{k}' is not a valid memory specifcation.\n{cfg}"
+                            f"Tool: value of attribute '{k}' is not a valid "
+                            f"memory specifcation.\n{cfg}"
                         )
                 else:
                     try:
@@ -123,8 +135,8 @@ class Tool:
         return d
 
     def __str__(self):
-        l = [f"{k}: {str(v)}" for k, v in self.dict().items()]
-        return f"{{{', '.join(l)}}}"
+        items = [f"{k}: {str(v)}" for k, v in self.dict().items()]
+        return f"{{{', '.join(items)}}}"
 
 
 def load(ids, tools=[], seen=set()):

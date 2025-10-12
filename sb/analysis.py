@@ -1,5 +1,17 @@
-import multiprocessing, random, time, datetime, os, random
-import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
+import datetime
+import multiprocessing
+import os
+import random
+import time
+
+import sb.cfg
+import sb.colors
+import sb.docker
+import sb.errors
+import sb.io
+import sb.logging
+import sb.parsing
+import sb.sarif
 
 
 def task_log_dict(task, start_time, duration, exit_code, log, output, docker_args):
@@ -65,7 +77,7 @@ def execute(task):
             exit_code, tool_log, tool_output, docker_args = sb.docker.execute(task)
             duration = time.time() - start_time
             break
-        except sb.errors.SmartBugsError as e:
+        except sb.errors.SmartBugsError:
             if i == 2:
                 raise
         # wait 3 to 8 minutes
@@ -104,7 +116,10 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             tasks_started_value = tasks_started.value + 1
             tasks_started.value = tasks_started_value
         sb.logging.message(
-            f"Starting task {tasks_started_value}/{tasks_total}: {sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}",
+            (
+                f"Starting task {tasks_started_value}/{tasks_total}: "
+                f"{sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}"
+            ),
             "",
             logqueue,
         )
@@ -115,7 +130,8 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             tasks_completed.value = tasks_completed_value
             time_completed_value = time_completed.value + duration
             time_completed.value = time_completed_value
-        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / no_processes
+        # estimated time to completion =
+        # time_so_far / completed_tasks * remaining_tasks / no_processes
         completed_tasks = tasks_completed_value
         time_so_far = time_completed_value
         remaining_tasks = tasks_total - tasks_completed_value
@@ -125,7 +141,6 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             time_so_far += timeout * no_processes
         etc = time_so_far / completed_tasks * remaining_tasks / no_processes
         etc_fmt = datetime.timedelta(seconds=round(etc))
-        duration_fmt = datetime.timedelta(seconds=round(duration))
         sb.logging.message(f"{tasks_completed_value}/{tasks_total} completed, ETC {etc_fmt}")
 
     while True:

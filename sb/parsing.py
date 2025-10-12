@@ -1,5 +1,9 @@
-import os, importlib.util
-import sb.cfg, sb.errors
+import importlib.util
+import os
+
+import sb.cfg
+import sb.errors
+
 
 tool_parsers = {}
 
@@ -41,7 +45,7 @@ def parse(task_log, tool_log, tool_output):
                 finding["filename"].split("/")[-1]
             )
             finding["filename"] = filename
-    except Exception as e:
+    except Exception:
         raise
         # raise sb.errors.SmartBugsError(f"Parsing of results failed\n{e}")
 

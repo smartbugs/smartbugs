@@ -60,6 +60,8 @@ black = ">=23.7.0"
 ruff = ">=0.0.285"
 mypy = ">=1.5.0"
 pre-commit = ">=3.3.0"
+types-PyYAML = ">=6.0.0"
+types-requests = ">=2.31.0"
 
 [tool.poetry.group.test]
 optional = true
@@ -95,20 +97,6 @@ exclude = '''
 line-length = 100
 target-version = "py39"
 
-# Enable specific rule sets
-select = [
-    "E",   # pycodestyle errors
-    "F",   # pyflakes
-    "I",   # isort (import sorting)
-    "N",   # pep8-naming
-    "UP",  # pyupgrade
-]
-
-# Ignore specific rules that conflict with existing codebase
-ignore = [
-    "E501",  # Line too long (handled by black)
-]
-
 exclude = [
     ".git",
     ".venv",
@@ -123,10 +111,25 @@ exclude = [
     "results",
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint]
+# Enable specific rule sets
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+]
+
+# Ignore specific rules that conflict with existing codebase
+ignore = [
+    "E501",  # Line too long (handled by black)
+]
+
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]  # Allow unused imports in __init__.py files
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["sb", "solcx"]
 force-single-line = false
 lines-after-imports = 2

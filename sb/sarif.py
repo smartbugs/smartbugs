@@ -1,4 +1,5 @@
-import sb.tools, sb.utils
+import sb.tools
+import sb.utils
 
 
 def sarify(tool, findings):
@@ -39,11 +40,11 @@ def rule_info(tool_id, fname):
 
     rule_dict = {"name": fname, "id": rule_id(tool_id, fname)}
 
-    v = rule_shortDescription(info_finding)
+    v = rule_short_description(info_finding)
     if v:
         rule_dict["shortDescription"] = {"text": v}
 
-    v = rule_fullDescription(info_finding)
+    v = rule_full_description(info_finding)
     if v:
         rule_dict["fullDescription"] = {"text": v}
 
@@ -94,11 +95,11 @@ def rule_id(tool_id, fname):
     return f"{sb.utils.str2label(tool_id)}_{sb.utils.str2label(fname)}"
 
 
-def rule_shortDescription(info_finding):
+def rule_short_description(info_finding):
     return info_finding.get("descr_short")
 
 
-def rule_fullDescription(info_finding):
+def rule_full_description(info_finding):
     descr_short = info_finding.get("descr_short")
     descr_long = info_finding.get("descr_long")
     classification = info_finding.get("classification")
@@ -179,11 +180,11 @@ def result_region(finding):
         return region_dict
 
     # hex code
-    for a, l, c in (
+    for addr, line_key, col_key in (
         ("address", "startLine", "startColumn"),
         ("address_end", "endLine", "endColumn"),
     ):
-        if a in finding:
-            region_dict[l] = 1
-            region_dict[c] = 1 + 2 * int(finding[a])
+        if addr in finding:
+            region_dict[line_key] = 1
+            region_dict[col_key] = 1 + 2 * int(finding[addr])
     return region_dict

@@ -1,5 +1,13 @@
-import argparse, sys, os
-import sb.cfg, sb.colors, sb.smartbugs, sb.logging, sb.settings, sb.errors
+import argparse
+import os
+import sys
+
+import sb.cfg
+import sb.colors
+import sb.errors
+import sb.logging
+import sb.settings
+import sb.smartbugs
 
 
 def cli_args(defaults):
@@ -65,7 +73,10 @@ def cli_args(defaults):
         "--main",
         action="store_true",
         default=None,
-        help=f"if the Solidity file contains a contract named like the file, analyse this contract only{fmt_default('all contracts')}",
+        help=(
+            f"if the Solidity file contains a contract named like the file, "
+            f"analyse this contract only{fmt_default('all contracts')}"
+        ),
     )
     input.add_argument(
         "--runtime",
@@ -97,7 +108,10 @@ def cli_args(defaults):
         "--mem-limit",
         type=str,
         metavar="MEM",
-        help=f"memory quota for docker containers, like 512m or 1g{fmt_default(defaults.mem_limit)}",
+        help=(
+            f"memory quota for docker containers, like 512m or 1g"
+            f"{fmt_default(defaults.mem_limit)}"
+        ),
     )
     exec.add_argument(
         "--continue-on-errors",
@@ -138,7 +152,10 @@ def cli_args(defaults):
         "--sarif",
         action="store_true",
         default=None,
-        help=f"parse output and write it to {sb.cfg.PARSER_OUTPUT} as well as {sb.cfg.SARIF_OUTPUT}{fmt_default(defaults.sarif)}",
+        help=(
+            f"parse output and write it to {sb.cfg.PARSER_OUTPUT} as well as "
+            f"{sb.cfg.SARIF_OUTPUT}{fmt_default(defaults.sarif)}"
+        ),
     )
     output.add_argument(
         "--quiet",

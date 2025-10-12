@@ -1,7 +1,8 @@
-import os, re
-from pathlib import Path
+import re
+from typing import Optional
 
 import solcx
+
 
 # load binaries for Linux in Docker images, not for host platform
 solcx.set_target_os("linux")
@@ -82,7 +83,7 @@ def get_solc_version(pragma):
     return version
 
 
-cached_solc_paths = {}
+cached_solc_paths: dict[str, Optional[str]] = {}
 
 
 def get_solc_path(version):
@@ -92,7 +93,9 @@ def get_solc_path(version):
         return cached_solc_paths[version]
     try:
         solcx.install_solc(version)
-        solc_path = solcx.get_executable(version)
+        solc_path_obj = solcx.get_executable(version)
+        # solcx.get_executable returns a Path object, convert to string
+        solc_path = str(solc_path_obj) if solc_path_obj else None
     except Exception:
         solc_path = None
     cached_solc_paths[version] = solc_path

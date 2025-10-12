@@ -1,5 +1,12 @@
-import os, string, time
-import sb.io, sb.logging, sb.cfg, sb.errors
+import os
+import string
+import time
+
+import sb.cfg
+import sb.errors
+import sb.io
+import sb.logging
+
 
 HOME = os.path.expanduser("~")  # cross-plattform safe
 NOW = time.gmtime()  # only use in main process, value may be different in sub-processes
@@ -56,7 +63,8 @@ class Settings:
             raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in name of log file")
 
         self.results = string.Template(self.results).safe_substitute(env, RUNID=self.runid)
-        self.results = string.Template(self.results)
+        # Convert results path to Template for later substitution with tool/file-specific vars
+        self.results = string.Template(self.results)  # type: ignore[assignment]
 
     def resultdir(self, toolid, toolmode, absfn, relfn):
         if not self.frozen:
@@ -205,5 +213,5 @@ class Settings:
         return d
 
     def __str__(self):
-        l = [f"{k}: {str(v)}" for k, v in self.dict().items()]
-        return f"{{{', '.join(l)}}}"
+        items = [f"{k}: {str(v)}" for k, v in self.dict().items()]
+        return f"{{{', '.join(items)}}}"

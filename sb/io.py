@@ -1,10 +1,13 @@
-import yaml, json
+import json
+
+import yaml
+
 import sb.errors
 
 
 def read_yaml(fn):
     try:
-        with open(fn, "r", encoding="utf-8") as f:
+        with open(fn, encoding="utf-8") as f:
             # for an empty file, return empty dict, not NoneType
             return yaml.safe_load(f) or {}
     except Exception as e:
@@ -13,7 +16,7 @@ def read_yaml(fn):
 
 def read_json(fn):
     try:
-        with open(fn, "r", encoding="utf-8") as f:
+        with open(fn, encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
         raise sb.errors.SmartBugsError(e)
@@ -30,7 +33,7 @@ def write_json(fn, output):
 
 def read_lines(fn):
     try:
-        with open(fn, "r", encoding="utf-8") as f:
+        with open(fn, encoding="utf-8") as f:
             return f.read().splitlines()
     except Exception as e:
         raise sb.errors.SmartBugsError(e)

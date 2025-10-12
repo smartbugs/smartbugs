@@ -1,5 +1,8 @@
-import colorama, re, sys
+import re
+import sys
+
 from colorama import Fore, Style
+
 
 ANSIcolor = re.compile("\x1b\\[[^m]*m")
 

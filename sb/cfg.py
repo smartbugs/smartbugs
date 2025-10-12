@@ -1,4 +1,8 @@
-import os, time, cpuinfo, platform
+import os
+import platform
+
+import cpuinfo
+
 
 VERSION = "2.0.15"
 HOME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))

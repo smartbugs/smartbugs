@@ -2,6 +2,7 @@
 
 import re
 
+
 DOCKER_CODES = {
     125: "DOCKER_INVOCATION_PROBLEM",
     126: "DOCKER_CMD_NOT_EXECUTABLE",
@@ -15,7 +16,7 @@ DOCKER_CODES = {
 ANSI = re.compile("\x1b\\[[^m]*m")
 
 
-def discard_ANSI(lines):
+def discard_ansi(lines):
     return (ANSI.sub("", line) for line in lines)
 
 
