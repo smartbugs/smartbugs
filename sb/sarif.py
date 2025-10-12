@@ -1,8 +1,10 @@
+from typing import Any, Optional, Union
+
 import sb.tools
 import sb.utils
 
 
-def sarify(tool, findings):
+def sarify(tool: dict[str, Any], findings: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
         "version": "2.1.0",
@@ -10,7 +12,7 @@ def sarify(tool, findings):
     }
 
 
-def run_info(tool, findings):
+def run_info(tool: dict[str, Any], findings: list[dict[str, Any]]) -> dict[str, Any]:
     fnames = {finding["name"] for finding in findings}
     return {
         "tool": tool_info(tool, fnames),
@@ -18,7 +20,7 @@ def run_info(tool, findings):
     }
 
 
-def tool_info(tool, fnames):
+def tool_info(tool: dict[str, Any], fnames: set[str]) -> dict[str, Any]:
     driver = {
         "name": tool.get("name", tool["id"]),  # tool["id"] always exists
         "rules": [rule_info(tool["id"], fname) for fname in fnames],
@@ -35,71 +37,71 @@ def tool_info(tool, fnames):
     return {"driver": driver}
 
 
-def rule_info(tool_id, fname):
+def rule_info(tool_id: str, fname: str) -> dict[str, Any]:
     info_finding = sb.tools.info_finding(tool_id, fname)
 
-    rule_dict = {"name": fname, "id": rule_id(tool_id, fname)}
+    rule_dict: dict[str, Any] = {"name": fname, "id": rule_id(tool_id, fname)}
 
-    v = rule_short_description(info_finding)
-    if v:
-        rule_dict["shortDescription"] = {"text": v}
+    short_desc = rule_short_description(info_finding)
+    if short_desc:
+        rule_dict["shortDescription"] = {"text": short_desc}
 
-    v = rule_full_description(info_finding)
-    if v:
-        rule_dict["fullDescription"] = {"text": v}
+    full_desc = rule_full_description(info_finding)
+    if full_desc:
+        rule_dict["fullDescription"] = {"text": full_desc}
 
-    v = rule_help(info_finding)
-    if v:
-        rule_dict["help"] = {"text": v}
+    help_text = rule_help(info_finding)
+    if help_text:
+        rule_dict["help"] = {"text": help_text}
 
-    v = rule_security_severity(info_finding)
-    if v:
-        rule_dict["properties"] = {"security-severity": v}
+    sec_sev = rule_security_severity(info_finding)
+    if sec_sev:
+        rule_dict["properties"] = {"security-severity": sec_sev}
 
-    v = rule_problem_severity(info_finding)
-    if v:
-        rule_dict["properties"] = {"problem": {"severity": v}}
+    prob_sev = rule_problem_severity(info_finding)
+    if prob_sev:
+        rule_dict["properties"] = {"problem": {"severity": prob_sev}}
 
     return rule_dict
 
 
-def result_info(tool_id, finding):
+def result_info(tool_id: str, finding: dict[str, Any]) -> dict[str, Any]:
     fname = finding["name"]
     info_finding = sb.tools.info_finding(tool_id, fname)
 
-    result_dict = {
+    result_dict: dict[str, Any] = {
         "ruleId": rule_id(tool_id, fname),
         "locations": [{"physicalLocation": {"artifactLocation": {"uri": finding["filename"]}}}],
     }
 
-    v = result_message(finding, info_finding)
-    if v:
-        result_dict["message"] = {"text": v}
+    msg = result_message(finding, info_finding)
+    if msg:
+        result_dict["message"] = {"text": msg}
 
-    v = result_level(finding)
-    if v:
-        result_dict["level"] = v
+    level = result_level(finding)
+    if level:
+        result_dict["level"] = level
 
-    v = result_region(finding)
-    if v:
-        result_dict["locations"][0]["physicalLocation"]["region"] = v
+    region = result_region(finding)
+    if region:
+        result_dict["locations"][0]["physicalLocation"]["region"] = region
 
-    v = result_location_message(finding)
-    if v:
-        result_dict["locations"][0]["message"] = {"text": v}
+    loc_msg = result_location_message(finding)
+    if loc_msg:
+        result_dict["locations"][0]["message"] = {"text": loc_msg}
 
     return result_dict
 
 
-def rule_id(tool_id, fname):
+def rule_id(tool_id: str, fname: str) -> str:
     return f"{sb.utils.str2label(tool_id)}_{sb.utils.str2label(fname)}"
 
 
-def rule_short_description(info_finding):
+def rule_short_description(info_finding: dict[str, Any]) -> Optional[str]:
     return info_finding.get("descr_short")
 
 
-def rule_full_description(info_finding):
+def rule_full_description(info_finding: dict[str, Any]) -> str:
     descr_short = info_finding.get("descr_short")
     descr_long = info_finding.get("descr_long")
     classification = info_finding.get("classification")
@@ -116,17 +118,17 @@ def rule_full_description(info_finding):
     return " ".join(description)
 
 
-def rule_help(info_finding):
+def rule_help(info_finding: dict[str, Any]) -> str:
     descr_short = info_finding.get("descr_short")
     descr_long = info_finding.get("descr_long")
     return descr_long if descr_long else descr_short if descr_short else ""
 
 
-def rule_problem_severity(info_finding):
+def rule_problem_severity(info_finding: dict[str, Any]) -> str:
     return info_finding.get("level", "").strip().lower()
 
 
-def rule_security_severity(info_finding):
+def rule_security_severity(info_finding: dict[str, Any]) -> Union[float, str]:
     severity = info_finding.get("severity", "").strip().lower()
     try:
         return float(severity)
@@ -138,7 +140,7 @@ def rule_security_severity(info_finding):
         )
 
 
-def result_message(finding, info_finding):
+def result_message(finding: dict[str, Any], info_finding: dict[str, Any]) -> str:
     message = finding.get("message") or info_finding.get("descr_short") or finding["name"]
     severity = finding.get("severity")
     return (
@@ -148,12 +150,12 @@ def result_message(finding, info_finding):
     )
 
 
-def result_level(finding):
+def result_level(finding: dict[str, Any]) -> Optional[str]:
     level = finding.get("level", "").strip().lower()
     return level if level in ("none", "note", "warning", "error") else None
 
 
-def result_location_message(finding):
+def result_location_message(finding: dict[str, Any]) -> str:
     contract = finding.get("contract")
     function = finding.get("function")
     return (
@@ -163,7 +165,7 @@ def result_location_message(finding):
     )
 
 
-def result_region(finding):
+def result_region(finding: dict[str, Any]) -> dict[str, int]:
     region_dict = {}
 
     # source code

@@ -1,5 +1,6 @@
 import os
 import string
+from typing import Any, Optional
 
 import sb.cfg
 import sb.errors
@@ -34,7 +35,25 @@ class Tool:
     (Template objects for command/entrypoint).
     """
 
-    def __init__(self, cfg):
+    # Class-level type annotations for dynamically-set attributes
+    id: Optional[str]
+    mode: Optional[str]
+    image: Optional[str]
+    name: Optional[str]
+    origin: Optional[str]
+    version: Optional[str]
+    info: Optional[str]
+    parser: Optional[str]
+    output: Optional[str]
+    bin: Optional[str]
+    solc: Optional[bool]
+    cpu_quota: Optional[int]
+    mem_limit: Optional[str]
+    _command: Optional[string.Template]
+    _entrypoint: Optional[string.Template]
+    absbin: Optional[str]
+
+    def __init__(self, cfg: dict[str, Any]) -> None:
         for k in FIELDS:
             v = cfg.get(k)
             if v is not None:
@@ -96,7 +115,7 @@ class Tool:
         if self.bin:
             self.absbin = os.path.join(sb.cfg.TOOLS_HOME, self.id, self.bin)
 
-    def command(self, filename, timeout, bin, main):
+    def command(self, filename: str, timeout: int, bin: str, main: str) -> Optional[str]:
         try:
             return (
                 self._command.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main)
@@ -108,7 +127,7 @@ class Tool:
                 f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}"
             )
 
-    def entrypoint(self, filename, timeout, bin, main):
+    def entrypoint(self, filename: str, timeout: int, bin: str, main: str) -> Optional[str]:
         try:
             return (
                 self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main)
@@ -120,7 +139,7 @@ class Tool:
                 f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}"
             )
 
-    def dict(self):
+    def dict(self) -> dict[str, Any]:
         d = {}
         for k, v in self.__dict__.items():
             if k == "_command":
@@ -139,7 +158,9 @@ class Tool:
         return f"{{{', '.join(items)}}}"
 
 
-def load(ids, tools=[], seen=set()):
+def load(
+    ids: list[str], tools: Optional[list[Tool]] = None, seen: Optional[set[str]] = None
+) -> list[Tool]:
     """Load tool specifications
 
     Parameters
@@ -156,6 +177,10 @@ def load(ids, tools=[], seen=set()):
     list[Tool]
         list of tool specifications corresponding to parameter ids
     """
+    if tools is None:
+        tools = []
+    if seen is None:
+        seen = set()
 
     for id in ids:
         if id in seen:
@@ -192,10 +217,10 @@ def load(ids, tools=[], seen=set()):
 
 
 # the contents of tools/.../findings.yaml is cached, once per process
-info_findings = {}
+info_findings: dict[str, dict[str, Any]] = {}
 
 
-def info_finding(tool_id, fname):
+def info_finding(tool_id: str, fname: str) -> dict[str, Any]:
     if tool_id not in info_findings:
         try:
             fn = os.path.join(sb.cfg.TOOLS_HOME, tool_id, sb.cfg.TOOL_FINDINGS)

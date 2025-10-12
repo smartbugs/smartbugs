@@ -1,6 +1,9 @@
 """Utilities for the output parsers"""
 
 import re
+from collections.abc import Generator, Iterable
+from re import Pattern
+from typing import Optional
 
 
 DOCKER_CODES = {
@@ -16,11 +19,11 @@ DOCKER_CODES = {
 ANSI = re.compile("\x1b\\[[^m]*m")
 
 
-def discard_ansi(lines):
+def discard_ansi(lines: Iterable[str]) -> Generator[str, None, None]:
     return (ANSI.sub("", line) for line in lines)
 
 
-def truncate_message(m, length=205):
+def truncate_message(m: str, length: int = 205) -> str:
     half_length = (length - 5) // 2
     return m if len(m) <= length else m[:half_length] + " ... " + m[-half_length:]
 
@@ -35,7 +38,7 @@ EXCEPTIONS = (
 )
 
 
-def exceptions(lines):
+def exceptions(lines: list[str]) -> set[str]:
     exceptions = set()
     traceback = False
     for line in lines:
@@ -52,7 +55,7 @@ def exceptions(lines):
     return exceptions
 
 
-def add_match(matches, line, patterns):
+def add_match(matches: set[str], line: str, patterns: list[Pattern[str]]) -> bool:
     for pattern in patterns:
         m = pattern.match(line)
         if m:
@@ -61,7 +64,9 @@ def add_match(matches, line, patterns):
     return False
 
 
-def errors_fails(exit_code, log, log_expected=True):
+def errors_fails(
+    exit_code: Optional[int], log: Optional[list[str]], log_expected: bool = True
+) -> tuple[set[str], set[str]]:
     errors = set()  # errors detected and handled by the tool
     fails = set()  # exceptions not caught by the tool, or outside events leading to abortion
     if exit_code is None:

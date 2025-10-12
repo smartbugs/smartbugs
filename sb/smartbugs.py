@@ -1,6 +1,7 @@
 import glob
 import operator
 import os
+from typing import Optional
 
 import sb.analysis
 import sb.cfg
@@ -15,7 +16,7 @@ import sb.tasks
 import sb.tools
 
 
-def collect_files(patterns):
+def collect_files(patterns: list[tuple[Optional[str], str]]) -> list[tuple[str, str]]:
     files = []
     for root, spec in patterns:
         if spec.endswith(".sbd"):
@@ -24,7 +25,7 @@ def collect_files(patterns):
                 contracts.extend(sb.io.read_lines(sbdfile))
         elif root:
             try:
-                contracts = glob.glob(spec, root_dir=root, recursive=True)
+                contracts = glob.glob(spec, root_dir=root, recursive=True)  # type: ignore[call-arg]
             except TypeError:
                 raise sb.errors.SmartBugsError(
                     f"{root}:{spec}: colons in file patterns only supported for Python>=3.10"
@@ -40,7 +41,9 @@ def collect_files(patterns):
     return files
 
 
-def collect_tasks(files, tools, settings):
+def collect_tasks(
+    files: list[tuple[str, str]], tools: list[sb.tools.Tool], settings: sb.settings.Settings
+) -> list[sb.tasks.Task]:
     used_rdirs = set()
     rdir_collisions = 0
 
@@ -115,7 +118,8 @@ def collect_tasks(files, tools, settings):
         is_rtc = absfn[-4:] == ".hex" and (absfn[-7:-4] == ".rt" or settings.runtime)
 
         contract = os.path.basename(absfn)[:-4]
-        pragma, contractnames = None, []
+        pragma: Optional[str] = None
+        contractnames: list[str] = []
         if is_sol:
             prg = sb.io.read_lines(absfn)
             pragma, contractnames = sb.solidity.get_pragma_contractnames(prg)
@@ -165,7 +169,7 @@ def collect_tasks(files, tools, settings):
     return tasks
 
 
-def main(settings: sb.settings.Settings):
+def main(settings: sb.settings.Settings) -> None:
     settings.freeze()
     sb.logging.quiet = settings.quiet
     sb.logging.message(

@@ -13,7 +13,7 @@ QUOTE_END = re.compile("(?<!\\\\)'")
 DQUOTE_END = re.compile('(?<!\\\\)"')
 
 
-def remove_comments_strings(prg):
+def remove_comments_strings(prg: list[str]) -> str:
     todo = "\n".join(prg)  # normalize line ends
     done = ""
     while True:
@@ -46,7 +46,7 @@ PRAGMA = re.compile("pragma solidity.*?;")
 RE_CONTRACT_NAMES = re.compile(r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)")
 
 
-def get_pragma_contractnames(prg):
+def get_pragma_contractnames(prg: list[str]) -> tuple[Optional[str], list[str]]:
     prg_wo_comments_strings = remove_comments_strings(prg)
     m = PRAGMA.search(prg_wo_comments_strings)
     pragma = m[0] if m else None
@@ -57,7 +57,7 @@ def get_pragma_contractnames(prg):
 cached_solc_versions = None
 
 
-def ensure_solc_versions_loaded():
+def ensure_solc_versions_loaded() -> bool:
     global cached_solc_versions
     if cached_solc_versions:
         return True
@@ -69,7 +69,7 @@ def ensure_solc_versions_loaded():
         return False
 
 
-def get_solc_version(pragma):
+def get_solc_version(pragma: Optional[str]) -> Optional[str]:
     if not pragma:
         return None
     # correct >=0.y.z to ^0.y.z
@@ -86,7 +86,7 @@ def get_solc_version(pragma):
 cached_solc_paths: dict[str, Optional[str]] = {}
 
 
-def get_solc_path(version):
+def get_solc_path(version: Optional[str]) -> Optional[str]:
     if not version:
         return None
     if version in cached_solc_paths:

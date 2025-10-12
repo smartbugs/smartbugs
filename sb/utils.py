@@ -1,4 +1,4 @@
-def str2label(s):
+def str2label(s: str) -> str:
     """Convert string to label.
 
     - leading non-letters are removed

@@ -1,6 +1,7 @@
 import os
 import string
 import time
+from typing import Any, Optional, Union
 
 import sb.cfg
 import sb.errors
@@ -15,26 +16,34 @@ PID = os.getpid()  # only use in main process, value may be different in sub-pro
 
 class Settings:
 
-    def __init__(self):
-        self.frozen = False
-        self.files = []
-        self.main = False
-        self.runtime = False
-        self.tools = []
-        self.runid = "${YEAR}${MONTH}${DAY}_${HOUR}${MIN}"
-        self.overwrite = False
-        self.processes = 1
-        self.timeout = None
-        self.cpu_quota = None
-        self.mem_limit = None
-        self.continue_on_errors = False
-        self.results = os.path.join("results", "${TOOL}", "${RUNID}", "${FILENAME}")
-        self.log = os.path.join("results", "logs", "${RUNID}.log")
-        self.json = False
-        self.sarif = False
-        self.quiet = False
+    def __init__(self) -> None:
+        self.frozen: bool = False
+        self.files: list[tuple[Optional[str], str]] = []
+        self.main: bool = False
+        self.runtime: bool = False
+        self.tools: list[str] = []
+        self.runid: str = "${YEAR}${MONTH}${DAY}_${HOUR}${MIN}"
+        self.overwrite: bool = False
+        self.processes: int = 1
+        self.timeout: Optional[int] = None
+        self.cpu_quota: Optional[int] = None
+        self.mem_limit: Optional[str] = None
+        self.continue_on_errors: bool = False
+        # Note: results changes type from str to string.Template after freeze()
+        self.results: Union[str, string.Template] = os.path.join(
+            "results", "${TOOL}", "${RUNID}", "${FILENAME}"
+        )
+        self.log: str = os.path.join("results", "logs", "${RUNID}.log")
+        self.json: bool = False
+        self.sarif: bool = False
+        self.quiet: bool = False
 
-    def freeze(self):
+    def freeze(self) -> None:
+        """Freeze settings and expand all template variables.
+
+        Converts runid and log to final values, and converts results to a Template
+        for later substitution with tool/file-specific variables.
+        """
         if self.frozen:
             return
         self.frozen = True
@@ -62,11 +71,24 @@ class Settings:
         except KeyError as e:
             raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in name of log file")
 
-        self.results = string.Template(self.results).safe_substitute(env, RUNID=self.runid)
+        self.results = string.Template(self.results).safe_substitute(  # type: ignore[arg-type]
+            env, RUNID=self.runid
+        )
         # Convert results path to Template for later substitution with tool/file-specific vars
         self.results = string.Template(self.results)  # type: ignore[assignment]
 
-    def resultdir(self, toolid, toolmode, absfn, relfn):
+    def resultdir(self, toolid: str, toolmode: str, absfn: str, relfn: str) -> str:
+        """Generate result directory path for a specific tool and file.
+
+        Args:
+            toolid: Tool identifier
+            toolmode: Tool mode (solidity/bytecode/runtime)
+            absfn: Absolute file path
+            relfn: Relative file path
+
+        Returns:
+            Path to result directory with all template variables substituted
+        """
         if not self.frozen:
             raise sb.errors.InternalError(
                 "Template of result directory is accessed before settings have been frozen"
@@ -76,7 +98,7 @@ class Settings:
         filebase, fileext = os.path.splitext(filename)
         fileext = fileext.replace(".", "")
         try:
-            return self.results.substitute(
+            return self.results.substitute(  # type: ignore[union-attr]
                 TOOL=toolid,
                 MODE=toolmode,
                 ABSDIR=absdir,
@@ -88,7 +110,12 @@ class Settings:
         except KeyError as e:
             raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in template of result dir")
 
-    def update(self, settings):
+    def update(self, settings: Union[str, dict[str, Any], None]) -> None:
+        """Update settings from a YAML file path or dictionary.
+
+        Args:
+            settings: Path to YAML config file, dictionary of settings, or None
+        """
         if self.frozen:
             raise sb.errors.InternalError("Frozen settings cannot be updated")
         if not settings:
@@ -201,17 +228,22 @@ class Settings:
             else:
                 raise sb.errors.SmartBugsError(f"Invalid key '{k}' (in {settings}).")
 
-    def dict(self):
-        d = {}
+    def dict(self) -> dict[str, Any]:
+        """Convert settings to dictionary representation.
+
+        Returns:
+            Dictionary of settings (excluding 'frozen', with results.template if applicable)
+        """
+        d: dict[str, Any] = {}
         for k, v in self.__dict__.items():
             if k == "frozen":
                 continue
             elif k == "results" and v and not isinstance(v, str):
-                d[k] = self.results.template
+                d[k] = self.results.template  # type: ignore[union-attr]
             else:
                 d[k] = v
         return d
 
-    def __str__(self):
+    def __str__(self) -> str:
         items = [f"{k}: {str(v)}" for k, v in self.dict().items()]
         return f"{{{', '.join(items)}}}"

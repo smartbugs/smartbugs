@@ -2,19 +2,22 @@ import os
 import shutil
 import tempfile
 import traceback
+from typing import Any, Optional
 
 import docker
+import docker.models.containers
 import requests
 
 import sb.cfg
 import sb.errors
 import sb.io
+import sb.tasks
 
 
-_client = None
+_client: Optional[docker.DockerClient] = None
 
 
-def client():
+def client() -> docker.DockerClient:
     global _client
     if not _client:
         try:
@@ -31,7 +34,7 @@ def client():
 images_loaded = set()
 
 
-def is_loaded(image):
+def is_loaded(image: str) -> bool:
     if image in images_loaded:
         return True
     try:
@@ -44,7 +47,7 @@ def is_loaded(image):
     return False
 
 
-def load(image):
+def load(image: str) -> None:
     try:
         client().images.pull(image)
     except Exception as e:
@@ -52,13 +55,13 @@ def load(image):
     images_loaded.add(image)
 
 
-def __docker_volume(task):
+def __docker_volume(task: sb.tasks.Task) -> str:
     sbdir = tempfile.mkdtemp()
     sbdir_bin = os.path.join(sbdir, "bin")
     if task.tool.mode in ("bytecode", "runtime"):
         # sanitize hex code
-        code = sb.io.read_lines(task.absfn)
-        code = code[0].strip() if code else ""
+        code_lines = sb.io.read_lines(task.absfn)
+        code = code_lines[0].strip() if code_lines else ""
         if code.startswith("0x"):
             code = code[2:]
         _, filename = os.path.split(task.absfn)
@@ -75,7 +78,7 @@ def __docker_volume(task):
     return sbdir
 
 
-def __docker_args(task, sbdir):
+def __docker_args(task: sb.tasks.Task, sbdir: str) -> dict[str, Any]:
     args = {"volumes": {sbdir: {"bind": "/sb", "mode": "rw"}}, "detach": True, "user": 0}
     for k in ("image", "cpu_quota", "mem_limit"):
         v = getattr(task.tool, k, None)
@@ -86,14 +89,16 @@ def __docker_args(task, sbdir):
         if v is not None:
             args[k] = v
     filename = f"/sb/{os.path.split(task.absfn)[1]}"  # path in Linux Docker image
-    timeout = task.settings.timeout or "0"
-    main = 1 if task.settings.main else 0
+    timeout = task.settings.timeout or 0
+    main = "1" if task.settings.main else "0"
     args["command"] = task.tool.command(filename, timeout, "/sb/bin", main)
     args["entrypoint"] = task.tool.entrypoint(filename, timeout, "/sb/bin", main)
     return args
 
 
-def execute(task):
+def execute(
+    task: sb.tasks.Task,
+) -> tuple[Optional[int], list[str], Optional[bytes], dict[str, Any]]:
     sbdir = __docker_volume(task)
     args = __docker_args(task, sbdir)
     exit_code, logs, output, container = None, [], None, None

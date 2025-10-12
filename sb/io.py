@@ -1,11 +1,12 @@
 import json
+from typing import Any, Union
 
 import yaml
 
 import sb.errors
 
 
-def read_yaml(fn):
+def read_yaml(fn: str) -> dict[str, Any]:
     try:
         with open(fn, encoding="utf-8") as f:
             # for an empty file, return empty dict, not NoneType
@@ -14,7 +15,7 @@ def read_yaml(fn):
         raise sb.errors.SmartBugsError(e)
 
 
-def read_json(fn):
+def read_json(fn: str) -> Any:
     try:
         with open(fn, encoding="utf-8") as f:
             return json.load(f)
@@ -22,7 +23,7 @@ def read_json(fn):
         raise sb.errors.SmartBugsError(e)
 
 
-def write_json(fn, output):
+def write_json(fn: str, output: Any) -> None:
     try:
         j = json.dumps(output, sort_keys=True, indent=4)
         with open(fn, "w", encoding="utf-8") as f:
@@ -31,7 +32,7 @@ def write_json(fn, output):
         raise sb.errors.SmartBugsError(e)
 
 
-def read_lines(fn):
+def read_lines(fn: str) -> list[str]:
     try:
         with open(fn, encoding="utf-8") as f:
             return f.read().splitlines()
@@ -39,7 +40,7 @@ def read_lines(fn):
         raise sb.errors.SmartBugsError(e)
 
 
-def write_txt(fn, output):
+def write_txt(fn: str, output: Union[str, list[str]]) -> None:
     try:
         with open(fn, "w", encoding="utf-8") as f:
             if isinstance(output, str):
@@ -51,7 +52,7 @@ def write_txt(fn, output):
         raise sb.errors.SmartBugsError(e)
 
 
-def read_bin(fn):
+def read_bin(fn: str) -> bytes:
     try:
         with open(fn, "rb") as f:
             return f.read()
@@ -59,7 +60,7 @@ def read_bin(fn):
         raise sb.errors.SmartBugsError(e)
 
 
-def write_bin(fn, output):
+def write_bin(fn: str, output: bytes) -> None:
     try:
         with open(fn, "wb") as f:
             f.write(output)

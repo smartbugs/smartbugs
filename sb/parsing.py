@@ -1,14 +1,15 @@
 import importlib.util
 import os
+from typing import Any
 
 import sb.cfg
 import sb.errors
 
 
-tool_parsers = {}
+tool_parsers: dict[tuple[str, str], Any] = {}
 
 
-def get_parser(tool):
+def get_parser(tool: dict[str, Any]) -> Any:
     tid, tmode = tool["id"], tool["mode"]
     key = (tid, tmode)
     if key not in tool_parsers:
@@ -24,7 +25,7 @@ def get_parser(tool):
     return tool_parsers[key]
 
 
-def parse(task_log, tool_log, tool_output):
+def parse(task_log: dict[str, Any], tool_log: str, tool_output: str) -> dict[str, Any]:
     tool = task_log["tool"]
     filename = task_log["filename"]
     exit_code = task_log["result"]["exit_code"]

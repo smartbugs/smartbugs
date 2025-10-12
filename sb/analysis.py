@@ -3,6 +3,12 @@ import multiprocessing
 import os
 import random
 import time
+from multiprocessing.queues import Queue as MPQueue
+from typing import TYPE_CHECKING, Any, Optional
+
+
+if TYPE_CHECKING:
+    from multiprocessing.sharedctypes import Synchronized
 
 import sb.cfg
 import sb.colors
@@ -12,9 +18,19 @@ import sb.io
 import sb.logging
 import sb.parsing
 import sb.sarif
+import sb.settings
+import sb.tasks
 
 
-def task_log_dict(task, start_time, duration, exit_code, log, output, docker_args):
+def task_log_dict(
+    task: sb.tasks.Task,
+    start_time: float,
+    duration: float,
+    exit_code: Optional[int],
+    log: Optional[list[str]],
+    output: Optional[bytes],
+    docker_args: dict[str, Any],
+) -> dict[str, Any]:
     return {
         "filename": task.relfn,
         "runid": task.settings.runid,
@@ -32,7 +48,7 @@ def task_log_dict(task, start_time, duration, exit_code, log, output, docker_arg
     }
 
 
-def execute(task):
+def execute(task: sb.tasks.Task) -> float:
 
     # create result dir if it doesn't exist
     os.makedirs(task.rdir, exist_ok=True)
@@ -98,7 +114,9 @@ def execute(task):
     # Parse output of tool
     # If parsing fails, run the reparse script; no need to redo the analysis
     if task.settings.json or task.settings.sarif:
-        parsed_result = sb.parsing.parse(task_log, tool_log, tool_output)
+        tool_log_str = "\n".join(tool_log) if tool_log else ""
+        tool_output_str = tool_output.decode("utf-8") if tool_output else ""
+        parsed_result = sb.parsing.parse(task_log, tool_log_str, tool_output_str)
         sb.io.write_json(fn_parser_output, parsed_result)
 
         # Format parsed result as sarif
@@ -109,7 +127,14 @@ def execute(task):
     return duration
 
 
-def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, time_completed):
+def analyser(
+    logqueue: MPQueue,  # type: ignore[type-arg]
+    taskqueue: MPQueue,  # type: ignore[type-arg]
+    tasks_total: int,
+    tasks_started: "Synchronized[int]",  # type: ignore[type-arg]
+    tasks_completed: "Synchronized[int]",  # type: ignore[type-arg]
+    time_completed: "Synchronized[float]",  # type: ignore[type-arg]
+) -> None:
 
     def pre_analysis():
         with tasks_started.get_lock():
@@ -161,7 +186,7 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
         post_analysis(duration, task.settings.processes, task.settings.timeout)
 
 
-def run(tasks, settings):
+def run(tasks: list[sb.tasks.Task], settings: sb.settings.Settings) -> None:
     # spawn processes (instead of forking), for identical behavior on Linux and MacOS
     mp = multiprocessing.get_context("spawn")
 

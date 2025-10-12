@@ -41,8 +41,11 @@ def reparser(taskqueue, sarif, verbose):
         sbj = sb.io.read_json(fn_sbj)
         log = sb.io.read_lines(fn_log) if os.path.exists(fn_log) else []
         tar = sb.io.read_bin(fn_tar) if os.path.exists(fn_tar) else None
+        # Convert log (list[str]) to str and tar (bytes) to str for parsing
+        log_str = "\n".join(log) if log else ""
+        tar_str = tar.decode("utf-8") if tar else ""
         try:
-            parsed_result = sb.parsing.parse(sbj, log, tar)
+            parsed_result = sb.parsing.parse(sbj, log_str, tar_str)
         except sb.errors.SmartBugsError as e:
             print(e)
             continue
