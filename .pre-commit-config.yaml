@@ -1,0 +1,60 @@
+# Pre-commit hooks for SmartBugs
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+repos:
+  # Black - Code formatting
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        language_version: python3
+        types: [python]
+
+  # Ruff - Fast Python linter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types: [python]
+
+  # Pre-commit hooks for general file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+        exclude: ^(.*\.md|.*\.txt)$
+
+      # Ensure files end with newline
+      - id: end-of-file-fixer
+        exclude: ^(.*\.svg|.*\.png|.*\.jpg|.*\.jpeg)$
+
+      # Validate YAML files
+      - id: check-yaml
+        args: [--safe]
+
+      # Prevent committing large files (default 500kB)
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+
+      # Check for merge conflict markers
+      - id: check-merge-conflict
+
+      # Check for debug statements
+      - id: debug-statements
+
+      # Validate JSON files
+      - id: check-json
+
+      # Check for files that would conflict on case-insensitive filesystems
+      - id: check-case-conflict
+
+      # Ensure Python files have valid syntax
+      - id: check-ast
+        types: [python]
+
+      # Fix mixed line endings
+      - id: mixed-line-ending
+        args: ['--fix=lf']
