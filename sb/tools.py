@@ -2,11 +2,26 @@ import os, string
 import sb.io, sb.cfg, sb.errors
 
 
+FIELDS = (
+    "id",
+    "mode",
+    "image",
+    "name",
+    "origin",
+    "version",
+    "info",
+    "parser",
+    "output",
+    "bin",
+    "solc",
+    "cpu_quota",
+    "mem_limit",
+    "command",
+    "entrypoint",
+)
 
-FIELDS = ("id","mode","image","name","origin","version","info","parser",
-    "output","bin","solc","cpu_quota","mem_limit","command","entrypoint")
 
-class Tool():
+class Tool:
 
     def __init__(self, cfg):
         for k in FIELDS:
@@ -16,32 +31,40 @@ class Tool():
                     try:
                         v = bool(v)
                     except Exception:
-                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}")
+                        raise sb.errors.SmartBugsError(
+                            f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}"
+                        )
                 elif k in ("cpu_quota"):
                     try:
                         v = int(v)
                         assert v >= 0
                     except Exception:
-                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not an integer>=0.\n{cfg}")
+                        raise sb.errors.SmartBugsError(
+                            f"Tool: value of attribute '{k}' is not an integer>=0.\n{cfg}"
+                        )
                 elif k in ("mem_limit"):
                     try:
-                        v = str(v).replace(" ","")
+                        v = str(v).replace(" ", "")
                         if v[-1] in "kKmMgG":
                             assert int(v[:-1]) > 0
                         else:
                             assert int(v) > 0
                     except Exception:
-                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a valid memory specifcation.\n{cfg}")
+                        raise sb.errors.SmartBugsError(
+                            f"Tool: value of attribute '{k}' is not a valid memory specifcation.\n{cfg}"
+                        )
                 else:
                     try:
                         v = str(v)
                     except Exception:
-                        raise sb.errors.SmartBugsError(f"Tool: value of attribute '{k}' is not a string.\n{cfg}")
-            if k in ("command","entrypoint"):
+                        raise sb.errors.SmartBugsError(
+                            f"Tool: value of attribute '{k}' is not a string.\n{cfg}"
+                        )
+            if k in ("command", "entrypoint"):
                 k = f"_{k}"
                 v = string.Template(v) if v else None
             setattr(self, k, v)
-                
+
         for k in ("id", "mode"):
             if not getattr(self, k):
                 raise sb.errors.InternalError(f"Tool: Field '{k}' missing.\n{cfg}")
@@ -49,32 +72,45 @@ class Tool():
             raise sb.errors.SmartBugsError(f"Tool {self.id}/{self.mode}: no image specified")
         extras = set(cfg.keys()).difference(FIELDS)
         if extras:
-            raise sb.errors.SmartBugsError(f"Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}")
+            raise sb.errors.SmartBugsError(
+                f"Tool {self.id}/{self.mode}: extra field(s) {', '.join(extras)}"
+            )
         if not self._command and not self._entrypoint:
-            raise sb.errors.SmartBugsError(f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified.")
+            raise sb.errors.SmartBugsError(
+                f"Tool {self.id}/{self.mode}: neither command nor entrypoint specified."
+            )
         if not self.parser:
             self.parser = sb.cfg.TOOL_PARSER
         if self.bin:
-            self.absbin = os.path.join(sb.cfg.TOOLS_HOME,self.id,self.bin)
-
+            self.absbin = os.path.join(sb.cfg.TOOLS_HOME, self.id, self.bin)
 
     def command(self, filename, timeout, bin, main):
         try:
-            return self._command.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main) if self._command else None
+            return (
+                self._command.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main)
+                if self._command
+                else None
+            )
         except KeyError as e:
-            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}")
-
+            raise sb.errors.SmartBugsError(
+                f"Unknown variable '{e}' in command of tool {self.id}/{self.mode}"
+            )
 
     def entrypoint(self, filename, timeout, bin, main):
         try:
-            return self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main) if self._entrypoint else None
+            return (
+                self._entrypoint.substitute(FILENAME=filename, TIMEOUT=timeout, BIN=bin, MAIN=main)
+                if self._entrypoint
+                else None
+            )
         except KeyError as e:
-            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}")
-
+            raise sb.errors.SmartBugsError(
+                f"Unknown variable '{e}' in entrypoint of tool {self.id}/{self.mode}"
+            )
 
     def dict(self):
         d = {}
-        for k,v in self.__dict__.items():
+        for k, v in self.__dict__.items():
             if k == "_command":
                 d["command"] = self._command.template if self._command else None
             elif k == "_entrypoint":
@@ -86,14 +122,12 @@ class Tool():
                 d[k] = v
         return d
 
-
     def __str__(self):
-        l = [ f"{k}: {str(v)}" for k,v in self.dict().items() ]
+        l = [f"{k}: {str(v)}" for k, v in self.dict().items()]
         return f"{{{', '.join(l)}}}"
 
 
-
-def load(ids, tools = [], seen = set()):
+def load(ids, tools=[], seen=set()):
     """Load tool specifications
 
     Parameters
@@ -132,20 +166,22 @@ def load(ids, tools = [], seen = set()):
             found = True
             cfg_copy = cfg.copy()
             for m in ("solidity", "bytecode", "runtime"):
-                cfg_copy.pop(m,None)
+                cfg_copy.pop(m, None)
             cfg_copy["mode"] = mode
             if not isinstance(cfg[mode], dict):
                 raise sb.errors.SmartBugsError(f"Tool {id}/{mode}: key/value mapping expected.")
             cfg_copy.update(cfg[mode])
             tools.append(Tool(cfg_copy))
         if not found:
-            raise sb.errors.SmartBugsError(f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'")
+            raise sb.errors.SmartBugsError(
+                f"{fn}: needs one of the attributes 'alias', 'solidity', 'bytecode', 'runtime'"
+            )
     return tools
-
 
 
 # the contents of tools/.../findings.yaml is cached, once per process
 info_findings = {}
+
 
 def info_finding(tool_id, fname):
     if tool_id not in info_findings:

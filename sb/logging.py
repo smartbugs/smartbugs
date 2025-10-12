@@ -1,6 +1,7 @@
 import multiprocessing, threading, os, sys, time, re
 import sb.colors
 
+
 def logger_process(logfn, overwrite, queue, prolog):
     log_parent_folder = os.path.dirname(logfn)
     if log_parent_folder:
@@ -15,17 +16,21 @@ def logger_process(logfn, overwrite, queue, prolog):
                 break
             print(log, file=logfile)
 
+
 __prolog = []
+
 
 def start(logfn, append, queue):
     global logger
-    logger = threading.Thread(target=logger_process, args=(logfn,append,queue,__prolog))
+    logger = threading.Thread(target=logger_process, args=(logfn, append, queue, __prolog))
     logger.start()
+
 
 quiet = False
 
+
 def message(con=None, log=None, queue=None):
-    if con and log=="":
+    if con and log == "":
         log = sb.colors.strip(con)
     if con and not quiet:
         print(con, flush=True)
@@ -35,7 +40,7 @@ def message(con=None, log=None, queue=None):
         else:
             __prolog.append(log)
 
+
 def stop(queue):
     queue.put(None)
     logger.join()
-

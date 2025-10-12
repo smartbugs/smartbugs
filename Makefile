@@ -110,9 +110,15 @@ format:
 		exit 1; \
 	fi
 	@echo "Formatting code with Black..."
-	@$(VENV_ACTIVATE) && $(BLACK) $(SRC_DIR) $(TEST_DIR) \
-		--line-length 100 \
-		--exclude '/(\.git|\.mypy_cache|\.pytest_cache|\.venv|venv|__pycache__|solcx)/'
+	@if [ -d "$(TEST_DIR)" ]; then \
+		$(VENV_ACTIVATE) && $(BLACK) $(SRC_DIR) $(TEST_DIR) \
+			--line-length 100 \
+			--exclude '/(\.git|\.mypy_cache|\.pytest_cache|\.venv|venv|__pycache__|solcx)/'; \
+	else \
+		$(VENV_ACTIVATE) && $(BLACK) $(SRC_DIR) \
+			--line-length 100 \
+			--exclude '/(\.git|\.mypy_cache|\.pytest_cache|\.venv|venv|__pycache__|solcx)/'; \
+	fi
 	@echo "Formatting complete!"
 
 # Lint code with Ruff
@@ -122,9 +128,15 @@ lint:
 		exit 1; \
 	fi
 	@echo "Linting code with Ruff..."
-	@$(VENV_ACTIVATE) && $(RUFF) check $(SRC_DIR) $(TEST_DIR) \
-		--exclude solcx \
-		--line-length 100
+	@if [ -d "$(TEST_DIR)" ]; then \
+		$(VENV_ACTIVATE) && $(RUFF) check $(SRC_DIR) $(TEST_DIR) \
+			--exclude solcx \
+			--line-length 100; \
+	else \
+		$(VENV_ACTIVATE) && $(RUFF) check $(SRC_DIR) \
+			--exclude solcx \
+			--line-length 100; \
+	fi
 	@echo "Linting complete!"
 
 # Type check with Mypy

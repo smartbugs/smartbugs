@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """SmartBugs: A framework to analyze smart contracts
 
-   http://github.com/smartbugs/smartbugs
+http://github.com/smartbugs/smartbugs
 """
 
 import sb.cli
