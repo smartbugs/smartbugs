@@ -70,14 +70,17 @@ FINDINGS = {
 }
 
 
-REPORT = re.compile(r"""
+REPORT = re.compile(
+    r"""
     ^(?P<filename>[^:]*)
     :(?P<line>\d+)
     :(?P<column>\d+)
     :\s*(?P<message>.*?)
     \s*\[(?P<level>[^\[/\]]*)/
     (?P<name>[^\[/\]]*)\]$
-""", re.VERBOSE)
+""",
+    re.VERBOSE,
+)
 
 
 def parse(exit_code, log, output):

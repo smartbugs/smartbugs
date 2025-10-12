@@ -1,6 +1,7 @@
 """
 Install solc
 """
+
 import argparse
 import logging
 import os
@@ -59,7 +60,9 @@ def set_target_os(platform: Optional[str] = None):
     if platform is None or platform in ("linux", "macosx", "windows"):
         _target_os = platform
     else:
-        raise OSError(f"Unsupported target OS: '{platform}' - py-solc-x supports 'linux', 'macosx', or 'windows'.")
+        raise OSError(
+            f"Unsupported target OS: '{platform}' - py-solc-x supports 'linux', 'macosx', or 'windows'."
+        )
 
 
 def _get_target_os() -> str:

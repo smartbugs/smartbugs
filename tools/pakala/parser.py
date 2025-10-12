@@ -2,17 +2,14 @@ import re, ast
 import sb.parse_utils
 
 VERSION = "2023/02/27"
-    
-FINDINGS = {
-    "delegatecall bug",
-    "selfdestruct bug",
-    "call bug"
-}
+
+FINDINGS = {"delegatecall bug", "selfdestruct bug", "call bug"}
 
 FINDING = re.compile(".*pakala\\.analyzer\\[.*\\] INFO Found (.* bug)\\.")
 COVERAGE = re.compile("Symbolic execution finished with coverage (.*).")
 FINISHED = re.compile("Nothing to report.|======> Bug found! Need .* transactions. <======")
 TRANSACTION = re.compile("Transaction [0-9]+, example solution:")
+
 
 def is_relevant(line):
     return not (
@@ -22,11 +19,12 @@ def is_relevant(line):
         or line.startswith("Outcomes: ")
     )
 
+
 def parse(exit_code, log, output):
     findings, infos = [], set()
     cleaned_log = filter(is_relevant, log)
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
-    errors.discard("EXIT_CODE_1") # there will be an exception in fails anyway
+    errors.discard("EXIT_CODE_1")  # there will be an exception in fails anyway
 
     analysis_completed = False
     in_tx = False
@@ -52,7 +50,7 @@ def parse(exit_code, log, output):
 
         m = FINDING.match(line)
         if m:
-            finding = { "name": m[1] }
+            finding = {"name": m[1]}
             findings.append(finding)
             continue
 

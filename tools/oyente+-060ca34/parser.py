@@ -10,12 +10,10 @@ FINDINGS = {
     "Re-Entrancy Vulnerability",
     "Integer Overflow",
     "Integer Underflow",
-    "Parity Multisig Bug 2"
+    "Parity Multisig Bug 2",
 }
 
-INFOS = (
-    re.compile(r"(incomplete push instruction) at [0-9]+"),
-)
+INFOS = (re.compile(r"(incomplete push instruction) at [0-9]+"),)
 
 # ERRORS also for Osiris and Honeybadger
 ERRORS = (
@@ -25,15 +23,16 @@ ERRORS = (
 )
 
 FAILS = (
-#    re.compile("(Unexpected error: .*)"), # Secondary error
+    #    re.compile("(Unexpected error: .*)"), # Secondary error
 )
 
-CONTRACT  = re.compile(r"^INFO:root:[Cc]ontract ([^:]*):([^:]*):")
-WEAKNESS  = re.compile(r"^INFO:symExec:[\s└>]*([^:]*):\s*True")
-LOCATION1 = re.compile(r"^INFO:symExec:([^:]*):([0-9]+):([0-9]+):\s*([^:]*):\s*(.*)\.") # Oyente
-LOCATION2 = re.compile(r"^([^:]*):([^:]*):([0-9]+):([0-9]+)") # Osiris
+CONTRACT = re.compile(r"^INFO:root:[Cc]ontract ([^:]*):([^:]*):")
+WEAKNESS = re.compile(r"^INFO:symExec:[\s└>]*([^:]*):\s*True")
+LOCATION1 = re.compile(r"^INFO:symExec:([^:]*):([0-9]+):([0-9]+):\s*([^:]*):\s*(.*)\.")  # Oyente
+LOCATION2 = re.compile(r"^([^:]*):([^:]*):([0-9]+):([0-9]+)")  # Osiris
 COMPLETED = re.compile(r"^INFO:symExec:\s*====== Analysis Completed ======")
-COVERAGE  = re.compile(r"^INFO:symExec:\s*EVM Code Coverage:\s+([0-9]+(?:\.[0-9]+)?%)$")
+COVERAGE = re.compile(r"^INFO:symExec:\s*EVM Code Coverage:\s+([0-9]+(?:\.[0-9]+)?%)$")
+
 
 def is_relevant(line):
     # Identify lines interfering with exception parsing
@@ -50,10 +49,10 @@ def parse(exit_code, log, output):
     findings, infos = [], set()
     cleaned_log = filter(is_relevant, log)
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
-    errors.discard('EXIT_CODE_1') # redundant: indicates error or vulnerability reported below
+    errors.discard("EXIT_CODE_1")  # redundant: indicates error or vulnerability reported below
 
     analysis_completed = False
-    filename,contract,weakness = None,None,None
+    filename, contract, weakness = None, None, None
     weaknesses = set()
     for line in log:
         if sb.parse_utils.add_match(infos, re.sub(r"[ \t]+", " ", line).strip(), INFOS):
@@ -75,22 +74,22 @@ def parse(exit_code, log, output):
             if weakness == "Arithmetic bugs":
                 # Osiris: superfluous, will also report a sub-category
                 continue
-            weaknesses.add((filename,contract,weakness,None,None))
+            weaknesses.add((filename, contract, weakness, None, None))
             continue
 
         m = LOCATION1.match(line)
         if m:
             fn, lineno, column, severity, weakness = m[1], m[2], m[3], m[4], m[5]
-            weaknesses.discard((filename,contract,weakness,None,None))
-            weaknesses.add((filename,contract,weakness,int(lineno),int(column)))
+            weaknesses.discard((filename, contract, weakness, None, None))
+            weaknesses.add((filename, contract, weakness, int(lineno), int(column)))
             continue
 
         m = LOCATION2.match(line)
         if m:
             fn, ct, lineno, column = m[1], m[2], m[3], m[4]
             assert fn == filename and ct == contract and weakness is not None
-            weaknesses.discard((filename,contract,weakness,None,None))
-            weaknesses.add((filename,contract,weakness,int(lineno),int(column)))
+            weaknesses.discard((filename, contract, weakness, None, None))
+            weaknesses.add((filename, contract, weakness, int(lineno), int(column)))
             continue
 
         m = COVERAGE.match(line)
@@ -105,26 +104,30 @@ def parse(exit_code, log, output):
             analysis_completed = True
             continue
 
-    for filename,contract,weakness,lineno,column in sorted(weaknesses):
-        finding = { "name": weakness }
-        if filename: finding["filename"] = filename
-        if contract: finding["contract"] = contract
-        if lineno:   finding["line"]   = lineno
-        if column:   finding["column"]   = column
+    for filename, contract, weakness, lineno, column in sorted(weaknesses):
+        finding = {"name": weakness}
+        if filename:
+            finding["filename"] = filename
+        if contract:
+            finding["contract"] = contract
+        if lineno:
+            finding["line"] = lineno
+        if column:
+            finding["column"] = column
         findings.append(finding)
-            
+
     if log and not analysis_completed:
-        infos.add('analysis incomplete')
+        infos.add("analysis incomplete")
         if not fails and not errors:
-            fails.add('execution failed')
+            fails.add("execution failed")
 
     # Remove errors/fails issued twice, once via exception and once via print statement
     # Reclassify symbolic execution timeouts, as they are informative rather than an error
     if "SYMBOLIC EXECUTION TIMEOUT" in errors and "exception (Exception: timeout)" in fails:
         fails.remove("exception (Exception: timeout)")
-    #if "exception (Exception: timeout)" in fails:
+    # if "exception (Exception: timeout)" in fails:
     #    infos.add("exception (Exception: timeout)")
-    for e in list(fails): # list() makes a copy, so we can modify the set in the loop
+    for e in list(fails):  # list() makes a copy, so we can modify the set in the loop
         if "UNKNOWN INSTRUCTION" in e:
             fails.remove(e)
             if not e[22:-1] in errors:

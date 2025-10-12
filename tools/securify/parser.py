@@ -11,8 +11,9 @@ FINDINGS = {
     "TODReceiver",
     "TODTransfer",
     "UnhandledException",
-    "UnrestrictedEtherFlow"
+    "UnrestrictedEtherFlow",
 }
+
 
 def parse(exit_code, log, output):
     findings, infos = set(), set()
@@ -40,26 +41,25 @@ def parse(exit_code, log, output):
 
     if not analysis:
         infos.add("analysis incomplete")
-    elif "patternResults" in analysis: # live.json
+    elif "patternResults" in analysis:  # live.json
         if "finished" in analysis and not analysis["finished"]:
             infos.add("analysis incomplete")
         if "decompiled" in analysis and not analysis["decompiled"]:
             errors.add("decompilation error")
-        for vuln,check in analysis["patternResults"].items():
+        for vuln, check in analysis["patternResults"].items():
             if not check["completed"]:
                 infos.add("analysis incomplete")
             if check["hasViolations"]:
                 findings.add(vuln)
-    else: # log or result.json
-        for contract,analysis in analysis.items():
-            for vuln,check in analysis["results"].items():
+    else:  # log or result.json
+        for contract, analysis in analysis.items():
+            for vuln, check in analysis["results"].items():
                 if check["violations"]:
                     findings.add(vuln)
 
     if "analysis incomplete" in infos and not fails:
         fails.add("execution failed")
 
-    findings = [ { "name": vuln } for vuln in findings ]
+    findings = [{"name": vuln} for vuln in findings]
 
     return findings, infos, errors, fails
-

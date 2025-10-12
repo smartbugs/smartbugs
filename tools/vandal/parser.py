@@ -9,31 +9,28 @@ FINDINGS = (
     "OriginUsed",
     "ReentrantCall",
     "UnsecuredValueSend",
-    "UncheckedCall"
+    "UncheckedCall",
 )
 
 MAP_FINDINGS = {
     "checkedCallStateUpdate.csv": "CheckedCallStateUpdate",
     "destroyable.csv": "Destroyable",
-    "originUsed.csv":  "OriginUsed",
+    "originUsed.csv": "OriginUsed",
     "reentrantCall.csv": "ReentrantCall",
     "unsecuredValueSend.csv": "UnsecuredValueSend",
-    "uncheckedCall.csv": "UncheckedCall"
+    "uncheckedCall.csv": "UncheckedCall",
 }
 
-ANALYSIS_COMPLETE = (
-    "+ /vandal/bin/decompile",
-    "+ souffle -F facts-tmp",
-    "+ rm -rf facts-tmp"
-)
+ANALYSIS_COMPLETE = ("+ /vandal/bin/decompile", "+ souffle -F facts-tmp", "+ rm -rf facts-tmp")
 
 DEPRECATED = "Warning: Deprecated type declaration"
 CANNOT_OPEN_FACT_FILE = "Cannot open fact file"
 
+
 def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
-    errors.discard("EXIT_CODE_1") # = no findings; EXIT_CODE_0 = findings
+    errors.discard("EXIT_CODE_1")  # = no findings; EXIT_CODE_0 = findings
 
     analysis_complete = set()
     for line in log:
@@ -70,7 +67,7 @@ def parse(exit_code, log, output):
                     for line in contents.splitlines():
                         finding = {
                             "name": MAP_FINDINGS[indicator],
-                            "address": int(line.strip(),16)
+                            "address": int(line.strip(), 16),
                         }
                         findings.append(finding)
         except Exception as e:
@@ -84,4 +81,3 @@ def parse(exit_code, log, output):
                     break
 
     return findings, infos, errors, fails
-

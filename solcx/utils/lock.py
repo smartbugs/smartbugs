@@ -37,7 +37,9 @@ class _ProcessLock:
 
     def __init__(self, lock_id: str) -> None:
         self._lock = threading.Lock()
-        self._lock_path = Path(tempfile.gettempdir()).joinpath(f".solcx-lock-{getpass.getuser()}-{lock_id}")
+        self._lock_path = Path(tempfile.gettempdir()).joinpath(
+            f".solcx-lock-{getpass.getuser()}-{lock_id}"
+        )
         self._lock_file = self._lock_path.open("w")
 
 

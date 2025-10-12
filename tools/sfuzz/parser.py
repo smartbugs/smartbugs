@@ -17,7 +17,7 @@ FINDINGS = {
     "Integer Overflow",
     "Integer Underflow",
     "Reentrancy",
-    "Timestamp Dependency"
+    "Timestamp Dependency",
 }
 
 STATS_FILENAME = "stats.csv"
@@ -37,14 +37,14 @@ def parse(exit_code, log, output):
                     if member.name.endswith(STATS_FILENAME):
                         stats = tar.extractfile(member)
                         vs = vulnerabilities(stats)
-                        for (name, filename) in vs.items():
+                        for name, filename in vs.items():
                             v_member = tar.getmember(member.name.replace(STATS_FILENAME, filename))
                             v_json = json.load(tar.extractfile(v_member))
                             for function in v_json["functions"]:
                                 finding = {
                                     "contract": member.name.split(os.path.sep)[1].split(":")[0],
                                     "name": name,
-                                    "function": function["name"]
+                                    "function": function["name"],
                                 }
                                 findings.append(finding)
         except Exception as e:
@@ -63,7 +63,7 @@ def vulnerabilities(stats):
         pass
     if line == "":
         return vs
-    last = re.sub('[\'b\\n]', '', line.decode("utf-8"))
+    last = re.sub("['b\\n]", "", line.decode("utf-8"))
     results = list(map(float, last.split(",")))
 
     # Parse found vulnerabilities

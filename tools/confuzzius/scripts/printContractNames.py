@@ -7,7 +7,7 @@ settings = {
     "optimizer": {"enabled": False},
     "outputSelection": {
         "*": {
-            "*": [ "evm.deployedBytecode" ],
+            "*": ["evm.deployedBytecode"],
         }
     },
 }

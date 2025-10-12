@@ -61,6 +61,7 @@ FINDINGS = {
     "visibility-modifier-order",
 }
 
+
 def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
@@ -73,16 +74,18 @@ def parse(exit_code, log, output):
             (file, lineno, column, end_error) = s_result
             if "]" not in end_error:
                 continue
-            message = end_error[1:end_error.index("[") - 1]
-            level = end_error[end_error.index("[") + 1: end_error.index("/")]
-            name = end_error[end_error.index("/") + 1: len(end_error) - 1]
-            findings.append({
-                "filename": file,
-                "line": int(lineno),
-                "column": int(column),
-                "message": message,
-                "level": level.lower(),
-                "name": name
-            })
+            message = end_error[1 : end_error.index("[") - 1]
+            level = end_error[end_error.index("[") + 1 : end_error.index("/")]
+            name = end_error[end_error.index("/") + 1 : len(end_error) - 1]
+            findings.append(
+                {
+                    "filename": file,
+                    "line": int(lineno),
+                    "column": int(column),
+                    "message": message,
+                    "level": level.lower(),
+                    "name": name,
+                }
+            )
 
     return findings, infos, errors, fails

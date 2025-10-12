@@ -2,21 +2,24 @@ import sb.parse_utils
 
 VERSION = "2023/02/24"
 
-FINDINGS = { "Ether leak" }
+FINDINGS = {"Ether leak"}
 
 
 def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
-    errors.discard("EXIT_CODE_1") # there will be an exception in fails anyway
-    for f in list(fails):         # make a copy of fails, so we can modify it
-        if f.startswith("exception (teether.evm.exceptions."): # reported as error below
+    errors.discard("EXIT_CODE_1")  # there will be an exception in fails anyway
+    for f in list(fails):  # make a copy of fails, so we can modify it
+        if f.startswith("exception (teether.evm.exceptions."):  # reported as error below
             fails.remove(f)
-        elif (f.startswith('exception (z3.z3types.Z3Exception: b"Argument ') or
-            f.startswith("exception (z3.z3types.Z3Exception: b'Argument ")):
+        elif f.startswith('exception (z3.z3types.Z3Exception: b"Argument ') or f.startswith(
+            "exception (z3.z3types.Z3Exception: b'Argument "
+        ):
             fails.remove(f)
-            fails.add("exception (z3.z3types.Z3Exception: Argument does not match function declaration)")
+            fails.add(
+                "exception (z3.z3types.Z3Exception: Argument does not match function declaration)"
+            )
 
     exploit = []
     analysis_completed = False
@@ -53,7 +56,6 @@ def parse(exit_code, log, output):
             fails.add("execution failed")
 
     if exploit:
-        findings = [ { "name": "Ether leak", "exploit": exploit } ]
+        findings = [{"name": "Ether leak", "exploit": exploit}]
 
     return findings, infos, errors, fails
-

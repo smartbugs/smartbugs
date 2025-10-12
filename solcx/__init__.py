@@ -12,10 +12,4 @@ from solcx.install import (
     set_solc_version,
     set_solc_version_pragma,
 )
-from solcx.main import (
-    compile_files,
-    compile_source,
-    compile_standard,
-    get_solc_version,
-    link_code
-)
+from solcx.main import compile_files, compile_source, compile_standard, get_solc_version, link_code

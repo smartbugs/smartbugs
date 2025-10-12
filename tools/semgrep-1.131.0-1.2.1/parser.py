@@ -1,4 +1,4 @@
-import sb.parse_utils, sb.cfg# for sb.parse_utils.init(...) 
+import sb.parse_utils, sb.cfg  # for sb.parse_utils.init(...)
 import re
 
 VERSION: str = "2025/08/06"
@@ -60,27 +60,27 @@ FINDINGS = [
     "use-ownable2step",
     "use-prefix-decrement-not-postfix",
     "use-prefix-increment-not-postfix",
-    "use-short-revert-string"
+    "use-short-revert-string",
 ]
+
 
 def message_lines(log_iterator):
     message_lines = []
     while True:
-        next_line = next(log_iterator, '').strip()
+        next_line = next(log_iterator, "").strip()
         if not next_line:
             break
         message_lines.append(next_line)
-    return ' '.join(message_lines)
+    return " ".join(message_lines)
+
 
 def parse(exit_code, log, output):
-    
+
     findings, infos = [], set()
     finding = {}
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     log_iterator = iter(log)
-    
 
-    
     for line in log_iterator:
 
         line = line.strip()
@@ -90,24 +90,20 @@ def parse(exit_code, log, output):
         #     filename = '/'.join(filename[-2:])
         #     finding = {'filename': filename}
 
-        if re.search(r'solidity\.(performance|best-practice|security)\.', line):
-            match = re.search(r'solidity\.(performance|best-practice|security)\.(\S+)', line)
+        if re.search(r"solidity\.(performance|best-practice|security)\.", line):
+            match = re.search(r"solidity\.(performance|best-practice|security)\.(\S+)", line)
             category = match.group(1)
             name = match.group(2)
-            finding['name'] = name
-            finding['category'] = category
-            finding['message'] = message_lines(log_iterator)
+            finding["name"] = name
+            finding["category"] = category
+            finding["message"] = message_lines(log_iterator)
 
-            
-        elif re.search(r'\d+┆', line):
-            line_location = line.strip().split('┆', 1)
+        elif re.search(r"\d+┆", line):
+            line_location = line.strip().split("┆", 1)
             if len(line_location) > 0:
                 cline_number = int(line_location[0])
-                finding['line'] = cline_number
-        
+                finding["line"] = cline_number
+
             findings.append(finding.copy())
 
-    
     return findings, infos, errors, fails
-        
-        

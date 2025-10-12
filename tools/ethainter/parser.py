@@ -9,8 +9,9 @@ FINDINGS = {
     "UncheckedTaintedStaticcall",
     "AccessibleSelfdestruct",
     "TaintedDelegatecall",
-    "TaintedOwnerVariable"
+    "TaintedOwnerVariable",
 }
+
 
 def parse(exit_code, log, output):
     return gigahorse.parse(exit_code, log, output, FINDINGS)

@@ -5,6 +5,7 @@ VERSION = "2022/11/17"
 
 FINDINGS = set()
 
+
 def parse_file(lines):
     findings = []
     snippet = False
@@ -17,9 +18,7 @@ def parse_file(lines):
         elif line.startwith("  Solidity snippet:"):
             snippet = True
         elif line[0] == "-":
-            finding = {
-                "name": line[1:-2].strip()
-            }
+            finding = {"name": line[1:-2].strip()}
             findings.append(finding)
             continue
     return findings
@@ -47,18 +46,18 @@ def parse(exit_code, log, output):
 
                 cmd = None
                 try:
-                    fn = fn.replace("/global.findings","/manticore.yml")
+                    fn = fn.replace("/global.findings", "/manticore.yml")
                     cmd = yaml.safe_load(tar.extractfile(fn).read())
                 except Exception as e:
                     infos.add(f"manticore.yml not found")
 
                 filename, contract = None, None
-                if isinstance(cmd,dict):
+                if isinstance(cmd, dict):
                     cli = cmd.get("cli")
-                    if isinstance(cli,dict):
+                    if isinstance(cli, dict):
                         contract = cli.get("contract")
                         argv = cli.get("argv")
-                        if isinstance(argv,list) and len(argv) > 0:
+                        if isinstance(argv, list) and len(argv) > 0:
                             filename = argv[0]
 
                 for mf in manticore_findings:

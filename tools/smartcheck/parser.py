@@ -51,6 +51,7 @@ FINDINGS = {
     "SOLIDITY_WRONG_SIGNATURE",
 }
 
+
 def parse(exit_code, log, output):
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
@@ -59,11 +60,11 @@ def parse(exit_code, log, output):
         i = line.find(": ")
         if i >= 0:
             k = line[0:i].strip()
-            v = line[i+2:].strip()
+            v = line[i + 2 :].strip()
             if v.isdigit():
                 v = int(v)
             if k.endswith("ruleId"):
-                finding = { "name": v }
+                finding = {"name": v}
                 findings.append(finding)
             elif k in ("severity", "line", "column"):
                 finding[k] = v
