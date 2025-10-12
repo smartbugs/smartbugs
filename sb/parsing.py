@@ -1,6 +1,6 @@
 import importlib.util
 import os
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Optional
 
 import sb.cfg
 import sb.errors
@@ -28,7 +28,27 @@ def get_parser(tool: dict[str, Any]) -> "ModuleType":
     return tool_parsers[key]
 
 
-def parse(task_log: dict[str, Any], tool_log: str, tool_output: str) -> dict[str, Any]:
+def parse(
+    task_log: dict[str, Any], tool_log: Optional[list[str]], tool_output: Optional[bytes]
+) -> dict[str, Any]:
+    """Parse tool execution results into standardized findings format.
+
+    This function provides the stable interface between SmartBugs core and tool parsers.
+    All 30+ tool parsers expect these exact types - DO NOT CHANGE without updating all parsers.
+
+    Args:
+        task_log: Task metadata including tool info, filename, exit code
+        tool_log: Tool's stdout/stderr as list of lines (NOT a single string)
+        tool_output: Tool's binary output file (NOT decoded to string)
+
+    Returns:
+        Dictionary with findings, infos, errors, fails, and parser metadata
+
+    Interface Contract:
+        - tool_log MUST be list[str] or None (parsers iterate: "for line in log")
+        - tool_output MUST be bytes or None (parsers use: "io.BytesIO(output)")
+        - Changing these types requires updating ALL tool parsers in tools/*/parser.py
+    """
     tool = task_log["tool"]
     filename = task_log["filename"]
     exit_code = task_log["result"]["exit_code"]

@@ -114,9 +114,7 @@ def execute(task: sb.tasks.Task) -> float:
     # Parse output of tool
     # If parsing fails, run the reparse script; no need to redo the analysis
     if task.settings.json or task.settings.sarif:
-        tool_log_str = "\n".join(tool_log) if tool_log else ""
-        tool_output_str = tool_output.decode("utf-8") if tool_output else ""
-        parsed_result = sb.parsing.parse(task_log, tool_log_str, tool_output_str)
+        parsed_result = sb.parsing.parse(task_log, tool_log, tool_output)
         sb.io.write_json(fn_parser_output, parsed_result)
 
         # Format parsed result as sarif
