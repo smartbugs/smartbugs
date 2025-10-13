@@ -1,0 +1,28 @@
+{
+  "compiler_version": "0.8.30+commit.73712a01",
+  "platform": "linux-x86_64",
+  "compiled_at": "2025-10-13T19:50:10Z",
+  "sources": {
+    "FailedContract.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/**\n * @title FailedContract\n * @dev Contract with compilation errors for testing\n */\ncontract FailedContract {\n    uint256 public value;\n    \n    // Error 1: Undefined variable\n    function setValueBad() public {\n        value = undefinedVariable;\n    }\n    \n    // Error 2: Type mismatch\n    function typeMismatch() public {\n        value = \"string value\";\n    }\n    \n    // Error 3: Missing return statement\n    function missingReturn() public returns (uint256) {\n        value = 100;\n    }\n}\n",
+      "id": 0
+    }
+  },
+  "contracts": {},
+  "errors": [
+    {
+      "component": "general",
+      "errorCode": "7576",
+      "formattedMessage": "DeclarationError: Undeclared identifier.\n  --> FailedContract.sol:13:17:\n   |\n13 |         value = undefinedVariable;\n   |                 ^^^^^^^^^^^^^^^^^\n\n",
+      "message": "Undeclared identifier.",
+      "severity": "error",
+      "sourceLocation": {
+        "end": 304,
+        "file": "FailedContract.sol",
+        "start": 287
+      },
+      "type": "DeclarationError"
+    }
+  ],
+  "warnings": []
+}

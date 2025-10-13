@@ -1,0 +1,127 @@
+{
+  "compiler_version": "0.8.30+commit.73712a01",
+  "platform": "linux-x86_64",
+  "compiled_at": "2025-10-13T19:48:56Z",
+  "sources": {
+    "WithImport.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"./Library.sol\";\n\n/**\n * @title Calculator\n * @dev Contract that uses MathLibrary for calculations\n */\ncontract Calculator {\n    using MathLibrary for uint256;\n\n    uint256 public result;\n\n    event Calculated(uint256 result);\n\n    function addNumbers(uint256 a, uint256 b) public {\n        result = MathLibrary.add(a, b);\n        emit Calculated(result);\n    }\n\n    function multiplyNumbers(uint256 a, uint256 b) public {\n        result = MathLibrary.multiply(a, b);\n        emit Calculated(result);\n    }\n\n    function getResult() public view returns (uint256) {\n        return result;\n    }\n}\n",
+      "id": 0
+    },
+    "Library.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/**\n * @title MathLibrary\n * @dev Library for basic math operations\n */\nlibrary MathLibrary {\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\n        return a + b;\n    }\n\n    function multiply(uint256 a, uint256 b) internal pure returns (uint256) {\n        return a * b;\n    }\n}\n",
+      "id": 1
+    }
+  },
+  "contracts": {
+    "Library.sol": {
+      "MathLibrary": {
+        "abi": [],
+        "evm": {
+          "bytecode": {
+            "object": "6055604b600b8282823980515f1a607314603f577f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220de800cd3779cbfca4be9e2436073b63277847602ecd54c500fdfbf6e92907dd064736f6c634300081e0033",
+            "sourceMap": "129:231:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+          },
+          "deployedBytecode": {
+            "object": "730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220de800cd3779cbfca4be9e2436073b63277847602ecd54c500fdfbf6e92907dd064736f6c634300081e0033",
+            "sourceMap": "129:231:0:-:0;;;;;;;;"
+          }
+        },
+        "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Library for basic math operations\",\"kind\":\"dev\",\"methods\":{},\"title\":\"MathLibrary\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"Library.sol\":\"MathLibrary\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"Library.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title MathLibrary\\n * @dev Library for basic math operations\\n */\\nlibrary MathLibrary {\\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a + b;\\n    }\\n\\n    function multiply(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a * b;\\n    }\\n}\\n\",\"keccak256\":\"0x347b170f18ba7f95beba5cbb2969baeec720c648cd3261114c05d771118a1567\",\"license\":\"MIT\"}},\"version\":1}"
+      }
+    },
+    "WithImport.sol": {
+      "Calculator": {
+        "abi": [
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "result",
+                "type": "uint256"
+              }
+            ],
+            "name": "Calculated",
+            "type": "event"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+              }
+            ],
+            "name": "addNumbers",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "getResult",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+              }
+            ],
+            "name": "multiplyNumbers",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "result",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "evm": {
+          "bytecode": {
+            "object": "6080604052348015600e575f5ffd5b506103038061001c5f395ff3fe608060405234801561000f575f5ffd5b506004361061004a575f3560e01c8063653721471461004e578063d3f3cd7b1461006c578063de29278914610088578063ef9fc50b146100a6575b5f5ffd5b6100566100c2565b60405161006391906101a7565b60405180910390f35b610086600480360381019061008191906101ee565b6100c7565b005b610090610112565b60405161009d91906101a7565b60405180910390f35b6100c060048036038101906100bb91906101ee565b61011a565b005b5f5481565b6100d18282610165565b5f819055507f2c257d436c72ddfcf6860baf0bde6e7deca235585f3cd5a7e1da579a04c98ab15f5460405161010691906101a7565b60405180910390a15050565b5f5f54905090565b610124828261017a565b5f819055507f2c257d436c72ddfcf6860baf0bde6e7deca235585f3cd5a7e1da579a04c98ab15f5460405161015991906101a7565b60405180910390a15050565b5f81836101729190610259565b905092915050565b5f8183610187919061029a565b905092915050565b5f819050919050565b6101a18161018f565b82525050565b5f6020820190506101ba5f830184610198565b92915050565b5f5ffd5b6101cd8161018f565b81146101d7575f5ffd5b50565b5f813590506101e8816101c4565b92915050565b5f5f60408385031215610204576102036101c0565b5b5f610211858286016101da565b9250506020610222858286016101da565b9150509250929050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b5f6102638261018f565b915061026e8361018f565b925082820261027c8161018f565b915082820484148315176102935761029261022c565b5b5092915050565b5f6102a48261018f565b91506102af8361018f565b92508282019050808211156102c7576102c661022c565b5b9291505056fea2646970667358221220f14b88ee717c17e6734e73b9e47207f6eb298643f6eddba1278b7f5ff6fc0ded64736f6c634300081e0033",
+            "sourceMap": "167:492:1:-:0;;;;;;;;;;;;;;;;;;;"
+          },
+          "deployedBytecode": {
+            "object": "608060405234801561000f575f5ffd5b506004361061004a575f3560e01c8063653721471461004e578063d3f3cd7b1461006c578063de29278914610088578063ef9fc50b146100a6575b5f5ffd5b6100566100c2565b60405161006391906101a7565b60405180910390f35b610086600480360381019061008191906101ee565b6100c7565b005b610090610112565b60405161009d91906101a7565b60405180910390f35b6100c060048036038101906100bb91906101ee565b61011a565b005b5f5481565b6100d18282610165565b5f819055507f2c257d436c72ddfcf6860baf0bde6e7deca235585f3cd5a7e1da579a04c98ab15f5460405161010691906101a7565b60405180910390a15050565b5f5f54905090565b610124828261017a565b5f819055507f2c257d436c72ddfcf6860baf0bde6e7deca235585f3cd5a7e1da579a04c98ab15f5460405161015991906101a7565b60405180910390a15050565b5f81836101729190610259565b905092915050565b5f8183610187919061029a565b905092915050565b5f819050919050565b6101a18161018f565b82525050565b5f6020820190506101ba5f830184610198565b92915050565b5f5ffd5b6101cd8161018f565b81146101d7575f5ffd5b50565b5f813590506101e8816101c4565b92915050565b5f5f60408385031215610204576102036101c0565b5b5f610211858286016101da565b9250506020610222858286016101da565b9150509250929050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b5f6102638261018f565b915061026e8361018f565b925082820261027c8161018f565b915082820484148315176102935761029261022c565b5b5092915050565b5f6102a48261018f565b91506102af8361018f565b92508282019050808211156102c7576102c661022c565b5b9291505056fea2646970667358221220f14b88ee717c17e6734e73b9e47207f6eb298643f6eddba1278b7f5ff6fc0ded64736f6c634300081e0033",
+            "sourceMap": "167:492:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;229:21;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;431:139;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;576:81;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;296:129;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;229:21;;;;:::o;431:139::-;504:26;525:1;528;504:20;:26::i;:::-;495:6;:35;;;;545:18;556:6;;545:18;;;;;;:::i;:::-;;;;;;;;431:139;;:::o;576:81::-;618:7;644:6;;637:13;;576:81;:::o;296:129::-;364:21;380:1;383;364:15;:21::i;:::-;355:6;:30;;;;400:18;411:6;;400:18;;;;;;:::i;:::-;;;;;;;;296:129;;:::o;257:101:0:-;320:7;350:1;346;:5;;;;:::i;:::-;339:12;;257:101;;;;:::o;155:96::-;213:7;243:1;239;:5;;;;:::i;:::-;232:12;;155:96;;;;:::o;7:77:2:-;44:7;73:5;62:16;;7:77;;;:::o;90:118::-;177:24;195:5;177:24;:::i;:::-;172:3;165:37;90:118;;:::o;214:222::-;307:4;345:2;334:9;330:18;322:26;;358:71;426:1;415:9;411:17;402:6;358:71;:::i;:::-;214:222;;;;:::o;523:117::-;632:1;629;622:12;769:122;842:24;860:5;842:24;:::i;:::-;835:5;832:35;822:63;;881:1;878;871:12;822:63;769:122;:::o;897:139::-;943:5;981:6;968:20;959:29;;997:33;1024:5;997:33;:::i;:::-;897:139;;;;:::o;1042:474::-;1110:6;1118;1167:2;1155:9;1146:7;1142:23;1138:32;1135:119;;;1173:79;;:::i;:::-;1135:119;1293:1;1318:53;1363:7;1354:6;1343:9;1339:22;1318:53;:::i;:::-;1308:63;;1264:117;1420:2;1446:53;1491:7;1482:6;1471:9;1467:22;1446:53;:::i;:::-;1436:63;;1391:118;1042:474;;;;;:::o;1522:180::-;1570:77;1567:1;1560:88;1667:4;1664:1;1657:15;1691:4;1688:1;1681:15;1708:410;1748:7;1771:20;1789:1;1771:20;:::i;:::-;1766:25;;1805:20;1823:1;1805:20;:::i;:::-;1800:25;;1860:1;1857;1853:9;1882:30;1900:11;1882:30;:::i;:::-;1871:41;;2061:1;2052:7;2048:15;2045:1;2042:22;2022:1;2015:9;1995:83;1972:139;;2091:18;;:::i;:::-;1972:139;1756:362;1708:410;;;;:::o;2124:191::-;2164:3;2183:20;2201:1;2183:20;:::i;:::-;2178:25;;2217:20;2235:1;2217:20;:::i;:::-;2212:25;;2260:1;2257;2253:9;2246:16;;2281:3;2278:1;2275:10;2272:36;;;2288:18;;:::i;:::-;2272:36;2124:191;;;;:::o"
+          }
+        },
+        "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"result\",\"type\":\"uint256\"}],\"name\":\"Calculated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"a\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"b\",\"type\":\"uint256\"}],\"name\":\"addNumbers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getResult\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"a\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"b\",\"type\":\"uint256\"}],\"name\":\"multiplyNumbers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"result\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Contract that uses MathLibrary for calculations\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Calculator\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"WithImport.sol\":\"Calculator\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"Library.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title MathLibrary\\n * @dev Library for basic math operations\\n */\\nlibrary MathLibrary {\\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a + b;\\n    }\\n\\n    function multiply(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a * b;\\n    }\\n}\\n\",\"keccak256\":\"0x347b170f18ba7f95beba5cbb2969baeec720c648cd3261114c05d771118a1567\",\"license\":\"MIT\"},\"WithImport.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\nimport \\\"./Library.sol\\\";\\n\\n/**\\n * @title Calculator\\n * @dev Contract that uses MathLibrary for calculations\\n */\\ncontract Calculator {\\n    using MathLibrary for uint256;\\n\\n    uint256 public result;\\n\\n    event Calculated(uint256 result);\\n\\n    function addNumbers(uint256 a, uint256 b) public {\\n        result = MathLibrary.add(a, b);\\n        emit Calculated(result);\\n    }\\n\\n    function multiplyNumbers(uint256 a, uint256 b) public {\\n        result = MathLibrary.multiply(a, b);\\n        emit Calculated(result);\\n    }\\n\\n    function getResult() public view returns (uint256) {\\n        return result;\\n    }\\n}\\n\",\"keccak256\":\"0xa2648019c7be6d47ad511589068439070fdfc65e8848098f98cfeb6a1bc87724\",\"license\":\"MIT\"}},\"version\":1}"
+      }
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

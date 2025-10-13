@@ -1,0 +1,15 @@
+name: TestToolModes
+version: 2.0.0
+origin: https://github.com/test/testmodes
+info: Test tool supporting all three analysis modes
+image: smartbugs/testtool-modes:2.0.0
+bin: scripts
+output: /output.json
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    solc: yes
+bytecode:
+    entrypoint: "'$BIN/do_bytecode.sh' '$FILENAME' '$TIMEOUT'"
+runtime:
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT'"
+    output: /results.json

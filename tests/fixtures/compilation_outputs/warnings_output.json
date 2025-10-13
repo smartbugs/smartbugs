@@ -1,0 +1,116 @@
+{
+  "compiler_version": "0.8.30+commit.73712a01",
+  "platform": "linux-x86_64",
+  "compiled_at": "2025-10-13T19:51:07Z",
+  "sources": {
+    "WarningsContract.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/**\n * @title WarningsContract\n * @dev Contract with compiler warnings for testing\n */\ncontract WarningsContract {\n    uint256 public value;\n    uint256 private unusedVariable;  // Warning: unused variable\n    \n    function setValue(uint256 x) public {\n        value = x;\n    }\n    \n    // Warning: function can be restricted to view\n    function getValue() public returns (uint256) {\n        return value;\n    }\n    \n    // Warning: unused parameter\n    function unusedParam(uint256 x, uint256 y) public {\n        value = x;\n    }\n}\n",
+      "id": 0
+    }
+  },
+  "contracts": {
+    "WarningsContract.sol": {
+      "WarningsContract": {
+        "abi": [
+          {
+            "inputs": [],
+            "name": "getValue",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+              }
+            ],
+            "name": "setValue",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "y",
+                "type": "uint256"
+              }
+            ],
+            "name": "unusedParam",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "value",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "evm": {
+          "bytecode": {
+            "object": "6080604052348015600e575f5ffd5b506101e08061001c5f395ff3fe608060405234801561000f575f5ffd5b506004361061004a575f3560e01c8063209652551461004e5780633fa4f2451461006c578063552410771461008a578063b6fd6b7c146100a6575b5f5ffd5b6100566100c2565b60405161006391906100fa565b60405180910390f35b6100746100ca565b60405161008191906100fa565b60405180910390f35b6100a4600480360381019061009f9190610141565b6100cf565b005b6100c060048036038101906100bb919061016c565b6100d8565b005b5f5f54905090565b5f5481565b805f8190555050565b815f819055505050565b5f819050919050565b6100f4816100e2565b82525050565b5f60208201905061010d5f8301846100eb565b92915050565b5f5ffd5b610120816100e2565b811461012a575f5ffd5b50565b5f8135905061013b81610117565b92915050565b5f6020828403121561015657610155610113565b5b5f6101638482850161012d565b91505092915050565b5f5f6040838503121561018257610181610113565b5b5f61018f8582860161012d565b92505060206101a08582860161012d565b915050925092905056fea2646970667358221220c63311fe7064160b5113fa1279b00131681e40efbf9c57811927f66650e0f65464736f6c634300081e0033",
+            "sourceMap": "144:446:0:-:0;;;;;;;;;;;;;;;;;;;"
+          },
+          "deployedBytecode": {
+            "object": "608060405234801561000f575f5ffd5b506004361061004a575f3560e01c8063209652551461004e5780633fa4f2451461006c578063552410771461008a578063b6fd6b7c146100a6575b5f5ffd5b6100566100c2565b60405161006391906100fa565b60405180910390f35b6100746100ca565b60405161008191906100fa565b60405180910390f35b6100a4600480360381019061009f9190610141565b6100cf565b005b6100c060048036038101906100bb919061016c565b6100d8565b005b5f5f54905090565b5f5481565b805f8190555050565b815f819055505050565b5f819050919050565b6100f4816100e2565b82525050565b5f60208201905061010d5f8301846100eb565b92915050565b5f5ffd5b610120816100e2565b811461012a575f5ffd5b50565b5f8135905061013b81610117565b92915050565b5f6020828403121561015657610155610113565b5b5f6101638482850161012d565b91505092915050565b5f5f6040838503121561018257610181610113565b5b5f61018f8582860161012d565b92505060206101a08582860161012d565b915050925092905056fea2646970667358221220c63311fe7064160b5113fa1279b00131681e40efbf9c57811927f66650e0f65464736f6c634300081e0033",
+            "sourceMap": "144:446:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;395:74;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;176:20;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;272:62;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;512:76;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;395:74;431:7;457:5;;450:12;;395:74;:::o;176:20::-;;;;:::o;272:62::-;326:1;318:5;:9;;;;272:62;:::o;512:76::-;580:1;572:5;:9;;;;512:76;;:::o;7:77:1:-;44:7;73:5;62:16;;7:77;;;:::o;90:118::-;177:24;195:5;177:24;:::i;:::-;172:3;165:37;90:118;;:::o;214:222::-;307:4;345:2;334:9;330:18;322:26;;358:71;426:1;415:9;411:17;402:6;358:71;:::i;:::-;214:222;;;;:::o;523:117::-;632:1;629;622:12;769:122;842:24;860:5;842:24;:::i;:::-;835:5;832:35;822:63;;881:1;878;871:12;822:63;769:122;:::o;897:139::-;943:5;981:6;968:20;959:29;;997:33;1024:5;997:33;:::i;:::-;897:139;;;;:::o;1042:329::-;1101:6;1150:2;1138:9;1129:7;1125:23;1121:32;1118:119;;;1156:79;;:::i;:::-;1118:119;1276:1;1301:53;1346:7;1337:6;1326:9;1322:22;1301:53;:::i;:::-;1291:63;;1247:117;1042:329;;;;:::o;1377:474::-;1445:6;1453;1502:2;1490:9;1481:7;1477:23;1473:32;1470:119;;;1508:79;;:::i;:::-;1470:119;1628:1;1653:53;1698:7;1689:6;1678:9;1674:22;1653:53;:::i;:::-;1643:63;;1599:117;1755:2;1781:53;1826:7;1817:6;1806:9;1802:22;1781:53;:::i;:::-;1771:63;;1726:118;1377:474;;;;;:::o"
+          }
+        },
+        "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getValue\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"setValue\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"name\":\"unusedParam\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"value\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Contract with compiler warnings for testing\",\"kind\":\"dev\",\"methods\":{},\"title\":\"WarningsContract\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"WarningsContract.sol\":\"WarningsContract\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"WarningsContract.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title WarningsContract\\n * @dev Contract with compiler warnings for testing\\n */\\ncontract WarningsContract {\\n    uint256 public value;\\n    uint256 private unusedVariable;  // Warning: unused variable\\n    \\n    function setValue(uint256 x) public {\\n        value = x;\\n    }\\n    \\n    // Warning: function can be restricted to view\\n    function getValue() public returns (uint256) {\\n        return value;\\n    }\\n    \\n    // Warning: unused parameter\\n    function unusedParam(uint256 x, uint256 y) public {\\n        value = x;\\n    }\\n}\\n\",\"keccak256\":\"0x2c2436c3336b7a827ab98b0f76c6244c647a925884281220591c252ad058472f\",\"license\":\"MIT\"}},\"version\":1}"
+      }
+    }
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "component": "general",
+      "errorCode": "5667",
+      "formattedMessage": "Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.\n  --> WarningsContract.sol:22:37:\n   |\n22 |     function unusedParam(uint256 x, uint256 y) public {\n   |                                     ^^^^^^^^^\n\n",
+      "message": "Unused function parameter. Remove or comment out the variable name to silence this warning.",
+      "severity": "warning",
+      "sourceLocation": {
+        "end": 553,
+        "file": "WarningsContract.sol",
+        "start": 544
+      },
+      "type": "Warning"
+    },
+    {
+      "component": "general",
+      "errorCode": "2018",
+      "formattedMessage": "Warning: Function state mutability can be restricted to view\n  --> WarningsContract.sol:17:5:\n   |\n17 |     function getValue() public returns (uint256) {\n   |     ^ (Relevant source part starts here and spans across multiple lines).\n\n",
+      "message": "Function state mutability can be restricted to view",
+      "severity": "warning",
+      "sourceLocation": {
+        "end": 469,
+        "file": "WarningsContract.sol",
+        "start": 395
+      },
+      "type": "Warning"
+    }
+  ]
+}
