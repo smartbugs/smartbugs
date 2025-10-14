@@ -170,6 +170,12 @@ module = [
 ]
 ignore_missing_imports = true
 
+# Allow untyped function definitions in test files (standard pytest practice)
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
 # Pytest configuration
 [tool.pytest.ini_options]
 testpaths = ["tests"]

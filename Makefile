@@ -21,12 +21,21 @@ COV_MIN := 70
 COV_REPORT := term-missing
 
 # Phony targets (not actual files)
-.PHONY: help install test test-unit test-integration format lint typecheck check clean
+.PHONY: all help install test test-unit test-integration format lint typecheck check clean
 
-# Default target: show help
+# Default target: run all checks
+all: check
+	@echo ""
+	@echo "Tip: Run 'make help' to see all available commands"
+
+# Show help
 help:
 	@echo "SmartBugs Development Commands"
 	@echo "==============================="
+	@echo ""
+	@echo "Default:"
+	@echo "  make all              - Run all checks (same as 'make check')"
+	@echo "  make                  - Same as 'make all'"
 	@echo ""
 	@echo "Setup:"
 	@echo "  make install          - Install dependencies and set up virtual environment"
