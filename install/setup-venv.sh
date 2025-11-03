@@ -126,8 +126,8 @@ fi
 # Verify installation
 echo -e "\n${BLUE}Verifying installation...${NC}"
 
-# Test core packages
-python3 -c "import yaml; import colorama; import requests; import semantic_version; import docker; import cpuinfo" 2>/dev/null
+# Test core packages (use venv python)
+python -c "import yaml; import colorama; import requests; import semantic_version; import docker; import cpuinfo" 2>/dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✓${NC} Core dependencies verified"
 else
@@ -139,33 +139,33 @@ fi
 if [ "$DEV_MODE" = true ]; then
     echo -e "${BLUE}Verifying development tools...${NC}"
 
-    # Check pytest
-    if python3 -c "import pytest" 2>/dev/null; then
-        PYTEST_VERSION=$(python3 -c "import pytest; print(pytest.__version__)")
+    # Check pytest (use venv python)
+    if python -c "import pytest" 2>/dev/null; then
+        PYTEST_VERSION=$(python -c "import pytest; print(pytest.__version__)")
         echo -e "${GREEN}✓${NC} pytest ${PYTEST_VERSION}"
     else
         echo -e "${RED}✗${NC} pytest not available"
         exit 1
     fi
 
-    # Check pytest-cov
-    if python3 -c "import pytest_cov" 2>/dev/null; then
+    # Check pytest-cov (use venv python)
+    if python -c "import pytest_cov" 2>/dev/null; then
         echo -e "${GREEN}✓${NC} pytest-cov available"
     else
         echo -e "${RED}✗${NC} pytest-cov not available"
         exit 1
     fi
 
-    # Check pytest-mock
-    if python3 -c "import pytest_mock" 2>/dev/null; then
+    # Check pytest-mock (use venv python)
+    if python -c "import pytest_mock" 2>/dev/null; then
         echo -e "${GREEN}✓${NC} pytest-mock available"
     else
         echo -e "${RED}✗${NC} pytest-mock not available"
         exit 1
     fi
 
-    # Check pytest-timeout
-    if python3 -c "import pytest_timeout" 2>/dev/null; then
+    # Check pytest-timeout (use venv python)
+    if python -c "import pytest_timeout" 2>/dev/null; then
         echo -e "${GREEN}✓${NC} pytest-timeout available"
     else
         echo -e "${RED}✗${NC} pytest-timeout not available"
