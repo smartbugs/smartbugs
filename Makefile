@@ -57,13 +57,7 @@ help:
 
 # Install dependencies and set up virtual environment
 install:
-	@echo "Setting up virtual environment..."
-	@bash install/setup-venv.sh
-	@echo "Installing development dependencies..."
-	@$(VENV_ACTIVATE) && $(PIP) install --upgrade pip
-	@$(VENV_ACTIVATE) && $(PIP) install pytest pytest-cov pytest-mock pytest-timeout
-	@$(VENV_ACTIVATE) && $(PIP) install black ruff mypy
-	@echo "Installation complete!"
+	@bash install/setup-venv.sh --dev
 
 # Run all tests with coverage
 test:
