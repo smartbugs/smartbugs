@@ -804,7 +804,7 @@ class TestSarifSchemaValidation:
         sarif_doc = sb.sarif.sarify(sample_tool_config, findings)
 
         # Fetch SARIF 2.1.0 schema
-        schema_url = "https://json.schemastore.org/sarif-2.1.0.json"
+        schema_url = "https://json.schemastore.org/sarif-2.1.0"
         try:
             response = requests.get(schema_url, timeout=5)
             response.raise_for_status()
