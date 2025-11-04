@@ -107,7 +107,14 @@ else
         # Fallback to direct package installation if requirements file doesn't exist
         echo -e "${YELLOW}! Requirements file not found: $REQ_FILE${NC}"
         echo -e "${BLUE}Installing packages directly${NC}"
-        pip install pyyaml colorama requests semantic_version docker py-cpuinfo --quiet
+        pip install \
+            pyyaml \
+            colorama \
+            requests \
+            semantic_version \
+            docker \
+            py-cpuinfo \
+            --quiet
     else
         echo -e "${BLUE}Using requirements file: $(basename $REQ_FILE)${NC}"
         pip install -r "$REQ_FILE" --quiet
@@ -118,7 +125,13 @@ else
     # Install development dependencies if requested
     if [ "$DEV_MODE" = true ]; then
         echo -e "\n${BLUE}Installing development dependencies...${NC}"
-        pip install 'pytest>=7.4.0' 'pytest-cov>=4.1.0' 'pytest-mock>=3.11.1' 'pytest-timeout>=2.1.0' --quiet
+        pip install \
+            'pytest>=7.4.0' \
+            'pytest-cov>=4.1.0' \
+            'pytest-mock>=3.11.1' \
+            'pytest-timeout>=2.1.0' \
+            'jsonschema' \
+            --quiet
         echo -e "${GREEN}✓${NC} Development dependencies installed"
     fi
 fi
@@ -189,10 +202,13 @@ if [ "$DEV_MODE" = true ]; then
     echo -e "\n${BLUE}You can now run tests with:${NC}"
     echo -e "  source venv/bin/activate"
     echo -e "  pytest"
+    echo -e "or use 'make test'"
 else
     echo -e "Mode: ${GREEN}Production${NC}"
     echo -e "\n${YELLOW}Tip: Use --dev flag to install development dependencies${NC}"
 fi
 
-echo -e "\n${BLUE}To activate the virtual environment:${NC}"
+echo -e "\n${BLUE}You can now run the commands 'smartbugs', 'reparse' and 'results2csv' directly.${NC}"
+
+echo -e "\n${BLUE}For other activities, activate the virtual environment first:${NC}"
 echo -e "  source venv/bin/activate"
