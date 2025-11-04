@@ -64,7 +64,7 @@ echo -e "${GREEN}✓${NC} pip and wheel upgraded"
 pip install "poetry>=2.0.0"
 
 POETRY_VERSION=$(poetry --version)
-echo "${GREEN}✓${NC} Installed $POETRY_VERSION"
+echo -e "${GREEN}✓${NC} Installed ${POETRY_VERSION}"
 
 # Install dependencies
 if [ "$DEV_MODE" = true ]; then
