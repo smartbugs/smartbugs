@@ -118,7 +118,7 @@ else
     # Install development dependencies if requested
     if [ "$DEV_MODE" = true ]; then
         echo -e "\n${BLUE}Installing development dependencies...${NC}"
-        pip install pytest>=7.4.0 pytest-cov>=4.1.0 pytest-mock>=3.11.1 pytest-timeout>=2.1.0 --quiet
+        pip install 'pytest>=7.4.0' 'pytest-cov>=4.1.0' 'pytest-mock>=3.11.1' 'pytest-timeout>=2.1.0' --quiet
         echo -e "${GREEN}✓${NC} Development dependencies installed"
     fi
 fi
