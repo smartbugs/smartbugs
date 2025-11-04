@@ -3,7 +3,7 @@
 
 # Configuration
 PYTHON := python3
-VENV := venv
+VENV := .venv
 VENV_ACTIVATE := . $(VENV)/bin/activate
 PIP := $(VENV)/bin/pip
 PYTEST := $(VENV)/bin/pytest

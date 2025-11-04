@@ -4,7 +4,7 @@
 
 ```bash
 # Install test dependencies
-source venv/bin/activate
+source .venv/bin/activate
 bash install/setup-venv.sh --dev
 
 # Run all tests
@@ -105,7 +105,7 @@ Run specific markers: `pytest -m unit`
 
 ## Troubleshooting
 
-**Import errors?** Ensure venv is activated: `source venv/bin/activate`
+**Import errors?** Ensure venv is activated: `source .venv/bin/activate`
 
 **Tests not discovered?** Check file/function names start with `test_`
 

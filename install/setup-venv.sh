@@ -53,8 +53,8 @@ fi
 
 # Create virtual environment
 echo -e "\n${BLUE}Creating virtual environment...${NC}"
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 
 # Upgrade pip and install wheel
 echo -e "\n${BLUE}Upgrading pip and installing wheel...${NC}"
@@ -189,7 +189,7 @@ fi
 # Summary
 echo -e "\n${GREEN}=== Setup Complete ===${NC}"
 echo -e "Python version: ${GREEN}${PYTHON_VERSION}${NC}"
-echo -e "Virtual environment: ${GREEN}$(pwd)/venv${NC}"
+echo -e "Virtual environment: ${GREEN}$(pwd)/.venv${NC}"
 
 if [ "$USE_POETRY" = true ]; then
     echo -e "Package manager: ${GREEN}Poetry${NC}"
@@ -200,7 +200,7 @@ fi
 if [ "$DEV_MODE" = true ]; then
     echo -e "Mode: ${GREEN}Development (with test tools)${NC}"
     echo -e "\n${BLUE}You can now run tests with:${NC}"
-    echo -e "  source venv/bin/activate"
+    echo -e "  source .venv/bin/activate"
     echo -e "  pytest"
     echo -e "or use 'make test'"
 else
@@ -211,4 +211,4 @@ fi
 echo -e "\n${BLUE}You can now run the commands 'smartbugs', 'reparse' and 'results2csv' directly.${NC}"
 
 echo -e "\n${BLUE}For other activities, activate the virtual environment first:${NC}"
-echo -e "  source venv/bin/activate"
+echo -e "  source .venv/bin/activate"
