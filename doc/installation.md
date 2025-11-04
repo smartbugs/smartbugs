@@ -42,8 +42,6 @@
 
    The command `which smartbugs` should now display the path to the command.
 
-
 ## Windows
 
 See [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows).
-

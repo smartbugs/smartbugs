@@ -61,80 +61,20 @@ echo -e "\n${BLUE}Upgrading pip and installing wheel...${NC}"
 pip install --upgrade pip --quiet
 pip install wheel --quiet
 echo -e "${GREEN}✓${NC} pip and wheel upgraded"
+pip install "poetry>=2.0.0"
 
-# Determine installation method
-REPO_ROOT=$(cd "$(dirname "$0")/.." && pwd)
-USE_POETRY=false
-PYPROJECT_FILE="${REPO_ROOT}/pyproject.toml"
-
-if [ -f "$PYPROJECT_FILE" ]; then
-    echo -e "\n${BLUE}Detected pyproject.toml${NC}"
-
-    # Check if Poetry is available
-    if command -v poetry &> /dev/null; then
-        USE_POETRY=true
-        echo -e "${GREEN}✓${NC} Poetry is installed"
-        echo -e "${BLUE}Using Poetry for dependency management${NC}"
-    else
-        echo -e "${YELLOW}! Poetry not found${NC}"
-        echo -e "${BLUE}Falling back to pip installation${NC}"
-    fi
-fi
+POETRY_VERSION=$(poetry --version)
+echo "${GREEN}✓${NC} Installed $POETRY_VERSION"
 
 # Install dependencies
-if [ "$USE_POETRY" = true ]; then
-    # Install with Poetry
-    echo -e "\n${BLUE}Installing dependencies with Poetry...${NC}"
-    cd "$REPO_ROOT"
-
-    if [ "$DEV_MODE" = true ]; then
-        echo -e "${BLUE}Installing with development dependencies${NC}"
-        poetry install --with dev
-    else
-        echo -e "${BLUE}Installing production dependencies only${NC}"
-        poetry install --only main
-    fi
-
-    echo -e "${GREEN}✓${NC} Dependencies installed via Poetry"
+if [ "$DEV_MODE" = true ]; then
+    echo -e "${BLUE}Installing with development dependencies${NC}"
+    poetry install --with dev
 else
-    # Install with pip
-    echo -e "\n${BLUE}Installing dependencies with pip...${NC}"
-
-    # Determine requirements file based on Python version
-    REQ_FILE="${REPO_ROOT}/install/requirements-${PYTHON_MAJOR}.${PYTHON_MINOR}.txt"
-
-    if [ ! -f "$REQ_FILE" ]; then
-        # Fallback to direct package installation if requirements file doesn't exist
-        echo -e "${YELLOW}! Requirements file not found: $REQ_FILE${NC}"
-        echo -e "${BLUE}Installing packages directly${NC}"
-        pip install \
-            pyyaml \
-            colorama \
-            requests \
-            semantic_version \
-            docker \
-            py-cpuinfo \
-            --quiet
-    else
-        echo -e "${BLUE}Using requirements file: $(basename $REQ_FILE)${NC}"
-        pip install -r "$REQ_FILE" --quiet
-    fi
-
-    echo -e "${GREEN}✓${NC} Core dependencies installed"
-
-    # Install development dependencies if requested
-    if [ "$DEV_MODE" = true ]; then
-        echo -e "\n${BLUE}Installing development dependencies...${NC}"
-        pip install \
-            'pytest>=7.4.0' \
-            'pytest-cov>=4.1.0' \
-            'pytest-mock>=3.11.1' \
-            'pytest-timeout>=2.1.0' \
-            'jsonschema' \
-            --quiet
-        echo -e "${GREEN}✓${NC} Development dependencies installed"
-    fi
+    echo -e "${BLUE}Installing production dependencies only${NC}"
+    poetry install --only main
 fi
+echo -e "${GREEN}✓${NC} Dependencies installed via Poetry"
 
 # Verify installation
 echo -e "\n${BLUE}Verifying installation...${NC}"
@@ -190,12 +130,7 @@ fi
 echo -e "\n${GREEN}=== Setup Complete ===${NC}"
 echo -e "Python version: ${GREEN}${PYTHON_VERSION}${NC}"
 echo -e "Virtual environment: ${GREEN}$(pwd)/.venv${NC}"
-
-if [ "$USE_POETRY" = true ]; then
-    echo -e "Package manager: ${GREEN}Poetry${NC}"
-else
-    echo -e "Package manager: ${GREEN}pip${NC}"
-fi
+echo -e "Package manager: ${GREEN}${POETRY_VERSION}${NC}"
 
 if [ "$DEV_MODE" = true ]; then
     echo -e "Mode: ${GREEN}Development (with test tools)${NC}"
