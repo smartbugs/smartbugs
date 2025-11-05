@@ -1,0 +1,8 @@
+name: TestTool
+version: 1.0.0
+origin: https://github.com/test/testtool
+info: A simple test tool for SmartBugs testing
+image: smartbugs/testtool:1.0.0
+solidity:
+    command: "analyze $FILENAME --timeout $TIMEOUT"
+    solc: no

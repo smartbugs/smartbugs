@@ -1,21 +1,51 @@
-#Ignore results
-results/
-results*
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
 
-#Ignore DS_Store
+# Python bytecode and cache
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+tests/fixtures/contracts/*.compiled
+
+# Linting and type checking
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 
-#Ignore pycache
-*.pyc
-__pycache__
+# SmartBugs results
+results/
+results*
+results/*.*
 
-#Ignore vscode
-.vscode/
-
-#Ignore default remote datasets
+# Default remote datasets
 dataset/solidiFI
 
-#Ignore PyCharm files
-venv/
-.idea/
-results/*.*
+# Build and distribution
+*.spec
+*.manifest

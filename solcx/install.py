@@ -1,6 +1,7 @@
 """
 Install solc
 """
+
 import argparse
 import logging
 import os
@@ -16,7 +17,7 @@ import zipfile
 from base64 import b64encode
 from io import BytesIO
 from pathlib import Path
-from typing import Dict, List, Optional, Union
+from typing import Optional, Union
 
 import requests
 from semantic_version import SimpleSpec, Version
@@ -25,12 +26,13 @@ from solcx import wrapper
 from solcx.exceptions import (
     DownloadError,
     SolcInstallationError,
-    SolcNotInstalled,
+    SolcNotInstalledError,
     UnexpectedVersionError,
     UnexpectedVersionWarning,
     UnsupportedVersionError,
 )
 from solcx.utils.lock import get_process_lock
+
 
 try:
     from tqdm import tqdm
@@ -51,7 +53,7 @@ _default_solc_binary = None
 _target_os = None
 
 
-def set_target_os(platform: Optional[str] = None):
+def set_target_os(platform: Optional[str] = None) -> None:
     """
     Set the target platform for the solc binaries. If unset, it defaults to the current os.
     """
@@ -59,7 +61,9 @@ def set_target_os(platform: Optional[str] = None):
     if platform is None or platform in ("linux", "macosx", "windows"):
         _target_os = platform
     else:
-        raise OSError(f"Unsupported target OS: '{platform}' - py-solc-x supports 'linux', 'macosx', or 'windows'.")
+        raise OSError(
+            f"Unsupported target OS: '{platform}' - py-solc-x supports 'linux', 'macosx', or 'windows'."
+        )
 
 
 def _get_target_os() -> str:
@@ -133,7 +137,7 @@ def _get_which_solc() -> Path:
     return Path(response)
 
 
-def import_installed_solc(solcx_binary_path: Union[Path, str] = None) -> List[Version]:
+def import_installed_solc(solcx_binary_path: Union[Path, str] = None) -> list[Version]:
     """
     Search for and copy installed `solc` versions into the local installation folder.
 
@@ -201,7 +205,7 @@ def get_executable(
     """
     if not version:
         if not _default_solc_binary:
-            raise SolcNotInstalled(
+            raise SolcNotInstalledError(
                 "Solc is not installed. Call solcx.get_installable_solc_versions()"
                 " to view for available versions and solcx.install_solc() to install."
             )
@@ -212,7 +216,7 @@ def get_executable(
     if _get_target_os() == "windows":
         solc_bin = solc_bin.joinpath("solc.exe")
     if not solc_bin.exists():
-        raise SolcNotInstalled(
+        raise SolcNotInstalledError(
             f"solc {version} has not been installed."
             f" Use solcx.install_solc('{version}') to install."
         )
@@ -242,14 +246,14 @@ def set_solc_version(
         LOGGER.info(f"Using solc version {version}")
 
 
-def _select_pragma_version(pragma_string: str, version_list: List[Version]) -> Optional[Version]:
+def _select_pragma_version(pragma_string: str, version_list: list[Version]) -> Optional[Version]:
     pragma_string = re.sub(r"(\D)0+(\d)", r"\1\2", pragma_string)
     comparator_set_range = pragma_string.replace(" ", "").split("||")
     comparator_regex = re.compile(r"(([<>]?=?|\^)\d+\.\d+\.\d+)")
     version = None
 
     for comparator_set in comparator_set_range:
-        spec = SimpleSpec(",".join((i[0] for i in comparator_regex.findall(comparator_set))))
+        spec = SimpleSpec(",".join(i[0] for i in comparator_regex.findall(comparator_set)))
         selected = spec.select(version_list)
         if selected and (not version or version < selected):
             version = selected
@@ -264,7 +268,7 @@ def set_solc_version_pragma(
     Set the currently active `solc` binary based on a pragma statement.
 
     The newest installed version that matches the pragma is chosen. Raises
-    `SolcNotInstalled` if no installed versions match.
+    `SolcNotInstalledError` if no installed versions match.
 
     Arguments
     ---------
@@ -283,7 +287,7 @@ def set_solc_version_pragma(
     """
     version = _select_pragma_version(pragma_string, get_installed_solc_versions())
     if version is None:
-        raise SolcNotInstalled(
+        raise SolcNotInstalledError(
             f"No compatible solc version installed."
             f" Use solcx.install_solc_version_pragma('{version}') to install."
         )
@@ -332,7 +336,7 @@ def install_solc_pragma(
     return version
 
 
-def get_installable_solc_versions() -> List[Version]:
+def get_installable_solc_versions() -> list[Version]:
     """
     Return a list of all `solc` versions that can be installed by py-solc-x.
 
@@ -351,7 +355,7 @@ def get_installable_solc_versions() -> List[Version]:
     return version_list
 
 
-def get_compilable_solc_versions(headers: Optional[Dict] = None) -> List[Version]:
+def get_compilable_solc_versions(headers: Optional[dict] = None) -> list[Version]:
     """
     Return a list of all `solc` versions that can be compiled from source by py-solc-x.
 
@@ -404,7 +408,7 @@ def get_compilable_solc_versions(headers: Optional[Dict] = None) -> List[Version
     return sorted(version_list, reverse=True)
 
 
-def get_installed_solc_versions(solcx_binary_path: Union[Path, str] = None) -> List[Version]:
+def get_installed_solc_versions(solcx_binary_path: Union[Path, str] = None) -> list[Version]:
     """
     Return a list of currently installed `solc` versions.
 
@@ -597,8 +601,8 @@ def _download_solc(url: str, show_progress: bool) -> bytes:
     response = requests.get(url, stream=show_progress)
     if response.status_code == 404:
         raise DownloadError(
-            "404 error when attempting to download from {} - are you sure this"
-            " version of solidity is available?".format(url)
+            f"404 error when attempting to download from {url} - are you sure this"
+            " version of solidity is available?"
         )
     if response.status_code != 200:
         raise DownloadError(
@@ -609,7 +613,7 @@ def _download_solc(url: str, show_progress: bool) -> bytes:
 
     total_size = int(response.headers.get("content-length", 0))
     progress_bar = tqdm(total=total_size, unit="iB", unit_scale=True)
-    content = bytes()
+    content = b""
 
     for data in response.iter_content(1024, decode_unicode=True):
         progress_bar.update(len(data))

@@ -1,5 +1,7 @@
 import re
+
 import sb.parse_utils
+
 
 VERSION = "2022/11/11"
 
@@ -17,12 +19,16 @@ UNSUPPORTED_OP = re.compile(".*(java.lang.UnsupportedOperationException: [^)]*)\
 
 COMPLETED = re.compile("^(.*) (secure|insecure|unknown)$")
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
-    errors.discard('EXIT_CODE_1') # redundant: exit code 1 is reflected in other errors
-    if 'DOCKER_TIMEOUT' in fails or 'DOCKER_KILL_OOM' in fails:
-        fails.discard('exception (Killed)')
+    errors.discard("EXIT_CODE_1")  # redundant: exit code 1 is reflected in other errors
+    if "DOCKER_TIMEOUT" in fails or "DOCKER_KILL_OOM" in fails:
+        fails.discard("exception (Killed)")
     # "Unsupported Op" is a regular, checked-for errors, not an unexpected fails
     for e in list(fails):
         m = UNSUPPORTED_OP.match(e)
@@ -35,7 +41,7 @@ def parse(exit_code, log, output):
         if UNKNOWN_BYTECODE in line:
             infos.add(UNKNOWN_BYTECODE)
             continue
-        if sb.parse_utils.add_match(fails, line, FAILS):
+        if sb.parse_utils.add_match(fails, line, list(FAILS)):
             continue
         if line.endswith(" unknown"):
             analysis_complete = True
@@ -50,8 +56,8 @@ def parse(exit_code, log, output):
         fails.discard("exception (Segmentation fault)")
 
     if log and not analysis_complete:
-        infos.add('analysis incomplete')
+        infos.add("analysis incomplete")
         if not fails and not errors:
-            fails.add('execution failed')
+            fails.add("execution failed")
 
     return findings, infos, errors, fails

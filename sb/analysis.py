@@ -1,9 +1,36 @@
-import multiprocessing, random, time, datetime, os, random
-import sb.logging, sb.colors, sb.docker, sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
+import datetime
+import multiprocessing
+import os
+import random
+import time
+from multiprocessing.queues import Queue as MPQueue
+from typing import TYPE_CHECKING, Any, Optional
 
 
+if TYPE_CHECKING:
+    from multiprocessing.sharedctypes import Synchronized
 
-def task_log_dict(task, start_time, duration, exit_code, log, output, docker_args):
+import sb.cfg
+import sb.colors
+import sb.docker
+import sb.errors
+import sb.io
+import sb.logging
+import sb.parsing
+import sb.sarif
+import sb.settings
+import sb.tasks
+
+
+def task_log_dict(
+    task: sb.tasks.Task,
+    start_time: float,
+    duration: float,
+    exit_code: Optional[int],
+    log: Optional[list[str]],
+    output: Optional[bytes],
+    docker_args: dict[str, Any],
+) -> dict[str, Any]:
     return {
         "filename": task.relfn,
         "runid": task.settings.runid,
@@ -12,7 +39,8 @@ def task_log_dict(task, start_time, duration, exit_code, log, output, docker_arg
             "duration": duration,
             "exit_code": exit_code,
             "logs": sb.cfg.TOOL_LOG if log else None,
-            "output": sb.cfg.TOOL_OUTPUT if output else None},
+            "output": sb.cfg.TOOL_OUTPUT if output else None,
+        },
         "solc": str(task.solc_version) if task.solc_version else None,
         "tool": task.tool.dict(),
         "docker": docker_args,
@@ -20,8 +48,7 @@ def task_log_dict(task, start_time, duration, exit_code, log, output, docker_arg
     }
 
 
-
-def execute(task):
+def execute(task: sb.tasks.Task) -> float:
 
     # create result dir if it doesn't exist
     os.makedirs(task.rdir, exist_ok=True)
@@ -39,7 +66,8 @@ def execute(task):
         if task.relfn != old_fn or task.tool.id != old_toolid or task.tool.mode != old_mode:
             raise sb.errors.SmartBugsError(
                 f"Result directory {task.rdir} occupied by another task"
-                f" ({old_toolid}/{old_mode}, {old_fn})")
+                f" ({old_toolid}/{old_mode}, {old_fn})"
+            )
         if not task.settings.overwrite:
             return 0.0
 
@@ -62,17 +90,19 @@ def execute(task):
     for i in range(3):
         try:
             start_time = time.time()
-            exit_code,tool_log,tool_output,docker_args = sb.docker.execute(task)
+            exit_code, tool_log, tool_output, docker_args = sb.docker.execute(task)
             duration = time.time() - start_time
             break
-        except sb.errors.SmartBugsError as e:
+        except sb.errors.SmartBugsError:
             if i == 2:
                 raise
         # wait 3 to 8 minutes
-        time.sleep(random.randint(3,8)*60)
+        time.sleep(random.randint(3, 8) * 60)
 
     # write result to files
-    task_log = task_log_dict(task, start_time, duration, exit_code, tool_log, tool_output, docker_args)
+    task_log = task_log_dict(
+        task, start_time, duration, exit_code, tool_log, tool_output, docker_args
+    )
     if tool_log:
         sb.io.write_txt(fn_tool_log, tool_log)
     if tool_output:
@@ -80,12 +110,12 @@ def execute(task):
 
     # Write fn_task_log, to indicate that this task is done
     sb.io.write_json(fn_task_log, task_log)
-        
+
     # Parse output of tool
     # If parsing fails, run the reparse script; no need to redo the analysis
     if task.settings.json or task.settings.sarif:
         parsed_result = sb.parsing.parse(task_log, tool_log, tool_output)
-        sb.io.write_json(fn_parser_output,parsed_result)
+        sb.io.write_json(fn_parser_output, parsed_result)
 
         # Format parsed result as sarif
         if task.settings.sarif:
@@ -95,34 +125,45 @@ def execute(task):
     return duration
 
 
+def analyser(
+    logqueue: MPQueue,  # type: ignore[type-arg]
+    taskqueue: MPQueue,  # type: ignore[type-arg]
+    tasks_total: int,
+    tasks_started: "Synchronized[int]",  # type: ignore[type-arg]
+    tasks_completed: "Synchronized[int]",  # type: ignore[type-arg]
+    time_completed: "Synchronized[float]",  # type: ignore[type-arg]
+) -> None:
 
-def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, time_completed):
-        
-    def pre_analysis():
+    def pre_analysis() -> None:
         with tasks_started.get_lock():
             tasks_started_value = tasks_started.value + 1
             tasks_started.value = tasks_started_value
         sb.logging.message(
-            f"Starting task {tasks_started_value}/{tasks_total}: {sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}",
-            "", logqueue)
+            (
+                f"Starting task {tasks_started_value}/{tasks_total}: "
+                f"{sb.colors.tool(task.tool.id)} and {sb.colors.file(task.relfn)}"
+            ),
+            "",
+            logqueue,
+        )
 
-    def post_analysis(duration, no_processes, timeout):
+    def post_analysis(duration: float, no_processes: int, timeout: Optional[int]) -> None:
         with tasks_completed.get_lock(), time_completed.get_lock():
             tasks_completed_value = tasks_completed.value + 1
             tasks_completed.value = tasks_completed_value
             time_completed_value = time_completed.value + duration
             time_completed.value = time_completed_value
-        # estimated time to completion = time_so_far / completed_tasks * remaining_tasks / no_processes
+        # estimated time to completion =
+        # time_so_far / completed_tasks * remaining_tasks / no_processes
         completed_tasks = tasks_completed_value
         time_so_far = time_completed_value
         remaining_tasks = tasks_total - tasks_completed_value
         if timeout:
             # Assume that the first round of processes all ran into a timeout
             completed_tasks += no_processes
-            time_so_far += timeout*no_processes
+            time_so_far += timeout * no_processes
         etc = time_so_far / completed_tasks * remaining_tasks / no_processes
         etc_fmt = datetime.timedelta(seconds=round(etc))
-        duration_fmt = datetime.timedelta(seconds=round(duration))
         sb.logging.message(f"{tasks_completed_value}/{tasks_total} completed, ETC {etc_fmt}")
 
     while True:
@@ -135,12 +176,15 @@ def analyser(logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, t
             duration = execute(task)
         except sb.errors.SmartBugsError as e:
             duration = 0.0
-            sb.logging.message(sb.colors.error(f"While analyzing {task.absfn} with {task.tool.id}:\n{e}"), "", logqueue)
+            sb.logging.message(
+                sb.colors.error(f"While analyzing {task.absfn} with {task.tool.id}:\n{e}"),
+                "",
+                logqueue,
+            )
         post_analysis(duration, task.settings.processes, task.settings.timeout)
 
 
-
-def run(tasks, settings):
+def run(tasks: list[sb.tasks.Task], settings: sb.settings.Settings) -> None:
     # spawn processes (instead of forking), for identical behavior on Linux and MacOS
     mp = multiprocessing.get_context("spawn")
 
@@ -160,13 +204,13 @@ def run(tasks, settings):
 
         # accounting
         tasks_total = len(tasks)
-        tasks_started = mp.Value('L', 0)
-        tasks_completed = mp.Value('L', 0)
-        time_completed = mp.Value('f', 0.0)
+        tasks_started = mp.Value("L", 0)
+        tasks_completed = mp.Value("L", 0)
+        time_completed = mp.Value("f", 0.0)
 
         # start analysers
         shared = (logqueue, taskqueue, tasks_total, tasks_started, tasks_completed, time_completed)
-        analysers = [ mp.Process(target=analyser, args=shared) for _ in range(settings.processes) ]
+        analysers = [mp.Process(target=analyser, args=shared) for _ in range(settings.processes)]
         for a in analysers:
             a.start()
 
@@ -175,9 +219,8 @@ def run(tasks, settings):
             a.join()
 
         # good bye
-        duration = datetime.timedelta(seconds=round(time.time()-start_time))
+        duration = datetime.timedelta(seconds=round(time.time() - start_time))
         sb.logging.message(f"Analysis completed in {duration}.", "", logqueue)
 
     finally:
         sb.logging.stop(logqueue)
-

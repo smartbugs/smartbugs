@@ -1,10 +1,14 @@
-import os, time, cpuinfo, platform
+import os
+import platform
+
+import cpuinfo
+
 
 VERSION = "2.0.15"
 HOME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-SITE_CFG = os.path.join(HOME,"site_cfg.yaml")
+SITE_CFG = os.path.join(HOME, "site_cfg.yaml")
 TASK_LOG = "smartbugs.json"
-TOOLS_HOME = os.path.join(HOME,"tools")
+TOOLS_HOME = os.path.join(HOME, "tools")
 TOOL_CONFIG = "config.yaml"
 TOOL_FINDINGS = "findings.yaml"
 TOOL_PARSER = "parser.py"

@@ -1,5 +1,10 @@
-import io, tarfile, json, re
+import io
+import json
+import re
+import tarfile
+
 import sb.parse_utils
+
 
 VERSION = "2022/11/14"
 
@@ -93,11 +98,15 @@ FINDINGS = {
 
 LOCATION = re.compile("/sb/(.*?)#([0-9-]*)")
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
-    #for line in log:
+    # for line in log:
     #    pass
 
     try:
@@ -110,16 +119,20 @@ def parse(exit_code, log, output):
 
     for issue in issues:
         finding = {}
-        for i,f in ( ("check", "name"), ("impact", "impact" ),
-            ("confidence", "confidence"), ("description", "message")):
+        for i, f in (
+            ("check", "name"),
+            ("impact", "impact"),
+            ("confidence", "confidence"),
+            ("description", "message"),
+        ):
             finding[f] = issue[i]
-        elements = issue.get("elements",[])
+        elements = issue.get("elements", [])
         m = LOCATION.search(finding["message"])
-        finding["message"] = finding["message"].replace("/sb/","")
+        finding["message"] = finding["message"].replace("/sb/", "")
         if m:
             finding["filename"] = m[1]
             if "-" in m[2]:
-                start,end = m[2].split("-")
+                start, end = m[2].split("-")
                 finding["line"] = int(start)
                 finding["line_end"] = int(end)
             else:

@@ -1,7 +1,18 @@
-import multiprocessing, threading, os, sys, time, re
+import os
+import threading
+from multiprocessing.queues import Queue
+from typing import TYPE_CHECKING, Optional
+
 import sb.colors
 
-def logger_process(logfn, overwrite, queue, prolog):
+
+if TYPE_CHECKING:
+    pass
+
+
+def logger_process(
+    logfn: str, overwrite: bool, queue: "Queue[Optional[str]]", prolog: list[str]
+) -> None:
     log_parent_folder = os.path.dirname(logfn)
     if log_parent_folder:
         os.makedirs(log_parent_folder, exist_ok=True)
@@ -10,22 +21,31 @@ def logger_process(logfn, overwrite, queue, prolog):
         for log in prolog:
             print(log, file=logfile)
         while True:
-            log = queue.get()
-            if log is None:
+            log_item = queue.get()
+            if log_item is None:
                 break
-            print(log, file=logfile)
+            print(log_item, file=logfile)
 
-__prolog = []
 
-def start(logfn, append, queue):
+__prolog: list[str] = []
+logger: Optional[threading.Thread] = None
+
+
+def start(logfn: str, append: bool, queue: "Queue[Optional[str]]") -> None:
     global logger
-    logger = threading.Thread(target=logger_process, args=(logfn,append,queue,__prolog))
+    logger = threading.Thread(target=logger_process, args=(logfn, append, queue, __prolog))
     logger.start()
+
 
 quiet = False
 
-def message(con=None, log=None, queue=None):
-    if con and log=="":
+
+def message(
+    con: Optional[str] = None,
+    log: Optional[str] = None,
+    queue: Optional["Queue[Optional[str]]"] = None,
+) -> None:
+    if con and log == "":
         log = sb.colors.strip(con)
     if con and not quiet:
         print(con, flush=True)
@@ -35,7 +55,8 @@ def message(con=None, log=None, queue=None):
         else:
             __prolog.append(log)
 
-def stop(queue):
-    queue.put(None)
-    logger.join()
 
+def stop(queue: "Queue[Optional[str]]") -> None:
+    queue.put(None)
+    if logger is not None:
+        logger.join()

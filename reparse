@@ -9,5 +9,5 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 SB=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
-source "$SB/venv/bin/activate"
+source "$SB/.venv/bin/activate"
 PYTHONPATH="$SB:$PYTHONPATH" python -m sb.reparse $*

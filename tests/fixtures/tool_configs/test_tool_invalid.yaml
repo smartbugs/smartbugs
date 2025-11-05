@@ -1,0 +1,9 @@
+# Invalid config missing required fields
+version: 1.0.0
+info: Invalid config for error testing
+image: smartbugs/invalid:1.0.0
+solidity:
+    command: "analyze $FILENAME"
+    solc: invalid_boolean_value
+# Missing required 'name' field
+# Invalid 'solc' value (should be yes/no or true/false)

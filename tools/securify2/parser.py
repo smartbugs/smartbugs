@@ -1,47 +1,47 @@
 import sb.parse_utils
-import re
+
 
 VERSION: str = "2025-09-12"
 
-FINDINGS: set[str]  = {
-    "Transaction Order Affects Ether Amount", # 1
-    "Transaction Order Affects Ether Receiver", # 2
-    "Transaction Order Affects Execution of Ether Transfer", #3
-    "Unrestricted write to storage", #4
-    "Right-to-left-override pattern", #5
-    "State Variable Shadowing", #6
-    "Unrestricted call to selfdestruct", #7
-    "Uninitialized State Variable", #8 #9
-    "Delegatecall or callcode to unrestricted address", #10
-    "Gas-dependent Reentrancy", #11 DAO
-    "Reentrancy with constant gas", #11 DAO
-    "Incorrect ERC20 Interface", #12
-    "Incorrect ERC721 Interface", #13
-    "Dangerous Strict Equalities", #14
-    "Locked Ether", # 15
-    "No-Ether-Involved Reentrancy", #16
-    "Possibly unsafe usage of tx-origin", #17
-    "Unhandled Exception", #18
-    "Unrestricted Ether Flow", #19 
-    "Arbitrary Send", #19
-    "Uninitialized Local Variables", #20
-    "Unused Return Pattern", #21
-    "Shadowed Builtin", #22
-    "Shadowed Local Variable", #23
-    "Call to Default Constructor", #24
-    "External call in loop", #25
-    "Benign Reentrancy", #26
-    "Usage of block timestamp", #27
-    "Assembly Usage", #28
-    "ERC20 Indexed Pattern", #29
-    "Low Level Calls", #30
-    "Solidity Naming Convention", #31
-    "Solidity pragma directives", #32
-    "Unused State Variable", #33
-    "Too Many Digit Literals", #34
-    "Constable State Variables", #35
-    "External Calls of Functions", #36
-    "State variables default visibility", #37
+FINDINGS: set[str] = {
+    "Transaction Order Affects Ether Amount",  # 1
+    "Transaction Order Affects Ether Receiver",  # 2
+    "Transaction Order Affects Execution of Ether Transfer",  # 3
+    "Unrestricted write to storage",  # 4
+    "Right-to-left-override pattern",  # 5
+    "State Variable Shadowing",  # 6
+    "Unrestricted call to selfdestruct",  # 7
+    "Uninitialized State Variable",  # 8 #9
+    "Delegatecall or callcode to unrestricted address",  # 10
+    "Gas-dependent Reentrancy",  # 11 DAO
+    "Reentrancy with constant gas",  # 11 DAO
+    "Incorrect ERC20 Interface",  # 12
+    "Incorrect ERC721 Interface",  # 13
+    "Dangerous Strict Equalities",  # 14
+    "Locked Ether",  # 15
+    "No-Ether-Involved Reentrancy",  # 16
+    "Possibly unsafe usage of tx-origin",  # 17
+    "Unhandled Exception",  # 18
+    "Unrestricted Ether Flow",  # 19
+    "Arbitrary Send",  # 19
+    "Uninitialized Local Variables",  # 20
+    "Unused Return Pattern",  # 21
+    "Shadowed Builtin",  # 22
+    "Shadowed Local Variable",  # 23
+    "Call to Default Constructor",  # 24
+    "External call in loop",  # 25
+    "Benign Reentrancy",  # 26
+    "Usage of block timestamp",  # 27
+    "Assembly Usage",  # 28
+    "ERC20 Indexed Pattern",  # 29
+    "Low Level Calls",  # 30
+    "Solidity Naming Convention",  # 31
+    "Solidity pragma directives",  # 32
+    "Unused State Variable",  # 33
+    "Too Many Digit Literals",  # 34
+    "Constable State Variables",  # 35
+    "External Calls of Functions",  # 36
+    "State variables default visibility",  # 37
     "Repeated Call to Untrusted Contract",
     "Dos gas limit pattern",
     "Unused variables pattern",
@@ -58,11 +58,13 @@ FIELDS = {
     "Contract": "contract",
     "Line": "line",
     "Source": "source",
-    "Traceback (most recent call last)": "traceback"
+    "Traceback (most recent call last)": "traceback",
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
     """
     Analyse the result of the tool tun.
 
@@ -78,11 +80,13 @@ def parse(exit_code, log, output):
       analysis contains any analysis results worth reporting
     """
 
-    findings, infos = [], set()
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
-    finding, last_key = {}, None
-    for line in sb.parse_utils.discard_ANSI(log):
+    finding: dict = {}
+    last_key: str = ""
+    for line in sb.parse_utils.discard_ansi(log):
         parts = line.split(":")
         key = FIELDS.get(parts[0], None)
         if key and len(parts) > 1:
@@ -98,7 +102,11 @@ def parse(exit_code, log, output):
             last_key = key
         elif line.startswith("             ") and last_key == "message":
             finding["message"] += " " + val
-        elif line.startswith(">") and last_key == "source":
+        elif (
+            line.startswith(">")
+            and last_key == "source"
+            and isinstance(finding.get("source"), list)
+        ):
             finding["source"].append(line)
         else:
             if finding:

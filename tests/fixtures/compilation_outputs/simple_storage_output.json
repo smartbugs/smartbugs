@@ -1,0 +1,71 @@
+{
+  "compiler_version": "0.8.30+commit.73712a01",
+  "platform": "linux-x86_64",
+  "compiled_at": "2025-10-13T19:47:22Z",
+  "sources": {
+    "SimpleStorage.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/**\n * @title SimpleStorage\n * @dev Simple contract for testing basic storage operations\n */\ncontract SimpleStorage {\n    uint256 private storedData;\n\n    event DataStored(uint256 data);\n\n    function set(uint256 x) public {\n        storedData = x;\n        emit DataStored(x);\n    }\n\n    function get() public view returns (uint256) {\n        return storedData;\n    }\n}\n",
+      "id": 0
+    }
+  },
+  "contracts": {
+    "SimpleStorage.sol": {
+      "SimpleStorage": {
+        "abi": [
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "data",
+                "type": "uint256"
+              }
+            ],
+            "name": "DataStored",
+            "type": "event"
+          },
+          {
+            "inputs": [],
+            "name": "get",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+              }
+            ],
+            "name": "set",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ],
+        "evm": {
+          "bytecode": {
+            "object": "6080604052348015600e575f5ffd5b5061017a8061001c5f395ff3fe608060405234801561000f575f5ffd5b5060043610610034575f3560e01c806360fe47b1146100385780636d4ce63c14610054575b5f5ffd5b610052600480360381019061004d91906100f1565b610072565b005b61005c6100b2565b604051610069919061012b565b60405180910390f35b805f819055507f9455957c3b77d1d4ed071e2b469dd77e37fc5dfd3b4d44dc8a997cc97c7b3d49816040516100a7919061012b565b60405180910390a150565b5f5f54905090565b5f5ffd5b5f819050919050565b6100d0816100be565b81146100da575f5ffd5b50565b5f813590506100eb816100c7565b92915050565b5f60208284031215610106576101056100ba565b5b5f610113848285016100dd565b91505092915050565b610125816100be565b82525050565b5f60208201905061013e5f83018461011c565b9291505056fea264697066735822122045a17c4dcfabf1295b27b237ddf6fb6546d6e969451f55fa5b01da74f39fea6d64736f6c634300081e0033",
+            "sourceMap": "150:276:0:-:0;;;;;;;;;;;;;;;;;;;"
+          },
+          "deployedBytecode": {
+            "object": "608060405234801561000f575f5ffd5b5060043610610034575f3560e01c806360fe47b1146100385780636d4ce63c14610054575b5f5ffd5b610052600480360381019061004d91906100f1565b610072565b005b61005c6100b2565b604051610069919061012b565b60405180910390f35b805f819055507f9455957c3b77d1d4ed071e2b469dd77e37fc5dfd3b4d44dc8a997cc97c7b3d49816040516100a7919061012b565b60405180910390a150565b5f5f54905090565b5f5ffd5b5f819050919050565b6100d0816100be565b81146100da575f5ffd5b50565b5f813590506100eb816100c7565b92915050565b5f60208284031215610106576101056100ba565b5b5f610113848285016100dd565b91505092915050565b610125816100be565b82525050565b5f60208201905061013e5f83018461011c565b9291505056fea264697066735822122045a17c4dcfabf1295b27b237ddf6fb6546d6e969451f55fa5b01da74f39fea6d64736f6c634300081e0033",
+            "sourceMap": "150:276:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;249:90;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;345:79;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;249:90;303:1;290:10;:14;;;;319:13;330:1;319:13;;;;;;:::i;:::-;;;;;;;;249:90;:::o;345:79::-;381:7;407:10;;400:17;;345:79;:::o;88:117:1:-;197:1;194;187:12;334:77;371:7;400:5;389:16;;334:77;;;:::o;417:122::-;490:24;508:5;490:24;:::i;:::-;483:5;480:35;470:63;;529:1;526;519:12;470:63;417:122;:::o;545:139::-;591:5;629:6;616:20;607:29;;645:33;672:5;645:33;:::i;:::-;545:139;;;;:::o;690:329::-;749:6;798:2;786:9;777:7;773:23;769:32;766:119;;;804:79;;:::i;:::-;766:119;924:1;949:53;994:7;985:6;974:9;970:22;949:53;:::i;:::-;939:63;;895:117;690:329;;;;:::o;1025:118::-;1112:24;1130:5;1112:24;:::i;:::-;1107:3;1100:37;1025:118;;:::o;1149:222::-;1242:4;1280:2;1269:9;1265:18;1257:26;;1293:71;1361:1;1350:9;1346:17;1337:6;1293:71;:::i;:::-;1149:222;;;;:::o"
+          }
+        },
+        "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"data\",\"type\":\"uint256\"}],\"name\":\"DataStored\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Simple contract for testing basic storage operations\",\"kind\":\"dev\",\"methods\":{},\"title\":\"SimpleStorage\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"SimpleStorage.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title SimpleStorage\\n * @dev Simple contract for testing basic storage operations\\n */\\ncontract SimpleStorage {\\n    uint256 private storedData;\\n\\n    event DataStored(uint256 data);\\n\\n    function set(uint256 x) public {\\n        storedData = x;\\n        emit DataStored(x);\\n    }\\n\\n    function get() public view returns (uint256) {\\n        return storedData;\\n    }\\n}\\n\",\"keccak256\":\"0xfd69bb6cbdafbd0bbca0ad7e0fc375ffd79fa97fef738b96538544448d854858\",\"license\":\"MIT\"}},\"version\":1}"
+      }
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

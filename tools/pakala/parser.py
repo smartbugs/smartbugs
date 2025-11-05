@@ -1,20 +1,20 @@
-import re, ast
+import ast
+import re
+
 import sb.parse_utils
 
+
 VERSION = "2023/02/27"
-    
-FINDINGS = {
-    "delegatecall bug",
-    "selfdestruct bug",
-    "call bug"
-}
+
+FINDINGS = {"delegatecall bug", "selfdestruct bug", "call bug"}
 
 FINDING = re.compile(".*pakala\\.analyzer\\[.*\\] INFO Found (.* bug)\\.")
 COVERAGE = re.compile("Symbolic execution finished with coverage (.*).")
 FINISHED = re.compile("Nothing to report.|======> Bug found! Need .* transactions. <======")
 TRANSACTION = re.compile("Transaction [0-9]+, example solution:")
 
-def is_relevant(line):
+
+def is_relevant(line: str) -> bool:
     return not (
         line.startswith("Analyzing contract at")
         or line.startswith("Starting symbolic execution step...")
@@ -22,14 +22,20 @@ def is_relevant(line):
         or line.startswith("Outcomes: ")
     )
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
-    cleaned_log = filter(is_relevant, log)
+
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
+    cleaned_log = list(filter(is_relevant, log))
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
-    errors.discard("EXIT_CODE_1") # there will be an exception in fails anyway
+    errors.discard("EXIT_CODE_1")  # there will be an exception in fails anyway
 
     analysis_completed = False
     in_tx = False
+    tx_dict = ""
+    finding = None
     for line in log:
         if in_tx:
             if line:
@@ -38,9 +44,10 @@ def parse(exit_code, log, output):
                 in_tx = False
                 try:
                     tx = ast.literal_eval(tx_dict)
-                    if not "exploit" in finding:
+                    if finding and "exploit" not in finding:
                         finding["exploit"] = []
-                    finding["exploit"].append(tx)
+                    if finding:
+                        finding["exploit"].append(tx)
                 except Exception:
                     pass
 
@@ -52,7 +59,7 @@ def parse(exit_code, log, output):
 
         m = FINDING.match(line)
         if m:
-            finding = { "name": m[1] }
+            finding = {"name": m[1]}
             findings.append(finding)
             continue
 

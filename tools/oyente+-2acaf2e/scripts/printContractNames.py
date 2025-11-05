@@ -1,5 +1,7 @@
-import sys, json
+import json
+import sys
 from subprocess import PIPE, Popen
+
 
 filename = sys.argv[1]
 cmd = ["solc", "--standard-json", "--allow-paths", ".,/"]
@@ -7,7 +9,7 @@ settings = {
     "optimizer": {"enabled": False},
     "outputSelection": {
         "*": {
-            "*": [ "evm.deployedBytecode" ],
+            "*": ["evm.deployedBytecode"],
         }
     },
 }

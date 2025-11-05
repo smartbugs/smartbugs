@@ -1,18 +1,15 @@
-from typing import Dict, List
-
-
 class SolcError(Exception):
     message = "An error occurred during execution"
 
     def __init__(
         self,
         message: str = None,
-        command: List = None,
+        command: list = None,
         return_code: int = None,
         stdin_data: str = None,
         stdout_data: str = None,
         stderr_data: str = None,
-        error_dict: Dict = None,
+        error_dict: dict = None,
     ) -> None:
         if message is not None:
             self.message = message
@@ -35,7 +32,7 @@ class SolcError(Exception):
         ).strip()
 
 
-class ContractsNotFound(SolcError):
+class ContractsNotFoundError(SolcError):
     message = "No contracts found during compilation"
 
 
@@ -43,11 +40,11 @@ class SolcInstallationError(Exception):
     pass
 
 
-class UnknownOption(AttributeError):
+class UnknownOptionError(AttributeError):
     pass
 
 
-class UnknownValue(ValueError):
+class UnknownValueError(ValueError):
     pass
 
 
@@ -59,7 +56,7 @@ class UnsupportedVersionError(ValueError):
     pass
 
 
-class SolcNotInstalled(Exception):
+class SolcNotInstalledError(Exception):
     pass
 
 

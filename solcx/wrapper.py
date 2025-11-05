@@ -1,12 +1,13 @@
 import re
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any, Union
 
 from semantic_version import Version
 
 from solcx import install
-from solcx.exceptions import SolcError, UnknownOption, UnknownValue
+from solcx.exceptions import SolcError, UnknownOptionError, UnknownValueError
+
 
 # (major.minor.patch)(nightly)(commit)
 VERSION_REGEX = r"(\d+\.\d+\.\d+)(?:-nightly.\d+.\d+.\d+|)(\+commit.\w+)"
@@ -43,11 +44,11 @@ def _to_string(key: str, value: Any) -> str:
 def solc_wrapper(
     solc_binary: Union[Path, str] = None,
     stdin: str = None,
-    source_files: Union[List, Path, str] = None,
-    import_remappings: Union[Dict, List, str] = None,
+    source_files: Union[list, Path, str] = None,
+    import_remappings: Union[dict, list, str] = None,
     success_return_code: int = None,
     **kwargs: Any,
-) -> Tuple[str, str, List, subprocess.Popen]:
+) -> tuple[str, str, list, subprocess.Popen]:
     """
     Wrapper function for calling to `solc`.
 
@@ -96,7 +97,7 @@ def solc_wrapper(
         solc_binary = install.get_executable()
 
     solc_version = _get_solc_version(solc_binary)
-    command: List = [str(solc_binary)]
+    command: list = [str(solc_binary)]
 
     if success_return_code is None:
         success_return_code = 1 if "help" in kwargs else 0
@@ -146,12 +147,12 @@ def solc_wrapper(
         if stderrdata.startswith("unrecognised option"):
             # unrecognised option '<FLAG>'
             flag = stderrdata.split("'")[1]
-            raise UnknownOption(f"solc {solc_version} does not support the '{flag}' option'")
+            raise UnknownOptionError(f"solc {solc_version} does not support the '{flag}' option'")
         if stderrdata.startswith("Invalid option"):
             # Invalid option to <FLAG>: <OPTION>
             flag, option = stderrdata.split(": ")
             flag = flag.split(" ")[-1]
-            raise UnknownValue(
+            raise UnknownValueError(
                 f"solc {solc_version} does not accept '{option}' as an option for the '{flag}' flag"
             )
 

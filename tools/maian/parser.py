@@ -1,5 +1,7 @@
-import sb.parse_utils
 import re
+
+import sb.parse_utils
+
 
 VERSION = "2022/11/11"
 
@@ -7,7 +9,7 @@ FINDINGS = (
     "No Ether leak (no send)",
     "Ether leak",
     "Ether leak (verified)",
-#    "Accepts Ether",
+    #    "Accepts Ether",
     "No Ether lock (Ether refused)",
     "Ether lock (Ether accepted without send)",
     "Ether lock",
@@ -17,33 +19,37 @@ FINDINGS = (
 )
 
 
-FILENAME            = re.compile("\\[ \\] Compiling Solidity contract from the file (.*/.*) \\.\\.\\.")
-MISSING_ABI_BIN     = re.compile("\\[-\\] Some of the files is missing or empty: \\|(.*)\\.abi\\|=[0-9]+  \\|(.*)\\.bin\\|=[0-9]+")
-CONTRACT            = re.compile("\\[ \\] Contract address saved in file: (?:.*/)?(.*)\\.address")
-CANNOT_DEPLOY       = "[-] Cannot deploy the contract" # no bincode, e.g. interfaces in the source code
-NOT_PRODIGAL        = "[+] The code does not have CALL/SUICIDE, hence it is not prodigal"
-LEAK_FOUND          = "[-] Leak vulnerability found!"
-CANNOT_CONFIRM_BUG  = "[-] Cannot confirm the bug because the contract is not deployed on the blockchain."
+FILENAME = re.compile("\\[ \\] Compiling Solidity contract from the file (.*/.*) \\.\\.\\.")
+MISSING_ABI_BIN = re.compile(
+    "\\[-\\] Some of the files is missing or empty: \\|(.*)\\.abi\\|=[0-9]+  \\|(.*)\\.bin\\|=[0-9]+"
+)
+CONTRACT = re.compile("\\[ \\] Contract address saved in file: (?:.*/)?(.*)\\.address")
+CANNOT_DEPLOY = "[-] Cannot deploy the contract"  # no bincode, e.g. interfaces in the source code
+NOT_PRODIGAL = "[+] The code does not have CALL/SUICIDE, hence it is not prodigal"
+LEAK_FOUND = "[-] Leak vulnerability found!"
+CANNOT_CONFIRM_BUG = (
+    "[-] Cannot confirm the bug because the contract is not deployed on the blockchain."
+)
 CANNOT_CONFIRM_LEAK = "[ ] Confirming leak vulnerability on private chain ...     Cannot confirm the leak vulnerability"
-PRODIGAL_CONFIRMED  = "    Confirmed ! The contract is prodigal !"
-PRODIGAL_NOT_FOUND  = "[+] No prodigal vulnerability found"
-CAN_RECEIVE_ETHER   = "[+] Contract can receive Ether"
-CANNOT_RECEIVE_ETHER= "[-] No lock vulnerability found because the contract cannot receive Ether"
-IS_GREEDY           = "[-] The code does not have CALL/SUICIDE/DELEGATECALL/CALLCODE thus is greedy !"
-NO_LOCKING_FOUND    = "[+] No locking vulnerability found"
-LOCK_FOUND          = "[-] Locking vulnerability found!"
-NO_SELFDESTRUCT     = "[-] The code does not contain SUICIDE instructions, hence it is not vulnerable"
-SD_VULN_FOUND       = "[-] Suicidal vulnerability found!"
-CANNOT_CONFIRM_SDV  = "[ ] Confirming suicide vulnerability on private chain ...     Cannot confirm the suicide vulnerability"
-SD_VULN_CONFIRMED   = "    Confirmed ! The contract is suicidal !"
-SD_VULN_NOT_FOUND   = "[-] No suicidal vulnerability found"
-TRANSACTION         = re.compile("    -Tx\\[.+\\] :([0-9a-z ]+)")
+PRODIGAL_CONFIRMED = "    Confirmed ! The contract is prodigal !"
+PRODIGAL_NOT_FOUND = "[+] No prodigal vulnerability found"
+CAN_RECEIVE_ETHER = "[+] Contract can receive Ether"
+CANNOT_RECEIVE_ETHER = "[-] No lock vulnerability found because the contract cannot receive Ether"
+IS_GREEDY = "[-] The code does not have CALL/SUICIDE/DELEGATECALL/CALLCODE thus is greedy !"
+NO_LOCKING_FOUND = "[+] No locking vulnerability found"
+LOCK_FOUND = "[-] Locking vulnerability found!"
+NO_SELFDESTRUCT = "[-] The code does not contain SUICIDE instructions, hence it is not vulnerable"
+SD_VULN_FOUND = "[-] Suicidal vulnerability found!"
+CANNOT_CONFIRM_SDV = "[ ] Confirming suicide vulnerability on private chain ...     Cannot confirm the suicide vulnerability"
+SD_VULN_CONFIRMED = "    Confirmed ! The contract is suicidal !"
+SD_VULN_NOT_FOUND = "[-] No suicidal vulnerability found"
+TRANSACTION = re.compile("    -Tx\\[.+\\] :([0-9a-z ]+)")
 
 MAP_FINDINGS = (
     (NOT_PRODIGAL, "No Ether leak (no send)"),
     (LEAK_FOUND, "Ether leak"),
     (PRODIGAL_CONFIRMED, "Ether leak (verified)"),
-#    (CAN_RECEIVE_ETHER, "Accepts Ether"),
+    #    (CAN_RECEIVE_ETHER, "Accepts Ether"),
     (CANNOT_RECEIVE_ETHER, "No Ether lock (Ether refused)"),
     (IS_GREEDY, "Ether lock (Ether accepted without send)"),
     (LOCK_FOUND, "Ether lock"),
@@ -53,12 +59,21 @@ MAP_FINDINGS = (
 )
 
 INFOS = (
-#    (PRODIGAL_NOT_FOUND , "No Ether leak found"), # nothing detected
-#    (NO_LOCKING_FOUND, "No Ether lock found"), # nothing detected
-#    (SD_VULN_NOT_FOUND, "No destructibility found"), # nothing detected
-    (CANNOT_CONFIRM_BUG, "Cannot confirm vulnerability because contract not deployed on blockchain"),
-    (CANNOT_CONFIRM_LEAK, "Cannot confirm vulnerability because contract not deployed on blockchain"),
-    (CANNOT_CONFIRM_SDV, "Cannot confirm vulnerability because contract not deployed on blockchain"),
+    #    (PRODIGAL_NOT_FOUND , "No Ether leak found"), # nothing detected
+    #    (NO_LOCKING_FOUND, "No Ether lock found"), # nothing detected
+    #    (SD_VULN_NOT_FOUND, "No destructibility found"), # nothing detected
+    (
+        CANNOT_CONFIRM_BUG,
+        "Cannot confirm vulnerability because contract not deployed on blockchain",
+    ),
+    (
+        CANNOT_CONFIRM_LEAK,
+        "Cannot confirm vulnerability because contract not deployed on blockchain",
+    ),
+    (
+        CANNOT_CONFIRM_SDV,
+        "Cannot confirm vulnerability because contract not deployed on blockchain",
+    ),
 )
 
 ERRORS = (
@@ -76,16 +91,19 @@ ERRORS = (
 CHECK = re.compile("\\[ \\] Check if contract is (PRODIGAL|GREEDY|SUICIDAL)")
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     if fails:
-        errors.discard("EXIT_CODE_1") # redundant
+        errors.discard("EXIT_CODE_1")  # redundant
 
-    analysis_complete = {}
-    finding = {}
-    for line in sb.parse_utils.discard_ANSI(log):
-        if line.startswith("="*100):
+    analysis_complete: dict = {}
+    finding: dict = {}
+    for line in sb.parse_utils.discard_ansi(log):
+        if line.startswith("=" * 100):
             if finding.get("name"):
                 findings.append(finding)
             finding = {}
@@ -103,12 +121,12 @@ def parse(exit_code, log, output):
 
         m = MISSING_ABI_BIN.match(line)
         if m:
-            assert m[1]==m[2]
+            assert m[1] == m[2]
             finding["contract"] = m[1]
             continue
 
         found = False
-        for indicator,name in MAP_FINDINGS:
+        for indicator, name in MAP_FINDINGS:
             if line.startswith(indicator):
                 finding["name"] = name
                 found = True
@@ -117,7 +135,7 @@ def parse(exit_code, log, output):
             continue
 
         found = False
-        for indicator,info in INFOS:
+        for indicator, info in INFOS:
             if line.startswith(indicator):
                 infos.add(info)
                 found = True
@@ -130,7 +148,7 @@ def parse(exit_code, log, output):
 
         m = CHECK.match(line)
         if m:
-            k = (finding.get("filename"),finding.get("contract"))
+            k = (finding.get("filename"), finding.get("contract"))
             if k not in analysis_complete:
                 analysis_complete[k] = set()
             analysis_complete[k].add(m[1])

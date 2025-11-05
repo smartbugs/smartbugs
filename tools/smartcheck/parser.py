@@ -1,5 +1,6 @@
 import sb.parse_utils
 
+
 VERSION = "2022/11/14"
 
 FINDINGS = {
@@ -51,21 +52,28 @@ FINDINGS = {
     "SOLIDITY_WRONG_SIGNATURE",
 }
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
+
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
+    finding: dict = {}
     for line in log:
         i = line.find(": ")
         if i >= 0:
             k = line[0:i].strip()
-            v = line[i+2:].strip()
+            v = line[i + 2 :].strip()
             if v.isdigit():
-                v = int(v)
+                v_int = int(v)
+            else:
+                v_int = None
             if k.endswith("ruleId"):
-                finding = { "name": v }
+                finding = {"name": v}
                 findings.append(finding)
             elif k in ("severity", "line", "column"):
-                finding[k] = v
+                finding[k] = v_int if v_int is not None else v
 
     return findings, infos, errors, fails

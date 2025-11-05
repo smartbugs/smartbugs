@@ -1,9 +1,21 @@
-import os, argparse, multiprocessing, sys
-import sb.cfg, sb.io, sb.parsing, sb.sarif, sb.errors
+import argparse
+import multiprocessing
+import os
+import sys
+from typing import TYPE_CHECKING
+
+import sb.cfg
+import sb.errors
+import sb.io
+import sb.parsing
+import sb.sarif
 
 
+if TYPE_CHECKING:
+    from multiprocessing.queues import Queue
 
-def reparser(taskqueue, sarif, verbose):
+
+def reparser(taskqueue: "Queue[str | None]", sarif: bool, verbose: bool) -> None:
     while True:
         d = taskqueue.get()
         if d is None:
@@ -32,7 +44,7 @@ def reparser(taskqueue, sarif, verbose):
         if verbose:
             print(d)
         sbj = sb.io.read_json(fn_sbj)
-        log = sb.io.read_lines(fn_log) if os.path.exists(fn_log) else []
+        log = sb.io.read_lines(fn_log) if os.path.exists(fn_log) else None
         tar = sb.io.read_bin(fn_tar) if os.path.exists(fn_tar) else None
         try:
             parsed_result = sb.parsing.parse(sbj, log, tar)
@@ -45,28 +57,32 @@ def reparser(taskqueue, sarif, verbose):
             sb.io.write_json(fn_sarif, sarif_result)
 
 
-
-def main():
+def main() -> None:
     argparser = argparse.ArgumentParser(
         prog="reparse",
-        description=f"Parse the tool output ({sb.cfg.TOOL_LOG}, {sb.cfg.TOOL_OUTPUT}) into {sb.cfg.PARSER_OUTPUT}.")
-    argparser.add_argument("--sarif",
+        description=(
+            f"Parse the tool output ({sb.cfg.TOOL_LOG}, {sb.cfg.TOOL_OUTPUT}) "
+            f"into {sb.cfg.PARSER_OUTPUT}."
+        ),
+    )
+    argparser.add_argument(
+        "--sarif",
         action="store_true",
-        help=f"generate sarif output, {sb.cfg.SARIF_OUTPUT}, as well")
-    argparser.add_argument("--processes",
+        help=f"generate sarif output, {sb.cfg.SARIF_OUTPUT}, as well",
+    )
+    argparser.add_argument(
+        "--processes",
         type=int,
         metavar="N",
         default=1,
-        help="number of parallel processes (default 1)")
-    argparser.add_argument("-v",
-        action='store_true',
-        help="show progress")
-    argparser.add_argument("results",
-        nargs="+",
-        metavar="DIR",
-        help="directories containing the run results")
+        help="number of parallel processes (default 1)",
+    )
+    argparser.add_argument("-v", action="store_true", help="show progress")
+    argparser.add_argument(
+        "results", nargs="+", metavar="DIR", help="directories containing the run results"
+    )
 
-    if len(sys.argv)==1:
+    if len(sys.argv) == 1:
         argparser.print_help(sys.stderr)
         sys.exit(1)
 
@@ -74,7 +90,7 @@ def main():
 
     results = set()
     for r in args.results:
-        for path,_,files in os.walk(r):
+        for path, _, files in os.walk(r):
             if sb.cfg.TASK_LOG in files:
                 results.add(path)
 
@@ -87,14 +103,15 @@ def main():
     for _ in range(args.processes):
         taskqueue.put(None)
 
-    reparsers = [ mp.Process(target=reparser, args=(taskqueue,args.sarif,args.v)) for _ in range(args.processes) ]
+    reparsers = [
+        mp.Process(target=reparser, args=(taskqueue, args.sarif, args.v))
+        for _ in range(args.processes)
+    ]
     for r in reparsers:
         r.start()
     for r in reparsers:
         r.join()
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

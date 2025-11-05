@@ -1,0 +1,239 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "smartbugs"
+version = "2.0.15"
+description = "An extensible framework for analyzing Ethereum smart contracts using multiple security analysis tools"
+authors = ["SmartBugs Team <noreply@github.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/smartbugs/smartbugs"
+repository = "https://github.com/smartbugs/smartbugs"
+documentation = "https://github.com/smartbugs/smartbugs/wiki"
+keywords = ["ethereum", "smart-contracts", "security", "analysis", "blockchain"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+]
+packages = [
+    { include = "sb" },
+    { include = "solcx" },
+]
+
+[tool.poetry.scripts]
+smartbugs = "sb.cli:main"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+certifi = ">=2024.7.4"
+charset-normalizer = ">=2.1.1"
+colorama = ">=0.4.6"
+docker = ">=6.0.1"
+idna = ">=3.7"
+packaging = ">=21.3"
+py-cpuinfo = ">=9.0.0"
+pyparsing = ">=3.0.9"
+PyYAML = ">=6.0"
+requests = ">=2.32.4"
+semantic-version = ">=2.10.0"
+urllib3 = ">=2.5.0"
+websocket-client = ">=1.4.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.4.0"
+pytest-cov = ">=4.1.0"
+pytest-mock = ">=3.11.0"
+pytest-timeout = ">=2.1.0"
+black = ">=23.7.0"
+ruff = ">=0.0.285"
+mypy = ">=1.5.0"
+pre-commit = ">=3.3.0"
+types-PyYAML = ">=6.0.0"
+types-requests = ">=2.31.0"
+jsonschema = ">=4.0.0"
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = ">=7.4.0"
+pytest-cov = ">=4.1.0"
+pytest-mock = ">=3.11.0"
+pytest-timeout = ">=2.1.0"
+
+# Black formatter configuration
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | venv
+  | \.mypy_cache
+  | \.ruff_cache
+  | \.pytest_cache
+  | __pycache__
+  | build
+  | dist
+  | tools/.*/docker
+  | results
+)/
+'''
+
+# Ruff linter configuration
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".pytest_cache",
+    "__pycache__",
+    "build",
+    "dist",
+    "tools/*/docker",
+    "results",
+]
+
+[tool.ruff.lint]
+# Enable specific rule sets
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+]
+
+# Ignore specific rules that conflict with existing codebase
+ignore = [
+    "E501",  # Line too long (handled by black)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # Allow unused imports in __init__.py files
+
+[tool.ruff.lint.isort]
+known-first-party = ["sb", "solcx"]
+force-single-line = false
+lines-after-imports = 2
+
+# Mypy type-checking configuration
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = false
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = false
+warn_redundant_casts = true
+warn_unused_ignores = false
+warn_no_return = true
+follow_imports = "normal"
+ignore_missing_imports = true
+strict_optional = false
+show_error_codes = true
+
+exclude = [
+    "^venv/",
+    "^.venv/",
+    "^tools/",
+    "^results/",
+    "^build/",
+    "^dist/",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "docker.*",
+    "solcx.*",
+    "semantic_version.*",
+    "cpuinfo.*",
+]
+ignore_missing_imports = true
+
+# Allow untyped function definitions in test files (standard pytest practice)
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+# Pytest configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "-ra",
+    "--cov=sb",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+    "--cov-fail-under=70",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests that may take longer to run",
+]
+timeout = 300
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["sb"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/.venv/*",
+    "sb/__main__.py",
+    "sb/cli.py",
+    "sb/parse_utils.py",
+    "sb/reparse.py",
+    "sb/results2csv.py",
+]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+]
+show_missing = true
+precision = 2
+
+[tool.coverage.html]
+directory = "htmlcov"

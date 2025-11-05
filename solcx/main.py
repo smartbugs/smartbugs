@@ -1,11 +1,11 @@
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Optional, Union
 
 from semantic_version import Version
 
 from solcx import wrapper
-from solcx.exceptions import ContractsNotFound, SolcError
+from solcx.exceptions import ContractsNotFoundError, SolcError
 from solcx.install import get_executable
 
 
@@ -29,14 +29,14 @@ def get_solc_version(with_commit_hash: bool = False) -> Version:
 
 def compile_source(
     source: str,
-    output_values: List = None,
-    import_remappings: Union[Dict, List, str] = None,
+    output_values: list = None,
+    import_remappings: Union[dict, list, str] = None,
     base_path: Union[Path, str] = None,
-    allow_paths: Union[List, Path, str] = None,
+    allow_paths: Union[list, Path, str] = None,
     output_dir: Union[Path, str] = None,
     overwrite: bool = False,
     evm_version: str = None,
-    revert_strings: Union[List, str] = None,
+    revert_strings: Union[list, str] = None,
     metadata_hash: str = None,
     metadata_literal: bool = False,
     optimize: bool = False,
@@ -47,7 +47,7 @@ def compile_source(
     solc_binary: Union[str, Path] = None,
     solc_version: Version = None,
     allow_empty: bool = False,
-) -> Dict:
+) -> dict:
     """
     Compile a Solidity contract.
 
@@ -132,15 +132,15 @@ def compile_source(
 
 
 def compile_files(
-    source_files: Union[List, Path, str],
-    output_values: List = None,
-    import_remappings: Union[Dict, List, str] = None,
+    source_files: Union[list, Path, str],
+    output_values: list = None,
+    import_remappings: Union[dict, list, str] = None,
     base_path: Union[Path, str] = None,
-    allow_paths: Union[List, Path, str] = None,
+    allow_paths: Union[list, Path, str] = None,
     output_dir: Union[Path, str] = None,
     overwrite: bool = False,
     evm_version: str = None,
-    revert_strings: Union[List, str] = None,
+    revert_strings: Union[list, str] = None,
     metadata_hash: str = None,
     metadata_literal: bool = False,
     optimize: bool = False,
@@ -151,7 +151,7 @@ def compile_files(
     solc_binary: Union[str, Path] = None,
     solc_version: Version = None,
     allow_empty: bool = False,
-) -> Dict:
+) -> dict:
     """
     Compile one or more Solidity source files.
 
@@ -244,7 +244,7 @@ def _get_combined_json_outputs(solc_binary: Union[Path, str] = None) -> str:
     return combined_json_args.split(" ")[-1]
 
 
-def _parse_compiler_output(stdoutdata: str) -> Dict:
+def _parse_compiler_output(stdoutdata: str) -> dict:
     output = json.loads(stdoutdata)
 
     contracts = output.get("contracts", {})
@@ -261,14 +261,14 @@ def _parse_compiler_output(stdoutdata: str) -> Dict:
 
 
 def _compile_combined_json(
-    output_values: Optional[List] = None,
+    output_values: Optional[list] = None,
     solc_binary: Union[str, Path, None] = None,
     solc_version: Optional[Version] = None,
     output_dir: Union[str, Path, None] = None,
     overwrite: Optional[bool] = False,
     allow_empty: Optional[bool] = False,
     **kwargs: Any,
-) -> Dict:
+) -> dict:
 
     if solc_binary is None:
         solc_binary = get_executable(solc_version)
@@ -309,7 +309,7 @@ def _compile_combined_json(
     contracts = _parse_compiler_output(stdoutdata)
 
     if not contracts and not allow_empty:
-        raise ContractsNotFound(
+        raise ContractsNotFoundError(
             command=command,
             return_code=proc.returncode,
             stdout_data=stdoutdata,
@@ -319,15 +319,15 @@ def _compile_combined_json(
 
 
 def compile_standard(
-    input_data: Dict,
+    input_data: dict,
     base_path: str = None,
-    allow_paths: List = None,
+    allow_paths: list = None,
     output_dir: str = None,
     overwrite: bool = False,
     solc_binary: Union[str, Path] = None,
     solc_version: Version = None,
     allow_empty: bool = False,
-) -> Dict:
+) -> dict:
     """
     Compile Solidity contracts using the JSON-input-output interface.
 
@@ -362,7 +362,7 @@ def compile_standard(
         Compiler JSON output.
     """
     if not input_data.get("sources") and not allow_empty:
-        raise ContractsNotFound(
+        raise ContractsNotFoundError(
             "Input JSON does not contain any sources",
             stdin_data=json.dumps(input_data, sort_keys=True, indent=2),
         )
@@ -405,7 +405,7 @@ def compile_standard(
 
 def link_code(
     unlinked_bytecode: str,
-    libraries: Dict,
+    libraries: dict,
     solc_binary: Union[str, Path] = None,
     solc_version: Version = None,
 ) -> str:

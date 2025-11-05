@@ -1,26 +1,28 @@
-import sb.parse_utils # for sb.parse_utils.init(...)
-import io, tarfile    # if the output parameter is used
+import sb.parse_utils  # for sb.parse_utils.init(...)
+
 
 VERSION: str = "2025/09/19"
 
-FINDINGS: set[str]  = {
-    "Reentrancy Vulnerability", # ReentrancyCheck
-    "No whitelisting of calls proxied to another contract", # DefaultProxyDelegateCheck
-    "Non constructor function insufficiently restricts writes to to access control variables", # AccessControlLogicCheck
-    "Missing Access Control to Selfdestruct", # AccessControlSelfdestructCheck
-    "Missing Check of Return Value from external Call", # CallReturnCheck
-    "Message padding vulnerability found at ether transfer.", # AddressPaddingCheck
-    "Access control enforcement through transactions origin is vulnerable to phishing attacks ", # TXOriginCheck
-    "Result of expression can be over- or under-flown by external entity", # OverUnderflowCheck
-    "Write to uninitialized variable might unintentionally write to storage.", # LocalWriteToStorageCheck
-    "Operation may lead to a denial of essential contract function.", # DOSCheck
-    "Miners can manipulate program execution by selecting when to include the timestamp", # TimeManipulationCheck
-    "A miner can use others input to gain a benefit himself.", # FrontRunningCheck
-    "A deterministic or predictable value may be used as bad random number.", # BadRandomnessCheck
+FINDINGS: set[str] = {
+    "Reentrancy Vulnerability",  # ReentrancyCheck
+    "No whitelisting of calls proxied to another contract",  # DefaultProxyDelegateCheck
+    "Non constructor function insufficiently restricts writes to to access control variables",  # AccessControlLogicCheck
+    "Missing Access Control to Selfdestruct",  # AccessControlSelfdestructCheck
+    "Missing Check of Return Value from external Call",  # CallReturnCheck
+    "Message padding vulnerability found at ether transfer.",  # AddressPaddingCheck
+    "Access control enforcement through transactions origin is vulnerable to phishing attacks ",  # TXOriginCheck
+    "Result of expression can be over- or under-flown by external entity",  # OverUnderflowCheck
+    "Write to uninitialized variable might unintentionally write to storage.",  # LocalWriteToStorageCheck
+    "Operation may lead to a denial of essential contract function.",  # DOSCheck
+    "Miners can manipulate program execution by selecting when to include the timestamp",  # TimeManipulationCheck
+    "A miner can use others input to gain a benefit himself.",  # FrontRunningCheck
+    "A deterministic or predictable value may be used as bad random number.",  # BadRandomnessCheck
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
     """
     Analyse the result of the tool tun.
 
@@ -36,7 +38,8 @@ def parse(exit_code, log, output):
       analysis contains any analysis results worth reporting
     """
 
-    findings, infos = [], set()
+    findings: list[dict] = []
+    infos: set[str] = set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
     # Parses the output for common Python/Java/shell exceptions (returned in 'fails')
 
@@ -50,21 +53,21 @@ def parse(exit_code, log, output):
                 info = info[:-45]
             infos.add(info)
         elif line.startswith("File:"):
-            current_contract = line[5:].strip() # removes "File:"
+            current_contract = line[5:].strip()  # removes "File:"
         elif current_contract is not None:
-            if line.startswith('- '):
+            if line.startswith("- "):
                 # parse each line
-                msg = line[2:].strip() # removes "- "
+                msg = line[2:].strip()  # removes "- "
                 vulnerability, coded_location = msg.split(", ", 1)
                 location = parse_location(coded_location.strip())
 
                 finding = {
-                    'name': vulnerability,
-                    'filename': current_contract,
-                    'line': location['region']['start_line'],
-                    'line_end': location['region']['end_line'],
-                    'column': location['region']['start_column'],
-                    'column_end': location['region']['end_column'],
+                    "name": vulnerability,
+                    "filename": current_contract,
+                    "line": location["region"]["start_line"],
+                    "line_end": location["region"]["end_line"],
+                    "column": location["region"]["start_column"],
+                    "column_end": location["region"]["end_column"],
                 }
 
                 findings.append(finding)
@@ -109,22 +112,22 @@ def parse(exit_code, log, output):
     """
 
 
-def parse_location(coded_location):
-    index = coded_location.rfind(' ')
+def parse_location(coded_location: str) -> dict:
+    index = coded_location.rfind(" ")
 
     file = coded_location[:index].strip()
     region = coded_location[index:].strip()
 
-    start,end = region.split('-')
-    start_line,start_column = start.strip().split(':')
-    end_line,end_column = end.strip().split(':')
+    start, end = region.split("-")
+    start_line, start_column = start.strip().split(":")
+    end_line, end_column = end.strip().split(":")
 
     return {
-        'file': file,
-        'region': {
-            'start_line': start_line,
-            'start_column': start_column,
-            'end_line': end_line,
-            'end_column': end_column
-        }
+        "file": file,
+        "region": {
+            "start_line": start_line,
+            "start_column": start_column,
+            "end_line": end_line,
+            "end_column": end_column,
+        },
     }

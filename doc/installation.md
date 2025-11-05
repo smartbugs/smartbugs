@@ -4,7 +4,7 @@
 
 - Linux, MacOS or Windows
 - [Docker](https://docs.docker.com/install)
-- [Python3](https://www.python.org) (version 3.6 and above, 3.10+ recommended)
+- [Python3](https://www.python.org) (version 3.9 or above, 3.10+ recommended)
 
 ## Linux/MacOS/Unix
 
@@ -42,8 +42,6 @@
 
    The command `which smartbugs` should now display the path to the command.
 
-
 ## Windows
 
 See [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows).
-

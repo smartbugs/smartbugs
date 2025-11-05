@@ -1,7 +1,9 @@
 import io
 import json
 import tarfile
+
 import sb.parse_utils
+
 
 VERSION = "2022/12/31"
 
@@ -20,26 +22,35 @@ FINDINGS = {
 }
 
 
-def is_relevant(line):
+def is_relevant(line: str) -> bool:
     # Remove logo when parsing exceptions
-    return line and not (
-        line.startswith("     _") or
-        line.startswith("    /") or
-        line.startswith("   /") or
-        line.startswith("  /") or
-        line.startswith("  \\") )
+    return bool(
+        line
+        and not (
+            line.startswith("     _")
+            or line.startswith("    /")
+            or line.startswith("   /")
+            or line.startswith("  /")
+            or line.startswith("  \\")
+        )
+    )
 
 
-def parse(exit_code, log, output):
-    findings, infos = [], set()
-    cleaned_log = filter(is_relevant, log)
+def parse(
+    exit_code: int, log: list[str], output: bytes
+) -> tuple[list[dict], set[str], set[str], set[str]]:
+    findings: list[dict] = []
+    infos: set[str] = set()
+    cleaned_log = list(filter(is_relevant, log))
     errors, fails = sb.parse_utils.errors_fails(exit_code, cleaned_log)
 
-    for line in sb.parse_utils.discard_ANSI(log):
-        msg = [ field.strip() for field in line.split(" - ") ]
+    for line in sb.parse_utils.discard_ansi(log):
+        msg = [field.strip() for field in line.split(" - ")]
         if len(msg) >= 4 and msg[2] == "ERROR":
             e = msg[3]
-            if e.startswith("Validation error") and e.endswith("Sender account balance cannot afford txn (ignoring for now)"):
+            if e.startswith("Validation error") and e.endswith(
+                "Sender account balance cannot afford txn (ignoring for now)"
+            ):
                 e = "Validation error: Sender account balance cannot afford txn (ignoring for now)"
             errors.add(e)
 
@@ -50,14 +61,15 @@ def parse(exit_code, log, output):
                 results = json.load(file)
 
                 for contract, data in results.items():
-                    for errs in data['errors'].values():
+                    for errs in data["errors"].values():
                         for issue in errs:
                             finding = {
                                 "contract": contract,
                                 "name": issue["type"],
                                 "severity": issue["severity"],
                                 "line": issue["line"],
-                                "message": f"Classification: SWC-{issue['swc_id']}" }
+                                "message": f"Classification: SWC-{issue['swc_id']}",
+                            }
                             findings.append(finding)
         except Exception as e:
             fails.add(f"error parsing results: {e}")

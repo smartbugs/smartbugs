@@ -1,10 +1,11 @@
+import getpass
 import os
 import sys
 import tempfile
 import threading
-import getpass
 from pathlib import Path
-from typing import Any, Dict, Union
+from typing import Any, Union
+
 
 if sys.platform == "win32":
     import msvcrt
@@ -16,7 +17,7 @@ else:
     NON_BLOCKING = fcntl.LOCK_EX | fcntl.LOCK_NB
     BLOCKING = fcntl.LOCK_EX
 
-_locks: Dict[str, Union["UnixLock", "WindowsLock"]] = {}
+_locks: dict[str, Union["UnixLock", "WindowsLock"]] = {}
 _base_lock = threading.Lock()
 
 
@@ -37,7 +38,9 @@ class _ProcessLock:
 
     def __init__(self, lock_id: str) -> None:
         self._lock = threading.Lock()
-        self._lock_path = Path(tempfile.gettempdir()).joinpath(f".solcx-lock-{getpass.getuser()}-{lock_id}")
+        self._lock_path = Path(tempfile.gettempdir()).joinpath(
+            f".solcx-lock-{getpass.getuser()}-{lock_id}"
+        )
         self._lock_file = self._lock_path.open("w")
 
 
