@@ -1,3 +1,5 @@
+from typing import Optional
+
 import sb.parse_utils
 
 
@@ -7,7 +9,7 @@ FINDINGS = {"Ether leak"}
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)

@@ -1,5 +1,6 @@
 import re
 from collections.abc import Iterator
+from typing import Optional
 
 import sb.cfg  # for sb.parse_utils.init(...)
 import sb.parse_utils
@@ -70,7 +71,7 @@ def message_lines(log_iterator: Iterator[str]) -> str:
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
 
     findings: list[dict] = []

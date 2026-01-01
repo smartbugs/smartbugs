@@ -1,6 +1,7 @@
 import io
 import json
 import tarfile
+from typing import Optional
 
 import sb.parse_utils
 
@@ -9,7 +10,7 @@ VERSION = "2022/11/17"
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes, findings: set[str]
+        exit_code: Optional[int], log: list[str], output: Optional[bytes], findings: set[str],
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
     findings_list, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)

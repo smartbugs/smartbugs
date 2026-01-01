@@ -18,29 +18,17 @@ if TYPE_CHECKING:
 def cli_args(defaults: "Settings") -> tuple[Optional[str], dict[str, Any]]:
 
     def fmt_default(defval: Any) -> str:
+        # fmt: off
         formatted = (
-            "yes"
-            if isinstance(defval, bool) and defval
-            else (
-                "no"
-                if isinstance(defval, bool) and not defval
-                else (
-                    str(defval)
-                    if isinstance(defval, int)
-                    else (
-                        "none"
-                        if not defval
-                        else (
-                            " ".join([str(dv) for dv in defval])
-                            if isinstance(defval, list)
-                            or isinstance(defval, tuple)
-                            or isinstance(defval, set)
-                            else str(defval)
-                        )
-                    )
-                )
-            )
+            "yes" if isinstance(defval, bool) and defval else
+            "no" if isinstance(defval, bool) and not defval else
+            str(defval) if isinstance(defval, int) else
+            "none" if not defval else
+            " ".join([str(dv) for dv in defval])
+                if isinstance(defval, list) or isinstance(defval, tuple) or isinstance(defval, set) else
+            str(defval)
         )
+        # fmt: off
         return f" [default: {formatted}]"
 
     parser = argparse.ArgumentParser(

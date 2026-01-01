@@ -29,7 +29,7 @@ def get_parser(tool: dict[str, Any]) -> "ModuleType":
 
 
 def parse(
-    task_log: dict[str, Any], tool_log: Optional[list[str]], tool_output: Optional[bytes]
+    task_log: dict[str, Any], tool_log: list[str], tool_output: Optional[bytes]
 ) -> dict[str, Any]:
     """Parse tool execution results into standardized findings format.
 
@@ -45,7 +45,7 @@ def parse(
         Dictionary with findings, infos, errors, fails, and parser metadata
 
     Interface Contract:
-        - tool_log MUST be list[str] or None (parsers iterate: "for line in log")
+        - tool_log MUST be list[str] (parsers iterate: "for line in log")
         - tool_output MUST be bytes or None (parsers use: "io.BytesIO(output)")
         - Changing these types requires updating ALL tool parsers in tools/*/parser.py
     """
@@ -69,9 +69,8 @@ def parse(
                 finding["filename"].split("/")[-1]
             )
             finding["filename"] = filename
-    except Exception:
-        raise
-        # raise sb.errors.SmartBugsError(f"Parsing of results failed\n{e}")
+    except Exception as e:
+        raise sb.errors.SmartBugsError(f"Parsing of {tool['id']} results for {filename} failed\n{e}")
 
     return {
         "findings": findings,

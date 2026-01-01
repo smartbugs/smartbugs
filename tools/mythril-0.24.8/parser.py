@@ -1,4 +1,6 @@
 import json
+from typing import Optional
+
 import sb.parse_utils
 
 VERSION = "2025/08/29"
@@ -24,7 +26,9 @@ FINDINGS = {
 }
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
+) -> tuple[list[dict[str, object]], set[str], set[str], set[str]]:
 
     findings, infos = [], set()
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)

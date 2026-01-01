@@ -65,7 +65,7 @@ def add_match(matches: set[str], line: str, patterns: list[Pattern[str]]) -> boo
 
 
 def errors_fails(
-    exit_code: Optional[int], log: Optional[list[str]], log_expected: bool = True
+    exit_code: Optional[int], log: list[str], log_expected: bool = True
 ) -> tuple[set[str], set[str]]:
     errors = set()  # errors detected and handled by the tool
     fails = set()  # exceptions not caught by the tool, or outside events leading to abortion

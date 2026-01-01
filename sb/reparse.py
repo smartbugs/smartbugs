@@ -44,7 +44,7 @@ def reparser(taskqueue: "Queue[str | None]", sarif: bool, verbose: bool) -> None
         if verbose:
             print(d)
         sbj = sb.io.read_json(fn_sbj)
-        log = sb.io.read_lines(fn_log) if os.path.exists(fn_log) else None
+        log = sb.io.read_lines(fn_log) if os.path.exists(fn_log) else []
         tar = sb.io.read_bin(fn_tar) if os.path.exists(fn_tar) else None
         try:
             parsed_result = sb.parsing.parse(sbj, log, tar)

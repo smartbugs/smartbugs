@@ -27,7 +27,7 @@ def task_log_dict(
     start_time: float,
     duration: float,
     exit_code: Optional[int],
-    log: Optional[list[str]],
+    log: list[str],
     output: Optional[bytes],
     docker_args: dict[str, Any],
 ) -> dict[str, Any]:

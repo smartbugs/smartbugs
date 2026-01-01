@@ -1,3 +1,5 @@
+from typing import Optional
+
 import tools.oyente.parser as oyente
 
 
@@ -20,6 +22,6 @@ FINDINGS = {
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
     return oyente.parse(exit_code, log, output)

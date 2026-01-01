@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 import sb.parse_utils
 
@@ -47,7 +48,7 @@ def is_relevant(line: str) -> bool:
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
 
     findings: list[dict] = []
@@ -67,14 +68,12 @@ def parse(
         if sb.parse_utils.add_match(fails, line, list(FAILS)):
             continue
 
-        m = CONTRACT.match(line)
-        if m:
+        if m := CONTRACT.match(line):
             filename, contract = m[1], m[2]
             analysis_completed = False
             continue
 
-        m = WEAKNESS.match(line)
-        if m:
+        if m := WEAKNESS.match(line):
             weakness = m[1]
             if weakness == "Arithmetic bugs":
                 # Osiris: superfluous, will also report a sub-category
@@ -82,30 +81,26 @@ def parse(
             weaknesses.add((filename, contract, weakness, None, None))
             continue
 
-        m = LOCATION1.match(line)
-        if m:
+        if m := LOCATION1.match(line):
             fn, lineno, column, _, weakness = m[1], m[2], m[3], m[4], m[5]
             weaknesses.discard((filename, contract, weakness, None, None))
             weaknesses.add((filename, contract, weakness, int(lineno), int(column)))
             continue
 
-        m = LOCATION2.match(line)
-        if m:
+        if m := LOCATION2.match(line):
             fn, ct, lineno, column = m[1], m[2], m[3], m[4]
             assert fn == filename and ct == contract and weakness is not None
             weaknesses.discard((filename, contract, weakness, None, None))
             weaknesses.add((filename, contract, weakness, int(lineno), int(column)))
             continue
 
-        m = COVERAGE.match(line)
-        if m:
+        if m := COVERAGE.match(line):
             coverage = m[1]
             info = f"coverage {contract+' ' if contract else ''}{coverage}"
             infos.add(info)
             continue
 
-        m = COMPLETED.match(line)
-        if m:
+        if m:= COMPLETED.match(line):
             analysis_completed = True
             continue
 

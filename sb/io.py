@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 from typing import Any, Union
 
 import yaml
@@ -7,7 +6,7 @@ import yaml
 import sb.errors
 
 
-def read_yaml(fn: Union[str, Path]) -> dict[str, Any]:
+def read_yaml(fn: str) -> dict[str, Any]:
     try:
         with open(fn, encoding="utf-8") as f:
             # for an empty file, return empty dict, not NoneType
@@ -16,7 +15,7 @@ def read_yaml(fn: Union[str, Path]) -> dict[str, Any]:
         raise sb.errors.SmartBugsError(e)
 
 
-def read_json(fn: Union[str, Path]) -> Any:
+def read_json(fn: str) -> Any:
     try:
         with open(fn, encoding="utf-8") as f:
             return json.load(f)
@@ -24,7 +23,7 @@ def read_json(fn: Union[str, Path]) -> Any:
         raise sb.errors.SmartBugsError(e)
 
 
-def write_json(fn: Union[str, Path], output: Any) -> None:
+def write_json(fn: str, output: Any) -> None:
     try:
         j = json.dumps(output, sort_keys=True, indent=4)
         with open(fn, "w", encoding="utf-8") as f:
@@ -33,7 +32,7 @@ def write_json(fn: Union[str, Path], output: Any) -> None:
         raise sb.errors.SmartBugsError(e)
 
 
-def read_lines(fn: Union[str, Path]) -> list[str]:
+def read_lines(fn: str) -> list[str]:
     try:
         with open(fn, encoding="utf-8") as f:
             return f.read().splitlines()
@@ -41,7 +40,7 @@ def read_lines(fn: Union[str, Path]) -> list[str]:
         raise sb.errors.SmartBugsError(e)
 
 
-def write_txt(fn: Union[str, Path], output: Union[str, list[str]]) -> None:
+def write_txt(fn: str, output: Union[str, list[str]]) -> None:
     try:
         with open(fn, "w", encoding="utf-8") as f:
             if isinstance(output, str):
@@ -53,7 +52,7 @@ def write_txt(fn: Union[str, Path], output: Union[str, list[str]]) -> None:
         raise sb.errors.SmartBugsError(e)
 
 
-def read_bin(fn: Union[str, Path]) -> bytes:
+def read_bin(fn: str) -> bytes:
     try:
         with open(fn, "rb") as f:
             return f.read()
@@ -61,7 +60,7 @@ def read_bin(fn: Union[str, Path]) -> bytes:
         raise sb.errors.SmartBugsError(e)
 
 
-def write_bin(fn: Union[str, Path], output: bytes) -> None:
+def write_bin(fn: str, output: bytes) -> None:
     try:
         with open(fn, "wb") as f:
             f.write(output)

@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 import sb.parse_utils
 
@@ -47,7 +48,7 @@ def is_relevant(line: str) -> bool:
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
 
     findings: list[dict] = []

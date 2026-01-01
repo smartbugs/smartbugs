@@ -411,8 +411,9 @@ def parse(exit_code, log, output):
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
-            with pytest.raises(AssertionError):
+            with pytest.raises(sb.errors.SmartBugsError) as exc_info:
                 sb.parsing.parse(sample_task_log, None, None)
+            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(exc_info.value)
 
     def test_parse_no_filename_in_finding(self, sample_task_log: dict, tmp_path: Path):
         """Test that findings without filename field are handled correctly."""
@@ -761,9 +762,9 @@ def parse(exit_code, log, output):
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
-            # Exception should propagate (not caught by parse function)
-            with pytest.raises(RuntimeError) as exc_info:
+            with pytest.raises(sb.errors.SmartBugsError) as exc_info:
                 sb.parsing.parse(sample_task_log, None, None)
+            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(exc_info.value)
             assert "Parser internal error" in str(exc_info.value)
 
     def test_parse_parser_returns_wrong_type(self, sample_task_log: dict, tmp_path: Path):
@@ -784,8 +785,10 @@ def parse(exit_code, log, output):
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
-            with pytest.raises(ValueError):
+            with pytest.raises(sb.errors.SmartBugsError) as exc_info:
                 sb.parsing.parse(sample_task_log, None, None)
+            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(exc_info.value)
+            assert "not enough values to unpack" in str(exc_info.value)
 
     def test_get_parser_import_error(self, tmp_path: Path):
         """Test handling when parser module has import errors."""

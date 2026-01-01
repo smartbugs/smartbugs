@@ -1,6 +1,7 @@
 import io
 import json
 import tarfile
+from typing import Optional
 
 import sb.parse_utils
 
@@ -20,7 +21,7 @@ FINDINGS = {
 
 
 def parse(
-    exit_code: int, log: list[str], output: bytes
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
 ) -> tuple[list[dict], set[str], set[str], set[str]]:
     findings_set: set[str] = set()
     infos: set[str] = set()
