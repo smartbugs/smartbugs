@@ -4,7 +4,7 @@
 
 - Linux, MacOS or Windows
 - [Docker](https://docs.docker.com/install)
-- [Python3](https://www.python.org) (version 3.9 or above, 3.10+ recommended)
+- [Python3](https://www.python.org) (version 3.10 or above)
 
 ## Linux/MacOS/Unix
 

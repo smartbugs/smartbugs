@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Enhanced setup script for SmartBugs virtual environment
-# Supports Python >= 3.9, Poetry, and development dependencies
+# Supports Python >= 3.10, Poetry, and development dependencies
 
 set -e  # Exit on error
 
@@ -44,8 +44,8 @@ PYTHON_MINOR=$(python3 -c 'import sys; print(sys.version_info.minor)')
 
 echo -e "Found Python ${GREEN}${PYTHON_VERSION}${NC}"
 
-if [ "$PYTHON_MAJOR" -lt 3 ] || ([ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 9 ]); then
-    echo -e "${RED}Error: Python 3.9 or higher is required${NC}"
+if [ "$PYTHON_MAJOR" -lt 3 ] || ([ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 10 ]); then
+    echo -e "${RED}Error: Python 3.10 or higher is required${NC}"
     echo -e "Current version: Python ${PYTHON_VERSION}"
     echo -e "Please upgrade Python and try again"
     exit 1
