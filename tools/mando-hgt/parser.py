@@ -2,7 +2,7 @@ import sb.parse_utils # for sb.parse_utils.init(...)
 import io, tarfile    # if the output parameter is used
 import json           # to parse the Result JSON
 import re             # to match the Result line
-from typing import List, Dict, Any, Set, Tuple
+from typing import Optional
 
 VERSION: str = "2023/08/01"
 """identify the version of the parser, e.g. '2022/08/15'"""
@@ -13,7 +13,9 @@ FINDINGS: set[str] = {"arithmetic", "reentrancy", "access_control",
 """set of strings: all possible findings, of which 'findings' below will be a subset"""
 
 
-def parse(exit_code, log, output):
+def parse(
+    exit_code: Optional[int], log: list[str], output: Optional[bytes]
+) -> tuple[list[dict[str, object]], set[str], set[str], set[str]]:
     """
     Analyse the result of the tool tun.
 
