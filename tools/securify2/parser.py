@@ -87,7 +87,7 @@ def parse(
     errors, fails = sb.parse_utils.errors_fails(exit_code, log)
 
     finding: dict = {}
-    last_key: str = ""
+    last_key: str = None
     for line in sb.parse_utils.discard_ansi(log):
         parts = line.split(":")
         key = FIELDS.get(parts[0], None)
