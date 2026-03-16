@@ -7,7 +7,15 @@
 
 
 SmartBugs is an extensible platform with a uniform interface to tools
-that analyse blockchain programs for weaknesses and other properties.
+that analyse blockchain programs for weaknesses and other properties,
+described in the <a href="https://arxiv.org/pdf/2306.05057.pdf">paper</a>
+```
+Monika di Angelo, Thomas Durieux, João F. Ferreira, Gernot Salzer:
+"SmartBugs 2.0: An Execution Framework for Weakness Detection in Ethereum Smart Contracts",
+in Proc. 38th IEEE/ACM International Conference on Automated Software Engineering (ASE),
+pages 2102-2105, IEEE Computer Society, 2023.
+```
+
 
 ## Features
 
