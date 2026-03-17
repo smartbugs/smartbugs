@@ -1,82 +1,199 @@
 accessible-selfdestruct:
     classification: SWC-106, DASP-2
+    descr_short: Contract can be destructed by anyone in $FUNC.
+
 arbitrary-low-level-call:
     classification: SWC-112, DASP-10
-array-length-outside-loop: {}
-bad-transferfrom-access-control: {}
+    descr_short: An attacker may perform call() to an arbitrary address with controlled calldata. Target: Auctus Options, Starstream Finance, BasketDAO, Li Finance
+
+array-length-outside-loop:
+    descr_short: Caching the array length outside a loop saves reading it on each iteration, as long as the array's length is not changed during the loop.
+
+bad-transferfrom-access-control:
+    classification: DASP-2
+    descr_short: Funds approved by users can be stolen because of improper access control to a transferFrom function.
+
 balancer-readonly-reentrancy-getpooltokens:
     classification: SWC-107, DASP-1
+    descr_short: getPoolTokens() call on a Balancer pool is not protected from the read-only reentrancy. Target: Balancer
+
 balancer-readonly-reentrancy-getrate:
     classification: SWC-107, DASP-1
+    descr_short: getRate() call on a Balancer pool is not protected from the read-only reentrancy. Target: Balancer
+
 basic-arithmetic-underflow:
     classification: SWC-101, DASP-3
+    descr_short: Possible arithmetic underflow. Target: Umbrella Network, Remittance Token
+
 basic-oracle-manipulation:
     classification: SWC-101, DASP-3
+    descr_short: getSharePrice() can be manipulated via flashloan. Target: Onering Finance, Deus Finance
+
 compound-borrowfresh-reentrancy:
     classification: SWC-107, DASP-1
-compound-precision-loss: {}
+    descr_short: Function borrowFresh() in Compound performs state update after doTransferOut(). Target: Compound, Ola Finance, Hundred Finance, Agave
+
+compound-precision-loss:
+    descr_short: In Compound forks if there is a market with totalSupply = 0 and collateralFactor != 0 a precision loss attack is possible if redeemAmount is taken from the arguments of redeemFresh(). Target: Hundred Finance, Midas Finance, Onyx Protocol
+
 compound-sweeptoken-not-restricted:
     classification: SWC-105, DASP-2
+    descr_short: Function sweepToken is allowed to be called by anyone. Target: TUSD, Compound
+
 curve-readonly-reentrancy:
     classification: SWC-107, DASP-1
+    descr_short: get_virtual_price() call on a Curve pool is not protected from the read-only reentrancy. Target: Curve
+
 delegatecall-to-arbitrary-address:
     classification: SWC-112, DASP-10
+    descr_short: An attacker may perform delegatecall() to an arbitrary address.
+
 encode-packed-collision:
     classification: SWC-133, DASP-1
-erc20-public-burn: {}
-erc20-public-transfer: {}
+    descr_short: Hash collision with variable length arguments in abi.encodePacked.
+
+erc20-public-burn:
+    classification: DASP-2
+    descr_short: Anyone can burn tokens of other accounts. Target: HospoWise
+
+erc20-public-transfer:
+    classification: DASP-2
+    descr_short: Custom ERC20 implementation exposes _transfer() as public. Target: Creat Future
+
 erc677-reentrancy:
     classification: SWC-107, DASP-1
-erc721-arbitrary-transferfrom: {}
+    descr_short: ERC677 callAfterTransfer() reentrancy. Target: Ola Finance
+
+erc721-arbitrary-transferfrom:
+    classification: DASP-2
+    descr_short: Custom ERC721 implementation lacks access control checks in _transfer(). Target: Distortion Genesis
+
 erc721-reentrancy:
     classification: SWC-107, DASP-1
+    descr_short: ERC721 onERC721Received() reentrancy. Target: Hype Bears
+
 erc777-reentrancy:
     classification: SWC-107, DASP-1
+    descr_short: ERC777 tokensReceived() reentrancy. Target: Bacon Protocol
+
 exact-balance-check:
     classification: SWC-132
-gearbox-tokens-path-confusion: {}
-incorrect-use-of-blockhash: {}
-inefficient-state-variable-increment: {}
-init-variables-with-default-value: {}
+    descr_short: Testing the balance of an account as a basis for some action has risks associated with unexpected receipt of ether or another token, including tokens deliberately transfered to cause such tests to fail, as an MEV attack.
+
+gearbox-tokens-path-confusion:
+    descr_short: UniswapV3 adapter implemented incorrect extraction of path parameters. Target: Gearbox
+
+incorrect-use-of-blockhash:
+    descr_short: blockhash(block.number) and blockhash(block.number + N) always returns 0.
+
+inefficient-state-variable-increment:
+    descr_short: += costs more gas than = + for state variables.
+
+init-variables-with-default-value:
+    descr_short: Explicitly initializing a variable with its default value costs unnecessary gas.
+
 keeper-network-oracle-manipulation:
     classification: SWC-101, DASP-3
-missing-assignment: {}
-msg-value-multicall: {}
+    descr_short: Keep3rV2.current() call has high data freshness, but it has low security, an exploiter simply needs to manipulate 2 data points to be able to impact the feed. Target: Inverse Finance
+
+missing-assignment:
+    descr_short: Meaningless statement that does not change any values could be a sign of missed security checks or other important changes.
+
+msg-value-multicall:
+    descr_short: Function with constant msg.value can be called multiple times. Target: Sushiswap
+
 no-bidi-characters:
     classification: SWC-130
-non-optimal-variables-swap: {}
-non-payable-constructor: {}
-no-slippage-check: {}
-olympus-dao-staking-incorrect-call-order: {}
+    descr_short: The code must not contain any of Unicode Direction Control Characters.
+
+non-optimal-variables-swap:
+    descr_short: Consider swapping variables using ($VAR1, $VAR2) = ($VAR2, $VAR1) to save gas.
+
+non-payable-constructor:
+    descr_short: Consider making constructor payable to save gas.
+
+no-slippage-check:
+    descr_short: No slippage check in a Uniswap v2/v3 trade.
+
+olympus-dao-staking-incorrect-call-order:
+    descr_short: The order of calling the transferFrom() and rebase() functions is incorrect in Olympus DAO forks. Target: OlympusDAO, FloorDAO, Heavens Gate, Jump Farm, QuantumWN
+
 openzeppelin-ecdsa-recover-malleable:
     classification: SWC-117
+    descr_short: Potential signature malleability. Target: OpenZeppelin
+
 oracle-price-update-not-restricted:
     classification: DASP-2
-oracle-uses-curve-spot-price: {}
+    descr_short: Oracle price data can be submitted by anyone. Target: Rikkei Finance, Aave
+
+oracle-uses-curve-spot-price:
+    descr_short: Oracle uses the get_p() Curve pool function which can be manipulated via flashloan to calculate the asset price. Target: UwU
+
 proxy-storage-collision:
     classification: SWC-124, DASP-2	
-public-transfer-fees-supporting-tax-tokens: {}
-redacted-cartel-custom-approval-bug: {}
+    descr_short: Proxy declares a state var that may override a storage slot of the implementation. Target: Audius
+
+public-transfer-fees-supporting-tax-tokens:
+    descr_short: public _transferFeesSupportingTaxTokens() without any modificators. Target: LeetSwap
+
+redacted-cartel-custom-approval-bug:
+    descr_short: transferFrom() can steal allowance of other accounts. Target: Redacted Cartel
+
 rigoblock-missing-access-control:
     classification: DASP-2
+    descr_short: setMultipleAllowances() is missing onlyOwner modifier. Target: RigoBlock
+
 sense-missing-oracle-access-control:
     classification: DASP-2
-state-variable-read-in-a-loop: {}
-superfluid-ctx-injection: {}
-tecra-coin-burnfrom-bug: {}
-thirdweb-vulnerability: {}
+    descr_short: Oracle update is not restricted in onSwap(), rule by Arbaz Kiraak. Target: Sense Finance
+
+state-variable-read-in-a-loop:
+    descr_short: Replace state variable reads and writes within loops with local variable reads and writes.
+
+superfluid-ctx-injection:
+    descr_short: A specially crafted calldata may be used to impersonate other accounts. Target: Superfluid
+
+tecra-coin-burnfrom-bug:
+    descr_short: Parameter "from" is checked at incorrect position in "_allowances" mapping. Target: Tecra Coin
+
+thirdweb-vulnerability:
+    descr_short: In contracts that support Multicall and ERC2771Context an Arbitrary Address Spoofing attack is possible. Target: Swopple Token, TIME Token, NAME Token, HXA Token
+
 uniswap-callback-not-protected:
     classification: DASP-2
+    descr_short: Uniswap callback is not protected.
+
 uniswap-v4-callback-not-protected:
     classification: DASP-2
-unnecessary-checked-arithmetic-in-loop: {}
+    descr_short: Uniswap v4 callback is not protected. Target: Uniswap v4
+
+unnecessary-checked-arithmetic-in-loop:
+    descr_short: A lot of times there is no risk that the loop counter can overflow. Using Solidity's unchecked block saves the overflow checks.
+
 unrestricted-transferownership:
     classification: DASP-2
-use-abi-encodecall-instead-of-encodewithselector: {}
-use-custom-error-not-require: {}
-use-multiple-require: {}
-use-nested-if: {}
-use-ownable2step: {}
-use-prefix-decrement-not-postfix: {}
-use-prefix-increment-not-postfix: {}
-use-short-revert-string: {}
+    descr_short: Contract ownership can be transfered by anyone. Target: Ragnarok Online Invasion
+
+use-abi-encodecall-instead-of-encodewithselector:
+    descr_short: To guarantee arguments type safety it is recommended to use abi.encodeCall instead of abi.encodeWithSelector.
+
+use-custom-error-not-require:
+    descr_short: Consider using custom errors as they are more gas efficient while allowing developers to describe the error in detail using NatSpec.
+
+use-multiple-require:
+    descr_short: Using multiple require statements is cheaper than using && multiple check combinations.
+
+use-nested-if:
+    descr_short: Using nested if is cheaper than using && multiple check combinations.
+
+use-ownable2step:
+    descr_short: By demanding that the receiver of the owner permissions actively accept via a contract call of its own, Ownable2Step and Ownable2StepUpgradeable prevent the contract ownership from accidentally being transferred to an address that cannot handle it.
+
+use-prefix-decrement-not-postfix:
+    descr_short: The prefix decrement expression is cheaper in terms of gas.
+
+use-prefix-increment-not-postfix:
+    descr_short: The prefix increment expression is cheaper in terms of gas.
+
+use-short-revert-string:
+    descr_short: Shortening revert strings to fit in 32 bytes will decrease gas costs for deployment and gas costs when the revert condition has been met.
