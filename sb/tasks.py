@@ -1,3 +1,5 @@
+import sb.cfg
+
 from typing import Optional
 
 from sb.settings import Settings
@@ -35,6 +37,8 @@ class Task:
         self.solc_path = solc_path
         self.tool = tool
         self.settings = settings
+        if sb.cfg.DEBUG:
+            print(f"DEBUG: new task {self}")
 
     def __str__(self) -> str:
         s = [f"{k}: {str(v)}" for k, v in self.__dict__.items()]
