@@ -6,7 +6,6 @@ import time
 from multiprocessing.queues import Queue as MPQueue
 from typing import TYPE_CHECKING, Any, Optional
 
-
 if TYPE_CHECKING:
     from multiprocessing.sharedctypes import Synchronized
 
@@ -29,6 +28,7 @@ def task_log_dict(
     exit_code: Optional[int],
     log: list[str],
     output: Optional[bytes],
+    sb_bin_log: list[str],
     docker_args: dict[str, Any],
 ) -> dict[str, Any]:
     return {
@@ -40,6 +40,9 @@ def task_log_dict(
             "exit_code": exit_code,
             "logs": sb.cfg.TOOL_LOG if log else None,
             "output": sb.cfg.TOOL_OUTPUT if output else None,
+        },
+        "debug": {
+            "sb_bin_log": sb_bin_log,
         },
         "solc": str(task.solc_version) if task.solc_version else None,
         "tool": task.tool.dict(),
@@ -90,7 +93,7 @@ def execute(task: sb.tasks.Task) -> float:
     for i in range(3):
         try:
             start_time = time.time()
-            exit_code, tool_log, tool_output, docker_args = sb.docker.execute(task)
+            exit_code, tool_log, tool_output, sb_bin_log, docker_args = sb.docker.execute(task)
             duration = time.time() - start_time
             break
         except sb.errors.SmartBugsError:
@@ -101,7 +104,7 @@ def execute(task: sb.tasks.Task) -> float:
 
     # write result to files
     task_log = task_log_dict(
-        task, start_time, duration, exit_code, tool_log, tool_output, docker_args
+        task, start_time, duration, exit_code, tool_log, tool_output, sb_bin_log, docker_args
     )
     if tool_log:
         sb.io.write_txt(fn_tool_log, tool_log)

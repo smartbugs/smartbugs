@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING, Optional
 
 import sb.colors
 
-
 if TYPE_CHECKING:
     pass
 

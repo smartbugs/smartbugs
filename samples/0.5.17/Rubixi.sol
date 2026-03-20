@@ -5,8 +5,8 @@
  * @vulnerable_at_lines: 24,25
  */
 
- // 0xe82719202e5965Cf5D9B6673B7503a3b92DE20be#code
- pragma solidity ^0.5.0;
+// 0xe82719202e5965Cf5D9B6673B7503a3b92DE20be#code
+pragma solidity 0.5.17;
 
  contract Rubixi {
 

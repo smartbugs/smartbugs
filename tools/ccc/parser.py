@@ -1,5 +1,7 @@
-import sb.parse_utils  # for sb.parse_utils.init(...)
 from typing import Optional
+
+import sb.parse_utils  # for sb.parse_utils.init(...)
+
 
 VERSION: str = "2025/09/19"
 

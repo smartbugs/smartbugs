@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING, Optional
 
 import solcx
 
-
 if TYPE_CHECKING:
     from solcx.install import Version
 

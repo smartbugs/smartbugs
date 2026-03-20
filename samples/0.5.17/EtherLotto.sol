@@ -6,7 +6,7 @@
  * @author: -
  */
 
- pragma solidity ^0.5.0;
+pragma solidity 0.5.17;
 
 /// @title Ethereum Lottery Game.
 

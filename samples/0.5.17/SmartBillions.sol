@@ -5,7 +5,7 @@
  * @vulnerable_at_lines: 524,561,701,703,705,707,709,711,713,715,717,719
  */
 
-pragma solidity ^0.5.0;
+pragma solidity 0.5.17;
 
 library SafeMath {
   function sub(uint a, uint b) internal pure returns (uint) {

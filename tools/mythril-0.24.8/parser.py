@@ -3,6 +3,7 @@ from typing import Optional
 
 import sb.parse_utils
 
+
 VERSION = "2025/08/29"
 
 FINDINGS = {
@@ -50,7 +51,7 @@ def parse(
 
     try:
         result = json.loads(log[-1])
-    except:
+    except Exception:
         result = None
     if result:
         error = result.get("error")

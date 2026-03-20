@@ -21,6 +21,8 @@
 #
 #mem-limit: 0 # "512m" or "4g"  0/null = no quota
 #
+#network: none # container is not connected to the outside; use "bridge" to connect
+#
 #results: results/${TOOL}/${RUNID}/${FILENAME}
 ##   vars: all vars from "runid" above, as well as RUNID,
 ##   TOOL, MODE (solidity, bytecode, runtime), ABSDIR, RELDIR,

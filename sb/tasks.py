@@ -1,7 +1,6 @@
-import sb.cfg
-
 from typing import Optional
 
+import sb.cfg
 from sb.settings import Settings
 from sb.tools import Tool
 

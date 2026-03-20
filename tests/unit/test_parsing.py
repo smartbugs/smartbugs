@@ -120,15 +120,13 @@ class TestGetParser:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"vuln1"}
 
 def parse(exit_code, log, output):
     return [], set(), set(), set()
-"""
-        )
+""")
 
         tool = {"id": "test_tool", "mode": "solidity", "parser": "parser.py"}
 
@@ -145,14 +143,12 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = set()
 def parse(exit_code, log, output):
     return [], set(), set(), set()
-"""
-        )
+""")
 
         tool = {"id": "test_tool", "mode": "solidity", "parser": "parser.py"}
 
@@ -174,14 +170,12 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = set()
 def parse(exit_code, log, output):
     return [], set(), set(), set()
-"""
-        )
+""")
 
         tool_solidity = {"id": "test_tool", "mode": "solidity", "parser": "parser.py"}
         tool_bytecode = {"id": "test_tool", "mode": "bytecode", "parser": "parser.py"}
@@ -228,12 +222,10 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "incomplete_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = set()
-"""
-        )
+""")
 
         tool = {"id": "incomplete_tool", "mode": "solidity", "parser": "parser.py"}
 
@@ -253,8 +245,7 @@ class TestParse:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"vulnerability1", "reentrancy"}
 
@@ -263,8 +254,7 @@ def parse(exit_code, log, output):
         {"name": "vulnerability1", "message": "Test", "line": 10, "filename": "/sb/test.sol"}
     ]
     return findings, {"info"}, {"error"}, {"fail"}
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -294,8 +284,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = None
 
@@ -304,8 +293,7 @@ def parse(exit_code, log, output):
         {"name": "anything-goes", "message": "No validation"}
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -319,16 +307,14 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = set()
 
 def parse(exit_code, log, output):
     # No findings expected from this tool
     return [], set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -341,8 +327,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"valid_vulnerability"}
 
@@ -351,8 +336,7 @@ def parse(exit_code, log, output):
         {"name": "invalid_vulnerability", "message": "Not in FINDINGS set"}
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -368,8 +352,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"vuln"}
 
@@ -380,8 +363,7 @@ def parse(exit_code, log, output):
         {"name": "vuln", "filename": "test.sol"},
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -396,8 +378,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"vuln"}
 
@@ -406,22 +387,22 @@ def parse(exit_code, log, output):
         {"name": "vuln", "filename": "/sb/different_file.sol"}
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
             with pytest.raises(sb.errors.SmartBugsError) as exc_info:
                 sb.parsing.parse(sample_task_log, None, None)
-            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(exc_info.value)
+            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(
+                exc_info.value
+            )
 
     def test_parse_no_filename_in_finding(self, sample_task_log: dict, tmp_path: Path):
         """Test that findings without filename field are handled correctly."""
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"vuln"}
 
@@ -430,8 +411,7 @@ def parse(exit_code, log, output):
         {"name": "vuln", "message": "No filename provided"}
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -445,8 +425,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = None
 
@@ -455,8 +434,7 @@ def parse(exit_code, log, output):
     if exit_code != 0:
         return [], set(), {"Tool failed"}, set()
     return [], set(), set(), set()
-"""
-        )
+""")
 
         # Test with exit code 0
         task_log_success = sample_task_log.copy()
@@ -479,8 +457,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = None
 
@@ -492,8 +469,7 @@ def parse(exit_code, log, output):
             assert isinstance(line, str)
         return [], {f"Processed {len(log)} lines"}, set(), set()
     return [], set(), set(), set()
-"""
-        )
+""")
 
         tool_log = ["line1", "line2", "line3"]
 
@@ -507,8 +483,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = None
 
@@ -518,8 +493,7 @@ def parse(exit_code, log, output):
         assert isinstance(output, bytes)
         return [], {f"Output size: {len(output)}"}, set(), set()
     return [], set(), set(), set()
-"""
-        )
+""")
 
         tool_output = b"Binary output data here"
 
@@ -533,8 +507,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = None
 
@@ -543,8 +516,7 @@ def parse(exit_code, log, output):
     errors = {"error3", "error1", "error2"}
     fails = {"fail_z", "fail_a"}
     return [], infos, errors, fails
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -560,8 +532,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"reentrancy", "overflow", "delegatecall"}
 
@@ -572,8 +543,7 @@ def parse(exit_code, log, output):
         {"name": "delegatecall", "line": 30, "filename": "/sb/test.sol"},
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -589,8 +559,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/01/01"
 FINDINGS = {"vuln"}
 
@@ -611,8 +580,7 @@ def parse(exit_code, log, output):
         }
     ]
     return findings, set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -638,15 +606,13 @@ class TestParserVersionHandling:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "2025/12/31"
 FINDINGS = None
 
 def parse(exit_code, log, output):
     return [], set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -659,14 +625,12 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 FINDINGS = None
 
 def parse(exit_code, log, output):
     return [], set(), set(), set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
@@ -683,14 +647,12 @@ class TestParserModuleCache:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = None
 def parse(exit_code, log, output):
     return [], set(), set(), set()
-"""
-        )
+""")
 
         tool1 = {"id": "test_tool", "mode": "solidity", "parser": "parser.py"}
         tool2 = {"id": "test_tool", "mode": "bytecode", "parser": "parser.py"}
@@ -711,8 +673,7 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = None
 call_count = 0
@@ -721,8 +682,7 @@ def parse(exit_code, log, output):
     global call_count
     call_count += 1
     return [], set(), set(), set()
-"""
-        )
+""")
 
         sample_task_log = {
             "tool": {"id": "test_tool", "mode": "solidity", "parser": "parser.py"},
@@ -750,21 +710,21 @@ class TestErrorHandling:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = None
 
 def parse(exit_code, log, output):
     raise RuntimeError("Parser internal error")
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
             with pytest.raises(sb.errors.SmartBugsError) as exc_info:
                 sb.parsing.parse(sample_task_log, None, None)
-            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(exc_info.value)
+            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(
+                exc_info.value
+            )
             assert "Parser internal error" in str(exc_info.value)
 
     def test_parse_parser_returns_wrong_type(self, sample_task_log: dict, tmp_path: Path):
@@ -772,22 +732,22 @@ def parse(exit_code, log, output):
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         parser_file = tool_dir / "parser.py"
-        parser_file.write_text(
-            """
+        parser_file.write_text("""
 VERSION = "1.0.0"
 FINDINGS = None
 
 def parse(exit_code, log, output):
     # Return wrong number of values
     return [], set()
-"""
-        )
+""")
 
         with patch.object(sb.cfg, "TOOLS_HOME", str(tmp_path)):
             sb.parsing.tool_parsers.clear()
             with pytest.raises(sb.errors.SmartBugsError) as exc_info:
                 sb.parsing.parse(sample_task_log, None, None)
-            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(exc_info.value)
+            assert "Parsing of test_tool results for /path/to/test.sol failed" in str(
+                exc_info.value
+            )
             assert "not enough values to unpack" in str(exc_info.value)
 
     def test_get_parser_import_error(self, tmp_path: Path):

@@ -6,7 +6,7 @@
  */
 
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.6.0;
+pragma solidity 0.6.12;
 
 library SafeMath {
   function sub(uint a, uint b) internal pure returns (uint) {

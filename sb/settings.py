@@ -8,7 +8,6 @@ import sb.errors
 import sb.io
 import sb.logging
 
-
 HOME = os.path.expanduser("~")  # cross-plattform safe
 NOW = time.gmtime()  # only use in main process, value may be different in sub-processes
 PID = os.getpid()  # only use in main process, value may be different in sub-processes
@@ -28,6 +27,7 @@ class Settings:
         self.timeout: Optional[int] = None
         self.cpu_quota: Optional[int] = None
         self.mem_limit: Optional[str] = None
+        self.network: Optional[str] = "none"  # suppress network
         self.continue_on_errors: bool = False
         # Note: results changes type from str to string.Template after freeze()
         self.results: Union[str, string.Template] = os.path.join(
@@ -133,7 +133,7 @@ class Settings:
             k = k.replace("-", "_")
 
             # attributes accepting None as a value
-            if k in ("timeout", "cpu_quota", "mem_limit") and v in (None, 0, "0"):
+            if k in ("timeout", "cpu_quota", "mem_limit", "network") and v in (None, 0, "0"):
                 setattr(self, k, None)
 
             elif k in ("timeout", "cpu_quota", "processes"):
@@ -224,6 +224,12 @@ class Settings:
                     raise sb.errors.SmartBugsError(
                         f"'{k}' needs to be a memory specifcation (in {settings})."
                     )
+
+            elif k == "network":
+                try:
+                    setattr(self, k, str(v))
+                except Exception:
+                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a string (in {settings}).")
 
             else:
                 raise sb.errors.SmartBugsError(f"Invalid key '{k}' (in {settings}).")

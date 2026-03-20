@@ -6,7 +6,6 @@ import sb.cfg
 import sb.errors
 import sb.io
 
-
 FIELDS = (
     "id",
     "mode",
@@ -23,6 +22,7 @@ FIELDS = (
     "mem_limit",
     "command",
     "entrypoint",
+    "network",
 )
 
 
@@ -49,6 +49,7 @@ class Tool:
     solc: Optional[bool]
     cpu_quota: Optional[int]
     mem_limit: Optional[str]
+    network: Optional[str]
     _command: Optional[string.Template]
     _entrypoint: Optional[string.Template]
     absbin: Optional[str]

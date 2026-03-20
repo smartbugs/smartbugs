@@ -171,15 +171,13 @@ def tmp_contract_file(tmp_path: Path) -> Generator[Path, None, None]:
         completes via pytest's tmp_path fixture.
     """
     contract_file = tmp_path / "Test.sol"
-    contract_file.write_text(
-        """// SPDX-License-Identifier: MIT
+    contract_file.write_text("""// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract Test {
     uint256 public x;
 }
-"""
-    )
+""")
     yield contract_file
     # Cleanup handled automatically by tmp_path fixture
 

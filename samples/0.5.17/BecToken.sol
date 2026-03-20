@@ -5,7 +5,7 @@
  * @vulnerable_at_lines: 265
  */
 
-pragma solidity ^0.5.0;
+pragma solidity 0.5.17;
 
 /**
  * @title SafeMath

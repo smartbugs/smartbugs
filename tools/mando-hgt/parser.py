@@ -1,8 +1,10 @@
-import sb.parse_utils # for sb.parse_utils.init(...)
-import io, tarfile    # if the output parameter is used
-import json           # to parse the Result JSON
-import re             # to match the Result line
+import io  # if the output parameter is used
+import json  # to parse the Result JSON
+import tarfile
 from typing import Optional
+
+import sb.parse_utils  # for sb.parse_utils.init(...)
+
 
 VERSION: str = "2023/08/01"
 """identify the version of the parser, e.g. '2022/08/15'"""

@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING, Any, Optional
 import sb.cfg
 import sb.errors
 
-
 if TYPE_CHECKING:
     from types import ModuleType
 
@@ -70,7 +69,9 @@ def parse(
             )
             finding["filename"] = filename
     except Exception as e:
-        raise sb.errors.SmartBugsError(f"Parsing of {tool['id']} results for {filename} failed\n{e}")
+        raise sb.errors.SmartBugsError(
+            f"Parsing of {tool['id']} results for {filename} failed\n{e}"
+        )
 
     return {
         "findings": findings,

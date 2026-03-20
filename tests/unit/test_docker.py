@@ -194,7 +194,7 @@ class TestContainerExecution:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 0
         assert "Analysis complete" in logs
@@ -238,7 +238,7 @@ class TestContainerExecution:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         # On timeout, exit_code should be None
         assert exit_code is None
@@ -280,7 +280,7 @@ class TestContainerExecution:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         # Should handle connection error gracefully
         assert exit_code is None
@@ -318,7 +318,7 @@ class TestContainerExecution:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 0
         assert output == b"chunk1chunk2"
@@ -355,7 +355,7 @@ class TestContainerExecution:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 0
         assert output is None  # Should handle NotFound gracefully
@@ -390,7 +390,7 @@ class TestContainerExecution:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 1
         assert "Error: Analysis failed" in logs
@@ -499,7 +499,7 @@ class TestContainerExecution:
         mocker.patch("sb.docker.client", return_value=mock_client)
 
         # Should not raise exception
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 0
         mock_container.kill.assert_called_once()
@@ -537,7 +537,7 @@ class TestContainerExecution:
         mocker.patch("sb.docker.client", return_value=mock_client)
 
         # Should handle stop() failure gracefully
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code is None
         mock_container.stop.assert_called_once()
@@ -593,7 +593,7 @@ class TestVolumeAndResourceConfig:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 0
         # Volume was created and cleaned up successfully
@@ -646,7 +646,7 @@ class TestVolumeAndResourceConfig:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         # Verify settings overrode tool config
         assert args["cpu_quota"] == 100000
@@ -696,7 +696,7 @@ class TestVolumeAndResourceConfig:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         # Check the command includes Linux-style path
         command = args["command"]
@@ -755,7 +755,7 @@ class TestIntegration:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         # Verify results
         assert exit_code == 0
@@ -814,7 +814,7 @@ class TestIntegration:
 
         mocker.patch("sb.docker.client", return_value=mock_client)
 
-        exit_code, logs, output, args = sb.docker.execute(task)
+        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
         assert exit_code == 0
         assert "Bytecode analysis complete" in logs

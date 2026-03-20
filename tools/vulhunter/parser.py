@@ -1,9 +1,10 @@
-import sb.parse_utils  # for sb.parse_utils.init(...)
 import io
-import tarfile    # if the output parameter is used
-import json           # to parse the Result JSON
-import re             # to match the Result line
+import json  # to parse the Result JSON
+import tarfile  # if the output parameter is used
 from typing import Optional
+
+import sb.parse_utils  # for sb.parse_utils.init(...)
+
 
 VERSION: str = "2025/04/29"
 
@@ -82,14 +83,14 @@ def parse(
 
             data = json.loads(output)
 
-            infos.add(f"OK")
+            infos.add("OK")
 
             # Process each vulnerability type entry
             for entry in data:
                 title = entry.get("title", "unknown")
                 severity = entry.get("severity", "unknown")
                 description = entry.get("description", "")
-                description += f". Confidence: {entry.get("confidence", "unknown")}"
+                description += f". Confidence: {entry.get('confidence', 'unknown')}"
 
                 # Process positions array
                 if "positions" in entry:

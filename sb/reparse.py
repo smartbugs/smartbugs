@@ -10,7 +10,6 @@ import sb.io
 import sb.parsing
 import sb.sarif
 
-
 if TYPE_CHECKING:
     from multiprocessing.queues import Queue
 

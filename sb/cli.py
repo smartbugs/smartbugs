@@ -10,7 +10,6 @@ import sb.logging
 import sb.settings
 import sb.smartbugs
 
-
 if TYPE_CHECKING:
     from sb.settings import Settings
 
@@ -26,6 +25,7 @@ def cli_args(defaults: "Settings") -> tuple[Optional[str], dict[str, Any]]:
             "none" if not defval else
             " ".join([str(dv) for dv in defval])
                 if isinstance(defval, list) or isinstance(defval, tuple) or isinstance(defval, set) else
+            f'"{defval}"' if isinstance(defval, str) else
             str(defval)
         )
         # fmt: off
@@ -107,10 +107,16 @@ def cli_args(defaults: "Settings") -> tuple[Optional[str], dict[str, Any]]:
         ),
     )
     exec.add_argument(
+        "--network",
+        type=str,
+        metavar="NETWORK",
+        help=(f"network that Docker containers connect to" f"{fmt_default(defaults.network)}"),
+    )
+    exec.add_argument(
         "--continue-on-errors",
         action="store_true",
         default=None,
-        help="continue with the execution phase, skipping tasks with composition errors",
+        help=f"continue with the execution phase, skipping tasks with composition errors {fmt_default(defaults.continue_on_errors)}",
     )
 
     output = parser.add_argument_group("output options")

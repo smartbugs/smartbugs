@@ -12,7 +12,6 @@ import sb.cfg
 import sb.errors
 import sb.io
 
-
 if TYPE_CHECKING:
     import sb.tasks
 
@@ -83,11 +82,11 @@ def __docker_volume(task: "sb.tasks.Task") -> str:
 
 def __docker_args(task: "sb.tasks.Task", sbdir: str) -> dict[str, Any]:
     args = {"volumes": {sbdir: {"bind": "/sb", "mode": "rw"}}, "detach": True, "user": 0}
-    for k in ("image", "cpu_quota", "mem_limit"):
+    for k in ("image", "cpu_quota", "mem_limit", "network"):
         v = getattr(task.tool, k, None)
         if v is not None:
             args[k] = v
-    for k in ("cpu_quota", "mem_limit"):
+    for k in ("cpu_quota", "mem_limit", "network"):
         v = getattr(task.settings, k, None)
         if v is not None:
             args[k] = v
@@ -104,7 +103,7 @@ def execute(
 ) -> tuple[Optional[int], list[str], Optional[bytes], dict[str, Any]]:
     sbdir = __docker_volume(task)
     args = __docker_args(task, sbdir)
-    exit_code, logs, output, container = None, [], None, None
+    exit_code, logs, output, sb_bin_log, container = None, [], None, [], None
     try:
         container = client().containers.run(**args)
         try:
@@ -135,6 +134,11 @@ def execute(
             container.remove()
         except Exception:
             pass
+        try:
+            sb_bin_log_path = os.path.join(sbdir, "bin", "log")
+            sb_bin_log = sb.io.read_lines(sb_bin_log_path)
+        except Exception:
+            pass
         shutil.rmtree(sbdir)
 
-    return exit_code, logs, output, args
+    return exit_code, logs, output, sb_bin_log, args

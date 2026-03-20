@@ -5,7 +5,7 @@
  */
 
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.7.0;
+pragma solidity 0.7.6;
 /*
  * This is a distributed lottery that chooses random addresses as lucky addresses. If these
  * participate, they get the jackpot: 7 times the price of their bet.

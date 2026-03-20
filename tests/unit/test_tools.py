@@ -393,16 +393,14 @@ class TestLoadFunction:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         config_file = tool_dir / "config.yaml"
-        config_file.write_text(
-            """name: TestTool
+        config_file.write_text("""name: TestTool
 version: 1.0.0
 origin: https://example.com
 info: Test tool
 image: smartbugs/test:1.0
 solidity:
     command: "analyze $FILENAME"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             tools = load(["test_tool"])
@@ -417,8 +415,7 @@ solidity:
         tool_dir = tmp_path / "multi_mode_tool"
         tool_dir.mkdir()
         config_file = tool_dir / "config.yaml"
-        config_file.write_text(
-            """name: MultiMode
+        config_file.write_text("""name: MultiMode
 version: 1.0.0
 image: smartbugs/multi:1.0
 solidity:
@@ -427,8 +424,7 @@ bytecode:
     command: "analyze-bc $FILENAME"
 runtime:
     command: "analyze-rt $FILENAME"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             tools = load(["multi_mode_tool"])
@@ -444,33 +440,27 @@ runtime:
         # Create two real tools
         tool1_dir = tmp_path / "tool1"
         tool1_dir.mkdir()
-        (tool1_dir / "config.yaml").write_text(
-            """name: Tool1
+        (tool1_dir / "config.yaml").write_text("""name: Tool1
 image: smartbugs/tool1:1.0
 solidity:
     command: "run1 $FILENAME"
-"""
-        )
+""")
 
         tool2_dir = tmp_path / "tool2"
         tool2_dir.mkdir()
-        (tool2_dir / "config.yaml").write_text(
-            """name: Tool2
+        (tool2_dir / "config.yaml").write_text("""name: Tool2
 image: smartbugs/tool2:1.0
 solidity:
     command: "run2 $FILENAME"
-"""
-        )
+""")
 
         # Create alias tool
         alias_dir = tmp_path / "all_tools"
         alias_dir.mkdir()
-        (alias_dir / "config.yaml").write_text(
-            """alias:
+        (alias_dir / "config.yaml").write_text("""alias:
     - tool1
     - tool2
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             tools = load(["all_tools"])
@@ -484,13 +474,11 @@ solidity:
         for i in range(3):
             tool_dir = tmp_path / f"tool{i}"
             tool_dir.mkdir()
-            (tool_dir / "config.yaml").write_text(
-                f"""name: Tool{i}
+            (tool_dir / "config.yaml").write_text(f"""name: Tool{i}
 image: smartbugs/tool{i}:1.0
 solidity:
     command: "run{i} $FILENAME"
-"""
-            )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             tools = load(["tool0", "tool1", "tool2"])
@@ -503,13 +491,11 @@ solidity:
         """Test that duplicate tool IDs are ignored (seen set)."""
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
-        (tool_dir / "config.yaml").write_text(
-            """name: TestTool
+        (tool_dir / "config.yaml").write_text("""name: TestTool
 image: smartbugs/test:1.0
 solidity:
     command: "analyze $FILENAME"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             # Request same tool multiple times
@@ -522,8 +508,7 @@ solidity:
         """Test that mode-specific config overrides base config."""
         tool_dir = tmp_path / "override_tool"
         tool_dir.mkdir()
-        (tool_dir / "config.yaml").write_text(
-            """name: OverrideTool
+        (tool_dir / "config.yaml").write_text("""name: OverrideTool
 image: smartbugs/override:1.0
 output: /default_output.tar
 solidity:
@@ -531,8 +516,7 @@ solidity:
     output: /solidity_output.json
 bytecode:
     command: "analyze-bc $FILENAME"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             tools = load(["override_tool"])
@@ -554,12 +538,10 @@ bytecode:
         """Test that tool config without modes or alias raises error."""
         tool_dir = tmp_path / "invalid_tool"
         tool_dir.mkdir()
-        (tool_dir / "config.yaml").write_text(
-            """name: InvalidTool
+        (tool_dir / "config.yaml").write_text("""name: InvalidTool
 image: smartbugs/invalid:1.0
 # No solidity, bytecode, runtime, or alias
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             with pytest.raises(
@@ -571,12 +553,10 @@ image: smartbugs/invalid:1.0
         """Test that non-dict mode value raises error."""
         tool_dir = tmp_path / "bad_mode_tool"
         tool_dir.mkdir()
-        (tool_dir / "config.yaml").write_text(
-            """name: BadMode
+        (tool_dir / "config.yaml").write_text("""name: BadMode
 image: smartbugs/bad:1.0
 solidity: "this should be a dict"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             with pytest.raises(sb.errors.SmartBugsError, match="key/value mapping expected"):
@@ -591,8 +571,7 @@ class TestInfoFindingFunction:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         findings_file = tool_dir / "findings.yaml"
-        findings_file.write_text(
-            """reentrancy:
+        findings_file.write_text("""reentrancy:
     title: "Reentrancy Vulnerability"
     description: "A contract is vulnerable to reentrancy attacks"
     impact: "high"
@@ -601,8 +580,7 @@ integer-overflow:
     title: "Integer Overflow"
     description: "Arithmetic operation may overflow"
     impact: "medium"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             result = info_finding("test_tool", "reentrancy")
@@ -615,11 +593,9 @@ integer-overflow:
         tool_dir = tmp_path / "test_tool"
         tool_dir.mkdir()
         findings_file = tool_dir / "findings.yaml"
-        findings_file.write_text(
-            """reentrancy:
+        findings_file.write_text("""reentrancy:
     title: "Reentrancy Vulnerability"
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             result = info_finding("test_tool", "nonexistent_finding")
@@ -631,11 +607,9 @@ integer-overflow:
         tool_dir = tmp_path / "cached_tool"
         tool_dir.mkdir()
         findings_file = tool_dir / "findings.yaml"
-        findings_file.write_text(
-            """test-finding:
+        findings_file.write_text("""test-finding:
     title: "Test Finding"
-"""
-        )
+""")
 
         # Clear cache
         info_findings.clear()
@@ -742,12 +716,10 @@ class TestToolFixtures:
         # So let's create an actually invalid config for this test
         tool_dir = tmp_path / "test_tool_invalid"
         tool_dir.mkdir()
-        (tool_dir / "config.yaml").write_text(
-            """version: 1.0.0
+        (tool_dir / "config.yaml").write_text("""version: 1.0.0
 image: smartbugs/invalid:1.0.0
 # Missing solidity/bytecode/runtime/alias - this will cause error
-"""
-        )
+""")
 
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             with pytest.raises(sb.errors.SmartBugsError, match="needs one of the attributes"):

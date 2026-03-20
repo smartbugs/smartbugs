@@ -270,16 +270,14 @@ class TestSettingsUpdate:
     def test_update_from_yaml_file(self, tmp_path: Path):
         """Test updating settings from a YAML file."""
         config_file = tmp_path / "config.yaml"
-        config_file.write_text(
-            """
+        config_file.write_text("""
 timeout: 600
 processes: 2
 tools:
   - mythril
   - slither
 json: true
-"""
-        )
+""")
 
         settings = Settings()
         settings.update(str(config_file))
@@ -798,19 +796,16 @@ class TestSettingsIntegration:
         """Test a typical CLI usage scenario with all features."""
         # Create a site config
         site_config = tmp_path / "site_cfg.yaml"
-        site_config.write_text(
-            """
+        site_config.write_text("""
 timeout: 600
 processes: 2
 results: results/${TOOL}/${RUNID}/${FILENAME}
 log: results/logs/${RUNID}.log
-"""
-        )
+""")
 
         # Create user config
         user_config = tmp_path / "user_config.yaml"
-        user_config.write_text(
-            """
+        user_config.write_text("""
 timeout: 300
 tools:
   - mythril
@@ -818,8 +813,7 @@ tools:
 files:
   - samples/*.sol
 json: true
-"""
-        )
+""")
 
         # Initialize and load configs
         settings = Settings()
@@ -861,13 +855,11 @@ json: true
         """Test loading from site_cfg.yaml location."""
         # Create a mock site_cfg.yaml
         site_cfg = tmp_path / "site_cfg.yaml"
-        site_cfg.write_text(
-            """
+        site_cfg.write_text("""
 timeout: 500
 processes: 3
 mem_limit: 8g
-"""
-        )
+""")
 
         # Load it
         settings = Settings()

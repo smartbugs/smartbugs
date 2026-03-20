@@ -118,7 +118,7 @@ exclude = [
 select = [
     "E",   # pycodestyle errors
     "F",   # pyflakes
-    "I",   # isort (import sorting)
+#    "I",   # isort (import sorting) # conflict with black
     "N",   # pep8-naming
     "UP",  # pyupgrade
 ]
@@ -126,6 +126,7 @@ select = [
 # Ignore specific rules that conflict with existing codebase
 ignore = [
     "E501",  # Line too long (handled by black)
+    "I",   # isort # conflict with black
 ]
 
 [tool.ruff.lint.per-file-ignores]

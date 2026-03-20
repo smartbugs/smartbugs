@@ -6,7 +6,7 @@
  */
 
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity 0.8.24;
 
 /** Taken from the OpenZeppelin github
  * @title SafeMath

@@ -7,7 +7,7 @@
 
  // 0xe82719202e5965Cf5D9B6673B7503a3b92DE20be#code
  // SPDX-License-Identifier: UNLICENSED
- pragma solidity ^0.8.0;
+ pragma solidity 0.8.24;
 
  contract Rubixi {
 

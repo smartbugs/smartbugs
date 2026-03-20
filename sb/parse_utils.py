@@ -5,7 +5,6 @@ from collections.abc import Generator, Iterable
 from re import Pattern
 from typing import Optional
 
-
 DOCKER_CODES: dict[int, str] = {
     125: "DOCKER_INVOCATION_PROBLEM",
     126: "DOCKER_CMD_NOT_EXECUTABLE",

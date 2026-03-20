@@ -6,7 +6,7 @@
  */
 
 //added pragma version
-pragma solidity ^0.5.0;
+pragma solidity 0.5.17;
 
 contract Government {
 
