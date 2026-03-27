@@ -3,7 +3,7 @@ import platform
 
 import cpuinfo
 
-VERSION = "2.0.17"
+VERSION = "2.0.18"
 HOME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 SITE_CFG = os.path.join(HOME, "site_cfg.yaml")
 TASK_LOG = "smartbugs.json"

@@ -107,12 +107,6 @@ def cli_args(defaults: "Settings") -> tuple[Optional[str], dict[str, Any]]:
         ),
     )
     exec.add_argument(
-        "--network",
-        type=str,
-        metavar="NETWORK",
-        help=(f"network that Docker containers connect to" f"{fmt_default(defaults.network)}"),
-    )
-    exec.add_argument(
         "--continue-on-errors",
         action="store_true",
         default=None,
