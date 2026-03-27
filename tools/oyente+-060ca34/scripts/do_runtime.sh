@@ -2,6 +2,7 @@
 
 FILENAME="$1"
 TIMEOUT="$2"
+BIN="$3"
 
 OPT_TIMEOUT=""
 if [ "$TIMEOUT" -gt 0 ]; then
@@ -12,4 +13,5 @@ if [ "$TIMEOUT" -gt 0 ]; then
 fi
 
 cd /oyente
+echo /oyente/oyente.py $OPT_TIMEOUT -b -s "$FILENAME" >> $BIN/log
 /oyente/oyente.py $OPT_TIMEOUT -b -s "$FILENAME"

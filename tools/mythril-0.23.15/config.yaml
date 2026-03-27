@@ -3,11 +3,12 @@ version: 0.23.15
 origin: https://github.com/ConsenSys/mythril
 info: Mythril analyses EVM bytecode using symbolic analysis, taint analysis and control flow checking to detect a variety of security vulnerabilities.
 image: smartbugs/mythril:0.23.15
+network: none
 bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
     solc: yes
 bytecode:
-    entrypoint: "'$BIN/do_bytecode.sh' '$FILENAME' '$TIMEOUT'"
+    entrypoint: "'$BIN/do_bytecode.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
 runtime:
-    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT'"
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$TIMEOUT' '$BIN'"

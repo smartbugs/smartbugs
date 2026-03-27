@@ -8,4 +8,4 @@ solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN' '$MAIN'"
     solc: yes
 runtime:
-    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME'"
+    entrypoint: "'$BIN/do_runtime.sh' '$FILENAME' '$BIN'"

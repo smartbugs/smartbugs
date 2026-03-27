@@ -30,4 +30,5 @@ if [ "$TIMEOUT" -gt 0 ]; then
     OPT_TIMEOUT="-glt $TO"
 fi
 
+echo python honeybadger/honeybadger.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT >> $BIN/log
 python honeybadger/honeybadger.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT

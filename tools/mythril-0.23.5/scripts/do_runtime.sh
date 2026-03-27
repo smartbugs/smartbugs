@@ -2,6 +2,7 @@
 
 FILENAME="$1"
 TIMEOUT="$2"
+BIN="$3"
 
 OPT_TIMEOUT=""
 if [ "$TIMEOUT" -gt 0 ]; then
@@ -11,4 +12,5 @@ if [ "$TIMEOUT" -gt 0 ]; then
     OPT_TIMEOUT="--execution-timeout $TO"
 fi
 
+echo /usr/local/bin/myth analyze $OPT_TIMEOUT -o json --bin-runtime -f "$FILENAME" >> $BIN/log
 /usr/local/bin/myth analyze $OPT_TIMEOUT -o json --bin-runtime -f "$FILENAME"

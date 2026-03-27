@@ -5,5 +5,4 @@ info: Open source project for linting solidity code. This project provide both s
 image: smartbugs/solhint:6.0.0
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"
-    solc: no
     bin: scripts

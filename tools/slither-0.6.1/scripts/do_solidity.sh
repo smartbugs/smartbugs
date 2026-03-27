@@ -7,4 +7,5 @@ BIN="$3"
 export PATH="$BIN:$PATH"
 chmod +x "$BIN/solc"
 
+echo slither "$FILENAME" --json /output.json >> $BIN/sol
 slither "$FILENAME" --json /output.json

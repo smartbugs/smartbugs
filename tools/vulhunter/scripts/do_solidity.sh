@@ -5,7 +5,7 @@ TIMEOUT="$2"
 BIN="$3"
 MAIN="$4"
 
-# export PATH="$BIN:$PATH"
+export PATH="$BIN:$PATH"
 chmod +x "$BIN/solc"
 export SOLC_BIN="$BIN/solc"
 
@@ -25,4 +25,5 @@ fi
 CMD="python3 /app/main/main.py --contract $FILENAME --solc-version $SOLC_VERSION --filetype solidity --model-dir models --instance-len 20 --report /app/output.pdf"
 
 echo "Executing $CMD"
+echo "$CMD" >> $BIN/log
 $CMD

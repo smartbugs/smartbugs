@@ -33,4 +33,6 @@ if [ "$TIMEOUT" -gt 0 ] && [ $TO -ge 10 ]; then
 fi
 
 touch /root/results.json
+
+echo python3 fuzzer/main.py -s "$FILENAME" --evm byzantium --results results.json --seed 1427655 $OPT_TIMEOUT $OPT_CONTRACT >> $BIN/log
 python3 fuzzer/main.py -s "$FILENAME" --evm byzantium --results results.json --seed 1427655 $OPT_TIMEOUT $OPT_CONTRACT

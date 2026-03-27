@@ -2,14 +2,14 @@ import argparse
 import csv
 import os
 import sys
-from typing import TYPE_CHECKING, Any, Optional
+from typing import TYPE_CHECKING, Any
 
 import sb.cfg
 import sb.io
 import sb.utils
 
 if TYPE_CHECKING:
-    from typing import Sequence
+    from collections.abc import Sequence
 
 FIELDS = (
     "filename",
