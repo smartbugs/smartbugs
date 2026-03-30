@@ -5,11 +5,8 @@ BIN="$2"
 
 cd /MAIAN/tool
 
-echo python3 maian.py -c 0 -b "$FILENAME" >> $BIN/log
-python3 maian.py -c 0 -b "$FILENAME"
-
-echo python3 maian.py -c 1 -b "$FILENAME" >> $BIN/log
-python3 maian.py -c 1 -b "$FILENAME"
-
-echo python3 maian.py -c 2 -b "$FILENAME" >> $BIN/log
-python3 maian.py -c 2 -b "$FILENAME"
+for c in 0 1 2; do
+    CMD="python3 maian.py -c $c -b $FILENAME"
+    echo "$CMD" >> $BIN/log
+    $CMD
+done

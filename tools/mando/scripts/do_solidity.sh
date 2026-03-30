@@ -30,6 +30,7 @@ case "$SOLC_VERSION" in
         ;;
 esac
 
-echo /app/inference.sh $FILENAME -b access_control,arithmetic,denial_of_service,front_running,reentrancy,time_manipulation,unchecked_low_level_calls -t $TIMEOUT >> $BIN/log
-/app/inference.sh $FILENAME -b access_control,arithmetic,denial_of_service,front_running,reentrancy,time_manipulation,unchecked_low_level_calls -t $TIMEOUT
+CMD="/app/inference.sh $FILENAME -b access_control,arithmetic,denial_of_service,front_running,reentrancy,time_manipulation,unchecked_low_level_calls -t $TIMEOUT"
+echo "$CMD" >> $BIN/log
+$CMD
 

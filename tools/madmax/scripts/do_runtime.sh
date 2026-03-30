@@ -13,5 +13,6 @@ fi
 
 cd /MadMax
 
-echo python3 gigahorse-toolchain/gigahorse.py --reuse_datalog_bin --rerun_clients --restart $OPT_TIMEOUT -C madmax.dl "${FILENAME}" >> $BIN/log
-python3 gigahorse-toolchain/gigahorse.py --reuse_datalog_bin --rerun_clients --restart $OPT_TIMEOUT -C madmax.dl "${FILENAME}"
+CMD="python3 gigahorse-toolchain/gigahorse.py --reuse_datalog_bin --rerun_clients --restart $OPT_TIMEOUT -C madmax.dl ${FILENAME}"
+echo "$CMD" >> $BIN/log
+$CMD

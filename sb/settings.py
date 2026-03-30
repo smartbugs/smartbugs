@@ -107,7 +107,7 @@ class Settings:
                 FILEEXT=fileext,
             )
         except KeyError as e:
-            raise sb.errors.SmartBugsError(f"Unknown variable '{e}' in template of result dir")
+            raise sb.errors.SmartBugsError(f"unknown variable '{e}' in template of result dir")
 
     def update(self, settings: Union[str, dict[str, Any], None]) -> None:
         """Update settings from a YAML file path or dictionary.
@@ -116,7 +116,7 @@ class Settings:
             settings: Path to YAML config file, dictionary of settings, or None
         """
         if self.frozen:
-            raise sb.errors.InternalError("Frozen settings cannot be updated")
+            raise sb.errors.InternalError("frozen settings cannot be updated")
         if not settings:
             return
         if isinstance(settings, str):
@@ -125,7 +125,7 @@ class Settings:
             s = settings
         if not isinstance(s, dict):
             raise sb.errors.SmartBugsError(
-                f"Settings cannot be updated by objects of type '{type(settings).__name__}'"
+                f"settings cannot be updated by objects of type {type(settings).__name__}"
             )
 
         for k, v in s.items():
@@ -142,7 +142,7 @@ class Settings:
                     setattr(self, k, v)
                 except Exception:
                     raise sb.errors.SmartBugsError(
-                        f"'{k}' needs to be a positive integer (in {settings})."
+                        f"setting {k}: positive integer expected, '{v}' found"
                     )
 
             elif k in ("tools"):
@@ -152,7 +152,7 @@ class Settings:
                     setattr(self, k, [str(vi) for vi in v])
                 except Exception:
                     raise sb.errors.SmartBugsError(
-                        f"'{k}' needs to be a string or a list of strings (in {settings})."
+                        f"setting {k}: (list of) string(s) expected, '{v}' found"
                     )
 
             elif k in ("files"):
@@ -162,7 +162,7 @@ class Settings:
                     patterns = [str(vi) for vi in v]
                 except Exception:
                     raise sb.errors.SmartBugsError(
-                        f"'{k}' needs to be a string or a list of strings (in {settings})."
+                        f"setting {k}: (list of) string(s) expected, '{v}' found"
                     )
                 root_specs = []
                 for pattern in patterns:
@@ -170,7 +170,7 @@ class Settings:
                         pattern = string.Template(pattern).substitute(HOME=HOME)
                     except KeyError as e:
                         raise sb.errors.SmartBugsError(
-                            f"Unknown variable '{e}' in file specification"
+                            f"unknown variable '{e}' in file specification"
                         )
                     root_spec = pattern.split(":")
                     if len(root_spec) == 1:
@@ -179,7 +179,7 @@ class Settings:
                         root, spec = root_spec[0], root_spec[1]
                     else:
                         raise sb.errors.SmartBugsError(
-                            f"File pattern {pattern} contains more than one colon (in {settings})."
+                            f"file pattern '{pattern}' contains more than one colon"
                         )
                     root_specs.append((root, spec))
                 setattr(self, k, root_specs)
@@ -197,19 +197,19 @@ class Settings:
                     assert isinstance(v, bool)
                     setattr(self, k, v)
                 except Exception:
-                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a Boolean (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"setting {k}: Boolean expected, '{v}' found")
 
             elif k in ("results", "log"):
                 try:
                     setattr(self, k, str(v).replace("/", os.path.sep))
                 except Exception:
-                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a path (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"setting {k}: path expected, '{v}' found")
 
             elif k in ("runid"):
                 try:
                     setattr(self, k, str(v))
                 except Exception:
-                    raise sb.errors.SmartBugsError(f"'{k}' needs to be a string (in {settings}).")
+                    raise sb.errors.SmartBugsError(f"setting {k}: string expected, '{v}' found")
 
             elif k == "mem_limit":
                 try:
@@ -221,11 +221,11 @@ class Settings:
                     setattr(self, k, v)
                 except Exception:
                     raise sb.errors.SmartBugsError(
-                        f"'{k}' needs to be a memory specifcation (in {settings})."
+                        f"setting {k}: memory spec expected, '{v}' found"
                     )
 
             else:
-                raise sb.errors.SmartBugsError(f"Invalid key '{k}' (in {settings}).")
+                raise sb.errors.SmartBugsError(f"invalid key '{k}' in settings")
 
     def dict(self) -> dict[str, Any]:
         """Convert settings to dictionary representation.

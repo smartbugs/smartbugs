@@ -213,7 +213,7 @@ class TestSettingsResultDir:
         settings.freeze()
 
         with pytest.raises(
-            sb.errors.SmartBugsError, match="Unknown variable.*in template of result dir"
+            sb.errors.SmartBugsError, match="unknown variable.*in template of result dir"
         ):
             settings.resultdir("tool", "mode", "/file.sol", "file.sol")
 
@@ -243,7 +243,7 @@ class TestSettingsUpdate:
         settings = Settings()
         settings.freeze()
 
-        with pytest.raises(sb.errors.InternalError, match="Frozen settings cannot be updated"):
+        with pytest.raises(sb.errors.InternalError, match="frozen settings cannot be updated"):
             settings.update({"timeout": 300})
 
     def test_update_with_none_does_nothing(self):
@@ -348,7 +348,8 @@ json: true
         settings = Settings()
 
         with pytest.raises(
-            sb.errors.SmartBugsError, match="'timeout' needs to be a positive integer"
+            sb.errors.SmartBugsError,
+            match="setting timeout: positive integer expected, '-100' found",
         ):
             settings.update({"timeout": -100})
 
@@ -357,7 +358,8 @@ json: true
         settings = Settings()
 
         with pytest.raises(
-            sb.errors.SmartBugsError, match="'processes' needs to be a positive integer"
+            sb.errors.SmartBugsError,
+            match="setting processes: positive integer expected, 'invalid' found",
         ):
             settings.update({"processes": "invalid"})
 
@@ -434,7 +436,7 @@ json: true
         settings = Settings()
 
         with pytest.raises(
-            sb.errors.SmartBugsError, match="Unknown variable.*in file specification"
+            sb.errors.SmartBugsError, match="unknown variable.*in file specification"
         ):
             settings.update({"files": "${UNKNOWN_VAR}/contracts/*.sol"})
 
@@ -465,7 +467,9 @@ json: true
         """Test that invalid boolean values raise errors."""
         settings = Settings()
 
-        with pytest.raises(sb.errors.SmartBugsError, match="'main' needs to be a Boolean"):
+        with pytest.raises(
+            sb.errors.SmartBugsError, match="setting main: Boolean expected, 'yes' found"
+        ):
             settings.update({"main": "yes"})
 
     def test_update_path_fields(self):
@@ -528,14 +532,19 @@ json: true
         """Test that invalid mem_limit values raise errors."""
         settings = Settings()
 
-        with pytest.raises(sb.errors.SmartBugsError, match="'mem_limit' needs to be a memory"):
+        with pytest.raises(
+            sb.errors.SmartBugsError,
+            match="setting mem_limit: memory spec expected, 'invalid' found",
+        ):
             settings.update({"mem_limit": "invalid"})
 
     def test_update_mem_limit_negative_value_raises_error(self):
         """Test that negative mem_limit values raise errors."""
         settings = Settings()
 
-        with pytest.raises(sb.errors.SmartBugsError, match="'mem_limit' needs to be a memory"):
+        with pytest.raises(
+            sb.errors.SmartBugsError, match="setting mem_limit: memory spec expected, '-1g' found"
+        ):
             settings.update({"mem_limit": "-1g"})
 
     def test_update_mem_limit_with_none(self):
@@ -551,7 +560,7 @@ json: true
         """Test that invalid keys raise errors."""
         settings = Settings()
 
-        with pytest.raises(sb.errors.SmartBugsError, match="Invalid key 'unknown_key'"):
+        with pytest.raises(sb.errors.SmartBugsError, match="invalid key 'unknown_key' in settings"):
             settings.update({"unknown_key": "value"})
 
 

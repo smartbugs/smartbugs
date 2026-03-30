@@ -60,11 +60,11 @@ source .venv/bin/activate
 echo -e "\n${BLUE}Upgrading pip and installing wheel...${NC}"
 pip install --upgrade pip --quiet
 pip install wheel --quiet
-echo -e "${GREEN}✓${NC} pip and wheel upgraded"
+echo -e "${GREEN}pip and wheel upgraded${NC}"
 pip install "poetry>=2.0.0"
 
 POETRY_VERSION=$(poetry --version)
-echo -e "${GREEN}✓${NC} Installed ${POETRY_VERSION}"
+echo -e "${GREEN}Installed ${POETRY_VERSION}${NC}"
 
 # Install dependencies
 if [ "$DEV_MODE" = true ]; then
@@ -74,7 +74,7 @@ else
     echo -e "${BLUE}Installing production dependencies only${NC}"
     poetry install --only main
 fi
-echo -e "${GREEN}✓${NC} Dependencies installed via Poetry"
+echo -e "${GREEN}Dependencies installed via Poetry${NC}"
 
 # Verify installation
 echo -e "\n${BLUE}Verifying installation...${NC}"
@@ -82,9 +82,9 @@ echo -e "\n${BLUE}Verifying installation...${NC}"
 # Test core packages (use venv python)
 python -c "import yaml; import colorama; import requests; import semantic_version; import docker; import cpuinfo" 2>/dev/null
 if [ $? -eq 0 ]; then
-    echo -e "${GREEN}✓${NC} Core dependencies verified"
+    echo -e "${GREEN}Core dependencies verified${NC}"
 else
-    echo -e "${RED}✗${NC} Core dependency verification failed"
+    echo -e "${RED}Core dependency verification failed${NC}"
     exit 1
 fi
 
@@ -95,33 +95,33 @@ if [ "$DEV_MODE" = true ]; then
     # Check pytest (use venv python)
     if python -c "import pytest" 2>/dev/null; then
         PYTEST_VERSION=$(python -c "import pytest; print(pytest.__version__)")
-        echo -e "${GREEN}✓${NC} pytest ${PYTEST_VERSION}"
+        echo -e "${GREEN}pytest ${PYTEST_VERSION}${NC}"
     else
-        echo -e "${RED}✗${NC} pytest not available"
+        echo -e "${RED}pytest not available${NC}"
         exit 1
     fi
 
     # Check pytest-cov (use venv python)
     if python -c "import pytest_cov" 2>/dev/null; then
-        echo -e "${GREEN}✓${NC} pytest-cov available"
+        echo -e "${GREEN}pytest-cov available${NC}"
     else
-        echo -e "${RED}✗${NC} pytest-cov not available"
+        echo -e "${RED}pytest-cov not available${NC}"
         exit 1
     fi
 
     # Check pytest-mock (use venv python)
     if python -c "import pytest_mock" 2>/dev/null; then
-        echo -e "${GREEN}✓${NC} pytest-mock available"
+        echo -e "${GREEN}pytest-mock available${NC}"
     else
-        echo -e "${RED}✗${NC} pytest-mock not available"
+        echo -e "${RED}pytest-mock not available${NC}"
         exit 1
     fi
 
     # Check pytest-timeout (use venv python)
     if python -c "import pytest_timeout" 2>/dev/null; then
-        echo -e "${GREEN}✓${NC} pytest-timeout available"
+        echo -e "${GREEN}pytest-timeout available${NC}"
     else
-        echo -e "${RED}✗${NC} pytest-timeout not available"
+        echo -e "${RED}pytest-timeout not available${NC}"
         exit 1
     fi
 fi

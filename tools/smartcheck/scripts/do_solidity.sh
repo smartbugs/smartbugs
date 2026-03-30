@@ -6,5 +6,6 @@ BIN="$2"
 export PATH="$BIN:$PATH"
 chmod +x "$BIN/solc"
 
-echo smartcheck -p "$FILENAME" >> $BIN/log
-smartcheck -p "$FILENAME"
+CMD="smartcheck -p $FILENAME"
+echo "$CMD" >> $BIN/log
+$CMD

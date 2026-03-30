@@ -7,5 +7,6 @@ BIN="$3"
 #export PATH="$BIN:$PATH"
 #chmod +x "$BIN/solc"
 
-echo solhint -f unix -q "$FILENAME" >> $BIN/log
-solhint -f unix -q "$FILENAME"
+CMD="solhint -f unix -q $FILENAME"
+echo "$CMD" >> $BIN/log
+$CMD

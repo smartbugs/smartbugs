@@ -3,7 +3,6 @@ version: "#d1ecc37"
 info: Osiris is an analysis tool to detect integer bugs in Ethereum smart contracts. Osiris is based on Oyente.
 origin: https://github.com/christoftorres/Osiris
 image: smartbugs/osiris:d1ecc37
-network: none
 bin: scripts
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"

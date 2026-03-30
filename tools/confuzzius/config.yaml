@@ -3,7 +3,6 @@ info: A data dependency-aware hybrid fuzzer for Ethereum smart contracts
 origin: https://github.com/christoftorres/ConFuzzius
 version: "#4315fb7 v0.0.1"
 image: smartbugs/confuzzius:4315fb7
-network: none
 solidity:
     command: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'" 
     output: /root/results.json

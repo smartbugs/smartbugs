@@ -22,5 +22,6 @@ if [ "$MAIN" -eq 1 ]; then
 fi
 
 cd /conkas
-echo python3 conkas.py -fav -s "$FILENAME" $OPT_CONTRACT >> $BIN/log
-python3 conkas.py -fav -s "$FILENAME" $OPT_CONTRACT
+CMD="python3 conkas.py -fav -s $FILENAME $OPT_CONTRACT"
+echo "$CMD" >> $BIN/log
+$CMD

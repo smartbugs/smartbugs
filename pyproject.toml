@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "smartbugs"
-version = "2.0.15"
+version = "2.0.18"
 description = "An extensible framework for analyzing Ethereum smart contracts using multiple security analysis tools"
 authors = ["SmartBugs Team <noreply@github.com>"]
 license = "MIT"
@@ -50,7 +50,7 @@ requests = ">=2.32.4"
 semantic-version = ">=2.10.0"
 urllib3 = ">=2.5.0"
 websocket-client = ">=1.4.2"
-filelock = "3.20.3"
+filelock = ">=3.20.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.4.0"

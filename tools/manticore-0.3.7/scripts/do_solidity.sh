@@ -9,7 +9,8 @@ chmod +x "$BIN/solc"
 mkdir /results
 
 for c in `python3 "$BIN/printContractNames.py" "${FILENAME}"`; do 
-        echo manticore --no-colors --contract "${c}" "${FILENAME#/}" >> $BIN/log
-        manticore --no-colors --contract "${c}" "${FILENAME#/}"
+        CMD="manticore --no-colors --contract ${c} ${FILENAME#/}"
+	echo "$CMD" >> $BIN/log
+	$CMD
         mv /mcore_* /results
 done

@@ -12,5 +12,6 @@ if [ "$TIMEOUT" -gt 0 ]; then
     OPT_TIMEOUT="-glt $TO"
 fi
 
-echo python osiris/osiris.py $OPT_TIMEOUT -b -s "$FILENAME" >> $BIN/log
-python osiris/osiris.py $OPT_TIMEOUT -b -s "$FILENAME"
+CMD="python osiris/osiris.py $OPT_TIMEOUT -b -s $FILENAME"
+echo "$CMD" >> $BIN/log
+$CMD

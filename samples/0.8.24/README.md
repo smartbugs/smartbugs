@@ -1,3 +1,3 @@
-The original contracts are those in the parent directory.
-The contracts here have been minimally edited to be compilable with Solidity ^0.8.0.
-The vulnerabilities of the original contracts may no longer present in the updated contracts.
+The original contracts are those in folder 0.4.x.
+The contracts here have been minimally edited to be compilable with Solidity 0.8.24.
+Due to changes in Solidity semantics, the vulnerabilities of the original contracts may no longer be present in the updated contracts.

@@ -2,6 +2,6 @@ name: eThor
 origin: https://secpriv.wien/ethor
 version: "2023"
 info: eThor is a sound static analyzer for EVM smart contracts based on HoRSt.
+image: smartbugs/ethor:2023
 runtime:
-    image: smartbugs/ethor:2023
     command: "ethor-with-reconstruction '$FILENAME' --prune-strategy=aggressive --predicate-inlining-strategy=linear --preanalysis -v"

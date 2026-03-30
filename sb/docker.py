@@ -86,6 +86,8 @@ def __docker_args(task: "sb.tasks.Task", sbdir: str) -> dict[str, Any]:
         v = getattr(task.tool, k, None)
         if v is not None:
             args[k] = v
+    if "network" not in args:
+        args["network"] = "none"
     for k in ("cpu_quota", "mem_limit"):
         v = getattr(task.settings, k, None)
         if v is not None:

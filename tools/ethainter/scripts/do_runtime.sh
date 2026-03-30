@@ -15,5 +15,6 @@ fi
 echo cd /home/reviewer/gigahorse-toolchain/logic >> $BIN/log
 cd /home/reviewer/gigahorse-toolchain/logic
 
-echo ./analyze.py --reuse_datalog_bin --restart --rerun_clients $OPT_TIMEOUT -d "$SB" -C ../../ethainter-inlined.dl >> $BIN/log
-./analyze.py --reuse_datalog_bin --restart --rerun_clients $OPT_TIMEOUT -d "$SB" -C ../../ethainter-inlined.dl
+CMD="./analyze.py --reuse_datalog_bin --restart --rerun_clients $OPT_TIMEOUT -d $SB -C ../../ethainter-inlined.dl"
+echo "$CMD" >> $BIN/log
+$CMD

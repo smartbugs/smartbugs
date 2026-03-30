@@ -133,7 +133,7 @@ def parse(
 
                                     findings.append(finding)
                 # If no positions are found, still report on the finding
-                else:
+                if len(findings) == 0:
                     findings.append({
                         "name": title,
                         "severity": severity,

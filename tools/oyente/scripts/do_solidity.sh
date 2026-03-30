@@ -31,5 +31,6 @@ if [ "$TIMEOUT" -gt 0 ]; then
 fi
 
 cd /oyente
-echo /oyente/oyente/oyente.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT >> $BIN/log
-/oyente/oyente/oyente.py $OPT_TIMEOUT -s "$FILENAME" $OPT_CONTRACT
+CMD="/oyente/oyente/oyente.py $OPT_TIMEOUT -s $FILENAME $OPT_CONTRACT"
+echo "$CMD" >> $BIN/log
+$CMD

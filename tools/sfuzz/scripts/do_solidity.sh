@@ -38,6 +38,14 @@ TO=$(((TIMEOUT - (2 * COUNT)) / COUNT))
 if [ "$TIMEOUT" -eq 0 ] || [ $TO -lt 10 ]; then
   TO=120
 fi
- 
-echo "cd /home/ && ./fuzzer -g -r 1 -d $TO && chmod +x fuzzMe && ./fuzzMe" >> $BIN/log
-cd /home/ && ./fuzzer -g -r 1 -d $TO && chmod +x fuzzMe && ./fuzzMe
+
+cd /home
+CMD="./fuzzer -g -r 1 -d $TO"
+echo "$CMD" >> $BIN/log
+$CMD
+CMD="chmod +x fuzzMe"
+echo "$CMD" >> $BIN/log
+$CMD
+CMD="./fuzzMe"
+echo "$CMD" >> $BIN/log
+$CMD

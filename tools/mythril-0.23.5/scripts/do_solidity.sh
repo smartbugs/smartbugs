@@ -30,5 +30,6 @@ if [ "$TIMEOUT" -gt 0 ]; then
     OPT_TIMEOUT="--execution-timeout $TO"
 fi
 
-echo /usr/local/bin/myth analyze $OPT_TIMEOUT -o json "$FILENAME$OPT_CONTRACT" >> $BIN/log
-/usr/local/bin/myth analyze $OPT_TIMEOUT -o json "$FILENAME$OPT_CONTRACT"
+CMD="/usr/local/bin/myth analyze $OPT_TIMEOUT -o json $FILENAME$OPT_CONTRACT"
+echo "$CMD" >> $BIN/log
+$CMD

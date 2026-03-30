@@ -1,8 +1,8 @@
 name: Smartcheck
 origin: https://github.com/smartdec/smartcheck
 info: SmartCheck is an extensible static analysis tool for discovering vulnerabilities and other code issues in Ethereum smart contracts written in the Solidity programming language.
+image: smartbugs/smartcheck
 solidity:
-    image: smartbugs/smartcheck
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$BIN'"
     solc: yes
     bin: scripts

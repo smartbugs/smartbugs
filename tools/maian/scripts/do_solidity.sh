@@ -23,7 +23,8 @@ fi
 cd /MAIAN/tool; 
 for CONTRACT in $CONTRACTS; do
     for c in 0 1 2; do
-        echo python3 maian.py -c "$c" -s "$FILENAME" "$CONTRACT" >> $BIN/log
-        python3 maian.py -c "$c" -s "$FILENAME" "$CONTRACT"
+        CMD="echo python3 maian.py -c $c -s $FILENAME $CONTRACT"
+	echo $CMD >> "$BIN/log"
+	$CMD
     done
 done

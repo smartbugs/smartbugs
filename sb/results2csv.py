@@ -92,9 +92,9 @@ def main() -> None:
         csv_out.writerow(data2csv(task_log, parser_output, args.p, fields))
 
 
-def list2postgres(l: "Sequence[str]") -> str:
+def list2postgres(lst: "Sequence[str]") -> str:
     es = []
-    for e in l:
+    for e in lst:
         if any(ch in e for ch in ('"', ",", "\n", "{", "}")):
             es.append('"' + e.replace('"', '\\"') + '"')
         else:
@@ -102,9 +102,9 @@ def list2postgres(l: "Sequence[str]") -> str:
     return "{" + ",".join(es) + "}"
 
 
-def list2excel(l: "Sequence[str]") -> str:
+def list2excel(lst: "Sequence[str]") -> str:
     es = []
-    for e in l:
+    for e in lst:
         if any(ch in e for ch in ('"', ",", "\n")):
             es.append('"' + e.replace('"', '""') + '"')
         else:

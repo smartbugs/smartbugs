@@ -9,5 +9,6 @@ chmod +x "$BIN/solc"
 
 export PYTHONPATH=/home/slither/.local/lib/python3.10/site-packages
 
-echo slither "$FILENAME" --json /output.json >> $BIN/log
-slither "$FILENAME" --json /output.json
+CMD="slither $FILENAME --json /output.json"
+echo "$CMD" >> $BIN/log
+$CMD

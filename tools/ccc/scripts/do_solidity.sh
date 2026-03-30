@@ -6,6 +6,8 @@ TIMEOUT="$2"
 BIN="$3"
 MAIN="$4"
 
+echo "127.0.1.1\t$(hostname)" >> /etc/hosts
+
 # Startup Neo4j
 neo4j start
 STATUS=$(curl --write-out "%{http_code}\n" --silent --output /dev/null http://localhost:7474)
@@ -19,6 +21,8 @@ do
         echo "Neo4j is not running."
     fi
 done
+
 # Run analysis with CCC
-echo cpg-contract-checker-app "$FILENAME" >> $BIN/log
-cpg-contract-checker-app "$FILENAME"
+CMD="cpg-contract-checker-app ${FILENAME}"
+echo "$CMD" >> $BIN/log
+$CMD
