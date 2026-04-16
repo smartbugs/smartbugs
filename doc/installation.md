@@ -42,6 +42,32 @@
 
    The command `which smartbugs` should now display the path to the command.
 
+### Installing SmartBugs globally
+
+In the following, we assume that the SmartBugs files are to be added to `/usr/local`.
+
+1. Install  [Docker](https://docs.docker.com/install) and [Python3](https://www.python.org).
+2. Add all users that will use Smartbugs to the `docker` group. If `SBUSER` is the id of such a user, issue the command
+   ```bash
+   sudo usermod -a -G docker SBUSER
+   ```
+   The group membership becomes active with the next log-in of `SBUSER`.
+4. Pick a user and a group that will own the installation files and that will do the installation, either your own user+group, or generate a new user+group. Let us call the user `USER` and the group `GROUP`.
+5. Create the installation directory.
+   ```bash
+   sudo mkdir /usr/local/lib/smartbugs
+   sudo chown USER:GROUP /usr/local/lib/smartbugs
+   ```
+6. As user `USER`, run the following commands
+   ```bash
+   git clone https://github.com/smartbugs/smartbugs /usr/local/lib/smartbugs
+   cd /usr/local/lib/smartbugs
+   install/setup-venv.sh
+   ln -s "`pwd`/smartbugs" /usr/local/bin/smartbugs
+   ln -s "`pwd`/reparse" /usr/local/bin/reparse
+   ln -s "`pwd`/results2csv" /usr/local/bin/results2csv
+   ```
+
 ## Windows
 
 See [our wiki page on running SmartBugs in Windows](https://github.com/smartbugs/smartbugs/wiki/Running-SmartBugs-in-Windows).
