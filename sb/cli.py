@@ -1,10 +1,10 @@
 import argparse
-import os
 import sys
 from typing import TYPE_CHECKING, Any, Optional
 
 import sb.cfg
 import sb.colors
+import sb.debug
 import sb.errors
 import sb.logging
 import sb.settings
@@ -173,35 +173,43 @@ def cli_args(defaults: "Settings") -> tuple[Optional[str], dict[str, Any]]:
         sys.exit(1)
 
     args = vars(parser.parse_args())
-    sb.cfg.DEBUG = args["debug"]
+    sb.debug.ENABLED = args["debug"]
 
-    if args["version"] or sb.cfg.DEBUG:
-        print(
-            f"SmartBugs {sb.cfg.VERSION}\n"
-            f"Python {sb.cfg.CPU.get('python_version')}\n"
-            f"{sb.cfg.UNAME.system} {sb.cfg.UNAME.release} {sb.cfg.UNAME.version}\n"
-            f"CPU {sb.cfg.CPU.get('brand_raw')}"
-        )
-        if args["version"]:
-            sys.exit(0)
-        for module in sys.modules.values():
-            if hasattr(module, "__version__"):
-                print(module.__name__, module.__version__)
+    version = (
+        f"SmartBugs {sb.cfg.SB_VERSION}\n"
+        f"Python {sb.cfg.CPU.get('python_version')}\n"
+        f"{sb.cfg.UNAME.system} {sb.cfg.UNAME.release} {sb.cfg.UNAME.version}\n"
+        f"CPU {sb.cfg.CPU.get('brand_raw')}"
+    )
+
+    sb.debug.log(version)
+    sb.debug.log("Modules:")
+    for module in sys.modules.values():
+        if hasattr(module, "__version__"):
+            sb.debug.log(f"   {module.__name__} {module.__version__}")
+
+    if args["version"]:
+        print(version)
+        sys.exit(0)
 
     cfg_file = args["configuration"]
 
     del args["version"], args["configuration"], args["debug"]
-    for k in [k for k, v in args.items() if v is None]:
-        del args[k]
+    for k, v in tuple(args.items()):
+        if v is None:
+            del args[k]
 
     return cfg_file, args
 
 
-def cli(site_cfg: Optional[str] = sb.cfg.SITE_CFG) -> "Settings":
+def cli() -> "Settings":
     settings = sb.settings.Settings()
 
-    if site_cfg and os.path.exists(site_cfg):
-        settings.update(site_cfg)
+    if sb.cfg.SITE_CFG.is_file():
+        settings.update(sb.cfg.SITE_CFG)
+
+    if sb.cfg.USER_CFG.is_file():
+        settings.update(sb.cfg.USER_CFG)
 
     cfg_file, cli_settings = cli_args(settings)
     settings.update(cfg_file)

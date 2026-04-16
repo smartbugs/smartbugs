@@ -1,12 +1,9 @@
 import os
 import threading
 from multiprocessing.queues import Queue
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import sb.colors
-
-if TYPE_CHECKING:
-    pass
 
 
 def logger_process(

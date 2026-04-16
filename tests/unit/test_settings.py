@@ -374,38 +374,32 @@ json: true
     def test_update_tools_as_list(self):
         """Test that tools can be provided as a list."""
         settings = Settings()
-
         settings.update({"tools": ["mythril", "slither", "oyente"]})
-
         assert settings.tools == ["mythril", "slither", "oyente"]
 
-    def test_update_tools_with_dict_converts_to_string(self):
-        """Test that tools with dict type converts the dict to a string."""
+    def test_update_tools_as_dict(self):
+        """Test that tools with dict type leads to an exception."""
         settings = Settings()
-
-        # The code converts dict to string via list comprehension [str(vi) for vi in v]
-        # This documents the current behavior (dict gets stringified)
-        settings.update({"tools": {"tool1": "value", "tool2": "value"}})
-
-        # Dict gets converted to a string representation
-        assert len(settings.tools) == 1
-        assert isinstance(settings.tools[0], str)
+        with pytest.raises(sb.errors.SmartBugsError, match=r"\(list of\) string\(s\) expected"):
+            settings.update({"tools": {"tool1": "value", "tool2": "value"}})
 
     def test_update_files_as_string(self):
         """Test that files can be provided as a single string."""
         settings = Settings()
-
         settings.update({"files": "samples/*.sol"})
-
         assert settings.files == [(None, "samples/*.sol")]
 
     def test_update_files_as_list(self):
         """Test that files can be provided as a list."""
         settings = Settings()
-
         settings.update({"files": ["samples/*.sol", "contracts/*.sol"]})
-
         assert settings.files == [(None, "samples/*.sol"), (None, "contracts/*.sol")]
+
+    def test_update_files_as_integer(self):
+        """Test that numeric values lead to an exception."""
+        settings = Settings()
+        with pytest.raises(sb.errors.SmartBugsError, match=r"\(list of\) string\(s\) expected"):
+            settings.update({"files": 123})
 
     def test_update_files_with_root_specification(self):
         """Test that files can include root:path specifications."""
@@ -475,11 +469,21 @@ json: true
     def test_update_path_fields(self):
         """Test updating path fields (results, log)."""
         settings = Settings()
-
         settings.update({"results": "output/${TOOL}/${FILENAME}", "log": "logs/run.log"})
-
         assert settings.results == os.path.join("output", "${TOOL}", "${FILENAME}")
         assert settings.log == "logs/run.log"
+
+    def test_update_invalid_result_path_raises_error(self):
+        """Test updating results path with integer."""
+        settings = Settings()
+        with pytest.raises(sb.errors.SmartBugsError, match="path expected"):
+            settings.update({"results": 123})
+
+    def test_update_invalid_log_path_raises_error(self):
+        """Test updating results path with integer."""
+        settings = Settings()
+        with pytest.raises(sb.errors.SmartBugsError, match="path expected"):
+            settings.update({"log": 123})
 
     def test_update_path_converts_slashes_to_os_sep(self):
         """Test that path fields convert slashes to os.path.sep."""
@@ -493,10 +497,16 @@ json: true
     def test_update_runid_field(self):
         """Test updating runid field."""
         settings = Settings()
-
         settings.update({"runid": "custom_${YEAR}${MONTH}${DAY}"})
-
         assert settings.runid == "custom_${YEAR}${MONTH}${DAY}"
+
+    def test_update_runid_with_invalid_value(self):
+        """Test that updating runid field with an integer raises an exception."""
+        settings = Settings()
+        with pytest.raises(
+            sb.errors.SmartBugsError, match="setting runid: string expected, '123' found"
+        ):
+            settings.update({"runid": 123})
 
     def test_update_mem_limit_with_units(self):
         """Test updating mem_limit with various units."""
@@ -551,9 +561,7 @@ json: true
         """Test that mem_limit can be set to None."""
         settings = Settings()
         settings.mem_limit = "2g"
-
         settings.update({"mem_limit": None})
-
         assert settings.mem_limit is None
 
     def test_update_invalid_key_raises_error(self):
@@ -724,35 +732,15 @@ class TestSettingsEdgeCases:
         """Test that update with empty dict does nothing."""
         settings = Settings()
         original_timeout = settings.timeout
-
         settings.update({})
-
         assert settings.timeout == original_timeout
-
-    def test_tools_with_numeric_values(self):
-        """Test that tools list handles numeric values correctly."""
-        settings = Settings()
-
-        settings.update({"tools": [1, 2, 3]})
-
-        assert settings.tools == ["1", "2", "3"]
-
-    def test_files_with_numeric_values(self):
-        """Test that files list handles numeric values correctly."""
-        settings = Settings()
-
-        settings.update({"files": [123]})
-
-        assert settings.files == [(None, "123")]
 
     def test_resultdir_with_no_extension(self):
         """Test resultdir() with files that have no extension."""
         settings = Settings()
         settings.results = "${FILEBASE}_${FILEEXT}"
         settings.freeze()
-
         result = settings.resultdir("tool", "mode", "/path/to/filename", "filename")
-
         assert "filename" in result
 
     def test_resultdir_with_dot_in_filename(self):
@@ -760,9 +748,7 @@ class TestSettingsEdgeCases:
         settings = Settings()
         settings.results = "${FILEBASE}.${FILEEXT}"
         settings.freeze()
-
         result = settings.resultdir("tool", "mode", "/path/to/my.contract.sol", "my.contract.sol")
-
         assert "my.contract" in result
         assert "sol" in result
 
@@ -770,19 +756,15 @@ class TestSettingsEdgeCases:
         """Test that cpu_quota=0 is converted to None."""
         settings = Settings()
         settings.cpu_quota = 50000
-
         settings.update({"cpu_quota": 0})
-
         assert settings.cpu_quota is None
 
     def test_multiple_updates_accumulate(self):
         """Test that multiple update calls accumulate settings."""
         settings = Settings()
-
         settings.update({"timeout": 100})
         settings.update({"processes": 2})
         settings.update({"mem_limit": "4g"})
-
         assert settings.timeout == 100
         assert settings.processes == 2
         assert settings.mem_limit == "4g"

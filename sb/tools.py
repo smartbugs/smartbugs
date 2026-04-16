@@ -59,9 +59,7 @@ class Tool:
             v = cfg.get(k)
             if v is not None:
                 if k in ("solc"):
-                    try:
-                        v = bool(v)
-                    except Exception:
+                    if not isinstance(v, bool):
                         raise sb.errors.SmartBugsError(
                             f"Tool: value of attribute '{k}' is not a Boolean.\n{cfg}"
                         )
@@ -85,13 +83,10 @@ class Tool:
                             f"Tool: value of attribute '{k}' is not a valid "
                             f"memory specifcation.\n{cfg}"
                         )
-                else:
-                    try:
-                        v = str(v)
-                    except Exception:
-                        raise sb.errors.SmartBugsError(
-                            f"Tool: value of attribute '{k}' is not a string.\n{cfg}"
-                        )
+                elif not isinstance(v, str):
+                    raise sb.errors.SmartBugsError(
+                        f"Tool: value of attribute '{k}' is not a string.\n{cfg}"
+                    )
             if k in ("command", "entrypoint"):
                 k = f"_{k}"
                 v = string.Template(str(v)) if v else None

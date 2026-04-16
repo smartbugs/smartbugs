@@ -11,15 +11,8 @@ def strip(s: Any) -> str:
     return ANSIcolor.sub("", str(s))
 
 
-if sys.platform == "win32":
-
-    def color(col: str, s: Any) -> str:
-        return s
-
-else:
-
-    def color(col: str, s: Any) -> str:
-        return f"{col}{s}{Style.RESET_ALL}"
+def color(col: str, s: Any) -> str:
+    return s if sys.platform == "win32" else f"{col}{s}{Style.RESET_ALL}"
 
 
 def file(s: Any) -> str:

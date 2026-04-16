@@ -58,7 +58,6 @@ class TestDockerClient:
     def test_client_connection_failure(self, mocker):
         """Test handling of Docker connection failure."""
         mocker.patch("docker.from_env", side_effect=Exception("Connection failed"))
-        mocker.patch("sb.cfg.DEBUG", False)
 
         # Reset the global client
         sb.docker._client = None
@@ -68,21 +67,6 @@ class TestDockerClient:
 
         assert "Cannot connect to service" in str(exc_info.value)
         assert "Is it installed and running?" in str(exc_info.value)
-
-    def test_client_connection_failure_with_debug(self, mocker):
-        """Test Docker connection failure includes traceback in debug mode."""
-        mocker.patch("docker.from_env", side_effect=Exception("Connection failed"))
-        mocker.patch("sb.cfg.DEBUG", True)
-
-        sb.docker._client = None
-
-        with pytest.raises(sb.errors.SmartBugsError) as exc_info:
-            sb.docker.client()
-
-        error_msg = str(exc_info.value)
-        assert "Cannot connect to service" in error_msg
-        # In debug mode, should include traceback details
-        assert "Traceback" in error_msg or "Exception" in error_msg
 
 
 class TestImageLoading:

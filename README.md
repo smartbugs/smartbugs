@@ -59,7 +59,7 @@ pages 2102-2105, IEEE Computer Society, 2023.
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Mando](https://github.com/stephan-klein/ge-sc-machine) | v0.1 | :heavy_check_mark: |                    |                    |
 | [Mando HGT](https://github.com/stephan-klein/ge-sc-machine/tree/hgt) | v0.1-hgt | :heavy_check_mark: |                    |                    |
-| [Manticore](https://github.com/trailofbits/manticore)   | 0.3.7 | :heavy_check_mark: |                    |                    |
+| [Manticore](https://github.com/trailofbits/manticore) <sup>[3]</sup>   | 0.3.7 | :heavy_check_mark: |                    |                    |
 | [Mythril](https://github.com/ConsenSys/mythril) | 0.24.8  <sup>[2]</sup> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Oyente+](https://github.com/smartbugs/oyente_plus) <sup>[1]</sup> | #060ca34 | :heavy_check_mark: |                    | :heavy_check_mark: |
@@ -84,6 +84,8 @@ operations, without adding detectors for further weaknesses.
 Oyente+ is maintained and handles recent EVM versions.
 
 **[2]** Older versions available, see the [tools](tools/) folder.
+
+**[3]** This tool may not be adequately configured and therefore may not produce useful results. Feel free to submit a fix.
 
 ## Installation
 

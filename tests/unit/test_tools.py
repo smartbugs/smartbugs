@@ -166,12 +166,10 @@ class TestToolValidation:
             "command": "analyze $FILENAME",
             "solc": "invalid_bool",
         }
-        # YAML "yes"/"no" gets converted to boolean by PyYAML, but other strings don't
-        # The bool() call on string "invalid_bool" will return True (non-empty string)
-        # So this test actually doesn't raise an error - it just converts to True
-        tool = Tool(cfg)
-        # The string is converted via bool() which makes it True
-        assert tool.solc is True
+        with pytest.raises(
+            sb.errors.SmartBugsError, match="Tool: value of attribute 'solc' is not a Boolean."
+        ):
+            Tool(cfg)
 
     def test_invalid_cpu_quota_raises_error(self):
         """Test that invalid cpu_quota value raises error."""
@@ -207,6 +205,20 @@ class TestToolValidation:
             "mem_limit": "invalid",
         }
         with pytest.raises(sb.errors.SmartBugsError, match="not a valid memory"):
+            Tool(cfg)
+
+    def test_invalid_network_raises_error(self):
+        """Test that invalid network value raises error."""
+        cfg = {
+            "id": "test_tool",
+            "mode": "solidity",
+            "image": "smartbugs/test:1.0",
+            "command": "analyze $FILENAME",
+            "network": 123,
+        }
+        with pytest.raises(
+            sb.errors.SmartBugsError, match="Tool: value of attribute 'network' is not a string"
+        ):
             Tool(cfg)
 
     def test_valid_mem_limit_formats(self):
@@ -338,6 +350,7 @@ class TestToolDictAndString:
             "name": "Test Tool",
             "command": "analyze $FILENAME",
             "entrypoint": "/bin/bash",
+            "bin": "mybin",
         }
         tool = Tool(cfg)
 

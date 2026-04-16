@@ -1,107 +1,105 @@
 import re
-from typing import TYPE_CHECKING, Optional
-
-import solcx
-
-if TYPE_CHECKING:
-    from solcx.install import Version
-
-
-# load binaries for Linux in Docker images, not for host platform
-solcx.set_target_os("linux")
-
+from typing import Union
 
 VOID_START: re.Pattern[str] = re.compile("//|/\\*|\"|'")
 QUOTE_END: re.Pattern[str] = re.compile("(?<!\\\\)'")
 DQUOTE_END: re.Pattern[str] = re.compile('(?<!\\\\)"')
 
 
-def remove_comments_strings(prg: list[str]) -> str:
-    todo = "\n".join(prg)  # normalize line ends
-    done = ""
+def remove_comments_strings(program: str) -> str:
+    """Return program without Solidity comments and strings
+
+    :param str program: Solidity program as a list of lines
+    :return: program with strings emptied and comments removed
+    :rtype: str
+    """
+    result = ""
     while True:
-        m = VOID_START.search(todo)
-        if not m:
-            done += todo
+        match_start_of_void = VOID_START.search(program)
+        if not match_start_of_void:
+            result += program
             break
         else:
-            done += todo[: m.start()]
-            if m[0] == "//":
-                end = todo.find("\n", m.end())
-                todo = "" if end == -1 else todo[end:]
-            elif m[0] == "/*":
-                end = todo.find("*/", m.end())
-                done += " "
-                todo = "" if end == -1 else todo[end + 2 :]
+            result += program[: match_start_of_void.start()]
+            if match_start_of_void[0] == "//":
+                end = program.find("\n", match_start_of_void.end())
+                program = "" if end == -1 else program[end:]
+            elif match_start_of_void[0] == "/*":
+                end = program.find("*/", match_start_of_void.end())
+                nls = program[match_start_of_void.end() : end].count("\n")
+                result += "\n" * nls if nls > 0 else " "
+                program = "" if end == -1 else program[end + 2 :]
             else:
-                if m[0] == "'":
-                    m2 = QUOTE_END.search(todo[m.end() :])
+                if match_start_of_void[0] == "'":
+                    match_end_of_string = QUOTE_END.search(program[match_start_of_void.end() :])
+                    result += "''"
                 else:
-                    m2 = DQUOTE_END.search(todo[m.end() :])
-                if not m2:
-                    # unclosed string
+                    match_end_of_string = DQUOTE_END.search(program[match_start_of_void.end() :])
+                    result += '""'
+                if not match_end_of_string:  # unclosed string
                     break
-                todo = todo[m.end() + m2.end() :]
-    return done
+                program = program[match_start_of_void.end() + match_end_of_string.end() :]
+    return result
 
 
-PRAGMA: re.Pattern[str] = re.compile("pragma solidity.*?;")
-RE_CONTRACT_NAMES: re.Pattern[str] = re.compile(
+def remove_strings(program: str) -> str:
+    """Return program without Solidity strings
+
+    :param str program: Solidity program as a list of lines
+    :return: program with strings emptied
+    :rtype: str
+    """
+    result = ""
+    while True:
+        match_start_of_void = VOID_START.search(program)
+        if not match_start_of_void:
+            result += program
+            break
+        else:
+            if match_start_of_void[0] == "//":
+                end = program.find("\n", match_start_of_void.end())
+                result += program if end == -1 else program[: end + 1]
+                program = "" if end == -1 else program[end + 1 :]
+            elif match_start_of_void[0] == "/*":
+                end = program.find("*/", match_start_of_void.end())
+                result += program if end == -1 else program[: end + 2]
+                program = "" if end == -1 else program[end + 2 :]
+            else:
+                result += program[: match_start_of_void.start()]
+                if match_start_of_void[0] == "'":
+                    match_end_of_string = QUOTE_END.search(program[match_start_of_void.end() :])
+                    result += "''"
+                else:
+                    match_end_of_string = DQUOTE_END.search(program[match_start_of_void.end() :])
+                    result += '""'
+                if not match_end_of_string:  # unclosed string
+                    break
+                program = program[match_start_of_void.end() + match_end_of_string.end() :]
+    return result
+
+
+PRAGMA: re.Pattern[str] = re.compile(r"pragma\s+solidity\s*(.*?);")
+CONTRACT_NAMES: re.Pattern[str] = re.compile(
     r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)"
 )
 
 
-def get_pragma_contractnames(prg: list[str]) -> tuple[Optional[str], list[str]]:
-    prg_wo_comments_strings = remove_comments_strings(prg)
-    m = PRAGMA.search(prg_wo_comments_strings)
-    pragma = m[0] if m else None
-    contractnames = RE_CONTRACT_NAMES.findall(prg_wo_comments_strings)
-    return pragma, contractnames
+def extract_versions_contractnames(program: Union[str, list[str]]) -> tuple[list[str], list[str]]:
 
+    # normalise line ends
+    if isinstance(program, str):
+        program = program.splitlines()
+    program = "\n".join(program)
 
-cached_solc_versions: Optional[list["Version"]] = None
+    program_wo_comments_strings = remove_comments_strings(program)
+    versions = PRAGMA.findall(program_wo_comments_strings)
 
+    if not versions:
+        program_wo_strings = remove_strings(program)
+        versions = PRAGMA.findall(program_wo_strings)
+        if versions:
+            versions = [versions[0]]  # first version from comments
 
-def ensure_solc_versions_loaded() -> bool:
-    global cached_solc_versions
-    if cached_solc_versions:
-        return True
-    try:
-        cached_solc_versions = solcx.get_installable_solc_versions()
-        return True
-    except Exception:
-        cached_solc_versions = solcx.get_installed_solc_versions()
-        return False
+    contractnames = CONTRACT_NAMES.findall(program_wo_comments_strings)
 
-
-def get_solc_version(pragma: Optional[str]) -> Optional[str]:
-    if not pragma:
-        return None
-    # correct >=0.y.z to ^0.y.z
-    pragma = re.sub(r">=0\.", r"^0.", pragma)
-    # replace x.y by x.y.0
-    pragma = re.sub(r"([^0-9])([0-9]+\.[0-9]+)([^0-9.]|$)", r"\1\2.0\3", pragma)
-    try:
-        version = solcx.install._select_pragma_version(pragma, cached_solc_versions)
-    except Exception:
-        version = None
-    return version
-
-
-cached_solc_paths: dict[str, Optional[str]] = {}
-
-
-def get_solc_path(version: Optional[str]) -> Optional[str]:
-    if not version:
-        return None
-    if version in cached_solc_paths:
-        return cached_solc_paths[version]
-    try:
-        solcx.install_solc(version)
-        solc_path_obj = solcx.get_executable(version)
-        # solcx.get_executable returns a Path object, convert to string
-        solc_path = str(solc_path_obj) if solc_path_obj else None
-    except Exception:
-        solc_path = None
-    cached_solc_paths[version] = solc_path
-    return solc_path
+    return versions, contractnames

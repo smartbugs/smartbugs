@@ -8,7 +8,7 @@ import docker
 import docker.models.containers
 import requests
 
-import sb.cfg
+import sb.debug
 import sb.errors
 import sb.io
 
@@ -26,9 +26,9 @@ def client() -> docker.DockerClient:
             _client = docker.from_env()
             _client.info()
         except Exception:
-            details = f"\n{traceback.format_exc()}" if sb.cfg.DEBUG else ""
+            sb.debug.log(traceback.format_exc())
             raise sb.errors.SmartBugsError(
-                f"Docker: Cannot connect to service. Is it installed and running?{details}"
+                "Docker: Cannot connect to service. Is it installed and running?"
             )
     return _client
 

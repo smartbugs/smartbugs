@@ -209,27 +209,28 @@ class TestCollectTasks:
         assert tasks[0].relfn == "Test.sol"
         assert tasks[0].tool.id == "test_tool"
 
+    @patch("sb.solc.ONLINE", set("0.8.34"))
     @patch("sb.docker.is_loaded")
     @patch("sb.docker.load")
-    @patch("sb.solidity.ensure_solc_versions_loaded")
-    @patch("sb.solidity.get_solc_version")
-    @patch("sb.solidity.get_solc_path")
+    @patch("sb.solc.path")
+    @patch("sb.semantic_version.match")
+    @patch("sb.solidity.extract_versions_contractnames")
     @patch("sb.io.read_lines")
     def test_collect_tasks_with_solc(
         self,
         mock_read_lines: MagicMock,
-        mock_get_solc_path: MagicMock,
-        mock_get_solc_version: MagicMock,
-        mock_ensure_loaded: MagicMock,
+        mock_extract_versions_contractnames: MagicMock,
+        mock_match: MagicMock,
+        mock_path: MagicMock,
         mock_load: MagicMock,
         mock_is_loaded: MagicMock,
         tmp_path: Path,
     ) -> None:
         """Test task assembly for tool requiring Solidity compiler."""
         mock_is_loaded.return_value = True
-        mock_ensure_loaded.return_value = True
-        mock_get_solc_version.return_value = "0.8.0"
-        mock_get_solc_path.return_value = "/path/to/solc"
+        mock_extract_versions_contractnames.return_value = (["^0.8.0"], ["Test"])
+        mock_match.return_value = "0.8.34"
+        mock_path.return_value = "/path/to/solc"
         mock_read_lines.return_value = ["pragma solidity ^0.8.0;", "contract Test {}"]
 
         sol_file = tmp_path / "Test.sol"
@@ -247,7 +248,7 @@ class TestCollectTasks:
         tasks = sb.smartbugs.collect_tasks(files, tools, settings)
 
         assert len(tasks) == 1
-        assert tasks[0].solc_version == "0.8.0"
+        assert tasks[0].solc_version == "0.8.34"
         assert tasks[0].solc_path == "/path/to/solc"
 
     @patch("sb.docker.is_loaded")
@@ -489,21 +490,19 @@ class TestCollectTasks:
 
     @patch("sb.docker.is_loaded")
     @patch("sb.docker.load")
-    @patch("sb.solidity.ensure_solc_versions_loaded")
-    @patch("sb.solidity.get_solc_version")
+    @patch("sb.solidity.extract_versions_contractnames")
     @patch("sb.io.read_lines")
     def test_collect_tasks_no_pragma(
         self,
         mock_read_lines: MagicMock,
-        mock_get_solc_version: MagicMock,
-        mock_ensure_loaded: MagicMock,
+        mock_extract_versions_contractnames: MagicMock,
         mock_load: MagicMock,
         mock_is_loaded: MagicMock,
         tmp_path: Path,
     ) -> None:
         """Test error when tool needs solc but file has no pragma."""
         mock_is_loaded.return_value = True
-        mock_ensure_loaded.return_value = True
+        mock_extract_versions_contractnames.return_value = ([], ["Test"])
         mock_read_lines.return_value = ["contract Test {}"]  # No pragma
 
         sol_file = tmp_path / "Test.sol"
@@ -522,24 +521,25 @@ class TestCollectTasks:
 
         assert "no pragma" in str(exc_info.value)
 
+    @patch("sb.solc.ONLINE", set("0.8.34"))
     @patch("sb.docker.is_loaded")
     @patch("sb.docker.load")
-    @patch("sb.solidity.ensure_solc_versions_loaded")
-    @patch("sb.solidity.get_solc_version")
+    @patch("sb.semantic_version.match")
+    @patch("sb.solidity.extract_versions_contractnames")
     @patch("sb.io.read_lines")
     def test_collect_tasks_no_matching_compiler(
         self,
         mock_read_lines: MagicMock,
-        mock_get_solc_version: MagicMock,
-        mock_ensure_loaded: MagicMock,
+        mock_extract_versions_contractnames: MagicMock,
+        mock_match: MagicMock,
         mock_load: MagicMock,
         mock_is_loaded: MagicMock,
         tmp_path: Path,
     ) -> None:
         """Test error when no compiler matches pragma."""
         mock_is_loaded.return_value = True
-        mock_ensure_loaded.return_value = True
-        mock_get_solc_version.return_value = None  # No matching version
+        mock_extract_versions_contractnames.return_value = (["^0.99.0"], ["Test"])
+        mock_match.return_value = None  # No matching version
         mock_read_lines.return_value = ["pragma solidity ^0.99.0;", "contract Test {}"]
 
         sol_file = tmp_path / "Test.sol"
@@ -558,36 +558,29 @@ class TestCollectTasks:
 
         assert "no compiler found" in str(exc_info.value)
 
+    @patch("sb.solc.ONLINE", set("0.8.34"))
     @patch("sb.docker.is_loaded")
     @patch("sb.docker.load")
-    @patch("sb.solidity.ensure_solc_versions_loaded")
-    @patch("sb.solidity.get_solc_version")
-    @patch("sb.solidity.get_solc_path")
+    @patch("sb.solc.path")
+    @patch("sb.semantic_version.match")
+    @patch("sb.solidity.extract_versions_contractnames")
     @patch("sb.io.read_lines")
     def test_collect_tasks_continue_on_errors(
         self,
         mock_read_lines: MagicMock,
-        mock_get_solc_path: MagicMock,
-        mock_get_solc_version: MagicMock,
-        mock_ensure_loaded: MagicMock,
+        mock_extract_versions_contractnames: MagicMock,
+        mock_match: MagicMock,
+        mock_path: MagicMock,
         mock_load: MagicMock,
         mock_is_loaded: MagicMock,
         tmp_path: Path,
     ) -> None:
         """Test continue_on_errors flag allows partial task collection."""
         mock_is_loaded.return_value = True
-        mock_ensure_loaded.return_value = True
-
-        # First file has no pragma (will fail)
-        # Second file is valid
-        def read_side_effect(fn: str) -> list[str]:
-            if "Bad" in fn:
-                return ["contract Bad {}"]  # No pragma
-            return ["pragma solidity ^0.8.0;", "contract Good {}"]
-
-        mock_read_lines.side_effect = read_side_effect
-        mock_get_solc_version.return_value = "0.8.0"
-        mock_get_solc_path.return_value = "/path/to/solc"
+        mock_extract_versions_contractnames.side_effect = [([], ["Bad"]), (["^0.8.0"], ["Good"])]
+        mock_read_lines.return_value = None
+        mock_match.return_value = "0.8.34"
+        mock_path.return_value = "/path/to/solc"
 
         bad_file = tmp_path / "Bad.sol"
         good_file = tmp_path / "Good.sol"

@@ -10,7 +10,9 @@ import sb.docker
 import sb.errors
 import sb.io
 import sb.logging
+import sb.semantic_version
 import sb.settings
+import sb.solc
 import sb.solidity
 import sb.tasks
 import sb.tools
@@ -76,29 +78,33 @@ def collect_tasks(
                     )
                 )
 
-    def get_solc(pragma: Optional[str], fn: str, toolid: str) -> tuple[str, str]:
-        if not pragma:
+    def get_solc(versions: Optional[list[str]], fn: str, toolid: str) -> tuple[str, str]:
+        if not versions:
             raise sb.errors.SmartBugsError(f"{fn}: no pragma, cannot determine solc version")
-        if not sb.solidity.ensure_solc_versions_loaded():
-            sb.logging.message(
-                sb.colors.warning(
-                    "Failed to load list of solc versions; "
-                    "are we connected to the internet? "
-                    "Proceeding with local compilers"
-                ),
-                "",
-            )
-        solc_version = sb.solidity.get_solc_version(pragma)
+        if not sb.solc.SERVICE:
+            sb.solc.init_service()
+            if not sb.solc.ONLINE:
+                sb.logging.message(
+                    sb.colors.warning(
+                        "Failed to load list of solc versions; "
+                        "are we connected to the internet? "
+                        "Proceeding with local compilers"
+                    ),
+                    "",
+                )
+        solc_version = sb.semantic_version.match(versions, sb.solc.AVAILABLE)
         if not solc_version:
-            raise sb.errors.SmartBugsError(f"{fn}: no compiler found that matches {pragma}")
-        solc_path = sb.solidity.get_solc_path(solc_version)
+            raise sb.errors.SmartBugsError(
+                f"{fn}: no compiler found that matches {', '.join(versions)}"
+            )
+        solc_path = sb.solc.path(solc_version)
         if not solc_path:
             raise sb.errors.SmartBugsError(
                 f"{fn}: cannot load solc {solc_version} needed by {toolid}"
             )
         return solc_version, solc_path
 
-    def ensure_loaded(image: str) -> None:
+    def ensure_tool_is_loaded(image: str) -> None:
         if not sb.docker.is_loaded(image):
             sb.logging.message(f"Loading docker image {image}, may take a while ...")
             sb.docker.load(image)
@@ -118,11 +124,10 @@ def collect_tasks(
         is_rtc = absfn[-4:] == ".hex" and (absfn[-7:-4] == ".rt" or settings.runtime)
 
         contract = os.path.basename(absfn)[:-4]
-        pragma: Optional[str] = None
-        contractnames: list[str] = []
+        solc_versions, contractnames = None, []
         if is_sol:
             prg = sb.io.read_lines(absfn)
-            pragma, contractnames = sb.solidity.get_pragma_contractnames(prg)
+            solc_versions, contractnames = sb.solidity.extract_versions_contractnames(prg)
             if settings.main and contract not in contractnames:
                 exceptions.append(f"Contract '{contract}' not found in {absfn}")
 
@@ -143,12 +148,12 @@ def collect_tasks(
                 solc_version, solc_path = None, None
                 if tool.solc:
                     try:
-                        solc_version, solc_path = get_solc(pragma, relfn, tool.id)
+                        solc_version, solc_path = get_solc(solc_versions, relfn, tool.id)
                     except Exception as e:
                         exceptions.append(str(e))
                         continue
 
-                ensure_loaded(tool.image)
+                ensure_tool_is_loaded(tool.image)
                 task = sb.tasks.Task(absfn, relfn, rdir, solc_version, solc_path, tool, settings)
                 tasks.append(task)
 
@@ -173,7 +178,7 @@ def main(settings: sb.settings.Settings) -> None:
     settings.freeze()
     sb.logging.quiet = settings.quiet
     sb.logging.message(
-        sb.colors.success(f"Welcome to SmartBugs {sb.cfg.VERSION}!"), f"Settings: {settings}"
+        sb.colors.success(f"Welcome to SmartBugs {sb.cfg.SB_VERSION}!"), f"Settings: {settings}"
     )
 
     tools = sb.tools.load(settings.tools)

@@ -1,6 +1,6 @@
 from typing import Optional
 
-import sb.cfg
+import sb.debug
 from sb.settings import Settings
 from sb.tools import Tool
 
@@ -29,6 +29,7 @@ class Task:
         tool: Tool,
         settings: Settings,
     ) -> None:
+        sb.debug.log("tasks.Task.__init__:")
         self.absfn = absfn  # absolute normalized path
         self.relfn = relfn  # path within project
         self.rdir = rdir  # directory for results
@@ -36,8 +37,7 @@ class Task:
         self.solc_path = solc_path
         self.tool = tool
         self.settings = settings
-        if sb.cfg.DEBUG:
-            print(f"DEBUG: new task {self}")
+        sb.debug.log(f"   {self}")
 
     def __str__(self) -> str:
         s = [f"{k}: {str(v)}" for k, v in self.__dict__.items()]

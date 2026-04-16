@@ -1,6 +1,7 @@
 import os
 import string
 import time
+from pathlib import Path
 from typing import Any, Optional, Union
 
 import sb.cfg
@@ -8,7 +9,6 @@ import sb.errors
 import sb.io
 import sb.logging
 
-HOME = os.path.expanduser("~")  # cross-plattform safe
 NOW = time.gmtime()  # only use in main process, value may be different in sub-processes
 PID = os.getpid()  # only use in main process, value may be different in sub-processes
 
@@ -47,9 +47,9 @@ class Settings:
             return
         self.frozen = True
         env = {
-            "SBVERSION": sb.cfg.VERSION,
-            "SBHOME": sb.cfg.HOME,
-            "HOME": HOME,
+            "SBVERSION": sb.cfg.SB_VERSION,
+            "SBHOME": sb.cfg.SB_HOME,
+            "HOME": sb.cfg.HOME,
             "PID": PID,
             "YEAR": str(NOW.tm_year).zfill(4),  # year with century, four digits
             "MONTH": str(NOW.tm_mon).zfill(2),  # month 01..12
@@ -119,7 +119,7 @@ class Settings:
             raise sb.errors.InternalError("frozen settings cannot be updated")
         if not settings:
             return
-        if isinstance(settings, str):
+        if isinstance(settings, str) or isinstance(settings, Path):
             s = sb.io.read_yaml(settings)
         else:
             s = settings
@@ -148,9 +148,9 @@ class Settings:
             elif k in ("tools"):
                 if not isinstance(v, list):
                     v = [v]
-                try:
-                    setattr(self, k, [str(vi) for vi in v])
-                except Exception:
+                if any(isinstance(vi, str) for vi in v):
+                    setattr(self, k, v)
+                else:
                     raise sb.errors.SmartBugsError(
                         f"setting {k}: (list of) string(s) expected, '{v}' found"
                     )
@@ -158,16 +158,14 @@ class Settings:
             elif k in ("files"):
                 if not isinstance(v, list):
                     v = [v]
-                try:
-                    patterns = [str(vi) for vi in v]
-                except Exception:
+                if not any(isinstance(vi, str) for vi in v):
                     raise sb.errors.SmartBugsError(
                         f"setting {k}: (list of) string(s) expected, '{v}' found"
                     )
                 root_specs = []
-                for pattern in patterns:
+                for vi in v:
                     try:
-                        pattern = string.Template(pattern).substitute(HOME=HOME)
+                        pattern = string.Template(vi).substitute(HOME=sb.cfg.HOME)
                     except KeyError as e:
                         raise sb.errors.SmartBugsError(
                             f"unknown variable '{e}' in file specification"
@@ -200,15 +198,15 @@ class Settings:
                     raise sb.errors.SmartBugsError(f"setting {k}: Boolean expected, '{v}' found")
 
             elif k in ("results", "log"):
-                try:
-                    setattr(self, k, str(v).replace("/", os.path.sep))
-                except Exception:
+                if isinstance(v, str):
+                    setattr(self, k, v.replace("/", os.path.sep))
+                else:
                     raise sb.errors.SmartBugsError(f"setting {k}: path expected, '{v}' found")
 
             elif k in ("runid"):
-                try:
-                    setattr(self, k, str(v))
-                except Exception:
+                if isinstance(v, str):
+                    setattr(self, k, v)
+                else:
                     raise sb.errors.SmartBugsError(f"setting {k}: string expected, '{v}' found")
 
             elif k == "mem_limit":

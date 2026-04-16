@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "smartbugs"
-version = "2.0.18"
+version = "2.1.0"
 description = "An extensible framework for analyzing Ethereum smart contracts using multiple security analysis tools"
 authors = ["SmartBugs Team <noreply@github.com>"]
 license = "MIT"
@@ -20,7 +20,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -29,7 +28,6 @@ classifiers = [
 ]
 packages = [
     { include = "sb" },
-    { include = "solcx" },
 ]
 
 [tool.poetry.scripts]
@@ -37,24 +35,16 @@ smartbugs = "sb.cli:main"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-certifi = ">=2024.7.4"
-charset-normalizer = ">=2.1.1"
 colorama = ">=0.4.6"
 docker = ">=6.0.1"
-idna = ">=3.7"
-packaging = ">=21.3"
 py-cpuinfo = ">=9.0.0"
-pyparsing = ">=3.0.9"
+pycryptodome = ">=3.23.0"
 PyYAML = ">=6.0"
-requests = ">=2.32.4"
-semantic-version = ">=2.10.0"
-urllib3 = ">=2.5.0"
-websocket-client = ">=1.4.2"
-filelock = ">=3.20.3"
+semantic-version = ">=1.10.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.4.0"
-pytest-cov = ">=4.1.0"
+pytest-cov = ">=3.1.0"
 pytest-mock = ">=3.11.0"
 pytest-timeout = ">=2.1.0"
 black = ">=23.7.0"
@@ -133,7 +123,7 @@ ignore = [
 "__init__.py" = ["F401"]  # Allow unused imports in __init__.py files
 
 [tool.ruff.lint.isort]
-known-first-party = ["sb", "solcx"]
+known-first-party = ["sb", "solc-select"]
 force-single-line = false
 lines-after-imports = 2
 
@@ -167,7 +157,7 @@ exclude = [
 [[tool.mypy.overrides]]
 module = [
     "docker.*",
-    "solcx.*",
+    "solc-select.*",
     "semantic_version.*",
     "cpuinfo.*",
 ]
