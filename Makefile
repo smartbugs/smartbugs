@@ -17,7 +17,7 @@ TEST_DIR := tests
 TOOLS_DIR := tools
 
 # Coverage settings
-COV_MIN := 70
+COV_MIN := 90
 COV_REPORT := term-missing
 
 # Phony targets (not actual files)

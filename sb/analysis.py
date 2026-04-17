@@ -107,7 +107,7 @@ def execute(task: sb.tasks.Task) -> float:
         task, start_time, duration, exit_code, tool_log, tool_output, sb_bin_log, docker_args
     )
     if tool_log:
-        sb.io.write_txt(fn_tool_log, tool_log)
+        sb.io.write_text(fn_tool_log, tool_log)
     if tool_output:
         sb.io.write_bin(fn_tool_output, tool_output)
 

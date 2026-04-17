@@ -25,15 +25,8 @@ def collect_files(patterns: list[tuple[Optional[str], str]]) -> list[tuple[str, 
             contracts = []
             for sbdfile in glob.glob(spec, recursive=True):
                 contracts.extend(sb.io.read_lines(sbdfile))
-        elif root:
-            try:
-                contracts = glob.glob(spec, root_dir=root, recursive=True)  # type: ignore[call-arg]
-            except TypeError:
-                raise sb.errors.SmartBugsError(
-                    f"{root}:{spec}: colons in file patterns only supported for Python>=3.10"
-                )
-        else:  # avoid root_dir, compatibility with python<3.10
-            contracts = glob.glob(spec, recursive=True)
+        else:
+            contracts = glob.glob(spec, root_dir=root, recursive=True)  # type: ignore[call-arg]
 
         for relfn in contracts:
             root_relfn = os.path.join(root, relfn) if root else relfn

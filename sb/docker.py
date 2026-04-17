@@ -67,7 +67,7 @@ def __docker_volume(task: "sb.tasks.Task") -> str:
         if code.startswith("0x"):
             code = code[2:]
         _, filename = os.path.split(task.absfn)
-        sb.io.write_txt(os.path.join(sbdir, filename), code)
+        sb.io.write_text(os.path.join(sbdir, filename), code)
     else:
         shutil.copy(task.absfn, sbdir)
     if task.tool.bin:
