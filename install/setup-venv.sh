@@ -80,7 +80,7 @@ echo -e "${GREEN}Dependencies installed via Poetry${NC}"
 echo -e "\n${BLUE}Verifying installation...${NC}"
 
 # Test core packages (use venv python)
-python -c "import yaml; import colorama; import requests; import semantic_version; import docker; import cpuinfo; import Crypto.Hash" 2>/dev/null
+python -c "import yaml; import colorama; import requests; import semantic_version; import docker; import cpuinfo; import Crypto.Hash; import urllib3; import packaging" 2>/dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}Core dependencies verified${NC}"
 else

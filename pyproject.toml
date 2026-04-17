@@ -28,7 +28,6 @@ classifiers = [
 ]
 packages = [
     { include = "sb" },
-    { include = "solc_select" },
 ]
 
 [tool.poetry.scripts]
@@ -37,12 +36,14 @@ smartbugs = "sb.cli:main"
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 colorama = ">=0.4.6"
+docker = ">=7.0.0"
 packaging = ">=26.1"
 py-cpuinfo = ">=9.0.0"
 pycryptodome = ">=3.23.0"
 PyYAML = ">=6.0"
-Requests = ">=2.33"
-urllib3 = ">=2.6"
+Requests = ">=2.33.0"
+semantic_version = ">=2.10.0"
+urllib3 = ">=2.5.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.4.0"
