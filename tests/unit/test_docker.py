@@ -1,805 +1,511 @@
-"""Unit tests for sb/docker.py module.
+from types import SimpleNamespace
 
-This module tests Docker integration functionality including:
-- Docker client initialization and connection
-- Image loading and checking
-- Volume creation and file preparation (tested through execute())
-- Docker argument construction with resource limits (tested through execute())
-- Container lifecycle (creation, execution, cleanup)
-- Timeout handling
-- Error handling and retry logic
-"""
-
-from unittest.mock import MagicMock, Mock
-
-import docker
-import docker.errors
 import pytest
 import requests
 
-import sb.docker
-import sb.errors
-from sb.tasks import Task
-from sb.tools import Tool
-
-
-class TestDockerClient:
-    """Tests for Docker client initialization and connection."""
-
-    def test_client_initialization_success(self, mocker):
-        """Test successful Docker client initialization."""
-        mock_docker_client = MagicMock()
-        mock_docker_client.info.return_value = {"some": "info"}
-        mocker.patch("docker.from_env", return_value=mock_docker_client)
-
-        # Reset the global client to test initialization
-        sb.docker._client = None
-
-        client = sb.docker.client()
-
-        assert client is not None
-        mock_docker_client.info.assert_called_once()
-
-    def test_client_reuses_existing_connection(self, mocker):
-        """Test that client() reuses an existing connection."""
-        mock_docker_client = MagicMock()
-        mocker.patch("docker.from_env", return_value=mock_docker_client)
-
-        # Set up existing client
-        sb.docker._client = mock_docker_client
-
-        client1 = sb.docker.client()
-        client2 = sb.docker.client()
-
-        assert client1 is client2
-        # info() should not be called again since client already exists
-        mock_docker_client.info.assert_not_called()
-
-    def test_client_connection_failure(self, mocker):
-        """Test handling of Docker connection failure."""
-        mocker.patch("docker.from_env", side_effect=Exception("Connection failed"))
-
-        # Reset the global client
-        sb.docker._client = None
-
-        with pytest.raises(sb.errors.SmartBugsError) as exc_info:
-            sb.docker.client()
-
-        assert "Cannot connect to service" in str(exc_info.value)
-        assert "Is it installed and running?" in str(exc_info.value)
-
-
-class TestImageLoading:
-    """Tests for Docker image loading and checking."""
-
-    def test_is_loaded_image_in_cache(self, mocker):
-        """Test is_loaded returns True for cached images."""
-        mocker.patch("sb.docker.client")
-
-        sb.docker.images_loaded.add("test_image:latest")
-
-        assert sb.docker.is_loaded("test_image:latest") is True
-
-    def test_is_loaded_image_exists_on_docker(self, mocker):
-        """Test is_loaded checks Docker and caches result."""
-        mock_client = MagicMock()
-        mock_client.images.list.return_value = [Mock()]  # Non-empty list
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        sb.docker.images_loaded.clear()
-
-        result = sb.docker.is_loaded("smartbugs/mythril:latest")
-
-        assert result is True
-        assert "smartbugs/mythril:latest" in sb.docker.images_loaded
-        mock_client.images.list.assert_called_once_with("smartbugs/mythril:latest")
-
-    def test_is_loaded_image_not_found(self, mocker):
-        """Test is_loaded returns False when image doesn't exist."""
-        mock_client = MagicMock()
-        mock_client.images.list.return_value = []  # Empty list
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        sb.docker.images_loaded.clear()
-
-        result = sb.docker.is_loaded("nonexistent:latest")
-
-        assert result is False
-        assert "nonexistent:latest" not in sb.docker.images_loaded
-
-    def test_is_loaded_docker_error(self, mocker):
-        """Test is_loaded handles Docker errors."""
-        mock_client = MagicMock()
-        mock_client.images.list.side_effect = Exception("Docker error")
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        sb.docker.images_loaded.clear()
-
-        with pytest.raises(sb.errors.SmartBugsError) as exc_info:
-            sb.docker.is_loaded("test_image:latest")
-
-        assert "checking for image" in str(exc_info.value)
-
-    def test_load_image_success(self, mocker):
-        """Test successful image loading."""
-        mock_client = MagicMock()
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        sb.docker.images_loaded.clear()
-
-        sb.docker.load("smartbugs/slither:latest")
-
-        mock_client.images.pull.assert_called_once_with("smartbugs/slither:latest")
-        assert "smartbugs/slither:latest" in sb.docker.images_loaded
-
-    def test_load_image_failure(self, mocker):
-        """Test handling of image loading failure."""
-        mock_client = MagicMock()
-        mock_client.images.pull.side_effect = Exception("Pull failed")
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        with pytest.raises(sb.errors.SmartBugsError) as exc_info:
-            sb.docker.load("invalid_image:latest")
-
-        assert "Loading image" in str(exc_info.value)
-
-
-class TestContainerExecution:
-    """Tests for Docker container execution and lifecycle."""
-
-    def test_execute_success(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test successful container execution."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        # Mock Docker operations
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Analysis complete\nNo issues found"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        assert exit_code == 0
-        assert "Analysis complete" in logs
-        assert "No issues found" in logs
-        assert output is None
-        assert "image" in args
-
-        # Verify container was cleaned up
-        mock_container.kill.assert_called_once()
-        mock_container.remove.assert_called_once()
-
-    def test_execute_with_timeout(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test container execution with timeout."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_settings.timeout = 60
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.side_effect = requests.exceptions.ReadTimeout()
-        mock_container.logs.return_value = b"Started analysis..."
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        # On timeout, exit_code should be None
-        assert exit_code is None
-        assert len(logs) > 0
-        assert "Started analysis..." in logs[0]
-
-        # Container should be stopped and cleaned up
-        mock_container.stop.assert_called_once_with(timeout=10)
-        mock_container.kill.assert_called_once()
-        mock_container.remove.assert_called_once()
-
-    def test_execute_with_connection_error(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test container execution handles connection errors during wait."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.side_effect = requests.exceptions.ConnectionError()
-        mock_container.logs.return_value = b"Log output"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        # Should handle connection error gracefully
-        assert exit_code is None
-        mock_container.stop.assert_called_once()
-
-    def test_execute_with_output_file(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test container execution with output file extraction."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = "/output/results.tar"
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Analysis complete"
-        # Mock get_archive to return chunks of data
-        mock_container.get_archive.return_value = ([b"chunk1", b"chunk2"], None)
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        assert exit_code == 0
-        assert output == b"chunk1chunk2"
-        mock_container.get_archive.assert_called_once_with("/output/results.tar")
-
-    def test_execute_output_file_not_found(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test container execution when output file doesn't exist."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = "/output/results.tar"
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Analysis complete"
-        mock_container.get_archive.side_effect = docker.errors.NotFound("File not found")
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        assert exit_code == 0
-        assert output is None  # Should handle NotFound gracefully
-
-    def test_execute_non_zero_exit_code(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test container execution with non-zero exit code."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 1}
-        mock_container.logs.return_value = b"Error: Analysis failed\nInvalid input"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        assert exit_code == 1
-        assert "Error: Analysis failed" in logs
-        assert "Invalid input" in logs
-
-    def test_execute_container_run_failure(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test handling of container.run() failure."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_client = MagicMock()
-        mock_client.containers.run.side_effect = Exception("Container failed to start")
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        with pytest.raises(sb.errors.SmartBugsError) as exc_info:
-            sb.docker.execute(task)
-
-        assert "Problem running Docker container" in str(exc_info.value)
-
-    def test_execute_cleanup_on_error(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test that cleanup happens even when errors occur."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.side_effect = Exception("Unexpected error")
-        mock_container.logs.return_value = b"Logs"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        with pytest.raises(sb.errors.SmartBugsError):
-            sb.docker.execute(task)
-
-        # Even on error, cleanup should be attempted
-        mock_container.kill.assert_called_once()
-        mock_container.remove.assert_called_once()
-
-    def test_execute_cleanup_kill_fails_gracefully(
-        self, tmp_path, mock_settings, mock_tool, mocker
+import sb.docker as mut
+
+
+class DummyContainer:
+    def __init__(
+        self,
+        *,
+        wait_result=None,
+        wait_exc=None,
+        logs_bytes=b"",
+        archive=([], {}),
+        archive_exc=None,
+        stop_exc=None,
+        kill_exc=None,
+        remove_exc=None,
     ):
-        """Test that cleanup continues even if kill() fails."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
+        self.wait_result = wait_result if wait_result is not None else {"StatusCode": 0}
+        self.wait_exc = wait_exc
+        self.logs_bytes = logs_bytes
+        self.archive = archive
+        self.archive_exc = archive_exc
+        self.stop_exc = stop_exc
+        self.kill_exc = kill_exc
+        self.remove_exc = remove_exc
 
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
+        self.wait_calls = []
+        self.stop_calls = []
+        self.kill_called = 0
+        self.remove_called = 0
+        self.logs_called = 0
+        self.get_archive_calls = []
 
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
+    def wait(self, timeout=None):
+        self.wait_calls.append(timeout)
+        if self.wait_exc:
+            raise self.wait_exc
+        return self.wait_result
 
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Complete"
-        mock_container.kill.side_effect = Exception("Kill failed")
-        mock_container.remove.return_value = None  # Remove should still be called
+    def stop(self, timeout=None):
+        self.stop_calls.append(timeout)
+        if self.stop_exc:
+            raise self.stop_exc
 
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
+    def logs(self):
+        self.logs_called += 1
+        return self.logs_bytes
 
-        mocker.patch("sb.docker.client", return_value=mock_client)
+    def get_archive(self, path):
+        self.get_archive_calls.append(path)
+        if self.archive_exc:
+            raise self.archive_exc
+        return self.archive
 
-        # Should not raise exception
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
+    def kill(self):
+        self.kill_called += 1
+        if self.kill_exc:
+            raise self.kill_exc
 
-        assert exit_code == 0
-        mock_container.kill.assert_called_once()
-        mock_container.remove.assert_called_once()
-
-    def test_execute_stop_fails_on_timeout(self, tmp_path, mock_settings, mock_tool, mocker):
-        """Test that execution continues if container.stop() fails on timeout."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        mock_tool.mode = "solidity"
-        mock_tool.bin = None
-        mock_tool.output = None
-        mock_tool.command = Mock(return_value="analyze")
-        mock_tool.entrypoint = Mock(return_value=None)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=mock_tool,
-            settings=mock_settings,
-        )
-
-        mock_container = MagicMock()
-        mock_container.wait.side_effect = requests.exceptions.ReadTimeout()
-        mock_container.stop.side_effect = docker.errors.APIError("Stop failed")
-        mock_container.logs.return_value = b"Partial output"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        # Should handle stop() failure gracefully
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        assert exit_code is None
-        mock_container.stop.assert_called_once()
-        # Should still try to clean up
-        mock_container.kill.assert_called_once()
-        mock_container.remove.assert_called_once()
+    def remove(self):
+        self.remove_called += 1
+        if self.remove_exc:
+            raise self.remove_exc
 
 
-class TestVolumeAndResourceConfig:
-    """Tests for volume creation and resource configuration through execute()."""
+class DummyClient:
+    def __init__(self, *, info_exc=None, images_list=None, images_list_exc=None, pull_exc=None):
+        self.info_exc = info_exc
+        self.info_called = 0
+        self.run_calls = []
 
-    def test_bytecode_with_0x_prefix_stripped(self, tmp_path, mock_settings, mocker):
-        """Test that bytecode 0x prefix is stripped in volume."""
-        hex_file = tmp_path / "test.hex"
-        hex_file.write_text("0x608060405234801561001057600080fd5b50")
+        self._images_list = images_list if images_list is not None else []
+        self._images_list_exc = images_list_exc
+        self._pull_exc = pull_exc
 
-        tool_config = {
-            "id": "test_tool",
-            "mode": "bytecode",
-            "image": "smartbugs/test:latest",
-            "name": "Test Tool",
-            "origin": "https://example.com",
-            "version": "1.0.0",
-            "info": "Test tool",
-            "parser": "parser.py",
-            "output": None,
-            "bin": None,
-            "solc": False,
-            "cpu_quota": None,
-            "mem_limit": None,
-            "command": "analyze",
-            "entrypoint": None,
-        }
-        tool = Tool(tool_config)
+        self.images = SimpleNamespace(list=self.images_list, pull=self.images_pull)
+        self.containers = SimpleNamespace(run=self.run)
 
-        task = Task(
-            absfn=str(hex_file),
-            relfn="test.hex",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=tool,
-            settings=mock_settings,
-        )
+        self.container_to_return = None
 
-        # Mock Docker
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Done"
+    def info(self):
+        self.info_called += 1
+        if self.info_exc:
+            raise self.info_exc
+        return {"ok": True}
 
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
+    def images_list(self, image):
+        if self._images_list_exc:
+            raise self._images_list_exc
+        return self._images_list
 
-        mocker.patch("sb.docker.client", return_value=mock_client)
+    def images_pull(self, image):
+        if self._pull_exc:
+            raise self._pull_exc
+        return image
 
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        assert exit_code == 0
-        # Volume was created and cleaned up successfully
-
-    def test_resource_limits_from_settings_override_tool(self, tmp_path, mock_settings, mocker):
-        """Test that resource limits from settings override tool config."""
-        sol_file = tmp_path / "Test.sol"
-        sol_file.write_text("contract Test {}")
-
-        tool_config = {
-            "id": "test_tool",
-            "mode": "solidity",
-            "image": "smartbugs/test:latest",
-            "name": "Test Tool",
-            "origin": "https://example.com",
-            "version": "1.0.0",
-            "info": "Test tool",
-            "parser": "parser.py",
-            "output": None,
-            "bin": None,
-            "solc": False,
-            "cpu_quota": 50000,
-            "mem_limit": "2g",
-            "command": "analyze",
-            "entrypoint": None,
-        }
-        tool = Tool(tool_config)
-
-        # Settings should override tool config
-        mock_settings.cpu_quota = 100000
-        mock_settings.mem_limit = "4g"
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="Test.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=tool,
-            settings=mock_settings,
-        )
-
-        # Mock Docker
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Done"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        # Verify settings overrode tool config
-        assert args["cpu_quota"] == 100000
-        assert args["mem_limit"] == "4g"
-
-    def test_linux_style_paths_in_docker_args(self, tmp_path, mock_settings, mocker):
-        """Test that file paths use Linux-style separators in container."""
-        sol_file = tmp_path / "MyContract.sol"
-        sol_file.write_text("contract Test {}")
-
-        tool_config = {
-            "id": "test_tool",
-            "mode": "solidity",
-            "image": "smartbugs/test:latest",
-            "name": "Test Tool",
-            "origin": "https://example.com",
-            "version": "1.0.0",
-            "info": "Test tool",
-            "parser": "parser.py",
-            "output": None,
-            "bin": None,
-            "solc": False,
-            "cpu_quota": None,
-            "mem_limit": None,
-            "command": "analyze $FILENAME",
-            "entrypoint": None,
-        }
-        tool = Tool(tool_config)
-
-        task = Task(
-            absfn=str(sol_file),
-            relfn="MyContract.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=tool,
-            settings=mock_settings,
-        )
-
-        # Mock Docker
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Done"
-
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
-
-        mocker.patch("sb.docker.client", return_value=mock_client)
-
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
-
-        # Check the command includes Linux-style path
-        command = args["command"]
-        assert "/sb/MyContract.sol" in command
-        assert "\\" not in command
+    def run(self, **kwargs):
+        self.run_calls.append(kwargs)
+        return self.container_to_return
 
 
-class TestIntegration:
-    """Integration-style tests combining multiple functions."""
+@pytest.fixture(autouse=True)
+def reset_globals():
+    mut._client = None
+    mut.images_loaded.clear()
+    yield
+    mut._client = None
+    mut.images_loaded.clear()
 
-    def test_full_workflow_solidity_file(self, tmp_path, mock_settings, mocker):
-        """Test full workflow from file to container execution."""
-        sol_file = tmp_path / "FullWorkflow.sol"
-        sol_file.write_text("pragma solidity ^0.8.0;\ncontract Test { uint x; }")
 
-        tool_config = {
-            "id": "test_tool",
-            "mode": "solidity",
-            "image": "smartbugs/test:latest",
-            "name": "Test Tool",
-            "origin": "https://example.com",
-            "version": "1.0.0",
-            "info": "Test tool",
-            "parser": "parser.py",
-            "output": None,
-            "bin": None,
-            "solc": False,
-            "cpu_quota": 50000,
-            "mem_limit": "1g",
-            "command": "analyze $FILENAME --timeout $TIMEOUT",
-            "entrypoint": None,
-        }
-        tool = Tool(tool_config)
+def make_task(**overrides):
+    tool = SimpleNamespace(
+        mode="solidity",
+        bin=False,
+        absbin="/tool/bin",
+        image="img:latest",
+        cpu_quota=111,
+        mem_limit="128m",
+        network=None,
+        output="/tmp/output.tar",
+        command=lambda filename, timeout, bindir, main: [
+            "cmd",
+            filename,
+            str(timeout),
+            bindir,
+            main,
+        ],
+        entrypoint=lambda filename, timeout, bindir, main: [
+            "entry",
+            filename,
+            str(timeout),
+            bindir,
+            main,
+        ],
+    )
+    settings = SimpleNamespace(
+        timeout=30,
+        cpu_quota=222,
+        mem_limit="256m",
+        main=True,
+    )
+    task = SimpleNamespace(
+        absfn="/contracts/Test.sol",
+        tool=tool,
+        settings=settings,
+        solc_path=None,
+    )
 
-        mock_settings.timeout = 120
-        mock_settings.cpu_quota = None
-        mock_settings.mem_limit = None
+    for k, v in overrides.items():
+        if k == "tool":
+            for tk, tv in v.items():
+                setattr(tool, tk, tv)
+        elif k == "settings":
+            for sk, sv in v.items():
+                setattr(settings, sk, sv)
+        else:
+            setattr(task, k, v)
+    return task
 
-        task = Task(
-            absfn=str(sol_file),
-            relfn="FullWorkflow.sol",
-            rdir=str(tmp_path / "results"),
-            solc_version="0.8.0",
-            solc_path=None,
-            tool=tool,
-            settings=mock_settings,
-        )
 
-        # Mock Docker
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Analysis successful\nNo vulnerabilities found"
+def test_client_returns_cached_client(monkeypatch):
+    dummy = DummyClient()
+    monkeypatch.setattr(mut.docker, "from_env", lambda: dummy)
 
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
+    result1 = mut.client()
+    result2 = mut.client()
 
-        mocker.patch("sb.docker.client", return_value=mock_client)
+    assert result1 is dummy
+    assert result2 is dummy
+    assert dummy.info_called == 1
 
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
-        # Verify results
-        assert exit_code == 0
-        assert len(logs) == 2
-        assert "Analysis successful" in logs[0]
-        assert "No vulnerabilities found" in logs[1]
+def test_client_raises_smartbugs_error_and_logs_traceback(monkeypatch):
+    logs = []
+    monkeypatch.setattr(mut.sb.debug, "log", lambda msg: logs.append(msg))
+    monkeypatch.setattr(mut.docker, "from_env", lambda: (_ for _ in ()).throw(RuntimeError("boom")))
 
-        # Verify Docker args
-        assert args["image"] == "smartbugs/test:latest"
-        assert args["cpu_quota"] == 50000
-        assert args["mem_limit"] == "1g"
-        assert args["detach"] is True
-        assert args["user"] == 0
+    with pytest.raises(mut.sb.errors.SmartBugsError, match="Docker: Cannot connect to service"):
+        mut.client()
 
-    def test_full_workflow_bytecode_file(self, tmp_path, mock_settings, mocker):
-        """Test full workflow with bytecode file."""
-        hex_file = tmp_path / "bytecode.hex"
-        hex_file.write_text("0x6080604052348015600f57600080fd5b50")
+    assert logs
 
-        tool_config = {
-            "id": "bytecode_tool",
-            "mode": "bytecode",
-            "image": "smartbugs/bytecode:latest",
-            "name": "Bytecode Tool",
-            "origin": "https://example.com",
-            "version": "1.0.0",
-            "info": "Bytecode analysis tool",
-            "parser": "parser.py",
-            "output": "/results/output.json",
-            "bin": None,
-            "solc": False,
-            "cpu_quota": None,
-            "mem_limit": None,
-            "command": "analyze $FILENAME",
-            "entrypoint": None,
-        }
-        tool = Tool(tool_config)
 
-        task = Task(
-            absfn=str(hex_file),
-            relfn="bytecode.hex",
-            rdir=str(tmp_path / "results"),
-            solc_version=None,
-            solc_path=None,
-            tool=tool,
-            settings=mock_settings,
-        )
+def test_is_loaded_returns_true_from_cache():
+    mut.images_loaded.add("img:1")
+    assert mut.is_loaded("img:1") is True
 
-        mock_container = MagicMock()
-        mock_container.wait.return_value = {"StatusCode": 0}
-        mock_container.logs.return_value = b"Bytecode analysis complete"
-        mock_container.get_archive.return_value = ([b'{"result": "clean"}'], None)
 
-        mock_client = MagicMock()
-        mock_client.containers.run.return_value = mock_container
+def test_is_loaded_checks_client_and_caches_image(monkeypatch):
+    dummy = DummyClient(images_list=["img"])
+    monkeypatch.setattr(mut, "client", lambda: dummy)
 
-        mocker.patch("sb.docker.client", return_value=mock_client)
+    assert mut.is_loaded("img:1") is True
+    assert "img:1" in mut.images_loaded
 
-        exit_code, logs, output, sb_bin_log, args = sb.docker.execute(task)
 
-        assert exit_code == 0
-        assert "Bytecode analysis complete" in logs
-        assert output == b'{"result": "clean"}'
+def test_is_loaded_returns_false_when_not_present(monkeypatch):
+    dummy = DummyClient(images_list=[])
+    monkeypatch.setattr(mut, "client", lambda: dummy)
+
+    assert mut.is_loaded("img:1") is False
+    assert "img:1" not in mut.images_loaded
+
+
+def test_is_loaded_wraps_client_errors(monkeypatch):
+    dummy = DummyClient(images_list_exc=RuntimeError("list failed"))
+    monkeypatch.setattr(mut, "client", lambda: dummy)
+
+    with pytest.raises(mut.sb.errors.SmartBugsError, match="checking for image img:1 failed"):
+        mut.is_loaded("img:1")
+
+
+def test_load_pulls_and_caches_image(monkeypatch):
+    dummy = DummyClient()
+    monkeypatch.setattr(mut, "client", lambda: dummy)
+
+    mut.load("img:2")
+
+    assert "img:2" in mut.images_loaded
+
+
+def test_load_wraps_pull_errors(monkeypatch):
+    dummy = DummyClient(pull_exc=RuntimeError("pull failed"))
+    monkeypatch.setattr(mut, "client", lambda: dummy)
+
+    with pytest.raises(mut.sb.errors.SmartBugsError, match="Loading image img:2 failed"):
+        mut.load("img:2")
+
+
+def test_docker_volume_copies_source_file_for_non_bytecode(monkeypatch, tmp_path):
+    copied = []
+    made_dirs = []
+
+    monkeypatch.setattr(mut.tempfile, "mkdtemp", lambda: str(tmp_path / "sbdir"))
+    monkeypatch.setattr(mut.shutil, "copy", lambda src, dst: copied.append((src, dst)))
+    monkeypatch.setattr(mut.os, "mkdir", lambda path: made_dirs.append(path))
+
+    task = make_task(
+        absfn="/contracts/Test.sol", tool={"mode": "solidity", "bin": False}, solc_path=None
+    )
+
+    result = mut.__docker_volume(task)
+
+    assert result == str(tmp_path / "sbdir")
+    assert copied == [("/contracts/Test.sol", str(tmp_path / "sbdir"))]
+    assert made_dirs == [str(tmp_path / "sbdir" / "bin")]
+
+
+def test_docker_volume_sanitizes_bytecode_and_writes_text(monkeypatch, tmp_path):
+    writes = []
+    monkeypatch.setattr(mut.tempfile, "mkdtemp", lambda: str(tmp_path / "sbdir"))
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: ["0xabc123\n"])
+    monkeypatch.setattr(mut.sb.io, "write_text", lambda path, text: writes.append((path, text)))
+    monkeypatch.setattr(mut.os, "mkdir", lambda path: None)
+
+    task = make_task(
+        absfn="/contracts/code.hex", tool={"mode": "bytecode", "bin": False}, solc_path=None
+    )
+
+    result = mut.__docker_volume(task)
+
+    assert result == str(tmp_path / "sbdir")
+    assert writes == [(str(tmp_path / "sbdir" / "code.hex"), "abc123")]
+
+
+def test_docker_volume_keeps_bytecode_without_0x_prefix(monkeypatch, tmp_path):
+    writes = []
+    monkeypatch.setattr(mut.tempfile, "mkdtemp", lambda: str(tmp_path / "sbdir"))
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: ["deadbeef\n"])
+    monkeypatch.setattr(mut.sb.io, "write_text", lambda path, text: writes.append((path, text)))
+    monkeypatch.setattr(mut.os, "mkdir", lambda path: None)
+
+    task = make_task(
+        absfn="/contracts/code.hex", tool={"mode": "runtime", "bin": False}, solc_path=None
+    )
+
+    mut.__docker_volume(task)
+
+    assert writes == [(str(tmp_path / "sbdir" / "code.hex"), "deadbeef")]
+
+
+def test_docker_volume_copies_tool_bin_and_solc(monkeypatch, tmp_path):
+    copy_calls = []
+    copytree_calls = []
+
+    monkeypatch.setattr(mut.tempfile, "mkdtemp", lambda: str(tmp_path / "sbdir"))
+    monkeypatch.setattr(mut.shutil, "copy", lambda src, dst: copy_calls.append((src, dst)))
+    monkeypatch.setattr(mut.shutil, "copytree", lambda src, dst: copytree_calls.append((src, dst)))
+    monkeypatch.setattr(mut.shutil, "copyfile", lambda src, dst: copy_calls.append((src, dst)))
+
+    task = make_task(
+        absfn="/contracts/Test.sol",
+        tool={"mode": "solidity", "bin": True, "absbin": "/tool/bin"},
+        solc_path="/usr/bin/solc",
+    )
+
+    mut.__docker_volume(task)
+
+    assert ("/contracts/Test.sol", str(tmp_path / "sbdir")) in copy_calls
+    assert copytree_calls == [("/tool/bin", str(tmp_path / "sbdir" / "bin"))]
+    assert ("/usr/bin/solc", str(tmp_path / "sbdir" / "bin" / "solc")) in copy_calls
+
+
+def test_docker_args_uses_tool_values_then_overrides_with_settings():
+    task = make_task(
+        absfn="/contracts/Test.sol",
+        tool={"network": None, "cpu_quota": 100, "mem_limit": "64m", "image": "myimg"},
+        settings={"cpu_quota": 200, "mem_limit": "512m", "timeout": 45, "main": True},
+    )
+
+    args = mut.__docker_args(task, "/tmp/sbdir")
+
+    assert args["volumes"] == {"/tmp/sbdir": {"bind": "/sb", "mode": "rw"}}
+    assert args["detach"] is True
+    assert args["user"] == 0
+    assert args["image"] == "myimg"
+    assert args["cpu_quota"] == 200
+    assert args["mem_limit"] == "512m"
+    assert args["network"] == "none"
+    assert args["command"] == ["cmd", "/sb/Test.sol", "45", "/sb/bin", "1"]
+    assert args["entrypoint"] == ["entry", "/sb/Test.sol", "45", "/sb/bin", "1"]
+
+
+def test_docker_args_preserves_tool_network_and_handles_falsey_timeout_and_main():
+    task = make_task(
+        absfn="/contracts/Test.sol",
+        tool={"network": "bridge"},
+        settings={"timeout": None, "main": False, "cpu_quota": None, "mem_limit": None},
+    )
+
+    args = mut.__docker_args(task, "/tmp/sbdir")
+
+    assert args["network"] == "bridge"
+    assert args["command"] == ["cmd", "/sb/Test.sol", "0", "/sb/bin", "0"]
+    assert args["entrypoint"] == ["entry", "/sb/Test.sol", "0", "/sb/bin", "0"]
+
+
+def test_execute_runs_container_and_collects_outputs(monkeypatch):
+    container = DummyContainer(
+        wait_result={"StatusCode": 7},
+        logs_bytes=b"line1\nline2\n",
+        archive=([b"a", b"b"], {}),
+    )
+    dummy_client = DummyClient()
+    dummy_client.container_to_return = container
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(mut, "__docker_args", lambda task, sbdir: {"image": "img"})
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: ["sb-bin-log"])
+    removed = []
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: removed.append(path))
+
+    task = make_task(tool={"output": "/tmp/output.tar"}, settings={"timeout": 12})
+
+    exit_code, logs, output, sb_bin_log, args = mut.execute(task)
+
+    assert exit_code == 7
+    assert logs == ["line1", "line2"]
+    assert output == b"ab"
+    assert sb_bin_log == ["sb-bin-log"]
+    assert args == {"image": "img"}
+    assert dummy_client.run_calls == [{"image": "img"}]
+    assert container.wait_calls == [12]
+    assert container.logs_called == 1
+    assert container.get_archive_calls == ["/tmp/output.tar"]
+    assert container.kill_called == 1
+    assert container.remove_called == 1
+    assert removed == ["/tmp/sbdir"]
+
+
+def test_execute_handles_timeout_and_stops_container(monkeypatch):
+    container = DummyContainer(
+        wait_exc=requests.exceptions.ReadTimeout("timeout"),
+        logs_bytes=b"log1\n",
+    )
+    dummy_client = DummyClient()
+    dummy_client.container_to_return = container
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(mut, "__docker_args", lambda task, sbdir: {"image": "img"})
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: [])
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: None)
+
+    task = make_task(tool={"output": None}, settings={"timeout": 9})
+
+    exit_code, logs, output, sb_bin_log, args = mut.execute(task)
+
+    assert exit_code is None
+    assert logs == ["log1"]
+    assert output is None
+    assert sb_bin_log == []
+    assert container.stop_calls == [10]
+    assert container.kill_called == 1
+    assert container.remove_called == 1
+
+
+def test_execute_ignores_stop_api_error_after_connection_error(monkeypatch):
+    api_error = mut.docker.errors.APIError("api")
+    container = DummyContainer(
+        wait_exc=requests.exceptions.ConnectionError("conn"),
+        logs_bytes=b"",
+        stop_exc=api_error,
+    )
+    dummy_client = DummyClient()
+    dummy_client.container_to_return = container
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(mut, "__docker_args", lambda task, sbdir: {"image": "img"})
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: [])
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: None)
+
+    task = make_task(tool={"output": None})
+
+    exit_code, logs, output, sb_bin_log, args = mut.execute(task)
+
+    assert exit_code is None
+    assert logs == []
+    assert output is None
+    assert sb_bin_log == []
+
+
+def test_execute_ignores_missing_output_archive(monkeypatch):
+    not_found = mut.docker.errors.NotFound("missing")
+    container = DummyContainer(
+        wait_result={"StatusCode": 0},
+        logs_bytes=b"",
+        archive_exc=not_found,
+    )
+    dummy_client = DummyClient()
+    dummy_client.container_to_return = container
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(mut, "__docker_args", lambda task, sbdir: {"image": "img"})
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: [])
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: None)
+
+    task = make_task(tool={"output": "/tmp/missing"})
+
+    exit_code, logs, output, sb_bin_log, args = mut.execute(task)
+
+    assert exit_code == 0
+    assert output is None
+    assert container.get_archive_calls == ["/tmp/missing"]
+
+
+def test_execute_wraps_run_errors_and_still_cleans_up(monkeypatch):
+    dummy_client = DummyClient()
+
+    def boom(**kwargs):
+        raise RuntimeError("run failed")
+
+    dummy_client.containers = SimpleNamespace(run=boom)
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(mut, "__docker_args", lambda task, sbdir: {"image": "img"})
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+
+    read_lines_calls = []
+    monkeypatch.setattr(
+        mut.sb.io, "read_lines", lambda path: read_lines_calls.append(path) or ["binlog"]
+    )
+    removed = []
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: removed.append(path))
+
+    task = make_task()
+
+    with pytest.raises(
+        mut.sb.errors.SmartBugsError, match=r"Problem running Docker container: run failed\)"
+    ):
+        mut.execute(task)
+
+    assert read_lines_calls == ["/tmp/sbdir/bin/log"]
+    assert removed == ["/tmp/sbdir"]
+
+
+def test_execute_ignores_cleanup_errors(monkeypatch):
+    container = DummyContainer(
+        wait_result={"StatusCode": 0},
+        logs_bytes=b"",
+        kill_exc=RuntimeError("kill"),
+        remove_exc=RuntimeError("remove"),
+    )
+    dummy_client = DummyClient()
+    dummy_client.container_to_return = container
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(mut, "__docker_args", lambda task, sbdir: {"image": "img"})
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+    monkeypatch.setattr(
+        mut.sb.io,
+        "read_lines",
+        lambda path: (_ for _ in ()).throw(RuntimeError("no bin log")),
+    )
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: None)
+
+    task = make_task(tool={"output": None})
+
+    exit_code, logs, output, sb_bin_log, args = mut.execute(task)
+
+    assert exit_code == 0
+    assert logs == []
+    assert output is None
+    assert sb_bin_log == []

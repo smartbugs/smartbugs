@@ -46,10 +46,15 @@ def test_read_text_error():
         sb.io.read_text("missing.txt")
 
 
-def test_read_lines(tmp_path):
+def test_read_lines_ok(tmp_path):
     fn = tmp_path / "a.txt"
     fn.write_text("a\nb\nc", encoding="utf-8")
     assert sb.io.read_lines(fn) == ["a", "b", "c"]
+
+
+def test_read_lines_error(tmp_path):
+    with pytest.raises(sb.errors.SmartBugsError):
+        sb.io.read_lines("missing.txt")
 
 
 def test_read_json(tmp_path):
@@ -84,6 +89,7 @@ def test_write_bin(tmp_path):
 def test_write_bin_error(monkeypatch):
     def bad_open(*a, **k):
         raise OSError("fail")
+
     monkeypatch.setattr("builtins.open", bad_open)
     with pytest.raises(sb.errors.SmartBugsError):
         sb.io.write_bin("x.bin", b"x")
@@ -104,6 +110,7 @@ def test_write_text_list(tmp_path):
 def test_write_text_error(monkeypatch):
     def bad_open(*a, **k):
         raise OSError("fail")
+
     monkeypatch.setattr("builtins.open", bad_open)
     with pytest.raises(sb.errors.SmartBugsError):
         sb.io.write_text("t.txt", "hello")
@@ -119,6 +126,7 @@ def test_write_json(tmp_path):
 def test_write_json_error(monkeypatch):
     def bad_open(*a, **k):
         raise OSError("fail")
+
     monkeypatch.setattr("builtins.open", bad_open)
     with pytest.raises(sb.errors.SmartBugsError):
         sb.io.write_json("x.json", {"a": 1})

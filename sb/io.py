@@ -28,7 +28,7 @@ def __read_text(fn: str | os.PathLike) -> str:
 
     # Heuristic: UTF16 without BOM
     # maybe add a CLI option to activate this, if needed at all
-    #if len(raw) >= 2:
+    # if len(raw) >= 2:
     #    even_nulls = sum(1 for i in range(0, len(raw), 2) if raw[i] == 0)
     #    odd_nulls  = sum(1 for i in range(1, len(raw), 2) if raw[i] == 0)
     #    threshold = len(raw) // 4
@@ -44,14 +44,14 @@ def __read_text(fn: str | os.PathLike) -> str:
 
 def read_text(fn: str | os.PathLike) -> str:
     try:
-        return(__read_text(fn))
+        return __read_text(fn)
     except Exception as e:
         raise sb.errors.SmartBugsError(e)
 
 
 def read_lines(fn: str | os.PathLike) -> list[str]:
     try:
-        return(__read_text(fn).splitlines())
+        return __read_text(fn).splitlines()
     except Exception as e:
         raise sb.errors.SmartBugsError(e)
 

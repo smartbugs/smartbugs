@@ -54,7 +54,10 @@ def task_log_dict(
 def execute(task: sb.tasks.Task) -> float:
 
     # create result dir if it doesn't exist
-    os.makedirs(task.rdir, exist_ok=True)
+    try:
+        os.makedirs(task.rdir, exist_ok=True)
+    except Exception:
+        pass
     if not os.path.isdir(task.rdir):
         raise sb.errors.SmartBugsError(f"Cannot create result directory {task.rdir}")
 
@@ -95,12 +98,14 @@ def execute(task: sb.tasks.Task) -> float:
             start_time = time.time()
             exit_code, tool_log, tool_output, sb_bin_log, docker_args = sb.docker.execute(task)
             duration = time.time() - start_time
-            break
+            if i < 2:
+                break
         except sb.errors.SmartBugsError:
-            if i == 2:
+            if i < 2:
+                # wait 3 to 8 minutes
+                time.sleep(random.randint(3, 8) * 60)
+            else:
                 raise
-        # wait 3 to 8 minutes
-        time.sleep(random.randint(3, 8) * 60)
 
     # write result to files
     task_log = task_log_dict(

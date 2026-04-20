@@ -104,6 +104,13 @@ def test_message_appends_nonempty_log_to_queue():
     assert q.get() == "Z"
 
 
+def test_message_empty_con_log_ignored():
+    q = Queue()
+    q.put("something")
+    sb.logging.message(con="", log="", queue=q)
+    assert q.get() == "something"
+
+
 def test_stop_sends_none_and_joins():
     q = Queue()
     with tempfile.TemporaryDirectory() as d:
