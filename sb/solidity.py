@@ -80,7 +80,7 @@ def remove_strings(program: str) -> str:
 
 PRAGMA: re.Pattern[str] = re.compile(r"pragma\s+solidity\s*(.*?);")
 CONTRACT_NAMES: re.Pattern[str] = re.compile(
-    r"(?:contract|library)\s+([A-Za-z0-9_]*)(?:\s*{|\s+is\s)"
+    r"(?:contract|library)\s+([a-zA-Z$_][a-zA-Z0-9$_]*)(?:\s*{|\s+is\s)"
 )
 
 
