@@ -1,0 +1,10 @@
+name: Aderyn
+version: 0.6.8
+origin: https://github.com/Cyfrin/aderyn
+info: Aderyn is a Rust-based Solidity smart contract static analyzer by Cyfrin. It runs a suite of built-in detectors to flag common vulnerabilities and code-quality issues, and can produce reports in Markdown, JSON, or SARIF format.
+image: smartbugs/aderyn:0.6.8
+output: /output.json
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
