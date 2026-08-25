@@ -1,15 +1,14 @@
 import re
 from typing import Union
 
-VOID_START: re.Pattern[str] = re.compile("//|/\\*|\"|'")
-QUOTE_END: re.Pattern[str] = re.compile("(?<!\\\\)'")
-DQUOTE_END: re.Pattern[str] = re.compile('(?<!\\\\)"')
-
+VOID_START: re.Pattern[str] = re.compile(r"""//|/\*|"|'""")
+QUOTE_END: re.Pattern[str] = re.compile(r"([^\\']|\\.)*'")
+DQUOTE_END: re.Pattern[str] = re.compile(r'([^\\"]|\\.)*"')
 
 def remove_comments_strings(program: str) -> str:
     """Return program without Solidity comments and strings
 
-    :param str program: Solidity program as a list of lines
+    :param str program: Solidity program
     :return: program with strings emptied and comments removed
     :rtype: str
     """
@@ -31,10 +30,10 @@ def remove_comments_strings(program: str) -> str:
                 program = "" if end == -1 else program[end + 2 :]
             else:
                 if match_start_of_void[0] == "'":
-                    match_end_of_string = QUOTE_END.search(program[match_start_of_void.end() :])
+                    match_end_of_string = QUOTE_END.match(program[match_start_of_void.end() :])
                     result += "''"
                 else:
-                    match_end_of_string = DQUOTE_END.search(program[match_start_of_void.end() :])
+                    match_end_of_string = DQUOTE_END.match(program[match_start_of_void.end() :])
                     result += '""'
                 if not match_end_of_string:  # unclosed string
                     break
@@ -45,7 +44,7 @@ def remove_comments_strings(program: str) -> str:
 def remove_strings(program: str) -> str:
     """Return program without Solidity strings
 
-    :param str program: Solidity program as a list of lines
+    :param str program: Solidity program
     :return: program with strings emptied
     :rtype: str
     """
@@ -67,10 +66,10 @@ def remove_strings(program: str) -> str:
             else:
                 result += program[: match_start_of_void.start()]
                 if match_start_of_void[0] == "'":
-                    match_end_of_string = QUOTE_END.search(program[match_start_of_void.end() :])
+                    match_end_of_string = QUOTE_END.match(program[match_start_of_void.end() :])
                     result += "''"
                 else:
-                    match_end_of_string = DQUOTE_END.search(program[match_start_of_void.end() :])
+                    match_end_of_string = DQUOTE_END.match(program[match_start_of_void.end() :])
                     result += '""'
                 if not match_end_of_string:  # unclosed string
                     break

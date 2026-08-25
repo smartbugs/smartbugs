@@ -31,14 +31,26 @@ class TestRemoveCommentsStrings:
         assert result == "pragma solidity ^0.8.0;\n\n\ncontract Test {}\n"
 
     def test_removes_single_quoted_strings(self):
-        """Test that strings with single quotes are removed properly."""
+        """Test that single-quoted strings are removed properly."""
         code = "string public name = 'MyContract'; // comment"
         result = remove_comments_strings(code)
         assert result == "string public name = ''; "
 
+    def test_removes_single_quoted_strings2(self):
+        """Test that single quoted strings with quotes are removed properly."""
+        code = r"string public name = 'MyCon\'tract\\'; // comment"
+        result = remove_comments_strings(code)
+        assert result == "string public name = ''; "
+
     def test_removes_double_quoted_strings(self):
-        """Test that strings with double quotes are removed properly."""
+        """Test that double quoted strings are removed properly."""
         code = 'string public name = "MyContract"; // comment'
+        result = remove_comments_strings(code)
+        assert result == 'string public name = ""; '
+
+    def test_removes_double_quoted_strings2(self):
+        """Test that double quoted strings with quotes are removed properly."""
+        code = r'string public name = "MyCon\"tract\\"; // comment'
         result = remove_comments_strings(code)
         assert result == 'string public name = ""; '
 
@@ -49,14 +61,26 @@ class TestRemoveCommentsStrings:
         assert result == "pragma solidity ^0.8.0;\n\n"
 
     def test_handles_unclosed_single_quoted_string(self):
-        """Test handling of unclosed double quoted string."""
+        """Test handling of unclosed single quoted string."""
         code = "string public name = 'Unclosed\ncontract Test {}"
+        result = remove_comments_strings(code)
+        assert result == "string public name = ''"
+
+    def test_handles_unclosed_single_quoted_string2(self):
+        """Test handling of unclosed single quoted string with quote."""
+        code = r"string public name = 'Unclosed\'contract Test {}"
         result = remove_comments_strings(code)
         assert result == "string public name = ''"
 
     def test_handles_unclosed_double_quoted_string(self):
         """Test handling of unclosed double quoted string."""
         code = 'string public name = "Unclosed\ncontract Test {}'
+        result = remove_comments_strings(code)
+        assert result == 'string public name = ""'
+
+    def test_handles_unclosed_double_quoted_string2(self):
+        """Test handling of unclosed double quoted string with quote."""
+        code = r'string public name = "Unclosed\"contract Test {}'
         result = remove_comments_strings(code)
         assert result == 'string public name = ""'
 
@@ -102,14 +126,26 @@ class TestRemoveStrings:
         assert result == code
 
     def test_removes_single_quoted_strings(self):
-        """Test that strings with single quotes are removed properly."""
+        """Test that single-quoted strings are removed properly."""
         code = "string public name = 'MyContract'; // comment"
         result = remove_strings(code)
         assert result == "string public name = ''; // comment"
 
+    def test_removes_single_quoted_strings2(self):
+        """Test that single-quoted strings with quotes are removed properly."""
+        code = r"string public name = 'MyCon\'tract\\'; // comment"
+        result = remove_strings(code)
+        assert result == "string public name = ''; // comment"
+
     def test_removes_double_quoted_strings(self):
-        """Test that strings with double quotes are removed properly."""
+        """Test that double quoted strings are removed properly."""
         code = 'string public name = "MyContract"; // comment'
+        result = remove_strings(code)
+        assert result == 'string public name = ""; // comment'
+
+    def test_removes_double_quoted_strings2(self):
+        """Test that double quoted strings with quotes are removed properly."""
+        code = r'string public name = "MyCon\"tract\\"; // comment'
         result = remove_strings(code)
         assert result == 'string public name = ""; // comment'
 
@@ -125,9 +161,21 @@ class TestRemoveStrings:
         result = remove_strings(code)
         assert result == "string public name = ''"
 
+    def test_handles_unclosed_single_quoted_string2(self):
+        """Test handling of unclosed single quoted string with quote."""
+        code = r"string public name = 'Unclosed\'contract Test {}"
+        result = remove_strings(code)
+        assert result == "string public name = ''"
+
     def test_handles_unclosed_double_quoted_string(self):
         """Test handling of unclosed double quoted string."""
         code = 'string public name = "Unclosed\ncontract Test {}'
+        result = remove_strings(code)
+        assert result == 'string public name = ""'
+
+    def test_handles_unclosed_double_quoted_string2(self):
+        """Test handling of unclosed double quoted string with quote."""
+        code = r'string public name = "Unclosed\"contract Test {}'
         result = remove_strings(code)
         assert result == 'string public name = ""'
 

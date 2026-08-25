@@ -3,7 +3,7 @@ from pathlib import Path
 import platform
 import cpuinfo
 
-SB_VERSION = "2.1.1"
+SB_VERSION = "2.1.2"
 
 HOME = Path.home()
 SB_LOCAL = HOME / ".smartbugs"

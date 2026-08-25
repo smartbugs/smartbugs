@@ -20,6 +20,8 @@ def match(versions: list[str], available: set[str]) -> Optional[str]:
         # replace >=0.y.z by ^0.y.z if there is no upper bound
         if "<" not in version:
             version = re.sub(r">=\s*0\.", r"^0.", version)
+        # remove space surrounding dots
+        version = re.sub(r"\s*\.\s*", r".", version)
         # replace x.y by x.y.0 if not preceded by operator
         version = re.sub(r"(?:^|(?<=[^0-9.>=<~]))\s*(\d+\.\d+)(?=[^0-9.]|$)", r"^\1.0", version)
         # replace ranges
