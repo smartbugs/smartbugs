@@ -12,6 +12,12 @@ to cite the datasets.
   Curated](https://github.com/smartbugs/smartbugs-curated) is a
   curated dataset of vulnerable Solidity smart contracts.
 
+- 491 contracts: [CVE Smart
+  Contracts](https://github.com/smartbugs/CVE-Smart-Contracts) is a
+  curated dataset with the smart contracts claimed vulnerable in the
+  CVE database; with labels (CVE, SWC, Iuliano-DeNucci-2026) and
+  source locations of the vulnerabilities.
+
 - 3103/2529/2473 contracts as source/deployment/runtime code:
   [Consolidated Ground Truth (CGT)](https://github.com/gsalzer/cgt)
   is a unified and consolidated ground truth with 20,455 manually
