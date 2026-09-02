@@ -85,3 +85,20 @@ repository](https://github.com/smartbugs/smartbugs-results).
   numpages = {17}
 }
 ```
+
+## [CVE Smart Contracts](http://github.com/smartbugs/CVE-Smart-Contracts)
+
+  <a href="https://doi.org/10.48550/arXiv.2609.01186">Monika di Angelo, Gernot Salzer: "Smart Contracts Claimed Vulnerable by the CVE Database, with Labels and Source Locations", *arXiv:2609.01186 [cs.CR]*, 2026.</a>
+
+```bibtex
+@misc{diangelo2026smartcontractsclaimedvulnerable,
+      title={Smart Contracts Claimed Vulnerable by the CVE Database, with Labels and Source Locations}, 
+      author={Monika di Angelo and Gernot Salzer},
+      year={2026},
+      eprint={2609.01186},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2609.01186}, 
+}
+
+```
