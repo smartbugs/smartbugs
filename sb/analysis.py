@@ -202,13 +202,8 @@ def run(tasks: list[sb.tasks.Task], settings: sb.settings.Settings) -> None:
     try:
         start_time = time.time()
 
-        # fill task queue
+        # create task queue
         taskqueue = mp.Queue()
-        random.shuffle(tasks)
-        for task in tasks:
-            taskqueue.put(task)
-        for _ in range(settings.processes):
-            taskqueue.put(None)
 
         # accounting
         tasks_total = len(tasks)
@@ -221,6 +216,14 @@ def run(tasks: list[sb.tasks.Task], settings: sb.settings.Settings) -> None:
         analysers = [mp.Process(target=analyser, args=shared) for _ in range(settings.processes)]
         for a in analysers:
             a.start()
+
+        # fill task queue after starting the analysers so consumers can drain it;
+        # on MacOS, a multiprocessing queue can hold at most 32767 items
+        random.shuffle(tasks)
+        for task in tasks:
+            taskqueue.put(task)
+        for _ in range(settings.processes):
+            taskqueue.put(None)
 
         # wait for analysers to finish
         for a in analysers:
