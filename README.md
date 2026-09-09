@@ -73,7 +73,7 @@ pages 2102-2105, IEEE Computer Society, 2023.
 | [Securify2](https://github.com/eth-sri/securify2)              |  | :heavy_check_mark: |                    | |
 | [Semgrep](https://github.com/Decurity/semgrep-smart-contracts)/[Decurity](https://github.com/Decurity/semgrep-smart-contracts)  | 1.131.0/1.2.1 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
 | [sFuzz](https://github.com/duytai/sFuzz) | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
-| [Slither](https://github.com/crytic/slither)  | 0.11.3 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
+| [Slither](https://github.com/crytic/slither)  | 0.11.6 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
 | [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :heavy_check_mark: |                    |                    |
 | [Solhint](https://github.com/protofire/solhint) | 6.0.0 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |

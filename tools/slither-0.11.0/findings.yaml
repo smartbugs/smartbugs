@@ -1,0 +1,636 @@
+abiencoderv2-array:
+    descr_short: Storage ABIEncoderV2 Array
+    descr_long: 'solc versions 0.4.7-0.5.9 contain a compiler bug leading to incorrect ABI encoder usage. Recommendation: Use a compiler >= 0.5.10.'
+    severity: high
+    confidence: high
+
+arbitrary-send-erc20:
+    descr_short: Arbitrary from in transferFrom
+    descr_long: 'Detect when msg.sender is not used as from in transferFrom. Recommendation: Use msg.sender as from in transferFrom.'
+    severity: high
+    confidence: high
+
+arbitrary-send-erc20-permit:
+    descr_short: Arbitrary from in transferFrom used with permit
+    descr_long: 'Detect when msg.sender is not used as from in transferFrom and permit is used. Recommendation: Ensure that the underlying ERC20 token correctly implements a permit function.'
+    severity: high
+    confidence: medium
+
+arbitrary-send-eth:
+    descr_short: Functions that send Ether to arbitrary destinations
+    descr_long: 'Unprotected call to a function sending Ether to an arbitrary address. Recommendation: Ensure that an arbitrary user cannot withdraw unauthorized funds.'
+    severity: high
+    confidence: medium
+    classification: SWC-105, DASP-2
+
+array-by-reference:
+    descr_short: Modifying storage array by value
+    descr_long: 'Detect arrays passed to a function that expects reference to a storage array. Recommendation: Ensure the correct usage of memory and storage in the function parameters. Make all the locations explicit.'
+    severity: high
+    confidence: high
+
+assembly:
+    descr_short: Assembly usage
+    descr_long: 'The use of assembly is error-prone and should be avoided. Recommendation: Do not use evm assembly.'
+    severity: informational
+    confidence: high
+
+assert-state-change:
+    descr_short: Assert state change
+    descr_long: 'Incorrect use of assert(). See Solidity best practices. Recommendation: Use require for invariants modifying the state.'
+    severity: informational
+    confidence: high
+
+boolean-cst:
+    descr_short: Misuse of a Boolean constant
+    descr_long: 'Detects the misuse of a Boolean constant. Recommendation: Verify and simplify the condition.'
+    severity: medium
+    confidence: medium
+
+boolean-equal:
+    descr_short: Boolean equality
+    descr_long: 'Detects the comparison to boolean constants. Recommendation: Remove the equality to the boolean constant.'
+    severity: informational
+    confidence: high
+
+cache-array-length:
+    descr_short: Cache array length
+    descr_long: 'Detects for loops that use length member of some storage array in their loop condition and don''t modify it. Recommendation: Cache the lengths of storage arrays if they are used and not modified in for loops.'
+    severity: optimization
+    confidence: high
+
+calls-loop:
+    descr_short: Calls inside a loop
+    descr_long: 'Calls inside a loop might lead to a denial-of-service attack. Recommendation: Favor pull over push strategy for external calls.'
+    severity: low
+    confidence: medium
+    classification: SWC-113, DASP-5
+
+chainlink-feed-registry:
+    descr_short: Chainlink Feed Registry usage
+    descr_long: 'Detect when Chainlink Feed Registry is used. At the moment is only available on Ethereum Mainnet. Recommendation: Do not use Chainlink Feed Registry outside of Ethereum Mainnet.'
+    severity: low
+    confidence: high
+
+chronicle-unchecked-price:
+    descr_short: Chronicle unchecked price
+    descr_long: 'Chronicle oracle is used and the price returned is not checked to be valid. Recommendation: Validate that the price returned by the oracle is valid.'
+    severity: medium
+    confidence: medium
+
+constable-states:
+    descr_short: State variables that could be declared constant
+    descr_long: 'State variables that are not updated following deployment should be declared constant to save gas. Recommendation: Add the constant attribute to state variables that never change.'
+    severity: optimization
+    confidence: high
+
+constant-function-asm:
+    descr_short: Constant functions using assembly code
+    descr_long: 'Functions declared as constant/pure/view using assembly code. constant/pure/view was not enforced prior to Solidity 0.5. Starting from Solidity 0.5, a call to a constant/pure/view function uses the STATICCALL opcode, which reverts in case of state modification. As a result, a call to an incorrectly labeled function may trap a contract compiled with Solidity 0.5. Recommendation: Ensure the attributes of contracts compiled prior to Solidity 0.5.0 are correct.'
+    severity: medium
+    confidence: medium
+
+constant-function-state:
+    descr_short: Constant functions changing the state
+    descr_long: 'Functions declared as constant/pure/view change the state. constant/pure/view was not enforced prior to Solidity 0.5. Starting from Solidity 0.5, a call to a constant/pure/view function uses the STATICCALL opcode, which reverts in case of state modification. As a result, a call to an incorrectly labeled function may trap a contract compiled with Solidity 0.5. Recommendation: Ensure that attributes of contracts compiled prior to Solidity 0.5.0 are correct.'
+    severity: medium
+    confidence: medium
+
+controlled-array-length:
+    descr_short: Array Length Assignment
+    descr_long: 'Detects the direct assignment of an array''s length. Recommendation: Do not allow array lengths to be set directly set; instead, opt to add values as needed. Otherwise, thoroughly review the contract to ensure a user-controlled variable cannot reach an array length assignment.'
+    severity: high
+    confidence: medium
+
+controlled-delegatecall:
+    descr_short: Controlled Delegatecall
+    descr_long: 'Delegatecall or callcode to an address controlled by the user. Recommendation: Avoid using delegatecall. Use only trusted destinations.'
+    severity: high
+    confidence: medium
+    classification: SWC-106, DASP-2
+
+costly-loop:
+    descr_short: Costly operations inside a loop
+    descr_long: 'Costly operations inside a loop might waste gas, so optimizations are justified. Recommendation: Use a local variable to hold the loop computation result.'
+    severity: informational
+    confidence: medium
+
+cyclomatic-complexity:
+    descr_short: Cyclomatic complexity
+    descr_long: 'Detects functions with high (> 11) cyclomatic complexity. Recommendation: Reduce cyclomatic complexity by splitting the function into several smaller subroutines.'
+    severity: informational
+    confidence: high
+
+dead-code:
+    descr_short: Dead-code
+    descr_long: 'Functions that are not used. Recommendation: Remove unused functions.'
+    severity: informational
+    confidence: medium
+
+delegatecall-loop:
+    descr_short: Payable functions using delegatecall inside a loop
+    descr_long: 'Detect the use of delegatecall inside a loop in a payable function. Recommendation: Carefully check that the function called by delegatecall is not payable/doesn''t use msg.value.'
+    severity: high
+    confidence: medium
+
+deprecated-standards:
+    descr_short: Deprecated standards
+    descr_long: 'Detect the usage of deprecated standards. Recommendation: Replace all uses of deprecated symbols.'
+    severity: informational
+    confidence: high
+
+divide-before-multiply:
+    descr_short: Divide before multiply
+    descr_long: 'Solidity''s integer division truncates. Thus, performing division before multiplication can lead to precision loss. Recommendation: Consider ordering multiplication before division.'
+    severity: medium
+    confidence: medium
+
+domain-separator-collision:
+    descr_short: Domain separator collision
+    descr_long: 'An ERC20 token has a function whose signature collides with EIP-2612''s DOMAIN_SEPARATOR(), causing unanticipated behavior for contracts using permit functionality. Recommendation: Remove or rename the function that collides with DOMAIN_SEPARATOR().'
+    severity: medium
+    confidence: high
+
+encode-packed-collision:
+    descr_short: ABI encodePacked Collision
+    descr_long: 'Detect collision due to dynamic type usages in abi.encodePacked. Recommendation: Do not use more than one dynamic type in abi.encodePacked() (see the Solidity documentation). Use abi.encode(), preferably.'
+    severity: high
+    confidence: high
+
+enum-conversion:
+    descr_short: Dangerous enum conversion
+    descr_long: 'Detect out-of-range enum conversion (solc < 0.4.5). Recommendation: Use a recent compiler version. If solc <0.4.5 is required, check the enum conversion range.'
+    severity: medium
+    confidence: high
+
+erc20-indexed:
+    descr_short: Unindexed ERC20 event parameters
+    descr_long: 'Detects whether events defined by the ERC20 specification that should have some parameters as indexed are missing the indexed keyword. Recommendation: Add the indexed keyword to event parameters that should include it, according to the ERC20 specification.'
+    severity: informational
+    confidence: high
+
+erc20-interface:
+    descr_short: Incorrect erc20 interface
+    descr_long: 'Incorrect return values for ERC20 functions. A contract compiled with Solidity > 0.4.22 interacting with these functions will fail to execute them, as the return value is missing. Recommendation: Set the appropriate return values and types for the defined ERC20 functions.'
+    severity: medium
+    confidence: high
+
+erc721-interface:
+    descr_short: Incorrect erc721 interface
+    descr_long: 'Incorrect return values for ERC721 functions. A contract compiled with solidity > 0.4.22 interacting with these functions will fail to execute them, as the return value is missing. Recommendation: Set the appropriate return values and vtypes for the defined ERC721 functions.'
+    severity: medium
+    confidence: high
+
+events-access:
+    descr_short: Missing events access control
+    descr_long: 'Detect missing events for critical access control parameters. Recommendation: Emit an event for critical parameter changes.'
+    severity: low
+    confidence: medium
+
+events-maths:
+    descr_short: Missing events arithmetic
+    descr_long: 'Detect missing events for critical arithmetic parameters. Recommendation: Emit an event for critical parameter changes.'
+    severity: low
+    confidence: medium
+
+external-function:
+    descr_short: Public function that could be declared external
+    descr_long: 'public functions that are never called by the contract should be declared external, and its immutable parameters should be located in calldata to save gas. Recommendation: Use the external attribute for functions never called from the contract, and change the location of immutable parameters to calldata to save gas.'
+    severity: optimization
+    confidence: high
+
+function-init-state:
+    descr_short: Function Initializing State
+    descr_long: 'Detects the immediate initialization of state variables through function calls that are not pure/constant, or that use non-constant state variable. Recommendation: Remove any initialization of state variables via non-constant state variables or function calls. If variables must be set upon contract deployment, locate initialization in the constructor instead.'
+    severity: informational
+    confidence: high
+
+gelato-unprotected-randomness:
+    descr_short: Gelato unprotected randomness
+    descr_long: 'Detect calls to _requestRandomness within an unprotected function. Recommendation: Function that request randomness should be allowed only to authorized users.'
+    severity: medium
+    confidence: medium
+
+immutable-states:
+    descr_short: State variables that could be declared immutable
+    descr_long: 'State variables that are not updated following deployment should be declared immutable to save gas. Recommendation: Add the immutable attribute to state variables that never change or are set only in the constructor.'
+    severity: optimization
+    confidence: high
+
+incorrect-equality:
+    descr_short: Dangerous strict equalities
+    descr_long: 'Use of strict equalities that can be easily manipulated by an attacker. Recommendation: Don''t use strict equality to determine if an account has enough Ether or tokens.'
+    severity: medium
+    confidence: high
+
+incorrect-exp:
+    descr_short: Incorrect exponentiation
+    descr_long: 'Detect use of bitwise xor ^ instead of exponential **. Recommendation: Use the correct operator ** for exponentiation.'
+    severity: high
+    confidence: medium
+
+incorrect-modifier:
+    descr_short: Incorrect modifier
+    descr_long: 'If a modifier does not execute _ or revert, the execution of the function will return the default value, which can be misleading for the caller. Recommendation: All the paths in a modifier must execute _ or revert.'
+    severity: low
+    confidence: high
+
+incorrect-return:
+    descr_short: Incorrect return in assembly
+    descr_long: 'Detect if return in an assembly block halts unexpectedly the execution. Recommendation: Use the leave statement.'
+    severity: high
+    confidence: medium
+
+incorrect-shift:
+    descr_short: Incorrect shift in assembly
+    descr_long: 'Detect if the values in a shift operation are reversed. Recommendation: Swap the order of parameters.'
+    severity: high
+    confidence: high
+
+incorrect-unary:
+    descr_short: Dangerous unary expressions
+    descr_long: 'Unary expressions such as x=+1 probably typos. Recommendation: Remove the unary expression.'
+    severity: low
+    confidence: medium
+
+incorrect-using-for:
+    descr_short: Incorrect usage of using-for statement
+    descr_long: 'In Solidity, it is possible to use libraries for certain types, by the using-for statement (using <library> for <type>). However, the Solidity compiler doesn''t check whether a given library has at least one function matching a given type. If it doesn''t, such a statement has no effect and may be confusing. Recommendation: Make sure that the libraries used in using-for statements have at least one function matching a type used in these statements.'
+    severity: informational
+    confidence: high
+
+locked-ether:
+    descr_short: Contracts that lock Ether
+    descr_long: 'Contract with a payable function, but without a withdrawal capacity. Recommendation: Remove the payable attribute or add a withdraw function.'
+    severity: medium
+    confidence: high
+    classification: DASP-5
+
+low-level-calls:
+    descr_short: Low-level calls
+    descr_long: 'The use of low-level calls is error-prone. Low-level calls do not check for code existence or call success. Recommendation: Avoid low-level calls. Check the call success. If the call is meant for a contract, check for code existence.'
+    severity: informational
+    confidence: high
+    classification: SWC-104, DASP-4
+
+mapping-deletion:
+    descr_short: Deletion on mapping containing a structure
+    descr_long: 'A deletion in a structure containing a mapping will not delete the mapping (see the Solidity documentation). The remaining data may be used to compromise the contract. Recommendation: Use a lock mechanism instead of a deletion to disable structure containing a mapping.'
+    severity: medium
+    confidence: high
+
+missing-inheritance:
+    descr_short: Missing inheritance
+    descr_long: 'Detect missing inheritance. Recommendation: Inherit from the missing interface or contract.'
+    severity: informational
+    confidence: high
+
+missing-zero-check:
+    descr_short: Missing zero address validation
+    descr_long: 'Detect missing zero address validation. Recommendation: Check that the address is not zero.'
+    severity: low
+    confidence: medium
+
+msg-value-in-nonpayable:
+    descr_short: msg.value in non-payable function
+    descr_long: 'Detects functions that read msg.value but cannot be reached from any payable public or external entry point. In such cases, msg.value is always zero or execution always reverts. Recommendation: Either mark the function as payable if it should receive ETH, or remove the msg.value check since it will always be zero in non-payable contexts.'
+    severity: high
+    confidence: high
+
+msg-value-loop:
+    descr_short: msg.value inside a loop
+    descr_long: 'Detect the use of msg.value inside a loop. Recommendation: Provide an explicit array of amounts alongside the receivers array, and check that the sum of all amounts matches msg.value.'
+    severity: high
+    confidence: medium
+
+multiple-constructors:
+    descr_short: Multiple constructor schemes
+    descr_long: 'Detect multiple constructor definitions in the same contract (using new and old schemes). Recommendation: Only declare one constructor, preferably using the new scheme constructor(...) instead of function <contractName>(...).'
+    severity: high
+    confidence: high
+
+name-reused:
+    descr_short: Name reused
+    descr_long: 'If a codebase has two contracts the similar names, the compilation artifacts will not contain one of the contracts with the duplicate name. Recommendation: Rename the contract.'
+    severity: high
+    confidence: high
+
+naming-convention:
+    descr_short: Conformance to Solidity naming conventions
+    descr_long: 'Solidity defines a naming convention that should be followed. Rule exceptions - Allow constant variable name/symbol/decimals to be lowercase (ERC20). - Allow _ at the beginning of the mixed_case match for private variables and unused parameters. Recommendation: Follow the Solidity naming convention.'
+    severity: informational
+    confidence: high
+
+optimism-deprecation:
+    descr_short: Optimism deprecated predeploy or function
+    descr_long: 'Detect when deprecated Optimism predeploy or function is used. Recommendation: Do not use the deprecated components.'
+    severity: low
+    confidence: high
+
+out-of-order-retryable:
+    descr_short: Out-of-order retryable transactions
+    descr_long: 'Out-of-order retryable transactions. Recommendation: Do not rely on the order or successful execution of retryable tickets.'
+    severity: medium
+    confidence: medium
+
+pragma:
+    descr_short: Different pragma directives are used
+    descr_long: 'Detect whether different Solidity versions are used. Recommendation: Use one Solidity version.'
+    severity: informational
+    confidence: high
+
+protected-vars:
+    descr_short: Protected Variables
+    descr_long: 'Detect unprotected variable that are marked protected. Recommendation: Add access controls to the vulnerable function'
+    severity: high
+    confidence: high
+
+public-mappings-nested:
+    descr_short: Public mappings with nested variables
+    descr_long: 'Prior to Solidity 0.5, a public mapping with nested structures returned incorrect values. Recommendation: Do not use public mapping with nested structures.'
+    severity: high
+    confidence: high
+
+pyth-deprecated-functions:
+    descr_short: Pyth deprecated functions
+    descr_long: 'Detect when a Pyth deprecated function is used. Recommendation: Do not use deprecated Pyth functions. Visit https://api-reference.pyth.network/.'
+    severity: medium
+    confidence: high
+
+pyth-unchecked-confidence:
+    descr_short: Pyth unchecked confidence level
+    descr_long: 'Detect when the confidence level of a Pyth price is not checked. Recommendation: Check the confidence level of a Pyth price. Visit https://docs.pyth.network/price-feeds/best-practices#confidence-intervals for more information.'
+    severity: medium
+    confidence: high
+
+pyth-unchecked-publishtime:
+    descr_short: Pyth unchecked publishTime
+    descr_long: 'Detect when the publishTime of a Pyth price is not checked. Recommendation: Check the publishTime of a Pyth price.'
+    severity: medium
+    confidence: high
+
+redundant-statements:
+    descr_short: Redundant Statements
+    descr_long: 'Detect the usage of redundant statements that have no effect. Recommendation: Remove redundant statements if they congest code but offer no value.'
+    severity: informational
+    confidence: high
+
+reentrancy-balance:
+    descr_short: Reentrancy vulnerabilities
+    descr_long: 'Detects reentrancy vulnerabilities where a balance is saved (e.g., balanceOf) before an external call, and the same balance is checked again after the call. An attacker could manipulate the balance during the reentrant call, causing the post-call check to use an outdated value. Recommendation: Use transferFrom to transfer funds of a standard ERC20 token, or use reentrancy guards to prevent reentering the function.'
+    severity: high
+    confidence: medium
+    classification: SWC-107, DASP-1
+
+reentrancy-benign:
+    descr_short: Reentrancy vulnerabilities
+    descr_long: 'Detection of the reentrancy bug. Only report reentrancy that acts as a double call (see reentrancy-eth, reentrancy-no-eth). Recommendation: Apply the check-effects-interactions pattern.'
+    severity: low
+    confidence: medium
+    classification: SWC-107, DASP-1
+
+reentrancy-eth:
+    descr_short: Reentrancy vulnerabilities
+    descr_long: 'Detection of the reentrancy bug. Do not report reentrancies that don''t involve Ether (see reentrancy-no-eth). Recommendation: Apply the check-effects-interactions pattern.'
+    severity: high
+    confidence: medium
+    classification: SWC-107, DASP-1
+
+reentrancy-events:
+    descr_short: Reentrancy vulnerabilities
+    descr_long: 'Detects reentrancies that allow manipulation of the order or value of events. Recommendation: Apply the check-effects-interactions pattern.'
+    severity: low
+    confidence: medium
+
+reentrancy-no-eth:
+    descr_short: Reentrancy vulnerabilities
+    descr_long: 'Detection of the reentrancy bug. Do not report reentrancies that involve Ether (see reentrancy-eth). Recommendation: Apply the check-effects-interactions pattern.'
+    severity: medium
+    confidence: medium
+    classification: SWC-107, DASP-1
+
+reentrancy-unlimited-gas:
+    descr_short: Reentrancy vulnerabilities
+    descr_long: 'Detection of the reentrancy bug. Only report reentrancy that is based on transfer or send. Recommendation: Apply the check-effects-interactions pattern.'
+    severity: informational
+    confidence: medium
+
+return-bomb:
+    descr_short: Return Bomb
+    descr_long: 'A low level callee may consume all callers gas unexpectedly. Recommendation: Avoid unlimited implicit decoding of returndata.'
+    severity: low
+    confidence: medium
+
+return-leave:
+    descr_short: Return instead of leave in assembly
+    descr_long: 'Detect if a return is used where a leave should be used. Recommendation: Use the leave statement.'
+    severity: high
+    confidence: medium
+
+reused-constructor:
+    descr_short: Reused base constructors
+    descr_long: 'Detects if the same base constructor is called with arguments from two different locations in the same inheritance hierarchy. Recommendation: Remove the duplicate constructor call.'
+    severity: medium
+    confidence: medium
+
+rtlo:
+    descr_short: Right-to-Left-Override character
+    descr_long: 'An attacker can manipulate the logic of the contract by using a right-to-left-override character (U+202E). Recommendation: Special control characters must not be allowed.'
+    severity: high
+    confidence: high
+
+shadowing-abstract:
+    descr_short: State variable shadowing from abstract contracts
+    descr_long: 'Detection of state variables shadowed from abstract contracts. Recommendation: Remove the state variable shadowing.'
+    severity: medium
+    confidence: high
+    classification: SWC-119
+
+shadowing-builtin:
+    descr_short: Built-in Symbol Shadowing
+    descr_long: 'Detection of shadowing built-in symbols using local variables, state variables, functions, modifiers, or events. Recommendation: Rename the local variables, state variables, functions, modifiers, and events that shadow a built-in symbol.'
+    severity: low
+    confidence: high
+
+shadowing-local:
+    descr_short: Local variable shadowing
+    descr_long: 'Detection of shadowing using local variables. Recommendation: Rename the local variables that shadow another component.'
+    severity: low
+    confidence: high
+    classification: SWC-119
+
+shadowing-state:
+    descr_short: State variable shadowing
+    descr_long: 'Detection of state variables shadowed. Recommendation: Remove the state variable shadowing.'
+    severity: high
+    confidence: high
+    classification: SWC-119
+
+solc-version:
+    descr_short: Incorrect versions of Solidity
+    descr_long: 'solc frequently releases new compiler versions. Using an old version prevents access to new Solidity security checks. We also recommend avoiding complex pragma statement. Recommendation: Deploy with a recent version of Solidity (at least 0.8.0) with no known severe issues. Use a simple pragma version that allows any of these versions. Consider using the latest version of Solidity for testing.'
+    severity: informational
+    confidence: high
+    classification: SWC-102
+
+storage-array:
+    descr_short: Storage Signed Integer Array
+    descr_long: 'solc versions 0.4.7-0.5.9 contain a compiler bug leading to incorrect values in signed integer arrays. Recommendation: Use a compiler version >= 0.5.10.'
+    severity: high
+    confidence: medium
+
+suicidal:
+    descr_short: Suicidal
+    descr_long: 'Unprotected call to a function executing selfdestruct/suicide. Recommendation: Protect access to all sensitive functions.'
+    severity: high
+    confidence: high
+    classification: SWC-106, DASP-2
+
+tautological-compare:
+    descr_short: Tautological compare
+    descr_long: 'A variable compared to itself is probably an error as it will always return true for ==, >=, <= and always false for <, > and !=. Recommendation: Remove comparison or compare to different value.'
+    severity: medium
+    confidence: high
+
+tautology:
+    descr_short: Tautology or contradiction
+    descr_long: 'Detects expressions that are tautologies or contradictions. Recommendation: Fix the incorrect comparison by changing the value type or the comparison.'
+    severity: medium
+    confidence: high
+
+timestamp:
+    descr_short: Block timestamp
+    descr_long: 'Dangerous usage of block.timestamp. block.timestamp can be manipulated by miners. Recommendation: Avoid relying on block.timestamp.'
+    severity: low
+    confidence: medium
+
+token-reentrancy:
+    descr_short: Token reentrant
+    descr_long: 'Tokens that allow arbitrary external call on transfer/transfer (such as ERC223/ERC777) can be exploited on third party through a reentrancy. Recommendation: Avoid to have external calls in transfer/transferFrom. If you do, ensure your users are aware of the potential issues.'
+    severity: medium
+    confidence: medium
+
+too-many-digits:
+    descr_short: Too many digits
+    descr_long: 'Literals with many digits are difficult to read and review. Use scientific notation or suffixes to make the code more readable. Recommendation: Use: - Ether suffix, - Time suffix, or - The scientific notation'
+    severity: informational
+    confidence: medium
+
+tx-origin:
+    descr_short: Dangerous usage of tx.origin
+    descr_long: 'tx.origin-based protection can be abused by a malicious contract if a legitimate user interacts with the malicious contract. Recommendation: Do not use tx.origin for authorization.'
+    severity: medium
+    confidence: medium
+    classification: SWC-115, DASP-2
+
+unchecked-lowlevel:
+    descr_short: Unchecked low-level calls
+    descr_long: 'The return value of a low-level call is not checked. Recommendation: Ensure that the return value of a low-level call is checked or logged.'
+    severity: medium
+    confidence: medium
+
+unchecked-send:
+    descr_short: Unchecked Send
+    descr_long: 'The return value of a send is not checked. Recommendation: Ensure that the return value of send is checked or logged.'
+    severity: medium
+    confidence: medium
+
+unchecked-transfer:
+    descr_short: Unchecked transfer
+    descr_long: 'The return value of an external transfer/transferFrom call is not checked. Recommendation: Use SafeERC20, or ensure that the transfer/transferFrom return value is checked.'
+    severity: high
+    confidence: medium
+
+unimplemented-functions:
+    descr_short: Unimplemented functions
+    descr_long: 'Detect functions that are not implemented on derived-most contracts. Recommendation: Implement all unimplemented functions in any contract you intend to use directly (not simply inherit from).'
+    severity: informational
+    confidence: high
+
+unindexed-event-address:
+    descr_short: Unindexed event address parameters
+    descr_long: 'Detects events that have address-type parameters but no indexed parameters. Indexing event parameters enables efficient off-chain filtering. Recommendation: Add the indexed keyword to address parameters in events to enable efficient off-chain filtering.'
+    severity: informational
+    confidence: high
+
+uninitialized-fptr-cst:
+    descr_short: Uninitialized function pointers in constructors
+    descr_long: 'solc versions 0.4.5-0.4.26 and 0.5.0-0.5.8 contain a compiler bug leading to unexpected behavior when calling uninitialized function pointers in constructors. Recommendation: Initialize function pointers before calling. Avoid function pointers if possible.'
+    severity: low
+    confidence: high
+
+uninitialized-local:
+    descr_short: Uninitialized local variables
+    descr_long: 'Uninitialized local variables. Recommendation: Initialize all the variables. If a variable is meant to be initialized to zero, explicitly set it to zero to improve code readability.'
+    severity: medium
+    confidence: medium
+
+uninitialized-state:
+    descr_short: Uninitialized state variables
+    descr_long: 'Uninitialized state variables. Recommendation: Initialize all the variables. If a variable is meant to be initialized to zero, explicitly set it to zero to improve code readability.'
+    severity: high
+    confidence: high
+    classification: SWC-109
+
+uninitialized-storage:
+    descr_short: Uninitialized storage variables
+    descr_long: 'An uninitialized storage variable will act as a reference to the first state variable, and can override a critical variable. Recommendation: Initialize all storage variables.'
+    severity: high
+    confidence: high
+    classification: SWC-109
+
+unprotected-upgrade:
+    descr_short: Unprotected upgradeable contract
+    descr_long: 'Detects logic contract that can be destructed. Recommendation: Add a constructor to ensure initialize cannot be called on the logic contract.'
+    severity: high
+    confidence: high
+
+unused-import:
+    descr_short: Unused Imports
+    descr_long: 'Importing a file that is not used in the contract likely indicates a mistake. The import should be removed until it is needed. Recommendation: Remove the unused import. If the import is needed later, it can be added back.'
+    severity: informational
+    confidence: high
+
+unused-return:
+    descr_short: Unused return
+    descr_long: 'The return value of an external call is not stored in a local or state variable. Recommendation: Ensure that all the return values of the function calls are used.'
+    severity: medium
+    confidence: medium
+    classification: SWC-104, DASP-4
+
+unused-state:
+    descr_short: Unused state variable
+    descr_long: 'Unused state variable. Recommendation: Remove unused state variables.'
+    severity: informational
+    confidence: high
+    classification: SWC-131
+
+var-read-using-this:
+    descr_short: Public variable read in external context
+    descr_long: 'The contract reads its own variable using this, adding overhead of an unnecessary STATICCALL. Recommendation: Read the variable directly from storage instead of calling the contract.'
+    severity: optimization
+    confidence: high
+
+variable-scope:
+    descr_short: Pre-declaration usage of local variables
+    descr_long: 'Detects the possible usage of a variable before the declaration is stepped over (either because it is later declared, or declared in another scope). Recommendation: Move all variable declarations prior to any usage of the variable, and ensure that reaching a variable declaration does not depend on some conditional if it is used unconditionally.'
+    severity: low
+    confidence: high
+
+void-cst:
+    descr_short: Void constructor
+    descr_long: 'Detect the cal//l to a constructor that is not implemented. Recommendation: Remove the constructor call.'
+    severity: low
+    confidence: high
+
+weak-prng:
+    descr_short: Weak PRNG
+    descr_long: 'Weak PRNG due to a modulo on block.timestamp, now or blockhash. These can be influenced by miners to some extent so they should be avoided. Recommendation: Do not use block.timestamp, now or blockhash as a source of randomness'
+    severity: high
+    confidence: medium
+
+write-after-write:
+    descr_short: Write after write
+    descr_long: 'Detects variables that are written but never read and written again. Recommendation: Fix or remove the writes.'
+    severity: medium
+    confidence: high

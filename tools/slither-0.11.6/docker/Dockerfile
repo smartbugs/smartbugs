@@ -10,7 +10,7 @@ RUN apt-get update \
 WORKDIR /app
 RUN git clone https://github.com/crytic/slither.git \
  && cd slither \
- && git checkout 0.11.3
+ && git checkout 0.11.6
 RUN pip install --no-cache-dir ./slither
 
 CMD ["/bin/bash"]
