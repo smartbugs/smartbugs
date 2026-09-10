@@ -1,0 +1,120 @@
+Delegatecall to user-supplied address (SWC 112):
+    classification: SWC-112
+    method: Check for invocations of delegatecall to a user-supplied address.
+    descr_short: The contract delegates execution to another contract with a user-supplied address.
+    descr_long: The smart contract delegates execution to a user-supplied address. This could allow an attacker to execute arbitrary code in the context of this contract account and manipulate the state of the contract account or execute actions on its behalf.
+    severity: high
+
+Dependence on predictable environment variable (SWC 116):
+    classification: SWC-116, DASP-8
+    method: Check whether control flow decisions are influenced by block.coinbase, block.gaslimit, block.timestamp or block.number.
+    descr_short: A control flow decision is made based on the block variable coinbase, gaslimit, timestamp or block number.
+    descr_long: One or more of block.coinbase, block.gaslimit, block.timestamp or block.number are used to determine a control flow decision. Note that the values of these variables are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+    severity: low
+
+Dependence on predictable environment variable (SWC 120):
+    classification: SWC-120, DASP-6
+    method: Check whether control flow decisions are influenced by block.coinbase, block.gaslimit, block.timestamp or block.number.
+    descr_short: A control flow decision is made based on the block variable coinbase, gaslimit, timestamp or block number.
+    descr_long: One or more of block.coinbase, block.gaslimit, block.timestamp or block.number are used to determine a control flow decision. Note that the values of these variables are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+    severity: low
+
+Dependence on tx.origin (SWC 115):
+    classification: SWC-115, DASP-2
+    method: Check whether control flow decisions are influenced by tx.origin
+    descr_long: The tx.origin environment variable has been found to influence a control flow decision. Note that using tx.origin as a security control might cause a situation where a user inadvertently authorizes a smart contract to perform an action on their behalf. It is recommended to use msg.sender instead.
+    severity: low
+    descr_short: Use of tx.origin as a part of authorization control.
+
+Exception State (SWC 110):
+    classification: SWC-110
+    method: Checks whether any exception states are reachable.
+    descr_long: It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+    severity: medium
+    descr_short: An assertion violation was triggered.
+
+External Call To User-Supplied Address (SWC 107):
+    classification: SWC-107, DASP-5
+    method: Search for external calls with unrestricted gas to a user-specified address.
+    descr_short: A call to a user-supplied address is executed.
+    descr_long: An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
+    severity: low
+
+Integer Arithmetic Bugs (SWC 101):
+    classification: SWC-101, DASP-3
+    method: For every SUB instruction, check if there is a possible state where the second operand is larger than the first one. For every ADD, MUL instruction, check if there is a possible state where the result of the operation overflows.
+    descr_short: The arithmetic operator can underflow/overflow
+    descr_long: It is possible to cause an integer overflow or underflow in the arithmetic operation. Prevent this by constraining inputs using the require() statement or use the OpenZeppelin SafeMath library for integer arithmetic operations. Refer to the transaction trace generated for this issue to reproduce the issue.
+    severity: high
+
+Jump to an arbitrary instruction (SWC 127):
+    classification: SWC-127
+    method: Search for jumps to arbitrary locations in the bytecode
+    severity: high
+    descr_short: The caller can redirect execution to arbitrary bytecode locations.
+    descr_long: It is possible to redirect the control flow to arbitrary locations in the code. This may allow an attacker to bypass security controls or manipulate the business logic of the smart contract. Avoid using low-level-operations and assembly to prevent this issue.
+
+Multiple Calls in a Single Transaction (SWC 113):
+    classification: SWC-113, DASP-5
+    method: Check for multiple sends in a single transaction
+    descr_long: This call is executed following another call within the same transaction. It is possible that the call never gets executed if a prior call fails permanently. This might be caused intentionally by a malicious callee. If possible, refactor the code such that each transaction only executes one external call or make sure that all callees can be trusted (i.e. they’re part of your own codebase).
+    severity: low
+    descr_short: Multiple calls are executed in the same transaction.
+
+State access after external call (SWC 107):
+    classification: SWC-107, DASP-1
+    method: Check whether the account state is accesses after the execution of an external call
+    severity: medium if user defined address, low if fixed address
+    descr_short: Read of/Write to persistent state following external call
+    descr_long: The contract account state is accessed after an external call to a user-defined/fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+
+Unchecked return value from external call. (SWC 104):
+    classification: SWC-104, DASP-4
+    method: Test whether CALL return value is checked. For direct calls, the Solidity compiler auto-generates this check. For low-level-calls this check is omitted.
+    descr_long: External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
+    severity: medium
+    descr_short: The return value of a message call is not checked.
+
+Unprotected Ether Withdrawal (SWC 105):
+    classification: SWC-105, DASP-2
+    method: Search for cases where Ether can be withdrawn to a user-specified address.  An issue is reported if there is a valid end state where the attacker has successfully increased their Ether balance.
+    severity: high
+    descr_short: Any sender can withdraw Ether from the contract account.
+    descr_long: Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+
+Unprotected Selfdestruct (SWC 106):
+    classification: SWC-106, DASP-2
+    method: Check if the contact can be 'accidentally' killed by anyone. For kill-able contracts, also check whether it is possible to direct the contract balance to the attacker.
+    descr_short: Any sender can cause the contract to self-destruct.
+    descr_long: Any sender can trigger execution of the SELFDESTRUCT instruction to destroy this contract account. Review the transaction trace generated for this issue and make sure that appropriate security controls are in place to prevent unrestricted access.
+    severity: high
+
+Write to an arbitrary storage location (SWC 124):
+    classification: SWC-124, DASP-2
+    method: Search for any writes to an arbitrary storage slot
+    severity: high
+    descr_short: The caller can write to arbitrary storage locations.
+    descr_long: It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract.
+
+Transaction Order Dependence (SWC 114):
+    classification: SWC-114, DASP-7
+    method: Search for calls whose value depends on balance or storage.
+    severity: medium
+    descr_short: The value of the call is dependent on balance or storage write.
+    descr_long: The value of the call is dependent on balance or storage write. This can lead to race conditions. An attacker may be able to run a transaction after our transaction, which can change the value of the call.
+
+requirement violation (SWC 123):
+    classification: SWC-123
+    method: Checks whether any requirements violate in a call.
+    severity: medium
+    descr_short: A requirement was violated in a nested call and the call was reverted as a result.
+    descr_long: Make sure valid inputs are provided to the nested call (for instance, via passed arguments).
+
+Strict Ether balance check (SWC 132):
+    classification: SWC-132
+    method: Checks for strict equality checks with contract balance.
+    severity: low
+    descr_short: Use of strict ether balance checking.
+    descr_long: Ether can be forcefully sent to this contract. This may make the contract unusable.
+
+

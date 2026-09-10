@@ -54,31 +54,31 @@ pages 2102-2105, IEEE Computer Society, 2023.
 |      | version | Solidity | bytecode | runtime code |
 | :--- | :--- | :---: | :---: | :--: |
 | [Aderyn](https://github.com/Cyfrin/aderyn) | 0.6.8 | :heavy_check_mark: |                    |                    |
-| [CCC (CPG Contract Checker)](https://github.com/Fraunhofer-AISEC/cpg-contract-checker) | #c531ae3 (IMC-24) | :heavy_check_mark: |                    |                    |
-| [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | #4315fb7 v0.0.1 | :heavy_check_mark: |                    |                    |
+| [CCC (CPG Contract Checker)](https://github.com/Fraunhofer-AISEC/cpg-contract-checker) |IMC-24 (#c531ae3) | :heavy_check_mark: |                    |                    |
+| [ConFuzzius](https://github.com/christoftorres/ConFuzzius) | 0.0.1 (#4315fb7) | :heavy_check_mark: |                    |                    |
 | [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
 | [eThor](https://secpriv.wien/ethor)  | 2023 <sup>[2]</sup> |                    |                    | :heavy_check_mark: |
 | [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Mando](https://github.com/stephan-klein/ge-sc-machine) | v0.1 | :heavy_check_mark: |                    |                    |
+| [Mando](https://github.com/stephan-klein/ge-sc-machine) | 0.1 | :heavy_check_mark: |                    |                    |
 | [Mando HGT](https://github.com/stephan-klein/ge-sc-machine/tree/hgt) | v0.1-hgt | :heavy_check_mark: |                    |                    |
 | [Manticore](https://github.com/trailofbits/manticore) <sup>[3]</sup>   | 0.3.7 | :heavy_check_mark: |                    |                    |
-| [Mythril](https://github.com/ConsenSys/mythril) | 0.24.8  <sup>[2]</sup> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Mythril](https://github.com/ConsenSys/mythril) | 0.24.8+ (#125914a)  <sup>[2]</sup> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Osiris](https://github.com/christoftorres/Osiris)        | #d1ecc37 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Oyente+](https://github.com/smartbugs/oyente_plus) <sup>[1]</sup> | #060ca34 | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [Pakala](https://github.com/palkeo/pakala)   | #c84ef38 v1.1.10 |                    |                    | :heavy_check_mark: |
+| [Pakala](https://github.com/palkeo/pakala)   | 1.1.10 (#c84ef38) |                    |                    | :heavy_check_mark: |
 | [Securify](https://github.com/eth-sri/securify)              |  | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Securify2](https://github.com/eth-sri/securify2)              |  | :heavy_check_mark: |                    | |
 | [Semgrep](https://github.com/Decurity/semgrep-smart-contracts)/[Decurity](https://github.com/Decurity/semgrep-smart-contracts)  | 1.131.0/1.2.1 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
-| [sFuzz](https://github.com/duytai/sFuzz) | #48934c0 (2019-03-01) | :heavy_check_mark: |  |  |
+| [sFuzz](https://github.com/duytai/sFuzz) | 2019-03-01 (#48934c0) | :heavy_check_mark: |  |  |
 | [Slither](https://github.com/crytic/slither)  | 0.11.6 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
 | [Smartcheck](https://github.com/smartdec/smartcheck)         |  | :heavy_check_mark: |                    |                    |
 | [Solhint](https://github.com/protofire/solhint) | 6.0.0 <sup>[2]</sup> | :heavy_check_mark: |                    |                    |
 | [teEther](https://github.com/nescio007/teether)      | #04adf56 |                    |                    | :heavy_check_mark: |
 | [Vandal](https://github.com/usyd-blockchain/vandal)  | #d2b0043 |                    |                    | :heavy_check_mark: |
-| [VulHunter](https://github.com/stephan-klein/VulHunter) | v0.1 | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [VulHunter](https://github.com/stephan-klein/VulHunter) | 0.1 | :heavy_check_mark: | :heavy_check_mark: |                    |
 
 **Notes:**
 
