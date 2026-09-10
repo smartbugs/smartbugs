@@ -96,18 +96,25 @@ def main() -> None:
     # spawn processes, instead of forking, to have same behavior under Linux and MacOS
     mp = multiprocessing.get_context("spawn")
 
+    # create task queue
     taskqueue = mp.Queue()
-    for r in sorted(results):
-        taskqueue.put(r)
-    for _ in range(args.processes):
-        taskqueue.put(None)
 
+    # start parsers
     reparsers = [
         mp.Process(target=reparser, args=(taskqueue, args.sarif, args.v))
         for _ in range(args.processes)
     ]
     for r in reparsers:
         r.start()
+
+    # fill task queue after starting the parsers so consumers can drain it;
+    # on MacOS, a multiprocessing queue is limited to 32767 items
+    for r in sorted(results):
+        taskqueue.put(r)
+    for _ in range(args.processes):
+        taskqueue.put(None)
+
+    # wait for parsers to finish
     for r in reparsers:
         r.join()
 

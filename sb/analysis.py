@@ -218,7 +218,7 @@ def run(tasks: list[sb.tasks.Task], settings: sb.settings.Settings) -> None:
             a.start()
 
         # fill task queue after starting the analysers so consumers can drain it;
-        # on MacOS, a multiprocessing queue can hold at most 32767 items
+        # on MacOS, a multiprocessing queue is limited to 32767 items
         random.shuffle(tasks)
         for task in tasks:
             taskqueue.put(task)
