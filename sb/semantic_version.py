@@ -1,58 +1,60 @@
-import itertools
 import re
-import semantic_version
 from typing import Optional
+
+import semantic_version
 
 import sb.debug
 
-COMPARATOR = re.compile(r"(([<>]?=?|~|\^)\s*\d+\.\d+\.\d+)")
+
+# Solidity accepts spaces between an operator and its version, and around dots.
+# NpmSpec expects the operator and the version to be adjacent.
+OPERATOR_SPACE = re.compile(r"(<=|>=|<|>|=|\^|~)\s+(?=\d|[xX*])")
+VERSION_CORE = re.compile(r"(?<![\w.+-])\d+(?:\.\d+){0,2}(?![\w.-])")
+UNBOUNDED_ZERO_LOWER = re.compile(r"(?<!\S)>=0\.\d+\.\d+(?![\w.+-])")
+
+
+def _normalize(spec: str) -> str:
+    spec = re.sub(r"\s*\.\s*", ".", spec.strip())
+    spec = re.sub(r"\s+", " ", spec)
+    spec = OPERATOR_SPACE.sub(r"\1", spec)
+
+    # Normalize only the numeric core, not prerelease or build identifiers.
+    def strip_zeroes(match: re.Match[str]) -> str:
+        return ".".join(str(int(part)) for part in match.group().split("."))
+
+    spec = VERSION_CORE.sub(strip_zeroes, spec)
+
+    # Treat an unbounded >=0.x.y as the likely intended compatibility range.
+    # Check each OR branch independently: a bound in another branch is irrelevant.
+    branches = []
+    for branch in spec.split("||"):
+        if "<" not in branch:
+            branch = UNBOUNDED_ZERO_LOWER.sub(
+                lambda match: "^" + match.group()[2:], branch
+            )
+        branches.append(branch)
+    return "||".join(branches)
 
 
 def match(versions: list[str], available: set[str]) -> Optional[str]:
     sb.debug.log(f"semantic_version.match:\n   {versions=}\n   {available=}")
 
-    # semantic_version is picky compared to solc when parsing versions
-    # we try to fix some issues
-    sanitized_versions = []
-    for version in versions:
-        # remove leading zeros
-        version = re.sub(r"(?:^|(?<=\D))0+(\d)", r"\1", version)
-        # replace >=0.y.z by ^0.y.z if there is no upper bound
-        if "<" not in version:
-            version = re.sub(r">=\s*0\.", r"^0.", version)
-        # remove space surrounding dots
-        version = re.sub(r"\s*\.\s*", r".", version)
-        # replace x.y by x.y.0 if not preceded by operator
-        version = re.sub(r"(?:^|(?<=[^0-9.>=<~]))\s*(\d+\.\d+)(?=[^0-9.]|$)", r"^\1.0", version)
-        # replace ranges
-        version = re.sub(r"(\d+\.\d+\.\d+)\s*-\s*(\d+\.\d+\.\d+)", r">=\1 <=\2", version)
-        alternatives = []
-        for comparator_set in version.split("||"):
-            comparators = [m[0] for m in COMPARATOR.findall(comparator_set)]
-            if comparators:
-                alternatives.append(",".join(c.replace(" ", "") for c in comparators))
-        if alternatives:
-            sanitized_versions.append(alternatives)
-
-    sb.debug.log(f"   {sanitized_versions=}")
-    if not sanitized_versions:
+    # Separate pragmas constrain the same compiler version (AND). NpmSpec
+    # implements npm's AND within each expression and OR between || branches.
+    try:
+        specs = [semantic_version.NpmSpec(_normalize(v)) for v in versions]
+    except ValueError as exc:
+        sb.debug.log(f"   Cannot parse Solidity version requirement: {exc}")
         return None
 
-    available = [semantic_version.Version(v) for v in available]
+    if not specs:
+        return None
 
-    # We select the maximal version compatible with the spec,
-    # since people tend to specify ^0.x.0 when they actually used ^0.x.y
-    # for some y > 0, and solc-0.x.0 may fail on the contract.
-    # Beware: 0.4.10 introduced breaking changes, so choosing 0.4.26 for
-    # something like ^0.4.0 is not always a good choice either.
-    # In this case, you have to specify the version in the pragma
-    # more precisely.
-    solc_version = None
-    for p in itertools.product(*sanitized_versions):
-        spec = semantic_version.SimpleSpec(",".join(p))
-        selected = spec.select(available)
-        if selected and (not solc_version or solc_version < selected):
-            solc_version = selected
+    candidates = [semantic_version.Version(v) for v in available]
+    compatible = [v for v in candidates if all(spec.match(v) for spec in specs)]
 
-    sb.debug.log(f"   {solc_version=}")
-    return str(solc_version) if solc_version else None
+    # Select the newest compatible release. A pragma establishes compatibility,
+    # not that every matching compiler can actually compile the source.
+    selected = max(compatible, default=None)
+    sb.debug.log(f"   {selected=}")
+    return str(selected) if selected else None

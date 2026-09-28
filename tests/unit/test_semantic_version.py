@@ -52,6 +52,27 @@ def test_match_or_alternatives(mock_log):
 
 
 @patch("sb.debug.log")
+def test_match_or_normalizes_unbounded_branch_independently(mock_log):
+    versions = [">=0.4.0 || >=0.6.1 <0.7.0"]
+    available = {"0.4.9", "0.5.0", "0.6.0"}
+    assert sb.semantic_version.match(versions, available) == "0.4.9"
+
+
+@patch("sb.debug.log")
+def test_match_or_rewrites_branch_even_when_other_branch_is_bounded(mock_log):
+    versions = [">=0.4.0 <0.5.0 || >=0.6.1"]
+    available = {"0.4.9", "0.6.2", "0.7.0"}
+    assert sb.semantic_version.match(versions, available) == "0.6.2"
+
+
+@patch("sb.debug.log")
+def test_match_or_intersects_another_pragma(mock_log):
+    versions = [">=0.4.0 <0.5.0 || >=0.7.0 <0.8.0", ">=0.4.5 <0.7.5"]
+    available = {"0.4.4", "0.4.6", "0.6.0", "0.7.4", "0.7.6"}
+    assert sb.semantic_version.match(versions, available) == "0.7.4"
+
+
+@patch("sb.debug.log")
 def test_match_multiple_constraints_product(mock_log):
     versions = ["^1.2.0", ">1.2.3"]
     available = {"1.2.0", "1.2.3", "1.3.0", "2.0.0"}
