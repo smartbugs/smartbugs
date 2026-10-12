@@ -7,7 +7,7 @@
 <a href="https://github.com/smartbugs/smartbugs/releases"><img alt="Smartbugs release" src="https://img.shields.io/github/release/smartbugs/smartbugs.svg"></a>
 <a href="https://github.com/smartbugs/smartbugs/blob/master/LICENSE"><img alt="Smartbugs license" src="https://img.shields.io/github/license/smartbugs/smartbugs.svg?color=blue"></a>
 <span class="badge-crypto"><a href="#support-and-donate" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-red.svg" alt="crypto donate button" /></a></span>
-<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-26-blue"></a>
+<a href="#Supported-Tools"><img alt="analysis tools" src="https://img.shields.io/badge/analysis tools-28-blue"></a>
 
 
 SmartBugs is an extensible platform with a uniform interface to tools
@@ -23,7 +23,7 @@ pages 2102-2105, IEEE Computer Society, 2023.
 
 ## Features
 
-- *26 supported tools, 3 modes* for analysing Solidity source
+- *28 supported tools, 3 modes* for analysing Solidity source
   code, deployment bytecode, and runtime code.
 
 - *Modular integration of analysers.* All it takes to add
@@ -59,7 +59,9 @@ pages 2102-2105, IEEE Computer Society, 2023.
 | [Conkas](https://github.com/smartbugs/conkas)        | #4e0f256 | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Ethainter](https://zenodo.org/record/3760403)               |  |                    |                    | :heavy_check_mark: |
 | [eThor](https://secpriv.wien/ethor)  | 2023 <sup>[2]</sup> |                    |                    | :heavy_check_mark: |
+| [GPTScan](https://github.com/GPTScan/GPTScan) <sup>[4]</sup> | #29a1747 | :heavy_check_mark: |                    |                    |
 | [HoneyBadger](https://github.com/christoftorres/HoneyBadger) | #ff30c9a | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [LLMSmartAudit](https://github.com/LLMAudit/LLMSmartAuditTool) <sup>[4]</sup> | #c507fe4 | :heavy_check_mark: |                    |                    |
 | [MadMax](https://github.com/nevillegrech/MadMax) | #6e9a6e9     |                    |                    | :heavy_check_mark: |
 | [Maian](https://github.com/smartbugs/MAIAN)          | #4bab09a | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Mando](https://github.com/stephan-klein/ge-sc-machine) | 0.1 | :heavy_check_mark: |                    |                    |
@@ -91,6 +93,8 @@ Oyente+ is maintained and handles recent EVM versions.
 **[2]** Older versions available, see the [tools](tools/) folder.
 
 **[3]** This tool may not be adequately configured and therefore may not produce useful results. Feel free to submit a fix.
+
+**[4]** LLM-based tools. They call an external API (DeepSeek by default, as the considerably cheaper option; OpenAI or any OpenAI-compatible endpoint via `GPTSCAN_PROVIDER` / `LLM_PROVIDER`) and need an API key at run time, LLMSmartAudit also a model id, passed as environment variables that SmartBugs forwards into the container (see the `env:` entry and the comments in their `config.yaml`). Every analysed contract costs API calls, which is why they are not part of `-t all`; select them explicitly with `-t gptscan` or `-t llmsmartaudit`. SmartBugs runs them from forks adapted for this purpose ([GPTScan](https://github.com/Alex-Hofer/GPTScan/tree/smartbugs), [LLMSmartAudit](https://github.com/Alex-Hofer/LLMSmartAuditTool/tree/smartbugs)). Until the images are on Docker Hub, build them from the fork commits pinned in this repository: `docker build -t smartbugs/gptscan:29a1747 tools/gptscan/docker` and `docker build -t smartbugs/llmsmartaudit:c507fe4 tools/llmsmartaudit/docker`.
 
 ## Installation
 
