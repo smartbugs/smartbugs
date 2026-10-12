@@ -1,0 +1,32 @@
+name: LLMSmartAudit
+version: "#c507fe4"
+# Upstream. Note the owner: LLMAudit, not LLMSmartAudit -- the latter is a
+# different account of the same authors and holds no repository of this name.
+origin: https://github.com/LLMAudit/LLMSmartAuditTool
+info: LLMSmartAudit analyses Solidity source with a ChatDev/CAMEL multi-agent LLM pipeline (41 detector prompts, SmartContractTA mode). The LLM backend (provider, model, base URL) is selected at run time via environment variables and defaults to DeepSeek. Runs take many LLM calls; use a generous --timeout (>= 3600s recommended).
+# Built from docker/Dockerfile: a fork of LLMSmartAudit adapted for SmartBugs
+# (provider/model selection at run time, a report collector that keeps the
+# result of every detector phase, headless operation); the Dockerfile pins
+# the fork commit.
+image: smartbugs/llmsmartaudit:c507fe4
+bin: scripts
+# The wrapper copies the audit report here; SmartBugs grabs it.
+output: /output.json
+# The tool must reach the LLM API, so it needs network access. SmartBugs
+# defaults tool containers to network "none", which would break every API call.
+network: bridge
+# Host environment variables forwarded into the container (API keys and
+# runtime backend selection). Only variables set on the host are forwarded.
+#   LLM_PROVIDER  deepseek (default) | openai | custom
+#   LLM_MODEL     model id -- required: the entrypoint exits 2 with a
+#                 placeholder report when it is unset
+#   LLM_BASE_URL  OpenAI-compatible endpoint URL (for LLM_PROVIDER=custom)
+#   LLM_CONTEXT_TOKENS          context window assumed for the model (DeepSeek
+#                               65536, unknown model ids 16384; raise it for
+#                               models with a larger window)
+#   LLM_MAX_COMPLETION_TOKENS   upper bound for completion tokens per call
+#                               (optional; the tool's default if unset)
+env: DEEPSEEK_API_KEY, OPENAI_API_KEY, LLM_PROVIDER, LLM_MODEL, LLM_BASE_URL, LLM_CONTEXT_TOKENS, LLM_MAX_COMPLETION_TOKENS
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    # no solc: the tool reasons over the source text and never compiles
