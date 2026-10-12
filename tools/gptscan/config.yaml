@@ -1,0 +1,32 @@
+name: GPTScan
+version: "#29a1747"
+origin: https://github.com/GPTScan/GPTScan
+info: GPTScan reports suspected DeFi logic weaknesses (10 MWE scenarios) by combining an LLM (DeepSeek, OpenAI or any OpenAI-compatible endpoint) with program analysis; a static confirmation stage discards candidates it cannot corroborate. This build talks to an OpenAI-compatible backend selected at run time.
+# Built from docker/Dockerfile: a fork of GPTScan adapted for SmartBugs
+# (provider/model selection at run time, dry-run mode, timeout handling);
+# the Dockerfile pins the fork commit.
+image: smartbugs/gptscan:29a1747
+bin: scripts
+# GPTScan writes its JSON report here inside the container; SmartBugs grabs it.
+output: /output.json
+# GPTScan must reach the LLM API, so it needs network access. SmartBugs defaults
+# tool containers to network "none", which would silently break every API call.
+network: bridge
+# Host environment variables forwarded into the container (API key and
+# runtime provider/model selection). Only variables set on the host are
+# forwarded; nothing is baked into the image.
+#   GPTSCAN_PROVIDER  deepseek (default) | openai | custom
+#   GPTSCAN_MODEL     model id (provider default if unset)
+#   GPTSCAN_DRY_RUN   1 = run the whole pipeline without a single LLM call
+#                     (no cost); 0 = normal run
+#   GPTSCAN_BASE_URL  OpenAI-compatible endpoint URL, only used for
+#                     GPTSCAN_PROVIDER=custom (e.g. a local stand-in server
+#                     for tests without cost); ignored otherwise
+#   GPTSCAN_API_KEY   API key for GPTSCAN_PROVIDER=custom; deepseek/openai read
+#                     DEEPSEEK_API_KEY/OPENAI_API_KEY instead
+env: DEEPSEEK_API_KEY, OPENAI_API_KEY, GPTSCAN_PROVIDER, GPTSCAN_MODEL, GPTSCAN_DRY_RUN, GPTSCAN_BASE_URL, GPTSCAN_API_KEY
+solidity:
+    # SmartBugs provides a matching solc binary at $BIN/solc (solc: yes); the
+    # entrypoint puts it on PATH for GPTScan's compilation step.
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    solc: yes
