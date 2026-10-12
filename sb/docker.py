@@ -1,6 +1,7 @@
 import os
 import shutil
 import tempfile
+import time
 import traceback
 from typing import TYPE_CHECKING, Any, Optional
 
@@ -109,6 +110,33 @@ def __docker_args(task: "sb.tasks.Task", sbdir: str) -> dict[str, Any]:
     return args
 
 
+def _remove_tempdir(sbdir: str, attempts: int = 30, delay: float = 0.5) -> bool:
+    """Remove a task's temporary directory, tolerating a transient file lock.
+
+    On Windows, Docker Desktop can still hold a handle on the bind-mounted
+    directory when container.remove() has just returned, and removing the
+    directory fails with a PermissionError. Raised from the finally block of
+    execute(), that exception is not a SmartBugsError, so the worker process
+    died before the result files were written while SmartBugs still exited
+    with status 0. The lock clears within seconds, so retrying is enough. A
+    directory that still cannot be removed is logged and left behind: a
+    leftover temporary directory must never cost a finished analysis.
+
+    Returns True if the directory was removed.
+    """
+    error: Optional[OSError] = None
+    for attempt in range(1, attempts + 1):
+        try:
+            shutil.rmtree(sbdir)
+            return True
+        except OSError as e:
+            error = e
+            if attempt < attempts:
+                time.sleep(delay)
+    sb.debug.log(f"Could not remove temporary directory {sbdir}: {error}")
+    return False
+
+
 def execute(
     task: "sb.tasks.Task",
 ) -> tuple[Optional[int], list[str], Optional[bytes], dict[str, Any]]:
@@ -150,7 +178,7 @@ def execute(
             sb_bin_log = sb.io.read_lines(sb_bin_log_path)
         except Exception:
             pass
-        shutil.rmtree(sbdir)
+        _remove_tempdir(sbdir)
 
     # sb.analysis writes the returned arguments verbatim into smartbugs.json.
     # Forwarded environment values (API keys!) must not end up there; the
