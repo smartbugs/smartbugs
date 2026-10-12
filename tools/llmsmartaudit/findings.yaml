@@ -1,0 +1,305 @@
+# LLMSmartAudit finding -> taxonomy mapping (SmartBugs `findings.yaml` format).
+#
+# Keys are the finding NAMES emitted by tools/llmsmartaudit/parser.py, which
+# are the 41 detector display titles from the tool's
+# chatdev/audit_report.py::DETECTORS table (generated from that table; the
+# human-facing companion is the tool's docs/coverage.md).
+#
+# Fields (same convention as tools/mythril-*/findings.yaml):
+#   classification : SWC-### / DASP-# where a faithful mapping exists,
+#                    otherwise an honest "logic/DeFi" or "code-quality" label.
+#   method         : how the tool decides the finding.
+#   descr_short    : what the detector checks.
+#   severity       : low | medium | high.
+#   detector       : the tool's phase name (stable key in the report JSON).
+#
+# IMPORTANT: severities are DOCUMENTATION-ASSIGNED defaults per category; the
+# LLM itself emits neither severities nor line numbers, and results are
+# non-deterministic across runs, models and providers.
+
+"Integer Overflow / Underflow":
+    classification: "SWC-101, DASP-3"
+    severity: high
+    method: Single-shot LLM detector prompt (ArithmeticDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Arithmetic that can exceed type bounds; missing/incomplete SafeMath usage.
+    detector: ArithmeticDetector
+
+"Reentrancy":
+    classification: "SWC-107, DASP-1"
+    severity: high
+    method: Single-shot LLM detector prompt (ReentrancyDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: External call before state update; missing Checks-Effects-Interactions / ReentrancyGuard.
+    detector: ReentrancyDetector
+
+"Unchecked External Call (send/transfer/ERC20 return)":
+    classification: "SWC-104, DASP-4"
+    severity: medium
+    method: Single-shot LLM detector prompt (UncheckedSendDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Return value of send/transfer and ERC20 transfer/transferFrom not checked.
+    detector: UncheckedSendDetector
+
+"Unchecked Low-level Call (call/delegatecall/send)":
+    classification: "SWC-104, DASP-4"
+    severity: medium
+    method: Single-shot LLM detector prompt (UncheckedLowLevelCallDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: call/delegatecall/send results unchecked; untrusted callee behaviour.
+    detector: UncheckedLowLevelCallDetector
+
+"Transaction Order Dependence (front-running)":
+    classification: "SWC-114, DASP-7"
+    severity: medium
+    method: Single-shot LLM detector prompt (TODDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Behaviour depends on transaction ordering / gas-price-driven sequencing (front-running).
+    detector: TODDetector
+
+"Timestamp Dependence":
+    classification: "SWC-116, DASP-8"
+    severity: low
+    method: Single-shot LLM detector prompt (TimeStampManipulationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Critical logic or randomness based on block.timestamp/now.
+    detector: TimeStampManipulationDetector
+
+"Predictable / Weak Randomness":
+    classification: "SWC-120, DASP-6"
+    severity: medium
+    method: Single-shot LLM detector prompt (PredictableRandDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Randomness from blockhash/block.number (miner-predictable).
+    detector: PredictableRandDetector
+
+"Authorization via tx.origin":
+    classification: "SWC-115, DASP-2"
+    severity: medium
+    method: Single-shot LLM detector prompt (TXRelianceDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: tx.origin used for access control / ownership checks.
+    detector: TXRelianceDetector
+
+"Unprotected SELFDESTRUCT":
+    classification: "SWC-106, DASP-2"
+    severity: high
+    method: Single-shot LLM detector prompt (SuicideDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: selfdestruct/suicide reachable without strong access control.
+    detector: SuicideDetector
+
+"Gas-Limit / Unbounded Operation":
+    classification: "SWC-128, DASP-5"
+    severity: medium
+    method: Single-shot LLM detector prompt (GasLimitDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Unbounded loops / missing gas considerations enabling DoS.
+    detector: GasLimitDetector
+
+"Price Manipulation (centralized pricing)":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: high
+    method: Single-shot LLM detector prompt (PriceManipulationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Token prices arbitrarily set by a central authority; no oracle/AMM/governance guard.
+    detector: PriceManipulationDetector
+
+"Assumption of Fixed-Length Array":
+    classification: "logic (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (DataCorruptionDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Code assumes a returned array has fixed length, causing corruption/out-of-bounds.
+    detector: DataCorruptionDetector
+
+"Missing Withdrawal Function (locked funds)":
+    classification: "logic (locked funds)"
+    severity: medium
+    method: Single-shot LLM detector prompt (WithdrawalFunctionDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: No secure way for users to withdraw deposited funds.
+    detector: WithdrawalFunctionDetector
+
+"Missing Access Control / Authorization":
+    classification: "SWC-105 (approx.), DASP-2"
+    severity: high
+    method: Single-shot LLM detector prompt (LackAuthorizationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: State-changing functions lack onlyOwner/role modifiers.
+    detector: LackAuthorizationDetector
+
+"Storage/Memory Data Inconsistency":
+    classification: "logic (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (DataInconsistencyDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Wrong storage<->memory copy assumptions causing inconsistent data.
+    detector: DataInconsistencyDetector
+
+"Hash Collision via abi.encodePacked":
+    classification: "SWC-133"
+    severity: medium
+    method: Single-shot LLM detector prompt (HashCollisionDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: abi.encodePacked of dynamic arguments without delimiters, giving ambiguous hashes.
+    detector: HashCollisionDetector
+
+"Uninitialized Return Variable":
+    classification: "logic (SWC-109 family)"
+    severity: medium
+    method: Single-shot LLM detector prompt (UninitializedReturnVariableDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Declared return variable never assigned, giving an unpredictable return value.
+    detector: UninitializedReturnVariableDetector
+
+"Incorrect Constructor Name (legacy syntax)":
+    classification: "SWC-118"
+    severity: high
+    method: Single-shot LLM detector prompt (MisdeclaredConstructorDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Old-style constructor (function named like the contract) treated as a public function.
+    detector: MisdeclaredConstructorDetector
+
+"Missing onlyOwner Modifier":
+    classification: "DASP-2 (no specific SWC)"
+    severity: high
+    method: Single-shot LLM detector prompt (MissingOnlyOwnerDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Owner-only operations callable by anyone (mint, transfer ownership, ...).
+    detector: MissingOnlyOwnerDetector
+
+"Misuse of msg.value in a Loop":
+    classification: "logic (no standard SWC)"
+    severity: high
+    method: Single-shot LLM detector prompt (MisuseMsgValueDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Full msg.value applied on each loop iteration instead of being split.
+    detector: MisuseMsgValueDetector
+
+"Precision Loss / Integer-Division Truncation":
+    classification: "logic (arithmetic)"
+    severity: medium
+    method: Single-shot LLM detector prompt (PrecisionLossDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Integer division / precision loss in reward or proportional math.
+    detector: PrecisionLossDetector
+
+"Redundant Conditional Check":
+    classification: "code-quality (no standard SWC)"
+    severity: low
+    method: Single-shot LLM detector prompt (RedundantConditionalDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Always-true/false or duplicated conditions; wasted gas.
+    detector: RedundantConditionalDetector
+
+"Single External Oracle Dependency":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (OracleDependencyDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Reliance on a single oracle without fallback or validation.
+    detector: OracleDependencyDetector
+
+"Unprotected Ownership Change":
+    classification: "DASP-2 (no specific SWC)"
+    severity: high
+    method: Single-shot LLM detector prompt (OwnershipHijackingDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Ownership change function callable by anyone (no authorization check).
+    detector: OwnershipHijackingDetector
+
+"Centralization Risk":
+    classification: "DASP-2 / governance (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (CentralizationRiskDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Critical operations gated on a single address; no multisig/decentralization.
+    detector: CentralizationRiskDetector
+
+"Funding-Rate Calculation Precision":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (FundingCalculationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Simplistic or unvalidated funding-rate math (spotPrice/markPrice manipulation).
+    detector: FundingCalculationDetector
+
+"Flash-Loan Fee Manipulation":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: high
+    method: Single-shot LLM detector prompt (FlashLoanDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Flash-loan fee setter lacks access control.
+    detector: FlashLoanDetector
+
+"Misuse of Mapping Getter":
+    classification: "code-quality (no standard SWC)"
+    severity: low
+    method: Single-shot LLM detector prompt (MappingGetterDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: this.mapping(key) used instead of mapping[key].
+    detector: MappingGetterDetector
+
+"Unimplemented Interface Function":
+    classification: "logic/compile (no standard SWC)"
+    severity: low
+    method: Single-shot LLM detector prompt (GetterFunctionDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Interface-declared functions not implemented.
+    detector: GetterFunctionDetector
+
+"Unnecessary Boolean Comparison":
+    classification: "code-quality (no standard SWC)"
+    severity: low
+    method: Single-shot LLM detector prompt (UnnecessaryComparisonDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: x == true/false instead of using the boolean directly.
+    detector: UnnecessaryComparisonDetector
+
+"Inconsistent State Initialization Order":
+    classification: "logic (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (InconsistentInitializationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: State variable initialized from not-yet-initialized state.
+    detector: InconsistentInitializationDetector
+
+"Yield-Source Swap Token Mismatch":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (SourceSwappingDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Yield source swapped without verifying the deposit token matches.
+    detector: SourceSwappingDetector
+
+"Incorrect Signature / Signer Verification":
+    classification: "SWC-122 (approx.)"
+    severity: high
+    method: Single-shot LLM detector prompt (SignatureVerificationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Recovered signer compared to msg.sender, so any caller authorizes itself.
+    detector: SignatureVerificationDetector
+
+"Inheritance Initialization Order / Diamond":
+    classification: "logic (SWC-125 family)"
+    severity: medium
+    method: Single-shot LLM detector prompt (OrderInitializationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Linearized constructor order / diamond-problem initialization issues.
+    detector: OrderInitializationDetector
+
+"Strict Balance Equality (this.balance ==)":
+    classification: "SWC-132"
+    severity: low
+    method: Single-shot LLM detector prompt (ImpracticalityMatchDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Exact this.balance == target checks (forced-send manipulation).
+    detector: ImpracticalityMatchDetector
+
+"Inconsistent Base Tokens on Migration":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (InconsistentTokensDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Strategy migration without verifying base-token consistency.
+    detector: InconsistentTokensDetector
+
+"Unhandled Partial Withdrawals on Migration":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (PartialWithdrawalsDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Migration assumes a full withdrawal is possible; partials leave funds behind.
+    detector: PartialWithdrawalsDetector
+
+"Missing Fallback Function (rejected/locked ether)":
+    classification: "logic (no standard SWC)"
+    severity: low
+    method: Single-shot LLM detector prompt (FallbackFunctionDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: No payable fallback, so ether transfers revert / funds get locked.
+    detector: FallbackFunctionDetector
+
+"Unlimited Token Approval":
+    classification: "logic/DeFi (no standard SWC)"
+    severity: medium
+    method: Single-shot LLM detector prompt (UnlimitedTokenDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: approve/increaseAllowance with unlimited amounts (type(uint256).max etc.).
+    detector: UnlimitedTokenDetector
+
+"Lack of Input Validation":
+    classification: "SWC-123 (approx.)"
+    severity: medium
+    method: Single-shot LLM detector prompt (InputValidationDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Missing checks (zero address, bounds) on critical inputs.
+    detector: InputValidationDetector
+
+"Denial of Service":
+    classification: "SWC-113 / SWC-128, DASP-5"
+    severity: medium
+    method: Single-shot LLM detector prompt (DoSDetector) over the contract source; positive iff the phase conclusion matches '<INFO> ... Identified.'.
+    descr_short: Unbounded loops, failing external calls, gas-griefing.
+    detector: DoSDetector
