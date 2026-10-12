@@ -737,3 +737,30 @@ image: smartbugs/invalid:1.0.0
         with patch("sb.cfg.TOOLS_HOME", str(tmp_path)):
             with pytest.raises(sb.errors.SmartBugsError, match="needs one of the attributes"):
                 load(["test_tool_invalid"])
+
+
+class TestToolEnvField:
+    """Test the optional env field (host variables forwarded into the container)."""
+
+    def _cfg(self, **extra):
+        cfg = {
+            "id": "env_tool",
+            "mode": "solidity",
+            "image": "smartbugs/env:1.0",
+            "command": "analyze $FILENAME",
+        }
+        cfg.update(extra)
+        return cfg
+
+    def test_env_field_is_accepted_and_kept_verbatim(self):
+        tool = Tool(self._cfg(env="TOOL_API_KEY, TOOL_MODEL"))
+
+        assert tool.env == "TOOL_API_KEY, TOOL_MODEL"
+        assert tool.dict()["env"] == "TOOL_API_KEY, TOOL_MODEL"
+
+    def test_env_field_defaults_to_none(self):
+        assert Tool(self._cfg()).env is None
+
+    def test_env_field_must_be_a_string(self):
+        with pytest.raises(sb.errors.SmartBugsError, match="not a string"):
+            Tool(self._cfg(env=["TOOL_API_KEY"]))

@@ -4,6 +4,7 @@ origin: where to find more on the tool, e.g. an URL # optional
 info: Succinct description of your tool. # optional
 image: smartbugs/toolname:0.3.14 # id of Docker image (mandatory)
 bin: scripts # folder with programs that will be accessible in the Docker container
+env: TOOL_API_KEY, TOOL_MODEL # host environment variables to forward into the container (optional); only variables set on the host are passed on, and their values are redacted in the results
 # add the section below if the tool is able to analyse Solidity source code
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"

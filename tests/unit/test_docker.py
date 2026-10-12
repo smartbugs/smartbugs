@@ -509,3 +509,63 @@ def test_execute_ignores_cleanup_errors(monkeypatch):
     assert logs == []
     assert output is None
     assert sb_bin_log == []
+
+
+def test_docker_args_forwards_declared_host_variables(monkeypatch):
+    monkeypatch.setenv("TOOL_API_KEY", "secret-value")
+    monkeypatch.setenv("TOOL_MODEL", "model-x")
+    task = make_task(tool={"env": "TOOL_API_KEY, TOOL_MODEL"})
+
+    args = mut.__docker_args(task, "/tmp/sbdir")
+
+    assert args["environment"] == {"TOOL_API_KEY": "secret-value", "TOOL_MODEL": "model-x"}
+
+
+def test_docker_args_forwards_only_declared_variables_that_are_set(monkeypatch):
+    monkeypatch.setenv("TOOL_API_KEY", "secret-value")
+    monkeypatch.delenv("TOOL_UNSET", raising=False)
+    monkeypatch.setenv("UNRELATED", "stays on the host")
+    task = make_task(tool={"env": "TOOL_API_KEY TOOL_UNSET"})
+
+    args = mut.__docker_args(task, "/tmp/sbdir")
+
+    assert args["environment"] == {"TOOL_API_KEY": "secret-value"}
+
+
+def test_docker_args_without_env_field_adds_no_environment(monkeypatch):
+    monkeypatch.setenv("TOOL_API_KEY", "secret-value")
+
+    assert "environment" not in mut.__docker_args(make_task(), "/tmp/sbdir")
+    assert "environment" not in mut.__docker_args(make_task(tool={"env": None}), "/tmp/sbdir")
+    assert "environment" not in mut.__docker_args(make_task(tool={"env": ""}), "/tmp/sbdir")
+
+
+def test_execute_redacts_forwarded_environment_in_returned_args(monkeypatch):
+    container = DummyContainer()
+    dummy_client = DummyClient()
+    dummy_client.container_to_return = container
+
+    monkeypatch.setattr(mut, "__docker_volume", lambda task: "/tmp/sbdir")
+    monkeypatch.setattr(
+        mut,
+        "__docker_args",
+        lambda task, sbdir: {"image": "img", "environment": {"TOOL_API_KEY": "secret-value"}},
+    )
+    monkeypatch.setattr(mut, "client", lambda: dummy_client)
+    monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: [])
+    monkeypatch.setattr(mut.shutil, "rmtree", lambda path: None)
+
+    *_, args = mut.execute(make_task(tool={"output": None}))
+
+    # the container received the real value ...
+    assert dummy_client.run_calls[0]["environment"] == {"TOOL_API_KEY": "secret-value"}
+    # ... the persisted arguments only the variable name
+    assert args["environment"] == {"TOOL_API_KEY": "<redacted>"}
+    assert "secret-value" not in repr(args)
+
+
+def test_docker_args_adds_no_environment_when_no_declared_variable_is_set(monkeypatch):
+    monkeypatch.delenv("TOOL_API_KEY", raising=False)
+    task = make_task(tool={"env": "TOOL_API_KEY"})
+
+    assert "environment" not in mut.__docker_args(task, "/tmp/sbdir")
