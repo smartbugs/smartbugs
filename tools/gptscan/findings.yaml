@@ -1,0 +1,117 @@
+# GPTScan finding -> taxonomy mapping (SmartBugs `findings.yaml` format).
+#
+# Keys are the finding NAMES emitted by the SmartBugs parser (tools/gptscan/
+# parser.py), which use GPTScan's own `output.title` (e.g. "MWE-200: ...").
+# For each finding SmartBugs merges the fields below into the result.
+#
+# Fields (same convention as tools/mythril-*/findings.yaml, plus a few extras):
+#   classification : recognised taxonomy id(s) (SWC-### / DASP-#) OR the marker
+#                    "BUSINESS-LOGIC (no SWC/DASP)" when no faithful entry exists.
+#   method         : how GPTScan decides the finding (scenario property + the
+#                    static-analysis confirmation checker).
+#   descr_short    : GPTScan's own one-line description.
+#   descr_long     : longer explanation incl. recommendation.
+#   severity       : low | medium | high (our impact assessment).
+#   gptscan_code   : GPTScan's internal rule name (the JSON `code`).
+#   mwe            : GPTScan's MetaTrust Weakness Enumeration id.
+#   related        : optional pointer to a loosely-related taxonomy entry, used
+#                    ONLY for findings deliberately left as business-logic so the
+#                    relation is documented without force-fitting a label.
+#
+# IMPORTANT: GPTScan targets DeFi *logic* bugs. 8 of its 10 detectors have no
+# faithful SWC/DASP equivalent and are intentionally marked business-logic
+# rather than squeezed into an ill-fitting category. Only Front Running and
+# Unauthorized Transfer map cleanly onto the registries.
+
+"MWE-200: Insecure LP Token Value Calculation":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("get/calculate LP token value/price from market reserves / AMM price / custom balance calculation") confirmed by the find_data_dependency static check.
+    descr_short: Liquidity token value/price can be manipulated to cause flashloan attacks.
+    descr_long: The LP token value/price is derived from manipulable on-chain state (AMM reserves, exchangeRate, balanceOf/totalSupply), so a flashloan can distort it. Do not price LP tokens from AMM pools or custom liquidity math.
+    severity: high
+    gptscan_code: price-manipulation
+    mwe: MWE-200
+
+"MWE-201: Insecure Vote Calculation":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("calculate vote amount/number from a vote weight that can be manipulated by flashloan") confirmed by the find_data_dependency static check.
+    descr_short: Calculating vote amount can be manipulated to cause flashloan attacks.
+    descr_long: Governance vote weight is computed from a balance that a flashloan can temporarily inflate, letting an attacker swing a vote. Guard vote calculation against flash-loaned tokens (e.g. snapshots / lock-ups).
+    severity: high
+    gptscan_code: insecure-vote-calculation
+    mwe: MWE-201
+
+"MWE-202: Insecure Token Buying Behavior":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("buy tokens using Uniswap/PancakeSwap APIs") confirmed by the in_code static check.
+    descr_short: Buying tokens via swap or AMM can be manipulated to cause sandwich attacks.
+    descr_long: Buying through an AMM without protection exposes the trade to sandwich/MEV attacks. Avoid market-buying via swap/AMM, or add slippage protection.
+    severity: medium
+    gptscan_code: insecure-buying-behavior
+    mwe: MWE-202
+    related: DASP-7 (Front-Running) / SWC-114 (Transaction Order Dependence) -- sandwich/MEV flavour, kept as business-logic.
+
+"MWE-203: Approval Not Revoked":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("approval checked/added before a transfer but never cleared/reset afterwards") confirmed by the check_require static check.
+    descr_short: Approval is not revoked or reset after the code functionality finishes.
+    descr_long: A token approval granted for an operation is left standing after the operation completes (or on the exception path), leaving a residual allowance that can be abused. Reset the approval once the job is done.
+    severity: medium
+    gptscan_code: approval-not-clear
+    mwe: MWE-203
+
+"MWE-204: Unsafe First Deposit":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("deposit/mint/add liquidity and set total share to the first deposit when supply/liquidity is 0") confirmed by the first_deposit_check static check.
+    descr_short: First depositor can break minting of shares or drain the liquidity of all users.
+    descr_long: When total supply is zero the first depositor sets the share price and can inflate it (ERC4626-style first-deposit attack), stealing later depositors' funds. Seed minimum liquidity to the zero address.
+    severity: high
+    gptscan_code: first-deposit
+    mwe: MWE-204
+
+"MWE-205: Front Running":
+    classification: SWC-114, DASP-7
+    method: GPT scenario match ("mint/vest/collect and assign to a parameter-controlled recipient with no sender check, front-runnable") confirmed by the call_arg_check static check.
+    descr_short: Users are required to transfer assets in advance and minting token/liquidity/earning thus could be frontrun.
+    descr_long: An operation that assigns minted tokens/earnings to a caller-controlled address without a sender check can be front-run to redirect the benefit. This is a transaction-ordering dependence (SWC-114) / front-running (DASP-7). Keep asset transfer and minting atomic in one function.
+    severity: high
+    gptscan_code: front-running
+    mwe: MWE-205
+
+"MWE-206: No Slippage Limit Check":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("swap/liquidity/price-query operation with no slippage / minimum-output check") confirmed by the has_min_check static check.
+    descr_short: No slippage limit check was performed to prevent sandwich attacks.
+    descr_long: A swap or liquidity operation lacks a minimum-output / slippage bound, so it can be sandwiched for value. Add a slippage / minimum-amount check to liquidity-related operations.
+    severity: medium
+    gptscan_code: no-slippage-limit-check
+    mwe: MWE-206
+    related: DASP-7 (Front-Running) / SWC-114 (Transaction Order Dependence) -- sandwich/slippage flavour, kept as business-logic.
+
+"MWE-207: Unauthorized Transfer":
+    classification: DASP-2
+    method: GPT scenario match ("transfer token from an address other than msg.sender with no allowance/approval check") confirmed by the has_eq_check static check.
+    descr_short: The contract allows transferring tokens from an address different from the message sender without checking the approval of the address owner.
+    descr_long: A transfer pulls funds from an address other than msg.sender without verifying an allowance/approval, an access-control flaw (DASP-2 Access Control) that lets anyone move others' tokens. Add the allowance/approval check.
+    severity: high
+    gptscan_code: unauthorized-transfer
+    mwe: MWE-207
+    related: No exact SWC entry for a missing ERC20 allowance check; classified under DASP-2 Access Control.
+
+"MWE-208: Wrong Order for Checkpoint":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("user checkpoint invoked and balance/share/stake/fee/reward calculated, in the wrong order") confirmed by the order_first_b static check.
+    descr_short: Invoking user checkpoint should be executed before calculating new balance, share, stake, loan or fee.
+    descr_long: The user checkpoint is updated after (instead of before) the new balance/share/stake/fee is computed, so accounting uses stale checkpoint state. Move the checkpoint update ahead of the calculation.
+    severity: medium
+    gptscan_code: wrong-order-checkpoint
+    mwe: MWE-208
+
+"MWE-209: Wrong Order for Interest or ExchangeRate":
+    classification: "BUSINESS-LOGIC (no SWC/DASP)"
+    method: GPT scenario match ("interest/exchange-rate update and balance/share/stake/fee calculation, in the wrong order") confirmed by the order_first_b static check.
+    descr_short: Update of interest or exchange rate should be executed before calculating new balance, share, stake, loan or fee.
+    descr_long: Interest / exchange-rate accrual happens after (instead of before) the new balance/share/stake/fee is computed, so the calculation uses a stale rate. Move the interest/rate update ahead of the calculation.
+    severity: medium
+    gptscan_code: wrong-order-interest
+    mwe: MWE-209
