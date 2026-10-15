@@ -24,6 +24,7 @@ FIELDS = (
     "entrypoint",
     "network",
     "env",
+    "envsecret",
 )
 
 
@@ -32,13 +33,13 @@ class Tool:
 
     Attributes are set dynamically via setattr() based on FIELDS tuple.
     This includes: id, mode, image, name, origin, version, info, parser,
-    output, bin, solc, cpu_quota, mem_limit, network, env, plus _command and
-    _entrypoint (Template objects for command/entrypoint).
+    output, bin, solc, cpu_quota, mem_limit, network, env, envsecret,
+    plus _command and _entrypoint (Template objects for command/entrypoint).
 
-    ``env`` names host environment variables (comma- or space-separated) that
-    sb.docker forwards into the tool's container, e.g. an API key a tool needs
-    at run time. Only variables set on the host are forwarded, and their values
-    are redacted before the container arguments are written to the results.
+    'env' names host environment variables (comma- or space-separated) that
+    sb.docker forwards into the tool's container, e.g. some configuration
+    option. 'envsecret' is like 'env' except that the values will be hidden
+    in logs and results; it is intended for secrets like API keys.
     """
 
     # Class-level type annotations for dynamically-set attributes
@@ -57,6 +58,7 @@ class Tool:
     mem_limit: Optional[str]
     network: Optional[str]
     env: Optional[str]
+    envsecret: Optional[str]
     _command: Optional[string.Template]
     _entrypoint: Optional[string.Template]
     absbin: Optional[str]

@@ -2,8 +2,9 @@ import os
 from pathlib import Path
 import platform
 import cpuinfo
+import sb.utils
 
-SB_VERSION = "2.1.6"
+SB_VERSION = "2.2.0"
 
 HOME = Path.home()
 SB_LOCAL = HOME / ".smartbugs"
@@ -33,7 +34,7 @@ PLATFORM = {
     "release": UNAME.release,
     "version": UNAME.version,
     "machine": UNAME.machine,
-    "host": hash(UNAME.node),  # pseudonymised
-    "user": hash(os.environ.get("USER", os.environ.get("USERNAME"))),  # pseudonymised
+    "host": sb.utils.hide(UNAME.node),
+    "user": sb.utils.hide(os.environ.get("USER", os.environ.get("USERNAME"))),
     "cpu": CPU.get("brand_raw"),
 }

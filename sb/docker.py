@@ -12,6 +12,7 @@ import requests
 import sb.debug
 import sb.errors
 import sb.io
+import sb.utils
 
 if TYPE_CHECKING:
     import sb.tasks
@@ -98,15 +99,18 @@ def __docker_args(task: "sb.tasks.Task", sbdir: str) -> dict[str, Any]:
     main = "1" if task.settings.main else "0"
     args["command"] = task.tool.command(filename, timeout, "/sb/bin", main)
     args["entrypoint"] = task.tool.entrypoint(filename, timeout, "/sb/bin", main)
-    # Forward the host variables the tool declares under "env:" in its config.yaml.
+    # Forward the host variables the tool declares under "env" and "envsecret"
+    # in its config.yaml.
     # Only variables set on the host are forwarded, so an unset name never overrides
     # a default baked into the image; nothing else of the host environment leaks in.
-    env_names = getattr(task.tool, "env", None)
-    if env_names:
-        names = env_names.replace(",", " ").split()
-        environment = {name: os.environ[name] for name in names if name in os.environ}
-        if environment:
-            args["environment"] = environment
+    env = getattr(task.tool, "env", None)
+    names = env.replace(",", " ").split() if env else []
+    env = getattr(task.tool, "envsecret", None)
+    if env:
+        names.extend(env.replace(",", " ").split())
+    environment = {name: os.environ[name] for name in names if name in os.environ}
+    if environment:
+        args["environment"] = environment
     return args
 
 
@@ -181,9 +185,13 @@ def execute(
         _remove_tempdir(sbdir)
 
     # sb.analysis writes the returned arguments verbatim into smartbugs.json.
-    # Forwarded environment values (API keys!) must not end up there; the
-    # container has already received the real values.
+    # Forwarded environment values that are supposed to remain secret
+    # must not end up there; the container has already received the real values.
     if "environment" in args:
-        args["environment"] = {name: "<redacted>" for name in args["environment"]}
+        env = getattr(task.tool, "envsecret", None)
+        names = set(env.replace(",", " ").split()) if env else {}
+        for name in names:
+            if name in args["environment"]:
+                args["environment"][name] = sb.utils.hide(args["environment"][name])
 
     return exit_code, logs, output, sb_bin_log, args

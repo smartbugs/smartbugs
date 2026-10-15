@@ -5,6 +5,7 @@ VOID_START: re.Pattern[str] = re.compile(r"""//|/\*|"|'""")
 QUOTE_END: re.Pattern[str] = re.compile(r"([^\\']|\\.)*'")
 DQUOTE_END: re.Pattern[str] = re.compile(r'([^\\"]|\\.)*"')
 
+
 def remove_comments_strings(program: str) -> str:
     """Return program without Solidity comments and strings
 

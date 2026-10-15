@@ -26,7 +26,8 @@ network: bridge
 #                               models with a larger window)
 #   LLM_MAX_COMPLETION_TOKENS   upper bound for completion tokens per call
 #                               (optional; the tool's default if unset)
-env: DEEPSEEK_API_KEY, OPENAI_API_KEY, LLM_PROVIDER, LLM_MODEL, LLM_BASE_URL, LLM_CONTEXT_TOKENS, LLM_MAX_COMPLETION_TOKENS
+env: LLM_PROVIDER, LLM_MODEL, LLM_CONTEXT_TOKENS, LLM_MAX_COMPLETION_TOKENS
+envsecret: DEEPSEEK_API_KEY, OPENAI_API_KEY, LLM_BASE_URL
 solidity:
     entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
     # no solc: the tool reasons over the source text and never compiles
