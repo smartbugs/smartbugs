@@ -24,7 +24,8 @@ network: bridge
 #                     for tests without cost); ignored otherwise
 #   GPTSCAN_API_KEY   API key for GPTSCAN_PROVIDER=custom; deepseek/openai read
 #                     DEEPSEEK_API_KEY/OPENAI_API_KEY instead
-env: DEEPSEEK_API_KEY, OPENAI_API_KEY, GPTSCAN_PROVIDER, GPTSCAN_MODEL, GPTSCAN_DRY_RUN, GPTSCAN_BASE_URL, GPTSCAN_API_KEY
+env: GPTSCAN_PROVIDER, GPTSCAN_MODEL, GPTSCAN_DRY_RUN
+envsecret: DEEPSEEK_API_KEY, OPENAI_API_KEY, GPTSCAN_API_KEY, GPTSCAN_BASE_URL
 solidity:
     # SmartBugs provides a matching solc binary at $BIN/solc (solc: yes); the
     # entrypoint puts it on PATH for GPTScan's compilation step.

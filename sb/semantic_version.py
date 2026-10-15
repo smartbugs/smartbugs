@@ -5,7 +5,6 @@ import semantic_version
 
 import sb.debug
 
-
 # Solidity accepts spaces between an operator and its version, and around dots.
 # NpmSpec expects the operator and the version to be adjacent.
 OPERATOR_SPACE = re.compile(r"(<=|>=|<|>|=|\^|~)\s+(?=\d|[xX*])")
@@ -29,9 +28,7 @@ def _normalize(spec: str) -> str:
     branches = []
     for branch in spec.split("||"):
         if "<" not in branch:
-            branch = UNBOUNDED_ZERO_LOWER.sub(
-                lambda match: "^" + match.group()[2:], branch
-            )
+            branch = UNBOUNDED_ZERO_LOWER.sub(lambda match: "^" + match.group()[2:], branch)
         branches.append(branch)
     return "||".join(branches)
 

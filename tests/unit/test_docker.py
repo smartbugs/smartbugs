@@ -1,5 +1,6 @@
 from types import SimpleNamespace
 
+import copy
 import pytest
 import requests
 
@@ -99,7 +100,7 @@ class DummyClient:
         return image
 
     def run(self, **kwargs):
-        self.run_calls.append(kwargs)
+        self.run_calls.append(copy.deepcopy(kwargs))
         return self.container_to_return
 
 
@@ -514,11 +515,16 @@ def test_execute_ignores_cleanup_errors(monkeypatch):
 def test_docker_args_forwards_declared_host_variables(monkeypatch):
     monkeypatch.setenv("TOOL_API_KEY", "secret-value")
     monkeypatch.setenv("TOOL_MODEL", "model-x")
-    task = make_task(tool={"env": "TOOL_API_KEY, TOOL_MODEL"})
+    monkeypatch.setenv("TOOL_VERSION", "5.6")
+    task = make_task(tool={"env": "TOOL_VERSION, TOOL_MODEL", "envsecret": "TOOL_API_KEY"})
 
     args = mut.__docker_args(task, "/tmp/sbdir")
 
-    assert args["environment"] == {"TOOL_API_KEY": "secret-value", "TOOL_MODEL": "model-x"}
+    assert args["environment"] == {
+        "TOOL_API_KEY": "secret-value",
+        "TOOL_MODEL": "model-x",
+        "TOOL_VERSION": "5.6",
+    }
 
 
 def test_docker_args_forwards_only_declared_variables_that_are_set(monkeypatch):
@@ -549,18 +555,26 @@ def test_execute_redacts_forwarded_environment_in_returned_args(monkeypatch):
     monkeypatch.setattr(
         mut,
         "__docker_args",
-        lambda task, sbdir: {"image": "img", "environment": {"TOOL_API_KEY": "secret-value"}},
+        lambda task, sbdir: {
+            "image": "img",
+            "environment": {"TOOL_API_KEY": "secret-value", "OTHER": "not-a-secret"},
+        },
     )
     monkeypatch.setattr(mut, "client", lambda: dummy_client)
     monkeypatch.setattr(mut.sb.io, "read_lines", lambda path: [])
     monkeypatch.setattr(mut.shutil, "rmtree", lambda path: None)
 
-    *_, args = mut.execute(make_task(tool={"output": None}))
+    *_, args = mut.execute(
+        make_task(tool={"output": None, "envsecret": "TOOL_API_KEY, OTHER_KEY", "env": "OTHER"})
+    )
 
     # the container received the real value ...
-    assert dummy_client.run_calls[0]["environment"] == {"TOOL_API_KEY": "secret-value"}
+    assert dummy_client.run_calls[0]["environment"] == {
+        "TOOL_API_KEY": "secret-value",
+        "OTHER": "not-a-secret",
+    }
     # ... the persisted arguments only the variable name
-    assert args["environment"] == {"TOOL_API_KEY": "<redacted>"}
+    assert args["environment"] == {"TOOL_API_KEY": "secret_3116", "OTHER": "not-a-secret"}
     assert "secret-value" not in repr(args)
 
 

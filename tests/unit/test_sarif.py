@@ -13,8 +13,17 @@ from typing import Any
 from unittest.mock import MagicMock, patch
 
 import pytest
+import json
+from pathlib import Path
 
 import sb.sarif
+
+
+@pytest.fixture(scope="session")
+def sarif_schema() -> dict[str, Any]:
+    path = Path(__file__).parents[1] / "data" / "sarif-2.1.0.json"
+    with path.open(encoding="utf-8") as stream:
+        return json.load(stream)
 
 
 @pytest.fixture
@@ -791,40 +800,26 @@ class TestSarifSchemaValidation:
     """
 
     def test_sarif_schema_validation_basic(
-        self, sample_tool_config: dict[str, Any], sample_finding: dict[str, Any]
+        self,
+        sample_tool_config: dict[str, Any],
+        sample_finding: dict[str, Any],
+        sarif_schema: dict[str, Any],
     ) -> None:
         """Test that generated SARIF validates against schema."""
-        pytest.importorskip("jsonschema")
-        import json
-
-        import jsonschema
-        import requests
-
+        jsonschema = pytest.importorskip("jsonschema")
         findings = [sample_finding]
         sarif_doc = sb.sarif.sarify(sample_tool_config, findings)
-
-        # Fetch SARIF 2.1.0 schema
-        schema_url = "https://json.schemastore.org/sarif-2.1.0"
-        try:
-            response = requests.get(schema_url, timeout=5)
-            response.raise_for_status()
-            schema = response.json()
-
-            # Validate
-            jsonschema.validate(instance=sarif_doc, schema=schema)
-        except (requests.RequestException, json.JSONDecodeError):
-            pytest.skip("Could not fetch SARIF schema for validation")
+        jsonschema.validate(instance=sarif_doc, schema=sarif_schema)
 
     @patch("sb.tools.info_finding")
     def test_sarif_schema_validation_complex(
-        self, mock_info_finding: MagicMock, sample_tool_config: dict[str, Any]
+        self,
+        mock_info_finding: MagicMock,
+        sample_tool_config: dict[str, Any],
+        sarif_schema: dict[str, Any],
     ) -> None:
         """Test complex SARIF document validates against schema."""
-        pytest.importorskip("jsonschema")
-        import json
-
-        import jsonschema
-        import requests
+        jsonschema = pytest.importorskip("jsonschema")
 
         mock_info_finding.return_value = {
             "descr_short": "Reentrancy",
@@ -853,17 +848,7 @@ class TestSarifSchemaValidation:
         ]
         sarif_doc = sb.sarif.sarify(sample_tool_config, findings)
 
-        # Fetch SARIF 2.1.0 schema
-        schema_url = "https://json.schemastore.org/sarif-2.1.0.json"
-        try:
-            response = requests.get(schema_url, timeout=5)
-            response.raise_for_status()
-            schema = response.json()
-
-            # Validate
-            jsonschema.validate(instance=sarif_doc, schema=schema)
-        except (requests.RequestException, json.JSONDecodeError):
-            pytest.skip("Could not fetch SARIF schema for validation")
+        jsonschema.validate(instance=sarif_doc, schema=sarif_schema)
 
 
 class TestEdgeCases:
