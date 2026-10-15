@@ -94,7 +94,7 @@ Oyente+ is maintained and handles recent EVM versions.
 
 **[3]** This tool may not be adequately configured and therefore may not produce useful results. Feel free to submit a fix.
 
-**[4]** LLM-based tools. They call an external API (DeepSeek by default, as the considerably cheaper option; OpenAI or any OpenAI-compatible endpoint via `GPTSCAN_PROVIDER` / `LLM_PROVIDER`) and need an API key at run time, LLMSmartAudit also a model id, passed as environment variables that SmartBugs forwards into the container (see the `env:` entry and the comments in their `config.yaml`). Every analysed contract costs API calls, which is why they are not part of `-t all`; select them explicitly with `-t gptscan` or `-t llmsmartaudit`. SmartBugs runs them from forks adapted for this purpose ([GPTScan](https://github.com/Alex-Hofer/GPTScan/tree/smartbugs), [LLMSmartAudit](https://github.com/Alex-Hofer/LLMSmartAuditTool/tree/smartbugs)). Until the images are on Docker Hub, build them from the fork commits pinned in this repository: `docker build -t smartbugs/gptscan:29a1747 tools/gptscan/docker` and `docker build -t smartbugs/llmsmartaudit:c507fe4 tools/llmsmartaudit/docker`.
+**[4]** LLM-based tools. They call an external API (DeepSeek by default, as the considerably cheaper option; OpenAI or any OpenAI-compatible endpoint via `GPTSCAN_PROVIDER` / `LLM_PROVIDER`) and need an API key at run time, LLMSmartAudit also a model id, passed as environment variables that SmartBugs forwards into the container (see the `env:` entry and the comments in their `config.yaml`). Every analysed contract costs API calls, which is why they are not part of `-t all`; select them explicitly with `-t gptscan` or `-t llmsmartaudit`.
 
 ## Installation
 
