@@ -1,4 +1,4 @@
-**@tool authors** Think about integrating your tool yourself, with optimal settings, rather than waiting for a third party to do so. Issue a pull request, contact us for support!
+**@tool authors** Think about [integrating your tool](https://github.com/smartbugs/smartbugs/wiki/Adding-new-analysis-tools) yourself, with optimal settings, rather than waiting for a third party to do so. Issue a pull request, contact us for support!
 
 **@users** Bare in mind that alongside maintained tools like Mythril, Oyente+, Semgrep, Slither and Solhint, SmartBugs also offers unmaintained academic research prototypes, which may be incompatible with current Solidity and EVM versions.
 
